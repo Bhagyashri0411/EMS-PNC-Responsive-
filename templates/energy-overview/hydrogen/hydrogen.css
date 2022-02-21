@@ -5,27 +5,31 @@
     color: #d9d9d9;
     text-align: center;
 }
-#hydrogen-tab .first-box-title{
+
+#hydrogen-tab .first-box-title {
     font-size: 1.4vw;
     color: #d9d9d9;
     margin-top: 20px;
 }
-#hydrogen-tab #op-hydrogen, #fromhydrogen ,#tohydrogen {  
+
+#hydrogen-tab #op-hydrogen, #fromhydrogen, #tohydrogen {
     font-size: 1vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
     padding: 0.1vw;
     border-radius: 0.3vw;
     margin-left: 0.5vw;
-    max-width: 15vw;          
+    max-width: 15vw;
     cursor: pointer;
     color: #d9d9d9;
 }
-#hydrogen-tab #op-hydrogen{
+
+#hydrogen-tab #op-hydrogen {
     padding: 0.4vw 0;
     max-width: 17vw;
     font-size: 0.8vw;
 }
+
 #hydrogen-tab .card .body .count {
     text-align: center;
     font-size: 3vw;
@@ -33,16 +37,19 @@
     font-weight: 700;
     padding: 1.5vw;
 }
+
 #hydrogen-tab .card .footer .ref {
     color: #d9d9d9;
     font-size: 1vw;
     display: inline-block;
     padding: 0vw 0vw;
 }
+
 #ref_hydro1, #ref_hydro2, #ref_hydro3, #ref_hydro4 {
     color: #f2f2f2;
     font-size: 1.1vw;
 }
+
 #hydrogen-tab .card .footer .result {
     color: #f2f2f2;
     font-size: 1vw;
@@ -58,7 +65,7 @@
 
 
 /* Line Graph CSS */
-#hydrogen-tab .refbox{
+#hydrogen-tab .refbox {
     background-color: #ffc000;
     width: 1vw;
     height: 0.25vw;
@@ -66,97 +73,111 @@
     display: inline-block;
     margin: 0.2vw;
 }
+
 #hydrogen-tab .line {
     padding: 0.8vw 0.5vw;
 }
-#hydrogen-tab  .osv {
+
+#hydrogen-tab .osv {
     background-color: #00aaee;
     width: 2vw;
     height: 0.25vw;
     display: inline-block;
     margin: 0.2vw;
 }
-#hydrogen-tab .leg{
+
+#hydrogen-tab .leg {
     font-size: 1vw;
     margin-right: 1vw;
     color: #d9d9d9;
 }
-#hydrogen-tab .col-tre{
+
+#hydrogen-tab .col-tre {
     display: inline-block;
     text-align: left;
 }
 
- /* table css */
- table #hydrogen_table1 td{
-     padding: 1vw;
- }
- #hydrogen-tab  table{
+/* table css */
+table #hydrogen_table1 td {
+    padding: 1vw;
+}
+
+#hydrogen-tab table {
     font-family: Yu Gothic UI;
     border-collapse: collapse;
-       color: #d9d9d9;
+    color: #d9d9d9;
     width: 100%;
 }
 
-#hydrogen-tab  td {
+#hydrogen-tab td {
     border-bottom: 1px solid #b2b2b9;
     font-size: 1vw;
     padding: 0.3vw;
 }
+
 #hydrogen-tab table th {
     padding: 0.5vw;
     background-color: #442266;
     font-size: 1.1vw;
-       color: #d9d9d9;
+    color: #d9d9d9;
     font-weight: normal;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
 }
+
 #hydrogen-tab table th:last-child {
     text-align: end;
 }
+
 #hydrogen-tab table td:last-child {
     text-align: end;
     color: #f2f2f2;
 }
-#hydrogen-tab table tr:last-child td{
+
+#hydrogen-tab table tr:last-child td {
     border-bottom: 0;
 }
+
 #hydrogen-tab .chart-title.title .col-first .input-title {
     font-size: 0.9vw;
-   color: #d9d9d9;
+    color: #d9d9d9;
 }
+
 /* scroll */
-        
+
 #hydrogen-tab .genratorsHeight {
     height: 12vw;
-        }
-                
+}
+
 #hydrogen-tab .tableheight {
     height: 12.24vw;
-        }
-#hydrogen-tab        .scroll {
-            width: 40%;
-            overflow: auto;
-        }
-#hydrogen-tab       .overflow {
-            overflow: auto;
-        }
-#hydrogen-tab       ::-webkit-scrollbar {
-            width: 0.3vw;
-            height: 0.3vw;
-        }
-        
-#hydrogen-tab      ::-webkit-scrollbar-track {
-            border: 1px solid #262A3C;
-            border-radius: 15px;
-        }
-        
-#hydrogen-tab      ::-webkit-scrollbar-thumb {
-            background: #8d8a95;
-            border-radius: 15px;
-        }
-        
-        #hydrogen-tab ::-webkit-scrollbar-thumb:hover {
-            background:#8d8a95;
-        }
+}
+
+#hydrogen-tab .scroll {
+    width: 40%;
+    overflow: auto;
+}
+
+#hydrogen-tab .overflow {
+    overflow: auto;
+}
+
+#hydrogen-tab ::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0.3vw;
+}
+
+#hydrogen-tab ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+#hydrogen-tab ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+#hydrogen-tab ::-webkit-scrollbar-thumb:hover {
+    background: #8d8a95;
+}

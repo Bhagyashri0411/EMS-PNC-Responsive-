@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 function pageRedirect() {
     window.location.href = "energy-overview.html";
-  } 
+}
 
 function getDoughnutData(abc) {
     var myJSON = { uom: abc }
@@ -24,11 +24,11 @@ function getDoughnutData(abc) {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "POST",
         data: postdata,
-         
+
         url: "http://localhost:8090/EMSPro/home/totalfuelconsumed1",
     }).done(function (data) {
         loadDoughnutChart(data);
@@ -83,8 +83,8 @@ function loadDoughnutChart(data) {
             startAngle: 120,
             dataPoints: [
                 // { y: data[0].solid, name: "Solid" },
-                { y: data.liquid, name: "Liquid" ,indexLabel: "Liquid "+((data.liquid/data.totalfuel)*100).toFixed(2)+"%"  },
-                { y: data.gas, name: "Gas" ,indexLabel: "Gas "+((data.gas/data.totalfuel)*100).toFixed(2)+"%" },
+                { y: data.liquid, name: "Liquid", indexLabel: "Liquid " + ((data.liquid / data.totalfuel) * 100).toFixed(2) + "%" },
+                { y: data.gas, name: "Gas", indexLabel: "Gas " + ((data.gas / data.totalfuel) * 100).toFixed(2) + "%" },
             ]
         }]
     });
@@ -96,7 +96,7 @@ function loadGaugeChartData() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         type: "GET",
         url: "http://localhost:8090/EMSPro/home/speedometer",
@@ -109,13 +109,13 @@ function guagevaluehomeAct() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
         url: 'http://localhost:8090/EMSPro/home/speedometer',
 
     }).done(function (data) {
-        document.getElementById("dev").innerHTML = data.deviation+'%';
+        document.getElementById("dev").innerHTML = data.deviation + '%';
         document.getElementById("act1").innerHTML = data.actual;
         document.getElementById("opt1").innerHTML = data.optimized;
     });
@@ -196,7 +196,7 @@ function getcardhome1() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         url: 'http://localhost:8090/EMSPro/home/totalenergyconsumed',
         method: "GET"
@@ -206,10 +206,10 @@ function getcardhome1() {
         document.getElementById("resulthome1").innerHTML = data.currentvalue;
         document.getElementById("ref1").innerHTML = data.refvalue;
         document.getElementById("countHorizon1").innerHTML = data.kpivalue;
-        if ( data.currentvalue>0) {
-            document.getElementById("resulthome1").innerHTML = "+"+data.currentvalue;
+        if (data.currentvalue > 0) {
+            document.getElementById("resulthome1").innerHTML = "+" + data.currentvalue;
         }
-        else{
+        else {
             document.getElementById("resulthome1").innerHTML = data.currentvalue;
         }
         $(".result").each(function () {
@@ -232,7 +232,7 @@ function getcardhome2() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         url: 'http://localhost:8090/EMSPro/home/energyintensity',
         method: "GET"
@@ -241,10 +241,10 @@ function getcardhome2() {
         document.getElementById("resulthome2").innerHTML = data.currentvalue;
         document.getElementById("ref2").innerHTML = data.refvalue;
         document.getElementById("countHorizon2").innerHTML = data.kpivalue;
-        if ( data.currentvalue>0) {
-            document.getElementById("resulthome2").innerHTML = "+"+data.currentvalue;
+        if (data.currentvalue > 0) {
+            document.getElementById("resulthome2").innerHTML = "+" + data.currentvalue;
         }
-        else{
+        else {
             document.getElementById("resulthome2").innerHTML = data.currentvalue;
         }
         $(".result").each(function () {
@@ -256,9 +256,9 @@ function getcardhome2() {
                 } else if (num > 0) {
                     $(this).addClass("green");
                 }
-    
+
             }
         });
     });
-   
+
 }

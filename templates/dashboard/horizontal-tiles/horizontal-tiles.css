@@ -1,15 +1,17 @@
-.tiles-row .card  .title {
+.tiles-row .card .title {
     font-size: 1vw;
     font-weight: normal;
     color: #d9d9d9;
     text-align: center;
     /* padding: 0px; */
 }
-.tiles-row .card{
+
+.tiles-row .card {
     background-color: #26293c;
     padding: 6px;
     border-radius: 10px;
 }
+
 .tiles-row .card .body .count {
     text-align: center;
     font-size: 3.6vw;
@@ -25,10 +27,12 @@
     display: inline-block;
     padding: 0vw 0vw;
 }
-.tiles-row #ref1, #ref2, #ref3, #ref4{
+
+.tiles-row #ref1, #ref2, #ref3, #ref4 {
     color: #f2f2f2;
     font-size: 1.1vw;
 }
+
 .tiles-row .card .footer .result {
     color: #f2f2f2;
     font-size: 1.1vw;
@@ -148,6 +152,7 @@
     padding-left: 1vw;
     font-size: 1vw;
 }
+
 .tiles-row .lebel-style {
     display: inline-block;
     font-size: 1vw;
@@ -158,6 +163,6 @@
 /* #tiles-doughnut{
     margin: 0px 43px;
 } */
- .col{
+.col {
     padding: 1px;
 }

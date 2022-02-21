@@ -54,10 +54,12 @@ body.dark-theme {
 .nav-tabs.card-tabs {
     border-bottom: none;
 }
+
 .nav-tabs.energy-overview-purple,
 .nav-tabs.card-tabs {
     border-bottom: none;
 }
+
 .nav-tabs.cpp-tps-purple-tab>li>a {
     background-color: #fff;
     color: #7733aa;
@@ -68,6 +70,7 @@ body.dark-theme {
     font-weight: bold;
     margin-left: 6px;
 }
+
 .nav-tabs.energy-overview-purple>li>a {
     background-color: #fff;
     color: #7733aa;
@@ -78,6 +81,7 @@ body.dark-theme {
     font-weight: bold;
     margin-left: 0.4vw;
 }
+
 .nav-tabs.purple-tabs>li>a {
     background-color: #fff;
     color: #7733aa;
@@ -98,6 +102,7 @@ body.dark-theme {
     color: #fff;
     border: none;
 }
+
 .nav-tabs.energy-overview-purple>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
@@ -105,6 +110,7 @@ body.dark-theme {
     color: #fff;
     border: none;
 }
+
 .nav-tabs.cpp-tps-purple-tab>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
@@ -142,9 +148,11 @@ body.dark-theme {
 .mt-14 {
     margin-top: 14px;
 }
+
 .mt-12 {
     margin-top: 12px;
 }
+
 .pl-7 {
     padding-left: 7px;
 }
@@ -186,6 +194,7 @@ body.dark-theme {
     padding: 0 10px;
     color: #d9d9d9;
 }
+
 .card-col-5 {
     padding-left: 5px;
     padding-right: 5px;
@@ -205,6 +214,7 @@ body.dark-theme {
     padding: 0 10px;
     color: #d9d9d9;
 }
+
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
@@ -231,8 +241,7 @@ body.dark-theme {
     padding-top: 0px;
 }
 
-.card .chart-title.title .firstbox 
-    {
+.card .chart-title.title .firstbox {
     background-color: #ee7733;
     width: 1.7vw;
     height: 0.3vw;
@@ -240,7 +249,7 @@ body.dark-theme {
     display: inline-block;
     margin: 0.4vw 0;
     margin-right: 0.4vw;
-      }
+}
 
 
 .card .chart-title.title .secondbox {
@@ -248,7 +257,7 @@ body.dark-theme {
     width: 1vw;
     height: 1vw;
     display: inline-block;
-  margin-left: 0.3vw;
+    margin-left: 0.3vw;
 }
 
 .chart-title.title .col-first>span {
@@ -268,10 +277,12 @@ body.dark-theme {
     max-width: 11vw;
     cursor: pointer;
 }
+
 input[type=radio] {
     height: 0.8vw;
     margin: 0.3vw;
 }
+
 .chart-title.title .title-radios {
     margin-right: 15px;
 }
@@ -317,10 +328,12 @@ input[type=radio] {
     font-weight: 550;
     color: #d9d9d9;
 }
+
 .summary-heading .heading-item .count {
     font-size: 1.2vw;
     color: #f2f2f2;
 }
+
 .summary-heading .heading-item .unit {
     font-size: 0.7vw;
     color: #d9d9d9;
@@ -329,15 +342,17 @@ input[type=radio] {
 .summary-heading .heading-item .unit.green {
     color: #00aa55;
 }
-.summary-heading .heading-item .down-button{
+
+.summary-heading .heading-item .down-button {
     background-color: #442266;
-    color:#f2f2f2;
+    color: #f2f2f2;
     padding: 0.1vw 3vw;
     border-radius: 0.3vw;
-    font-size:1.1vw;
+    font-size: 1.1vw;
     font-weight: bold;
 }
-.summary-heading .heading-item .down-button-op{
+
+.summary-heading .heading-item .down-button-op {
     background-color: #442266;
     color: #f2f2f2;
     padding: 4px 40px;
@@ -346,10 +361,12 @@ input[type=radio] {
     font-weight: 200;
     margin-right: 10px;
 }
-.canvasjs-chart-credit{
+
+.canvasjs-chart-credit {
     display: none;
 }
-.summary-heading .heading-item .overlastup{
+
+.summary-heading .heading-item .overlastup {
     font-size: 1.2vw;
     font-weight: 550;
 }
@@ -358,9 +375,10 @@ input[type=radio] {
     padding-left: 17px;
 }
 
-.butt-17{
-margin-top: -9px;
+.butt-17 {
+    margin-top: -9px;
 }
+
 .card .footer .result.red {
     background-color: #ff0000;
 }
@@ -372,4 +390,4 @@ margin-top: -9px;
 .chart-title.title .col-first .input-title {
     font-size: 12px;
     margin-left: 10px;
-}   
+}

@@ -5,30 +5,35 @@
     color: #d9d9d9;
     text-align: center;
 }
-#air-tab .card .fosize{
+
+#air-tab .card .fosize {
     font-size: 1vw;
 }
-#air-tab .first-box-title{
+
+#air-tab .first-box-title {
     font-size: 1.16vw;
     color: #d9d9d9;
     margin-top: 27px;
 }
-#air-tab #op-air, #fromair ,#toair, #Airtable, #Airtable1, #Airtable2 {  
+
+#air-tab #op-air, #fromair, #toair, #Airtable, #Airtable1, #Airtable2 {
     font-size: 1vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
     padding: 0.1vw;
     border-radius: 0.3vw;
     margin-left: 0.5vw;
-    max-width: 15vw;          
+    max-width: 15vw;
     cursor: pointer;
     color: #d9d9d9;
 }
-#air-tab #op-air{
+
+#air-tab #op-air {
     padding: 0.4vw 0;
     max-width: 17vw;
     font-size: 0.8vw;
 }
+
 #air-tab .card .body .count {
     text-align: center;
     font-size: 3vw;
@@ -36,19 +41,23 @@
     font-weight: 700;
     padding: 1.5vw;
 }
-#air-tab .card .body .pd-7{
+
+#air-tab .card .body .pd-7 {
     padding: 0.6vw;
 }
+
 #air-tab .card .footer .ref {
     color: #d9d9d9;
     font-size: 1vw;
     display: inline-block;
     padding: 0vw 0vw;
 }
+
 #ref_air1, #ref_air2, #ref_air3, #ref_air4 {
     color: #f2f2f2;
     font-size: 1.1vw;
 }
+
 #air-tab .card .footer .result {
     color: #f2f2f2;
     font-size: 1vw;
@@ -64,7 +73,7 @@
 
 
 /* Line Graph CSS */
-#air-tab .refbox{
+#air-tab .refbox {
     background-color: #ffc000;
     width: 1vw;
     height: 0.25vw;
@@ -72,93 +81,107 @@
     display: inline-block;
     margin: 0.2vw;
 }
+
 #air-tab .line {
     padding: 0.8vw 0.5vw;
 }
-#air-tab  .osv {
+
+#air-tab .osv {
     background-color: #00aaee;
     width: 2vw;
     height: 0.25vw;
     display: inline-block;
     margin: 0.2vw;
 }
-#air-tab .leg{
+
+#air-tab .leg {
     font-size: 1vw;
     margin-right: 1vw;
     color: #d9d9d9;
 }
-#air-tab .col-tre{
+
+#air-tab .col-tre {
     display: inline-block;
     text-align: left;
 }
 
- /* table css */
- table #airgen_table1 td{
-     padding: 1vw;
- }
- #air-tab  table{
+/* table css */
+table #airgen_table1 td {
+    padding: 1vw;
+}
+
+#air-tab table {
     font-family: Yu Gothic UI;
     border-collapse: collapse;
-       color: #d9d9d9;
+    color: #d9d9d9;
     width: 100%;
 }
 
-#air-tab  td {
+#air-tab td {
     border-bottom: 1px solid #b2b2b9;
     font-size: 1vw;
     padding: 0.3vw;
 }
+
 #air-tab table th {
     padding: 0.5vw;
     background-color: #442266;
     font-size: 1.1vw;
-       color: #d9d9d9;
+    color: #d9d9d9;
     font-weight: normal;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
 }
+
 #air-tab table th:last-child {
     text-align: end;
 }
+
 #air-tab table td:last-child {
     text-align: end;
     color: #f2f2f2;
 }
-#air-tab table tr:last-child td{
+
+#air-tab table tr:last-child td {
     border-bottom: 0;
 }
+
 #air-tab .chart-title.title .col-first .input-title {
     font-size: 0.9vw;
-   color: #d9d9d9;
+    color: #d9d9d9;
 }
+
 /* scroll */
-        
+
 #air-tab .genratorsHeight {
     height: 11.89vw;
-        }
-        #air-tab        .scroll {
-            width: 40%;
-            overflow: auto;
-        }
-        #air-tab       .overflow {
-            overflow: auto;
-        }
-        #air-tab       ::-webkit-scrollbar {
-            width: 0.3vw;
-            height: 0.3vw;
-        }
-        
-        #air-tab      ::-webkit-scrollbar-track {
-            border: 1px solid #262A3C;
-            border-radius: 15px;
-        }
-        
-        #air-tab      ::-webkit-scrollbar-thumb {
-            background: #8d8a95;
-            border-radius: 15px;
-        }
-        
+}
+
+#air-tab .scroll {
+    width: 40%;
+    overflow: auto;
+}
+
+#air-tab .overflow {
+    overflow: auto;
+}
+
+#air-tab ::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0.3vw;
+}
+
+#air-tab ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+#air-tab ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
 #air-tab ::-webkit-scrollbar-thumb:hover {
-            background:#8d8a95;
-        }
+    background: #8d8a95;
+}

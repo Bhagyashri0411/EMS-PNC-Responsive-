@@ -1,81 +1,89 @@
+#ncu-convection-section .actbox {
+    background-color: #C55B11;
+    width: 2vw;
+    height: 0.3vw;
+    /* padding-left: 20px; */
+    display: inline-block;
+    margin: 0.2vw 0.5vw;
+}
 
-    #ncu-convection-section .actbox {
-        background-color: #C55B11;
-        width: 2vw;
-        height: 0.3vw;
-        /* padding-left: 20px; */
-        display: inline-block;
-       margin: 0.2vw 0.5vw;
-    }
-    #ncu-convection-section .leg{
-        font-size: 1vw;
-        color: #d9d9d9;
-    }
-    #ncu-convection-section .refbox {
-        background-color: #D945B4;
-        width: 2.5vw;
-        height: 0.3vw;
-        padding-left: 20px;
-        display: inline-block;
-        margin: 0.2vw 0.5vw;
-    }
-    #ncu-convection-section .main-head{
-        font-size: 25px;
-        color: #d9d9d9;
-        font-weight: 500;
-        padding: 10px 6px;
-    }
-    #ncu-convection-section input {
-        font-size: 0.8vw;
-        background-color: #26293c;
-        border: 1px solid #f2f2f2;
-        border-radius: 5px;
-        max-width: 149px;
-        cursor: pointer;
-        color: #bfbfbf;
-    }
-   
-    #ncu-convection-section table {
-        font-family: Yu Gothic UI;
-        border-collapse: collapse;
-        position: relative;
-        width: 100%;
-    }
-    #ncu-convection-section td {
-        padding: 0.5vw;
-        font-size: 0.9vw;
-        color: #d9d9d9;
-        border-bottom: 0.13vw solid #7e808b;
-    }
-    #ncu-convection-section tr:last-child td{
-        border-bottom: 2px solid #585a64;
-    padding-bottom:0 ;
-    }
-    #ncu-convection-section th {
-        background-color: #442266;
-        color: #d9d9d9;
-        font-size: 0.8vw;
-        position: sticky;
-        top: 0;
-        text-align: left;
-        padding: 0.2vw 0.5vw;
-        font-size: 1vw;
-    }
+#ncu-convection-section .leg {
+    font-size: 1vw;
+    color: #d9d9d9;
+}
 
-#ncu-convection-section .count-line{
+#ncu-convection-section .refbox {
+    background-color: #D945B4;
+    width: 2.5vw;
+    height: 0.3vw;
+    padding-left: 20px;
+    display: inline-block;
+    margin: 0.2vw 0.5vw;
+}
+
+#ncu-convection-section .main-head {
+    font-size: 25px;
+    color: #d9d9d9;
+    font-weight: 500;
+    padding: 10px 6px;
+}
+
+#ncu-convection-section input {
+    font-size: 0.8vw;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    max-width: 149px;
+    cursor: pointer;
+    color: #bfbfbf;
+}
+
+#ncu-convection-section table {
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    position: relative;
+    width: 100%;
+}
+
+#ncu-convection-section td {
+    padding: 0.5vw;
+    font-size: 0.9vw;
+    color: #d9d9d9;
+    border-bottom: 0.13vw solid #7e808b;
+}
+
+#ncu-convection-section tr:last-child td {
+    border-bottom: 2px solid #585a64;
+    padding-bottom: 0;
+}
+
+#ncu-convection-section th {
+    background-color: #442266;
+    color: #d9d9d9;
+    font-size: 0.8vw;
+    position: sticky;
+    top: 0;
+    text-align: left;
+    padding: 0.2vw 0.5vw;
+    font-size: 1vw;
+}
+
+#ncu-convection-section .count-line {
     height: 20.5vh;
 }
-#ncu-convection-section .title-1{
-height: 1.6vw;
+
+#ncu-convection-section .title-1 {
+    height: 1.6vw;
 }
 
-#ncu-convection-section .title-1 .box1-blue{
-    background-color:#0896CC;
-   margin: 0 0.5vw;
-   width: 1vw;
-   height: 1vw;
-   display: inline-block
+#ncu-convection-section .title-1 .box1-blue {
+    background-color: #0896CC;
+    margin: 0 0.5vw;
+    width: 1vw;
+    height: 1vw;
+    display: inline-block
 }
+
 #ncu-convection-section #NCUA, #dropvalue {
     font-size: 0.9vw;
     background-color: #26293c;
@@ -87,14 +95,22 @@ height: 1.6vw;
     color: #d9d9d9;
 }
 
-   .ncu-heading {
+#ncu-convection-section .ncu-heading {
     font-size: 1.5vw;
     font-weight: 600;
     color: #d9d9d9;
     font-family: Yu Gothic UI Semibold;
     padding: 0px 1vw;
-    
+
 }
-#ncu-convection-section .main-dec{
+#ncu-convection-section .ncu-headline {
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #d9d9d9;
+    font-family: Yu Gothic UI Semibold;
+
+}
+
+#ncu-convection-section .main-dec {
     font-size: 1.2vw;
 }
