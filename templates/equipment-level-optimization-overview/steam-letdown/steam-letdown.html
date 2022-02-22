@@ -1,0 +1,64 @@
+<link rel="stylesheet"
+    href="./../../../templates/equipment-level-optimization-overview/steam-letdown/steam-letdown.css" />
+<script src="./../../../templates/equipment-level-optimization-overview/steam-letdown/steam-letdown.js"></script>
+<div class="steam-letdown-tab">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th>KPI (Ton/hr)</th>
+                        <th>Actual</th>
+                        <th>Optimized</th>
+                        <th >Deviation</th>
+                    </tr>
+                    <tbody id="letdowntable"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-7 col-tb">
+            <div class="title">
+                <span id="letdownid">SHP to HP # 1 (Ton/hr) Trend </span>
+            </div>
+            <div class="row">
+                <div class="title">
+                <div class="col-md-4">
+                    
+                        <div class="line first-spa"> </div>
+                        <span class="col-rt">Actual</span>
+    
+                        <div class="line secd-spa"> </div>
+                        <span class="col-rt">Optimized</span>
+                   
+                </div>
+              
+                <div class="col-md-8">
+                    <div class="row pull-right" style="display: inline-flex;">
+                        <span class="trend">
+                            <select name="SteamLetdownselect" id="SteamLetdownselect">
+                                <option value="VHP to MP_PR PRDS"> VHP to MP_PR PRDS </option>
+                                <option value="VHP TO HP_PREP"> VHP TO HP_PREP </option>
+                                <option value="VHP-AUX_STM PRDS"> VHP-AUX_STM PRDS</option>
+                                <option value="HP to MP_PREP"> HP to MP_PREP</option>
+                                <option value="MP to LP PRDS"> MP to LP PRDS</option>
+                                <option value="MP_PR to LP_PR PRDS"> MP_PR to LP_PR PRDS</option>
+                            
+                            </select>
+                        </span>
+                        <span class="from">
+                            <input type="datetime-local" id="fromsteamletdown" name="fromsteamletdown">
+                        </span>
+                        <span class="to">
+                            <input type="datetime-local" id="tosteamletdown" name="tosteamletdown"></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="count-line">
+                    <div id="SQSteamletdown-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,216 @@
+#electricity-tab .card .title .main-title {
+    font-size: 1vw;
+    text-align: center;
+    color: #d9d9d9;
+}
+
+#electricity-tab .card .title .sub-title {
+   
+    margin: 0;
+}
+
+#electricity-tab .card .body.chart-body {
+    height: 35vw;
+}
+
+#electricity-tab .card .title{
+    font-size: 1vw;
+}
+
+#electricity-tab .card .body .count {
+    text-align: center;
+    font-size: 1.67vw;
+    font-family: Bahnschrift Light;
+    color: #f2f2f2;
+    padding: 0.5vw;
+    font-weight: 600;
+}
+
+#electricity-tab .card .footer .ref {
+    color: #d9d9d9;
+    font-size: 0.9vw;
+    display: inline-block;
+    padding: 0vw 0vw;
+}
+#electricity-tab #ref_ele1, #ref_ele2, #ref_ele3 {
+    color: #f2f2f2;
+    font-size: 1vw;
+}
+
+#electricity-tab .card .footer .result {
+    color: #f2f2f2;
+    font-size: 1vw;
+    padding: 0vw 0.9vw;
+    border-radius: 5px;
+    display: inline-block;
+}
+#electricity-tab .card .footer .result.red {
+    background-color: #ff0000;
+   
+}
+#electricity-tab .card .footer .result.green {
+    background-color: #00b050;
+   
+}
+#electricity-tab .card .body1 .count {
+    text-align: center;
+    font-size: 1.7vw;
+    color: #f2f2f2;
+    /* padding-top: 1vw;
+    padding-bottom: 1vw; */
+}  
+
+#electricity-tab .card .title:not(.chart-title) {
+    text-align: center;
+}
+
+#electricity-tab #unit{
+    font-size: 0.8vw;
+    color: #d9d9d9;
+}
+#electricity-tab .col-yr{
+    font-size: 1.5vw;
+    color: #d9d9d9;
+}
+#electricity-tab .stack-hei{
+    height: 15.2vw;
+}
+
+#electricity-tab .color-eff{   
+font-size: 0.9vw;
+color: #d9d9d9;
+padding-left: 6px;
+}
+
+#electricity-tab .MW-Gray{
+color:  #87818b;
+padding-left: 0.2vw;
+}
+#electricity-tab .canvasjs-chart-credit{
+display: none;
+}
+#electricity-tab .box-eff{
+width: 1vw;
+height: 1vw;
+display: inline-block;
+/* margin-left: 10px; */
+}
+#electricity-tab .box-gray{
+background-color: #4d5463;
+}
+#electricity-tab .box-green{
+background-color: #00ab7e;
+}
+#electricity-tab .box-blue{
+background-color: #00405c;
+}
+#electricity-tab .box-yellow{
+background-color: #ffc100;
+}
+#electricity-tab .box-red{
+    background-color: #72ad5f;
+}
+#electricity-tab .box-white{
+    background-color: #732278;
+}
+#electricity-tab .box-pur{
+    background-color: #9f2c76;
+}
+#electricity-tab .box-pur-1{
+    background-color: #331729;
+}
+#electricity-tab .box-pur-2{
+    background-color: #3a5e18;
+}
+#electricity-tab .text-line{
+  height: 1.7vw;
+}
+#electricity-tab .card .title .fuel-title {
+    text-align: center;
+    font-size: 0.9vw;
+}
+
+#electricity-tab input{
+    margin-left: 0px;
+    padding: 0.2vw;
+    font-size: 0.8vw;
+    max-width: 10vw;
+}
+#electricity-tab #chartTypedata, #chartType1data {
+    font-size: 0.8vw;
+    background-color: #26293c;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.2vw;
+    cursor: pointer;
+    color: #d9d9d9;
+    max-width: 15vw;
+}
+#electricity-tab .second-box-title {
+    font-size: 1.1vw;
+}
+#electricity-tab .in-title {
+    font-weight: 200;
+    font-size: 0.6vw;
+}
+#electricity-tab .line {
+    padding: 0.5vw 0.1vw;
+}
+#electricity-tab .axis {
+    font-size: 1vw;
+    color: #d9d9d9;
+}
+#electricity-tab .dropto{
+    font-size: 1vw;
+    padding: 1px;
+    width: 5vw;
+    display: inline-flex;
+    font-size: 0.9vw;
+}
+.card-col .card {
+    padding: 5px;
+}
+#electricity-tab .vertical {
+    border-left: 2px solid #d9d9d9;
+    height: 173px;
+    position: absolute;
+    left: 60%;
+}
+#electricity-tab .line1 {
+    padding: 0.5vw 0.2vw;
+}
+
+/* scroll */
+        
+#electricity-tab .genratorsHeight {
+    height: 12vw;
+        }
+                
+#electricity-tab .tableheight {
+    height: 12.24vw;
+        }
+#electricity-tab        .scroll {
+            width: 40%;
+            overflow: auto;
+        }
+#electricity-tab       .overflow {
+            overflow: auto;
+        }
+#electricity-tab       ::-webkit-scrollbar {
+            width: 0.3vw;
+            height: 0.3vw;
+        }
+        
+#electricity-tab      ::-webkit-scrollbar-track {
+            border: 1px solid #262A3C;
+            border-radius: 15px;
+        }
+        
+#electricity-tab      ::-webkit-scrollbar-thumb {
+            background: #8d8a95;
+            border-radius: 15px;
+        }
+        
+        #electricity-tab ::-webkit-scrollbar-thumb:hover {
+            background:#8d8a95;
+        }

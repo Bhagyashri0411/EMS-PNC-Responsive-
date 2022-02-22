@@ -1,0 +1,117 @@
+<script src="./../../../templates/ncu-unit-overview/ncu-convection-section/ncu-convection-section.js"></script>
+<link rel="stylesheet" href="./../../../templates/ncu-unit-overview/ncu-convection-section/ncu-convection-section.css">
+<div class="row">
+    <div class="title">
+        <span class="ncu-heading"> Convection Section</span>
+        <select name="NCUA" id="NCUA">
+            <option value="H-200"> H-200</option>
+            <option value="H-300">H-300</option>
+            <option value="H-400"> H-400</option>
+            <option value="H-500">H-500</option>
+            <option value="H-600">H-600</option>
+            <option value="H-700"> H-700</option>
+        </select>
+    </div>
+
+</div>
+
+<div class="col-md-12 mt-14">
+    <div class="col-md-8 pl-0" style="border-right: 0.25vw solid #585a64;">
+        <div class="line">
+            <div class="body">
+                <table id="Equipment_table">
+                    <tr>
+                        <th>KPI</th>
+                        <th>UFP</th>
+                        <th>BFP</th>
+                        <th>LFP</th>
+                        <th>DSSH</th>
+                        <th>UMP</th>
+                        <th>USSH</th>
+                        <th>LSSH</th>
+                        <th>LMP</th>
+                    </tr>
+                    <tr>
+                        <td> Avg. Temperature IN </td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                    </tr>
+                    <tr>
+                        <td>Avg. Temperature OUT</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                    </tr>
+                    <tr>
+                        <td>% Heat Recovery compared<br> to design</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                        <td>XX</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="line mt-14">
+            <div class="title-1">
+                <!-- <div class="col-md-6"> -->
+                <div class="line pull-left">
+                    <select name="dropvalue" id="dropvalue">
+                        <option value="UFP"> UFP</option>
+                        <option value="BFP">BFP</option>
+                        <option value="LFP">LFP</option>
+                        <option value="DSSH">DSSH</option>
+                        <option value="UMP">UMP</option>
+                        <option value="USSH">USSH</option>
+                        <option value="LSSH">LSSH</option>
+                        <option value="LMP">LMP</option>
+                    </select>
+                    <span class="actbox"> </span>
+                    <span class="leg"> T IN </span>
+
+                    <span class="refbox"> </span>
+                    <span class="leg"> T OUT </span>
+
+                    <div class="box-eff box1-blue"></div>
+                    <span class="leg"> % Heat Recovery(Actual/Design)
+                    </span>
+                </div>
+                <!-- </div>
+                <div class="col-md-6"> -->
+                <div class="line pull-right">
+                    
+                    <input type="datetime-local" id="nccuconvfromFccu" name="nccuconvfromFccu">
+                    
+                    <input type="datetime-local" id="nccuconvoveralldate" name="nccuconvoveralldate">
+                </div>
+
+
+                <!-- </div> -->
+            </div>
+            <div class="body mt-10">
+                <div class="count-line">
+                    <div id="NCU-chart-container" style="height: 20vh;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-tb">
+    </div>
+</div>

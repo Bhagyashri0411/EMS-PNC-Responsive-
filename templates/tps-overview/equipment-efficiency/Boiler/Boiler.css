@@ -1,0 +1,163 @@
+.boiler-equipment-efficiency .vl{
+    border-left: 1px solid #d9d9d9;
+    height: 40px;
+    display: inline;
+    margin-left: 8px;
+}
+
+ .boiler-equipment-efficiency .box-eff{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.boiler-equipment-efficiency .color-eff{   
+    font-size: 1vw;
+    color: #d9d9d9;
+    padding-left: 6px;
+}
+.boiler-equipment-efficiency #r1, #toboiler, #fromboiler{  
+    font-size: 0.7vw;
+    background-color: #26293c;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 9.6vw;
+    cursor: pointer;
+    color: #d9d9d9;
+}
+
+.boiler-equipment-efficiency .fuel-PT{
+    padding-left: 10px;
+    border-right: 1px solid whitesmoke;
+}
+.boiler-equipment-efficiency .eff-act{
+    vertical-align: middle;
+    display: table-cell;
+}
+.boiler-equipment-efficiency .canvasjs-chart-credit{
+    display: none;
+   
+  }
+  .boiler-equipment-efficiency table{
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    color: #f2f2f2;
+    width: 100%;
+}
+
+.boiler-equipment-efficiency td
+ {
+    border-bottom: 1px solid #b2b2b9;
+    text-align: center;
+    padding: 10px;
+    font-size: 1vw;
+}
+.boiler-equipment-efficiency th {
+    text-align: center;
+    padding: 3px;
+    background-color: #442266;
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: #d9d9d9;
+    border-right-color: #552d7c;
+    border-right-style: solid;
+    border-right-width: 1px;
+    overflow: auto;
+    position: sticky;
+    top: 0;
+}
+.boiler-equipment-efficiency  table tr:last-child td{
+    border-bottom: 0;
+}
+
+.boiler-equipment-efficiency .box-yellow{
+    background-color: #ffc000;
+}
+
+.boiler-equipment-efficiency .box-blue{
+    background-color: #0895cc;
+}
+
+.boiler-equipment-efficiency .box-gray{
+    background-color:#a5a5a5;
+}
+
+.boiler-equipment-efficiency .box-pink{
+    background-color:#d944b4;
+}
+
+
+.boiler-equipment-efficiency h4{
+    color: #d9d9d9;
+    font-size: 1.5vw;
+    position: relative;
+    left: 10px;
+}
+.boiler-equipment-efficiency .boiler-eff-equ{
+    background-color: #26293c;
+     height: 310px;
+}
+
+.boiler-equipment-efficiency .boiler-tab{
+    height:46rem;
+}
+.boiler-equipment-efficiency .fuel-card{
+    background-color: #26293c;
+     height: 310px;
+}
+
+.boiler-equipment-efficiency .boiler-table-eff{
+    background-color: #26293c;
+}
+
+.boiler-equipment-efficiency #chartContainer3{
+    position: relative;
+    top: 10px;
+}
+
+.boiler-equipment-efficiency #chart2{
+    position: relative;
+    top: 10px;
+}
+
+/* scrollbar css */
+
+.boiler-equipment-efficiency .card .overflow {
+    overflow: auto;
+}
+
+.boiler-equipment-efficiency .card .genratorsHeight {
+    height: 16.5vw;
+    padding-right: 0.5vw;
+}
+
+.boiler-equipment-efficiency .card .customerHeight {
+    height: 22rem;
+}
+
+.boiler-equipment-efficiency .card  .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+.boiler-equipment-efficiency .card  ::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+.boiler-equipment-efficiency .card  ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.boiler-equipment-efficiency .card  ::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 15px;
+}
+
+.boiler-equipment-efficiency .card  ::-webkit-scrollbar-thumb:hover {
+    background: #d9d9d9;
+}

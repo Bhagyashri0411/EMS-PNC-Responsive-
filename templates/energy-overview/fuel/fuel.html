@@ -1,0 +1,136 @@
+<link rel="stylesheet" href="./../../../templates/energy-overview/fuel/fuel.css" />
+<script src="./../../../templates/energy-overview/fuel/fuel.js"></script>
+<div class="col-md-12" id="fuel-tab">
+    <div class="col-md-12 card-col">
+        <div class="col-md-10 card-col">
+            <div class="card">
+                <div class="chart-title title">
+                    <div class="row" style="display: inline-flex;">
+                        <div class="col-md-12 col-first">
+                            <span class="left-box">
+                                <span class="firstbox"> </span>
+                                <span class="col-rr">Specific Fuel Consumption</span>
+                            </span>
+                            <span class="title-radios">
+                                <input type="radio" class="fuel-line" value="MT/MT" name="srs" id="MT"> <label
+                                    for="mt-mt">MT/MT of Product </label>
+                                <input type="radio" class="fuel-line" value="TOE/MT" name="srs" id="TOE" checked> <label
+                                    for="gcal-mt">TOE/MT of Product</label>
+                            </span>
+                            <span class="secondbox"></span>
+                            <span class="second-box-title col-rr">Throughput <span class="in-title">(MT/Day)</span></span>
+                            <span class="from">
+                                <span class="input-title">From</span>
+                                <input type="datetime-local" id="PNCfuelfrom" name="from">
+                            </span>
+                            <input type="datetime-local" id="PNCfuelto" name="PNCfuelto"  style="display: inline-block;">
+                           
+                            <!-- <select name="to" id="PNCfuelto" class="dropto" style="display: inline-block;">
+                                <option value="1"> 1 Day</option>
+                                <option value="7"> 7 Days</option>
+                                <option value="15"> 15 Days</option>
+                                <option value="30"> 30 Days</option>
+                            </select> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="line text-left">
+                    <span class="axis"> Primary Axis Trends :</span>&nbsp;&nbsp;
+                    <select id="chartType" name="Chart Type">
+                        <option value="column">Bar</option>
+                        <option value="spline">Line</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="axis"> Secondary Axis Trends :</span>&nbsp;&nbsp;
+                    <select id="chartType1" name="Chart Type1">
+                        <option value="spline">Line</option>
+                        <option value="column">Bar</option>
+                    </select>
+                </div>
+                <div class="body">
+                    <div class="count-line">
+                        <div class="col-md-12">
+                            <div id="fuel-chart-container" style="height: 33vw;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 pl-7 pr-0">
+
+            <div class="card clearfix">
+                <div class="title">
+                    <div class="main-title" id="srw1">SEC Fuel</div>
+                    <div class="sub-title" id="srw2"> (MT/MT of Product)</div>
+                </div>
+                <div class="body">
+                    <div class="count" id="count_fuel1"> </div>
+                </div>
+                <div class="footer">
+                    <span class="ref pull-left">REF&nbsp; :
+                        <span id="ref_fuel1"> </span>
+                    </span>
+                    <span class="result pull-right" id="result_fuel1"> </span>
+                </div>
+            </div>
+
+
+            <div class="card clearfix mt-14">
+                <div class="title">
+                    <div class="main-title" id="svw1">SEC Fuel</div>
+                    <div class="sub-title" id="svw2"> (TOE/MT of Product)</div>
+                </div>
+                <div class="body">
+                    <div class="count" id="count_fuel2"> </div>
+                </div>
+                <div class="footer">
+                    <span class="ref pull-left">REF&nbsp; :
+                        <span id="ref_fuel2"></span>
+                    </span>
+                    <span class="result pull-right" id="result_fuel2"> </span>
+                </div>
+            </div>
+
+
+            <div class="card mt-14 clearfix">
+
+                <div class="title">
+                    <div class="main-title" style="font-size: 1.2vw;">Total Fuel Consumed</div>
+
+                    <div class="fuel-title" style="display: inline-flex;">
+                        <input type="radio" class="fuel-doughnut" value="Ton/hr" id="Ton" name="dtdt" checked> 
+                        <label for="html" class="lebel-style">Ton/hr</label>
+                        <input type="radio" class="fuel-doughnut" value="Gcal/hr" id="Gcal" name="dtdt"> 
+                        <label for="html" class="lebel-style">TOE/hr</label>
+                        <input type="radio" class="fuel-doughnut" value="INR/hr" id="INR" name="dtdt">  <label
+                         for="html" class="lebel-style" >INR/hr</label>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="count-line1">
+                        <div id="doughnutChart" style="height: 10vw;"></div>
+                    </div>
+                </div>
+                <div class="chart-legends gap1">
+                    <div class="row" style="display: inline-flex;margin-left: 4.5vw;">
+                        <div class="legend">
+                            <span class="legend-circle legend-solid"></span><span
+                                class="legend-text">Liquid</span>
+                        </div>
+                        <div class="legend">
+                            <span class="legend-circle legend-liquid"></span><span
+                                class="legend-text">Gas</span>
+                        </div>
+                        <!-- <div class="legend">
+                            <span class="legend-circle legend-gas"></span><span
+                                class="legend-text">Electricity</span>
+                        </div> -->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

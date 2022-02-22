@@ -1,0 +1,149 @@
+<script src="./../../../templates/tgtu-unit-overview/tgtu-equipment-overview/tgtu-equipment-overview.js"></script>
+<link rel="stylesheet" href="./../../../templates/tgtu-unit-overview/tgtu-equipment-overview/tgtu-equipment-overview.css">
+<span class="main-head">Equipment Overview</span>
+<div class="col-md-12 pr-7 pl-7">
+    <div class="col-md-8">
+        <div class="row mt-14">
+            <div class="title">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 col-ty">
+                            <span class="col-st">Overall Equipment Efficiencies (%)</span>
+                        </div>
+                        <div class="col-md-8 pr-0 pl-0">
+                        
+                            <div class="col-md-2 col-sb">
+                                <div class="box-eff box1-blue"></div> <span class="color-eff"> Actual</span>
+                            </div>
+                            <div class="col-md-5 col-ref">
+                                <div class="box-eff box1-yellow"></div> <span class="color-eff">Optimised</span>
+
+                            </div>
+                            <div class="col-md-5"></div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+           
+        </div>
+        <div class="row">
+            
+            <div class="body">
+                <div class="count-line">
+                    <div id="TGTU-column"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="title">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-5 col-ty">
+                            <span class="col-st">Efficiency Trends (%)</span>
+                        </div>
+                        <div class="col-md-7 pr-0 pl-0">
+                            <!-- <div class="row unit-sec"> -->
+                            <div class="col-md-2 col-sb">
+                                <span class="actbox"> </span>
+                                <span class="leg"> Boiler 1</span>
+                            </div>
+                            <div class="col-md-5 col-ref">
+                                <span class="refbox"></span>
+                                <span class="leg">Boiler 2</span>
+                            </div>
+                            <div class="col-md-5"></div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input type="datetime-local" id="totgtueqO" name="totgtueqO">
+                    <input type="datetime-local" id="fromtgtueqO" name="fromtgtueqO">
+                   
+                </div>
+            </div>
+            <div class="body">
+                <div class="count-line">
+                    <div id="TGTU-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-tb">
+        <br>
+        <div class="title ">
+            <span class="pull-left">Equipment KPI Overview</span>
+            <div class="pull-right">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Boiler
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="body">
+            <table id="Equipment_table">
+                <tr>
+                    <th>KPI</th>
+                    <th>UOM</th>
+                    <th class="hydro-tab">Boiler 1</th>
+                    <th class="hydro-tab">Boiler 2</th>
+
+                </tr>
+                <!-- <tr>
+                    <td>Loading %</td>
+                    <td>%</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr>
+                <tr>
+                    <td>Fuel consumed </td>
+                    <td>MT/hr</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr>
+                <tr>
+                    <td>Duty Fired </td>
+                    <td>GCal/hr</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr>
+                <tr>
+                    <td>Steam generation </td>
+                    <td>MT/hr</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr>
+                <tr>
+                    <td>Steam to Fuel Ratio</td>
+                    <td>MT/SRFT</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr>
+                <tr>
+                    <td>Stack O2 </td>
+                    <td>%</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr>
+                <tr>
+                    <td>Stack Temp </td>
+                    <td>°C</td>
+                    <td class="hydro-tab">XX</td>
+                    <td class="hydro-tab">XX</td>
+                </tr> -->
+
+            </table>
+
+        </div>
+    </div>
+</div>

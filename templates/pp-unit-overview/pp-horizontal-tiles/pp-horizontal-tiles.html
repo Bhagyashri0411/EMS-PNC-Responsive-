@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="./../../templates/pp-unit-overview/pp-horizontal-tiles/pp-horizontal-tiles.css" />
+<script src="./../../templates/pp-unit-overview/pp-horizontal-tiles/pp-horizontal-tiles.js"></script>
+<div class="col-md-12 tiles-row">
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-3 card-col-5">
+                <div class="card">
+                    <div class="row" style="display: inline-flex;">
+                        <div class="title" style="padding: 0 1.1vw;"> Specific Energy Consumption
+                            </div>
+                    </div>
+                    <div class="body col">
+                        <div id="pp-zingChart" style="height: 7vw;"></div>
+                    </div>
+                    <div class="footer-deviation">
+                        <div class="deviation text-center">
+                            <span class="label">Deviation : </span><span class="count" id="devpp"> </span>
+                        </div>
+                        <div class="actual text-center">
+                            <div style="display: inline-flex;">
+                                <span class="label">Actual | Reference : </span> <span class="count"> <span
+                                        id="actpp"> &nbsp;  </span> |  <span id="optpp"> </span></span>
+                            </div>
+                            
+                            <span class="label">(TOE/MT of Product))</span>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="col-md-3 card-col-5">
+                <div class="card clearfix">
+                    <div class="title" style="padding: 0;"> Energy Consumed Break Up </div>
+                    <div class="main-title">
+                        <div class="pp-title" style="display: inline-flex;">
+                            <input type="radio" class="pp-doughnut" name="ratio-name" value="TOE/Ton" id="Ton-pp" checked>
+                             
+                            <label for="html" class="lebel-style"> TOE/MT</label>
+                            <input type="radio" class="pp-doughnut" name="ratio-name" value="TOE/hr" id="hr-pp">  
+                            <label for="html" class="lebel-style"> TOE/hr</label>
+                            <input type="radio" class="pp-doughnut" name="ratio-name" value="INR/hr" id="INR-pp">  
+                            <label for="html" class="lebel-style"> INR/hr</label>
+                        </div>
+                    </div>
+                    <div class="body clearfix">
+                        <div class="donut">
+                            <div id="titles-pp" style="height: 8vw;"></div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chart-legends gap">
+                        <div class="line" style="display: inline-flex;">
+                            <div class="legend">
+                                <span class="legend-circle legend-solid"></span><span class="legend-text"> Steam</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-liquid"></span><span class="legend-text"> Electricity</span>
+                            </div>
+                            <!-- <div class="legend">
+                                <span class="legend-circle legend-gas"></span><span
+                                    class="legend-text"></span>
+                            </div> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3 card-col-5">
+                <div class="card clearfix" style="padding: 0.5vw;">
+                    <div class="title" style="padding: 0;"> SEC Steam (SHP equivalent)
+                        MT/MT of Product</div>
+
+                    <div class="body">
+                        <div id="count-pp1" class="count"> </div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref-pp1"> </span> </span><span id="result-pp1"
+                            class="result pull-right"> 
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col-5">
+                <div class="card clearfix" style="padding: 0.5vw;">
+                    <div class="title" style="padding: 0;"> SEC Electricity <br>
+                        kWh/MT of product </div>
+                    <!-- <div class="title"> Ton/hr</div> -->
+
+                    <div class="body">
+                        <div id="count-pp2" class="count"> </div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref-pp5">23.1 </span> </span><span id="result-pp5"
+                            class="result pull-right"> +12.35
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-6 card-col-5">
+                <div class="card clearfix" style="padding: 0.5vw; padding-top: 0.9vw;">
+                    <div class="title" style="padding: 0;"> Total Electricity
+                        Consumption </div>
+                    <div class="title"> MWh</div>
+
+                    <div class="body" style="padding: 0.7vw;">
+                        <div id="count-pp3" class="count"> </div>
+                    </div>
+
+                </div>
+               
+            </div>
+            <div class="col-md-6 card-col-5">
+                    <div class="card clearfix" style="padding: 0.5vw;">
+                        <div class="title" style="padding: 0;"> Total Steam Consumption <br>
+                            (SHP Equivalent)
+                           
+                             </div>
+                        <div class="title"> Ton/hr</div>
+    
+                        <div class="body" style="padding: 0.2vw;">
+                            <div id="count-pp4" class="count"> 564.2</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

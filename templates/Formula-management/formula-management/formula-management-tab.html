@@ -1,0 +1,300 @@
+<link rel="stylesheet" href="templates/Formula-management/formula-management/formula-management-tab.css" />
+<script src="templates/Formula-management/formula-management/formula-management-tab.js"></script>
+<div class="col-md-12 Formulamanagement-tabb">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 summary-heading">
+                <span class="heading-item pull-left" style="padding-right: 10px;"><input type="button"
+                        class="btn btn-primary" name="" id="exportid" onclick="exportFunction()" value="Download"></span>
+
+                <form action="" method="post" id="form_ipformula" onsubmit="" enctype=multipart/form-data novalidate>
+                    <span class="heading-item pull-left" style="padding-right: 10px;">
+                        <input type="file" class="btn btn-primary" name="file" id="chooseFileformula" value="Import">
+                    </span>
+                    <span class="heading-item pull-left" style="padding-right: 10px;">
+                        <input type="submit" value="Upload File" class="btn btn-primary" id="upload-buttonformula">
+                    </span>
+                    <span class="heading-item pull-right" style="padding-right: 10px;">
+                        <input type="button" value="Protocols for Formula Management" class="btn btn-primary"
+                            onclick="protocolRule()">
+                    </span>
+                    <span class="heading-item pull-right" style="padding-right: 10px;">
+                        <input type="button" value="Sample CSV" class="btn btn-primary" onclick="sampledownload()">
+                    </span>
+                    <span class="heading-item pull-right" style="padding-right: 10px; width: 95px;">
+                    </span>
+                </form>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 card-col">
+
+                <div class="card">
+                    <div class="header">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <input type="text" class="searchInput" id="SearchInput" placeholder="Search for Tag"
+                                    title="Type in a name">
+                                <input type="button" class="btn btn-primary" id="searchSysConfing" value="Search">
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2"><input type="button" class="btn btn-primary" value="Add Formula"
+                                    style="float: right;" onclick="addNewEntry()"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card mt-4">
+                        <div class="overflow tableheight">
+                            <table id="datatablesCalculatedTag" class="DataTable ">
+                                <thead style="top: 0; position: sticky;">
+                                    <tr>
+                                        <th>Alias</th>
+                                        <th>Formula</th>
+                                        <th>Description</th>
+                                        <th>DAS_WriteBack</th>
+                                        <th>ResultTag</th>
+                                        <th>Result</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                        <th>Email_Notification</th>
+                                        <th>Decimal_Point</th>
+                                        <th>Edit</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="bodytablesCalculatedTag" class="DataTable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="footer">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal" id="updateRow">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3>Update Values</h3>
+                </div>
+                <div class="col-md-2"><button style="margin-top: 20px; margin-bottom: 10px;"
+                        class="close">&times;</button></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Alias:</label></div>
+                <div class="col-md-10"> <input type="text" id="alias" class="form-control" readonly></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Formula :</label></div>
+                <div class="col-md-10"> <textarea id="formulaTag" class="form-control"></textarea></div>
+            </div>
+            <label id="ERRORFormula1" style="color: red;"></label>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Description:</label></div>
+                <div class="col-md-10"> <input type="text" id="descriptionTag" class="form-control"></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">das_WriteBack</label></div>
+                <div class="col-md-10"> <input type="text" id="storeResulttag" class="form-control"></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">ResultTag:</label></div>
+                <div class="col-md-10"> <input type="text" id="resultTag1" class="form-control" readonly></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Result:</label></div>
+                <div class="col-md-10"> <input type="text" id="result_tag" class="form-control"></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Min:</label></div>
+                <div class="col-md-10"> <input type="text" id="min_tag" class="form-control"></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Max:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="max_tag" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Email_Notification:</label></div>
+                <div class="col-md-10"> <input type="text" id="email_tag" class="form-control"></div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Decimal_Point:</label></div>
+                <div class="col-md-10"> <input type="text" id="decimal_tag" class="form-control"></div>
+            </div>
+            <div class="row">
+                <input type="button" class="btn" value="Save" id="updateRowBtn"
+                    style="background-color: blueviolet; width: 109px; margin-top: 20px; position: relative; left: 50%; color: white; font-size: 20px;">
+            </div>
+            <div class="row"><label id="ERRORConfig1" style="color: red;"></label></div>
+
+        </div>
+    </div>
+    <div class="modal" id="addRowData">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 style="position: relative; left: 50%;">Add Formula Details</h3>
+                </div>
+                <div class="col-md-2"><button class="close1">&times;</button></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Alias :</label></div>
+
+                <div class="col-md-10"> <input type="text" id="aliasAdd" class="form-control"></div>
+            </div>
+
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Formula:</label></div>
+
+                <div class="col-md-10"> <textarea id="formulaTagAdd" class="form-control" rows="4"></textarea></div>
+            </div>
+            <label id="ERRORformula" style="color: red;"></label>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Description:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="descriptionTagAdd" class="form-control"></div>
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">das_WriteBack</label></div>
+
+                <div class="col-md-10"> <input type="text" id="storeResulttagAdd" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">ResultTag:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="resultTagAdd" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Min:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="min_tagAdd" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Max:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="max_tagAdd" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Email_Notification:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="email_tagAdd" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <div class="col-md-2" style="font-size: 21px;"> <label for="">Decimal_Point:</label></div>
+
+                <div class="col-md-10"> <input type="text" id="decimal_tagAdd" class="form-control"></div>
+
+
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                <input type="button" class="btn " value="Add New" id="addNewData" onclick="addNewData()"
+                    style="background-color: blueviolet; width: 109px; margin-top: 20px; color: white; position: relative; left: 50%; font-size: 20px;">
+            </div>
+            <div class="row"><label id="ERRORconfig" style="color: red;"></label></div>
+        </div>
+    </div>
+
+    <div class="modal" id="protocol-main">
+
+
+        <div class="modal-content overflow tableheight">
+            <span class="close2">&times;</span>
+            <h2 style="text-align: center;">Protocols</h2>
+
+            <span style=" border-bottom:1px solid #2e2121;font-size:1vw; font-weight: 700;">Rules to Enter Formula’s
+                :</span>
+            <div class="row" style="text-align: justify; margin-left: 1.2vw;color: black;">
+                <p style="padding-top: 12px;">
+                    1. <b>Tag Name</b> should be enclosed in opening and closing curly brackets as
+                    below. <br>
+                    <b class="ml-16"> E.g.</b> {PNA.TEST.HP}
+                </p>
+
+                <p>
+                    2. <b>Alias name</b> should be start with dollar sign ($) and “EMS_” constant and it should be
+                    unique. <br>
+                    <b class="ml-16"> E.g.</b> $EMS_010234
+                </p>
+
+                <p>
+                    3. <b>IF-ELSE condition: (new approach) </b> <br>
+                    <b class="ml-16"> Syntax: [value <|> value, value(true), value(false)]</b> <br>
+                    <b class="ml-16"> E.g.</b> 1. [{PNA.TEST.HP} > {PNA.TEST.LP} , $EMS_010234 , 0] <br>
+                    <span style="margin-left: 41px;"> 2. [({PNA.TEST.HP} * {PNA.TEST.HP} ) / 10 > ({PNA.TEST.LP} *100 )
+                        , $EMS_010234/10 , 200]
+                    </span>
+                </p>
+                <p>4. <b> Absolute tag</b> must be enclosed within ‘|’ sign. <b>(new approach)</b> <br>
+                    <b class="ml-16">Syntax :</b> |value| <br>
+                    <b class="ml-16"> E.g.</b> |{PNA.TEST.HP} * {PNA.TEST.HP} | or | $EMS_010234 * {PNA.TEST.HP} *
+                    {PNA.TEST.HP} |
+                </p>
+
+                <p> <b class="ml-16">Note:</b> Please <b> DO NOT</b> use it for whole <b>IF condition </b> like below
+                    <br>
+                    <b class="ml-16">E.g.</b> | [{PNA.TEST.HP} * {PNA.TEST.HP} > 500,2,0 ] |
+                </p>
+
+                <p class="ml-16">You can use it like <br>
+                    <b>E.g.</b> [{PNA.TEST.HP} * {PNA.TEST.HP} > 500,|2|,|0 |]
+                </p>
+
+                <p>5. <b> Natural Logarithm (LN) function</b> should be enclosed as below. <b>(new approach)</b> <br>
+                    <b class="ml-16">Syntax : </b> log[value] <br>
+                    <b class="ml-16">E.g.</b>[ {PNA.TEST.HP} * {PNA.TEST.HP} ] or log[ $EMS_010234 * {PNA.TEST.HP} *
+                    {PNA.TEST.HP} ]
+                </p>
+
+                <p class="ml-16"><b>Note:</b> Please <b>DO NOT</b> use it for whole <b>IF condition</b> </p>
+
+                <p>
+                    6. <b>Logarithm base 10 (Log10) function</b> should be enclosed as below. <b>(new approach)</b> <br>
+                    <b class="ml-16"> Syntax :</b> log10[value] <br>
+                    <b class="ml-16"> E.g.</b> log10[{PNA.TEST.HP} * {PNA.TEST.HP} ] or log10[ $EMS_010234 *
+                    {PNA.TEST.HP} * <br>
+                    <span class="ml-16"> {PNA.TEST.HP} ]</span>
+                </p>
+
+                <p class="ml-16"><b>Note:</b> Please <b>DO NOT</b> use it for whole <b>IF condition</b> </p>
+
+                <p>
+                    7.Below literals are allowed during formulation.<br>
+                    <span class="ml-16">“+ - * / ( )”</span>
+                </p>
+            </div>
+            <!-- <br>
+            <div class="row" style="text-align: justify;">
+                <B>2] Formula:</B>
+                <p>a)Actual formula definition. It can be a single numerical value, a single tag name, or an
+                    equation composed of several tags or aliases.</p>
+                <p>b)Enclose the tag name with the symbol ` (grave accent, or
+                    left single quotation mark.</p>
+                <p> b)Enclose the tag name with the curly braces { }</p>e.g:-{tag_name}
+
+            </div> -->
+        </div>
+    </div>
+</div>

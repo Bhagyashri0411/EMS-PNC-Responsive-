@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="./../../../templates/pp-unit-overview/overall-sec-overview/overall-sec-overview.css" />
+<script src="./../../../templates/pp-unit-overview/overall-sec-overview/overall-sec-overview.js"></script>
+<div class="pp-headline"> Overall Specific Energy Consumption Trend</div>
+<div class="col-md-12 pp-Overview-tab">
+    <div class="row">
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <div class="col-md-6">
+                <div class="row" style="padding: 5px 0;">
+                    <span class="actbox osv"> </span>
+                    <span class="leg1"> Actual</span>
+
+                    <span class="refbox1"></span>
+
+                    <span class="leg">Reference</span>
+                    <span class="feedbox"></span>
+
+                    <span class="leg1">Plant Load%</span>
+                </div>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="row">
+                    <input type="datetime-local" id="ppfromFccu" name="ppfromFccu">
+                    
+                    <input type="datetime-local" id="ppoveralldate" name="ppoveralldate">
+                    <!-- <select name="ppoveralldate" id="ppoveralldate">
+                        <option value="1"> 1 Day</option>
+                        <option value="7"> 7 Days</option>
+                        <option value="15"> 15 Days</option>
+                        <option value="30"> 30 Days</option>
+                    </select> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="body clearfix chart-body">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="count-line">
+                    <div id="ppOverallsecgraph" style="height: 41vh;"></div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+</div>

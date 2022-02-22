@@ -1,0 +1,67 @@
+<link rel="stylesheet"
+    href="./../../../templates/swing-unit-overview/steam-balance-overview/steam-balance-overview.css" />
+<script src="./../../../templates/swing-unit-overview/steam-balance-overview/steam-balance-overview.js"></script>
+<div class="swing-headline">Steam Balance Overview</div>
+<div class="steam-balance-overview-swing">
+    
+    <div class="col-md-3 steam-table">
+        <div class="body">
+            <div class="overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th class="steam-gen1">Generators & Consumers</th>
+                        <th class="steam-gen2">TPH</th>
+                    </tr>
+             
+                    <tbody id="swing_table"></tbody>
+              
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+            <!-- <div class="row box-width-rt"> -->
+            <div class="col-md-4 col-head">
+                <span class="left-box">
+                    <span class="first-box-title" id="swingcharts"> HP Steam Import
+                        Trend</span>
+                </span>
+            </div>
+            <div class="col-md-8">
+                <div class="row pull-right">
+                    <span class="trend">
+                        <select name="swingdrop" id="swingdrop">
+                            <option value="HP Steam Import" name="HP Steam Import
+                                Trend"> HP Steam Import</option>
+                            <option value="LP Steam Import" name = "LP Steam Import Trend"> LP Steam Import</option>
+                            <option value="LP Steam Generation" name= "LP Steam Generation Trend"> LP Steam Generation</option>
+                            <option value="LP Steam Consumption" name = "LP Steam Consumption Trend"> LP Steam Consumption</option>                           
+                            <option value="LP Steam export" name= "LP Steam export Trend"> LP Steam export</option>
+                            <option value="Imbalance" name="Imbalance Trend"> Imbalance</option>
+                        </select>
+                    </span>
+                    <span class="from">
+                        <input type="datetime-local" id="fromHomeswing" name="fromHomeswing">
+                    </span>
+                    <span class="to">
+                        <input type="datetime-local" id="toHomeswing" name="toHomeswing">
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+        <div class="actual-line">
+            <span class="actbox"> </span>
+            <span class="leg"> Actual (TPH)</span>
+        </div>
+        <div class="body">
+            <div class="count-line">
+                <div id="chartSteamBalanceswing" style="height: 40vh;"></div>
+            </div>
+        </div>
+    </div>
+</div>

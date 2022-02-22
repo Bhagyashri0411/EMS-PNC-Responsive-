@@ -1,0 +1,564 @@
+
+
+[
+    {
+      "description": "Density Of Feed for unit VBU",
+      "manualentryTag": "MRA_VBU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-8T18:51:40",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit CCRU",
+      "manualentryTag": "MRA_CCRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-9T18:51:41",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NSU",
+      "manualentryTag": "MRA_NSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-10T18:51:42",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit FCCU",
+      "manualentryTag": "MRA_FCCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-11T18:51:43",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit GSU",
+      "manualentryTag": "MRA_GSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-12T18:51:44",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NPRU",
+      "manualentryTag": "MRA_NPRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-13T18:51:45",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit OHCU",
+      "manualentryTag": "MRA_OHCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-14T18:51:46",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU1",
+      "manualentryTag": "MRA_HGU1_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-15T18:51:47",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU2",
+      "manualentryTag": "MRA_HGU2_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-16T18:51:48",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDS",
+      "manualentryTag": "MRA_DHDS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-17T18:51:49",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDT",
+      "manualentryTag": "MRA_DHDT_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-18T18:51:50",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit MSQU",
+      "manualentryTag": "MRA_MSQU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-19T18:51:51",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit Octamax",
+      "manualentryTag": "MRA_Octamax_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-20T18:51:52",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit ARU",
+      "manualentryTag": "MRA_ARU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-21T18:51:53",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SWS",
+      "manualentryTag": "MRA_SWS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-22T18:51:54",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-A",
+      "manualentryTag": "MRA_SRUA_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-23T18:51:55",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-B",
+      "manualentryTag": "MRA_SRUB_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-24T18:51:56",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-C",
+      "manualentryTag": "MRA_SRUC_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-25T18:51:57",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "kcjdf",
+      "manualentryTag": "MRA_AVU_DNS_Crude",
+      "tagvalue": 86,
+      "tagTimeStamp": "toto",
+      "uom": "dhfjfd"
+    },
+    {
+      "description": "kcjdf",
+      "manualentryTag": "MRA_AVU_DNS_Crude",
+      "tagvalue": 86,
+      "tagTimeStamp": "toto",
+      "uom": "dhfjfd"
+    },
+    {
+      "description": "kcjdf",
+      "manualentryTag": "MRA_AVU_DNS_Crude",
+      "tagvalue": 86,
+      "tagTimeStamp": "toto",
+      "uom": "dhfjfd"
+    },
+    {
+      "description": "Density Of Feed for unit VBU",
+      "manualentryTag": "MRA_VBU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-8T18:51:40",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit CCRU",
+      "manualentryTag": "MRA_CCRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-9T18:51:41",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NSU",
+      "manualentryTag": "MRA_NSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-10T18:51:42",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit FCCU",
+      "manualentryTag": "MRA_FCCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-11T18:51:43",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit GSU",
+      "manualentryTag": "MRA_GSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-12T18:51:44",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NPRU",
+      "manualentryTag": "MRA_NPRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-13T18:51:45",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit OHCU",
+      "manualentryTag": "MRA_OHCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-14T18:51:46",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU1",
+      "manualentryTag": "MRA_HGU1_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-15T18:51:47",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU2",
+      "manualentryTag": "MRA_HGU2_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-16T18:51:48",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDS",
+      "manualentryTag": "MRA_DHDS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-17T18:51:49",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDT",
+      "manualentryTag": "MRA_DHDT_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-18T18:51:50",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit MSQU",
+      "manualentryTag": "MRA_MSQU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-19T18:51:51",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit Octamax",
+      "manualentryTag": "MRA_Octamax_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-20T18:51:52",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit ARU",
+      "manualentryTag": "MRA_ARU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-21T18:51:53",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SWS",
+      "manualentryTag": "MRA_SWS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-22T18:51:54",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-A",
+      "manualentryTag": "MRA_SRUA_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-23T18:51:55",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-B",
+      "manualentryTag": "MRA_SRUB_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-24T18:51:56",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-C",
+      "manualentryTag": "MRA_SRUC_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-25T18:51:57",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit VBU",
+      "manualentryTag": "MRA_VBU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-8T18:51:40",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit CCRU",
+      "manualentryTag": "MRA_CCRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-9T18:51:41",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NSU",
+      "manualentryTag": "MRA_NSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-10T18:51:42",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit FCCU",
+      "manualentryTag": "MRA_FCCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-11T18:51:43",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit GSU",
+      "manualentryTag": "MRA_GSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-12T18:51:44",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NPRU",
+      "manualentryTag": "MRA_NPRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-13T18:51:45",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit OHCU",
+      "manualentryTag": "MRA_OHCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-14T18:51:46",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU1",
+      "manualentryTag": "MRA_HGU1_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-15T18:51:47",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU2",
+      "manualentryTag": "MRA_HGU2_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-16T18:51:48",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDS",
+      "manualentryTag": "MRA_DHDS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-17T18:51:49",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDT",
+      "manualentryTag": "MRA_DHDT_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-18T18:51:50",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit MSQU",
+      "manualentryTag": "MRA_MSQU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-19T18:51:51",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit Octamax",
+      "manualentryTag": "MRA_Octamax_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-20T18:51:52",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit ARU",
+      "manualentryTag": "MRA_ARU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-21T18:51:53",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SWS",
+      "manualentryTag": "MRA_SWS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-22T18:51:54",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-A",
+      "manualentryTag": "MRA_SRUA_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-23T18:51:55",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-B",
+      "manualentryTag": "MRA_SRUB_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-24T18:51:56",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-C",
+      "manualentryTag": "MRA_SRUC_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-25T18:51:57",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "kcjdf",
+      "manualentryTag": "MRA_AVU_DNS_Crude",
+      "tagvalue": 86,
+      "tagTimeStamp": "toto",
+      "uom": "dhfjfd"
+    },
+    {
+      "description": "kcjdf",
+      "manualentryTag": "MRA_AVU_DNS_Crude",
+      "tagvalue": 86,
+      "tagTimeStamp": "toto",
+      "uom": "dhfjfd"
+    },
+    {
+      "description": "kcjdf",
+      "manualentryTag": "MRA_AVU_DNS_Crude",
+      "tagvalue": 86,
+      "tagTimeStamp": "toto",
+      "uom": "dhfjfd"
+    },
+    {
+      "description": "Density Of Feed for unit VBU",
+      "manualentryTag": "MRA_VBU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-8T18:51:40",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit CCRU",
+      "manualentryTag": "MRA_CCRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-9T18:51:41",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NSU",
+      "manualentryTag": "MRA_NSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-10T18:51:42",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit FCCU",
+      "manualentryTag": "MRA_FCCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-11T18:51:43",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit GSU",
+      "manualentryTag": "MRA_GSU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-12T18:51:44",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit NPRU",
+      "manualentryTag": "MRA_NPRU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-13T18:51:45",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit OHCU",
+      "manualentryTag": "MRA_OHCU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-14T18:51:46",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU1",
+      "manualentryTag": "MRA_HGU1_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-15T18:51:47",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit HGU2",
+      "manualentryTag": "MRA_HGU2_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-16T18:51:48",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDS",
+      "manualentryTag": "MRA_DHDS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-17T18:51:49",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit DHDT",
+      "manualentryTag": "MRA_DHDT_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-18T18:51:50",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit MSQU",
+      "manualentryTag": "MRA_MSQU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-19T18:51:51",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit Octamax",
+      "manualentryTag": "MRA_Octamax_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-20T18:51:52",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit ARU",
+      "manualentryTag": "MRA_ARU_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-21T18:51:53",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SWS",
+      "manualentryTag": "MRA_SWS_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-22T18:51:54",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-A",
+      "manualentryTag": "MRA_SRUA_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-23T18:51:55",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-B",
+      "manualentryTag": "MRA_SRUB_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-24T18:51:56",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "Density Of Feed for unit SRU-C",
+      "manualentryTag": "MRA_SRUC_DNS_Feed",
+      "tagvalue": 500,
+      "tagTimeStamp": "2021-10-25T18:51:57",
+      "uom": "Kg/m3"
+    },
+    {
+      "description": "xfjc",
+      "manualentryTag": "ghsds",
+      "tagvalue": 67,
+      "tagTimeStamp": "ueiwiu",
+      "uom": "jncdj"
+    },
+    {
+      "description": "xfjc",
+      "manualentryTag": "ghsds",
+      "tagvalue": 67,
+      "tagTimeStamp": "ueiwiu",
+      "uom": "jncdj"
+    }
+  ]

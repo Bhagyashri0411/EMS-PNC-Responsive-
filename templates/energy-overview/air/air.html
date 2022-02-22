@@ -1,0 +1,263 @@
+<link rel="stylesheet" href="./../../../templates/energy-overview/air/air.css" />
+<script src="./../../../templates/energy-overview/air/air.js"></script>
+<div class="col-md-12 air-tab" id="air-tab">
+
+    <div class="col-md-9">
+        <div class="row">
+            <!-- <div class="col-md-12 pl-7 pr-0"> -->
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4 card-col">
+                        <div class="card clearfix">
+                            <div class="title" style="padding: 0 1.5vw;">Plant Air Total Generation
+                                (Nm3/hr)</div>
+
+                            <div class="body">
+                                <div id="count_air1" class="count"> </div>
+                            </div>
+                            <div class="footer">
+                                <span class="ref pull-left"> REF : <span id="ref_air1"></span> </span><span
+                                    id="result_air1" class="result pull-right">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 card-col">
+                        <div class="card clearfix">
+                            <div class="title"> Plant Air Total Consumption
+                                (Nm3/hr)</div>
+                            <div class="body">
+                                <div id="count_air2" class="count"></div>
+                            </div>
+                            <div class="footer">
+                                <span class="ref pull-left">REF : <span id="ref_air2"> </span> </span><span
+                                    id="result_air2" class="result pull-right">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 card-col">
+                        <div class="card clearfix">
+                            <div class="title"> Instrument Air Total Generation
+                                (Nm3/hr)</div>
+                            <div class="body">
+                                <div id="count_air3" class="count"> </div>
+                            </div>
+                            <div class="footer">
+                                <span class="ref pull-left">REF : <span id="ref_air3"> </span> </span><span
+                                    id="result_air3" class="result pull-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6 card-col">
+                        <div class="card clearfix">
+                            <div class="title fosize">Instrument Air Total
+                                Consumption
+                                Nm3/hr
+                            </div>
+                            <div class="body">
+                                <div id="" class="count pd-7" > 563</div>
+                            </div>
+                            <div class="footer" style=" padding-top: 0.7vw;">
+                                <span class="ref pull-left">REF : <span id="ref_air4"> </span> </span><span id=""
+                                    class="result pull-right">+25.3
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 card-col">
+                        <div class="card clearfix">
+                            <div class="title fosize">Air Generation <br>
+                                Cost <br>
+                                INR/NM3
+                                </div>
+                            <div class="body">
+                                <div id="" class="count pd-7">25.6 </div>
+                            </div>
+                            <div class="footer" style="padding-top: 0.7vw;">
+                                <span class="ref pull-left">REF : <span id="">20.5 </span> </span><span id=""
+                                    class="result pull-right">+25.3
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- </div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-12 pl-7 pr-0">
+                <div class="col-md-12 card-col">
+                    <div class="card mt-14">
+                        <div class="chart-title title">
+                            <div class="row">
+                                <div class="col-md-12 col-first text-left">
+                                    <!-- <div class="col-md-4 col-st"> -->
+                                    <div style="display: inline-flex;">
+
+                                        <span class="first-box-title" id="heading-air"> Plant Air Total Generation
+                                            (Nm3/hr)</span>
+                                    </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="col-md-8 pull-right"> -->
+                                    <div class="pull-right" style="display: inline-flex;">
+                                        <div class="col-tre">
+                                            <span class="input-title">KPI</span>
+                                            <select name="op-air" id="op-air">
+                                                <option value="Plant Air Total Generation"
+                                                    name="Plant Air Total Generation (Nm3/hr)"> Plant Air Total
+                                                    Generation
+                                                    (Nm3/hr)
+                                                </option>
+                                                <option value="Plant Air Total Consumption" name="Plant Air Total Consumption
+                                                (Nm3/hr)"> Plant Air Total Consumption
+                                                    (Nm3/hr)
+                                                </option>
+                                                <option value="Instrument Air Total Generation" name="Instrument Air Total Generation
+                                            (Nm3/hr)"> Instrument Air Total Generation
+                                                    (Nm3/hr) </option>
+                                                <option value="Instrument Air Total Consumption" name="Instrument Air Total Consumption
+                                            (Nm3/hr)"> Instrument Air Total Consumption
+                                                    (Nm3/hr)</option>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="col-tre">
+                                            <span class="from">
+                                                <span class="input-title">From</span>
+                                                <input type="datetime-local" id="fromair" name="fromair">
+                                            </span>
+                                        </div>
+                                        <div class="col-tre">
+                                            <span class="to">
+                                                <span class="input-title">To</span>
+                                                <input type="datetime-local" id="toair" name="toair">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line text-left">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!-- <div class="col-md-10"> -->
+                                    <span class="actbox osv"> </span>
+                                    <span class="leg"> Actual</span>
+
+                                    <span class="refbox"></span>
+                                    <span class="refbox"></span>
+                                    <span class="leg">Reference</span>
+                                </div>
+
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                        <div class="body clearfix chart-body">
+                            <div class="col-md-12">
+                                <div class="count-line">
+                                    <div id="air-line"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-3 card-col">
+        <div class="card">
+            <div class="title">
+                <span class="pull-left"> Plant Air (Nm3/hr) </span>
+                <div class="dropdown pull-right">
+                    <select name="Airtable" id="Airtable">
+
+                        <option value="Consumers"> Consumers
+                        </option>
+                        <option value="Generator"> Generators
+                        </option>
+
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <div class="body overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th>Unit </th>
+                        <th>Actual </th>
+                    </tr>
+                    <tbody id="plantair"></tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="card mt-14">
+            <div class="title ">
+                <span class="pull-left"> Instrument Air (Nm3/hr)</span>
+                <div class="dropdown pull-right">
+                    <select name="Airtable1" id="Airtable1">
+
+                        <option value="Consumers"> Consumers
+                        </option>
+                        <option value="Generator"> Generators
+                        </option>
+
+                    </select>
+                </div>
+            </div><br><br>
+            <div class="body overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th> Unit </th>
+                        <th> Actual </th>
+
+                    </tr>
+                    <tbody id="instrumentair"></tbody>
+                </table>
+            </div>
+
+
+        </div>
+        <div class="card mt-14">
+            <div class="title">
+                <span class="pull-left"> Decoking Air (Nm3/hr)</span>
+                <!-- <div class="dropdown pull-right">
+                    <select name="Airtable1" id="Airtable1">
+
+                        <option value="Consumers"> Consumers
+                        </option>
+                        <option value="Generator"> Generators
+                        </option>
+
+                    </select>
+                </div> -->
+            </div><br><br>
+            <!-- <div class="body overflow genratorsHeight"> -->
+            <table>
+                <tr>
+                    <th> Unit </th>
+                    <th> Actual </th>
+
+                </tr>
+                <tbody id="decokingair"></tbody>
+            </table>
+            <!-- </div> -->
+
+
+        </div>
+
+
+    </div>
+</div>

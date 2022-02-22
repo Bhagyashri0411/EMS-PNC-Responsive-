@@ -1,0 +1,65 @@
+.tgtuOverview-tab .left-box .col-st {
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+
+}
+.tgtuOverview-tab .osv {
+    background-color:#e97b31;
+    width: 30px;
+    height: 3px;
+    padding-left: 20px;
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
+
+.tgtuOverview-tab .refbox1{
+    background-color: #ffc000;
+    width: 30px;
+    height: 3px;
+    padding-left: 20px;
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    margin-left: 10px;
+}
+.tgtuOverview-tab .feedbox{
+    background-color: #00b0f0;
+    width: 15px;
+    height: 12px;
+    display: inline-block;
+    margin-left: 12px;
+    margin-right: 3px;
+}
+
+.tgtuOverview-tab #tgtuOverallsecgraph{
+    position: relative;
+    right: 33px;
+
+}
+.tgtuOverview-tab input{
+ 
+  display: block;
+    font-size: 10px;
+    background-color: #26293c;
+    border: 2px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    max-width: 138px;
+    cursor: pointer; 
+    color: lightgrey;
+
+}
+/* .tgtuOverview-tab #toTgtu {
+    display: block;
+    font-size: 10px;
+    background-color: #26293c;
+    border: 2px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    max-width: 138px;
+    margin-left: 25px;
+    cursor: pointer; 
+    color: lightgrey;
+} */

@@ -1,0 +1,43 @@
+.equipment-efficiency-tab .card {
+
+    padding: 6px;
+    border-radius: 10px;
+}
+
+/* .equipment-efficiency-tab .mt-14 {
+    margin-top: 4px;
+} */
+
+.equipment-efficiency-tab .title {
+    font-size: 1.5vw;
+    padding: 0 10px;
+    color: #d9d9d0
+}
+
+.equipment-efficiency-tab .col {
+    text-align: center;
+}
+
+.equipment-efficiency-tab .nav-tabs.number-tabs {
+    margin-right: 25px;
+    border: none;
+}
+
+.equipment-efficiency-tab .nav-tabs.number-tabs>li>a {
+    background-color: white;
+    color: #7031A0;
+    height: 29px;
+    width: 95px;
+    border-radius: 7px;
+    border: 1px solid #7031A0;
+    font-size: 17px;
+    padding: 0px 0 0 29px;
+    margin-right: 10px;
+}
+
+.nav-tabs.number-tabs>li.active>a,
+.nav-tabs.number-tabs>li.active>a:focus,
+.nav-tabs.number-tabs>li.active>a:hover {
+    background-color: #7031A0;
+    color: white;
+}

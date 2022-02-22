@@ -1,0 +1,269 @@
+#meg-horizontal-tiles .card {
+    background-color: #26293c;
+    border-radius: 10px;
+    padding: 10px 6px;
+}
+
+#meg-horizontal-tiles .card .title {
+    font-size: 1vw;
+    font-weight: normal;
+    color: #d9d9d9;
+    text-align: center;
+}
+#meg-horizontal-tiles .footer-deviation .deviation .label {
+    font-size: 0.9vw;
+    padding: 0;
+}
+#meg-horizontal-tiles .card .body .count {
+    /* text-align: center; */
+    margin-left: -11px;
+    font-size: 2.5vw;
+    color: #f2f2f2;
+    font-weight: 700;
+    font-family: Bahnschrift Light;
+    padding: 2vw;
+}
+#meg-horizontal-tiles .card .footer .ref {
+    color: #d9d9d9;
+    font-size: 0.9vw;
+    font-family: Bahnschrift Light;
+    display: inline-block;
+    /* padding: 5px 0px; */
+}
+#meg-horizontal-tiles #ref-meg1{
+    color: #f2f2f2;
+}
+
+#meg-horizontal-tiles .card .footer .result {
+    color: #f2f2f2;
+    font-size: 0.8vw;
+    font-family: Bahnschrift Light;
+    padding: 1px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#meg-horizontal-tiles .card .footer .result.red {
+    background-color: #ff0000;
+}
+
+#meg-horizontal-tiles .card .footer .result.green {
+    background-color: #00b050;
+}
+
+
+#meg-horizontal-tiles  .main-title {
+    font-size: 0.9vw;
+    text-align: center;
+    color: #d9d9d9;
+}
+
+
+#meg-zingChart-wrapper {
+    padding-top: 68px;
+}
+
+#meg-zingChart-wrapper,
+#meg-zingChart-top {
+    height: 85px !important;
+}
+
+#meg-horizontal-tiles .footer-deviation .deviation .label,
+#meg-horizontal-tiles .footer-deviation .actual .label {
+    font-weight: normal;
+    color: #d9d9d9;
+     font-size: 0.8vw;
+     padding: 0;
+
+}
+
+ #meg-horizontal-tiles .footer-deviation .deviation .label {
+    font-size: 1vw;
+    padding: 0;
+} 
+
+#meg-horizontal-tiles .footer-deviation .actual .label {
+    padding: 0;
+    margin-top: 2px;
+}
+
+#meg-horizontal-tiles .footer-deviation .deviation .count,
+#meg-horizontal-tiles .footer-deviation .actual .count {
+    /* font-weight: bold; */
+    color: #f2f2f2;
+    font-size: 0.9vw;
+
+}
+
+
+#meg-horizontal-tiles .chart-legends .legend {
+    padding: 5px 0px;
+    display: inline-block;
+    PADDING-BOTTOM: 0;
+}
+
+#meg-horizontal-tiles .chart-legends .legend .legend-circle {
+    height: 0.7vw;
+    width: 0.7vw;
+    border-radius: 0.4vw;
+    display: inline-block;
+}
+
+#meg-horizontal-tiles .chart-legends .legend .legend-circle.legend-solid {
+    background-color: #ffa600;
+}
+
+#meg-horizontal-tiles .chart-legends .legend .legend-circle.legend-liquid {
+    background-color: #00aa7e;
+}
+
+#meg-horizontal-tiles .chart-legends .legend .legend-circle.legend-gas {
+    background-color: #005374;
+}
+
+#meg-horizontal-tiles .chart-legends .legend .legend-text {
+    color: #d9d9d9;
+    padding-left: 0.2vw;
+    font-size: 0.8vw;
+    padding-right: 0.6vw;
+}
+
+#meg-horizontal-tiles table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: #d9d9d9;
+    font-family: Yu Gothic UI;
+    line-height: 1.12;
+}
+#meg-horizontal-tiles #megtable th {
+    text-align: left;
+    padding: 0.5vw;
+    font-weight: normal;
+    font-size: 0.9vw;
+    background-color: #432b64;
+    top: 0;
+    position: sticky;
+}
+#meg-horizontal-tiles #MEG_card_table th {
+    text-align: left;
+    padding: 0.5vw;
+    font-weight: normal;
+    font-size: 0.9vw;
+    top: 0;
+    /* position: sticky; */
+    border-bottom: 1px solid #f2f2f2;
+}
+#meg-horizontal-tiles td {
+    border-bottom: 0.1vw solid #8d8b96;
+    text-align: end;
+    padding: 0.5vw;
+    color: #f2f2f2;
+    font-size: 1vw;
+}
+#meg-horizontal-tiles td:nth-child(1){
+    color: #d9d9d9;
+    text-align: start;
+}
+#meg-horizontal-tiles tbody#Parameter_table td:nth-child(2){
+    color: #d9d9d9;
+}
+#meg-horizontal-tiles table.shptable td:nth-child(2){
+    color: #d9d9d9;
+}
+#meg-horizontal-tiles #megtable {
+    line-height: 1.30;
+}
+
+#meg-horizontal-tiles table.shptable td:nth-child(2){
+   text-align: center;
+}
+
+#meg-horizontal-tiles table.shptable td{
+ padding: 0.2vw;
+ }
+
+
+ #meg-horizontal-tiles input[type=radio]{
+    height: 0.7vw;
+    /* margin: 0.2vw 0.5vw; */
+}
+#meg-horizontal-tiles .lebel-style {
+    display: inline-block;
+    font-size: 0.9vw;
+    color: #d9d9d9;
+    /* font-family: Bahnschrift; */
+    font-weight: 100;
+}
+
+#meg-horizontal-tiles .percents{
+    text-align: center;
+}
+#meg-horizontal-tiles table th:nth-child(3){
+    text-align: end;
+}
+
+#meg-horizontal-tiles table tr:last-child td {
+    border-bottom: 0;
+} 
+#meg-horizontal-tiles .col{
+    padding: 1px;
+    height: 6.3vw;
+}
+#meg-horizontal-tiles .footer{
+    padding: 0.1vw;
+}
+
+/* scroll */
+#meg-horizontal-tiles .overflow {
+    overflow: auto;
+}
+
+#meg-horizontal-tiles .tableheight {
+    height: 7vw;
+    padding-right: 5px;
+}
+
+#meg-horizontal-tiles .secondtableheight {
+    height: 12.7vw;
+    padding-right: 5px;
+}
+#meg-horizontal-tiles .secondtableheight-1 {
+    height: 11.3vw;
+    padding-right: 5px;
+}
+
+#meg-horizontal-tiles .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+#meg-horizontal-tiles ::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0.3vw;
+}
+
+#meg-horizontal-tiles ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+#meg-horizontal-tiles ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+#meg-horizontal-tiles ::-webkit-scrollbar-thumb:hover {
+    background:#8d8a95;
+}
+/* add css */
+#meg-horizontal-tiles .gap1 {
+    padding-top: 0.3vw;
+}
+#meg-horizontal-tiles .card .body .donut1 {
+    height: 7.4vw;
+}
+#meg-horizontal-tiles .footer-deviation{
+    padding: 0.3vw;
+}

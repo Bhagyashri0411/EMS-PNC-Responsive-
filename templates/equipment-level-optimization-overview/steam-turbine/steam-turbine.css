@@ -1,0 +1,104 @@
+/* CSS for Line graph */
+.steam-turbine-tab .line{
+    height: 0.3vw;
+    width: 2.5vw;
+    display: inline-block;
+    margin: 0.2vw 0;
+    position: relative;
+}
+.steam-turbine-tab .first-spa{
+    background-color: #00b0f0;   
+}
+.steam-turbine-tab .secd-spa{
+    background-color: #00F66E;
+   }
+.steam-turbine-tab .count-line{
+    height: 32vw;
+}
+
+.steam-turbine-tab .col-rt {
+    position: relative;
+    color: #d9d9d9;
+    display: inline-block;
+    font-size: 0.9vw;
+}
+.steam-turbine-tab .col-tb{
+    border-left : 1px solid #686a77;
+}
+.steam-turbine-tab select,input{
+    font-size: 0.8vw;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    max-width: 12vw;
+    cursor: pointer;
+    color: #f2f2f2;
+    margin-right: 0.5vw;
+}
+.steam-turbine-tab select{
+    padding: 4PX;
+}
+.steam-turbine-tab #turbine{
+    max-width: 12vw;
+    font-size: 0.9vw;
+    padding: 3px;
+    padding-right: 2vw;
+    color: #d9d9d9;
+    font-weight: normal;
+}
+.steam-turbine-tab .title{
+    font-size: 2vw;
+}
+/* Table css */
+.steam-turbine-tab table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.steam-turbine-tab td {
+    font-size: 1vw;
+    color: #f2f2f2;
+    text-align: left;
+    border-bottom: 1px solid #686a77;
+    padding: 0.9vw 0.5vw;
+}
+
+.steam-turbine-tab th {
+    background-color: #442266;
+    color: #d9d9d9;
+    font-weight: normal;
+    position: sticky;
+    top: 0;
+    padding: 0vw 0.5vw;
+    font-size: 1vw;
+}
+.steam-turbine-tab table tr:last-child td {
+    border-bottom: 0;
+}
+.steam-turbine-tab table td:nth-child(1){
+  color: #d9d9d9;
+   }
+.steam-turbine-tab table td:nth-child(2){
+ text-align: center;
+}
+.steam-turbine-tab table td:nth-child(3){
+    text-align: center;
+   }
+/* scroll */
+.steam-turbine-tab .genratorsHeight {
+    height: 35vw;
+    padding-right: 0.5vw;
+}
+/* progress */
+.steam-turbine-tab progress {
+   border-radius: 7px;
+   height: 10px;
+}
+.steam-turbine-tab  progress::-webkit-progress-bar {
+   background-color: #26293c;
+}
+.steam-turbine-tab  progress::-webkit-progress-value {
+   background-color: #c55a11;
+}

@@ -1,0 +1,65 @@
+.pp-Overview-tab .left-box .col-st {
+    font-size: 1.7vw;
+    font-weight: 600;
+    color: #d9d9d9;
+font-family: Yu Gothic UI Semibold;
+}
+.pp-Overview-tab .leg, .leg1 {
+    font-size: 0.9vw;
+    color: #d9d9d9;
+
+}
+.pp-headline {
+    font-size: 1.7vw;
+    font-weight: 600;
+    color: #d9d9d9;
+font-family: Yu Gothic UI Semibold;
+    padding: 5px 15px;
+    
+}
+.pp-Overview-tab .osv {
+    background-color:#e97b31;
+    width: 1.8vw;
+    height: 0.25vw;
+    display: inline-block;
+    margin: 0.2vw;
+}
+
+.pp-Overview-tab .refbox1{
+    background-color: #ffc000;
+    width: 1.8vw;
+    height: 0.25vw;
+    padding-left: 1vw;
+    display: inline-block;
+    margin: 0.2vw;
+}
+.pp-Overview-tab .feedbox{
+    background-color: #00b0f0;
+    width: 0.9vw;
+    height: 0.9vw;
+    display: inline-block;
+    margin: 0vw 0.3vw ;
+}
+
+.pp-Overview-tab #ppfromFccu, #ppoveralldate {
+    display: inline-block;
+    font-size: 0.9vw;
+    background-color: #26293c;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 2.5vw;
+    max-width: 30vw;
+    cursor: pointer;
+    color: #f2f2f2;
+
+}
+.pp-Overview-tab #ppoveralldate {
+    padding: 0.25vw;
+    margin-left: 1.1vw;
+    min-width: 6vw;
+}
+
+.pp-Overview-tab .count-line{
+    height: 42vh;
+}

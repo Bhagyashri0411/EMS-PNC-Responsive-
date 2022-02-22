@@ -1,0 +1,56 @@
+<link rel="stylesheet"
+    href="./../../../templates/pp-unit-overview/steam-balance-overview/steam-balance-overview.css" />
+<script src="./../../../templates/pp-unit-overview/steam-balance-overview/steam-balance-overview.js"></script>
+<div class="steam-balance-overview-pp">
+    <h2 class="col-st">Steam Balance Overview</h2>
+    <div class="col-md-3 steam-table">
+        <div class="body">
+            <div class="overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th class="steam-gen1">Generators & Consumers</th>
+                        <th class="steam-gen2">TPH</th>
+                    </tr>
+                    <tbody id="pp_table"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+            <!-- <div class="row box-width-rt"> -->
+            <div class="col-md-4 col-head">
+                <span class="first-box-title" id="ppCharts">HP Steam Generation
+                    Trend</span>
+            </div>
+            <div class="col-md-8">
+                <div class="row pull-right">
+                    <span class="trend">
+                        <select name="ppdrop" id="ppdrop">
+                            <option value="HP Steam Generation" name="HP Steam Generation
+                            Trend"> HP Steam Generation</option>
+                            <option value="Imbalance" name="Imbalance Trend"> Imbalance</option>
+                        </select>
+                    </span>
+                    <span class="from">
+                        <input type="datetime-local" id="fromHomepp" name="fromHomepp">
+                    </span>
+                    <span class="to">
+                        <input type="datetime-local" id="toHomepp" name="toHomepp">
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+        <div class="actual-line">
+            <span class="actbox"> </span>
+            <span class="leg"> Actual (TPH)</span>
+        </div>
+        <div class="row">
+            <div id="chartSteamBalancepp" style="height: 16.5vw;"></div>
+        </div>
+    </div>
+</div>

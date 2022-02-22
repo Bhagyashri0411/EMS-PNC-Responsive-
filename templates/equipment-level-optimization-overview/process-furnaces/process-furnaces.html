@@ -1,0 +1,106 @@
+<link rel="stylesheet"
+    href="./../../../templates/equipment-level-optimization-overview/process-furnaces/process-furnaces.css" />
+<script src="./../../../templates/equipment-level-optimization-overview/process-furnaces/process-furnaces.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<div class="process-furnaces-tab">
+    <!-- add your content here -->
+    <div class="row">
+        <div class="col-md-5">
+            <div class="pull-right">
+                <select name="processtable" id="processtable">
+                    <option value="BSVI"> BSVI</option>
+                    <option value="FCCU"> FCCU</option>
+                    <option value="OHCU"> OHCU</option>
+                    <option value="HGU"> HGU</option>
+                    <option value="AVU1"> AVU1</option>
+                    <option value="CCRU"> CCRU</option>
+                    <option value="DHDS"> DHDS</option>
+                    <option value="OSRU"> OSRU</option>
+                    <option value="AVU2"> AVU2</option>
+                    <option value="DHDT"> DHDT</option>
+                    <option value="HCU"> HCU</option>
+                    <option value="DCU"> DCU</option>
+                    <option value="MSQ"> MSQ</option>
+                    <option value="NSRU"> NSRU</option>
+                    <option value="PX"> PX</option>
+                    <option value="PTA"> PTA</option>
+                </select>
+            </div>
+            <br><br>
+            <div class="overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th>KPI (Ton/hr)</th>
+                        <th>Actual</th>
+                        <th>Optimized</th>
+                        <th colspan="2">Deviation</th>
+                    </tr>
+                    <tbody id="profurnacestable"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-7 col-tb">
+            <div class="title">
+                <span id="profurnacesid">Furnace # 1 OFF Gas
+                    Consumption (Ton/hr) Trend </span>
+            </div>
+            <div class="row">
+                <div class="title">
+                    <div class="col-md-4">
+
+                        <div class="line first-spa"> </div>
+                        <span class="col-rt">Actual</span>
+
+                        <div class="line secd-spa"> </div>
+                        <span class="col-rt">Optimized</span>
+
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="row pull-right" style="display: inline-flex;">
+                            <span class="trend">
+                                <select name="profurnaces" id="profurnaces">
+                                    <option value="Furnace # 1 OFF Gas Consumption"
+                                        name="Furnace # 1 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 1 OFF Gas
+                                        Consumption</option>
+                                    <option value="Furnace # 2 OFF Gas Consumption" name="Furnace # 2 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 2 OFF Gas
+                                       Consumption</option>
+                                    <option value="Furnace # 3 OFF Gas Consumption" name="Furnace # 3 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 3 OFF Gas
+                                        Consumption
+                                    </option>
+                                    <option value="Furnace # 4 OFF Gas Consumption" name="Furnace # 4 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 4 OFF Gas
+                                        Consumption
+                                    </option>
+                                    <option value="Furnace # 5 OFF Gas Consumption"
+                                        name="Furnace # 5 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 5 OFF Gas
+                                        Consumption
+                                    </option>
+                                    <option value="Furnace # 6 OFF Gas Consumption"
+                                        name="Furnace # 6 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 6 OFF Gas
+                                        Consumption
+                                    </option>
+                                    <option value="Furnace # 7 OFF Gas Consumption"
+                                        name="Furnace # 7 OFF Gas Consumption (Ton/hr) Trend"> Furnace # 7 OFF Gas
+                                        Consumption
+                                    </option>
+                                </select>
+                            </span>
+                            <span class="from">
+                                <input type="datetime-local" id="fromprofurnaces" name="fromprofurnaces">
+                            </span>
+                            <span class="to">
+                                <input type="datetime-local" id="toprofurnaces" name="toprofurnaces"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="count-line">
+                    <div id="profurnaces-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

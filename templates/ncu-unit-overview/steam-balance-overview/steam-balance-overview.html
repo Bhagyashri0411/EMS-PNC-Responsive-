@@ -1,0 +1,72 @@
+<link rel="stylesheet"
+    href="./../../../templates/ncu-unit-overview/steam-balance-overview/steam-balance-overview.css" />
+<script src="./../../../templates/ncu-unit-overview/steam-balance-overview/steam-balance-overview.js"></script>
+<div class="ncu-headline">Steam Balance Overview</div>
+<div class="steam-balance-overview-ncu">
+    
+    <div class="col-md-3 steam-table">
+        <div class="body">
+            <div class="overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th class="steam-gen1">Generators & Consumers</th>
+                        <th class="steam-gen2">TPH</th>
+                    </tr>
+             
+                    <tbody id="ncu_table"></tbody>
+              
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+            <!-- <div class="row box-width-rt"> -->
+            <div class="col-md-4 col-head">
+                <span class="left-box">
+                    <span class="first-box-title" id="ncucharts"> SHP Steam Generation
+                        Trend</span>
+                </span>
+            </div>
+            <div class="col-md-8">
+                <div class="row pull-right">
+                    <span class="trend">
+                        <select name="ncudrop" id="ncudrop">
+                            <option value="SHP Steam Generation" name="SHP Steam Generation
+                                Trend"> SHP Steam Generation</option>
+                            <option value="HP Steam Generation" name = "HP Steam Generation Trend"> HP Steam Generation</option>
+                            <option value="MP Steam Generation" name= "MP Steam Generation Trend"> MP Steam Generation</option>
+                            <option value="LP Steam Consumption" name = "LP Steam Consumption Trend"> LP Steam Consumption</option>
+                            <option value="SHP Steam Consumption" name= "SHP Steam Consumption Trend"> SHP Steam Consumption</option>
+                            <option value="HP Steam Consumption" name= "HP Steam Consumption Trend"> HP Steam Consumption</option>
+                            <option value="MP Steam Consumption" name= "MP Steam Consumption Trend"> MP Steam Consumption</option>
+                            <option value="LP Steam Consumption" name= "LP Steam Consumption Trend"> LP Steam Consumption</option>                            
+                            <option value="Export Steam" name= "Export Steam Trend"> Export Steam</option>
+                            <option value="Import Steam" name= "Import Steam Trend"> Import Steam</option>
+                            <option value="Imbalance" name="Imbalance Trend"> Imbalance</option>
+                        </select>
+                    </span>
+                    <span class="from">
+                        <input type="datetime-local" id="fromHomencu" name="fromHomencu">
+                    </span>
+                    <span class="to">
+                        <input type="datetime-local" id="toHomencu" name="toHomencu">
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+        <div class="actual-line">
+            <span class="actbox"> </span>
+            <span class="leg"> Actual (TPH)</span>
+        </div>
+        <div class="body">
+            <div class="count-line">
+                <div id="chartSteamBalancencu" style="height: 40vh;"></div>
+            </div>
+        </div>
+    </div>
+</div>

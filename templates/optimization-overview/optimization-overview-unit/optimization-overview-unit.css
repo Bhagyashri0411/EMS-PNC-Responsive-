@@ -1,0 +1,293 @@
+.opunit progress {
+  border-radius: 7px;
+  height: 10px;
+}
+.opunit  progress::-webkit-progress-bar {
+  background-color: #26293c;
+}
+.opunit table.table1 progress::-webkit-progress-value {
+  background-color:  #c55a11;
+}
+.opunit table.table2 progress::-webkit-progress-value {
+  background-color: #00b0f0;
+}
+.opunit table.table3 progress::-webkit-progress-value {
+  background-color: #00b0f0;
+}
+.opunit .clearfix {
+  padding: 15px 0px;
+}
+.opunit .border{
+  margin-top: 0px;
+    margin-bottom: 2px;
+    margin-right: 19px;
+    border: 0;
+    border-bottom: 3px solid #7f7f7f ;;
+
+}
+.opunit table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.card-col .card .col-line {
+  padding-top: 15px;
+  font-size: 20px;
+    padding-bottom: 5px;
+    color: #d8d8d8;
+    font-weight: 500;
+}
+.opunit table th 
+{
+  background-color: #442266;
+  color: #d9d9d9;
+  font-size: 1vw;
+  font-weight: 500;
+  text-align: left;
+   padding: 7px;
+   position: sticky;
+   top: 0;
+}
+.opunit table.table1 th {
+  padding: 8px;
+}
+.opunit table.table2 th 
+{
+  padding: 10px;
+}
+.opunit table.table3 th 
+{ 
+  padding: 0px;
+}
+.opunit table tr:last-child td 
+{
+  border-bottom: 0;
+}
+.opunit table td {
+  border-left: none;
+  border-right: none;
+  color: #d9d9d9;
+  border-bottom: 1px solid #8b8d96;
+
+}
+.opunit table.table0 td 
+{
+  padding: 10px;
+  color: #d9d9d9;
+  font-size: 16px;
+}
+.opunit table.table1 td 
+{
+  padding: 10px;
+  color: #d9d9d9;
+  font-weight: 500;
+  font-size: 16px;
+}
+.opunit table.table2 td 
+{
+  padding: 6px;
+  color: #d9d9d9;
+  font-weight: 500;
+  font-size: 16px;
+} 
+.opunit table.table3 td {
+  color: #d9d9d9;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 6px;
+} 
+.opunit table.table3 .padding{
+  padding-left: 10px;
+}
+.opunit  .col-ta
+{
+  text-align: center;
+}
+.opunit .first-box-title{
+  font-size: 1.3vw;
+  font-weight: 700;
+  color: #d9d9d9;
+  padding: 17px;
+}
+.optimization-overview input{
+  border: 1px solid #d9d9d9;
+  background-color: #26293c;
+  border-radius: 4px;
+  float: right;
+  
+}
+.optimization-overview #fromopt{
+ margin-right: 1vw;
+}   
+    
+.opunit .date-local{
+  width: 35%;
+  padding-left: 0px;
+  padding-right: 7px;
+}
+.opunit #SVOptimizationsecgraph {
+  position: relative;
+  top: 15px;
+}
+
+.opunit .optimization-card{
+  height: 25.5vw;
+}
+.opunit .actbox {
+  background-color: #00b0f0;
+width: 35px;
+height: 4px;
+display: inline-block;
+margin-bottom: 3px;
+margin-right: 6px;
+}
+.opunit .osv {
+  background-color:#e97b31;
+  width: 24px;
+  height: 4px;
+  display: inline-block;
+  margin: 4px;
+}
+
+.opunit .refbox1{
+  background-color: #ffc000;
+  width: 24px;
+  height: 4px;
+  display: none;
+  margin: 4px;
+  
+}
+.opunit .feedbox{
+  background-color: #00b0f0;
+  width: 15px;
+  height: 12px;
+  display: none;
+ 
+}
+.opunit .leg1{
+  font-size: 1.5vw;
+  color:#d9d9d9;
+  display: inline-block;
+  
+}
+.opunit .leg2 {
+ font-size: 15px;
+  color:#d9d9d9;
+  display: none;
+}
+.opunit .leg3 {
+  font-size: 15px;
+   color:#d9d9d9;
+   display: none;
+ }
+.canvasjs-chart-credit{
+  display: none;
+}
+.opunit .maintitle{
+  font-size: 1.5vw;
+  font-weight: bold;
+  color:#d9d9d9;
+}
+
+.opunit #num{
+  padding: 20px;
+  font-size: 55px;
+  color: #f2f2f2;
+  float: left;
+  font-weight: bold;
+
+}
+.opunit .numt1{
+  font-size: 15px;
+    color: #d9d9d9;
+    float: left;
+    padding: 0;
+    font-weight: bold;
+}
+.opunit .num1{
+  font-size: 25px;
+    color: #f2f2f2;
+    float: left;
+    padding: 0;
+    font-weight: bold;
+} 
+/* scroll */
+.opunit .overflow {
+  overflow: auto;
+}
+.opunit .genratorsHeight {
+  height: 13rem;
+  padding-right: 15px;
+}
+
+.opunit .scroll {
+  width: 40%;
+  height: 280px;
+  overflow: auto;
+}
+
+.opunit ::-webkit-scrollbar {
+  width: 6px;
+  height: 12px;
+}
+
+.opunit ::-webkit-scrollbar-track {
+  border: 1px solid #262A3C;
+  border-radius: 15px;
+}
+
+.opunit ::-webkit-scrollbar-thumb {
+  background: #8d8a95;
+  border-radius: 15px;
+}
+
+.opunit ::-webkit-scrollbar-thumb:hover {
+  background:#8d8a95;
+
+}
+.ope1 {
+  padding-left: 24px;
+}
+
+.optimization-overview #fromopt {
+margin-right: 1vw;
+padding: 1px;
+}
+.optimization-overview .osv {
+background-color: #e97b31;
+width: 24px;
+height: 4px;
+display: inline-block;
+margin: 4px;
+}
+.optimization-overview .refbox {
+background-color: #ffc000;
+width: 24px;
+height: 4px;
+display: inline-block;
+margin: 4px;
+}
+.optimization-overview .feedbox {
+background-color: #00b0f0;
+width: 15px;
+height: 12px;
+display: inline-block;
+}
+.optimization-overview .leg1 {
+font-size: 15px;
+color: #a3a6a9;
+display: inline-block;
+}
+.optimization-overview .leg2 {
+font-size: 15px;
+color: #a3a6a9;
+display: inline-block;
+}
+.optimization-overview .leg3 {
+font-size: 15px;
+color: #a3a6a9;
+display: inline-block;
+}
+.optimization-overview #SVOptimizationsecgraph {
+position: relative;
+top: 15px;
+}

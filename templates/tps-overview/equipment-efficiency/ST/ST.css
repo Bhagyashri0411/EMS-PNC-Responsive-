@@ -1,0 +1,197 @@
+ .ST-equipment-efficiency .box-eff{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.ST-equipment-efficiency .color-eff{  
+    font-size: 1vw;
+    color: #d9d9d9;
+    padding-left: 6px;
+}
+
+.ST-equipment-efficiency .canvasjs-chart-credit{
+    display: none;
+   
+  }
+  .ST-equipment-efficiency .box-yellow{
+    background-color: #ffc000;
+}
+
+.ST-equipment-efficiency .box-blue{
+    background-color: #0895cc;
+}
+
+.ST-equipment-efficiency .box-orange{
+    background-color:#ed7d31;
+}
+
+.ST-equipment-efficiency h4{
+    color: #d9d9d9;
+    font-size: 1.5vw;
+    position: relative;
+    left: 10px;
+}
+.ST-equipment-efficiency .ST-eff-equ{
+    background-color: #26293c;
+     height: 320px;
+}
+
+.ST-equipment-efficiency .ST-eff{
+   height: 337px;
+}
+
+
+
+.ST-equipment-efficiency .ST-tab{
+    height:46rem;
+}
+
+
+.ST-equipment-efficiency .fuel-card{
+    background-color: #26293c;
+     height: 320px;
+}
+
+.ST-equipment-efficiency .ST-table-eff{
+    background-color: #26293c;
+}
+
+.ST-equipment-efficiency table{
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    color: #f2f2f2;
+    width: 100%;
+}
+
+.ST-equipment-efficiency td
+ {
+    border-bottom: 1px solid #b2b2b9;
+    text-align: center;
+    padding: 10px;
+    font-size: 1vw;
+}
+.ST-equipment-efficiency th {
+    text-align: center;
+    padding: 3px;
+    background-color: #442266;
+    font-size: 1.2vw;
+    font-weight: 500;
+    color: #d9d9d9;
+    border-right-color: #552d7c;
+    border-right-style: solid;
+    border-right-width: 1px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    overflow: auto;
+}
+.ST-equipment-efficiency table tr:last-child td{
+    border-bottom: 0;
+}
+
+
+/* graph */
+
+.ST-equipment-efficiency input {
+    font-size: 1vw;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    padding: 1px;
+    border-radius: 5px;
+    width: 16vw;
+    cursor: pointer;
+    color: #d9d9d9;
+    margin-left: 20px;
+}
+.ST-equipment-efficiency .first-box-title{
+    color: #d9d9d9;
+    font-size: 1.5vw;
+}
+
+.ST-equipment-efficiency .first-spa{
+    background-color: #C55B11;
+    height: 5px;
+    width: 22px;
+    display: inline-block;
+    margin-left: 0.3vw;
+   
+}
+.ST-equipment-efficiency .secd-spa{
+    background-color: #D945B4;
+    height: 5px;
+    width: 22px;
+    display: inline-block;
+    margin-left: 0.3vw;
+   
+}
+.ST-equipment-efficiency .third-spa{
+    background-color: #FFA700;
+    height: 5px;
+    width: 22px;
+    display: inline-block;
+    margin-left: 0.3vw; 
+}
+
+.ST-equipment-efficiency .col-rt {
+    display: inline-block;
+    color: #d9d9d9;
+    margin-left: 0.4vw;
+}
+
+.ST-equipment-efficiency .col-tr{
+    display: inline-flex;
+    padding-top: 10px;
+}
+
+/* scrollbar css */
+
+.ST-equipment-efficiency .card .overflow {
+    overflow: auto;
+}
+
+.ST-equipment-efficiency .card .genratorsHeight {
+    height: 16vw;
+    padding-right: 0.5vw;
+}
+
+.ST-equipment-efficiency .card .customerHeight {
+    height: 22rem;
+}
+
+.ST-equipment-efficiency .card  .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+.ST-equipment-efficiency .card  ::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+.ST-equipment-efficiency .card  ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.ST-equipment-efficiency .card  ::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 15px;
+}
+
+.ST-equipment-efficiency .card  ::-webkit-scrollbar-thumb:hover {
+    background: #d9d9d9;
+}
+.ST-equipment-efficiency #str1, #fromstBar, #tostBar{  
+    font-size: 0.7vw;
+    background-color: #26293c;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 9.6vw;
+    cursor: pointer;
+    color: #d9d9d9;
+}

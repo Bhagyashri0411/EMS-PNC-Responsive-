@@ -1,0 +1,45 @@
+
+
+[
+    {
+      "alias": "$ex01",
+      "formula": "'a+b+c'",
+      "description": "abc",
+      "result": "Kg/m3",
+      "storeResult":true,
+      "resultTag":"abc"
+    },
+    {
+      "alias": "$MRA_VBU_DNS_Feed",
+      "formula": "a+b+c",
+      "description": "abc",
+      "result": "Kg/m3",
+      "storeResult":true,
+      "resultTag":"abc"
+    },
+    {
+      "alias": "$MRA_VBU_DNS_Feed",
+      "formula": "a+b+c/d",
+      "description": "abc",
+      "result": "Kg/m3",
+      "storeResult":true,
+      "resultTag":"abc"
+    },
+    {
+      "alias": "$MRA_VBU_DNS_Feed",
+      "formula": "a+b+c",
+      "description": "abc",
+      "result": "Kg/m3",
+      "storeResult":true,
+      "resultTag":"abc"
+    },
+    {
+      "alias": "$MRA_VBU_DNS_Feed",
+      "formula": "a+b+c",
+      "description": "abc",
+      "result": "Kg/m3",
+      "storeResult":true,
+      "resultTag":"abc"
+    }
+
+  ]

@@ -1,0 +1,230 @@
+/* equipment Efficiency Css */
+
+
+#equipment-overview .title .col-sb{
+    width: 12rem;
+}
+#equipment-overview .leg{
+    font-size: 13px;
+    color: #d9d9d9;
+}
+#equipment-overview .title .vl {
+    border-left: 2px solid whitesmoke;
+    height: 35px;
+    float: right;
+}
+#equipment-overview .left-box{
+    font-size: 22px;
+}
+#equipment-overview input {
+    font-size: 0.8vw;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+    max-width: 24vh;
+    cursor: pointer;
+    color: #f2f2f2;
+}
+
+#equipment-overview  .count-line{
+    height: 17vh;
+    margin-left: 18px;
+}
+#equipment-overview  .count-line2{
+    height: 14vh;
+    margin-left: 75px;
+}
+#equipment-overview .title{
+height: 38px;
+}
+#equipment-overview .title .col-dt{
+    text-align: right;
+}
+#equipment-overview .title .col-ty{
+    border-right: 1px solid whitesmoke;
+}
+#Equ-line{
+    position: absolute;
+    padding: 30px;
+}
+/* Column Chart CSS */
+ #Equ-column{
+    position: absolute;
+    padding: 15px;
+    left: 34px;
+}
+#equipment-overview .title-1 .col-vs{
+    width: 27%;
+    }
+#equipment-overview .title-1{
+    height: 46px;
+    }
+#equipment-overview .box1-yellow{
+    background-color: #FFC100;
+}
+
+#equipment-overview .title-1 .box1-blue{
+    background-color:#0896CC;
+}
+#equipment-overview .title-1 .eff-act{
+    padding-top: 10px;
+}
+#equipment-overview .title-1 .vl{
+    border-left: 2px solid whitesmoke;
+    height: 4vh;
+    position: absolute;
+    display: inline;
+    right: 7px;
+    top: 2px;
+    
+}
+#equipment-overview .title-1 h4{
+    padding-left: 9px;
+    color: #d9d9d9;
+}
+#equipment-overview .title-1 .box-eff{
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+#equipment-overview .title-1 .color-eff{
+    font-size: 1vw; 
+    color: #d9d9d9;
+    padding-left: 6px;
+}
+
+#equipment-overview hr{
+ border: 1px solid #6c6f7e;
+}
+#equipment-overview .title-1 .col-sb{
+    width: 10rem;
+}
+#equipment-overview .title-1 .col-st{
+    font-size: 1.1vw;
+
+}
+#equipment-overview .second-title{
+    font-size: 1vw;
+}
+
+/*Fccunit table CSS */
+#equipment-overview table {
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    position: relative;
+    width: 100%
+}
+#equipment-overview td, th {
+    text-align: left;
+    padding: 7px;
+    font-size: 16px;
+}
+#equipment-overview td {
+   
+    color: #d9d9d9;
+    border-bottom: 1px solid #7e808b;
+}
+#equipment-overview th {
+    background-color: #442266;
+    color:  #d9d9d9;
+
+}
+#equipment-overview .title {
+    color: #d9d9d9;
+    font-size: 1.1vw;
+    padding: 0px;
+    font-family:  Yu Gothic UI;
+}
+#equipment-overview .tiles-row .steam-table{
+    padding-left: 0px;
+}
+#equipment-overview .dropdown {
+    position: relative;
+  
+}
+
+#equipment-overview .col-tb{
+    height: 46vh;
+    border-left-color: #6c6f7e;
+    border-left-style: solid;
+    border-left-width: 2px;
+}
+
+#equipment-overview #kpiTablemeg{
+    max-width: 141px;
+    font-size: 14px;
+    color: #d9d9d9;
+    padding: 3px;
+    float: right;
+}
+#equipment-overview select,input{
+    font-size: 10px;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    padding: 0px;
+    border-radius: 5px;
+    margin-left: 15px;
+    max-width: 131px;
+    cursor: pointer;
+}
+#equipment-overview .line{
+    height: 0.8vh;
+    width: 25px;
+    display: inline-block;
+    position: relative;
+    margin-top: 0.5vw;
+    margin-left: 0.3vw; 
+}
+#equipment-overview .line-1{
+    height: 0.8vh;
+    width: 25px;
+    display: none;
+    position: relative;
+    margin-top: 0.5vw;
+    margin-left: 0.3vw; 
+}
+
+#equipment-overview .first-spa{
+    background-color: #C55B11;
+}
+#equipment-overview .secd-spa{
+    background-color: #D945B4;
+}
+#equipment-overview .third-spa{
+    background-color: #FFA700;
+}
+#equipment-overview .four-spa{
+    background-color: #0896CC;
+       
+}
+
+#equipment-overview .col-rt {
+    position: relative;
+    color: #d9d9d9;
+    display: inline-block;
+    font-size: 0.2;
+    font-size: 1vw;
+    margin-left: 0.3vw;
+}
+#equipment-overview .col-rt-1 {
+    position: relative;
+    color: #d9d9d9;
+    display: none;
+    font-size: 0.2;
+    font-size: 1vw;
+    margin-left: 0.3vw;
+
+}
+#equipment-overview .wdt{
+    width: 20%;
+}
+#equipment-overview .meg-headline {
+    font-size: 2vw;
+    margin-top: -9px;
+    margin-bottom: -3px;
+    padding-top: 5px;
+    color: #d9d9d9;
+}

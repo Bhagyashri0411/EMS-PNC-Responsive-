@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="../../../templates/dashboard/horizontal-tiles/horizontal-tiles.css" />
+<script src="./../../../templates/dashboard/horizontal-tiles/horizontal-tiles.js"></script>
+<div class="col-md-12 tiles-row">
+ 
+        <div class="row">
+            <div class="col-md-12">
+            <div class="col-md-2 card-col">
+                <div class="card">
+                    <div class="row">
+                        <div class="title" style="padding: 0 1.1vw;"> Specific Energy Cost
+                          <br>  (INR/ MT of Actual Production)</div>
+                    </div>
+                    <div class="body">
+                        <div id="zingChart" style="height: 5.7vw;"></div>
+                    </div>
+                    <div class="footer" style="padding: 0.05vw;">
+                        <div class="deviation text-center">
+                            <span class="label">Deviation : </span><span class="count" id="dev"> </span>
+                        </div>
+                        <div class="actual text-center" style="height:                             1.5vw;">
+                            <div class="row" style="display: inline-flex;">
+                                <span class="label">Actual | Reference : </span><span class="count"><span id="act1">
+                                    </span> | <span id="opt1"> </span></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 card-col">
+
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">Specific Energy Consumption <br>
+                        TOE/MT of Actual Production</div>
+                    <div class="body">
+                        <div id="countHorizon3" class="count">562</div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF :
+                            <span id="ref3">895</span> </span><span id="resulthome3" class="result pull-right">+8.3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 card-col">
+
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">Total Energy Consumed <br>(TOE/hr)</div>
+                    <div class="body">
+                        <div id="countHorizon1" class="count"></div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF :
+                            <span id="ref1"></span> </span><span id="resulthome1" class="result pull-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 card-col">
+
+                <div class="card clearfix">
+                    <div id="EneInt" class="title" style="padding: 0 1.8vw">GHG Emission(tCO2e)<br>(Ton/hr) </div>
+
+                    <div class="body">
+                        <div id="countHorizon2" class="count"></div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref2"></span> </span><span id="resulthome2"
+                            class="result pull-right">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 card-col">
+                <div class="card clearfix donought-card">
+                    <div class="title">
+                        <div class="main-title">
+                            <span class="subtitle">Total Fuel Consumed</span>
+                            <input type="radio" class="donougt-radio" value="Ton" id="Ton-h" name="fav_language">  
+                            <label for="Ton" class="lebel-style">Ton/hr</label>
+                            <input type="radio" class="donougt-radio" value="Gcal" id="Gcal-h" name="fav_language"
+                                checked>   <label for="Gcal" class="lebel-style">TOE/hr</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 text-left">
+                            <div class="body clearfix text-left">
+                                <div class="donut text-left">
+                                    <div id="tiles-doughnut" class="text-left" style="height: 9.5vw;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="chart-legends">
+                                <!-- <div class="legend">
+                                    <span class="legend-circle legend-solid"></span><span class="legend-text">Solid</span>
+                                </div> -->
+                                <div class="legend">
+                                    <span class="legend-circle legend-liquid"></span><span
+                                        class="legend-text">Liquid</span>
+                                </div>
+                                <div class="legend">
+                                    <span class="legend-circle legend-gas"></span><span class="legend-text">Gas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

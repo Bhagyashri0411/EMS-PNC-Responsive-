@@ -1,0 +1,59 @@
+.area-background{
+    font-size: 1vw;
+    font-weight: normal;
+    padding: 0 1vw;
+    color: #d9d9d9;
+    text-align: center;
+}
+.label-color{
+    height: 3vh;
+ margin-left: 5px;
+}
+.line-legends{
+    padding: 1.48vw;
+    color: #26293c;
+}
+.column-2 {
+    height: 3.4vw;
+    float: left;
+    width: 7.5vw;
+    padding: 0vw 0.7vw;
+}
+
+.card1 {
+   
+    padding: 0.5vw;   
+    border-radius: 0.6vw;
+}
+#text1 {
+    color: #f5f0f0;
+    font-size: 1.3vw;
+}
+.heading{
+    font-size: 2vw;
+}
+.box3{
+    width: 1.2vw;
+    height: 1vw;
+    display: inline-block;
+    margin-top: 0.15vw;
+}
+.green{
+    background-color: #00b050;
+}
+.yellow{
+    background-color: #ffc000;
+}
+.red{
+    background-color:#ff0000;
+}
+.grey{
+    background-color: #afabab;
+}
+.colorbox-range{
+   font-size: 0.9vw; 
+
+}
+.count-line{
+    height: 19.6vw;
+}

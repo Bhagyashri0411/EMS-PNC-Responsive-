@@ -1,0 +1,132 @@
+<link rel="stylesheet"
+    href="./../../templates/optimization-overview/optimization-overview-unit/optimization-overview-unit.css" />
+<script src="./../../templates/optimization-overview/optimization-overview-unit/optimization-overview-unit.js"></script>
+
+
+
+<div class="col-md-12 opunit ope1">
+    <!-- <div class="col-md-12"> -->
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-12 card-col">
+                <div class="card clearfix">
+                    <div class="title">
+                        <div class="overflow genratorsHeight">
+                            <table class="table1">
+                                <thead>
+                                    <tr>
+                                        <th> majorcontributor (INR/hr)</th>
+                                        <th> Actual</th>
+                                        <th> Optimized</th>
+                                        <!-- <th></th> -->
+                                        <th> Deviation</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody id="optimizemajortable"></tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 pr-0 pl-0 mt-14">
+                <ul class="nav nav-tabs card-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#fuel-system" aria-controls="fuel-system" role="tab"
+                            data-toggle="tab">Fuel
+                            System</a></li>
+                    <li role="presentation"><a href="#electic" aria-controls="electic" role="tab"
+                            data-toggle="tab">Electrical Power System</a></li>
+                    <li class="pull-right"><button class="btn purple-button" style="font-size: 1.2vw;">Steam Network
+                            System</button></li>
+                </ul>
+
+                <div class="card-col has-card-tabs">
+                    <div class="card clearfix">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="fuel-system" style="padding-top: 10px;">
+                                <div class="title overflow genratorsHeight">
+                                    <table class="table2">
+                                        <thead>
+                                            <tr>
+                                                <th> Fuel System Overview (T/hr)</th>
+                                                <th> Actual</th>
+                                                <th> Optimized</th>
+                                                <!-- <th></th> -->
+                                                <th> Deviation </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="optimizefueltable"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="electic" style="padding-top: 10px;">
+                                <div class="title overflow genratorsHeight">
+                                    <table class="table3">
+                                        <thead>
+                                            <tr>
+                                                <th class="padding">Electrical Power System
+                                                    Overview
+                                                    <br>(MWh)
+                                                </th>
+                                                <th>Actual</th>
+                                                <th>Optimized</th>
+                                                <!-- <th></th> --> 
+                                                <th>Deviation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="optimizeelectricitytable"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-7 card-col">
+        <div class="card clearfix optimization-card">
+            <div class="title">
+                <div class="pr">
+                    <span class="left-box">
+                        <span class="firstbox"> </span>
+                        <span class="first-box-title">Overall Energy Cost</span>
+                    </span>
+                    <input type="datetime-local" id="optimizedrop" name="optimizedrop">
+                    <input type="datetime-local" id="fromopt" name="fromOpt">
+
+                </div>
+
+
+                <div class="col-sb mt-10">
+
+                    <span class="osv" id="line1"> </span>
+                    <span class="leg1" id="leble1">Actual</span>
+                    <span class="refbox" id="line2"></span>
+                    <span class="leg2" id="leble2">Optimized</span> &#160;
+                    <span class="feedbox" id="line3"></span>
+                    <span class="leg3" id="leble3">Throughput</span>
+
+
+
+                </div>
+
+
+                <div class="body">
+
+                    <div class="col-md-12">
+                        <div id="SVOptimizationsecgraph"></div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>

@@ -1,0 +1,287 @@
+#tgtu-horizontal-tiles .tiles-row .card {
+    background-color: #26293c;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card .title {
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0 10px;
+    color: #d9d9d7;
+    text-align: center;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card .body .count {
+    text-align: center;
+    font-size: 44px;
+    font-family: Bahnschrift Light;
+    color: #f2f2f2;
+    padding-top: 25px;
+    padding-bottom: 28px;
+    font-weight: 600;
+}
+#tgtu-horizontal-tiles .tiles-row .card .body1 .count {
+    text-align: center;
+    font-size: 44px;
+    font-family: Bahnschrift Light;
+    color: #f2f2f2;
+    font-weight: 600;
+}
+#tgtu-horizontal-tiles .tiles-row .card .body1 {
+    text-align: center;
+    font-size: 44px;
+    font-family: Bahnschrift Light;
+    color: #f2f2f2;
+    padding-top: 22px;
+    padding-bottom: 40px;
+    font-weight: 600;
+}
+
+
+
+#tgtu-horizontal-tiles .tiles-row .card .footer .ref {
+    color: #d9d9d7;
+    font-size: 12px;
+    display: inline-block;
+    padding: 6px 0px;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card .footer .result {
+    color: #d9d9d7;
+    font-size: 14px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card .footer .result.red {
+    background-color: #ff0000;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card .footer .result.green {
+    background-color: #00b050;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card-col {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#tgtu-horizontal-tiles .card .title .main-title {
+    font-size: 14px;
+}
+
+#tgtu-horizontal-tiles .card .body .donut {
+    height: 12rem;
+}
+
+#tgtu-horizontal-tiles .card .body #doughnut {
+    margin: 0px 50px;
+}
+
+#tgtu-horizontal-tiles .card .title .main-title .subtitle {
+    float: left;
+}
+
+
+
+#tgtu-zingChart {
+    height: 100%;
+    width: 170px;
+}
+
+#tgtu-zingChart-wrapper {
+    padding-top: 68px;
+}
+
+#tgtu-zingChart-wrapper,
+#tgtu-zingChart-top {
+    height: 85px !important;
+}
+
+#tgtu-horizontal-tiles .footer .deviation .label,
+#tgtu-horizontal-tiles .footer .actual .label {
+    font-weight: normal;
+    color: #d9d9d9;
+}
+
+#tgtu-horizontal-tiles .footer .deviation .label {
+    font-size: 16px;
+    padding: 0;
+}
+
+#tgtu-horizontal-tiles .footer .actual .label {
+    padding: 0;
+}
+
+#tgtu-horizontal-tiles .footer .deviation .count,
+#tgtu-horizontal-tiles .footer .actual .count {
+    font-weight: bold;
+    color: #d9d9d9;
+}
+
+#tgtu-horizontal-tiles .tiles-row .card.donought-card {
+    padding-bottom: 30px;
+}
+
+#tgtu-horizontal-tiles .chart-legends {
+    padding-top: 20px;
+    padding-left: 40px;
+}
+
+#tgtu-horizontal-tiles .chart-legends .legend {
+    padding: 5px 0;
+}
+
+#tgtu-horizontal-tiles .chart-legends .legend .legend-circle {
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#tgtu-horizontal-tiles .chart-legends .legend .legend-circle.legend-solid {
+    background-color: #ffa600;
+}
+
+#tgtu-horizontal-tiles .chart-legends .legend .legend-circle.legend-liquid {
+    background-color: #00aa7e;
+}
+
+#tgtu-horizontal-tiles .chart-legends .legend .legend-circle.legend-gas {
+    background-color: #005374;
+}
+
+#tgtu-horizontal-tiles .chart-legends .legend .legend-text {
+    color: #d9d9d9;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#tgtu-horizontal-tiles #tiles-doughnut {
+    margin: 0px 43px;
+}
+#tgtu-horizontal-tiles .specific-table{
+    padding: 11px;
+    color: white;
+}
+#tgtu-horizontal-tiles .main-line {
+    margin: 0px;
+    height: 38px;
+    padding: 10px;
+}
+#tgtu-horizontal-tiles  .bottom-line{
+    border-bottom: 1px solid lightgray;
+}
+#tgtu-horizontal-tiles .type{
+    width: 45%;
+    float: left;
+    font-size: 15px;
+}
+#tgtu-horizontal-tiles .value{
+    width: 30%;
+            float: left;
+            height: 18px;
+            font-size: 15px;
+            text-align: end;
+}
+#tgtu-horizontal-tiles .quantity{
+    height: 18px;
+    width: 23%;
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    text-align: end;
+}
+
+.tiles-row .steam-table{
+    padding-left: 0px;
+}
+#tgtu-horizontal-tiles .col-body{
+    padding: 8px;
+}
+#tgtu-horizontal-tiles .tiles-row .card-2 {
+    background-color: #26293c;
+    padding: 10px;
+    border-radius: 10px;
+}
+#tgtu-horizontal-tiles .tiles-row .card-2 .title {
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0 10px;
+    color: #d9d9d7;
+    text-align: center;
+}
+
+  /* equipment tgtu-equipment-overview Css */
+
+
+#tgtu-equipment-overview  .count-line{
+    height: 185px;
+}
+#tgtu-equipment-overview .title{
+height: 38px;
+}
+#tgtu-equipment-overview .title .col-dt{
+    text-align: right;
+}
+/* Column Chart CSS */
+
+#tgtu-equipment-overview .title .col-vs{
+    width: 27%;
+    }
+#tgtu-equipment-overview .title{
+    height: 46px;
+    }
+
+#tgtu-equipment-overview .title .eff-act{
+    padding-top: 10px;
+}
+
+#tgtu-equipment-overview .title h4{
+    padding-left: 9px;
+    color: #BEC8CA;
+}
+#tgtu-equipment-overview #TGTU-line{
+    margin: 0px 11px;
+}
+
+#tgtu-equipment-overview hr{
+ border: 1px solid #6c6f7e;
+ margin-top: 0px;
+}
+
+#tgtu-horizontal-tiles table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 94%;
+    color: #d9d9d9;
+    font-family: Yu Gothic UI;
+    margin-left: 9px;
+    line-height: 1.12;
+}
+
+#tgtu-horizontal-tiles td {
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+    padding: 13px;
+}
+
+#tgtu-horizontal-tiles th {
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+    padding: 12px;
+    font-size: 10px;
+}
+
+#tgtu-horizontal-tiles table tr:last-child td {
+    border-bottom: 0;
+} 
+
+#tgtu-horizontal-tiles .tgtu  {
+    width: 0%;
+} 
+#tgtu-horizontal-tiles .percent  {
+    text-align: center;
+} 

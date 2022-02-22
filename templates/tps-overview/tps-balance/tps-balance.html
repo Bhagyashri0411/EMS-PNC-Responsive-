@@ -1,0 +1,488 @@
+<link rel="stylesheet" href="/../templates/tps-overview/tps-balance/tps-balance.css" />
+<script src="/../templates/tps-overview/tps-balance/tps-balance.js"></script>
+<!-- <div class="col-md-12"> -->
+<div class="col-md-12 ope1" style="margin-top: -5px;padding-left: 25px;">
+    <div class="cpp-balance-tab" style="display: inline-flex;">
+        <div class="card">
+            <div class="title">
+                <span class="heading"> SHP Steam Balance (TPH)</span>
+                <div class="headvalue">
+                    <span class="pretem pull-left"> T : <span id="tem1"> </span></span>
+                    </span>&nbsp;
+                    <span class="pretem pull-right"> P : <span id="press1"></span></span>
+
+                </div>
+
+            </div>
+
+            <div class="body-blue overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Generators &nbsp; (TPH)</th>
+
+                        <!-- <th></th> -->
+                        <!-- <th></th> -->
+                    </tr>
+                    <tbody id="generatorstable"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total1"> </span>
+                </div>
+
+            </div>
+
+
+            <div class="body-yellow overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Consumers &nbsp; (TPH)</th>
+
+                        <!-- <th></th> -->
+                        <!-- <th></th> -->
+                    </tr>
+                    <tbody id="consumerstable"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total2" style="padding-left: 2vw;"> </span>
+                </div>
+            </div>
+
+
+            <div class="body-orange overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Export &nbsp; (TPH)</th>
+
+                        <!-- <th></th> -->
+                        <!-- <th></th> -->
+                    </tr>
+                    <tbody id="exporttable">
+                        <!-- <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr>
+                        <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr>
+                        <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr> -->
+
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="toalexp" style="padding-left:3.4vw"> </span>
+                </div>
+            </div>
+
+            <div class="body-pink">
+                <div class="row line">
+                    <span class="pull-left"> Losses &nbsp; (TPH) </span>
+                    <!-- <span class="pull-right">  </span> -->
+                </div>
+                <div class="Values">
+                    <div class="losses-total title1"> Total</div>
+                    <div class="footer">
+                        <span id="val-total0"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="progressbar" id="progressbar0"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="title">
+                <span class="heading"> HP Steam Balance (TPH)</span>
+                <div class="headvalue">
+                    <span class="pretem pull-left"> T : <span id="tem2"> </span></span>
+                    </span>&nbsp;
+                    <span class="pretem pull-right"> P : <span id="press2"></span></span>
+
+                </div>
+
+            </div>
+
+            <div class="body-blue overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Generators &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="generatorstable1"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total4" style="padding-left: 2.8vw;"> </span>
+                </div>
+            </div>
+
+            <div class="body-yellow overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Consumers &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="consumerstable1"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total5" style="padding-left: 4.5vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-orange overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Export &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="exporttable1"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total6" style="padding-left: 3vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-pink">
+                <div class="row line">
+                    <span class="pull-left"> Losses &nbsp; (TPH) </span>
+                    <!-- <span class="pull-right">  </span> -->
+                </div>
+                <div class="Values">
+                    <div class="losses-total title1"> Total</div>
+                    <div class="footer">
+                        <span id="val-total1"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="progressbar" id="progressbar1"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="title">
+                <span class="heading"> MP Steam Balance (TPH)</span>
+                <div class="headvalue">
+                    <span class="pretem pull-left"> T : <span id="tem3"> </span></span>
+                    </span>&nbsp;
+                    <span class="pretem pull-right"> P : <span id="press3"></span></span>
+
+                </div>
+            </div>
+
+            <div class="body-blue overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Generators &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="generatorstable2"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total8" style="padding-left: 4.5vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-yellow overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Consumers &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="consumerstable2"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total9" style="padding-left: 5vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-orange overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Export &nbsp; (TPH)</th>
+                        <th></th>
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="exporttable2"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total10" style="padding-left: 2.5vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-pink">
+                <div class="row line">
+                    <span class="pull-left"> Losses &nbsp; (TPH)</span>
+                    <!-- <span class="pull-right"> TPH </span> -->
+                </div>
+                <div class="Values">
+                    <div class="losses-total title1"> Total </div>
+                    <div class="footer">
+                        <span id="val-total2"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="progressbar" id="progressbar2"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="title">
+                <span class="heading"> LP Steam Balance (TPH)</span>
+                <div class="headvalue">
+                    <span class="pretem pull-left"> T : <span id="tem4"> </span></span>
+                    </span>&nbsp;
+                    <span class="pretem pull-right"> P : <span id="press4"></span></span>
+
+                </div>
+
+            </div>
+
+            <div class="body-blue overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Generators &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="generatorstable3"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total12" style="padding-left: 3.4vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-yellow overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Consumers &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="consumerstable3"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total13" style="padding-left: 2.5vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-orange overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Export &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="exporttable3">
+                        <!-- <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr>
+                        <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr>
+                        <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr> -->
+
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total21" style="padding-left:3.4vw"> </span>
+                </div>
+            </div>
+
+            <div class="body-pink">
+                <div class="row line">
+                    <span class="pull-left"> Losses &nbsp; (TPH) </span>
+                    <!-- <span class="pull-right"> TPH </span> -->
+                </div>
+                <div class="Values">
+                    <div class="losses-total title1"> Total</div>
+                    <div class="footer">
+                        <span id="val-total3"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="progressbar" id="progressbar3"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="title">
+                <span class="heading" style="display: inline-flex;"> BFW Balance (TPH)</span>
+                <div class="headvalue">
+                    <span class="pretem pull-left"> T : <span id="tem5"> </span></span>
+                    </span>&nbsp;
+                    <span class="pretem pull-right"> P : <span id="press5"></span></span>
+
+                </div>
+
+            </div>
+
+            <div class="body-blue overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Generators &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="generators4">
+                        <!-- <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr>
+                        <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr>
+                        <tr>
+                            <td> -</td>
+                            <td> -</td>
+                            <td> -</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total22" style="padding-left:3.4vw"> </span>
+                </div>
+            </div>
+
+            <div class="body-yellow overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Consumers &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="consumerstable4"></tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total15" style="padding-left: 1.1vw;"> </span>
+                </div>
+
+            </div>
+
+            <div class="body-orange overflow tableHeight">
+                <table>
+                    <tr>
+                        <th colspan="3"> Export &nbsp; (TPH)</th>
+                        <!-- <th></th> -->
+                        <!-- <th>TPH</th> -->
+                    </tr>
+                    <tbody id="exporttable4">
+                      
+
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="result">
+                <div class="losses-total">
+                    <span>Total </span> &nbsp; <span id="total23" style="padding-left:3.4vw"> </span>
+                </div>
+                <!-- <div class="losses-total">
+                    <span>Total</span> 
+                </div>
+                <div class="losses-value">-</div> -->
+                <!-- <span class="pull-right"> </span> -->
+            </div>
+
+            <div class="body-pink">
+                <div class="row line">
+                    <span class="pull-left"> Losses &nbsp; (TPH) </span>
+                    <!-- <span class="pull-right"> TPH </span> -->
+                </div>
+                <div class="Values">
+                    <div class="losses-total title1"> Total</div>
+                    <div class="footer">
+                        <span id="val-total4"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="progressbar" id="progressbar4"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- </div> -->

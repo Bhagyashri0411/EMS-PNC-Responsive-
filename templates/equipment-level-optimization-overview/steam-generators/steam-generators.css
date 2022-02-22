@@ -1,0 +1,131 @@
+/* CSS for Line graph */
+.steam-generator-tab .line{
+    height: 0.3vw;
+    width: 2.5vw;
+    display: inline-block;
+    margin: 0.2vw 0;
+    position: relative;
+}
+.steam-generator-tab .first-spa{
+    background-color: #00b0f0;   
+}
+.steam-generator-tab .secd-spa{
+    background-color: #00F66E;
+   }
+.steam-generator-tab .count-line{
+    height: 32vw;
+}
+
+.steam-generator-tab .col-rt {
+    position: relative;
+    color: #d9d9d9;
+    display: inline-block;
+    font-size: 0.9vw;
+}
+.steam-generator-tab .col-tb{
+    border-left : 1px solid #686a77;
+}
+.steam-generator-tab select,input{
+    font-size: 0.8vw;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    max-width: 12vw;
+    cursor: pointer;
+    color: #f2f2f2;
+    margin-right: 0.5vw;
+}
+.steam-generator-tab select{
+    padding: 4px;
+}
+.steam-generator-tab #generators{
+    max-width: 12vw;
+    font-size: 0.9vw;
+    padding: 3px 0;
+    color: #d9d9d9;
+    font-weight: normal;
+}
+.steam-generator-tab .title{
+    font-size: 2vw;
+}
+/* Table css */
+.steam-generator-tab table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.steam-generator-tab td {
+    font-size: 1vw;
+    color: #f2f2f2;
+    text-align: left;
+    border-bottom: 1px solid #686a77;
+    padding: 0.9vw 0.5vw;
+}
+
+.steam-generator-tab th {
+    background-color: #442266;
+    color: #d9d9d9;
+    font-weight: normal;
+    position: sticky;
+    top: 0;
+    padding: 0.9vw 0.5vw;
+    font-size: 1vw;
+}
+.steam-generator-tab table tr:last-child td {
+    border-bottom: 0;
+}
+.steam-generator-tab table td:nth-child(1){
+  color: #d9d9d9;
+   }
+.steam-generator-tab table td:nth-child(2){
+ text-align: center;
+}
+.steam-generator-tab table td:nth-child(3){
+    text-align: center;
+   }
+/* scroll */
+#steam-generators .overflow {
+    overflow: auto;
+}
+
+#steam-generators .genratorsHeight {
+    height: 41rem;
+}
+
+#steam-generators .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+#steam-generators ::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+#steam-generators ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+#steam-generators ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+#steam-generators ::-webkit-scrollbar-thumb:hover {
+    background:#8d8a95;
+}
+#steam-generators progress {
+    border-radius: 7px;
+    height: 10px;
+  }
+  #steam-generators  progress::-webkit-progress-bar {
+    background-color: #26293c;
+  }
+  #steam-generators  progress::-webkit-progress-value {
+    background-color: #c55a11;
+    /* box-shadow: 1px 1px 5px 3px rgba( 255, 0, 0, 0.8 ); */
+  }

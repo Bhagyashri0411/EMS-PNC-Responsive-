@@ -1,0 +1,247 @@
+#water-tab .card {
+    background-color: #26293c;
+    padding: 7px;
+    border-radius: 10px;
+    position: relative;
+    left: -23px;
+}
+#water-tab .cardnew {
+    background-color: #26293c;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #d9d9d9;
+    text-align: center;
+    height: 25rem;
+}
+
+#water-tab .card1 {
+    background-color: #26293c;
+    border-radius: 10px;
+    height: 15%;
+    width: 100%;
+    padding: 11px;
+}
+#water-tab.card .clearfix .mt-14{
+    padding-top: 0px;
+}
+#water-tab .card2 {
+    background-color: #26293c;
+    border-radius: 10px;
+    height: 18%;
+    width: 100%;
+    padding: 11px;
+   
+}
+
+#water-tab .card .title {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 0 10px;
+    color: #d9d9d9;
+    text-align: center;
+}
+
+#water-tab .card1 .title {
+    
+    position: relative;
+    left: 7px;
+    top: -16px;
+    color: #d9d9d9;
+    font-family: Yu Gothic UI;
+    text-align: left;
+}
+
+#water-tab .card2 .title {
+    position: relative;
+    left: 7px;
+    top: -16px;
+    color: #d9d9d9;
+    font-family: Yu Gothic UI;
+    text-align: left;
+}
+
+#water-tab .card .body .count {
+    text-align: center;
+    font-size: 25px;
+    color: #d9d9d9;
+    padding-top: 1px;
+    padding-bottom: 6px;
+    font-weight: bold;
+    font-family: Bahnschrift Light;
+}
+
+#water-tab .cardnew .body .count {
+    text-align: center;
+    font-size: 44px;
+    color: #d9d9d9;
+    padding-top: 34px;
+    padding-bottom: 25px;
+    font-weight: 700;
+    font-family: Bahnschrift Light;
+}
+
+#count1{
+    font-family: Bahnschrift Light;
+    font-size: 88px;
+}
+
+#water-tab .card .footer .ref {
+    color: #d9d9d9;
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px 0px;
+}
+
+#water-tab .cardnew .footer .ref {
+    color: #d9d9d9;
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px 0px;
+}
+
+#water-tab .card .footer .result {
+    color: #d9d9d9;
+    font-size: 14px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#water-tab .card .footer .result.red {
+    background-color: #ff0000;
+}
+#water-tab .cardnew .footer .result.red {
+    border-radius: 3px;
+    font-size: 15px;
+    background-color: #ff0000;
+}
+
+#water-tab .card .footer .result.green {
+    background-color: #00b050;
+}
+
+#water-tab .card-col {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+
+#water-tab .card .title .main-title {
+    font-size: 14px;
+}
+
+#water-tab .headerbottom-card {
+    padding-top: 0px;
+}
+
+#water-tab table {
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 15px;
+    color: #d9d9d9;
+    position: relative;
+}
+
+#water-tab td {
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#water-tab th {
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+    background-color: #432b64;
+    border-right-color:#552d7c;
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+/* line graph CSS */
+#water-tab .col-thr{
+    display: inline-block;
+}
+#water-tab .vl {
+    border-left: 2px solid whitesmoke;
+    height: 35px;
+    float: right;
+  }
+  #water-tab .actbox {
+    background-color: #00B1F0;
+    /* width: 30px; */
+    height: 3px;
+    padding-left: 20px;
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
+#water-tab .refbox {
+    background-color: #FFC100;
+    width: 20px;
+    height: 3.5px;
+    padding-left: 20px;
+    display: inline-block;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
+
+#water-tab .leg{
+    font-size: 17px;
+}
+#water-tab #fromwater{
+    max-width: 15rem;
+}
+#water-tab #towater{
+    max-width: 15rem;
+}
+#water-tab #hydro{
+    max-width: 18rem;
+    font-size: 13px;
+}
+
+#water-tab .card .left-box{
+    font-size: 23px;
+}
+#water-tab .unit-sec{
+    padding-top: 10px;
+}
+/* .col-ref{
+    width: 161px;
+} */
+#water-tab .col-sb{
+    width: 12rem;
+}
+#water-tab .col-st{
+    text-align: left;
+    font-size: 23px;
+}
+
+#water-tab #watersel{
+    max-width: 18rem;
+    font-size: 13px;
+}
+#water-tab .body .count-line{
+    height: 42rem;
+    padding-top: 24px;
+}
+#water-tab .xyz{
+    padding-left: 0px;
+}
+
+#water-tab .pr-0{
+    position: relative;
+    left: 14px;
+    width: 100%;
+}
+
+#water-tab .row{
+    margin-left: -9px;
+    text-align: left;
+}
+
+#water-tab table tr:last-child td {
+    border-bottom: 0;
+} 

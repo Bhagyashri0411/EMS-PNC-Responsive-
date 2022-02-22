@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="./../../templates/swing-unit-overview/swing-horizontal-tiles/swing-horizontal-tiles.css" />
+<script src="./../../templates/swing-unit-overview/swing-horizontal-tiles/swing-horizontal-tiles.js"></script>
+<div class="col-md-12 tiles-row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-4 card-col-5">
+                <div class="card">
+                    <div class="row">
+                        <div class="title"> Specific Energy Consumption
+                            </div>
+                    </div>
+                    <div class="body col">
+                        <div id="zingChart" style="height: 6.5vw;"></div>
+                    </div>
+                    <div class="footer">
+                        <div class="deviation text-center">
+                            <span class="label">Deviation :</span><span class="count" id="devswing"> </span>
+                        </div>
+                        <div class="actual text-center">
+                            <div class="row" style="display: inline-flex;">
+                                <span class="label">Actual | Reference : </span><span class="count"> <span id="actswing">
+                                    </span> &nbsp; | <span id="optswing"> </span></span>
+                            </div>
+                            
+                            <span class="label">(TOE/MT of Product)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 card-col-5">
+                <div class="card clearfix airtable-body">
+                    <div class="title">Specific Energy Consumption Breakup</div>
+                    <!-- <div class="main-title">
+                        T/T Feed
+                    </div> -->
+
+                    <div id="tablebody" class="body">
+                        <table>
+                            <tr>
+                                <th>Type</th>
+                                <th>SEC</th>
+                                <th>Reference</th>
+                                <th>Deviation</th>
+
+                            </tr>
+
+                            <tbody id="swingtable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-3 card-col-5">
+                <div class="card clearfix">
+                    <div class="title" style="padding: 0;"> Energy Consumed Break Up </div>
+                    <div class="main-title">
+                    <div class="swing-title" style="display: inline-flex;">
+                        <input type="radio" class="swing-doughnut" name="ratio-name" value="MTOE/Ton" id="Ton-swing" checked> 
+                        <label for="html" class="lebel-style">TOE/MT</label>
+                        <input type="radio" class="swing-doughnut" name="ratio-name" value="MTOE/hr" id="hr-swing"> 
+                        <label for="html" class="lebel-style"> TOE/hr</label>
+                        <input type="radio" class="swing-doughnut" name="ratio-name" value="INR/hr" id="INR-swing"> 
+                        <label for="html" class="lebel-style"> INR/hr</label>
+                    </div>
+                </div>
+                    <div class="body clearfix">
+                        <div class="donut">
+                            <div id="titles-swing" style="height: 8vw;"></div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chart-legends gap">
+                        <div class="line" style="display: inline-flex;">
+                            <div class="legend">
+                                <span class="legend-circle legend-solid"></span><span class="legend-text">Fuel</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-liquid"></span><span class="legend-text">Steam</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-gas"></span><span
+                                    class="legend-text">Electricity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="col-md-3 card-col-5" id="swingw2">
+                <div class="card clearfix donought-card">
+                    <div class="title" style="padding: 0;"> Steam Consumption Break Up <br>
+                        (SHP Equivalent) Ton/hr
+                         </div>
+
+                    <div class="body clearfix">
+                        <div class="donut">
+                            <div id="Fuel-swing" style="height: 8.2vw;"></div>
+                        </div>
+
+                    </div>
+                    <div class="chart-legends gap" style="padding-top: 1.25vw;">
+                        <div class="line" style="display: inline-flex;">
+                        <div class="legend">
+                            <span class="legend-circle legend-solid"></span><span class="legend-text">HP</span>
+                        </div>
+                       
+                        <!-- <div class="legend">
+                            <span class="legend-circle legend-liquid"></span><span class="legend-text">HP</span>
+                        </div> -->
+                        <div class="legend">
+                            <span class="legend-circle legend-gas"></span><span class="legend-text">LP</span>
+                        </div>
+                        <!-- <div class="legend">
+                            <span class="legend-circle legend-pink"></span><span class="legend-text">LP</span>
+                        </div> -->
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6 card-col-5">
+                <div class="card clearfix donought-card">
+
+                        <div class="body">
+                            <div class="overflow genratorsHeight-1">
+                            <table id="swing_card_table">
+                                <tr>
+                                    <th>Parameters</th>
+                                    <th class="hydro-tab">UOM</th>
+                                    <th class="hydro-tab">Reference</th>
+                                    <th class="hydro-tab">Actual</th>
+                                    <th class="hydro-tab">Deviation</th>
+                                </tr>
+                                <tbody id="swing_card_body"></tbody>
+                            </table>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

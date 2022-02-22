@@ -1,0 +1,199 @@
+.container{
+    color: #d9d9d9;
+    border: 1px solid #f2f2f2;
+}
+.tiles-row .card {
+    background-color: #26293c;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.tiles-row .card .title {
+    font-size: 1.1vw;
+    font-weight: normal;
+    padding: 0vw;
+    color: #cacac3;
+    text-align: center;
+}
+.tiles-row .card .tit-1{
+    font-size: 1vw;
+}
+.tiles-row .card .body .count {
+    text-align: center;
+    font-size: 2.1vw;
+    color: #f2f2f2;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.tiles-row .card .body .count-12 {
+    text-align: center; 
+    color: #f2f2f2;
+    padding: 0px 0px 0px 0px;
+     font-size: 1vw;
+}
+
+.tiles-row .card .footer {
+    min-height: 2.4vw;
+}
+
+.tiles-row .card .footer .ref {
+    color: #d9d9d9;
+    font-size: 1.1vw;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+.tiles-row .card .footer .result {
+    color: #d9d9d9;
+    font-size: 1.1vw;
+    padding: 0px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.tiles-row .card .footer .result.red {
+    background-color: #ff0000;
+}
+
+.tiles-row .card .footer .result.green {
+    background-color:#00aa55;
+}
+
+
+/* Chart  title CSS */
+
+.tiles-row .card-col {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.tiles-row .count-cpp-line {
+    height: 22vw;
+    /* padding-top: 10px; */
+}
+
+.ft-cpp {
+    font-size: 1vw;
+    float: left;
+    margin-left: 23px;
+    margin-top: 9px;
+}
+
+.ft-cpp>label {
+    font-weight: 100;
+    font-size: 1VW;
+}
+
+.tt-cpp>label {
+    font-weight: 100;
+    font-size: 1VW;
+}
+.th-cpp{
+    margin-right: 164px;
+}
+.tt-cpp {
+    font-size: 1VW;
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+input {
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px; 
+    max-width: 15vw; 
+    margin-top: 12px;
+    margin-right: 1vw;
+}
+
+.et-cpp>span {
+    float: left;
+    margin-left: 26px;
+    font-size: 2vw;
+    color: #d9d9d9;
+}
+
+.box-eff{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.box-yellow{
+    background-color: #ffc000;
+}
+
+.box-blue{
+    background-color: #0895cc;
+}
+
+.box-merge{
+    height: 20px;
+    color: #d9d9d9;
+    font-size: 1vw;
+    margin-left: 10px;
+}
+
+    /* table */
+#tps_card_table  table{
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+       color: #d9d9d9;
+    width: 100%;
+}
+
+#tps_card_table  td,td
+ {
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 0.9vw;
+    padding: 0.5vw;
+    color: #f2f2f2;
+}
+#tps_card_table  th {
+    padding: 0.2vw;
+    background-color: #442266;
+    font-size: 0.8vw;
+    color: #d9d9d9;
+    font-weight: normal;
+    position: sticky;
+    top: 0;
+}
+
+          /* scroll */
+.overflow {
+            overflow: auto;
+        }
+        
+ .genratorsHeight {
+    height: 17.7vw;
+        }
+                
+ .genratorsHeight-1 {
+    height: 9vw;
+        }
+ .scroll {
+            width: 40%;
+            overflow: auto;
+        }
+        
+ ::-webkit-scrollbar {
+            width: 0.3vw;
+            height: 1.3vw;
+        }
+        
+ ::-webkit-scrollbar-track {
+            border: 1px solid #262A3C;
+            border-radius: 15px;
+        }
+        
+ ::-webkit-scrollbar-thumb {
+            background: #8d8a95;
+            border-radius: 15px;
+        }
+        
+ ::-webkit-scrollbar-thumb:hover {
+            background:#8d8a95;
+        }

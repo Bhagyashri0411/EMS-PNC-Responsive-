@@ -1,0 +1,194 @@
+<link rel="stylesheet" href="./../../../templates/energy-overview/hydrogen/hydrogen.css" />
+<script src="./../../../templates/energy-overview/hydrogen/hydrogen.js"></script>
+<div class="col-md-12 hydrogen-tab" id="hydrogen-tab">
+
+    <div class="col-md-9">
+        <div class="row">
+<div class="col-md-12 pl-7 pr-0">
+            <div class="col-md-3 card-col">
+                <div class="card clearfix">
+                    <div class="title" style="padding: 0 1.5vw;">Total Hydrogen Generation (kg/hr)</div>
+
+                    <div class="body">
+                        <div id="count_hydro1" class="count"></div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left"> REF : <span id="ref_hydro1"></span> </span><span id="result_hydro1"
+                            class="result pull-right">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card clearfix">
+                    <div class="title">Total Hydrogen Consumption (kg/hr)</div>
+                    <div class="body">
+                        <div id="count_hydro2" class="count"></div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref_hydro2"> </span> </span><span id="result_hydro2"
+                            class="result pull-right">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card clearfix">
+                    <div class="title" style="padding: 0 1vw;">Hydrogen to OFFGas <br>
+                        (kg/hr)</div>
+                    <div class="body">
+                        <div id="count_hydro3" class="count"  style="padding: 2.3vw;"> </div>
+                    </div>
+                    <!-- <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref_hydro3"> </span> </span><span id="result_hydro3"
+                            class="result pull-right"></span>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card clearfix">
+                    <div class="title" style="padding: 0 4vw;">Imbalance <br>
+                        (kg/hr)</div>
+                    <div class="body">
+                        <div id="count_hydro4" class="count" style="padding: 2.3vw;"> </div>
+                    </div>
+                    <!-- <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref_hydro4"> </span> </span><span id="result_hydro4"
+                            class="result pull-right">
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 pl-7 pr-0">
+            <div class="col-md-12 card-col">
+                <div class="card mt-14">
+                    <div class="chart-title title">
+                        <div class="row">
+                            <div class="col-md-12 col-first text-left">
+                                <!-- <div class="col-md-4 col-st"> -->
+                                <div style="display: inline-flex;">
+
+                                    <span class="first-box-title" id="heading-hydrogen">Total Hydrogen
+                                        Generation (kg/hr)</span>
+                                </div>
+                                <!-- </div> -->
+                                <!-- <div class="col-md-8 pull-right"> -->
+                                <div class="pull-right" style="display: inline-flex;">
+                                    <div class="col-tre">
+                                        <span class="input-title">KPI</span>
+                                        <select name="op-hydrogen" id="op-hydrogen">
+                                            <option value="Total Hydrogen Generation" name="Total Hydrogen Generation
+                                                (kg/hr)"> Total Hydrogen Generation
+                                            </option>
+                                            <option value="Total Hydrogen Consumption"
+                                                name="Total Hydrogen Consumption (kg/hr)"> Total Hydrogen Consumption
+                                            </option>
+                                            <option value="Hydrogen to OFFGas" name="Hydrogen to OFFGas
+                                                (kg/hr)"> Hydrogen to OFFGas
+                                                kg/hr </option>                                           
+                                            <option value="Imbalance" name="Imbalance
+                                                (kg/hr)"> Imbalance</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="col-tre">
+                                        <span class="from">
+                                            <span class="input-title">From</span>
+                                            <input type="datetime-local" id="fromhydrogen" name="fromhydrogen">
+                                        </span>
+                                    </div>
+                                    <div class="col-tre">
+                                        <span class="to">
+                                            <span class="input-title">To</span>
+                                            <input type="datetime-local" id="tohydrogen" name="tohydrogen">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line text-left">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- <div class="col-md-10"> -->
+                                <span class="actbox osv"> </span>
+                                <span class="leg"> Actual</span>
+
+                                <span class="refbox"></span>
+                                <span class="refbox"></span>
+                                <span class="leg">Reference</span>
+                            </div>
+
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="body clearfix chart-body">
+                        <div class="col-md-12">
+                            <!-- <div class="overflow consumerHeight"> -->
+                            <div class="count-line">
+                                <div id="hydrogen-line"></div>
+                                <!-- </div> -->
+                                <!-- <div class="row"
+                                        style="background-color: #26293c;height:10px;width: 10%;position: relative;top: 380px;">
+                                    </div>
+                                    <div class="row"
+                                        style="background-color: #26293c;height:10px;width: 10%; position: relative;top: 379px;float: right; left: -10px;">
+                                    </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-3 card-col">
+        <div class="card">
+            <div class="body">
+                <div class="overflow genratorsHeight">
+                    <table>
+                        <tr>
+                            <th>Generators (kg/hr)</th>
+                            <th>Actual</th>
+                            <th>%</th>
+                        </tr>
+                        <tbody id="hydrogen_table1"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-14">
+            <div class="body">
+                <div class="overflow tableheight">
+                    <table>
+                        <tr>
+                            <th>Consumers (kg/hr)</th>
+                            <th>Actual</th>
+                            <th>SHC%</th>
+                        </tr>
+                        <tbody id="hydrogen_table2"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-14">
+            <div class="body">
+                <div class="overflow tableheight">
+                    <table>
+                        <tr>
+                            <th>Export/Import (kg/hr)</th>
+                            <th>Actual</th>
+                        </tr>
+                        <tbody id="hydrogen_table3"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

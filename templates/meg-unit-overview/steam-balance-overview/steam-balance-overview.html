@@ -1,0 +1,72 @@
+<link rel="stylesheet"
+    href="./../../../templates/meg-unit-overview/steam-balance-overview/steam-balance-overview.css" />
+<script src="./../../../templates/meg-unit-overview/steam-balance-overview/steam-balance-overview.js"></script>
+<div class="meg-headline">Steam Balance Overview</div>
+<div class="steam-balance-overview-meg">
+    
+    <div class="col-md-3 steam-table">
+        <div class="body">
+            <div class="overflow genratorsHeight">
+                <table>
+                    <tr>
+                        <th class="steam-gen1">Generators & Consumers</th>
+                        <th class="steam-gen2">TPH</th>
+                    </tr>
+             
+                    <tbody id="meg_table"></tbody>
+              
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+        <div class="row">
+            <!-- <div class="row box-width-rt"> -->
+            <div class="col-md-4 col-head">
+                <span class="left-box">
+                    <span class="first-box-title" id="megcharts">HP Steam import
+                        Trend</span>
+                </span>
+            </div>
+            <div class="col-md-8">
+                <div class="row pull-right">
+                    <span class="trend">
+                        <select name="megdrop" id="megdrop">
+                            <option value="HP Steam Import" name="HP Steam Import Trend">HP Steam Import</option>
+                            <option value="HP Steam Consumption" name = "HP Steam Consumption Trend"> HP Steam Consumption</option>
+                            <option value="MHP Steam Generation" name= "MHP Steam Generation Trend"> MHP Steam Generation</option>
+                            <option value="MHP Steam Consumption" name= "MHP Steam Consumption Trend"> MHP Steam Consumption</option>
+                            <option value="MHP Steam Imbalance" name = "MHP Steam Imbalance Trend"> MHP Steam Imbalance</option>
+                            <option value="MP Steam Generation" name= "MP Steam Generation Trend"> MP Steam Generation</option>
+                            <option value="MP Steam Consumption" name = "MP Steam Consumption Trend"> MP Steam Consumption</option>
+                            <option value="MP Steam Imbalance" name= "MP Steam Imbalance Trend"> MP Steam Imbalance</option>
+                            <option value="LP Steam Generation" name = "LP Steam Generation Trend"> LP Steam Generation</option>
+                            <option value="LP Steam Consumption" name= "LP Steam Consumption Trend"> LP Steam Consumption</option>                            
+                            <option value="LP Steam Imbalance" name= "LP Steam Imbalance Trend"> LP Steam Imbalance</option>
+                      
+                        </select>
+                    </span>
+                    <span class="from">
+                        <input type="datetime-local" id="fromHomemeg" name="fromHomemeg">
+                    </span>
+                    <span class="to">
+                        <input type="datetime-local" id="toHomemeg" name="toHomemeg">
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+        <div class="actual-line">
+            <span class="actbox"> </span>
+            <span class="leg"> Actual (TPH)</span>
+        </div>
+        <div class="body">
+            <div class="count-line">
+                <div id="chartSteamBalancemeg" style="height: 40vh;"></div>
+            </div>
+        </div>
+    </div>
+</div>

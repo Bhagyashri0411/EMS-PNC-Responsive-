@@ -1,0 +1,257 @@
+.Usermanual-tabb .card {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Usermanual-tabb .card .title {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0 10px;
+    color: #d9d9d9;
+    text-align: center;
+}
+
+.Usermanual-tabb .card .body .count {
+    text-align: center;
+    font-size: 44px;
+    color: #d9d9d9;
+    padding-top: 15px;
+    padding-bottom: 22px;
+}
+
+.Usermanual-tabb .card .footer .ref {
+    color: #d9d9d9;
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px 0px;
+}
+
+.Usermanual-tabb .card .footer .result {
+    color: #d9d9d9;
+    font-size: 14px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.Usermanual-tabb .card .footer .result.red {
+    background-color: #ff0000;
+}
+
+.Usermanual-tabb .card .footer .result.green {
+    background-color: #00b050;
+}
+
+.Usermanual-tabb .card-col {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.Usermanual-tabb .card .title .main-title {
+    font-size: 14px;
+}
+
+.Usermanual-tabb .card .body .donut {
+    height: 12rem;
+}
+
+.Usermanual-tabb .card .body #doughnut {
+    margin: 0px 50px;
+}
+
+.Usermanual-tabb .card .title .main-title .subtitle {
+    float: left;
+}
+
+.Usermanual-tabb .card .body .count-line {
+    height: 30rem;
+}
+
+.Usermanual-tabb #zingChart {
+    height: 100%;
+    width: 170px;
+}
+
+.Usermanual-tabb #zingChart-wrapper {
+    padding-top: 68px;
+}
+
+.Usermanual-tabb #zingChart-wrapper,
+#zingChart-top {
+    height: 85px !important;
+}
+
+.Usermanual-tabb .footer .deviation .label,
+.footer .actual .label {
+    font-weight: normal;
+    color: #d9d9d9;
+}
+
+.Usermanual-tabb .footer .deviation .label {
+    font-size: 16px;
+    padding: 0;
+}
+
+.Usermanual-tabb .footer .actual .label {
+    padding: 0;
+}
+
+.Usermanual-tabb .footer .deviation .count,
+.footer .actual .count {
+    font-weight: bold;
+    color: #d9d9d9;
+}
+
+.Usermanual-tabb .Usermanual-tabb .card.donought-card {
+    padding-bottom: 30px;
+}
+
+.Usermanual-tabb .chart-legends {
+    padding-top: 20px;
+    padding-left: 40px;
+}
+
+.Usermanual-tabb .chart-legends .legend {
+    padding: 5px 0;
+}
+
+.Usermanual-tabb .chart-legends .legend .legend-circle {
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.Usermanual-tabb .chart-legends .legend .legend-circle.legend-solid {
+    background-color: #ffa600;
+}
+
+.Usermanual-tabb .chart-legends .legend .legend-circle.legend-liquid {
+    background-color: #00aa7e;
+}
+
+.Usermanual-tabb .chart-legends .legend .legend-circle.legend-gas {
+    background-color: #005374;
+}
+
+.Usermanual-tabb .chart-legends .legend .legend-text {
+    color: #d9d9d9;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.Usermanual-tabb #tiles-doughnut{
+    margin: 0px 43px;
+}
+/* th{
+    text-align: center;
+}
+td{
+    padding: 3px;
+} */
+
+/* thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+} */
+.Usermanual-tabb table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    overflow: scroll;
+}
+
+.Usermanual-tabb .modal {
+   
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.Usermanual-tabb .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 18px;
+    border: 1px solid red;
+}
+
+.Usermanual-tabb .close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Usermanual-tabb th {
+    background-color: #432b64;
+    color: #d9d9d9;
+    font-weight: normal;
+    padding: 15px;
+}
+
+.Usermanual-tabb .card-col .card {
+    background-color: #26293c;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.Usermanual-tabb td {
+    border-left: none;
+    border-right: none;
+    color: #d9d9d9;
+    text-align: left;
+    border-bottom: 1px solid #686a77;
+    padding: 15px;
+}
+
+.Usermanual-tabb .btn-primary{
+    background-color: #432b64;
+    border: #432b64;
+}
+
+.Usermanual-tabb .btn-primary:hover{
+    background-color: #2a1b3f;
+
+}
+
+.Usermanual-tabb .scroll {
+    width: 40%;
+    height: 280px;
+  
+}
+.Usermanual-tabb .genratorsHeight {
+    height: 73vh;
+    overflow: auto;
+}
+
+
+.Usermanual-tabb ::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+.Usermanual-tabb ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.Usermanual-tabb ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+.Usermanual-tabb ::-webkit-scrollbar-thumb:hover {
+    background:#8d8a95;
+}

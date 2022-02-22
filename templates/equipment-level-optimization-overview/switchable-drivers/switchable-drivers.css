@@ -1,0 +1,61 @@
+.switchable-drivers-tab table {
+    width: 100%;
+}
+
+.switchable-drivers-tab th {
+    background-color: #432b64;
+    color: #d9d9d9;
+    padding: 6px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.switchable-drivers-tab td {
+    color: #d5d5d5;
+    border-bottom: 1px solid #7e808b;
+    font-weight: 400;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.switchable-drivers-tab .th-a {
+    width: 50%;
+    text-align: left;
+}
+
+.switchable-drivers-tab .td-a {
+    width: 15%;
+    text-align: left;
+}
+
+.switchable-drivers-tab table tr:last-child td {
+    border: 0px
+}
+
+.switchable-drivers-tab .head-title {
+    float: right;
+    font-size: 13px;
+    padding: 5px;
+    color: #d5d5d5;
+}
+
+.switchable-drivers-tab .indicator {
+    display: inline-block;
+    height: 16px;
+    background-color: #595959;
+    width: 16px;
+    border-radius: 8px;
+    margin: 0 30px;
+}
+
+.switchable-drivers-tab .indicator.TRUE {
+    background-color: #00bc55;
+}
+
+.switchable-drivers-tab .indicator-label {
+    font-size: 18px;
+}
+.switchable-drivers-tab .text-left {
+    text-align: left;
+    width: 45%;
+}

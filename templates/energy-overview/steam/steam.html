@@ -1,0 +1,248 @@
+<link rel="stylesheet" href="./../../../templates/energy-overview/steam/steam.css" />
+<script src="./../../../templates/energy-overview/steam/steam.js"></script>
+<div class="col-md-12 steam-tab" id="steam-tab">
+    <div class="col-md-12 card-col">
+        <div class="col-md-8 card-col">
+            <div class="card">
+                <div class="chart-title title">
+                    <div class="row" style="display: inline-flex;">
+
+                        <div class="col-md-12 col-first">
+                            <span class="left-box">
+                                <span class="firstbox"> </span>
+                                <span class="col-st">Specific Steam Consumption
+                                    (MT/MT of Product)</span>
+                            </span>
+                            <span class="secondbox"></span>
+                            <span class="second-box-title col-st">Throughput
+                                (MT/Day)</span>
+
+                            <span class="from">
+                                <span class="input-title"></span>
+                                <input type="datetime-local" id="fromsteam" name="fromsteam"  style="margin-left: 5px;">
+                            </span>
+                            <span class="to">
+                                <span class="input-title"></span>
+                                <input type="datetime-local" id="steamto" name="steamto" style="margin-left: 5px;">
+                            </span>
+
+                            <!-- <select name="steamto" id="steamto" class="dropto">
+
+                                <option value="1"> 1 Days</option>
+                                <option value="7"> 7 Day</option>
+                                <option value="15"> 15 Days</option>
+                                <option value="30"> 30 Days</option>
+                            </select> -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="line text-left">
+                    <span class="axis"> Primary Axis Trends :</span>&nbsp;&nbsp;
+                    <select id="chartsteamdata" name="Chart Type">
+                        <option value="column">Bar</option>
+                        <option value="spline">Line</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="axis"> Secondary Axis Trends :</span>&nbsp;&nbsp;
+                    <select id="chartsteamdata1" name="Chart Type1">
+                        <option value="spline">Line</option>
+                        <option value="column">Bar</option>
+                    </select>
+                </div>
+                <div class="body chart-body">
+                    <div class="count-line">
+                        <div id="steamchartLine"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-14">
+                <div class="chart-title title">
+                    <div class="row">
+
+                        <div class="col-md-12 col-first">
+                            <div>
+                                <span class="left-box">
+
+                                    <span class="col-st">Steam Vent Control Valve OP
+                                    </span>
+
+                                    <span class="from pull-right">
+                                        <input type="datetime-local" id="tosteamline2" name="tosteamline2"
+                                            style="display: inline-block;" class="pull-right">
+                                        <input type="datetime-local" id="fromsteamline2" name="fromsteamline2">
+                                    </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span style="display: inline-flex;">
+
+                                <div class="first-spa col-otr"> </div>
+                                <span class="col-rt">LP-CPP</span>
+
+                                <div class="sec-spa col-otr"> </div>
+                                <span class="col-rt">LP- NCU</span>
+
+                                <div class="third-spa col-otr"> </div>
+                                <span class="col-rt">LP- SWING</span>
+
+                                <!-- <div class="four-spa col-otr"> </div>
+                                <span class="col-rt">LP-PTA</span>
+    
+                                <div class="fifth-spa col-otr"> </div>
+                                <span class="col-rt">ELP</span>
+    
+                                <div class="six-spa col-otr"> </div>
+                                <span class="col-rt">LP-PX-PTA</span>
+    
+                                <div class="seven-spa col-otr"> </div>
+                                <span class="col-rt">HP-HGU</span> -->
+
+
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="body chart-body">
+                    <div class="count-line">
+                        <div id="PNCsteamLine2"></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 pl-7 pr-0">
+            <div class="card top-table-wrapper">
+                <div class="title">
+                    <div class="main-title" style="text-align: initial;"> SEC Steam (MT/MT of Product)</div>
+                </div>
+                <div class="body">
+                    <div class="overflow genratorsHeight">
+                        <table>
+                            <tr>
+                                <th>Type</th>
+                                <th class="align-num">SEC</th>
+                                <th>Reference</th>
+                                <th>Deviation</th>
+
+                            </tr>
+                            <tbody id="steam_table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pr-7">
+                    <div class="card mt-14 steam-doughnutChart-wrapper">
+                        <div class="title">
+                            <div class="main-title"> Steam Break Up</div>
+                            <div class="sub-title"> (MT/hr)</div>
+                        </div>
+                        <div class="body clearfix">
+                            <div class="donut">
+                                <div id="steam-doughnutChart" style="height: 8.6vw;"></div>
+                            </div>
+                            <div class="chart-legends">
+                                <div class="legend">
+                                    <span class="legend-circle legend-solid"></span><span class="legend-text">SHP</span>
+                                </div>
+                                <div class="legend">
+                                    <span class="legend-circle legend-liquid"></span><span class="legend-text">HP</span>
+                                </div>
+                                <div class="legend">
+                                    <span class="legend-circle legend-gas"></span><span class="legend-text">MP</span>
+                                </div>
+                                <div class="legend">
+                                    <span class="legend-circle legend-hp"></span><span class="legend-text">LP</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6 pl-7">
+                    <div class="card mt-14 steam-chartProgress-wrapper">
+                        <div class="title" style="text-align: center;">
+                            Steam Generation Capacity Utilization (%)
+                        </div>
+                        <div class="body clearfix">
+                            <div class="donut2">
+                                <div id="doughnutChartprogress" style="height: 9.3vw;"></div>
+                            </div>
+                            <div class="chart-legends" style="height: 1.3vw;">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-14">
+                <div class="body">
+                    <!-- <div class="overflow genratorsHeight1"> -->
+                    <table>
+                        <!-- <tr>
+                            <td rowspan="4" class="align-start" style="width: 33%;">
+                                Steam
+                                Generation Cost
+                                (INR/MT)
+                            </td>
+                            <td style="width:23%; text-align:start">Type</td>
+                            <td>Reference</td>
+                            <td>Actual</td>
+
+                        </tr>
+                        <tr>
+                            <td class="align-start" id="vhp"> VHP</td>
+                            <td id="numref1"></td>
+                            <td id="numact1"></td>
+                        </tr>
+                        <tr>
+                            <td class="align-start" id="hp"> HP </td>
+                            <td id="numref2"></td>
+                            <td id="numact2"></td>
+                        </tr>
+                        <tr>
+                            <td class="align-start" id="mp"> MP</td>
+                            <td id="numref3"></td>
+                            <td id="numact3"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="align-start" id="Recovery"> % Condensate Recovery</td> -->
+                        <!-- <td id="num3"></td> -->
+                        <!-- <td id="numact4"></td>
+                        </tr> -->
+                        <tr>
+                            <td colspan="3" class="align-start" id="Specific"> SHP Steam Generation Cost (INR/MT <br>
+                                of Product)
+                            </td>
+                            <td id="numact5">0</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3" class="align-start" id="Specific"> % Condensate Recovery
+                            </td>
+                            <td id="numact5">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="align-start" id="Specific"> Specific Water Consumption (MT/MW <br>
+                                of Power Generated)
+                            </td>
+                            <td id="numact5">0</td>
+                        </tr>
+                    </table>
+                    <!-- </div> -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="/../templates/tps-overview/tps/tps.css" />
+<script src="/../templates/tps-overview/tps/tps.js"></script>
+<div class="col-md-12 tiles-row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 card-col">
+                <div class="col-md-2 card-col">
+                    <div class="card clearfix">
+                        <div class="title">Total Power Generated
+                            <br>  (MWh)</div>
+                        <div class="body">
+                            <div class="count" id="TPC"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="TPGR"></span></span><span
+                                class="result pull-right" id="RES1"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 card-col">
+                    <div class="card clearfix">
+                        <div>
+                            <div class="title">Specific Fuel Consumption <br> (TOE/MW)</div>
+                        </div>
+                        <div class="body">
+                            <div class="count" id="SFC"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="SFCR"></span></span><span
+                                class="result pull-right" id="RES2"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 card-col">
+                    <div class="card clearfix">
+                        <div class="title">Specific Steam
+                            <br> (TOE/MT of SHP)</div>
+                        <div class="body">
+                            <div class="count" id="SS"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="SSR"></span></span><span
+                                class="result pull-right" id="RES4"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 card-col">
+                    <div class="card clearfix">
+                        <div>
+                            <div class="title tit-1">Optimum Power Generation <br> Cost(INR/kWh)</div>
+                        </div>
+
+                        <div class="body">
+                            <div class="count" id="OPGC" style="padding:1.6vw"></div>
+                        </div>
+                        <!-- <div class="footer">
+                            <span class="ref pull-left"><span id=""></span></span><span
+                                class="result pull-right" id=""></span>
+                        </div> -->
+                    </div>
+                    <!-- <div class="card clearfix mt-10">
+                        <div>
+                            <div class="title tit-1">Total Electricity
+                               <br>  Consumption (MW)</div>
+                        </div>
+
+                        <div class="body">
+                            <div class="count-12">0.5</div>
+                        </div>
+
+                    </div> -->
+                </div>
+                <div class="col-md-2 card-col">
+                    <div class="card clearfix">
+                        <div class="title">CPP Power Generation Cost <br>
+                            (INR/kWh)
+                             </div>
+                        <div class="body">
+                            <div class="count" id="CPGC"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="CPGCR"></span></span><span
+                                class="result pull-right" id="RES5"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 card-col">
+                    <div class="card clearfix">
+                        <div class="body">
+                            <div class="overflow genratorsHeight-1">
+                                <table id="tps_card_table">
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <!-- <th>UOM</th>/ -->
+                                        <th>Actual</th>
+                                    </tr>
+                                    <tbody id="tps_card_body">
+                                        <tr>
+                                            <td>GHG Emission
+                                                (tCO2e)10 Ton/hr</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Specific Water MT/MW of
+                                                Power
+                                                Generated</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Specific Water MT/MW of
+                                                Power
+                                                Generated</td>
+                                            <td>100</td>
+                                        </tr>
+                      
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 card-col">
+                <div class="col-md-2 card-col mt-14">
+                    <div class="card clearfix">
+                        <div class="title">Total Steam Generated <br>(MT/hr)</div>
+                        <div class="body">
+                            <div class="count" id="TSG"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="TSGR"></span></span><span
+                                class="result pull-right" id="RES6"></span>
+                        </div>
+                    </div>
+                    <div class="card clearfix mt-14">
+                        <div class="title">Overall Efficiency (%)</div>
+                        <div class="body">
+                            <div class="count" id="OE"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF :<span id="OER"></span></span><span
+                                class="result pull-right" id="RES7"></span>
+                        </div>
+                    </div>
+                    <div class="card clearfix mt-14">
+                        <div class="title">Gross Heat Rate <br> (kCal/kWH)</div>
+                        <div class="body">
+                            <div class="count" id="GHR"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF :<span id="GHRR"></span></span><span
+                                class="result pull-right" id="RES8"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 card-col mt-14">
+                    <div class="card clearfix">
+                        <div class="title">
+                            <div class="row cpp-tps">
+                                <div class="ft-cpp">
+                                    <input type="radio" value="Steam" id="steam" name="cpp-tps" checked
+                                        label="(INR/MT of Steam)"> <label for="html">Steam</label> <span>(INR/MT of
+                                        Steam)</span>
+                                </div>
+                                <div class="tt-cpp">
+                                    <input type="radio" id="power" value="Power" name="cpp-tps"
+                                        label="(INR/KWh of Power)"> <label for="html">Power</label> <span>(INR/KWh of
+                                        Power)</span>
+                                </div>
+                                <div class="erp pull-right">
+
+                                    <input type="datetime-local" id="fromcpp" name="from">
+                                    <input type="datetime-local" id="tps1" name="tps">
+                                    <!-- <select name="tps" id="tps1">
+                                        <option value="1"> 1 Day</option>
+                                        <option value="7"> 7 Days</option>
+                                        <option value="15"> 15 Days</option>
+                                        <option value="30"> 30 Days</option>
+                                    </select> -->
+
+                                </div>
+
+                            </div>
+                            <div class="row et-cpp">
+                                <span>Total Generation Cost</span><span id="unit"></span>
+                            </div>
+                        </div>
+                        <div class="mt-14 box-merge">
+                            <div class="box-eff box-blue"></div>
+                            <span class="color-eff"> Actual</span>
+                            <div class="box-eff box-yellow"></div>
+                            <span class="color-eff">Optimized</span>
+
+                        </div>
+
+                        <!-- <div class="row ">
+                     
+                    </div> -->
+                        <div class="body">
+
+                            <div class="count-cpp-line">
+                                <div id="cpp-tsp-barchart"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

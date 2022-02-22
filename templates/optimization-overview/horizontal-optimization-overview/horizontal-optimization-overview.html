@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="./../../templates/optimization-overview/horizontal-optimization-overview/horizontal-optimization-overview.css" />
+<script src="./../../templates/optimization-overview/horizontal-optimization-overview/horizontal-optimization-overview.js"></script>
+<div class="col-md-12 optitles-row ope1">
+    <!-- <div class="col-md-12"> -->
+        <div class="col-md-5 card-col">
+            <div class="card clearfix">
+                <div class="title">
+                    <span class="maintitle"> Potential Opportunity (INR/hr)</span>
+                </div>
+                <div class="body">
+                    <div class="row">
+                        <span class="trend">
+                            <select name="sbo" id="sbo1avu1">
+                                <option value="Daily">Daily</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Yearly">Yearly</option>
+                               
+                            </select>
+                        </span> 
+                        <div class="col-md-4">
+                            <span id="num"></span>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="chartContainerrArea"></div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="col-md-4">
+                        <span class="numt1">Actual Cost (INR/hr)<br> <span class="num1"
+                                id="num-Actual"></span>
+                        </span>
+
+                    </div>
+                    <div class="col-md-8">
+                        <span class="numt1">Optimum Cost (INR/hr)<br> <span class="num1"
+                                id="num-Optimum"></span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-7 card-col">
+            <div class="card">
+
+                <div class="title col-line">
+                    <span class="main-head">Recommendations</span>
+                </div>
+                <hr class="border">
+                <div class="body overflow genratorsHeight" style="height: 23vh;">
+                    <table class="table0">
+                        <!-- <thead>
+                        <tr>
+                            <td>Reduce load on Boiler # 2</td>
+                        </tr>
+                        <tr>
+                            <td>Reduce PRDS XX Flow, Increase STG XX steam flow</td>
+                        </tr>
+                        <tr>
+                            <td>Increase load on Boiler BR001 </td>
+                        </tr>
+                        <tr>
+                            <td>Increase load on Boiler BR001 </td>
+                        </tr>
+                        <tr>
+                            <td>Increase load on Boiler BR001 </td>
+                        </tr> -->
+
+                        <!-- </thead> -->
+                        <tbody id="recommendations"></tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+        <!-- </div> -->
+    </div>
+</div>

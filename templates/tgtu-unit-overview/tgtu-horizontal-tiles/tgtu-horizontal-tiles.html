@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="./../../../templates/tgtu-unit-overview/tgtu-horizontal-tiles/tgtu-horizontal-tiles.css" />
+<script src="./../../../templates/tgtu-unit-overview/tgtu-horizontal-tiles/tgtu-horizontal-tiles.js"></script>
+<div class="col-md-12 tiles-row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-4 card-col">
+                <div class="card-2">
+                    <div class="title">Specific Energy Consumption (Deviation %)</div>
+                    <div class="body col-body">
+                        <div id="tgtu-zingChart"></div>
+                    </div>
+                    <div class="footer">
+                        <div class="deviation text-center">
+                            <span class="label">Deviation :</span><span class="count"> 6.23 %</span>
+                        </div>
+                        <div class="actual text-center">
+                            <span class="label">Actual | Optimized : </span><span class="count">16.76 | 15.71</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 card-col">
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">SEC Steam (HP equivalent) T/T Feed</div>
+                    <div class="body">
+                        <div id="count1" class="count"></div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref1"></span> </span><span id="result1" class="result red pull-right">
+                             %</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 card-col">
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">Total Steam Consumption (HP Equivalent) <br>Ton/hr
+                    </div>
+                    <div class="body1">
+                        <div id="count2" class="count"></div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-6 card-col">
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">Steam Consumption Breakup <br> T/hr</div>
+                    <div class="body specific-table">
+                        <table id="tgtutable">
+                            <tr>
+                                <th>Type</th>
+                                <th class="percent">%</th>
+                                <th class="tgtu">T/hr</th>
+                             </tr>
+                
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">SEC Fuel<br> T/T Feed</div>
+                    <div class="body">
+                        <div id="count3" class="count"></div>
+                    </div>
+                    <div class="footer">
+                        <span class="ref pull-left">REF : <span id="ref3"></span></span><span id="result3" class="result red pull-right">
+                             %</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card clearfix">
+                    <div id="totalenergy" class="title">Total Fuel Consumption Ton/hr
+                    </div><br>
+                    <div class="body1">
+                        <div id="count4" class="count"></div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,375 @@
+@font-face {
+    font-family: 'Signika-Medium';
+    src: url('../../assets/fonts/Signika-Medium.ttf');
+    src: url('../../assets/fonts/Signika-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika-Light';
+    src: url('../../assets/fonts/Signika-Light.ttf');
+    src: url('../../assets/fonts/Signika-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body * {
+    font-family: 'Signika-Light';
+}
+
+body {
+    margin-top: 42px;
+}
+
+body.dark-theme {
+    background-color: #222233;
+}
+
+.summary-heading {
+    padding: 20px 10px;
+    padding-bottom: 10px;
+
+}
+
+
+
+.purple-button,
+.purple-button:hover,
+.purple-button:focus,
+.purple-button:focus-visible {
+    background-color: #7733aa;
+    color: #fff;
+    border: none;
+    outline: none;
+    pointer-events: none;
+}
+
+.nav-tabs.purple-tabs,
+.nav-tabs.card-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs.cpp-tps-purple-tab,
+.nav-tabs.card-tabs {
+    border-bottom: none;
+}
+.nav-tabs.energy-overview-purple,
+.nav-tabs.card-tabs {
+    border-bottom: none;
+}
+.nav-tabs.cpp-tps-purple-tab>li>a {
+    background-color: #fff;
+    color: #7733aa;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 25px;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-left: 6px;
+}
+.nav-tabs.energy-overview-purple>li>a {
+    background-color: #fff;
+    color: #7733aa;
+    border: none;
+    border-radius: 0.3vw;
+    padding: 0.3vw 1.3vw;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-left: 0.4vw;
+}
+.nav-tabs.purple-tabs>li>a {
+    background-color: #fff;
+    color: #7733aa;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3vw 1.5vw;
+    font-size: 1vw;
+    font-weight: bold;
+    border-end-end-radius: 17px;
+    border-end-start-radius: 17px;
+    height: 2.1vw;
+}
+
+.nav-tabs.purple-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #7733aa;
+    color: #fff;
+    border: none;
+}
+.nav-tabs.energy-overview-purple>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #7733aa;
+    color: #fff;
+    border: none;
+}
+.nav-tabs.cpp-tps-purple-tab>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #7733aa;
+    color: #fff;
+    border: none;
+}
+
+
+.nav-tabs.card-tabs {
+    padding: 0px 7px;
+}
+
+.nav-tabs.card-tabs>li>a {
+    background-color: #26293c;
+    color: #d9d9d9;
+    border: none;
+    border-radius: 20px 20px 0 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.nav-tabs.card-tabs>li.active>a,
+.nav-tabs.card-tabs>li.active>a:focus,
+.nav-tabs.card-tabs>li.active>a:hover {
+    background-color: #fff;
+    color: #26293c;
+    border: none;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-14 {
+    margin-top: 14px;
+}
+.mt-12 {
+    margin-top: 12px;
+}
+.pl-7 {
+    padding-left: 7px;
+}
+
+.pr-7 {
+    padding-right: 7px;
+}
+
+.pr-0 {
+    padding-right: 0;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+
+/* Card CSS */
+
+
+/* card column if bootstrap column */
+
+.card-col {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.card-col .card {
+    background-color: #26293c;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-col.has-card-tabs .card {
+    border-radius: 0 10px 10px 10px;
+}
+
+.card-col .card .title {
+    padding: 0 10px;
+    color: #d9d9d9;
+}
+.card-col-5 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.card-col-5 .card {
+    background-color: #26293c;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-col-5.has-card-tabs .card {
+    border-radius: 0 10px 10px 10px;
+}
+
+.card-col-5 .card .title {
+    padding: 0 10px;
+    color: #d9d9d9;
+}
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+
+/* footer css */
+
+/* footer.page-footer {
+    min-height: 30px;
+} */
+
+
+/* CSS for line chart title and sub title */
+
+
+/* Row Related CSS */
+
+.card .title.chart-title .left-box {
+    padding-top: 15px;
+    margin-right: 5px;
+}
+
+.card .title.chart-title {
+    padding-top: 0px;
+}
+
+.card .chart-title.title .firstbox 
+    {
+    background-color: #ee7733;
+    width: 1.7vw;
+    height: 0.3vw;
+    padding-left: 1vw;
+    display: inline-block;
+    margin: 0.4vw 0;
+    margin-right: 0.4vw;
+      }
+
+
+.card .chart-title.title .secondbox {
+    background-color: #00aaee;
+    width: 1vw;
+    height: 1vw;
+    display: inline-block;
+  margin-left: 0.3vw;
+}
+
+.chart-title.title .col-first>span {
+    display: inline-block;
+    font-size: 18px;
+}
+
+.chart-title.title .col-first select,
+.chart-title.title .col-first input {
+    display: block;
+    font-size: 10px;
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+    max-width: 11vw;
+    cursor: pointer;
+}
+input[type=radio] {
+    height: 0.8vw;
+    margin: 0.3vw;
+}
+.chart-title.title .title-radios {
+    margin-right: 15px;
+}
+
+.chart-title.title .title-radios input {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.chart-title.title .title-radios label {
+    font-weight: normal;
+}
+
+.chart-title.title .col-first .input-title {
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.card .title .in-title {
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.card .sub-title {
+    height: 36px;
+    color: #d9d9d9;
+    margin: 16px 20px;
+}
+
+
+.card .sub-title>select {
+    background-color: #26293c;
+    border-radius: 4px;
+}
+
+.summary-heading {
+    padding: 7px 10px;
+    padding-bottom: 9px;
+}
+
+.summary-heading .heading-item .label {
+    font-size: 1.1vw;
+    font-weight: 550;
+    color: #d9d9d9;
+}
+.summary-heading .heading-item .count {
+    font-size: 1.2vw;
+    color: #f2f2f2;
+}
+.summary-heading .heading-item .unit {
+    font-size: 0.7vw;
+    color: #d9d9d9;
+}
+
+.summary-heading .heading-item .unit.green {
+    color: #00aa55;
+}
+.summary-heading .heading-item .down-button{
+    background-color: #442266;
+    color:#f2f2f2;
+    padding: 0.1vw 3vw;
+    border-radius: 0.3vw;
+    font-size:1.1vw;
+    font-weight: bold;
+}
+.summary-heading .heading-item .down-button-op{
+    background-color: #442266;
+    color: #f2f2f2;
+    padding: 4px 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 200;
+    margin-right: 10px;
+}
+.canvasjs-chart-credit{
+    display: none;
+}
+.summary-heading .heading-item .overlastup{
+    font-size: 1.2vw;
+    font-weight: 550;
+}
+
+.ope1 {
+    padding-left: 17px;
+}
+
+.butt-17{
+margin-top: -9px;
+}
+.card .footer .result.red {
+    background-color: #ff0000;
+}
+
+.card .footer .result.green {
+    background-color: #00b050;
+}
+
+.chart-title.title .col-first .input-title {
+    font-size: 12px;
+    margin-left: 10px;
+}   

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>EMS System</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'>
+    </script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="login.css" />
+
+
+</head>
+
+<body id="logpanipat">
+    <div class="main_container">
+        <!-- <background img src="assets/img/IOCLPanipat.PNG" alt="iocl" class="img-login2"> -->
+        <!-- <br><br><br><br> -->
+        <div class="sub_container row">
+            <div class="login_container sub_content col-sm-4">
+                <br><br>
+                <img src="assets/img/iocl.png" alt="iocl" class="img-login">
+
+                <!-- <br><br> -->
+                <div class="row" style="color: black; text-align: center; font-size: 2VW; height: 6vh; margin-top: 2vw;"><b>Welcome!</b></div>
+                <!-- <br> -->
+                <div>
+                    <label class="user" for="userid" style="color: black; margin-left: 4.1vw; font-weight: bold; margin-top: 0.7vw;">User
+                        ID</label>
+                    <input type="text" class="form-control userNamePass" id="user-name" name="user-name" style="background-color: white;">
+                </div>
+                <!-- <br> -->
+                <div>
+                    <label class="pass" for="pwd"
+                        style="color: black;margin-left: 4.1vw; font-weight: bold; margin-top: 0.7vw;">Password</label>
+                    <input type="password"  style="background-color: white;" class="form-control userNamePass" id="pwd" name="pwd">
+                </div><br><br>
+                <button class="signin-btn" onclick="loginClick()"> Sign In</button>
+                <div class="error text-danger text-center" style="margin-top: 20px;" id="errormsg"></div>
+            </div>
+
+            <div class="ems_container sub_content col-sm" style="opacity: 1px;">
+
+                <div class="ems_subcontainer">
+                    <div class="ems_heading">EMS</div>
+                    <div class="ems_name">Energy Management System</div>
+                    <hr>
+                    <div class="row" style="display: inline-flex;">
+                        <img src="/assets/img/white_burning-flames.png" alt="white_burning-flames" class="pngIcon">
+                        <img src="/assets/img/white_charging.png" alt="white_charging" class="pngIcon">
+                        <img src="/assets/img/white_sea.png" alt="white_sea" class="pngIcon">
+                        <img src="/assets/img/white_water-drop.png" alt="white_water-drop" class="pngIcon">
+                        <img src="/assets/img/white_hydrogen.png" alt="white_hydrogen" class="pngIcon">
+                        <img src="/assets/img/white_solar-panel.png" alt="white_solar-panel" class="pngIcon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="login.js">
+    </script>
+
+</body>
+
+</html>

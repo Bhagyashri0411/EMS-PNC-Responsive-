@@ -1,0 +1,163 @@
+.tiles-row .card  .title {
+    font-size: 1vw;
+    font-weight: normal;
+    color: #d9d9d9;
+    text-align: center;
+    /* padding: 0px; */
+}
+.tiles-row .card{
+    background-color: #26293c;
+    padding: 6px;
+    border-radius: 10px;
+}
+.tiles-row .card .body .count {
+    text-align: center;
+    font-size: 3.6vw;
+    color: #f2f2f2;
+    padding-top: 0.8vw;
+    font-weight: 600;
+    padding-bottom: 0.9vw;
+}
+
+.tiles-row .card .footer .ref {
+    color: #d9d9d9;
+    font-size: 1vw;
+    display: inline-block;
+    padding: 0vw 0vw;
+}
+.tiles-row #ref1, #ref2, #ref3, #ref4{
+    color: #f2f2f2;
+    font-size: 1.1vw;
+}
+.tiles-row .card .footer .result {
+    color: #f2f2f2;
+    font-size: 1.1vw;
+    padding: 0vw 0.9vw;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.tiles-row .card .footer .result.red {
+    background-color: #ff0000;
+}
+
+/* .tiles-row .card .footer .result.green {
+    background-color: #00b050;
+} */
+
+.tiles-row .card-col {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.card .title .main-title {
+    font-size: 14px;
+    float: left;
+}
+
+/* .card .body .donut {
+    height: 12rem;
+} */
+
+.card .body #doughnut {
+    margin: 0px 50px;
+}
+
+.card .title .main-title .subtitle {
+    float: left;
+    font-size: 1vw;
+    color: #d9d9d9;
+}
+
+.card .body .count-line {
+    height: 21.6vw;
+}
+
+/* #zingChart {
+    height: 100%;
+    width: 170px;
+} */
+
+#zingChart-wrapper {
+    padding-top: 68px;
+}
+
+#zingChart-wrapper,
+#zingChart-top {
+    height: 85px !important;
+}
+
+.footer .deviation .label,
+.footer .actual .label {
+    font-weight: normal;
+    color: #d9d9d9;
+    font-size: 0.9vw;
+}
+
+.footer .deviation .label {
+    font-size: 0.9vw;
+    padding: 0;
+}
+
+/* .footer .actual .label {
+    padding: 0;
+} */
+
+.footer .deviation .count,
+.footer .actual .count {
+    font-weight: normal;
+    color: #f2f2f2;
+    font-size: 0.9vw;
+}
+
+/* .tiles-row .card.donought-card {
+    padding-bottom: 1.6vw;
+} */
+
+.chart-legends {
+    padding-top: 20px;
+    /* padding-left: 40px; */
+}
+
+.chart-legends .legend {
+    padding: 5px 0;
+}
+
+.chart-legends .legend .legend-circle {
+    height: 0.8vw;
+    width: 0.8vw;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* .chart-legends .legend .legend-circle.legend-solid {
+    background-color: #ffa600;
+} */
+
+.chart-legends .legend .legend-circle.legend-liquid {
+    background-color: #ffa600;
+}
+
+.chart-legends .legend .legend-circle.legend-gas {
+    background-color: #00aa7e;
+    /* margin-left: -1vw; */
+}
+
+.chart-legends .legend .legend-text {
+    color: #d9d9d9;
+    padding-left: 1vw;
+    font-size: 1vw;
+}
+.tiles-row .lebel-style {
+    display: inline-block;
+    font-size: 1vw;
+    font-weight: normal;
+}
+
+
+/* #tiles-doughnut{
+    margin: 0px 43px;
+} */
+ .col{
+    padding: 1px;
+}

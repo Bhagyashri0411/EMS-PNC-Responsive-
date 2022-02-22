@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="/../templates/tps-overview/equipment-efficiency/GT/GT.css">
+<script src="/../templates/tps-overview/equipment-efficiency/GT/GT.js"></script>
+<div class="tab-three GT-equipment-efficiency">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-5 card-col">
+                <div class="card mt-14 GT-eff-equ ">
+                    <div class="row">
+                        <div class="col-md-4" style="border-right: 1px solid whitesmoke; padding-top: 15px;">
+                            <span style="color:#d9d9d9; font-size: 1.3VW;">Efficiency (%)
+                               
+                              </span>
+                        </div>
+                        <div class="col-md-8 eff-act">
+                           
+                            <div class="row">
+                                <span class="trend">
+
+                                    <select name="s1" id="gtr1">
+                                        <option value=" GT1">GT1</option>
+                                        <option value="GT2">GT2</option>
+                                        <option value="GT3"> GT3 </option>
+                                        <option value="GT4"> GT4 </option>
+                                        <option value="GT5"> GT5 </option>
+                                       
+                                    </select>
+                                </span>
+
+                                <span class="from">
+
+                                    <input type="datetime-local" id="fromgtBar" name="fromGTBar">
+                                </span>
+                                <span class="from">
+
+                                    <input type="datetime-local" id="togtBar" name="toGTBar">
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div style="padding-top: 0.3vw;">
+                         <div class="box-marg" style="height: 4vh;">
+
+                                <div class="box-eff box-blue"></div>
+                                <span class="color-eff"> Actual</span>
+
+                                <div class="box-eff box-yellow"></div>
+                                <span class="color-eff">Design</span>
+
+                            </div>
+                    </div>
+                    <div id="chartContainerGT"></div>
+                </div>
+
+            </div>
+            <div class="col-md-7 card-col fuel-color">
+                <div class="card mt-14 fuel-card">
+                    <div class="row col-first">
+                        <div class="col-md-4 ">
+                            <span class="first-box-title">Power Generated (MW) </span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-tr pull-right">
+
+                                <input type="datetime-local" id="fromGT" name="fromGT">
+
+                                <input type="datetime-local" id="toGT" name="toGT">
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <span>
+                        <!-- <div class="col-md-2 wdt "> -->
+                        <div class="first-spa"> </div>
+                        <span class="col-rt">GT1</span>
+                        <!-- </div> -->
+                        <!-- <div class="col-md-2 wdt "> -->
+                        <div class="secd-spa"> </div>
+                        <span class="col-rt">GT2</span>
+                        <!-- </div> -->
+                        <!-- <div class="col-md-2 wdt "> -->
+                        <div class="third-spa"> </div>
+                        <span class="col-rt">GT3</span>
+                        <!-- </div> -->
+                        <!-- <div class="col-md-4 wdt "> -->
+                        <div class="four-spa"> </div>
+                        <span class="col-rt">GT4</span>
+                        <!-- </div> -->
+                        <!-- <div class="col-md-4 wdt "> -->
+                        <div class="five-spa"> </div>
+                        <span class="col-rt">GT5</span>
+                        <!-- </div> -->
+                    </span>
+                    <div id="GT-line"> </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 card-col">
+            <div class="card card-col mt-14 GT-table-eff">
+                <div class="overflow genratorsHeight">
+                    <table id="Gas_table">
+                        <thead>
+                            <tr>
+                                <th>Gas Turbine ID</th>
+                                <th>Status</th>
+                                <th>Capacity Utilization<br> (Design)<br> %</th>
+                                <th>Capacity Utilization<br> (Actual)<br> %</th>
+                                <th>Duty Fired<br> Gcal/hr</th>
+                                <th>Power Generation <br> Cost (INR/KW)</th>
+                                <th>Heat Rate<br> (Design)<br>kcal/kwh</th>
+                                <th>Heat Rate <br>(Actual)<br> kcal/kwh</th>
+                                <th>Exhaust Temperature<br> (Design) <br>°C</th>
+                                <th>Exhaust Temperature<br> (Actual)<br> °C</th>
+                         
+                            </tr>
+                        </thead>
+                        <tbody id="bodyGas_table">
+    
+                        </tbody>
+    
+                    </table>
+                </div>
+            </div>
+    
+    </div>
+        </div>
+    </div>
+
+
+</div>

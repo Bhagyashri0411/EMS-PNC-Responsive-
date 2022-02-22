@@ -1,0 +1,118 @@
+.steam-balance-overview-meg .col-st {
+    font-size: 1.7vw;
+    padding-left: 1vw;
+    color: #d9d9d9;
+}
+.steam-balance-overview-meg .steam-table{
+    border-right: 0.2vw solid #525462;
+}
+.steam-balance-overview-meg  table{
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+       color: #d9d9d9;
+    width: 100%;
+}
+
+.steam-balance-overview-meg  td
+ {
+    border-bottom: 1px solid #b2b2b9;
+    font-size: 1vw;
+    padding: 0.5vw;
+    color: #d9d9d9;
+}
+.steam-balance-overview-meg  td:nth-child(2){
+    color: #f2f2f2;
+    text-align:right;
+}
+.steam-balance-overview-meg  th {
+    padding: 0.5vw;
+    background-color: #442266;
+    font-size: 1.1vw;
+       color: #d9d9d9;
+    font-weight: normal;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+.steam-balance-overview-meg .count-line{
+    height: 39vh;
+}
+.steam-balance-overview-meg table tr:last-child td {
+    border-bottom: 0;
+  }
+
+.steam-balance-overview-meg .steam-gen2{
+    text-align:right;
+ }
+
+ .steam-balance-overview-meg input,select {  
+        font-size: 1vw;
+        background-color: #26293c;
+        border: 0.1vw solid #f2f2f2;
+        padding: 0.1vw;
+        border-radius: 0.3vw;
+        margin-left: 0.5vw;
+        max-width: 15vw;          
+        cursor: pointer;
+        color: #f2f2f2;
+    }
+    .steam-balance-overview-meg #megdrop{
+        padding: 0.2vw;
+        color: #d9d9d9;
+    }
+    .steam-balance-overview-meg .actual-line{
+       padding-top: 0.6vw;
+   }
+    .steam-balance-overview-meg .actbox {
+        background-color: #00b0f0;
+        width: 1.9vw;
+    height: 0.5vh;
+        display: inline-block;
+       margin: 0.1vw;
+    }
+    
+    .steam-balance-overview-meg .leg {
+        font-size: 0.9vw;
+        color: #d9d9d9;
+    }
+    .steam-balance-overview-meg .first-box-title{
+        font-size: 1.6vw;
+        color: #d9d9d9;
+    }
+
+    
+            /* scroll */
+.steam-balance-overview-meg .overflow {
+    overflow: auto;
+}
+
+.steam-balance-overview-meg .genratorsHeight {
+    height: 48vh;
+    padding-right: 5px;
+}
+
+.steam-balance-overview-meg .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+.steam-balance-overview-meg ::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0.8vh;
+}
+
+.steam-balance-overview-meg ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.steam-balance-overview-meg ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+.steam-balance-overview-meg ::-webkit-scrollbar-thumb:hover {
+    background:#8d8a95;
+}

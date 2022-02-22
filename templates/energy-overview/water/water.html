@@ -1,0 +1,189 @@
+<link rel="stylesheet" href="./../../../templates/energy-overview/water/water.css" />
+<script src="./../../../templates/energy-overview/water/water.js"></script>9
+<div class="col-md-12" id="water-tab"></div>
+<!-- <div class="col-md-12 water-tab" id="water-tab">
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-4 card-col">
+                <div class="card1 clearfix">
+                    <div id="SWC" class="title"><br>Specific Water Consumption</div>
+                    <div class="body">
+                        <table id="specificwater">
+                            <tr>
+                                <th>Type (m3/MT of Crude)</th>
+                                <th>Actual</th>
+                                <th>Reference</th>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-8 card-col">
+                <div class="col-md-4 card-col xyz">
+                    <div class="cardnew clearfix" >
+                        <div id="totalenergy" class="title">%Condensate<br>Recovery</div><br>
+                        <div class="body">
+                            <div id="countnew" class="count"></div>
+                        </div><br><br>
+                        <div class="footer">
+                            <span  class="ref pull-left">REF : <span id="refnew"></span></span><span id="resultnew"
+                                class="result  pull-right">
+                                 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 card-col">
+                    <div class="card2 clearfix">
+                        <div id="conSys" class="title"><br>Condensate System<br></div>
+                        <div class="body">
+
+                            <table id="consystem">
+                                <tr>
+                                    <th>Type (m3/MT)</th>
+                                    <th>Actual</th>
+                                    <th>Reference</th>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6 card-col">
+                    <div class="card clearfix">
+                        <div id="EneInt" class="title">Energy Intensity Index <br>m3/hr</div>
+
+                        <div class="body">
+                            <div id="count0" class="count"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="ref0"></span> </span><span id="result0"
+                                class="result  pull-right">
+                                 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 card-col">
+                    <div class="card clearfix">
+                        <div id="totalenergy" class="title">DM Wter Consumption<br>m3/hr</div>
+                        <div class="body">
+                            <div id="count2" class="count"></div>
+                        </div>
+
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="ref2"></span> </span><span id="result2"
+                                class="result  pull-right">
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 card-col headerbottom-card">
+                    <div class="card clearfix mt-14">
+                        <div id="totalenergy" class="title">RO Water Production<br>m3/hr</div>
+                        <div class="body">
+                            <div id="count3" class="count"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="ref3"></span> </span><span id="result3"
+                                class="result  pull-right">
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 card-col headerbottom-card">
+                    <div class="card clearfix mt-14">
+                        <div id="totalenergy" class="title">BFW Consumption<br>m3/hr</div>
+                        <div class="body">
+                            <div id="count4" class="count"></div>
+                        </div>
+                        <div class="footer">
+                            <span class="ref pull-left">REF : <span id="ref4"></span> </span><span id="result4"
+                                class="result  pull-right">
+                                 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+        <div class="col-md-12 card-col mt-14">
+            <div class="col-md-12 pr-0">
+                <div class="card">
+                    <div class="chart-title title">
+                        <div class="row col-first">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-8 col-st">
+                                        <span >
+                                            <span>Specific Raw Water Consumption (m3/MT of Crude)</span>
+                                        </span>
+                                        <div class="vl"></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row unit-sec">
+                                            <div class="col-md-5 ">
+                                                <span class="actbox"> </span>
+                                                <span class="leg"> Actual</span>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <span class="refbox"></span>
+                                                <span class="refbox"></span>
+                                                <span class="leg">Reference</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="pull-right">
+                                    <div class="col-thr">
+                                        <span class="input-title">KPI</span>
+                                        <select name="water" id="water" >
+                                            <option value="Specific Raw Water Consumption"> Specific Raw Water Consumption</option>
+                                            <option value="Condensate at CPU"> Condensate at CPU </option>
+                                            <option value="Condensate in other units ">Condensate in other units  </option>
+                                            <option value="Condensate Imbalance"> Condensate Imbalance</option>
+                                        </select>  
+                                    </div>
+                                    <div class="col-thr">
+                                        <span class="from">
+                                            <span class="input-title">From</span>
+                                            <input type="datetime-local" id="fromwater" name="fromwater">
+                                        </span>
+                                    </div>
+                                    <div class="col-thr">
+                                        <span class="to">
+                                            <span class="input-title">To</span>
+                                            <input type="datetime-local" id="towater" name="towater">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="count-line">
+                                <div id="water-chartLine"></div>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+</div> -->
+

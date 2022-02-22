@@ -1,0 +1,211 @@
+.cpp-balance-tab .card {
+    margin: 0.4vw;
+    background-color: #26293c;
+    /* width: 18.5%; */
+    border-radius: 10px;
+    font-size: 15px;
+    width: 18.5vw;
+    float: left;
+    padding: 0.7vw;
+    padding-bottom: 0.3vw;
+}
+.cpp-balance-tab .title{
+    text-align: center;
+    /* padding: 0 0.6vw; */
+    padding-bottom: 0.7vw;
+}
+.cpp-balance-tab #press1, #press2, #press3, #press4, #press5,
+#tem1, #tem2, #tem3, #tem4, #tem5{
+    color: #f2f2f2;
+    font-size: 0.9vw;
+}
+.border{
+    border: 0.1vw solid #fff;
+    border-radius: 0.4vw;
+    width: 19vw
+}
+.pretem{
+    color: #d9d9d9;
+    font-size: 0.9vw;
+   display: inline-flex;
+   
+}
+.cricular-round{
+    border: 0.1vw solid #fff;
+    border-radius: 0.4vw;
+    height: 0.8vw;
+    width: 0.8vw;
+    margin: 0 0.4vw;
+    display: inline-block;
+}
+.cpp-balance-tab .headvalue{
+    color: #f2f2f2;
+    padding: 0 0.5vw;
+    font-size: 1vw;
+    border: 0.1vw solid #d9d9d9;
+    border-radius: 0.4vw;
+}
+
+.cpp-balance-tab .result{
+    padding: 0.2vw 0;
+}
+
+.cpp-balance-tab .heading {
+    font-size: 1.5vw;
+    padding-top: 0.43vh;
+    padding-bottom: 0.2vw;
+    display: inline-flex;
+    color: #d9d9d9;
+}
+
+/* scrollbar css */
+
+.cpp-balance-tab .card .overflow {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.cpp-balance-tab .card .tableHeight {
+    height: 8vw;
+    /* /* width: 17.1vw; */
+}
+
+
+.cpp-balance-tab .card  ::-webkit-scrollbar {
+    width: 0.25vw;
+    height: 0.25vw;
+}
+
+.cpp-balance-tab .card  ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.cpp-balance-tab .card ::-webkit-scrollbar-thumb {
+    background-color: #d9d9d9;
+    border-radius: 15px;
+}
+
+.cpp-balance-tab .card  ::-webkit-scrollbar-thumb:hover {
+    background-color: #d9d9d9;
+}
+.cpp-balance-tab .card .line {
+    width: 100%;
+    margin: 0px;
+    color: #d9d9d9;
+    font-weight: normal;
+    padding: 0.3vw 0.5vw;
+    font-size: 0.9vw;
+    color: #d9d9d9;
+    background-color: #442266;
+}
+.cpp-balance-tab table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cpp-balance-tab td {
+    color: #d9d9d9;
+    border-bottom: 1px solid #686a77;
+    padding:  0.4vw;
+    padding-right: 0;
+    font-size: 0.8vw;
+}
+.cpp-balance-tab table #consumerstable1 td {
+    padding:  0.4vw 0.2vw;
+    font-size: 0.7vw;
+}
+.cpp-balance-tab table  #generatorstable2 td {
+    padding:  0.4vw 0.2vw;
+    font-size: 0.7vw;
+}
+.cpp-balance-tab table #consumerstable2 td {
+    padding:  0.4vw 0vw;
+    font-size: 0.7vw;
+}
+.cpp-balance-tab table #consumerstable2 td:nth-child(1) {
+  padding-left: 0.2vw;
+    font-size: 0.7vw;
+}
+.cpp-balance-tab th {
+    background-color: #442266;
+    color: #d9d9d9;
+    font-weight: normal;
+    padding: 0.3vw 0.5vw;
+    font-size: 0.9vw;
+    position: sticky;
+    top: 0px;
+    text-align: start;
+}
+.cpp-balance-tab table td:nth-child(3) {
+   color: #f2f2f2;
+   /* text-align: end; */
+}
+.cpp-balance-tab table th:nth-child(3) {
+    text-align: end;
+ }
+.cpp-balance-tab .losses-total{
+    color: #d9d9d9;
+    padding: 7px 5px;
+    /* float: left; */
+    font-size: 0.9vw;
+    font-weight: 600;
+}
+.cpp-balance-tab .losses-value{
+    color: #f2f2f2;
+    padding: 7px 5px;
+    float: right;
+    font-size: 1vw;
+    text-align: end;
+    font-weight: 600;
+}
+.cpp-balance-tab progress {
+    border-radius: 0.4vw;
+    height: 0.8vw;
+  }
+  .cpp-balance-tab  .progressbar {
+    height: 0.8vw;
+    float: left;
+    width: 69%;
+    margin: 3px;
+}
+.body-pink .ui-progressbar .ui-progressbar-value {
+    margin: 0px;
+    height: 100%;
+    background-color: #d944b4;
+}
+.cpp-balance-tab  progress::-webkit-progress-bar {
+    background-color: #26293c;
+  }
+.cpp-balance-tab .body-blue progress::-webkit-progress-value {
+    background-color:  #4082c0;
+}
+.cpp-balance-tab .body-yellow progress::-webkit-progress-value {
+    background-color: #ffc000;
+}
+.cpp-balance-tab .body-orange progress::-webkit-progress-value {
+    background-color: #ed7d31;
+}
+.cpp-balance-tab .title1 {
+    color: #d9d9d9;
+    text-align: start;
+    width: 22%;
+    float: left;
+    font-size: 0.9vw;
+}
+
+.cpp-balance-tab .card-body {
+    width: 59%;
+    float: left;
+    padding: 7px 5px;
+}
+
+.cpp-balance-tab .footer {
+    width: 19%;
+    color: #f2f2f2;
+    padding: 7px 5px;
+    float: left;
+    font-size: 0.9vw;
+    font-weight: 600;
+}
