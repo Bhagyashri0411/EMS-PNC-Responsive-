@@ -4,38 +4,38 @@ $(document).ready(function () {
     Aircard3();
     Aircard4();
     plantair();
-    instrumentair();   
+    instrumentair();
     airDecoking();
 
-    $("#op-air").on('change', function() {
-        demo1=( $(this).find(":selected").val() );
-            let domLebal1=( $(this).find(":selected").attr('name') );
-            $("#heading-air").html(domLebal1);
-            getSpecificAirConsumptionData();
+    $("#op-air").on('change', function () {
+        demo1 = ($(this).find(":selected").val());
+        let domLebal1 = ($(this).find(":selected").attr('name'));
+        $("#heading-air").html(domLebal1);
+        getSpecificAirConsumptionData();
         console.log($(this).find(":selected").val());
     });
 
-    $("input[name=fromair]").on('change', function() {
-       // console.log($('["#Air"]:selected').val());
+    $("input[name=fromair]").on('change', function () {
+        // console.log($('["#Air"]:selected').val());
         getSpecificAirConsumptionData();
     });
 
-    $("input[name=toair]").on('change', function() {
-       // console.log($('["#Air"]:selected').val());
+    $("input[name=toair]").on('change', function () {
+        // console.log($('["#Air"]:selected').val());
         getSpecificAirConsumptionData();
     });
 
-     // // setting from date, to date - 24hrs.
+    // // setting from date, to date - 24hrs.
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-               d.setHours(05);
-               d.setMinutes(30);
-               d.setSeconds(0);
-    $('#fromair').val(d.toJSON().slice(0,19));
+    d.setHours(05);
+    d.setMinutes(30);
+    d.setSeconds(0);
+    $('#fromair').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(29);
-           tod.setMinutes(29);
-           tod.setSeconds(0);
-$('#toair').val(tod.toJSON().slice(0,19));
+    tod.setHours(29);
+    tod.setMinutes(29);
+    tod.setSeconds(0);
+    $('#toair').val(tod.toJSON().slice(0, 19));
 
     getSpecificAirConsumptionData();
     $("#Airtable").on('change', function () {
@@ -53,51 +53,51 @@ $('#toair').val(tod.toJSON().slice(0,19));
 });
 
 function getSpecificAirConsumptionData() {
-    var myJSON = { 'fromdate': $('#fromair').val(), 'todate': $('#toair').val(), kpi_name:  $("#op-air option:selected").val() };
+    var myJSON = { 'fromdate': $('#fromair').val(), 'todate': $('#toair').val(), kpi_name: $("#op-air option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-            method: "POST",
-            data: postdata,
-            url: " http://localhost:8090/EMSPro/auth/Air/PlantAirGeneration",
-        }).done(function(data) {
-            console.log(data)
-            var Difference_In_Days = data[0].showNumberIndex;
-            formatSpecificAirConsumptionData(data ,Difference_In_Days);
-        })
-        .fail(function() {
-            var failData =[]
+        method: "POST",
+        data: postdata,
+        url: " http://localhost:8090/EMSPro/auth/Air/PlantAirGeneration",
+    }).done(function (data) {
+        console.log(data)
+        var Difference_In_Days = data[0].showNumberIndex;
+        formatSpecificAirConsumptionData(data, Difference_In_Days);
+    })
+        .fail(function () {
+            var failData = []
             formatSpecificAirConsumptionData(failData);
         })
 }
 
-function formatSpecificAirConsumptionData(data ,Difference_In_Days) {
+function formatSpecificAirConsumptionData(data, Difference_In_Days) {
     var chartData = { actual: [], reference: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const airDate = new Date(element.date);
-        chartData.actual.push({ y: element.actual ,x:airDate });
-        chartData.reference.push({ y: element.reference ,x:airDate });
+        chartData.actual.push({ y: element.actual, x: airDate });
+        chartData.reference.push({ y: element.reference, x: airDate });
     }
     console.log("Airhartdata", chartData);
     var interval = 1;
     if (!Difference_In_Days) {
-      if (count/8 > 1) {
-         interval =Math.round(count/8);
-      }else{
-        interval = 1;
-      }
-     
+        if (count / 8 > 1) {
+            interval = Math.round(count / 8);
+        } else {
+            interval = 1;
+        }
+
     }
-    showSpecificAirConsumptionChart(chartData ,Difference_In_Days ,interval);
+    showSpecificAirConsumptionChart(chartData, Difference_In_Days, interval);
 }
 
-function showSpecificAirConsumptionChart(data ,Difference_In_Days ,interval) {
+function showSpecificAirConsumptionChart(data, Difference_In_Days, interval) {
 
     var chart = new CanvasJS.Chart("air-line", {
         // width: 1000,
@@ -114,8 +114,8 @@ function showSpecificAirConsumptionChart(data ,Difference_In_Days ,interval) {
             gridDashType: "dot",
             intervalType: Difference_In_Days == true ? "hour" : "day",
             valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            title:Difference_In_Days == true?  "In hours":" In Days",
-            titleFontSize:15,
+            title: Difference_In_Days == true ? "In hours" : " In Days",
+            titleFontSize: 15,
             interval: interval,
             tickThickness: 0,
             lineThickness: 0,
@@ -123,7 +123,7 @@ function showSpecificAirConsumptionChart(data ,Difference_In_Days ,interval) {
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
 
-        }, 
+        },
         axisY: {
             title: "",
             gridColor: "gray",
@@ -171,9 +171,9 @@ function showSpecificAirConsumptionChart(data ,Difference_In_Days ,interval) {
 }
 
 function plantair(kpiname) {
-    var myJSON = { kpiname:kpiname };
+    var myJSON = { kpiname: kpiname };
     const postdata = JSON.stringify(myJSON);
-    console.log(postdata,"mess");
+    console.log(postdata, "mess");
     $.ajax({
         headers: {
             "Content-Type": "application/json",
@@ -182,42 +182,42 @@ function plantair(kpiname) {
         url: "http://localhost:8090/EMSPro/auth/Air/airconsumerTable",
         method: "POST"
 
-    }).done(function(data) {
+    }).done(function (data) {
 
         var table_data = '';
-        $.each(data, function(key, value) {
+        $.each(data, function (key, value) {
             table_data += '<tr>';
             table_data += '<td>' + value.kpiname + '</td>';
             table_data += '<td>' + value.kpivalue + '</td>';
             table_data += '</tr>';
         });
- document.getElementById("plantair").innerHTML=table_data
+        document.getElementById("plantair").innerHTML = table_data
     });
 }
 
 function instrumentair(kpiname) {
-    var myJSON = { kpiname:kpiname };
+    var myJSON = { kpiname: kpiname };
     const postdata = JSON.stringify(myJSON);
-    console.log(postdata,"mess");
+    console.log(postdata, "mess");
     $.ajax({
         headers: {
             "Content-Type": "application/json",
         },
         data: postdata,
-         
+
         url: "http://localhost:8090/EMSPro/auth/Air/airconsumerTable",
         method: "POST"
 
-    }).done(function(data) {
+    }).done(function (data) {
 
         var table_data = '';
-        $.each(data, function(key, value) {
+        $.each(data, function (key, value) {
             table_data += '<tr>';
             table_data += '<td>' + value.kpiname + '</td>';
             table_data += '<td>' + value.kpivalue + '</td>';
             table_data += '</tr>';
         });
-document.getElementById("instrumentair").innerHTML=table_data
+        document.getElementById("instrumentair").innerHTML = table_data
     });
 }
 
@@ -262,15 +262,15 @@ function Aircard1() {
         },
         url: "http://localhost:8090/EMSPro/auth/Air/PlantAirTotalGeneration",
         method: "GET"
-    }).done(function(data) {
+    }).done(function (data) {
         console.log(data)
-        if ( data.currentvalue>0) {
-            document.getElementById("result_air1").innerHTML = "+"+data.currentvalue;
+        if (data.currentvalue > 0) {
+            document.getElementById("result_air1").innerHTML = "+" + data.currentvalue;
         }
-        else{
+        else {
             document.getElementById("result_air1").innerHTML = data.currentvalue;
         }
-       
+
 
         document.getElementById("ref_air1").innerHTML = data.refvalue;
         document.getElementById("count_air1").innerHTML = data.tagvalue;
@@ -283,7 +283,7 @@ function Aircard1() {
                 } else if (num > 0) {
                     $(this).addClass("green");
                 }
-    
+
             }
         });
     });
@@ -293,16 +293,16 @@ function Aircard2() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         url: "http://localhost:8090/EMSPro/auth/Air/PlantAirTotalConsumption",
         method: "GET",
-    }).done(function(data) {
+    }).done(function (data) {
         console.log(data)
-        if ( data.currentvalue>0) {
-            document.getElementById("result_air2").innerHTML = "+"+data.currentvalue;
+        if (data.currentvalue > 0) {
+            document.getElementById("result_air2").innerHTML = "+" + data.currentvalue;
         }
-        else{
+        else {
             document.getElementById("result_air2").innerHTML = data.currentvalue;
         }
         document.getElementById("ref_air2").innerHTML = data.refvalue;
@@ -316,7 +316,7 @@ function Aircard2() {
                 } else if (num > 0) {
                     $(this).addClass("green");
                 }
-    
+
             }
         });
     });
@@ -326,16 +326,16 @@ function Aircard3() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         url: "http://localhost:8090/EMSPro/auth/Air/InstrumentAirTotalGeneration",
         method: "GET",
-    }).done(function(data) {
+    }).done(function (data) {
         console.log(data)
-        if ( data.currentvalue>0) {
-            document.getElementById("result_air3").innerHTML = "+"+data.currentvalue;
+        if (data.currentvalue > 0) {
+            document.getElementById("result_air3").innerHTML = "+" + data.currentvalue;
         }
-        else{
+        else {
             document.getElementById("result_air3").innerHTML = data.currentvalue;
         }
         document.getElementById("ref_air3").innerHTML = data.refvalue;
@@ -349,7 +349,7 @@ function Aircard3() {
                 } else if (num > 0) {
                     $(this).addClass("green");
                 }
-    
+
             }
         });
     });
@@ -360,16 +360,16 @@ function Aircard4() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         url: "http://localhost:8090/EMSPro/auth/Air/InstrumentAirTotalConsumption",
         method: "GET"
-    }).done(function(data) {
+    }).done(function (data) {
         console.log(data)
-        if ( data.currentvalue>0) {
-            document.getElementById("result_air4").innerHTML = "+"+data.currentvalue;
+        if (data.currentvalue > 0) {
+            document.getElementById("result_air4").innerHTML = "+" + data.currentvalue;
         }
-        else{
+        else {
             document.getElementById("result_air4").innerHTML = data.currentvalue;
         }
         document.getElementById("ref_air4").innerHTML = data.refvalue;
@@ -383,7 +383,7 @@ function Aircard4() {
                 } else if (num > 0) {
                     $(this).addClass("green");
                 }
-    
+
             }
         });
     });

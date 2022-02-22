@@ -1,18 +1,18 @@
 $(document).ready(function () {
     steamprofurnacestable();
-   
-    $("input[name=fromprofurnaces]").click(function(event) {
+
+    $("input[name=fromprofurnaces]").click(function (event) {
         console.log(event.target.value);
         steamprofurnacesdata();
     });
 
-    $("input[name=toprofurnaces]").change(function(event) {
+    $("input[name=toprofurnaces]").change(function (event) {
         console.log(event.target.value);
         steamprofurnacesdata();
     });
 
     $("#profurnaces").on('change', function () {
-        var demogen=$(this).find(":selected").val();
+        var demogen = $(this).find(":selected").val();
         $('#profurnacesid').html(demogen);
         steamprofurnacesdata();
         // console.log($(this).find(":selected").val());
@@ -20,33 +20,33 @@ $(document).ready(function () {
 
     var now = new Date();
     // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-    console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
+    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-               d.setHours(05);
-               d.setMinutes(30);
-               d.setSeconds(0);
-            
-    $('#fromprofurnaces').val(d.toJSON().slice(0,19));
+    d.setHours(05);
+    d.setMinutes(30);
+    d.setSeconds(0);
+
+    $('#fromprofurnaces').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-               tod.setHours(29);
-               tod.setMinutes(29);
-               tod.setSeconds(0);
-    $('#toprofurnaces').val(tod.toJSON().slice(0,19));
+    tod.setHours(29);
+    tod.setMinutes(29);
+    tod.setSeconds(0);
+    $('#toprofurnaces').val(tod.toJSON().slice(0, 19));
 
 
     $("#processtable").on('change', function () {
         kpiname = ($(this).find(":selected").val());
         steamprofurnacestable($(this).find(":selected").val());
-     });
-     steamprofurnacestable('BSVI')
+    });
+    steamprofurnacestable('BSVI')
 
-     steamprofurnacesdata()
+    steamprofurnacesdata()
 });
 
 function steamprofurnacesdata() {
-    var myJSON = { 'fromdate': $('#fromprofurnaces').val(), 'todate': $('#toprofurnaces').val(),  'tagname': $("#profurnaces option:selected").val() };
+    var myJSON = { 'fromdate': $('#fromprofurnaces').val(), 'todate': $('#toprofurnaces').val(), 'tagname': $("#profurnaces option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -64,7 +64,7 @@ function getsteamprofurnacesdata(data) {
     var chartData = { Actual: [], Optimized: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
-        chartData.Optimized.push({ y: element.Optimized});
+        chartData.Optimized.push({ y: element.Optimized });
         chartData.Actual.push({ y: element.Actual });
     }
     console.log("Homechartdata", chartData);
@@ -123,7 +123,7 @@ function showsteamprofurnacesdata(data) {
     chart.render();
 }
 function steamprofurnacestable(kpiname) {
-    var myJSON = {tagname: kpiname };
+    var myJSON = { tagname: kpiname };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -136,49 +136,56 @@ function steamprofurnacestable(kpiname) {
     })
         .fail(function () {
             var failData = [
-                {"actual":94.2,
-                "tagname":"Furnace # 1 OFF Gas Consumption",
-                "optimized":0.0,
-                "deviation": 94.2
-            },
-            {"actual":94.2,
-                "tagname":"Furnace # 2 OFF Gas Consumption",
-                "optimized":0.0,
-                "deviation": 94.2
-            },
-            {"actual":94.2,
-                "tagname":"Furnace # 3 OFF Gas Consumption",
-                "optimized":0.0,
-                "deviation": 94.2
-            },
-            {"actual":94.2,
-                "tagname":"Furnace # 4 OFF Gas Consumption",
-                "optimized":0.0,
-                "deviation": 94.2
-            },
-            {"actual":94.2,
-            "tagname":"Furnace # 5 OFF Gas Consumption",
-            "optimized":0.0,
-            "deviation": 94.2
-            },
-            {"actual":94.2,
-            "tagname":"Furnace # 6 OFF Gas Consumption",
-            "optimized":0.0,
-            "deviation": 94.2
-            },
-            {"actual":94.2,
-            "tagname":"Furnace # 7 OFF Gas Consumption",
-            "optimized":0.0,
-            "deviation": 94.2
-            }
-            
-        ]
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 1 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                },
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 2 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                },
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 3 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                },
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 4 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                },
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 5 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                },
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 6 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                },
+                {
+                    "actual": 94.2,
+                    "tagname": "Furnace # 7 OFF Gas Consumption",
+                    "optimized": 0.0,
+                    "deviation": 94.2
+                }
+
+            ]
 
             getsteamprofurnacestable(failData)
         })
 }
 function getsteamprofurnacestable(data) {
-     var max1= 500;
+    var max1 = 500;
     var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
@@ -190,5 +197,5 @@ function getsteamprofurnacestable(data) {
 
         table_data += '</tr>';
     });
-    document.getElementById("profurnacestable").innerHTML= table_data
+    document.getElementById("profurnacestable").innerHTML = table_data
 }

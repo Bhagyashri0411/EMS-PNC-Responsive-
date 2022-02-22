@@ -9,39 +9,39 @@ $(document).ready(function () {
 
 
     $("#op-hydrogen").on('change', function () {
-        demo1=( $(this).find(":selected").val() );
-        let domLebal1=( $(this).find(":selected").attr('name') );
+        demo1 = ($(this).find(":selected").val());
+        let domLebal1 = ($(this).find(":selected").attr('name'));
         $("#heading-hydrogen").html(domLebal1);
         getSpecificHydrogenConsumptionData();
         console.log($(this).find(":selected").val());
     });
 
-    $("input[name=fromhydrogen]").on('change', function ()  {
-       // console.log($('["#Hydrogen"]:selected').val());
+    $("input[name=fromhydrogen]").on('change', function () {
+        // console.log($('["#Hydrogen"]:selected').val());
         getSpecificHydrogenConsumptionData();
     });
 
     $("input[name=tohydrogen]").on('change', function () {
-       // console.log($('["#Hydrogen"]:selected').val());
+        // console.log($('["#Hydrogen"]:selected').val());
         getSpecificHydrogenConsumptionData();
     });
 
     // // setting from date, to date - 24hrs.
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-               d.setHours(05);
-               d.setMinutes(30);
-               d.setSeconds(0);
-    $('#fromhydrogen').val(d.toJSON().slice(0,19));
+    d.setHours(05);
+    d.setMinutes(30);
+    d.setSeconds(0);
+    $('#fromhydrogen').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(29);
-           tod.setMinutes(29);
-           tod.setSeconds(0);
-    $('#tohydrogen').val(tod.toJSON().slice(0,19));
+    tod.setHours(29);
+    tod.setMinutes(29);
+    tod.setSeconds(0);
+    $('#tohydrogen').val(tod.toJSON().slice(0, 19));
 
     getSpecificHydrogenConsumptionData();
 });
 function getSpecificHydrogenConsumptionData() {
-    var myJSON = { 'fromdate': $('#fromhydrogen').val(), 'todate': $('#tohydrogen').val(), kpi_name:  $("#op-hydrogen option:selected").val() };
+    var myJSON = { 'fromdate': $('#fromhydrogen').val(), 'todate': $('#tohydrogen').val(), kpi_name: $("#op-hydrogen option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -50,12 +50,12 @@ function getSpecificHydrogenConsumptionData() {
         },
         method: "POST",
         data: postdata,
-         
+
         url: "http://localhost:8090/EMSPro/auth/hydogen/hydrogengraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
-        formatSpecificHydrogenConsumptionData(data ,Difference_In_Days);
+        formatSpecificHydrogenConsumptionData(data, Difference_In_Days);
     })
         .fail(function () {
             var failData = []
@@ -64,44 +64,44 @@ function getSpecificHydrogenConsumptionData() {
         })
 }
 
-function formatSpecificHydrogenConsumptionData(data ,Difference_In_Days) {
-    var chartData = { actual: [], reference:[]};
+function formatSpecificHydrogenConsumptionData(data, Difference_In_Days) {
+    var chartData = { actual: [], reference: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
-      const hydrogenDate = new Date(element.date);
-        chartData.actual.push({ y: element.actual ,x:hydrogenDate });
-        chartData.reference.push({ y: element.reference ,x:hydrogenDate });
+        const hydrogenDate = new Date(element.date);
+        chartData.actual.push({ y: element.actual, x: hydrogenDate });
+        chartData.reference.push({ y: element.reference, x: hydrogenDate });
     }
     console.log("Hydrogenhartdata", chartData);
     var interval = 1;
-  if (!Difference_In_Days) {
-    if (count/8 > 1) {
-       interval =Math.round(count/8);
-    }else{
-      interval = 1;
+    if (!Difference_In_Days) {
+        if (count / 8 > 1) {
+            interval = Math.round(count / 8);
+        } else {
+            interval = 1;
+        }
+
     }
-   
-  }
-    showSpecificHydrogenConsumptionChart(chartData ,Difference_In_Days, interval);
+    showSpecificHydrogenConsumptionChart(chartData, Difference_In_Days, interval);
 }
 
-function showSpecificHydrogenConsumptionChart(data ,Difference_In_Days, interval) {
+function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("hydrogen-line", {
         height: "248",
         theme: "dark1",
         backgroundColor: "#26293c",
         toolTip: {
             shared: true  //disable here. 
-          },
-          axisX: {
+        },
+        axisX: {
             gridColor: "gray",
             gridThickness: 2,
             gridDashType: "dot",
             intervalType: Difference_In_Days == true ? "hour" : "day",
             valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            title:Difference_In_Days == true?  "In hours":" In Days",
-            titleFontSize:15,
+            title: Difference_In_Days == true ? "In hours" : " In Days",
+            titleFontSize: 15,
             interval: interval,
             tickThickness: 0,
             lineThickness: 0,
@@ -109,7 +109,7 @@ function showSpecificHydrogenConsumptionChart(data ,Difference_In_Days, interval
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
 
-        }, 
+        },
         axisY: {
             gridColor: "gray",
             gridThickness: 2,

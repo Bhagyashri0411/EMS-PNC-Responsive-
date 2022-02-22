@@ -11,9 +11,11 @@
 .canvasjs-chart-credit {
     display: none;
 }
+
 .homeDiv .first-box-title1 {
     font-size: 1.2vw;
 }
+
 .card .chart-title.title .first-box-title {
     font-size: 1vw;
 }
@@ -22,21 +24,24 @@
     display: inline-block;
     font-size: 1vw;
 }
-#r1, #homeEms1, #fromHome1, #chartTypedata, #chartType1data {  
+
+#r1, #homeEms1, #fromHome1, #chartTypedata, #chartType1data {
     font-size: 0.8vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
     padding: 0.1vw;
     border-radius: 0.3vw;
     margin-left: 0.5vw;
-    max-width: 9.5vw;          
+    max-width: 9.5vw;
     cursor: pointer;
     color: #d9d9d9;
 }
-#homeEms1{
+
+#homeEms1 {
     padding: 0.25vw;
     color: #f2f2f2;
 }
+
 /* #fromHome1 {  
     max-width: 10.3vw;
     cursor: pointer;
@@ -49,10 +54,12 @@
     font-weight: 200;
     font-size: 0.5vw;
 }
-.second-box-title{
+
+.second-box-title {
     font-size: 0.7vw;
     margin-top: 0.2vw;
 }
+
 .card .chart-title.title .firstbox {
     background-color: #ee7733;
     width: 1.5vw;
@@ -63,26 +70,31 @@
     margin-right: 0.4vw;
 }
 
-.line{
+.line {
     padding: 0.8vw 0.5vw;
 }
-.axis{
+
+.axis {
     font-size: 1vw;
     color: #d9d9d9;
 }
+
 .summary-heading .heading-item .label {
     font-size: 1.1vw;
     font-weight: normal;
     color: #d9d9d9;
 }
+
 .chart-title.title .col-first .input-title {
     font-size: 0.8vw;
     margin-left: 0.5vw;
 }
+
 .summary-heading .heading-item .count {
     font-size: 1.2vw;
     color: #f2f2f2;
 }
+
 .summary-heading .heading-item .unit {
     font-size: 0.7vw;
     color: #d9d9d9;

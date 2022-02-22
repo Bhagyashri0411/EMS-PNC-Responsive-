@@ -1,266 +1,313 @@
  #steam-tab .body {
-  text-align: center;
-  font-size: 1vw;
-  color: #d9d9d9;
-  padding: 5px 10px;
-}
-#steam-tab .col-st {
-  font-size: 1.1vw;
-    color: #d9d9d9;
-}
-#steam-tab .dropto{
-  font-size: 1vw;
-  padding: 1px;
-  width: 5vw;
-  display: inline-flex;
-  font-size: 0.9vw;
-}
-#steam-tab .second-box-title {
-  font-size: 1.1vw;
-  margin-right: 0.3vw;
-}
+   text-align: center;
+   font-size: 1vw;
+   color: #d9d9d9;
+   padding: 5px 10px;
+ }
 
-#steam-tab .body.chart-body {
-  height: 15vw;
-}
-#steam-tab .card .title .main-title {
-  font-size: 1.3vw;
-  text-align: center;
-  color: #d9d9d9;
-}
-#steam-tab .in-title {
-  font-weight: 200;
-  font-size: 0.6vw;
-}
-#steam-tab .card .title .sub-title {
-  font-size: 1vw;
-  text-align: center;
-  height: auto;
-  margin: 0;
-  color: #d9d9d9;
-}
-#steam-tab .card .title{
-  font-size: 1.1vw;
-}
-#steam-tab #chartProgress {
-  height: 30px;
-  width: 130px;
-}
-#steam-tab .canvasjs-chart-credit {
-  display: none;
-}
+ #steam-tab .col-st {
+   font-size: 1.1vw;
+   color: #d9d9d9;
+ }
 
-#steam-tab #unit{
-  font-size: 0.8vw;
-    color: #d9d9d9;
-}
-/* progress bar */
-#steam-tab .progress {
- position: absolute;
- cursor: pointer;
- margin: -80px 0 0 -80px;
-}
+ #steam-tab .dropto {
+   font-size: 1vw;
+   padding: 1px;
+   width: 5vw;
+   display: inline-flex;
+   font-size: 0.9vw;
+ }
 
-#steam-tab .progress-circle {
-  transform: rotate(1deg);
-  height: 11vw;   
-}
-.count-line1{
-  height: 11.2vw;
-}
+ #steam-tab .second-box-title {
+   font-size: 1.1vw;
+   margin-right: 0.3vw;
+ }
 
-#steam-tab .progress-circle-back {
- fill: none;
- stroke: #ffffff;
- stroke-width: 1.1vw;
-}
-.progress1 {
- /* height: 21.3vh; */
- overflow: hidden;
- background-color: #26293c;
-}
-.progress-circle-prog1 {
- fill: none;
- stroke: #00b0f0;
- stroke-width: 1.1vw;
- /* stroke-dasharray: 0 777; */
- stroke-dashoffset: 0vw;
- transition: stroke-dasharray 0.7s linear 0s;
-}
+ #steam-tab .body.chart-body {
+   height: 15vw;
+ }
 
-#steam-tab  .progress-text1 {
-  padding-left: 4vw;
-    position: absolute;
-    bottom: 5vw;
-    font-size: 2vw;
-    color: #ffffff;
-}
-/* table css  */
-#steam-tab table {
- border-collapse: collapse;
- width: 100%;
-}
+ #steam-tab .card .title .main-title {
+   font-size: 1.3vw;
+   text-align: center;
+   color: #d9d9d9;
+ }
 
-#steam-tab td.positive {
- color: #00aa55;
-}
+ #steam-tab .in-title {
+   font-weight: 200;
+   font-size: 0.6vw;
+ }
 
-#steam-tab td.negative {
- color: #ff0000;
-}
-#steam-tab .align-num {
- padding-left: 135px;
-}
-#steam-tab .align-start {
- text-align: start;
- padding: 0.8vw;
- color: #d9d9d9;
-}
+ #steam-tab .card .title .sub-title {
+   font-size: 1vw;
+   text-align: center;
+   height: auto;
+   margin: 0;
+   color: #d9d9d9;
+ }
 
-#steam-tab th {
- text-align: center;
- font-size: 1.1vw;
- font-weight: 600;
- border-bottom: 0.1vw solid #AAAAAA;
- background-color: #26293c;
- position: -webkit-sticky;
- position: sticky;
- top: 0;
- overflow: auto;
-}
-#steam-tab td {
- border-bottom: 0.1vw solid #AAAAAA;
- font-size: 1vw;
-}
-#steam-tab td:nth-last-child(4) {
- font-size: 1vw;
- color: #d9d9d9;
- font-weight: 400;
-} 
+ #steam-tab .card .title {
+   font-size: 1.1vw;
+ }
 
-#steam-tab tr:last-child td {
- border-bottom: 0px;
-}
+ #steam-tab #chartProgress {
+   height: 30px;
+   width: 130px;
+ }
+
+ #steam-tab .canvasjs-chart-credit {
+   display: none;
+ }
+
+ #steam-tab #unit {
+   font-size: 0.8vw;
+   color: #d9d9d9;
+ }
+
+ /* progress bar */
+ #steam-tab .progress {
+   position: absolute;
+   cursor: pointer;
+   margin: -80px 0 0 -80px;
+ }
+
+ #steam-tab .progress-circle {
+   transform: rotate(1deg);
+   height: 11vw;
+ }
+
+ .count-line1 {
+   height: 11.2vw;
+ }
+
+ #steam-tab .progress-circle-back {
+   fill: none;
+   stroke: #ffffff;
+   stroke-width: 1.1vw;
+ }
+
+ .progress1 {
+   /* height: 21.3vh; */
+   overflow: hidden;
+   background-color: #26293c;
+ }
+
+ .progress-circle-prog1 {
+   fill: none;
+   stroke: #00b0f0;
+   stroke-width: 1.1vw;
+   /* stroke-dasharray: 0 777; */
+   stroke-dashoffset: 0vw;
+   transition: stroke-dasharray 0.7s linear 0s;
+ }
+
+ #steam-tab .progress-text1 {
+   padding-left: 4vw;
+   position: absolute;
+   bottom: 5vw;
+   font-size: 2vw;
+   color: #ffffff;
+ }
+
+ /* table css  */
+ #steam-tab table {
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ #steam-tab td.positive {
+   color: #00aa55;
+ }
+
+ #steam-tab td.negative {
+   color: #ff0000;
+ }
+
+ #steam-tab .align-num {
+   padding-left: 135px;
+ }
+
+ #steam-tab .align-start {
+   text-align: start;
+   padding: 0.8vw;
+   color: #d9d9d9;
+ }
+
+ #steam-tab th {
+   text-align: center;
+   font-size: 1.1vw;
+   font-weight: 600;
+   border-bottom: 0.1vw solid #AAAAAA;
+   background-color: #26293c;
+   position: -webkit-sticky;
+   position: sticky;
+   top: 0;
+   overflow: auto;
+ }
+
+ #steam-tab td {
+   border-bottom: 0.1vw solid #AAAAAA;
+   font-size: 1vw;
+ }
+
+ #steam-tab table#shpsteamgeneration td {
+   border-bottom: 0.1vw solid #AAAAAA;
+   font-size: 1vw;
+   text-align: start;
+   padding: 0.9vw 0.4vw;
+ }
+
+ #steam-tab table#shpsteamgeneration td:nth-child(1) {
+   padding-right: 5vw;
+ }
+
+ #steam-tab td:nth-last-child(4) {
+   font-size: 1vw;
+   color: #d9d9d9;
+   font-weight: 400;
+ }
+
+ #steam-tab tr:last-child td {
+   border-bottom: 0px;
+ }
 
 
-/* scroll */
+ /* scroll */
 
-#steam-tab .overflow {
-  overflow: auto;
-}
+ #steam-tab .overflow {
+   overflow: auto;
+ }
 
-#steam-tab .genratorsHeight {
-  height: 8vw;
-}
-#steam-tab .genratorsHeight1 {
-  height: 10vw;
-}
+ #steam-tab .genratorsHeight {
+   height: 8vw;
+ }
 
-#steam-tab ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
+ #steam-tab .genratorsHeight1 {
+   height: 10vw;
+ }
 
-#steam-tab ::-webkit-scrollbar-track {
-  border: 1px solid #262A3C;
-  border-radius: 15px;
-}
+ #steam-tab ::-webkit-scrollbar {
+   width: 6px;
+   height: 6px;
+ }
 
-#steam-tab ::-webkit-scrollbar-thumb {
-  background: #8d8a95;;
-  border-radius: 15px;
-}
+ #steam-tab ::-webkit-scrollbar-track {
+   border: 1px solid #262A3C;
+   border-radius: 15px;
+ }
 
-#steam-tab ::-webkit-scrollbar-thumb:hover {
-  background: #8d8a95;;
-}
+ #steam-tab ::-webkit-scrollbar-thumb {
+   background: #8d8a95;
+   ;
+   border-radius: 15px;
+ }
 
-#steam-tab .chart-legends .legend {
-  padding: 0.2vw 0;
-  display: inline-block;
-}
+ #steam-tab ::-webkit-scrollbar-thumb:hover {
+   background: #8d8a95;
+   ;
+ }
 
-#steam-tab .chart-legends .legend .legend-circle {
-  height: 0.7vw;
-  width: 0.7vw;
-  border-radius: 0.3vw;
-  display: inline-block;
-}
+ #steam-tab .chart-legends .legend {
+   padding: 0.2vw 0;
+   display: inline-block;
+ }
 
-#steam-tab .chart-legends .legend .legend-circle.legend-solid {
-  background-color: #ffa600;
-}
+ #steam-tab .chart-legends .legend .legend-circle {
+   height: 0.7vw;
+   width: 0.7vw;
+   border-radius: 0.3vw;
+   display: inline-block;
+ }
 
-#steam-tab .chart-legends .legend .legend-circle.legend-liquid {
-  background-color: #003f5c;
-}
+ #steam-tab .chart-legends .legend .legend-circle.legend-solid {
+   background-color: #ffa600;
+ }
 
-#steam-tab .chart-legends .legend .legend-circle.legend-gas {
-  background-color: #00aa7e;
-}
-#steam-tab .chart-legends .legend .legend-circle.legend-hp {
-  background-color: #4D5363;
-}
-#steam-tab .chart-legends .legend .legend-text {
-  color: #d9d9d9;
-  padding-left: 0.5vw;
-  font-size: 1vw;
-}
+ #steam-tab .chart-legends .legend .legend-circle.legend-liquid {
+   background-color: #003f5c;
+ }
 
-#steam-tab input{
+ #steam-tab .chart-legends .legend .legend-circle.legend-gas {
+   background-color: #00aa7e;
+ }
+
+ #steam-tab .chart-legends .legend .legend-circle.legend-hp {
+   background-color: #4D5363;
+ }
+
+ #steam-tab .chart-legends .legend .legend-text {
+   color: #d9d9d9;
+   padding-left: 0.5vw;
+   font-size: 1vw;
+ }
+
+ #steam-tab input {
    font-size: 0.9vw;
    max-width: 11.6vw;
-}
-#steam-tab #chartsteamdata, #chartsteamdata1 {
-  font-size: 0.8vw;
-  background-color: #26293c;
-  border: 0.1vw solid #f2f2f2;
-  padding: 0.1vw;
-  border-radius: 0.2vw;
-  cursor: pointer;
-  color: #d9d9d9;
-  max-width: 15vw;
-}
-#steam-tab .line {
-  padding: 0vw 0.5vw;
-}
-#steam-tab .axis {
-  font-size: 1vw;
-  color: #d9d9d9;
-}
-#steam-tab .card-col .card {
-  padding: 6px;
-}
-#steam-tab .first-spa{
-  background-color:#0896CC ;
-}
-#steam-tab .sec-spa{
-  background-color:#c55B11;
-}
-#steam-tab .third-spa{
-  background-color:#F50548 ;
-}
-#steam-tab .four-spa{
-  background-color:#D945B4 ;
-}
-#steam-tab .fifth-spa{
-  background-color:#FFA700;
-}
-#steam-tab .six-spa{
-  background-color:#a708f9 ;
-}
-#steam-tab .seven-spa{
-  background-color:#08CC12 ;
-}
-#steam-tab .col-otr{
-  height: 5px;
-  width: 22px;
-  display: inline-block;
-  margin-left: 0.3vw;
-}
-#steam-tab .col-rt {
-  display: inline-block;
-  color: #d9d9d9;
-  margin-left: 0.4vw;
-  margin-top: -7px;
-}
+ }
+
+ #steam-tab #chartsteamdata, #chartsteamdata1 {
+   font-size: 0.8vw;
+   background-color: #26293c;
+   border: 0.1vw solid #f2f2f2;
+   padding: 0.1vw;
+   border-radius: 0.2vw;
+   cursor: pointer;
+   color: #d9d9d9;
+   max-width: 15vw;
+ }
+
+ #steam-tab .line {
+   padding: 0vw 0.5vw;
+ }
+
+ #steam-tab .axis {
+   font-size: 1vw;
+   color: #d9d9d9;
+ }
+
+ #steam-tab .card-col .card {
+   padding: 6px;
+ }
+
+ #steam-tab .first-spa {
+   background-color: #0896CC;
+ }
+
+ #steam-tab .sec-spa {
+   background-color: #c55B11;
+ }
+
+ #steam-tab .third-spa {
+   background-color: #F50548;
+ }
+
+ #steam-tab .four-spa {
+   background-color: #D945B4;
+ }
+
+ #steam-tab .fifth-spa {
+   background-color: #FFA700;
+ }
+
+ #steam-tab .six-spa {
+   background-color: #a708f9;
+ }
+
+ #steam-tab .seven-spa {
+   background-color: #08CC12;
+ }
+
+ #steam-tab .col-otr {
+   height: 5px;
+   width: 22px;
+   display: inline-block;
+   margin-left: 0.3vw;
+ }
+
+ #steam-tab .col-rt {
+   display: inline-block;
+   color: #d9d9d9;
+   margin-left: 0.4vw;
+   margin-top: -7px;
+ }

@@ -6,13 +6,13 @@ $(document).ready(function () {
     "./../../templates/sec-distribution/sec-distribution.html"
   );
   $("input[name=fromHome]").on("change", function (event) {
-     document.getElementById("homeEms1").min = $('#fromHome1').attr('label');
+    document.getElementById("homeEms1").min = $('#fromHome1').attr('label');
     getSpecificHomeConsumptionData();
   });
-  
+
   $("#r1").on("change", function () {
-     domLebal1 = $(this).find(":selected").attr('label');
-    $("#first-box-title").html(domLebal1);   
+    domLebal1 = $(this).find(":selected").attr('label');
+    $("#first-box-title").html(domLebal1);
     getSpecificHomeConsumptionData();
   });
 
@@ -20,54 +20,54 @@ $(document).ready(function () {
     document.getElementById("fromHome1").max = $('#homeEms1').val();
     getSpecificHomeConsumptionData();
   });
-  
+
   totalThroughput();
   lastupdatedTime();
 });
 function lastupdatedTime() {
-    $.ajax({
-      headers: {
-        "Content-Type": "application/json",
-        Authorization:
-          sessionStorage.getItem("tokenType") +
-          " " +
-          sessionStorage.getItem("accessToken"),
-      },
-      url: "http://localhost:8090/EMSPro/home/lastUpdateTimestamp",
-      method: "GET",
-    }).done(function (data) {
-      const d = new Date(data.lastupdatetimestamp);
-      sessionStorage.setItem("lastUpdateddate", d);
-      const dmonth = d.getMonth()+1;
-      //alert(sessionStorage.getItem("lastUpdateddate"));
-       document.getElementById("homeTime").innerHTML = d.getDate()+"-"+dmonth+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-      var now = new Date();
-  var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-    .toISOString()
-    .substring(0, 19);
-  console.log(new Date(sessionStorage.getItem("lastUpdateddate")), "new date");
-  // var hoursString = sessionStorage.getItem("lastUpdateddate").split(" ")[1];
-  var hoursString = sessionStorage.getItem("lastUpdateddate");
-  var timeArray = hoursString.split(":");
-  const dateVal = new Date(sessionStorage.getItem("lastUpdateddate"));
-  const dtaval = new Date();
-  dateVal.setHours(05);
-               dateVal.setMinutes(30);
-               dateVal.setSeconds(0);
-  $("#fromHome1").val(dateVal.toJSON().slice(0,19));
-  const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(29);
-           tod.setMinutes(29);
-           tod.setSeconds(0);
-$('#homeEms1').val(tod.toJSON().slice(0,19));
- // console.log(dateVal.toJSON().slice(0,19), "daa");
- document.getElementById("homeEms1").min = $('#fromHome1').val();
- document.getElementById("fromHome1").max = $('#homeEms1').val();
-  getSpecificHomeConsumptionData("1");
-    });
-  }
+  $.ajax({
+    headers: {
+      "Content-Type": "application/json",
+      Authorization:
+        sessionStorage.getItem("tokenType") +
+        " " +
+        sessionStorage.getItem("accessToken"),
+    },
+    url: "http://localhost:8090/EMSPro/home/lastUpdateTimestamp",
+    method: "GET",
+  }).done(function (data) {
+    const d = new Date(data.lastupdatetimestamp);
+    sessionStorage.setItem("lastUpdateddate", d);
+    const dmonth = d.getMonth() + 1;
+    //alert(sessionStorage.getItem("lastUpdateddate"));
+    document.getElementById("homeTime").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    var now = new Date();
+    var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+      .toISOString()
+      .substring(0, 19);
+    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), "new date");
+    // var hoursString = sessionStorage.getItem("lastUpdateddate").split(" ")[1];
+    var hoursString = sessionStorage.getItem("lastUpdateddate");
+    var timeArray = hoursString.split(":");
+    const dateVal = new Date(sessionStorage.getItem("lastUpdateddate"));
+    const dtaval = new Date();
+    dateVal.setHours(05);
+    dateVal.setMinutes(30);
+    dateVal.setSeconds(0);
+    $("#fromHome1").val(dateVal.toJSON().slice(0, 19));
+    const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
+    tod.setHours(29);
+    tod.setMinutes(29);
+    tod.setSeconds(0);
+    $('#homeEms1').val(tod.toJSON().slice(0, 19));
+    // console.log(dateVal.toJSON().slice(0,19), "daa");
+    document.getElementById("homeEms1").min = $('#fromHome1').val();
+    document.getElementById("fromHome1").max = $('#homeEms1').val();
+    getSpecificHomeConsumptionData("1");
+  });
+}
 
-function getSpecificHomeConsumptionData(intervalType ,domLebal1) {
+function getSpecificHomeConsumptionData(intervalType, domLebal1) {
   var myJSON = {
     fromdate: $("#fromHome1").val(),
     kpiname: $("#r1 option:selected").attr('label'),
@@ -90,33 +90,34 @@ function getSpecificHomeConsumptionData(intervalType ,domLebal1) {
   }).done(function (data) {
     console.log(data);
     var Difference_In_Days = data[0].showNumberIndex;
-    formatSpecificHomeConsumptionData(data ,intervalType ,domLebal1 ,Difference_In_Days);
+    formatSpecificHomeConsumptionData(data, intervalType, domLebal1, Difference_In_Days);
   });
 }
 
-function formatSpecificHomeConsumptionData(data ,intervalType ,domLebal1 ,Difference_In_Days) {
+function formatSpecificHomeConsumptionData(data, intervalType, domLebal1, Difference_In_Days) {
   var chartData = { Throughput: [], TotalEnergyConsumption: [] };
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     var count = data.length;
     const tmpDate = new Date(element.date);
     chartData.TotalEnergyConsumption.push({
-      y: element.fuelConsumption,x:tmpDate });
-    chartData.Throughput.push({ y: element.throughput , x:tmpDate});
+      y: element.fuelConsumption, x: tmpDate
+    });
+    chartData.Throughput.push({ y: element.throughput, x: tmpDate });
   }
   console.log("Homechartdata", chartData);
   var interval = 1;
   if (!Difference_In_Days) {
-    if (count/8 > 1) {
-       interval =Math.round(count/8);
-    }else{
+    if (count / 8 > 1) {
+      interval = Math.round(count / 8);
+    } else {
       interval = 1;
     }
-   
+
   }
-  showSpecificHomeConsumptionChart(chartData ,intervalType ,domLebal1,Difference_In_Days ,interval);
+  showSpecificHomeConsumptionChart(chartData, intervalType, domLebal1, Difference_In_Days, interval);
 }
-function showSpecificHomeConsumptionChart(data ,intervalType ,domLebal1,Difference_In_Days ,interval) {
+function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Difference_In_Days, interval) {
   var chart = new CanvasJS.Chart("chartContainer", {
     // height: 300 + 'vh',
     // width: '100%',
@@ -129,8 +130,8 @@ function showSpecificHomeConsumptionChart(data ,intervalType ,domLebal1,Differen
       gridDashType: "dot",
       intervalType: Difference_In_Days == true ? "hour" : "day",
       valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-      title:Difference_In_Days == true?  "In hours":" In Days",
-      titleFontSize:15,
+      title: Difference_In_Days == true ? "In hours" : " In Days",
+      titleFontSize: 15,
       interval: interval,
       tickThickness: 0,
       lineThickness: 0,
@@ -138,7 +139,7 @@ function showSpecificHomeConsumptionChart(data ,intervalType ,domLebal1,Differen
       labelFontSize: 15,
       fontFamily: "Bahnschrift Light",
 
-  }, 
+    },
     dataPointMaxWidth: 15,
     axisY: {
       title: $("#r1").find(":selected").val(),
@@ -171,12 +172,12 @@ function showSpecificHomeConsumptionChart(data ,intervalType ,domLebal1,Differen
         name: "Throughput",
         markerSize: 0,
         axisYType: "secondary",
-        dataPoints: data.Throughput,  
+        dataPoints: data.Throughput,
       },
       {
         type: "spline",
         color: "#dc7632",
-       name: $("#r1").find(":selected").attr("label"),
+        name: $("#r1").find(":selected").attr("label"),
         markerSize: 0,
         dataPoints: data.TotalEnergyConsumption,
       },
@@ -185,13 +186,13 @@ function showSpecificHomeConsumptionChart(data ,intervalType ,domLebal1,Differen
   chart.render();
   var chartTypedata = document.getElementById("chartTypedata");
   chartTypedata.addEventListener("change", function () {
-    chart.options.data[0].type =chartTypedata.options[chartTypedata.selectedIndex].value;
+    chart.options.data[0].type = chartTypedata.options[chartTypedata.selectedIndex].value;
     chart.render();
   });
 
   var chartType1data = document.getElementById("chartType1data");
   chartType1data.addEventListener("change", function () {
-    chart.options.data[1].type =chartType1data.options[chartType1data.selectedIndex].value;
+    chart.options.data[1].type = chartType1data.options[chartType1data.selectedIndex].value;
     chart.render();
   });
 }

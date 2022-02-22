@@ -2,30 +2,32 @@
     font-size: 1.7vw;
     font-weight: 600;
     color: #d9d9d9;
-font-family: Yu Gothic UI Semibold;
+    font-family: Yu Gothic UI Semibold;
 }
+
 .ncu-Overview-tab .leg, .leg1 {
     font-size: 0.9vw;
     color: #d9d9d9;
 
 }
-.ncu-headline {
+
+.ncu-Overview-tab .ncu-headline {
     font-size: 1.7vw;
     font-weight: 600;
     color: #d9d9d9;
-font-family: Yu Gothic UI Semibold;
+    font-family: Yu Gothic UI Semibold;
     padding: 5px 15px;
-    
 }
+
 .ncu-Overview-tab .osv {
-    background-color:#e97b31;
+    background-color: #e97b31;
     width: 1.8vw;
     height: 0.25vw;
     display: inline-block;
     margin: 0.2vw;
 }
 
-.ncu-Overview-tab .refbox1{
+.ncu-Overview-tab .refbox1 {
     background-color: #ffc000;
     width: 1.8vw;
     height: 0.25vw;
@@ -33,12 +35,13 @@ font-family: Yu Gothic UI Semibold;
     display: inline-block;
     margin: 0.2vw;
 }
-.ncu-Overview-tab .feedbox{
+
+.ncu-Overview-tab .feedbox {
     background-color: #00b0f0;
     width: 0.9vw;
     height: 0.9vw;
     display: inline-block;
-    margin: 0vw 0.3vw ;
+    margin: 0vw 0.3vw;
 }
 
 .ncu-Overview-tab #ncufromFccu, #ncuoveralldate {
@@ -54,12 +57,13 @@ font-family: Yu Gothic UI Semibold;
     color: #f2f2f2;
 
 }
+
 .ncu-Overview-tab #ncuoveralldate {
     padding: 0.25vw;
     margin-left: 1.1vw;
     min-width: 6vw;
 }
 
-.ncu-Overview-tab .count-line{
+.ncu-Overview-tab .count-line {
     height: 42vh;
 }

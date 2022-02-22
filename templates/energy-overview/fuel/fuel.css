@@ -11,29 +11,36 @@
     margin: 0;
     color: #d9d9d9;
 }
+
 #fuel-tab .col-rr {
     font-size: 1.4vw;
     color: #d9d9d9;
 }
+
 #fuel-tab .lebel-style {
     display: inline-block;
     font-size: 0.9vw;
     font-weight: 100;
 }
+
 #fuel-tab .second-box-title {
     font-size: 1.1vw;
 }
+
 #fuel-tab .in-title {
     font-weight: 200;
     font-size: 0.6vw;
 }
+
 #fuel-tab .line {
     padding: 0.8vw 0.5vw;
 }
+
 #fuel-tab .axis {
     font-size: 1vw;
     color: #d9d9d9;
 }
+
 #chartType, #chartType1, #PNCfuelto {
     font-size: 0.8vw;
     background-color: #26293c;
@@ -45,6 +52,7 @@
     cursor: pointer;
     color: #d9d9d9;
 }
+
 #fuel-tab .card .title .fuel-title {
     text-align: center;
     font-size: 1vw;
@@ -60,12 +68,14 @@
     font-weight: 600;
 
 }
+
 #fuel-tab .card .footer .ref {
     color: #d9d9d9;
     font-size: 1vw;
     display: inline-block;
     padding: 0vw 0vw;
 }
+
 #fuel-tab #ref_fuel1, #ref_fuel2 {
     color: #f2f2f2;
     font-size: 1.1vw;
@@ -84,8 +94,9 @@
 }
 
 #fuel-tab .card .footer .result.green {
-    background-color: #00b050;  
+    background-color: #00b050;
 }
+
 #fuel-tab .card .body .count-line {
     height: 33.9vw;
 }
@@ -101,32 +112,38 @@
 #fuel-tab .card .title .col-md-2 #Gcal {
     margin: 15px 5px;
 }
+
 #fuel-tab .chart-title.title .col-first>span {
     display: inline-block;
     font-size: 1.1vw;
 }
-#fuel-tab .dropto{
+
+#fuel-tab .dropto {
     font-size: 1vw;
     padding: 1px;
     width: 5vw;
 }
-#fuel-tab #PNCfuelfrom { 
+
+#fuel-tab #PNCfuelfrom {
     font-size: 0.8vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
     padding: 2px;
     border-radius: 0.3vw;
     margin-left: 0.3vw;
-    max-width: 13.3vw;          
+    max-width: 13.3vw;
     cursor: pointer;
     color: #d9d9d9;
 }
-#fuel-tab .count-line1{
+
+#fuel-tab .count-line1 {
     height: 10vw;
 }
-#fuel-tab input[type=radio]{
+
+#fuel-tab input[type=radio] {
     margin: 4px 2px 0px 5px;
 }
+
 #fuel-tab .chart-legends .legend {
     padding: 5px 0px;
     display: inline-block;

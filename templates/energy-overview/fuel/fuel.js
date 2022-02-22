@@ -58,7 +58,7 @@ function getSpecificFuelPNCData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EMSPro/fuelgraph",
+        url: "http://192.168.1.127:8090/eco/fuelgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -99,7 +99,7 @@ function getFuelDoughnutData(xyz) {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8090/EMSPro/totalfuelconsumed",
+        url: "http://192.168.1.127:8090/eco/totalfuelconsumed",
     }).done(function (data) {
         if (myJSON.uom == 'INR/hr') {
 
@@ -148,7 +148,7 @@ function loadDoughnutChartFuelINR(data) {
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
-            text: (data[0].totalfuel).toFixed(2),
+            text: data.totalfuel.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 300,
@@ -196,7 +196,7 @@ function loadDoughnutChartFuel(data) {
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
-            text: (data[0].totalfuel).toFixed(2),
+            text: (data.totalfuel).toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 300,
@@ -313,7 +313,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
 function loadCardfuel1() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EMSPro/secfuelMT",
+        url: "http://192.168.1.127:8090/eco/secfuelMT",
 
     }).done(function (data) {
         console.log(data, "321222");
@@ -332,7 +332,7 @@ function loadCardfuel1() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -344,7 +344,7 @@ function loadCardfuel1() {
 function loadCardfuel2() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EMSPro/secfuelGcal",
+        url: "http://192.168.1.127:8090/eco/secfuelGcal",
 
     }).done(function (data) {
         console.log(data, "321222");
@@ -362,7 +362,7 @@ function loadCardfuel2() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
