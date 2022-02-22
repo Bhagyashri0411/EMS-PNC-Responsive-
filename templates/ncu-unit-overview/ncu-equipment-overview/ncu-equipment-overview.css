@@ -1,7 +1,7 @@
 /* equipment Efficiency Css */
 
 
-.ncu-equipment-overview input {
+#ncu-equipment-overview input {
     font-size: 0.8vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
@@ -13,44 +13,50 @@
     color: #f2f2f2;
     margin-right: 0.1vw;
 }
-
-.ncu-equipment-overview .count-line {
+#ncu-equipment-overview .ncu-headline {
+    font-size: 1.7vw;
+    font-weight: 600;
+    color: #d9d9d9;
+    font-family: Yu Gothic UI Semibold;
+    padding: 5px 15px;
+}
+#ncu-equipment-overview .count-line {
     height: 8vw;
     margin-left: 0.5vw;
 }
 
-.ncu-equipment-overview .title {
+#ncu-equipment-overview .title {
     height: 2vw;
 }
 
-.ncu-equipment-overview .col-ty {
+#ncu-equipment-overview .col-ty {
     border-right: 1px solid #d9d9d9;
 }
 
-.ncu-equipment-overview .col-left {
+#ncu-equipment-overview .col-left {
     border-right: 1px solid #d9d9d9;
 }
 
-.ncu-equipment-overview .title-1 {
+#ncu-equipment-overview .title-1 {
     height: 1.8vw;
     margin-top: -5px;
 }
 
-.ncu-equipment-overview .box1-yellow {
+#ncu-equipment-overview .box1-yellow {
     background-color: #FFC100;
 }
 
-.ncu-equipment-overview .title-1 .box1-blue {
+#ncu-equipment-overview .title-1 .box1-blue {
     background-color: #0896CC;
 }
 
-.ncu-equipment-overview .title-1 .box-eff {
+#ncu-equipment-overview .title-1 .box-eff {
     width: 0.9vw;
     height: 0.8vw;
     display: inline-block;
 }
 
-.ncu-equipment-overview .title-1 .color-eff {
+#ncu-equipment-overview .title-1 .color-eff {
     font-size: 1vw;
     color: #d9d9d9;
     ;
@@ -58,36 +64,36 @@
     margin-right: 0.5vw;
 }
 
-.ncu-equipment-overview hr {
+#ncu-equipment-overview hr {
     border: 1px solid #6c6f7e;
     margin: 1vw 0;
 }
 
-.ncu-equipment-overview .title-1 .col-st {
+#ncu-equipment-overview .title-1 .col-st {
     font-size: 1.2vw;
 }
 
 /*Fccunit table CSS */
-.ncu-equipment-overview table {
+#ncu-equipment-overview table {
     font-family: Yu Gothic UI;
     border-collapse: collapse;
     position: relative;
     width: 100%;
 }
 
-.ncu-equipment-overview td {
+#ncu-equipment-overview td {
     padding: 0.5vw;
     font-size: 1vw;
     color: #d9d9d9;
     border-bottom: 0.13vw solid #7e808b;
 }
 
-.ncu-equipment-overview tr:last-child td {
+#ncu-equipment-overview tr:last-child td {
     border-bottom: 0vw;
 
 }
 
-.ncu-equipment-overview th {
+#ncu-equipment-overview th {
     background-color: #442266;
     color: #d9d9d9;
     font-size: 0.8vw;
@@ -98,7 +104,7 @@
     font-size: 1.1vw;
 }
 
-.ncu-equipment-overview .title {
+#ncu-equipment-overview .title {
     color: #d9d9d9;
     font-size: 1.1vw;
     padding: 0px;
@@ -106,15 +112,15 @@
 
 }
 
-.ncu-equipment-overview .tiles-row .steam-table {
+#ncu-equipment-overview .tiles-row .steam-table {
     padding-left: 0px;
 }
 
-.ncu-equipment-overview .col-tb {
+#ncu-equipment-overview .col-tb {
     border-right: 2px solid #6c6f7e;
 }
 
-.ncu-equipment-overview .line {
+#ncu-equipment-overview .line {
     height: 0.3vw;
     width: 1.6vw;
     top: -0.6vw;
@@ -123,7 +129,7 @@
     position: relative;
 }
 
-.ncu-equipment-overview .line-1 {
+#ncu-equipment-overview .line-1 {
     height: 0.3vw;
     width: 1.6vw;
     top: -0.6vw;
@@ -132,37 +138,37 @@
     position: relative;
 }
 
-.ncu-equipment-overview .org-spa {
+#ncu-equipment-overview .org-spa {
     background-color: #C55B11;
 
 }
 
-.ncu-equipment-overview .pink-spa {
+#ncu-equipment-overview .pink-spa {
     background-color: #D945B4;
 
 }
 
-.ncu-equipment-overview .yel-spa {
+#ncu-equipment-overview .yel-spa {
     background-color: #FFA700;
 
 }
 
-.ncu-equipment-overview .blue-spa {
+#ncu-equipment-overview .blue-spa {
     background-color: #0896CC;
 
 }
 
-.ncu-equipment-overview .pur-spa {
+#ncu-equipment-overview .pur-spa {
     background-color: #7030a0;
 
 }
 
-.ncu-equipment-overview .gre-spa {
+#ncu-equipment-overview .gre-spa {
     background-color: #08cc12;
 
 }
 
-.ncu-equipment-overview .col-rt {
+#ncu-equipment-overview .col-rt {
     top: -0.5vw;
     position: relative;
     color: #d9d9d9;
@@ -170,7 +176,7 @@
     font-size: 0.8vw;
 }
 
-.ncu-equipment-overview .col-rt-1 {
+#ncu-equipment-overview .col-rt-1 {
     top: -0.5vw;
     position: relative;
     color: #d9d9d9;
@@ -178,11 +184,11 @@
     font-size: 0.8vw;
 }
 
-.ncu-equipment-overview .wdt {
+#ncu-equipment-overview .wdt {
     width: 20%;
 }
 
-.ncu-equipment-overview #kpiTablencu {
+#ncu-equipment-overview #kpiTablencu {
     max-width: 25vw;
     font-size: 1vw;
     background-color: #26293c;
@@ -193,7 +199,7 @@
     border-radius: 0.3vw;
 }
 
-.ncu-equipment-overview .ncu-headline {
+#ncu-equipment-overview .ncu-headline {
     font-size: 2vw;
     margin-top: -9px;
     padding-left: 8px;
@@ -201,35 +207,35 @@
 }
 
 /* table scrollbar CSS */
-.ncu-equipment-overview .overflow {
+#ncu-equipment-overview .overflow {
     overflow: auto;
 }
 
-.ncu-equipment-overview .genratorsHeight {
+#ncu-equipment-overview .genratorsHeight {
     height: 19vw;
 }
 
-.ncu-equipment-overview .scroll {
+#ncu-equipment-overview .scroll {
     width: 40%;
     /* height: 280px; */
     overflow: auto;
 }
 
-.ncu-equipment-overview ::-webkit-scrollbar {
+#ncu-equipment-overview ::-webkit-scrollbar {
     width: 0.3vw;
     height: 0.3vw;
 }
 
-.ncu-equipment-overview ::-webkit-scrollbar-track {
+#ncu-equipment-overview ::-webkit-scrollbar-track {
     border: 1px solid #262A3C;
     border-radius: 15px;
 }
 
-.ncu-equipment-overview ::-webkit-scrollbar-thumb {
+#ncu-equipment-overview ::-webkit-scrollbar-thumb {
     background: #8d8a95;
     border-radius: 15px;
 }
 
-.ncu-equipment-overview ::-webkit-scrollbar-thumb:hover {
+#ncu-equipment-overview ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
 }
