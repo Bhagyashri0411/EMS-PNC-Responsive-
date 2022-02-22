@@ -114,3 +114,38 @@
 #ncu-convection-section .main-dec {
     font-size: 1.2vw;
 }
+
+            /* scroll */
+            #ncu-convection-section .overflow {
+                overflow: auto;
+            }
+            
+            #ncu-convection-section .genratorsHeight {
+                height: 20vh;
+                padding-right: 5px;
+            }
+            
+            #ncu-convection-section .scroll {
+                width: 40%;
+                height: 280px;
+                overflow: auto;
+            }
+            
+            #ncu-convection-section ::-webkit-scrollbar {
+                width: 0.3vw;
+                height: 0.8vh;
+            }
+            
+            #ncu-convection-section ::-webkit-scrollbar-track {
+                border: 1px solid #262A3C;
+                border-radius: 15px;
+            }
+            
+            #ncu-convection-section ::-webkit-scrollbar-thumb {
+                background: #8d8a95;
+                border-radius: 15px;
+            }
+            
+            #ncu-convection-section ::-webkit-scrollbar-thumb:hover {
+                background:#8d8a95;
+            }

@@ -26,6 +26,8 @@ $(document).ready(function() {
    
     
     getSpecificNCUOverviewData();
+    convectiontable();
+    
 });
 
 function getSpecificNCUOverviewData() {
@@ -119,7 +121,6 @@ function formatSpecificNCUOverviewData(data) {
     showSpecificNCUOverviewData(chartData);
 }
 
-
 function showSpecificNCUOverviewData(data) {
     var chart = new CanvasJS.Chart("NCU-chart-container", {
         // height: 180,
@@ -187,3 +188,61 @@ function showSpecificNCUOverviewData(data) {
 
     chart.render();
 }
+
+function convectiontable(){
+    var myJSON = { 'tagname': $("#NCUA option:selected").val()}
+    const postdata = JSON.stringify(myJSON);
+    console.log(postdata,"NCUA");
+
+    $.ajax({
+        method: "POST",
+        data: postdata,
+        url: "http://192.168.0.131:8090/api/npruunitOverview/SECOverview",
+    }).done(function(data) {
+        console.log(data)
+
+        formatconvectiontable(data);
+        svg(data)
+    })
+    .fail(function(){
+        var failData = [
+            { "kpi":"% Avg. Temperature IN<br> to design","UFP":514,	"BFP":234 ,"LFP":24,"DSSH":258,"UMP":479,"USSH":753,"LSSH":532,"LMP":879},            
+            { "kpi":"Avg. Temperature OUT<br> to design","UFP":514,	"BFP":234 ,"LFP":24,"DSSH":258,"UMP":479,"USSH":753,"LSSH":532,"LMP":879},            
+            { "kpi":"% Heat Recovery compared<br> to design","UFP":514,	"BFP":234 ,"LFP":24,"DSSH":258,"UMP":479,"USSH":753,"LSSH":532,"LMP":879},
+            ]
+        formatconvectiontable(failData);
+        svg(failData);
+    })
+}
+
+function formatconvectiontable(data){
+
+    var table_data = '';
+    $.each(data, function (key, value) {
+        table_data += '<tr>';
+        table_data += '<td>' + value.kpi + '</td>';
+        table_data += '<td>' + value.UFP + '</td>';
+        table_data += '<td>' + value.BFP + '</td>';
+        table_data += '<td>' + value.LFP + '</td>';        
+        table_data += '<td>' + value.DSSH + '</td>';
+        table_data += '<td>' + value.UMP + '</td>';
+        table_data += '<td>' + value.USSH + '</td>';
+        table_data += '<td>' + value.LSSH + '</td>';
+        table_data += '<td>' + value.LMP + '</td>';
+        table_data += '</tr>';
+    });
+    $('#Equipment_body_ncu').append(table_data);
+}
+
+function svg(data){
+    console.log(data[2].UFP,"data[2].UFP");
+    document.getElementById("EMS_NWD_UFP_01").innerHTML = data[2].UFP;
+    document.getElementById("EMS_NWD_BFP_02").innerHTML = data[2].BFP;
+    document.getElementById("EMS_NWD_LPF_03").innerHTML = data[2].LFP;
+    document.getElementById("EMS_NWD_DSSH_04").innerHTML = data[2].DSSH;
+    document.getElementById("EMS_NWD_UMP_05").innerHTML = data[2].UMP;
+    document.getElementById("EMS_NWD_USSH_06").innerHTML = data[2].USSH;
+    document.getElementById("EMS_NWD_LSSH_07").innerHTML = data[2].LSSH;
+    document.getElementById("EMS_NWD_LMP_08").innerHTML = data[2].LMP;
+}
+
