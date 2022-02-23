@@ -8,7 +8,7 @@ $(document).ready(function() {
     $("#ncu-horizontal-tiles").load("./../../templates/ncu-unit-overview/ncu-horizontal-tiles/ncu-horizontal-tiles.html");
     // $("#layoutSidenav_content").load("./../../templates/dashboard/dashboard.html");
 
-    $("#overall-sec-overview").load("./../../templates/ncu-unit-overview/overall-sec-overview/overall-sec-overview.html", function() {});
+    $("#ncu-overall-sec-overview").load("./../../templates/ncu-unit-overview/ncu-overall-sec-overview/ncu-overall-sec-overview.html", function() {});
     $('#ncu-unit-overview-tab a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         var target = $(e.target).attr("href") // activated tab
         var fileName = target.substring(1);
