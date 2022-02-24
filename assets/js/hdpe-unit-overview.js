@@ -18,16 +18,6 @@ $(document).ready(function() {
 });
 
 function lastupdatedTime(data){
-    // $.ajax({
-    //     url: 'http://192.168.1.114:8090/EMSPro-PNC/api/home/lastupdatedate',
-    //     method: "GET"
-    // }).done(function (data) {
-        
-       
-    //             document.getElementById("hdpeTimeStamp").innerHTML = data.LastUpdatedValue; 
-                
-                
-    //             });
                 var today = new Date();
 
                 var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' +today.getFullYear() 
@@ -40,7 +30,7 @@ function lastupdatedTime(data){
     }
 function totalThroughput(data){
         $.ajax({
-            url: 'http://192.168.1.114:8090/hdpe/feedratePlantload',
+            url: 'http://192.168.1.119:8090/auth/HDPE/feedratePlantload',
             method: "GET"
         }).done(function (data) {
             

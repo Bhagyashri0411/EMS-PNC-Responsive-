@@ -7,8 +7,7 @@ $(document).ready(function () {
     // megGaugeChart()
     guagevaluemegAct();
 
-    var abc = 'MTOE/Ton';
-    getDoughnutmeg(abc);
+    getDoughnutmeg();
 
     $(".meg-doughnut").click(function () {
         console.log($("input[name=ratio-name]:checked").val());
@@ -23,8 +22,8 @@ function megloadGaugeChart() {
     $.ajax({
         type: "GET",
         
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        // url: "http://192.168.1.113:8090/MEG/GUAGEspecificenergyConsumption",
+        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: "http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption",
     }).done(function (gaugevalue) {
         megGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -102,8 +101,8 @@ function megGaugeChartvalue(gaugevalue) {
 function guagevaluemegAct() {
     $.ajax({
         method: "GET",        
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        // url: 'http://192.168.1.113:8090/MEG/GUAGEspecificenergyConsumption',
+        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: 'http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devmeg").innerHTML = data.deviation + "%";
@@ -146,21 +145,21 @@ function getmegbreakOverview(data) {
 
 function megOverview() {
     $.ajax({
-        url: "http://192.168.1.113:8090/MEG/MEGParameterTableMEG",
+        url: "http://192.168.1.109:8090/MEG/MEGParameterTable",
         method: "GET"
     }).done(function (data) {
         getmegOverview(data);
     })
-        .fail(function () {
-            var failData = [{ parameter: "S4 Selectivity", UOM: "-", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "CO2 Production", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "EOE", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "Total Electricity Consumption", UOM: "MWh", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "GHG Emission (tCO2e)", UOM: "Ton/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            ]
+        // .fail(function () {
+        //     var failData = [{ parameter: "S4 Selectivity", UOM: "-", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "CO2 Production", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "EOE", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "Total Electricity Consumption", UOM: "MWh", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "GHG Emission (tCO2e)", UOM: "Ton/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     ]
 
-            getmegOverview(failData);
-        })
+        //     getmegOverview(failData);
+        // })
 }
 
 function getmegOverview(data) {
@@ -176,12 +175,12 @@ function getmegOverview(data) {
         table_data += '</tr>';
 
     });
-    $('#Parameter_table').append(table_data);
+    $('#Parameter_table_meg').append(table_data);
 }
 
 function cardmeg1() {
     $.ajax({
-        url: 'http://192.168.1.113:8090/MEG/MEGSECElectricitycard',
+        url: 'http://192.168.1.109:8090/MEG/MEGtotalSteamConsumptioncard',
         method: "GET"
     }).done(function (data) {
         getcardmeg1(data)
@@ -196,38 +195,38 @@ function cardmeg1() {
         })
 }
 function getcardmeg1(data) {
-    document.getElementById("count-meg1").innerHTML = data.tagvalue;
-    if (data.currentvalue > 0) {
-        document.getElementById("result-meg1").innerHTML = "+" + data.currentvalue;
-    }
-    else {
-        document.getElementById("result-meg1").innerHTML = data.currentvalue;
-    }
-    document.getElementById("ref-meg1").innerHTML = data.refvalue;
-    $(".result").each(function () {
-        var text = $(this).text();
-        if (/[+-]?\d+(\.\d+)?/.test(text)) {
-            var num = parseFloat(text);
-            if (num < 0) {
-                $(this).addClass("red");
-            } else if (num > 0) {
-                $(this).addClass("green");
-            }
+    document.getElementById("count-meg1").innerHTML = data.TotalSteamConsumption;
+    // if (data.currentvalue > 0) {
+    //     document.getElementById("result-meg1").innerHTML = "+" + data.currentvalue;
+    // }
+    // else {
+    //     document.getElementById("result-meg1").innerHTML = data.currentvalue;
+    // }
+    // document.getElementById("ref-meg1").innerHTML = data.refvalue;
+    // $(".result").each(function () {
+    //     var text = $(this).text();
+    //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
+    //         var num = parseFloat(text);
+    //         if (num < 0) {
+    //             $(this).addClass("red");
+    //         } else if (num > 0) {
+    //             $(this).addClass("green");
+    //         }
 
-        }
-    });
+    //     }
+    // });
 }
 
 
-function getDoughnutmeg(abc) {
-    var myJSON = { uom: abc }
+function getDoughnutmeg() {
+    var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.113:8090/MEG/MEGDoughnutECBU",
+        url: "http://192.168.1.109:8090/MEG/MEGDoughnutECBU",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
         console.log(energyConsumed);
@@ -235,16 +234,16 @@ function getDoughnutmeg(abc) {
         loadDoughnutChartmeg(energyConsumed);
 
     })
-    .fail(function () {
-        var failData ={
-            energyConsumed:{
-            "fuel":24,"steam":56,"electricity":45,"total":568}
-        }
+    // .fail(function () {
+    //     var failData ={
+    //         energyConsumed:{
+    //         "fuel":24,"steam":56,"electricity":45,"total":568}
+    //     }
 
-        var energyConsumed = failData[0].energyConsumed;
-        loadDoughnutChartmeg(energyConsumed);
+    //     var energyConsumed = failData[0].energyConsumed;
+    //     loadDoughnutChartmeg(energyConsumed);
         
-    })
+    // })
     
 }
 function loadDoughnutChartmeg(energyConsumed) {

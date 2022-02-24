@@ -15,9 +15,9 @@
     padding: 0;
 }
 #meg-horizontal-tiles .card .body .count {
-    /* text-align: center; */
-    margin-left: -11px;
-    font-size: 2.5vw;
+    text-align: center;
+    /* margin-left: -11px; */
+    font-size: 2.4vw;
     color: #f2f2f2;
     font-weight: 700;
     font-family: Bahnschrift Light;

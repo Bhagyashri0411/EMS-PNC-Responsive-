@@ -7,12 +7,12 @@ $(document).ready(function () {
 
 
     $(".swing-doughnut").click(function () {
-        console.log($("input[name=ratio-name]:checked").val());
+        console.log($("input[name=ratio-name]:checked").val(),"uiuhkik");
         var abc = $("input[name=ratio-name]:checked").val()
         postFuelDoughnutDataswing1(abc);
     });
 
-    // getDoughnutswing();        //get mapping doughnut
+    postFuelDoughnutDataswing1();       //post mapping doughnut
     getpiechartswing();        //get mapping pie
 });
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
 function getpiechartswing() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/swing/fuelpichart",
+        url: "http://192.168.1.119:8090/SWING/SteamSHPEquivalent",
     }).done(function (data) {
 
         var fuelConsumed = data[0];
@@ -30,7 +30,7 @@ function getpiechartswing() {
     })
         .fail(function () {
             var faildata =
-                { "rlngimport": 63.0, "lpgimport": 64.0, "fgexport": 65.0, "fggeneration": 66.0, "total": 258.0 }
+                { "hp": 63.0, "lp": 64.0,"total": 258.0 }
             loadpiechartswing(faildata);
         })
 
@@ -53,7 +53,7 @@ function loadpiechartswing(fuelConsumed) {
         backgroundColor: "#26293c",
 
         title: {
-            text: fuelConsumed.total,
+            text: fuelConsumed.total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 100,
@@ -83,11 +83,9 @@ function loadpiechartswing(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.rlngimport, name: "RLNG",indexLabel: ((fuelConsumed.rlngimport/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.lpgimport, name: "LPG",indexLabel: ((fuelConsumed.lpgimport/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.fgexport, name: "FG Export",indexLabel: ((fuelConsumed.fgexport/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.fggeneration, name: "FG Generation",indexLabel: ((fuelConsumed.fggeneration/fuelConsumed.total)*100).toFixed(2)+"%"},
-               
+                { y: fuelConsumed.hp, name: "RLNG",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.lp, name: "LPG",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                
             ]
         }]
     });
@@ -96,8 +94,8 @@ function loadpiechartswing(fuelConsumed) {
 }
 
 
-function postFuelDoughnutDataswing1(xyz) {
-    var myJSON = { uom: xyz }
+function postFuelDoughnutDataswing1() {
+    var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -108,7 +106,7 @@ function postFuelDoughnutDataswing1(xyz) {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.109:8090/swing/swingdoughnut",
+        url: "http://192.168.1.119:8090/SWING/FCCUDoughnut",
     })
         .done(function (data) {
             
@@ -118,18 +116,7 @@ function postFuelDoughnutDataswing1(xyz) {
             loadDoughnutHoriChartswing1(energyConsumed);
 
         })
-        .faildata(function(){
-                     faildata =  {
-                
-                        "total": 240.0,
-                        "fuel": 78.0,
-                        "steam": 80.0,
-                        "electicity": 82.0
-                    
-                }
-    
-                loadDoughnutHoriChartswing1(faildata);
-        })
+        
 }
 function loadDoughnutHoriChartswing1(energyConsumed) {
     // console.log(energyConsumed)
@@ -191,8 +178,8 @@ function loadGaugeChart() {
 function guagevalueswingAct() {
     $.ajax({
         method: "GET",
-        // url: 'http://192.168.1.109:8090/swing/specificenergyConsumption',
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: 'http://192.168.1.119:8090/SWING/specificenergyConsumption',
+        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
     }).done(function (data) {
         document.getElementById("devswing").innerHTML = data.deviation + "%";
         document.getElementById("actswing").innerHTML = data.actual;
@@ -272,7 +259,7 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/swing/specificenergyConsumptiontable"
+        url: "http://192.168.1.119:8090/SWING/specificenergyConsumptiontable"
     }).done(function (data) {
         getspecifictable(data)
     })
@@ -288,7 +275,7 @@ function getspecifictable(data) {
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.type + '</td>';
-        table_data += '<td>' + value.sec + '</td>';
+        table_data += '<td>' + value.actual + '</td>';
         table_data += '<td>' + value.reference + '</td>';
         if (value.deviation > 0) {
             table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
@@ -318,7 +305,7 @@ function getspecifictable(data) {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/swing/specificenergyConsumptiontable"
+        url: "http://192.168.1.119:8090/SWING/SECSteamTabledata"
     }).done(function (data) {
         getparametertable(data)
     })

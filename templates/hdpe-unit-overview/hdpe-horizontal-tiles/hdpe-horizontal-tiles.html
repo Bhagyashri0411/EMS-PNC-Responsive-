@@ -33,22 +33,9 @@
                         <div class="card clearfix">
                             <div class="body">
                                 <!-- <div class="overflow tableheight"> -->
-                                <table class="shptable">
-                                    <tr>
-                                        <td> SEC Steam (SHP Equivalent)
-                                        </td>
-                                        <td> Eq. SHP MT/MT of 
-                                            Product</td>
-                                        <td>0.5</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 53%;"> Total Steam Consumption (SHP
-                                            Equivalent)</td>
-                                        <td> Ton/hr</td>
-                                        <td> 6100</td>
-                                    </tr>
+                                <table class="shptable" >
+                                    <tbody id="shptable"></tbody>
                                 </table>
-                                <!-- </div> -->
                             </div>
                             <div class="body" style="padding-top: 0.3vw;">
                                 <div class="overflow tableheight">
@@ -80,12 +67,12 @@
 
                         <div class="main-title">
                             <div class="hdpe-title" style="display: inline-flex;">
-                                <input type="radio" class="hdpe-doughnut" name="ratio-name"  id="Tonhdpe"
+                                <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/MT"  id="Tonhdpe"
                                     checked>  
                                 <label for="html" class="lebel-style">TOE/MT</label>
-                                <input type="radio" class="hdpe-doughnut" name="ratio-name" id="hrhdpe">  
+                                <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/hr" id="hrhdpe">  
                                 <label for="html" class="lebel-style"> TOE/hr</label>
-                                <input type="radio" class="hdpe-doughnut"  name="ratio-name" id="INRhdpe">
+                                <input type="radio" class="hdpe-doughnut"  name="ratio-name" value="INR/hr" id="INRhdpe">
                                 <label for="html" class="lebel-style">INR/hr</label>
                             </div>
                         </div>

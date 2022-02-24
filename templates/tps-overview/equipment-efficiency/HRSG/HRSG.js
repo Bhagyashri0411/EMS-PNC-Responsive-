@@ -66,7 +66,7 @@ function getSpecificHRSGBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://192.168.1.116:8090/EMSPro/auth/equipmentefficiencyHRSG/HrsgEfficiency",
+        url: "http://192.168.1.119:8090/EMSPro/auth/equipmentefficiencyHRSG/HrsgEfficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -353,127 +353,114 @@ function showSpecificHRSGChart(data ,interval1 ,Difference_In_Days1) {
 //table
 function HRSGTable() {
     $.ajax({
-        url: "http://192.168.1.116:8080/auth/equipmentefficiencyHRSG/HrsgTable",
+        url: "http://192.168.1.119:8090/auth/equipmentefficiencyHRSG/HrsgTable",
         method: "GET"
     }).done(function (data) {
         loadHRSGTable(data);
 
     })
-    // .fail(function () {
-    //     var failData = [{
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG1",
-    //         "exhaustTemperatureDesign": 80.0,
-    //         "exhaustTemperatureActual": 80.0,
-    //         "flowRateActualMT": 80.0,
-    //         "auxfuelDuty": 80.0,
-    //         "flowRateActualSRFT": 80.0,
-    //         "fuelRatioActual": 80.0,
-    //         "fuelRatioDesign": 80.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG2",
-     
-    //  "hrsg4": 66.0,
-    //  "hrsg5": 23.0,       "exhaustTemperatureDesign": 60.0,
-    //         "exhaustTemperatureActual": 60.0,
-    //         "flowRateActualMT": 60.0,
-    //         "auxfuelDuty": 60.0,
-    //         "flowRateActualSRFT": 60.0,
-    //         "fuelRatioActual": 60.0,
-    //         "fuelRatioDesign": 60.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG3",
-    //         "exhaustTemperatureDesign": 70.0,
-    //         "exhaustTemperatureActual": 70.0,
-    //         "flowRateActualMT": 70.0,
-    //         "auxfuelDuty": 70.0,
-    //         "flowRateActualSRFT": 70.0,
-    //         "fuelRatioActual": 70.0,
-    //         "fuelRatioDesign": 70.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG4",
-    //         "exhaustTemperatureDesign": 90.0,
-    //         "exhaustTemperatureActual": 90.0,
-    //         "flowRateActualMT": 90.0,
-    //         "auxfuelDuty": 90.0,
-    //         "flowRateActualSRFT": 90.0,
-    //         "fuelRatioActual": 90.0,
-    //         "fuelRatioDesign": 90.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG5",
-    //         "exhaustTemperatureDesign": 90.0,
-    //         "exhaustTemperatureActual": 90.0,
-    //         "flowRateActualMT": 90.0,
-    //         "auxfuelDuty": 90.0,
-    //         "flowRateActualSRFT": 90.0,
-    //         "fuelRatioActual": 90.0,
-    //         "fuelRatioDesign": 90.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG2",
-     
-    //  "hrsg4": 66.0,
-    //  "hrsg5": 23.0,       "exhaustTemperatureDesign": 60.0,
-    //         "exhaustTemperatureActual": 60.0,
-    //         "flowRateActualMT": 60.0,
-    //         "auxfuelDuty": 60.0,
-    //         "flowRateActualSRFT": 60.0,
-    //         "fuelRatioActual": 60.0,
-    //         "fuelRatioDesign": 60.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG3",
-    //         "exhaustTemperatureDesign": 70.0,
-    //         "exhaustTemperatureActual": 70.0,
-    //         "flowRateActualMT": 70.0,
-    //         "auxfuelDuty": 70.0,
-    //         "flowRateActualSRFT": 70.0,
-    //         "fuelRatioActual": 70.0,
-    //         "fuelRatioDesign": 70.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG4",
-    //         "exhaustTemperatureDesign": 90.0,
-    //         "exhaustTemperatureActual": 90.0,
-    //         "flowRateActualMT": 90.0,
-    //         "auxfuelDuty": 90.0,
-    //         "flowRateActualSRFT": 90.0,
-    //         "fuelRatioActual": 90.0,
-    //         "fuelRatioDesign": 90.0
-    //     },
-    //     {
-    //         "status": "ON",
-    //         "SteamGenerationCost":51,
-    //         "hrsgid": "HRSG5",
-    //         "exhaustTemperatureDesign": 90.0,
-    //         "exhaustTemperatureActual": 90.0,
-    //         "flowRateActualMT": 90.0,
-    //         "auxfuelDuty": 90.0,
-    //         "flowRateActualSRFT": 90.0,
-    //         "fuelRatioActual": 90.0,
-    //         "fuelRatioDesign": 90.0
-    //     }]
-    //     loadHRSGTable(failData);
-    // })
+    .fail(function () {
+        var failData = [{
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        { 
+            "status": "ON",
+        "GENERATION_COST":51,
+        "hrsgid": "HRSG5",
+        "auxfuelDuty": 90.0,
+        "exhaustTemperatureActual": 90.0,
+        "flowRateActualMT": 90.0,
+        "flowRateActualSRFT": 90.0,
+        "fuelRatioActual": 90.0,
+        "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        },
+        {
+            "status": "ON",
+            "GENERATION_COST":51,
+            "hrsgid": "HRSG5",
+            "auxfuelDuty": 90.0,
+            "exhaustTemperatureActual": 90.0,
+            "flowRateActualMT": 90.0,
+            "flowRateActualSRFT": 90.0,
+            "fuelRatioActual": 90.0,
+            "fuelRatioDesign": 90.0
+        }]
+        loadHRSGTable(failData);
+    })
 }
 
 function loadHRSGTable(data) {

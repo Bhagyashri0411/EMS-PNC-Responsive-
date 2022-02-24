@@ -8,7 +8,7 @@ $(document).ready(function() {
     $("#ncu-horizontal-tiles").load("./../../templates/ncu-unit-overview/ncu-horizontal-tiles/ncu-horizontal-tiles.html");
     // $("#layoutSidenav_content").load("./../../templates/dashboard/dashboard.html");
 
-    $("#ncu-overall-sec-overview").load("./../../templates/ncu-unit-overview/ncu-overall-sec-overview/ncu-overall-sec-overview.html", function() {});
+    $("#overall-sec-overview").load("./../../templates/ncu-unit-overview/overall-sec-overview/overall-sec-overview.html", function() {});
     $('#ncu-unit-overview-tab a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         var target = $(e.target).attr("href") // activated tab
         var fileName = target.substring(1);
@@ -32,7 +32,7 @@ function lastupdatedTime(data){
     }
 function totalThroughput(data){
         $.ajax({
-            url: 'http://192.168.1.109:8090/NCU/feedrateplantload',
+            url: 'http://192.168.1.124:8090/ncu/feedratePlantload',
             method: "GET"
         }).done(function (data) {
             

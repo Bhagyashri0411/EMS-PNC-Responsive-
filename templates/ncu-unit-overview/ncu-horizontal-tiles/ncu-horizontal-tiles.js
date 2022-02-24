@@ -6,8 +6,7 @@ $(document).ready(function () {
     guagevaluencuAct();
 
 
-    var abc = 'TOE/Ton';
-    postFuelDoughnutDataNCU1(abc);
+    postFuelDoughnutDataNCU1();
 
     $(".ncu-doughnut").click(function () {
         console.log($("input[name=ratio-name]:checked").val());
@@ -23,18 +22,18 @@ $(document).ready(function () {
 function getpiechartncu() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/NCU/fuelpichart",
+        url: "http://192.168.1.124:8090/ncu/donutgraph",
     }).done(function (data) {
 
-        var fuelConsumed = data[0];
+        var fuelConsumed = data[0].steamConsumed;
         console.log(fuelConsumed);
         loadpiechartncu(fuelConsumed);
     })
-        .fail(function () {
-            var faildata =
-                { "rlngimport": 63.0, "lpgimport": 64.0, "fgexport": 65.0, "fggeneration": 66.0, "total": 258.0 }
-            loadpiechartncu(faildata);
-        })
+        // .fail(function () {
+        //     var faildata =
+        //         { "shp": 63.0, "hp": 64.0, "mp": 65.0, "lp": 66.0, "total": 258.0 }
+        //     loadpiechartncu(faildata);
+        // })
 
 }
 function loadpiechartncu(fuelConsumed) {
@@ -85,10 +84,10 @@ function loadpiechartncu(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.rlngimport, name: "RLNG",indexLabel: ((fuelConsumed.rlngimport/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.lpgimport, name: "LPG",indexLabel: ((fuelConsumed.lpgimport/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.fgexport, name: "FG Export",indexLabel: ((fuelConsumed.fgexport/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.fggeneration, name: "FG Generation",indexLabel: ((fuelConsumed.fggeneration/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.shp, name: "RLNG",indexLabel: ((fuelConsumed.shp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.hp, name: "LPG",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.mp, name: "FG Export",indexLabel: ((fuelConsumed.mp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.lp, name: "FG Generation",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
                
             ]
         }]
@@ -99,8 +98,8 @@ function loadpiechartncu(fuelConsumed) {
 
 
 
-function postFuelDoughnutDataNCU1(xyz) {
-    var myJSON = { uom: xyz }
+function postFuelDoughnutDataNCU1() {
+    var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -111,7 +110,7 @@ function postFuelDoughnutDataNCU1(xyz) {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.109:8090/NCU/ncudoughnut",
+        url: "http://192.168.1.124:8090/ncu/NCUDoughnut",
     })
         .done(function (data) {
             var energyConsumed = data[0].energyConsumed;
@@ -120,13 +119,13 @@ function postFuelDoughnutDataNCU1(xyz) {
             loadDoughnutHoriChartNCU1(energyConsumed);
 
         })
-        .fail(function () {
-            var failData ={"fuel":24,"steam":56,"electricity":45,"total":568}
+        // .fail(function () {
+        //     var failData ={"fuel":24,"steam":56,"electricity":45,"total":568}
 
-            var energyConsumed = failData;
-            loadDoughnutHoriChartNCU1(energyConsumed);
+        //     var energyConsumed = failData;
+        //     loadDoughnutHoriChartNCU1(energyConsumed);
             
-        })
+        // })
 }
 function loadDoughnutHoriChartNCU1(energyConsumed) {
 
@@ -179,8 +178,8 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        // url: "http://192.168.1.109:8090/NCU/specificenergyConsumption",
+        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: "http://192.168.1.124:8090/ncu/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -189,8 +188,8 @@ function loadGaugeChart() {
 function guagevaluencuAct() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        // url: 'http://192.168.1.109:8090/NCU/specificenergyConsumption',
+        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: 'http://192.168.1.124:8090/ncu/specificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devncu").innerHTML = data.deviation + "%";
@@ -271,7 +270,7 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/NCU/specificenergyConsumptiontable"
+        url: "http://192.168.1.124:8090/ncu/specificenergyConsumptiontable"
     }).done(function (data) {
         getspecifictable(data)
     })
@@ -310,20 +309,20 @@ function getspecifictable(data) {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/NCU/specificenergyConsumptiontable"
+        url: "http://192.168.1.124:8090/ncu/parametertable"
     }).done(function (data) {
         getparametertable(data)
     })
-    .fail(function () {
-        var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
-        getparametertable(faildata)
-    })
+    // .fail(function () {
+    //     var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
+    //     getparametertable(faildata)
+    // })
 }
 function getparametertable(data) {
     var table_data = '';

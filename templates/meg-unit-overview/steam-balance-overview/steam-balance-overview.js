@@ -35,7 +35,7 @@ function megsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.113:8090/MEGsteambalanceoverview/steambalanceoverviewgraph",
+        url: "http://192.168.1.109:8090/MEGsteambalanceoverview/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex; 
         meggetsteamoverview(data ,Difference_In_Days);
@@ -145,7 +145,7 @@ function showsteambalancemeg(data ,Difference_In_Days, interval) {
 
 function megsteamta() {
     $.ajax({
-        url: "http://192.168.1.113:8090/MEGsteambalanceoverview/MEGSteambalanceTable",
+        url: "http://192.168.1.109:8090/MEGsteambalanceoverview/MEGSteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getmegsteamta(data);
@@ -153,24 +153,24 @@ function megsteamta() {
     })
     .fail(function () {
         var failData = [{
-            "name": "HP Steam import",
-            "value": "3000"
+            "GeneratorsConsumers": "HP Steam import",
+            "TPH": "3000"
         },
         {
-            "name": "MHP Steam Generation",
-            "value": "3200"
+            "GeneratorsConsumers": "MHP Steam Generation",
+            "TPH": "3200"
         },
         {
-            "name": "MP Steam Generation",
-            "value": "1100"
+            "GeneratorsConsumers": "MP Steam Generation",
+            "TPH": "1100"
         },
         {
-            "name": "MP Steam Consumption",
-            "value": "1800"
+            "GeneratorsConsumers": "MP Steam Consumption",
+            "TPH": "1800"
         },
         {
-            "name": "LP Steam Consumption",
-            "value": "750"
+            "GeneratorsConsumers": "LP Steam Consumption",
+            "TPH": "750"
         }
         ]
         getmegsteamta(failData);
