@@ -7,8 +7,7 @@ $(document).ready(function () {
     ppGaugeChart()
 
 
-    var abc = 'MTOE/Ton';
-    getDoughnutpp(abc);
+    getDoughnutpp();
 
     $(".pp-doughnut").click(function () {
         console.log($("input[name=ratio-name]:checked").val());
@@ -154,7 +153,7 @@ function getpptable(data) {
 
 function cardpp1() {
     $.ajax({
-        url: 'http://192.168.1.106:8090/home/totalenergyconsumed',
+        url: 'http://192.168.1.124:8090/pp/secsteamcart',
         method: "GET"
     }).done(function (data) {
         getcardpp1()
@@ -175,7 +174,7 @@ function getcardpp1(data) {
     else {
         document.getElementById("result-pp1").innerHTML = data.kpivalue;
     }
-    document.getElementById("ref-pp1").innerHTML = data.kpivalue;
+    document.getElementById("ref-pp1").innerHTML = data.refvalue;
     $(".result").each(function () {
         var text = $(this).text();
         if (/[+-]?\d+(\.\d+)?/.test(text)) {
@@ -229,8 +228,8 @@ function cardpp3() {
 function getcardpp3(data) {
     document.getElementById("count-pp3").innerHTML = data.refvalue;
 }
-function getDoughnutpp(abc) {
-    var myJSON = { uom: abc }
+function getDoughnutpp() {
+    var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({

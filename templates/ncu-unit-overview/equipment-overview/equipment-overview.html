@@ -1,0 +1,113 @@
+<script src="./../../../templates/ncu-unit-overview/equipment-overview/equipment-overview.js"></script>
+<link rel="stylesheet" href="./../../../templates/ncu-unit-overview/equipment-overview/equipment-overview.css">
+<div class="ncu-headline mt-14">Equipment-Overview</div>
+<div class="ncu-equipment-overview">
+    <div class="row">
+        <div class="col-md-8 col-tb">
+
+            <div class="title-1">
+                <div class="col-md-4 col-left">
+                    <span class="left-box title">
+                        <span class="col-st">
+                            <div style="display: inline-flex;"> Overall Equipment Efficiencies (%)</div>
+                        </span>
+                    </span>
+                </div>
+                <div class="col-md-5 eff-act">
+                    <!-- <div class="row"> -->
+                    <div class="box-eff box1-blue"></div> <span class="color-eff"> Actual</span>
+
+                    <div class="box-eff box1-yellow"></div> <span class="color-eff">Design</span>
+
+                    <!-- </div> -->
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+            <div class="body">
+                <div class="count-line">
+                    <div id="Equ-columnncu" style="height:8vw"></div>
+                </div>
+            </div>
+            <!-- </div>  -->
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-5 col-ty">
+                            <span class="left-box title">
+                                <span class="col-st">
+                                    <div style="display: inline-flex;"> Efficiency Trends (%)</div>
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="col-md-7 pr-0">
+                            <div class="row">
+                                <div class="line org-spa" id="UI1"> </div>
+                                <span class="col-rt" id="VI1"> H100 </span>
+                                <div class="line pink-spa" id="UI2"> </div>
+                                <span class="col-rt"  id="VI2"> H200</span>
+                                <div class="line yel-spa" id="UI3"> </div>
+                                <span class="col-rt" id="VI3"> H300</span>
+                                <div class="line blue-spa" id="UI4"> </div>
+                                <span class="col-rt" id="VI4"> H400</span> 
+                                <div class="line pur-spa" id="UI5"> </div>  
+                                <span class="col-rt" id="VI5"> H500</span>
+                                <div class="line gre-spa" id="UI6"> </div>
+                                <span class="col-rt" id="VI6"> H600</span>
+                                <div class="line gre-spa" id="UI7"> </div>
+                                <span class="col-rt" id="VI7"> H700</span>
+                                <div class="line-1 org-spa" id="UI8"> </div>
+                                <span class="col-rt-1" id="VI8"> CGC</span>  
+                                <div class="line-1  pink-spa" id="UI9"> </div>
+                                <span class="col-rt-1" id="VI9"> PRC</span> 
+                                 <div class="line-1 yel-spa" id="UI10"> </div>
+                                <span class="col-rt-1" id="VI10"> ERC</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div style="display: inline-flex;">
+                        <input type="datetime-local" id="fromeqncu" name="fromeqncu">
+                        <input type="datetime-local" id="toeqncu" name="toeqncu">
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="count-line">
+                    <div id="Equ-line-ncu" style="height:8vw"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="title">
+                <span class="pull-left">Equipment KPI Overview</span>
+                <div class="pull-right">
+                    <select id="kpiTablencu" onchange="posttableequipment()">
+                        <option value="Furnace"> Furnace</option>
+                        <option value="Turbine"> Turbine</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="body">
+                <div class="overflow genratorsHeight">
+                    <table>
+                        <tr>
+                            <th>KPI</th>
+                            <th>UOM</th>
+                            <th> H100</th>
+                            <th> H200</th>
+                        </tr>
+                        <tbody id="bodyncuOverview"> </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

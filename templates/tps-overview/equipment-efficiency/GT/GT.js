@@ -70,7 +70,7 @@ function getSpecificGTBarData() {
         },
       method: "POST",
       data: postdata,
-      url: "http://192.168.1.112:8080/GTLineGraph",
+      url: "http://192.168.1.109:8090/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
       console.log(data)
       var Difference_In_Days = data[0].showNumberIndex;
@@ -175,7 +175,7 @@ function getSpecificGTData() {
         },
     method: "POST",
     data: postdata,
-    url: "http://192.168.1.112:8080/GTGraph",
+    url: "http://192.168.1.109:8090/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
     var Difference_In_Days1 = data[0].showNumberIndex;
@@ -300,7 +300,7 @@ function showSpecificGTChart(data ,Difference_In_Days1 ,interval1) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://192.168.1.112:8080/GTEfficiencyTable",
+    url: "http://192.168.1.109:8090/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
     loadGasTable(data);
