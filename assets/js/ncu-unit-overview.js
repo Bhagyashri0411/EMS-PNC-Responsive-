@@ -32,7 +32,7 @@ function lastupdatedTime(data){
     }
 function totalThroughput(data){
         $.ajax({
-            url: 'http://192.168.1.109:8090/NCU/feedrateplantload',
+            url: 'http://192.168.1.124:8090/ncu/feedratePlantload',
             method: "GET"
         }).done(function (data) {
             

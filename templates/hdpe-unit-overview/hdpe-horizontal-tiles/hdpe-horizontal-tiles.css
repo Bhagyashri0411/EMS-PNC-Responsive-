@@ -24,11 +24,12 @@
     color: #f2f2f2;
     font-weight: 700;
     font-family: Bahnschrift Light;
-    padding: 2.5vw;
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
 }
 #hdpe-horizontal-tiles .card .footer .ref {
     color: #d9d9d9;
-    font-size: 0.9vw;
+    font-size: 0.8vw;
     font-family: Bahnschrift Light;
     display: inline-block;
     /* padding: 5px 0px; */
@@ -41,7 +42,7 @@
     color: #f2f2f2;
     font-size: 0.8vw;
     font-family: Bahnschrift Light;
-    padding: 1px 10px;
+    padding: 1px 4px;
     border-radius: 5px;
     display: inline-block;
 }
@@ -94,7 +95,7 @@
 #hdpe-horizontal-tiles .footer-deviation .actual .count {
     /* font-weight: bold; */
     color: #f2f2f2;
-    font-size: 0.9vw;
+    font-size: 0.8vw;
 
 }
 

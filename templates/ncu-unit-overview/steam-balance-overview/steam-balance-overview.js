@@ -145,7 +145,7 @@ function showsteambalancencu(data ,Difference_In_Days, interval) {
 
 function ncusteamta() {
     $.ajax({
-        url: "http://192.168.1.109:8090/NCU/steambalance",
+        url: "http://192.168.1.124:8090/NCU/steambalance",
         method: "GET"
     }).done(function (data) {
         getncusteamta(data);

@@ -2,13 +2,12 @@ $(document).ready(function () {
     hdpeloadGaugeChart();
     hdpeOverview();
     hdpebreakOverview();
+    shdpebreakOverview();
     cardhdpe1()
-    cardhdpe2();
+    // cardhdpe2();
     hdpeGaugeChart()
 
-
-    var abc = 'MTOE/Ton';
-    getDoughnuthdpe(abc);
+    getDoughnuthdpe();
 
     $(".hdpe-doughnut").click(function () {
         console.log($("input[name=ratio-name]:checked").val());
@@ -102,30 +101,31 @@ function hdpeGaugeChartvalue(gaugevalue) {
 function hdpeGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        // url: "http://192.168.1.106:8090/avu1/specificenergyConsumption",
+        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: "http://192.168.1.119:8090/auth/HDPE/specificenergyConsumption",
     }).done(function (gaugevalue) {
         hdpeGaugeChartvalue(gaugevalue);
         guagevaluehdpeAct()
+        
     });
 }
 function guagevaluehdpeAct() {
     $.ajax({
         method: "GET",
         url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        // url: 'http://192.168.1.106:8090/avu1/specificenergyConsumption',
+        // url: 'http://localhost:8090/auth/HDPE/specificenergyConsumption',
 
     }).done(function (data) {
-        document.getElementById("devhdpe").innerHTML = data.deviation + "%";
-        document.getElementById("acthdpe").innerHTML = data.actual;
-        document.getElementById("opthdpe").innerHTML = data.reference;
+    document.getElementById("devhdpe").innerHTML = data.deviation + "%";
+    document.getElementById("acthdpe").innerHTML = data.actual;
+    document.getElementById("opthdpe").innerHTML = data.reference;
     });
 
 }
 
 function hdpebreakOverview() {
     $.ajax({
-        url: "http://192.168.1.106:8090//api/srutgtuOverview/steamBalanceOverviewTable",
+        url: "http://192.168.1.119:8090/auth/HDPE/SECSteamTabledata",
         method: "GET"
     }).done(function (data) {
         gethdpebreakOverview(data);
@@ -147,30 +147,54 @@ function gethdpebreakOverview(data) {
         table_data += '<tr>';
         table_data += '<td>' + value.breakUp + '</td>';
         table_data += '<td class="percents ">' + value.percent + '</td>';
-        table_data += '<td class=" product">' + value.TtProduct + '</td>';
+        table_data += '<td class=" product">' + value.product + '</td>';
         table_data += '</tr>';
 
     });
     $('#Break_table').append(table_data);
 }
 
-function hdpeOverview() {
+function shdpebreakOverview() {
     $.ajax({
-        url: "http://192.168.0.132:8090//api/srutgtuOverview/steamBalanceOverviewTable",
+        url: "http://192.168.1.119:8090/auth/HDPE/SECSteam",
         method: "GET"
     }).done(function (data) {
-        getsrutgtuOverview(data);
-    })
-        .fail(function () {
-            var failData = [{ parameter: "S4 Selectivity", UOM: "-", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "CO2 Production", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "EOE", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "Total Electricity Consumption", UOM: "MWh", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            { parameter: "GHG Emission (tCO2e)", UOM: "Ton/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-            ]
+        console.log(data,);
+        getshdpebreakOverview(data);
 
-            gethdpeOverview(failData);
-        })
+    })
+        
+}
+function getshdpebreakOverview(data) {
+    var table_data = '';
+    $.each(data, function (key, value) {
+        table_data += '<tr>';
+        table_data += '<td>' + value.id + '</td>';
+        table_data += '<td class="percents ">' + value.produt + '</td>';
+        table_data += '<td class=" product">' + value.value + '</td>';
+        table_data += '</tr>';
+
+    });
+    $('#shptable').append(table_data);
+}
+
+function hdpeOverview() {
+    $.ajax({
+        url: "http://192.168.1.119:8090/auth/HDPE/parameterhdpe",
+        method: "GET"
+    }).done(function (data) {
+        gethdpeOverview(data);
+    })
+        // .fail(function () {
+        //     var failData = [{ parameter: "S4 Selectivity", UOM: "-", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "CO2 Production", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "EOE", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "Total Electricity Consumption", UOM: "MWh", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     { parameter: "GHG Emission (tCO2e)", UOM: "Ton/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
+        //     ]
+
+        //     gethdpeOverview(failData);
+        // })
 }
 
 function gethdpeOverview(data) {
@@ -179,10 +203,10 @@ function gethdpeOverview(data) {
 
         table_data += '<tr>';
         table_data += '<td>' + value.parameter + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.UOM + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.Reference + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.Actual + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.Deviation + '</td>';
+        table_data += '<td class="hdpe-tab">' + value.uom + '</td>';
+        table_data += '<td class="hdpe-tab">' + value.reference + '</td>';
+        table_data += '<td class="hdpe-tab">' + value.actual + '</td>';
+        table_data += '<td class="hdpe-tab">' + value.deviation + '</td>';
         table_data += '</tr>';
 
     });
@@ -191,28 +215,22 @@ function gethdpeOverview(data) {
 
 function cardhdpe1() {
     $.ajax({
-        url: 'http://192.168.1.106:8090/home/totalenergyconsumed',
+        url: 'http://192.168.1.119:8090/auth/HDPE/SECElectricity',
         method: "GET"
     }).done(function (data) {
-        getcardhdpe1()
+        getcardhdpe1(data)
     })
-        .fail(function () {
-            var Faildata = {
-                "kpivalue": 325,
-                "refvalue": 25
-            }
-            getcardhdpe1(Faildata)
-        })
+        
 }
 function getcardhdpe1(data) {
-    document.getElementById("count-hdpe1").innerHTML = data.refvalue;
-    if (data.kpivalue > 0) {
-        document.getElementById("result-hdpe1").innerHTML = "+" + data.kpivalue;
+    document.getElementById("count-hdpe1").innerHTML = data.reference;
+    if (data.deviation > 0) {
+        document.getElementById("result-hdpe1").innerHTML = "+" + data.deviation;
     }
     else {
-        document.getElementById("result-hdpe1").innerHTML = data.kpivalue;
+        document.getElementById("result-hdpe1").innerHTML = data.deviation;
     }
-    document.getElementById("ref-hdpe1").innerHTML = data.kpivalue;
+    document.getElementById("ref-hdpe1").innerHTML = data.actual;
     $(".result").each(function () {
         var text = $(this).text();
         if (/[+-]?\d+(\.\d+)?/.test(text)) {
@@ -227,99 +245,65 @@ function getcardhdpe1(data) {
     });
 }
 
-function cardhdpe2() {
-    $.ajax({
-        url: 'http://192.168.1.106:8090/home/totalenergyconsumed',
-        method: "GET"
-    }).done(function (data) {
-        getcardhdpe2()
 
-    })
-        .fail(function () {
-            var faildata = {
-                "refvalue": 325
-            }
-            getcardhdpe2(faildata)
-        })
-
-}
-function getcardhdpe2(data) {
-    document.getElementById("count-hdpe2").innerHTML = data.refvalue;
-}
-
-function getDoughnuthdpe(abc) {
-    var myJSON = { uom: abc }
+function getDoughnuthdpe() {
+    var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.16:8090/home/totalfuelconsumed1",
+        url: "http://192.168.1.119:8090/auth/HDPE/FCCUDoughnut",
     }).done(function (data) {
-        loadDoughnutChart(data);
+        var energyConsumed = data[0].energyConsumed;
+            console.log(energyConsumed);
+
+            loadDoughnutHoriCharthdpe1(energyConsumed);
     })
-        .fail(function () {
-            var faildata =
-            {
-                "total": 100,
-                "steam": 30,
-                "electricity": 20,
-                "fuel": 50
-            }
-            loadDoughnutChart(faildata)
-        })
+        
 
 }
-function loadDoughnutChart(data) {
+function loadDoughnutHoriCharthdpe1(energyConsumed) {
+    // console.log(energyConsumed)
     CanvasJS.addColorSet("greenShades", [
-        "#ffa600",
-        "#00aa7e",
-        "#005374"
+        "#ffa600",    //yellow
+        "#00aa7e",  //green
+        // "#005374"   //blue
     ]);
     var dataPoints = [];
     var chart = new CanvasJS.Chart("titles-hdpe", {
 
         colorSet: "greenShades",
-        // height: 130,
-        // width: 190,
+        height: 120,
+        // width: 160,
         theme: "dark1",
         backgroundColor: "#26293c",
-
         title: {
-            text: data.total,
+            text: energyConsumed.total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
-            fontWeight: 700,
-            fontColor: "#f2f2f2",
+            fontWeight: 500,
+            fontColor: "#f2f1e7",
             fontFamily: "Bahnschrift Light"
         },
-        legend: {
-            horizontalAlign: "right",
-            verticalAlign: "center", // "top" , "bottom"
-            fontSize: 15,
-        },
+
         axisY: {
             title: "Units",
             titleFontSize: 24,
             includeZero: true
+
         },
-        legend: {
-            verticalAlign: "bottom",
-            horizontalAlign: "center"
-        },
+
         data: [{
             type: "doughnut",
-            showInLegend: false,
-            toolTipContent: "{name} : {y}%",
-            indexLabel: " {y}%",
-            yValueFormatString: "#,###",
+            yValueFormatString: "0.00#",
             indexLabelPlacement: "outside",
-            startAngle: 120,
+            startAngle: 100,
             dataPoints: [
-                { y: data.fuel, name: "Fuel" },
-                { y: data.steam, name: "Steam" },
-                { y: data.electricity, name: "Electricity" }
+                // { y: energyConsumed.fuel, name: "Fuel", indexLabel: ((energyConsumed.fuel / energyConsumed.total) * 100).toFixed(2) + "% " },
+                { y: energyConsumed.steam, name: "Steam", indexLabel: ((energyConsumed.steam / energyConsumed.total) * 100).toFixed(2) + "% " },
+                { y: energyConsumed.electicity, name: "Electricity", indexLabel: ((energyConsumed.electicity / energyConsumed.total) * 100).toFixed(2) + "% " }
             ]
         }]
     });

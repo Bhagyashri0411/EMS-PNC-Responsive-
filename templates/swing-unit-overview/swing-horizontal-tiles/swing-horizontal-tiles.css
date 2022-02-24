@@ -88,10 +88,9 @@
     font-family: Yu Gothic UI Semibold;
     line-height: 1.12;
 }
-#swing-horizontal-tiles #tablebody{
+/* #swing-horizontal-tiles #tablebody{
     padding: 0.3vw;
-    /* padding-top: 10px; */
-}
+} */
 #swing-horizontal-tiles td {
     border-bottom: 1px solid #dddddd;
     text-align: center;
@@ -221,7 +220,7 @@
         }
         
 #swing-horizontal-tiles .genratorsHeight {
-    height: 17.7vw;
+    height: 24vh;
         }
                 
 #swing-horizontal-tiles .genratorsHeight-1 {

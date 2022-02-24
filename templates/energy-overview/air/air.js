@@ -3,6 +3,7 @@ $(document).ready(function () {
     Aircard2();
     Aircard3();
     Aircard4();
+    Aircard5();
     plantair();
     instrumentair();
     airDecoking();
@@ -63,7 +64,7 @@ function getSpecificAirConsumptionData() {
         },
         method: "POST",
         data: postdata,
-        url: " http://localhost:8090/EMSPro/auth/Air/PlantAirGeneration",
+        url: " http://192.168.1.124:8090/EMSPro/auth/Air/PlantAirGeneration",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -179,7 +180,8 @@ function plantair(kpiname) {
             "Content-Type": "application/json",
         },
         data: postdata,
-        url: "http://localhost:8090/EMSPro/auth/Air/airconsumerTable",
+        // url: "http://192.168.1.124:8090/EMSPro/auth/Air/airconsumerTable",
+        url: "http://192.168.1.124:8090/Air/plantairtable",
         method: "POST"
 
     }).done(function (data) {
@@ -205,7 +207,8 @@ function instrumentair(kpiname) {
         },
         data: postdata,
 
-        url: "http://localhost:8090/EMSPro/auth/Air/airconsumerTable",
+        url: "http://192.168.1.124:8090/Air/airconsumerTable",
+        // url: "http://192.168.1.124:8090/EMSPro/auth/Air/airconsumerTable",
         method: "POST"
 
     }).done(function (data) {
@@ -260,7 +263,7 @@ function Aircard1() {
         headers: {
             "Content-Type": "application/json",
         },
-        url: "http://localhost:8090/EMSPro/auth/Air/PlantAirTotalGeneration",
+        url: "http://192.168.1.124:8090/Air/PlantAirTotalGeneration", 
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -295,7 +298,7 @@ function Aircard2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EMSPro/auth/Air/PlantAirTotalConsumption",
+        url: "http://192.168.1.124:8090/Air/PlantAirTotalConsumption",
         method: "GET",
     }).done(function (data) {
         console.log(data)
@@ -328,7 +331,7 @@ function Aircard3() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EMSPro/auth/Air/InstrumentAirTotalGeneration",
+        url: "http://192.168.1.124:8090/Air/InstrumentAirTotalGeneration",
         method: "GET",
     }).done(function (data) {
         console.log(data)
@@ -362,7 +365,7 @@ function Aircard4() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EMSPro/auth/Air/InstrumentAirTotalConsumption",
+        url: "http://192.168.1.124:8090/Air/InstrumentAirTotalConsumption",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -374,6 +377,39 @@ function Aircard4() {
         }
         document.getElementById("ref_air4").innerHTML = data.refvalue;
         document.getElementById("count_air4").innerHTML = data.tagvalue;
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
+    });
+
+}
+function Aircard5() {
+    $.ajax({
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        url: "http://192.168.1.124:8090/Air/InstrumentAirTotalConsumption",
+        method: "GET"
+    }).done(function (data) {
+        console.log(data)
+        if (data.currentvalue > 0) {
+            document.getElementById("result_air5").innerHTML = "+" + data.currentvalue;
+        }
+        else {
+            document.getElementById("result_air5").innerHTML = data.currentvalue;
+        }
+        document.getElementById("ref_air5").innerHTML = data.refvalue;
+        document.getElementById("count_air5").innerHTML = data.tagvalue;
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {

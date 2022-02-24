@@ -35,7 +35,7 @@ function swingsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/EMSPro/DHDS/steamgenerationgraph",
+        url: "http://192.168.1.109:8090/SWINGsbo/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;        
         swinggetsteamoverview(data ,Difference_In_Days);
@@ -144,7 +144,7 @@ function showSteambalancefccu(data ,Difference_In_Days, interval) {
 
 function swingsteamta() {
     $.ajax({
-        url: "http://192.168.1.120:8090/swing/Steambalance",
+        url: "http://192.168.1.109:8090/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getgenerationandconsumer(data);
@@ -185,8 +185,8 @@ function getgenerationandconsumer(data) {
     var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
-        table_data += '<td>' + value.name + '</td>';
-        table_data += '<td class="steam-gen2">' + value.value + '</td>';
+        table_data += '<td>' + value.GeneratorsConsumers + '</td>';
+        table_data += '<td class="steam-gen2">' + value.TPH + '</td>';
         table_data += '</tr>';
     });
     $('#swing_table').append(table_data);
