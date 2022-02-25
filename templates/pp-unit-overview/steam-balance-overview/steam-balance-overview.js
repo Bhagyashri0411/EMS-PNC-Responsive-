@@ -128,6 +128,6 @@ function generationandconsumer() {
             table_data += '<td class="steam-gen2">' + value.value + '</td>';
             table_data += '</tr>';
         });
-        $('#bsvi_table').append(table_data);
+        $('#pp_table').append(table_data);
     });
 }

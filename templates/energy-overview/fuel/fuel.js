@@ -36,8 +36,7 @@ $(document).ready(function () {
     getSpecificFuelPNCData();
 
     // for doughnut radio button
-    var xyz = 'Ton/hr';
-    getFuelDoughnutData(xyz);
+    getFuelDoughnutData();
 
     $(".fuel-doughnut").click(function () {
         var xyz = $("input[name=dtdt]:checked").val()
@@ -90,8 +89,8 @@ function formatSpecificFuelPNCData(data, Difference_In_Days) {
 }
 
 
-function getFuelDoughnutData(xyz) {
-    var myJSON = { uom: xyz }
+function getFuelDoughnutData() {
+    var myJSON = { uom: $("input[name=dtdt]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({

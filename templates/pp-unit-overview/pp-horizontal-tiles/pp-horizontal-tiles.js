@@ -19,7 +19,6 @@ function pploadGaugeChart() {
     $.ajax({
         type: "GET",
         url: "http://192.168.1.124:8090/pp/specificenergyConsumption",
-        // url: "http://192.168.1.106:8090/home/speedometer",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
@@ -180,58 +179,64 @@ function getDoughnutpp() {
         headers: { 'Content-Type': 'application/json' },
         url: "http://192.168.1.124:8090/pp/PPDoughnu",
     }).done(function (data) {
-        CanvasJS.addColorSet("greenShades", [
-            "#ffa600",
-            "#00aa7e"
-        ]);
-        var dataPoints = [];
-        var chart = new CanvasJS.Chart("titles-pp", {
-
-            colorSet: "greenShades",
-            // height: 130,
-            // width: 190,
-            theme: "dark1",
-            backgroundColor: "#26293c",
-
-            title: {
-                text: data.total,
-                verticalAlign: "center",
-                dockInsidePlotArea: true,
-                fontWeight: 700,
-                fontColor: "#f2f2f2",
-                fontFamily: "Bahnschrift Light"
-            },
-            legend: {
-                horizontalAlign: "right",
-                verticalAlign: "center", // "top" , "bottom"
-                fontSize: 15,
-            },
-            axisY: {
-                title: "Units",
-                titleFontSize: 24,
-                includeZero: true
-            },
-            legend: {
-                verticalAlign: "bottom",
-                horizontalAlign: "center"
-            },
-            data: [{
-                type: "doughnut",
-                showInLegend: false,
-                toolTipContent: "{name} : {y}%",
-                indexLabel: " {y}%",
-                yValueFormatString: "#,###",
-                indexLabelPlacement: "outside",
-                startAngle: 120,
-                dataPoints: [
-                    // { y: data.fuel, name: "Fuel" },
-                    { y: data.steam, name: "Steam" },
-                    { y: data.electricity, name: "Electricity" }
-                ]
-            }]
-        });
-
-        chart.render();
+        showDoughnutpp(data);
+    })
+    .fail(function(){
+        faildata = {
+            "total":100, "steam":50,"electricity":50
+        }
     })
 
+}
+function showDoughnutpp(){
+    CanvasJS.addColorSet("greenShades", [
+        "#ffa600",
+        "#00aa7e"
+    ]);
+    var dataPoints = [];
+    var chart = new CanvasJS.Chart("titles-pp", {
+
+        colorSet: "greenShades",
+        // height: 130,
+        // width: 190,
+        theme: "dark1",
+        backgroundColor: "#26293c",
+
+        title: {
+            text: data.total.toFixed(2),
+            verticalAlign: "center",
+            dockInsidePlotArea: true,
+            fontWeight: 700,
+            fontColor: "#f2f2f2",
+            fontFamily: "Bahnschrift Light"
+        },
+        legend: {
+            horizontalAlign: "right",
+            verticalAlign: "center", // "top" , "bottom"
+            fontSize: 15,
+        },
+        axisY: {
+            title: "Units",
+            titleFontSize: 24,
+            includeZero: true
+        },
+        legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center"
+        },
+        data: [{
+            type: "doughnut",
+            showInLegend: false,
+            yValueFormatString: "0.00#",
+            indexLabelPlacement: "outside",
+            startAngle: 120,
+            dataPoints: [
+                // { y: data.fuel, name: "Fuel" },
+                { y: data.steam, name: "Steam",indexLabel: ((data.steam / data.total) * 100).toFixed(2) + "% "  },
+                { y: data.electricity, name: "Electricity", name: "Steam", indexLabel: ((data.electricity / data.total) * 100).toFixed(2) + "% "  }
+            ]
+        }]
+    });
+
+    chart.render();
 }

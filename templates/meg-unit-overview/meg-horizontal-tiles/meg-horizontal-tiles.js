@@ -187,7 +187,7 @@ function cardmeg1() {
     })
         .fail(function () {
             var Faildata = {
-                "tagvalue": 1579.2,
+                "TotalSteamConsumption": 1579.2,
                 "currentvalue": 25.3,
                 "refvalue":56
             }
@@ -196,25 +196,7 @@ function cardmeg1() {
 }
 function getcardmeg1(data) {
     document.getElementById("count-meg1").innerHTML = data.TotalSteamConsumption;
-    // if (data.currentvalue > 0) {
-    //     document.getElementById("result-meg1").innerHTML = "+" + data.currentvalue;
-    // }
-    // else {
-    //     document.getElementById("result-meg1").innerHTML = data.currentvalue;
-    // }
-    // document.getElementById("ref-meg1").innerHTML = data.refvalue;
-    // $(".result").each(function () {
-    //     var text = $(this).text();
-    //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
-    //         var num = parseFloat(text);
-    //         if (num < 0) {
-    //             $(this).addClass("red");
-    //         } else if (num > 0) {
-    //             $(this).addClass("green");
-    //         }
-
-    //     }
-    // });
+    
 }
 
 
