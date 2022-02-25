@@ -35,14 +35,14 @@ function lastupdatedTime(data) {
     document.getElementById("ppTimeStamp").innerHTML = dateTime;
 }
 
-function totalThroughput(data) {
+function totalThroughput() {
     $.ajax({
-        url: 'http://192.168.1.120:8090/pp/feedratePlantload',
+        url: 'http://192.168.1.124:8090/pp/feedratePlantload',
         method: "GET"
     }).done(function (data) {
 
-        document.getElementById("totalThroughput").innerHTML = data.feedrate;
-        document.getElementById("Power").innerHTML = data.plantload;
+        document.getElementById("feedratepp").innerHTML = data.feedrate;
+        document.getElementById("plantloadpp").innerHTML = data.plantload;
 
     });
 
