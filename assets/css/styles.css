@@ -280,7 +280,8 @@ body.dark-theme {
 
 input[type=radio] {
     height: 0.8vw;
-    margin: 0.3vw;
+    /* margin: 0.3vw; */
+    margin-left: 0.9vw;
 }
 
 .chart-title.title .title-radios {

@@ -267,3 +267,7 @@
 #meg-horizontal-tiles .footer-deviation{
     padding: 0.3vw;
 }
+#meg-horizontal-tiles input[type=radio] {
+    height: 0.8vw;
+    margin-left: 0.5vw;
+}
