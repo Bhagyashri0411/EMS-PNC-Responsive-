@@ -1,6 +1,9 @@
 $(document).ready(function() {
-    var val
-    
+
+    $("#NCUA").on('change', function (){
+        // val = $(this).find(":selected").val()
+        convectiontable();
+    })
     $("#dropvalue").on('change', function (){
         // val = $(this).find(":selected").val()
         getSpecificNCUOverviewData();
