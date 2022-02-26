@@ -65,7 +65,7 @@ function getSpecificSTBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EMSPro/auth/cppTpsST/steamturbineefficiency",
+        url: "http://localhost:8090/auth/cppTpsST/steamturbineefficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -170,7 +170,7 @@ function getSpecificSTData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EMSPro/auth/cppTpsST/capacityutilization",
+        url: "http://localhost:8090/auth/cppTpsST/capacityutilization",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days1 = data[0].showNumberIndex;

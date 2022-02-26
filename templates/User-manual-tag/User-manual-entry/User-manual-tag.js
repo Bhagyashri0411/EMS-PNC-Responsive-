@@ -32,7 +32,7 @@ $(document).ready(function () {
       headers: {
      'Content-Type': 'application/json'
      },
-     url: "http://localhost:8090/EMSPro/updatedata",
+     url: "http://localhost:8090/updatedata",
      data:JSON.stringify(updateRow),
      success: function (msg) {
           var msg1 = msg;
@@ -183,7 +183,7 @@ $("#saveTable").click(function () {
           headers: {
               'Content-Type': 'application/json'
           },
-          url: "http://localhost:8090/EMSPro/insertdata",
+          url: "http://localhost:8090/insertdata",
           data: rowdata1,
           success: function (msg) {
               var msg1 = msg;
@@ -211,7 +211,7 @@ function getCalculatedTag() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
       method: "GET",
-      url: "http://localhost:8090/EMSPro/Constantlist",
+      url: "http://localhost:8090/Constantlist",
       //url:"./../../../templates/User-manual-tag/User-manual-entry/userManual.json",
   }).done(function (data) {
       
@@ -247,7 +247,7 @@ function exportFunction(){
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
       method: "GET",
-       url: "http://localhost:8090/EMSPro/Constantlist",
+       url: "http://localhost:8090/Constantlist",
      // url:"./../../../templates/User-manual-tag/User-manual-entry/userManual.json",
   }).done(function(data){
     console.log(data)
@@ -294,7 +294,7 @@ function exportFunction(){
 //          headers: {
 //         'Content-Type':false
 //         },
-//         url: "http://localhost:8090/EMSPro/upload-csv-file",
+//         url: "http://localhost:8090/upload-csv-file",
 //         data:myArr,
 //         success: function (msg) {
 //              var msg1 = msg;
@@ -312,7 +312,7 @@ function exportFunction(){
         //     "Content-Type": "application/json",
         //     "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         // },
-//         url: 'http://localhost:8090/EMSPro/upload-csv-file',
+//         url: 'http://localhost:8090/upload-csv-file',
 //         data: form,
 //         cache: false,
 //         contentType: false,
@@ -349,7 +349,7 @@ for (var i = 0; i < files.length; i++) {
 }
 
 var xhr = new XMLHttpRequest();
-xhr.open('POST', 'http://localhost:8090/EMSPro/upload-csv-file', true);
+xhr.open('POST', 'http://localhost:8090/upload-csv-file', true);
 xhr.onload = function () {
   if (xhr.status === 200) {
     uploadButton.innerHTML = 'Upload';

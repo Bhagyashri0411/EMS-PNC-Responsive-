@@ -22,7 +22,7 @@ $(document).ready(function () {
 function getpiechartncu() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.124:8090/ncu/donutgraph",
+        url: "http://localhost:8090/ncu/donutgraph",
     }).done(function (data) {
 
         var fuelConsumed = data[0].steamConsumed;
@@ -110,7 +110,7 @@ function postFuelDoughnutDataNCU1() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.124:8090/ncu/NCUDoughnut",
+        url: "http://localhost:8090/ncu/NCUDoughnut",
     })
         .done(function (data) {
             var energyConsumed = data[0].energyConsumed;
@@ -178,8 +178,8 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        url: "http://192.168.1.124:8090/ncu/specificenergyConsumption",
+        // url: "http://localhost:8090/fccu/specificenergyConsumption",
+        url: "http://localhost:8090/ncu/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -188,8 +188,8 @@ function loadGaugeChart() {
 function guagevaluencuAct() {
     $.ajax({
         method: "GET",
-        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
-        url: 'http://192.168.1.124:8090/ncu/specificenergyConsumption',
+        // url: "http://localhost:8090/fccu/specificenergyConsumption",
+        url: 'http://localhost:8090/ncu/specificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devncu").innerHTML = data.deviation + "%";
@@ -270,7 +270,7 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.124:8090/ncu/specificenergyConsumptiontable"
+        url: "http://localhost:8090/ncu/specificenergyConsumptiontable"
     }).done(function (data) {
         getspecifictable(data)
     })
@@ -309,7 +309,7 @@ function getspecifictable(data) {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.124:8090/ncu/parametertable"
+        url: "http://localhost:8090/ncu/parametertable"
     }).done(function (data) {
         getparametertable(data)
     })

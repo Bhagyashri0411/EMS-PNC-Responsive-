@@ -36,7 +36,7 @@ function getSteamBalanceOverviewTGTU(tagName) {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.120:8090/api/srutgtuOverview/steamBalanceOverview",
+        url: "http://localhost:8090/api/srutgtuOverview/steamBalanceOverview",
     }).done(function (data) {
         console.log(data)
 
@@ -222,7 +222,7 @@ function SteambalanceTGTU(data) {
 }
 function srutgtuOverview() {
 $.ajax({
-    url: "http://192.168.1.120:8090//api/srutgtuOverview/steamBalanceOverviewTable",
+    url: "http://localhost:8090//api/srutgtuOverview/steamBalanceOverviewTable",
     method: "GET"
 }).done(function (data) {
 

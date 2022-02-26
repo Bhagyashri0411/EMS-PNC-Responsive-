@@ -123,7 +123,7 @@ function recommendations() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/EMSPro/recommendation",
+        url: "http://localhost:8090/recommendation",
     }).done(function (data) {
         getrecommendations(data)
     })

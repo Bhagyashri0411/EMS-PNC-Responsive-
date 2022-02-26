@@ -50,7 +50,7 @@ function getSpecificElectricityConsumptionData() {
         method: "POST",
         data: postdata,
          
-        url: "http://192.168.1.122:8090/auth/electricity/SpecificElectricity",
+        url: "http://localhost:8090/auth/electricity/SpecificElectricity",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -181,7 +181,7 @@ function electricityDoughnutProgress2() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://192.168.1.122:8090/auth/electricity/ElectricityCapacity",
+        url: "http://localhost:8090/auth/electricity/ElectricityCapacity",
     }).done(function (data) {
 
     loadDoughnutChartelectricityProgress2(data);
@@ -237,7 +237,7 @@ function loadDoughnutChartelectricityProgress2(data) {
 
 function getcardElectricity1() {
     $.ajax({
-        url: 'http://192.168.1.122:8090/auth/electricity/secelectricity',
+        url: 'http://localhost:8090/auth/electricity/secelectricity',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data1");
@@ -267,7 +267,7 @@ function getcardElectricity1() {
 }
 function getcardElectricity2() {
     $.ajax({
-        url: "http://192.168.1.122:8090/auth/electricity/ElectricityTotalGeneration",
+        url: "http://localhost:8090/auth/electricity/ElectricityTotalGeneration",
         method: "GET"
     }).done(function (data) {
         console.log(data, "data2");
@@ -296,7 +296,7 @@ function getcardElectricity2() {
 }
 function getcardElectricity3() {
     $.ajax({
-        url: 'http://192.168.1.122:8090/auth/electricity/ElectricityTotalConsumption',
+        url: 'http://localhost:8090/auth/electricity/ElectricityTotalConsumption',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data3");
@@ -325,7 +325,7 @@ function getcardElectricity3() {
 }
 function getcardElectricity4() {
     $.ajax({
-    url: 'http://192.168.1.122:8090/auth/electricity/ElectricityGenerationCost',
+    url: 'http://localhost:8090/auth/electricity/ElectricityGenerationCost',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data4");
@@ -350,7 +350,7 @@ function getcardElectricity4() {
 // function getElectricityStackedData() {
 //     $.ajax({
 //         method: "GET",
-//         url: "http://192.168.1.122:8090/auth/electricity/TotalElectricity",
+//         url: "http://localhost:8090/auth/electricity/TotalElectricity",
 
 //     }).done(function (data) {
 
@@ -483,7 +483,7 @@ function getStackBarvalue() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://192.168.1.122:8090/auth/electricity/TotalElectricity',
+        url: 'http://localhost:8090/auth/electricity/TotalElectricity',
         method: "GET"
     }).done(function (data) {
         var abc=(data[0].electricityGeneration /data[0].total)*100;
