@@ -18,7 +18,7 @@ $(document).ready(function () {
 
 function lastupdatedTime(data) {
     $.ajax({
-        url: 'http://localhost:8090/EMSPro/home/lastUpdateTimestamp',
+        url: 'http://localhost:8090/home/lastUpdateTimestamp',
         method: "GET",
      headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function lastupdatedTime(data) {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/home/Report",
+        url: "http://localhost:8090/home/Report",
     }).done(function (data) {
         console.log(data)
 
@@ -71,7 +71,7 @@ function csvdownload() {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/home/Truncate",
+        url: "http://localhost:8090/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })

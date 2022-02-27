@@ -5,7 +5,7 @@ $(document).ready(function() {
 function getAreaWise() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/home/areawiseSEC",
+        url: "http://localhost:8090/home/areawiseSEC",
 
     }).done(function(data) {
         var keysArray = Object.keys(data);

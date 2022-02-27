@@ -50,7 +50,7 @@ function getSpecificBOILERData() {
       method: "POST",
       data: postdata,
      
-      url: "http://localhost:8090/EMSPro/tpsBoiler/boilerEfficencyBarGraph",
+      url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
     var Difference_In_Days = data[0].showNumberIndex;
       formatSpecificBOILERData(data ,Difference_In_Days);

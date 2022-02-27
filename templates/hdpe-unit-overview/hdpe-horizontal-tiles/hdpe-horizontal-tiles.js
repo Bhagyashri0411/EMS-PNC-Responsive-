@@ -21,7 +21,7 @@ $(document).ready(function () {
 function hdpeloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: "http://localhost:8090/fccu/specificenergyConsumption",
         // url: "http://192.168.1.106:8090/home/speedometer",
     }).done(function (gaugevalue) {
         hdpeGaugeChartvalue(gaugevalue);
@@ -101,7 +101,7 @@ function hdpeGaugeChartvalue(gaugevalue) {
 function hdpeGaugeChart() {
     $.ajax({
         type: "GET",
-        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        // url: "http://localhost:8090/fccu/specificenergyConsumption",
         url: "http://192.168.1.119:8090/auth/HDPE/specificenergyConsumption",
     }).done(function (gaugevalue) {
         hdpeGaugeChartvalue(gaugevalue);
@@ -112,7 +112,7 @@ function hdpeGaugeChart() {
 function guagevaluehdpeAct() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        url: "http://localhost:8090/fccu/specificenergyConsumption",
         // url: 'http://localhost:8090/auth/HDPE/specificenergyConsumption',
 
     }).done(function (data) {

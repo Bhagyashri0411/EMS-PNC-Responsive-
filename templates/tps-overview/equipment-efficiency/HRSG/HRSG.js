@@ -228,7 +228,7 @@ function getSpecificHRSGData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EMSPro/auth/equipmentefficiencyHRSG/SteamGenerated",
+        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/SteamGenerated",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days1 = data[0].showNumberIndex;

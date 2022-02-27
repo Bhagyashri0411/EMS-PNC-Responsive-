@@ -22,7 +22,7 @@ function megloadGaugeChart() {
     $.ajax({
         type: "GET",
         
-        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        // url: "http://localhost:8090/fccu/specificenergyConsumption",
         url: "http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption",
     }).done(function (gaugevalue) {
         megGaugeChartvalue(gaugevalue);
@@ -101,7 +101,7 @@ function megGaugeChartvalue(gaugevalue) {
 function guagevaluemegAct() {
     $.ajax({
         method: "GET",        
-        // url: "http://localhost:8090/EMSPro/fccu/specificenergyConsumption",
+        // url: "http://localhost:8090/fccu/specificenergyConsumption",
         url: 'http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption',
 
     }).done(function (data) {
