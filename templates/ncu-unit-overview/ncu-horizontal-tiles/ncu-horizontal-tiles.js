@@ -22,18 +22,18 @@ $(document).ready(function () {
 function getpiechartncu() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/ncu/donutgraph",
+        url: "http://192.168.1.123:8080/ncu/donutgraph",
     }).done(function (data) {
 
         var fuelConsumed = data[0].steamConsumed;
         console.log(fuelConsumed);
         loadpiechartncu(fuelConsumed);
     })
-        // .fail(function () {
-        //     var faildata =
-        //         { "shp": 63.0, "hp": 64.0, "mp": 65.0, "lp": 66.0, "total": 258.0 }
-        //     loadpiechartncu(faildata);
-        // })
+    // .fail(function () {
+    //     var faildata =
+    //         { "shp": 63.0, "hp": 64.0, "mp": 65.0, "lp": 66.0, "total": 258.0 }
+    //     loadpiechartncu(faildata);
+    // })
 
 }
 function loadpiechartncu(fuelConsumed) {
@@ -84,11 +84,11 @@ function loadpiechartncu(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.shp, name: "RLNG",indexLabel: ((fuelConsumed.shp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.hp, name: "LPG",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.mp, name: "FG Export",indexLabel: ((fuelConsumed.mp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.lp, name: "FG Generation",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
-               
+                { y: fuelConsumed.shp, name: "RLNG", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.hp, name: "LPG", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.mp, name: "FG Export", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.lp, name: "FG Generation", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+
             ]
         }]
     });
@@ -110,7 +110,7 @@ function postFuelDoughnutDataNCU1() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8080/ncu/NCUDoughnut",
+        url: "http://192.168.1.123:8080/ncu/NCUDoughnut",
     })
         .done(function (data) {
             var energyConsumed = data[0].energyConsumed;
@@ -119,13 +119,13 @@ function postFuelDoughnutDataNCU1() {
             loadDoughnutHoriChartNCU1(energyConsumed);
 
         })
-        // .fail(function () {
-        //     var failData ={"fuel":24,"steam":56,"electricity":45,"total":568}
+    // .fail(function () {
+    //     var failData ={"fuel":24,"steam":56,"electricity":45,"total":568}
 
-        //     var energyConsumed = failData;
-        //     loadDoughnutHoriChartNCU1(energyConsumed);
-            
-        // })
+    //     var energyConsumed = failData;
+    //     loadDoughnutHoriChartNCU1(energyConsumed);
+
+    // })
 }
 function loadDoughnutHoriChartNCU1(energyConsumed) {
 
@@ -178,18 +178,80 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        // url: "http://localhost:8080/fccu/specificenergyConsumption",
-        url: "http://localhost:8080/ncu/specificenergyConsumption",
-    }).done(function (gaugevalue) {
-        loadGaugeChartvalue(gaugevalue);
-        console.log(gaugevalue)
+        url: "http://192.168.1.123:8080/ncu/specificenergyConsumption",
+    }).done(function (data) {
+        ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
+        var myConfig12 = {
+            "type": "gauge",
+            "height": "19%",
+            "width": "60%",
+            "x": "20%",
+            "backgroundColor": "#26293c",
+            "scale": {
+                "size-factor": "250%", //Modify your gauge chart size.
+                offsetY: '10px'
+            },
+            plotarea: {
+                padding: '10 0 0 0'
+            },
+            "scale-r": {
+                "aperture": 180,
+                "values": "0:100:0",
+                item: {
+                    'font-color': "#bfbfbf",
+                    'offset-r': -10,
+                    'font-size': 10,
+                },
+                "center": {
+                    "size": 4,
+                    "background-color": "transparent",
+                    "border-color": "none"
+                },
+                "ring": {
+                    "size": 24,
+                    "rules": [{
+                        "rule": "%v >= 0 && %v <= 10",
+                        "background-color": "#02b04f"
+                    },
+    
+                    {
+                        "rule": "%v >= 11 && %v <= 30",
+                        "background-color": "#ffc000"
+                    },
+    
+                    {
+                        "rule": "%v >= 31 && %v <=100",
+                        "background-color": "#ff0000"
+                    }
+                    ]
+                },
+                "guide": {
+                    "alpha": 0.8
+                }
+            },
+            "plot": {
+                "csize": "3%",
+                "size": "100%",
+                "background-color": "black"
+            },
+            "series": [{
+                "background-color": "black",
+                "values": data.specificenergy,
+            }]
+        };
+    
+        setTimeout(() => {
+            zingchart.render({
+                id: 'zingChart',
+                data: myConfig12
+            });
+        }, 100);
     });
 }
 function guagevaluencuAct() {
     $.ajax({
         method: "GET",
-        // url: "http://localhost:8080/fccu/specificenergyConsumption",
-        url: 'http://localhost:8080/ncu/specificenergyConsumption',
+        url: 'http://192.168.1.123:8080/ncu/specificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devncu").innerHTML = data.deviation + "%";
@@ -198,162 +260,76 @@ function guagevaluencuAct() {
     });
 
 }
-function loadGaugeChartvalue(gaugevalue) {
-    ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
-    var myConfig12 = {
-        "type": "gauge",
-        "height": "19%",
-        "width": "60%",
-        "x": "20%",
-        "backgroundColor": "#26293c",
-        "scale": {
-            "size-factor": "250%", //Modify your gauge chart size.
-            offsetY: '10px'
-        },
-        plotarea: {
-            padding: '10 0 0 0'
-        },
-        "scale-r": {
-            "aperture": 180,
-            "values": "0:100:0",
-            item: {
-                'font-color': "#bfbfbf",
-                'offset-r': -10,
-                'font-size': 10,
-            },
-            "center": {
-                "size": 4,
-                "background-color": "transparent",
-                "border-color": "none"
-            },
-            "ring": {
-                "size": 24,
-                "rules": [{
-                    "rule": "%v >= 0 && %v <= 10",
-                    "background-color": "#02b04f"
-                },
-
-                {
-                    "rule": "%v >= 11 && %v <= 30",
-                    "background-color": "#ffc000"
-                },
-
-                {
-                    "rule": "%v >= 31 && %v <=100",
-                    "background-color": "#ff0000"
-                }
-                ]
-            },
-            "guide": {
-                "alpha": 0.8
-            }
-        },
-        "plot": {
-            "csize": "3%",
-            "size": "100%",
-            "background-color": "black"
-        },
-        "series": [{
-            "background-color": "black",
-            "values": gaugevalue.specificenergy,
-        }]
-    };
-
-    setTimeout(() => {
-        zingchart.render({
-            id: 'zingChart',
-            data: myConfig12
-        });
-    }, 100);
-}
-
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/ncu/specificenergyConsumptiontable"
+        url: "http://192.168.1.123:8080/ncu/specificenergyConsumptiontable"
     }).done(function (data) {
-        getspecifictable(data)
-    })
-}
-function getspecifictable(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.type + '</td>';
-        table_data += '<td>' + value.sec + '</td>';
-        table_data += '<td>' + value.reference + '</td>';
-        if (value.deviation > 0) {
-            table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
-        }
-        else {
-            table_data += '<td class="r1">' + value.deviation + '</td>';
-        }
-
-        table_data += '</tr>';
-    });
-    $('#ncutable').append(table_data);
-    $(".r1").each(function () {
-        var text = $(this).text();
-        if (/[+-]?\d+(\.\d+)?/.test(text)) {
-            var num = parseFloat(text);
-            if (num < 0) {
-                $(this).addClass("negative");
-            } else if (num > 0) {
-                $(this).addClass("positive");
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.type + '</td>';
+            table_data += '<td>' + value.sec + '</td>';
+            table_data += '<td>' + value.reference + '</td>';
+            if (value.deviation > 0) {
+                table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
             }
-
-        }
-    });
+            else {
+                table_data += '<td class="r1">' + value.deviation + '</td>';
+            }
+    
+            table_data += '</tr>';
+        });
+        $('#ncutable').append(table_data);
+        $(".r1").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("negative");
+                } else if (num > 0) {
+                    $(this).addClass("positive");
+                }
+    
+            }
+        });
+    })
 }
 
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/ncu/parametertable"
+        url: "http://192.168.1.123:8080/parametertable"
     }).done(function (data) {
-        getparametertable(data)
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.parameter + '</td>';
+            table_data += '<td>' + value.uom + '</td>';
+            table_data += '<td>' + value.reference + '</td>';
+            table_data += '<td>' + value.actual + '</td>';
+            table_data += '<td>' + value.deviation + '</td>';
+            // if (value.deviation > 0) {
+            //     table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
+            // }
+            // else {
+            //     table_data += '<td class="r1">' + value.deviation + '</td>';
+            // }
+    
+            table_data += '</tr>';
+        });
+        $('#NCU_card_body').append(table_data);
+        // $(".r1").each(function () {
+        //     var text = $(this).text();
+        //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
+        //         var num = parseFloat(text);
+        //         if (num < 0) {
+        //             $(this).addClass("negative");
+        //         } else if (num > 0) {
+        //             $(this).addClass("positive");
+        //         }
+    
+        //     }
+        // });
     })
-    // .fail(function () {
-    //     var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-    //     { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-    //     { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-    //     { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-    //     { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-    //     { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-    //     { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
-    //     getparametertable(faildata)
-    // })
 }
-function getparametertable(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.parameter + '</td>';
-        table_data += '<td>' + value.uom + '</td>';
-        table_data += '<td>' + value.reference + '</td>';        
-        table_data += '<td>' + value.actual + '</td>';
-        table_data += '<td>' + value.deviation + '</td>';
-        // if (value.deviation > 0) {
-        //     table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
-        // }
-        // else {
-        //     table_data += '<td class="r1">' + value.deviation + '</td>';
-        // }
-
-        table_data += '</tr>';
-    });
-    $('#NCU_card_body').append(table_data);
-    // $(".r1").each(function () {
-    //     var text = $(this).text();
-    //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
-    //         var num = parseFloat(text);
-    //         if (num < 0) {
-    //             $(this).addClass("negative");
-    //         } else if (num > 0) {
-    //             $(this).addClass("positive");
-    //         }
-
-    //     }
-    // });
-}
-

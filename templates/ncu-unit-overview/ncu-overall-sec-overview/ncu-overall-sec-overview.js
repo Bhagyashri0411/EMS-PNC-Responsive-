@@ -30,7 +30,7 @@ function ncuoverview() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8080/dhds/overallsecOverviewgraph",
+        url: "http://192.168.1.124:8080/ncu/overallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
