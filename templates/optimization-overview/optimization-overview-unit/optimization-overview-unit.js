@@ -49,7 +49,7 @@ function lastupdatedTime() {
                 " " +
                 sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/home/lastUpdateTimestamp",
+        url: "http://localhost:8080/Air/lastUpdateTimestamp",
         method: "GET",
     }).done(function (data) {
         const d = new Date(data.lastupdatetimestamp);
@@ -71,7 +71,7 @@ function getPotentialAreaData() {
         },
         method: "POST",
 
-        url: "http://localhost:8090/potentialgraph",
+        url: "http://localhost:8080/potentialgraph",
 
     }).done(function (data) {
 
@@ -163,7 +163,7 @@ function getSpecificOptConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/overallenergycost",
+        url: "http://localhost:8080/overallenergycost",
     }).done(function (data) {
         console.log(data, "data 12")
         var Difference_In_Days = data[0].showNumberIndex;
@@ -277,7 +277,7 @@ function optimizedtable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/majorcontributor",
+        url: "http://localhost:8080/majorcontributor",
     }).done(function (data) {
         var table_data = '';
         var max1 = 500;
@@ -302,7 +302,7 @@ function optimizedfuel() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/fuelsystemoverview",
+        url: "http://localhost:8080/fuelsystemoverview",
     }).done(function (data) {
         var table_data = '';
         var max1 = 500;
@@ -327,7 +327,7 @@ function optimizedElectrical() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/electricalpowersystem",
+        url: "http://localhost:8080/electricalpowersystem",
     }).done(function (data) {
         var table_data1 = '';
         var max1 = 700;
@@ -352,7 +352,7 @@ function steamPotential() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8090/potentialopportunity',
+        url: 'http://localhost:8080/potentialopportunity',
     }).done(function (data) {
         document.getElementById("num").innerHTML = data.potentialopportunity;
         document.getElementById("num-Actual").innerHTML = data.actualCost;
@@ -368,7 +368,7 @@ function recommendations() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/recommendation",
+        url: "http://localhost:8080/recommendation",
     }).done(function (data) {
         getrecommendations(data)
     })
@@ -389,7 +389,7 @@ function getrecommendations(data) {
 function optimizedtable() {
     $.ajax({
         method: 'GET',
-        url: "http://localhost:8090/fuelsystemoverview",
+        url: "http://localhost:8080/fuelsystemoverview",
     }).done(function (data) {
         var table_data = '';
         var max1 = 700;

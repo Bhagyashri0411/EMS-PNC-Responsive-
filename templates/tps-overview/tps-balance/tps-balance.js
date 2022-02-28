@@ -29,7 +29,7 @@ function tablecard() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://192.168.1.107:8090/CppHome/cppuom",
+        url: "http://localhost:8080/CppHome/cppuom",
     }).done(function (data) {
         gettablecard(data)
     })
@@ -45,7 +45,7 @@ function tablecard() {
         })
 }
 function gettablecard(data){
-    document.getElementById('tem1').innerHTML = data[0]['shpvalue1'];
+    document.getElementById('tem1').innerHTML = data[0]['shpsteamvalue1'];
     document.getElementById('press1').innerHTML = data[0]['shpsteamvalue2'];
 
     document.getElementById('tem2').innerHTML = data[0]['mpsteamvalue1'];
@@ -70,7 +70,7 @@ function generatorstable() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://192.168.1.107:8090/CppHome/SHPsteambalancegenerators",
+        url: "http://localhost:8080/CppHome/SHPsteambalancegenerators",
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -99,7 +99,7 @@ function consumerstable() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://192.168.1.107:8090/CppHome/SHPsteambalanceconsumers",
+        url: "http://localhost:8080/CppHome/SHPsteambalanceconsumers",
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -127,7 +127,7 @@ function exporttable() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/SHPsteambalanceexport',
+        url: 'http://localhost:8080/CppHome/SHPsteambalanceexport',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -168,7 +168,7 @@ function generatorstable1() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/HPsteambalancegenerators',
+        url: 'http://localhost:8080/CppHome/HPsteambalancegenerators',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -195,7 +195,7 @@ function consumerstable1() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/HPsteambalanceconsumers',
+        url: 'http://localhost:8080/CppHome/HPsteambalanceconsumers',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -223,7 +223,7 @@ function exporttable1() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/HPsteambalanceexport',
+        url: 'http://localhost:8080/CppHome/HPsteambalanceexport',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -264,7 +264,7 @@ function generatorstable2() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/Mpsteambalancegenerators',
+        url: 'http://localhost:8080/CppHome/Mpsteambalancegenerators',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -291,7 +291,7 @@ function consumerstable2() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/MPsteambalanceconsumers',
+        url: 'http://localhost:8080/CppHome/MPsteambalanceconsumers',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -317,7 +317,7 @@ function exporttable2() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/MPsteambalanceexport',
+        url: 'http://localhost:8080/CppHome/MPsteambalanceexport',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -357,7 +357,7 @@ function generatorstable3() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/LPsteambalancegenerators',
+        url: 'http://localhost:8080/CppHome/LPsteambalancegenerators',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -383,7 +383,7 @@ function consumerstable3() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/LPsteambalanceconsumers',
+        url: 'http://localhost:8080/CppHome/LPsteambalanceconsumers',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -409,7 +409,7 @@ function exporttable3() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/LPsteambalanceexport',
+        url: 'http://localhost:8080/CppHome/LPsteambalanceexport',
     }).done(function (data) {
         console.log(data,"ooo hello");
         var max1 = 250
@@ -449,7 +449,7 @@ function generatorstable4() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/BFWsteambalancegenerators',
+        url: 'http://localhost:8080/CppHome/BFWsteambalancegenerators',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -475,7 +475,7 @@ function consumerstable4() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/BFWsteambalanceconsumers',
+        url: 'http://localhost:8080/CppHome/BFWsteambalanceconsumers',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';
@@ -500,7 +500,7 @@ function exporttable4() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://192.168.1.107:8090/CppHome/BFWsteambalanceexport',
+        url: 'http://localhost:8080/CppHome/BFWsteambalanceexport',
     }).done(function (data) {
         var max1 = 250
         var table_data = '';

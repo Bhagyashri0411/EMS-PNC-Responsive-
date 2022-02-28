@@ -38,8 +38,8 @@ $("input[name=toGTBar]").on('change',function (event) {
 var now = new Date();
 // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
 console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
-var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-var timeArray = hoursString.split(':');
+// var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+// var timeArray = hoursString.split(':');
 const d = new Date(sessionStorage.getItem("lastUpdateddate"));
            d.setHours(05);
            d.setMinutes(30);
@@ -70,7 +70,7 @@ function getSpecificGTBarData() {
         },
       method: "POST",
       data: postdata,
-      url: "http://192.168.1.109:8090/EquipmentEfficiency/GTbargraph",
+      url: "http://localhost:8080/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
       console.log(data)
       var Difference_In_Days = data[0].showNumberIndex;
@@ -175,7 +175,7 @@ function getSpecificGTData() {
         },
     method: "POST",
     data: postdata,
-    url: "http://192.168.1.109:8090/EquipmentEfficiency/GTlinegraph",
+    url: "http://localhost:8080/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
     var Difference_In_Days1 = data[0].showNumberIndex;
@@ -300,7 +300,7 @@ function showSpecificGTChart(data ,Difference_In_Days1 ,interval1) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://192.168.1.109:8090/EquipmentEfficiency/GTTable",
+    url: "http://localhost:8080/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
     loadGasTable(data);

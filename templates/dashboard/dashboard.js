@@ -33,7 +33,7 @@ function lastupdatedTime() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/home/lastUpdateTimestamp",
+    url: "http://localhost:8080/Air/lastUpdateTimestamp",
     method: "GET",
   }).done(function (data) {
     const d = new Date(data.lastupdatetimestamp);
@@ -86,7 +86,7 @@ function getSpecificHomeConsumptionData(intervalType, domLebal1) {
     method: "POST",
     data: postdata,
 
-    url: "http://localhost:8090/home/homepagegraph",
+    url: "http://localhost:8080/home/homepagegraph",
   }).done(function (data) {
     console.log(data);
     var Difference_In_Days = data[0].showNumberIndex;
@@ -206,7 +206,7 @@ function totalThroughput() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/home/totalbalance",
+    url: "http://localhost:8080/home/totalbalance",
     method: "GET",
   }).done(function (data) {
     document.getElementById("totalThroughput").innerHTML =
@@ -227,7 +227,7 @@ function Truncated() {
         sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/home/Truncate",
+    url: "http://localhost:8080/home/Truncate",
   }).done(function (data) {
     console.log(data);
   });
@@ -242,7 +242,7 @@ function csvdownload() {
         sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/home/Report",
+    url: "http://localhost:8080/home/Report",
   }).done(function (data) {
     console.log(data);
 

@@ -35,7 +35,7 @@ function getSpecificTgtuConsumptionData() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/api/npruunitOverview/SECOverview",
+        url: "http://localhost:8080/api/npruunitOverview/SECOverview",
     }).done(function (data) {
         console.log(data)
 

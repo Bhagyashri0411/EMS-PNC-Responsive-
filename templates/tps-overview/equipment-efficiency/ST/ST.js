@@ -34,8 +34,8 @@ $("input[name=toSTBar]").on('change', function (event) {
 // // setting to date
 var now = new Date();
 console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
-var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-var timeArray = hoursString.split(':');
+// var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+// var timeArray = hoursString.split(':');
 const d = new Date(sessionStorage.getItem("lastUpdateddate"));
 d.setHours(05);
 d.setMinutes(30);
@@ -65,7 +65,7 @@ function getSpecificSTBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/auth/cppTpsST/steamturbineefficiency",
+        url: "http://localhost:8080/st/steamturbineefficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -168,9 +168,10 @@ function getSpecificSTData() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
+        url: "http://localhost:8080/st/capacityutilization",
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/auth/cppTpsST/capacityutilization",
+   
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days1 = data[0].showNumberIndex;
@@ -280,39 +281,36 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
 
 function SteamTable() {
     $.ajax({
-        url: "http://192.168.1.113:8090/Equipmentefficiency/sttable",
+        url: "http://localhost:8080/st/sttable",
         method: "GET"
     }).done(function (data) {
         loadSteamTable(data);
     })
     .fail(function() {
-        var failData = [{"Status":"ON","type":"ST01","import":41,"extracted":27,"condensate":63,"PowerGenerationCost":59, "PowerGeneratedDesign":80.0,"PowerGeneratedActual":0.0,"HeatRateDesign":80.0,"HeatRateActual":80.0,"SteamDuty":80.0},
-        {"Status":"ON","type":"ST02","import":41,"extracted":27,"condensate":63,"PowerGenerationCost":59, "PowerGeneratedDesign":60.0,"PowerGeneratedActual":0.0,"HeatRateDesign":60.0,"HeatRateActual":60.0,"SteamDuty":60.0},
-        {"Status":"ON","type":"ST03","import":41,"extracted":27,"condensate":63,"PowerGenerationCost":59, "PowerGeneratedDesign":70.0,"PowerGeneratedActual":0.0,"HeatRateDesign":70.0,"HeatRateActual":70.0,"SteamDuty":70.0},
-        {"Status":"ON","type":"ST01","import":41,"extracted":27,"condensate":63,"PowerGenerationCost":59, "PowerGeneratedDesign":80.0,"PowerGeneratedActual":0.0,"HeatRateDesign":80.0,"HeatRateActual":80.0,"SteamDuty":80.0},
-        {"Status":"ON","type":"ST02","import":41,"extracted":27,"condensate":63,"PowerGenerationCost":59, "PowerGeneratedDesign":60.0,"PowerGeneratedActual":0.0,"HeatRateDesign":60.0,"HeatRateActual":60.0,"SteamDuty":60.0},
-        {"Status":"ON","type":"ST03","import":41,"extracted":27,"condensate":63,"PowerGenerationCost":59, "PowerGeneratedDesign":70.0,"PowerGeneratedActual":0.0,"HeatRateDesign":70.0,"HeatRateActual":70.0,"SteamDuty":70.0},]
-   loadSteamTable(failData);
+        var failData = []
+      
+        loadSteamTable(failData);
     })
 }
 function loadSteamTable(data) {
         var table_data = '';
         $.each(data, function (key, value) {
-
+          
+           
             table_data += '<tr>';
 
             table_data += '<td>' + value.type + '</td>';
             table_data += '<td>' + value.Status + '</td>';
-            table_data += '<td>' + value.SteamImport + '</td>';
-            table_data += '<td>' + value.MPSteamExtracted + '</td>';
-            table_data += '<td>' + value.HPSteamExtracted + '</td>';
-            table_data += '<td>' + value.SteamCondensate + '</td>';
-            table_data += '<td>' + value.SteamDuty + '</td>';
-            table_data += '<td>' + value.PowerGenerationCost + '</td>';
-            table_data += '<td>' + value.PowerGeneratedDesign + '</td>';
-            table_data += '<td>' + value.PowerGeneratedActual + '</td>';
-            table_data += '<td>' + value.HeatRateDesign + '</td>';
-            table_data += '<td>' + value.HeatRateActual + '</td>';
+            table_data += '<td>' + value.steamimport + '</td>';
+            table_data += '<td>' + value.mpsteamextracted + '</td>';
+            table_data += '<td>' + value.hpsteamextracted + '</td>';
+            table_data += '<td>' + value.steamcondensate + '</td>';
+            table_data += '<td>' + value.steamduty + '</td>';
+            table_data += '<td>' + value.powergenerationcost + '</td>';
+            table_data += '<td>' + value.powergenerateddesign + '</td>';
+            table_data += '<td>' + value.powergeneratedactual + '</td>';
+            table_data += '<td>' + value.heatratedesign + '</td>';
+            table_data += '<td>' + value.heatrateactual + '</td>';
             table_data += '</tr>';
 
         });
