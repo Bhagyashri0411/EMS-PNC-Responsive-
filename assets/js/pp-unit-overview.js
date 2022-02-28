@@ -37,7 +37,7 @@ function lastupdatedTime(data) {
 
 function totalThroughput() {
     $.ajax({
-        url: 'http://localhost:8090/pp/feedratePlantload',
+        url: 'http://localhost:8080/pp/feedratePlantload',
         method: "GET"
     }).done(function (data) {
 

@@ -23,7 +23,8 @@ $("input[name=toBoiler]").on('change',function (event) {
 // // setting to date
 // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
 console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
-var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+// var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+// var timeArray = hoursString.split(':');
 const d = new Date(sessionStorage.getItem("lastUpdateddate"));
            d.setHours(05);
            d.setMinutes(30);
@@ -50,7 +51,7 @@ function getSpecificBOILERData() {
       method: "POST",
       data: postdata,
      
-      url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
+      url: "http://localhost:8080/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
     var Difference_In_Days = data[0].showNumberIndex;
       formatSpecificBOILERData(data ,Difference_In_Days);
@@ -103,8 +104,9 @@ function showSpecificBOILERChart(data ,Difference_In_Days ,interval) {
         labelFontColor: "#d9d9d9",
         lineColor: "gray",
         tickThickness: 0,
-         intervalType:Difference_In_Days == true?  "hour":"day",
-         valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+        intervalType:Difference_In_Days == true?  "hour":"day",
+        valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+        title:Difference_In_Days== true?  "In hours":" In Days",
         interval: interval,
         labelAngle: -20
          
@@ -153,7 +155,7 @@ function getSteamFuelConsumedData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
     method: "GET",
-    url: "http://192.168.1.116:8080/tpsBoiler/fuelConsumedBarGraph",
+    url: "http://localhost:8080/tpsBoiler/fuelConsumedBarGraph",
 
   }).done(function (data) {
 
@@ -185,6 +187,7 @@ function Fuelconsumed(data) {
   var chart = new CanvasJS.Chart("chartBoiler2",
     {
       height: 240,
+      theme: "dark1",
       backgroundColor: "#26293c",
       title: {
         text: ""
@@ -216,7 +219,7 @@ function Fuelconsumed(data) {
         {
           type: "column",
           name: "RLNG",
-          color: "#d38d0c  ",
+          color: "#ffc000  ",
           indexLabel: " {y}",
           indexLabelFontColor: "#d9d9d9",
           indexLabelFontSize: 15,
@@ -233,7 +236,7 @@ function Fuelconsumed(data) {
         }, {
           type: "column",
           name: "HSD",
-          color: "#d944b4  ",
+          color: "#a5a5a5 ",
           indexLabel: " {y}",
           indexLabelFontColor: "#d9d9d9",
           indexLabelFontSize: 15,
@@ -241,8 +244,8 @@ function Fuelconsumed(data) {
         },
         {
           type: "column",
-          name: "FO",
-          color: "#a5a5a5",
+          name: "OFF Gas",
+          color: "#d944b4 ",
           indexLabel: " {y}",
           indexLabelFontColor: "#d9d9d9",
           indexLabelFontSize: 15,
@@ -260,23 +263,23 @@ function Fuelconsumed(data) {
 
 function BoilerTable() {
   $.ajax({
-    url: "http://192.168.1.116:8080/tpsBoiler/boilerTable",
+    url: "http://localhost:8080/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
     loadBoilerTable(data) 
   })
-  .fail(function () {
-    var failData = [
-    {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
-    {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
-    {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},
-    {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
-    {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
-    {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},]
+  // .fail(function () {
+  //   var failData = [
+  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
+  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
+  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},
+  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
+  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
+  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},]
    
-      loadBoilerTable(failData);
+  //     loadBoilerTable(failData);
 
-  })
+ // })
 
 }
 

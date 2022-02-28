@@ -36,8 +36,8 @@ $(document).ready(function () {
     var now = new Date();
     // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
     console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
-    var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-    var timeArray = hoursString.split(':');
+    // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+    // var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
                d.setHours(05);
                d.setMinutes(30);
@@ -66,7 +66,7 @@ function getSpecificHRSGBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://192.168.1.119:8090/EMSPro/auth/equipmentefficiencyHRSG/HrsgEfficiency",
+        url: "http://localhost:8080/auth/equipmentefficiencyHRSG/HrsgEfficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -228,11 +228,12 @@ function getSpecificHRSGData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/SteamGenerated",
+        url: "http://localhost:8080/auth/equipmentefficiencyHRSG/SteamGenerated",
     }).done(function (data) {
         console.log(data)
-        var Difference_In_Days1 = data[0].showNumberIndex;
-        formatSpecificHRSGData(data ,Difference_In_Days1);
+        var Difference_In_Days = data.showNumberIndex;
+        console.log(Difference_In_Days,'gjhghgh');
+        formatSpecificHRSGData(data ,Difference_In_Days);
     })
         .fail(function () {
            var failData=[]
@@ -241,7 +242,7 @@ function getSpecificHRSGData() {
 }
 
 
-function formatSpecificHRSGData(data ,Difference_In_Days1) {
+function formatSpecificHRSGData(data ,Difference_In_Days) {
     var chartData = { hrsg3: [], hrsg4: [], hrsg1: [], hrsg2: [], hrsg5: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
@@ -254,19 +255,19 @@ function formatSpecificHRSGData(data ,Difference_In_Days1) {
         chartData.hrsg5.push({ y: element.hrsg5 ,x:hrsg1Date });
     }
     console.log("HRSGchartdata", chartData);
-    var interval1 = 1;
-    if (!Difference_In_Days1) {
+    var interval= 1;
+    if (!Difference_In_Days) {
       if (count/8 > 1) {
-         interval1 =Math.round(count/8);
+         interval =Math.round(count/8);
       }else{
-        interval1 = 1;
+        interval = 1;
       }
      
     }
-    showSpecificHRSGChart(chartData ,Difference_In_Days1 ,interval1);
+    showSpecificHRSGChart(chartData ,Difference_In_Days ,interval);
 }
 
-function showSpecificHRSGChart(data ,interval1 ,Difference_In_Days1) {
+function showSpecificHRSGChart(data ,Difference_In_Days,interval) {
     var chart = new CanvasJS.Chart("HRSG-line", {
 
         height: 230,
@@ -279,10 +280,10 @@ function showSpecificHRSGChart(data ,interval1 ,Difference_In_Days1) {
             gridThickness: 0,
             tickLength: 0,
             lineThickness: 0,
-            intervalType:Difference_In_Days1 == true?  "hour":"day",
-            valueFormatString:Difference_In_Days1 == true?  "HH":"DD MMM YYYY" ,
-            title:Difference_In_Days1 == true?  "In hours":" In Days",
-           interval: interval1,
+            intervalType:Difference_In_Days == true?  "hour":"day",
+            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+            title:Difference_In_Days == true?  "In hours":"In Days",
+           interval: interval,
             labelFontColor: "#d9d9d9",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
@@ -353,7 +354,7 @@ function showSpecificHRSGChart(data ,interval1 ,Difference_In_Days1) {
 //table
 function HRSGTable() {
     $.ajax({
-        url: "http://192.168.1.119:8090/auth/equipmentefficiencyHRSG/HrsgTable",
+        url: "http://localhost:8080/auth/equipmentefficiencyHRSG/HrsgTable",
         method: "GET"
     }).done(function (data) {
         loadHRSGTable(data);

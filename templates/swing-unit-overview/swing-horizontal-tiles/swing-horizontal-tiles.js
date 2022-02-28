@@ -168,7 +168,7 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/fccu/specificenergyConsumption",
+        url: "http://localhost:8080/fccu/specificenergyConsumption",
         // url: "http://192.168.1.109:8090/swing/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
@@ -179,7 +179,7 @@ function guagevalueswingAct() {
     $.ajax({
         method: "GET",
         url: 'http://192.168.1.119:8090/SWING/specificenergyConsumption',
-        // url: "http://localhost:8090/fccu/specificenergyConsumption",
+        // url: "http://localhost:8080/fccu/specificenergyConsumption",
     }).done(function (data) {
         document.getElementById("devswing").innerHTML = data.deviation + "%";
         document.getElementById("actswing").innerHTML = data.actual;

@@ -32,7 +32,7 @@ function lastupdatedTime(data){
     }
 function totalThroughput(data){
         $.ajax({
-            url: 'http://localhost:8090/ncu/feedratePlantload',
+            url: 'http://localhost:8080/ncu/feedratePlantload',
             method: "GET"
         }).done(function (data) {
             
@@ -47,7 +47,7 @@ function totalThroughput(data){
 function Truncated(){  
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8090/home/Truncate",
+                url: "http://localhost:8080/home/Truncate",
             }).done(function(data) {
                 console.log(data)  
             })
@@ -57,7 +57,7 @@ function Truncated(){
 function csvdownload(){   
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8090/home/Report",
+                url: "http://localhost:8080/home/Report",
             }).done(function(data){
               console.log(data)
         
