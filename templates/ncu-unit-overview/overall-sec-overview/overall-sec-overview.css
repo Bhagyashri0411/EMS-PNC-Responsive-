@@ -11,7 +11,7 @@
 
 }
 
-#ncu-overall-sec-overview .ncu-headline {
+ .ncu-headline {
     font-size: 1.7vw;
     font-weight: 600;
     color: #d9d9d9;
@@ -59,9 +59,7 @@
 }
 
 .ncu-Overview-tab #ncuoveralldate {
-    padding: 0.25vw;
     margin-left: 1.1vw;
-    min-width: 6vw;
 }
 
 .ncu-Overview-tab .count-line {

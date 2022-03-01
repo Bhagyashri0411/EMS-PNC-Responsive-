@@ -18,7 +18,7 @@ function lastupdatedTime(){
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8080/Air/lastUpdateTimestamp',
+        url: 'http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp',
         method: "GET"
     }).done(function (data) {
         console.log(data,"gjhdik");
@@ -33,7 +33,7 @@ function lastupdatedTime(){
     function Truncated(){  
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/home/Truncate",
+            url: "http://localhost:8090/EmsPNC/home/Truncate",
         }).done(function(data) {
             console.log(data)  
         })
@@ -41,7 +41,7 @@ function lastupdatedTime(){
     function csvdownload(){   
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/home/Report",
+            url: "http://localhost:8090/EmsPNC/home/Report",
         }).done(function(data){
           console.log(data)
     

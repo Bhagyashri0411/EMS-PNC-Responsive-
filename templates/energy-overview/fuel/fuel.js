@@ -57,7 +57,7 @@ function getSpecificFuelPNCData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8080/eco/fuelgraph",
+        url: "http://localhost:8090/EmsPNC/eco/fuelgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -98,7 +98,7 @@ function getFuelDoughnutData() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8080/eco/totalfuelconsumed",
+        url: "http://localhost:8090/EmsPNC/eco/totalfuelconsumed",
     }).done(function (data) {
         if (myJSON.uom == 'INR/hr') {
 
@@ -312,7 +312,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
 function loadCardfuel1() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/eco/secfuelMT",
+        url: "http://localhost:8090/EmsPNC/eco/secfuelMT",
 
     }).done(function (data) {
         console.log(data, "321222");
@@ -343,7 +343,7 @@ function loadCardfuel1() {
 function loadCardfuel2() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/eco/secfuelGcal",
+        url: "http://localhost:8090/EmsPNC/eco/secfuelGcal",
 
     }).done(function (data) {
         console.log(data, "321222");
