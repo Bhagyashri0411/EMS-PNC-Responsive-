@@ -18,7 +18,7 @@ $(document).ready(function () {
 
 function lastupdatedTime(data) {
     $.ajax({
-        url: 'http://localhost:8080/Air/lastUpdateTimestamp',
+        url: 'http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp',
         method: "GET",
      headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function lastupdatedTime(data) {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/home/Report",
+        url: "http://localhost:8090/EmsPNC/home/Report",
     }).done(function (data) {
         console.log(data)
 
@@ -71,7 +71,7 @@ function csvdownload() {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/home/Truncate",
+        url: "http://localhost:8090/EmsPNC/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })

@@ -65,7 +65,7 @@ function getSpecificSTBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8080/st/steamturbineefficiency",
+        url: "http://localhost:8090/EmsPNC/st/steamturbineefficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -168,7 +168,7 @@ function getSpecificSTData() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8080/st/capacityutilization",
+        url: "http://localhost:8090/EmsPNC/st/capacityutilization",
         method: "POST",
         data: postdata,
    
@@ -281,7 +281,7 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
 
 function SteamTable() {
     $.ajax({
-        url: "http://localhost:8080/st/sttable",
+        url: "http://localhost:8090/EmsPNC/st/sttable",
         method: "GET"
     }).done(function (data) {
         loadSteamTable(data);

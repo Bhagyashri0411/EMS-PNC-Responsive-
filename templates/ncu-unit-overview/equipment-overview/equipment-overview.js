@@ -35,7 +35,7 @@ $(document).ready(function () {
 function getEquOverFCCUData() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.124:8080/EquipmentOverview/ncuchart",
+        url: "http://localhost:8090/EmsPNC/EquipmentOverview/DHDSchart",
 
     }).done(function (data) {
 
@@ -149,7 +149,7 @@ function posttableequipment() {
         method: "POST",
         data: JSON.stringify(selectdata),
 
-        url: "http://192.168.1.124:8080/EquipmentOverview/DHDStable",
+        url: "http://localhost:8090/EmsPNC/EquipmentOverview/DHDStable",
     }).done(function (data) {
         console.log(data[0].equipment1, "jjjjjjjjjjj");
         globledatavariable1 = data[0].equipment1;
@@ -197,7 +197,7 @@ function getSpecificEquipmentOverviewDataNCU() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.124:8080/EquipmentOverview/DHDSgraph",
+        url: "http://localhost:8090/EmsPNC/EquipmentOverview/DHDSgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

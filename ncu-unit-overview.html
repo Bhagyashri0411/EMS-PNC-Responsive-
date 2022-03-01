@@ -61,11 +61,11 @@
                         <div class="col-md-12">
                             <span class="heading-item">
                                 <span class="label" style="padding: 0;margin-left: 0;"> Feed Rate &nbsp;:&nbsp;</span>
-                                <span class="count" id="feedrateNcu"></span> <span class="unit"> Ton/hr</span>
+                                <span class="count" id="totalThroughput"></span> <span class="unit"> Ton/hr</span>
                             </span>
                             <span class="heading-item">
                                 <span class="label">Plant Load &nbsp;:&nbsp;</span>
-                                <span class="count" id="plantloadNcu"></span> <span class="unit"> %</span>
+                                <span class="count" id="Power"></span> <span class="unit"> %</span>
                             </span>
                             <span class="heading-item pull-right">
                                 <!-- <button onclick="csvdownload()" class="down-button">Report</button> -->
@@ -83,19 +83,19 @@
                         <div class="card-col-5 mt-10">
                             <div class="card clearfix">
                                 <ul class="nav nav-tabs purple-tabs pull-right butt-17" role="tablist" id="ncu-unit-overview-tab">
-                                    <li role="presentation" class="active"><a href="#ncu-overall-sec-overview"  onclick="Truncated()" aria-controls="ncu-overall-sec-overview" role="tab" data-toggle="tab">Overall SEC Overview</a></li>
-                                    <li role="presentation"><a href="#ncu-steam-balance-overview"  onclick="Truncated()" aria-controls="ncu-steam-balance-overview" role="tab" data-toggle="tab">Steam Balance Overview</a></li>
-                                    <li role="presentation"><a href="#ncu-equipment-overview"  onclick="Truncated()" aria-controls="ncu-equipment-overview" role="tab" data-toggle="tab">Equipment Overview</a></li>
+                                    <li role="presentation" class="active"><a href="#overall-sec-overview"  onclick="Truncated()" aria-controls="overall-sec-overview" role="tab" data-toggle="tab">Overall SEC Overview</a></li>
+                                    <li role="presentation"><a href="#steam-balance-overview"  onclick="Truncated()" aria-controls="steam-balance-overview" role="tab" data-toggle="tab">Steam Balance Overview</a></li>
+                                    <li role="presentation"><a href="#equipment-overview"  onclick="Truncated()" aria-controls="equipment-overview" role="tab" data-toggle="tab">Equipment Overview</a></li>
                                     <li role="presentation"><a href="#ncu-convection-section" aria-controls="ncu-convection-section" role="tab" data-toggle="tab">Convection Section</a></li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="ncu-overall-sec-overview">
+                                    <div role="tabpanel" class="tab-pane active" id="overall-sec-overview">
                                         overall-sec-overview
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="ncu-steam-balance-overview">
+                                    <div role="tabpanel" class="tab-pane" id="steam-balance-overview">
                                         steam-balance-overview
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="ncu-equipment-overview">
+                                    <div role="tabpanel" class="tab-pane" id="equipment-overview">
                                         equipment-overview
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="ncu-convection-section">

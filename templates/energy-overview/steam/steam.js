@@ -55,7 +55,7 @@ function getSpecificSteamline1ConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8080/steam/steamGraph",
+        url: "http://localhost:8090/EmsPNC/steam/steamGraph",
     }).done(function (data) {
         console.log(data)
 
@@ -189,7 +189,7 @@ function getSpecificSteamConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8080/steam/specificsteamconsumption",
+        url: "http://localhost:8090/EmsPNC/steam/specificsteamconsumption",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -298,7 +298,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
 function steamDoughnut() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/steam/steamBreakup",
+        url: "http://localhost:8090/EmsPNC/steam/steamBreakup",
     }).done(function (data) {
         loadDoughnutChart(data);
     })
@@ -349,7 +349,7 @@ function loadDoughnutChart(data) {
 
 function steamtable() {
     $.ajax({
-        url: "http://localhost:8080/steam/secSteam",
+        url: "http://localhost:8090/EmsPNC/steam/secSteam",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -387,7 +387,7 @@ function steamtable() {
 function steamtable2() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8080/steam/steamTable'
+        url: 'http://localhost:8090/EmsPNC/steam/steamTable'
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
@@ -408,7 +408,7 @@ function steamDoughnutProgress2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8080/steam/steamCapacityUtilization",
+        url: "http://localhost:8090/EmsPNC/steam/steamCapacityUtilization",
     }).done(function (data) {
 
         loadDoughnutChartProgress2(data);
