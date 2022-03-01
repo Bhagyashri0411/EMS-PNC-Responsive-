@@ -1,6 +1,6 @@
 $(document).ready(function () {
     totalThroughput();
-    lastupdatedTime();
+    // lastupdatedTime();
     $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function () {
         // alert('navigation loaded');
     });
@@ -15,25 +15,17 @@ $(document).ready(function () {
         $(target).load("./../../templates/pp-unit-overview/" + fileName + "/" + fileName + ".html", function () { });
 
     });
+    const b = new Date(sessionStorage.getItem("lastUpdateddate"));
+    console.log(b, 'b');
+    const dmonth = b.getMonth() + 1;
+    const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
+    document.getElementById("ppTimeStamp").innerHTML = setdate;
+
 });
 
-function lastupdatedTime(data) {
-    // $.ajax({
-    //     url: 'http://192.168.1.119:8090/api/home/lastupdatedate',
-    //     method: "GET"
-    // }).done(function (data) {
-    //     document.getElementById("ppTimeStamp").innerHTML = data.LastUpdatedValue;
-    // });
-
-    var today = new Date();
-
-    var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
-
-    var time = today.getHours() + ":" + today.getMinutes();
-
-    var dateTime = date + ' ' + time;
-    document.getElementById("ppTimeStamp").innerHTML = dateTime;
-}
+// function lastupdatedTime() {
+//     document.getElementById("").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+// }
 
 function totalThroughput() {
     $.ajax({

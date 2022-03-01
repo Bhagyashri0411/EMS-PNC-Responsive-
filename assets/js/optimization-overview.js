@@ -1,26 +1,27 @@
 $(document).ready(function() {
-    lastupdatedTime();
+   // lastupdatedTime();
     $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function() {});
     $("#left-sidebar").load("./../../templates/left-sidebar/left-sidebar.html");
     $("#horizontal-optimization-overview").load("./../../templates/optimization-overview/horizontal-optimization-overview/horizontal-optimization-overview.html");
 
     $("#optimization-overview-unit").load("./../../templates/optimization-overview/optimization-overview-unit/optimization-overview-unit.html", function() {});
-    
+   
+    //var abc = sessionStorage.getItem("lastUpdateddate")
 });
-function lastupdatedTime(data){
-    $.ajax({
-        url: 'http://localhost:8090/EmsPNC/api/home/lastupdatedate',
-        method: "GET"
-    }).done(function (data) {
+// function lastupdatedTime(data){
+//     $.ajax({
+//         url: 'http://localhost:8090/EmsPNC/api/home/lastupdatedate',
+//         method: "GET"
+//     }).done(function (data) {
         
        
-                document.getElementById("optTime").innerHTML = data.LastUpdatedValue; 
+//                 document.getElementById("optTime").innerHTML = data.LastUpdatedValue; 
                 
                 
-                });
+//                 });
     
         
-    }
+//     }
     function Truncated(){  
         $.ajax({
             method: "GET",
