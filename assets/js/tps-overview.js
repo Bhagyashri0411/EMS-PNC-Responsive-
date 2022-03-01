@@ -3,7 +3,7 @@ $(document).ready(function () {
     if (!role || role !== 'admin') {
         $(location).attr('href', "login.html");
     } else {
-        lastupdatedTime();
+
         $("#bs-example-navbar-collapse-1").load("./templates/nav/nav.html", function () { });
         $("#tps").load("./templates/tps-overview/tps/tps.html", function () { });
         $("#left-sidebar").load("./templates/left-sidebar/left-sidebar.html");
@@ -13,27 +13,15 @@ $(document).ready(function () {
             $(target).load("./templates/tps-overview/" + fileName + "/" + fileName + ".html", function () { });
 
         });
+        const b = new Date(sessionStorage.getItem("lastUpdateddate"));
+        console.log(b, 'b');
+        const dmonth = b.getMonth() + 1;
+        const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
+        document.getElementById("cppTime").innerHTML = setdate;
     }
 });
 
-function lastupdatedTime(data) {
-    $.ajax({
-        url: 'http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp',
-        method: "GET",
-     headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
-        },
-    }).done(function (data) {
-        // var timestamp=new Date().getTime(); 
-        const d = new Date(data.lastupdatetimestamp);
-        const dmonth = d.getMonth()+1;
-        sessionStorage.setItem("lastUpdateddate",d);
-        document.getElementById("cppTime").innerHTML =  d.getDate()+"-"+dmonth+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
-    });
 
-
-}
 function csvdownload() {
     $.ajax({
         method: "GET",
@@ -79,13 +67,13 @@ function Truncated() {
 function before() {
     document.getElementById('col1')
         .style.display = "block";
-        document.getElementById('col2')
+    document.getElementById('col2')
         .style.display = "none";
 }
 
 function after() {
     document.getElementById('col2')
         .style.display = "block";
-        document.getElementById('col1')
+    document.getElementById('col1')
         .style.display = "none";
 }

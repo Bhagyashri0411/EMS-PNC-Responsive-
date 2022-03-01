@@ -10,7 +10,12 @@ $(document).ready(function () {
     optimizedElectrical();
     steamPotential();
     recommendations();
-    lastupdatedTime();
+   // lastupdatedTime();
+   const b =new Date(sessionStorage.getItem("lastUpdateddate"));
+   console.log(b,'b');
+   const dmonth = b.getMonth() + 1;
+   const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
+   document.getElementById("optTime").innerHTML = setdate
     $("#sbo1avu1").on("change", function () {
         getPotentialAreaData();
     });
@@ -40,26 +45,26 @@ $(document).ready(function () {
 
     getSpecificOptConsumptionData();
 });
-function lastupdatedTime() {
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            Authorization:
-                sessionStorage.getItem("tokenType") +
-                " " +
-                sessionStorage.getItem("accessToken"),
-        },
-        url: "http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp",
-        method: "GET",
-    }).done(function (data) {
-        const d = new Date(data.lastupdatetimestamp);
-        sessionStorage.setItem("lastUpdateddate", d);
-        const dmonth = d.getMonth() + 1;
-        //alert(sessionStorage.getItem("lastUpdateddate"));
-        document.getElementById("optTime").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+// function lastupdatedTime() {
+//     $.ajax({
+//         headers: {
+//             "Content-Type": "application/json",
+//             Authorization:
+//                 sessionStorage.getItem("tokenType") +
+//                 " " +
+//                 sessionStorage.getItem("accessToken"),
+//         },
+//         url: "http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp",
+//         method: "GET",
+//     }).done(function (data) {
+//         const d = new Date(data.lastupdatetimestamp);
+//         sessionStorage.setItem("lastUpdateddate", d);
+//         const dmonth = d.getMonth() + 1;
+//         //alert(sessionStorage.getItem("lastUpdateddate"));
+//         document.getElementById("optTime").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
-    });
-}
+//     });
+// }
 function getPotentialAreaData() {
     var myJSON = { 'kpiname': $("#sbo1avu1 option:selected").val() };
     const postdata = JSON.stringify(myJSON);

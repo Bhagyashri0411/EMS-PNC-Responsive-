@@ -1,35 +1,28 @@
-$(document).ready(function() {
- //if( sessionStorage.getItem("roles") == "ROLE_USER" || sessionStorage.getItem("roles") == "ROLE_MODERATOR" || sessionStorage.getItem("roles") == "ROLE_ADMIN" ) {
-     $("#nav").load("./templates/nav/nav.html", function() {
-         // alert('navigation loaded');
-     });
-     $("#left-sidebar").load("./templates/left-sidebar/left-sidebar.html");
-    $("#layoutSidenav_nav").load("./templates/side-nav/side-nav.html");
-    $("#layoutSidenav_content").load("./templates/dashboard/dashboard.html"); 
-    // isuservalidate();
-//}
- //else{
-   // $(location).attr('href', "login.html");
- //}
+$(document).ready(function () {
+  //if( sessionStorage.getItem("roles") == "ROLE_USER" || sessionStorage.getItem("roles") == "ROLE_MODERATOR" || sessionStorage.getItem("roles") == "ROLE_ADMIN" ) {
+  $("#nav").load("./templates/nav/nav.html", function () {
+    // alert('navigation loaded');
+  });
+  $("#left-sidebar").load("./templates/left-sidebar/left-sidebar.html");
+  $("#layoutSidenav_nav").load("./templates/side-nav/side-nav.html");
+  $("#layoutSidenav_content").load("./templates/dashboard/dashboard.html");
+  lastupdatedTime();
 });
-// function isuservalidate() {
-//     //var token = sessionStorage.getItem('token');
-//     var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWpheSIsInJvbGUiOiJhZG1pbiIsImlkIjoxNTE2MjM5MDIyfQ.tJXCPCzOOjw9Y3-T7IvTGc6OdKyE5opMhmCEgSq9b5g';
-//     if (token) {
-//         var decoded = jwt_decode(token);
-        
-//         if (decoded.role == 'admin') {
-            
-//         } else {
-            
-//         }
-//     }
-//     else{
-//         $(location).prop('href', 'login.html')
-        
-//     }
-   
-    
-//     console.log(decoded);
-
-// }
+function lastupdatedTime() {
+  $.ajax({
+    url: 'http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp',
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+    },
+  }).done(function (data) {
+    // var timestamp=new Date().getTime(); 
+    const b = new Date(sessionStorage.getItem("lastUpdateddate"));
+    console.log(b, 'b');
+    const dmonth = b.getMonth() + 1;
+    const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
+    document.getElementById("cppTime").innerHTML = setdate;
+    //  document.getElementById("cppTime").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+  });
+}

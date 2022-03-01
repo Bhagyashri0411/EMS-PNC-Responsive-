@@ -39,8 +39,9 @@ function lastupdatedTime() {
     const d = new Date(data.lastupdatetimestamp);
     sessionStorage.setItem("lastUpdateddate", d);
     const dmonth = d.getMonth() + 1;
+    const setdate = String(d.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + d.getFullYear() + " " + String(d.getHours()).padStart(2, '0') + ":" + String(d.getMinutes()).padStart(2, '0') + ":" + String(d.getSeconds()).padStart(2, '0');
     //alert(sessionStorage.getItem("lastUpdateddate"));
-    document.getElementById("homeTime").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    document.getElementById("homeTime").innerHTML = setdate;
     var now = new Date();
     var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
       .toISOString()
