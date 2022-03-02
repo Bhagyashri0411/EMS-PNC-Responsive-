@@ -2,40 +2,41 @@ $(document).ready(function () {
     loadGaugeChart();
     specifictable();
     parametertable();
-    // cardswing4();
-    guagevalueswingAct();
+    // cardncu4();
+    guagevaluencuAct();
 
 
-    $(".swing-doughnut").click(function () {
-        console.log($("input[name=ratio-name]:checked").val(),"uiuhkik");
+    postFuelDoughnutDataNCU1();
+
+    $(".ncu-doughnut").click(function () {
+        console.log($("input[name=ratio-name]:checked").val());
         var abc = $("input[name=ratio-name]:checked").val()
-        postFuelDoughnutDataswing1(abc);
+        postFuelDoughnutDataNCU1(abc);
     });
 
-    postFuelDoughnutDataswing1();       //post mapping doughnut
-    getpiechartswing();        //get mapping pie
+    // getDoughnutncu();        //get mapping doughnut
+    getpiechartncu();        //get mapping pie
 });
 
 
-
-function getpiechartswing() {
+function getpiechartncu() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.119:8090/SWING/SteamSHPEquivalent",
+        url: "http://192.168.1.105:8080/ncu/donutgraph",
     }).done(function (data) {
 
-        var fuelConsumed = data[0];
+        var fuelConsumed = data[0].steamConsumed;
         console.log(fuelConsumed);
-        loadpiechartswing(fuelConsumed);
+        loadpiechartncu(fuelConsumed);
     })
-        .fail(function () {
-            var faildata =
-                { "hp": 63.0, "lp": 64.0,"total": 258.0 }
-            loadpiechartswing(faildata);
-        })
+        // .fail(function () {
+        //     var faildata =
+        //         { "shp": 63.0, "hp": 64.0, "mp": 65.0, "lp": 66.0, "total": 258.0 }
+        //     loadpiechartncu(faildata);
+        // })
 
 }
-function loadpiechartswing(fuelConsumed) {
+function loadpiechartncu(fuelConsumed) {
     console.log(fuelConsumed);
     CanvasJS.addColorSet("greenShades", [
         "#ffa600",
@@ -44,7 +45,7 @@ function loadpiechartswing(fuelConsumed) {
         "#d944b4"
     ]);
     var dataPoints = [];
-    var chart = new CanvasJS.Chart("Fuel-swing", {
+    var chart = new CanvasJS.Chart("Fuel-ncu", {
 
         colorSet: "greenShades",
         // height: 145,
@@ -53,7 +54,7 @@ function loadpiechartswing(fuelConsumed) {
         backgroundColor: "#26293c",
 
         title: {
-            text: fuelConsumed.total.toFixed(2),
+            text: fuelConsumed.total,
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 100,
@@ -83,9 +84,11 @@ function loadpiechartswing(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.hp, name: "RLNG",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.lp, name: "LPG",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                
+                { y: fuelConsumed.shp, name: "RLNG",indexLabel: ((fuelConsumed.shp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.hp, name: "LPG",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.mp, name: "FG Export",indexLabel: ((fuelConsumed.mp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.lp, name: "FG Generation",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
+               
             ]
         }]
     });
@@ -94,7 +97,8 @@ function loadpiechartswing(fuelConsumed) {
 }
 
 
-function postFuelDoughnutDataswing1() {
+
+function postFuelDoughnutDataNCU1() {
     var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
@@ -106,27 +110,33 @@ function postFuelDoughnutDataswing1() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.119:8090/SWING/FCCUDoughnut",
+        url: "http://192.168.1.105:8080/ncu/NCUDoughnut",
     })
         .done(function (data) {
-            
             var energyConsumed = data[0].energyConsumed;
             console.log(energyConsumed);
 
-            loadDoughnutHoriChartswing1(energyConsumed);
+            loadDoughnutHoriChartNCU1(energyConsumed);
 
         })
-        
+        // .fail(function () {
+        //     var failData ={"fuel":24,"steam":56,"electricity":45,"total":568}
+
+        //     var energyConsumed = failData;
+        //     loadDoughnutHoriChartNCU1(energyConsumed);
+            
+        // })
 }
-function loadDoughnutHoriChartswing1(energyConsumed) {
-    // console.log(energyConsumed)
+function loadDoughnutHoriChartNCU1(energyConsumed) {
+
+    console.log(energyConsumed)
     CanvasJS.addColorSet("greenShades", [
         "#ffa600",
         "#00aa7e",
         "#005374"
     ]);
     var dataPoints = [];
-    var chart = new CanvasJS.Chart("titles-swing", {
+    var chart = new CanvasJS.Chart("titles-ncu", {
 
         colorSet: "greenShades",
         height: 120,
@@ -168,22 +178,23 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.123:8080/fccu/specificenergyConsumption",
-        // url: "http://192.168.1.109:8090/swing/specificenergyConsumption",
+        // url: "http://192.168.1.105:8080/fccu/specificenergyConsumption",
+        url: "http://192.168.1.105:8080/ncu/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
     });
 }
-function guagevalueswingAct() {
+function guagevaluencuAct() {
     $.ajax({
         method: "GET",
-        url: 'http://192.168.1.119:8090/SWING/specificenergyConsumption',
-        // url: "http://192.168.1.123:8080/fccu/specificenergyConsumption",
+        // url: "http://192.168.1.105:8080/fccu/specificenergyConsumption",
+        url: 'http://192.168.1.105:8080/ncu/specificenergyConsumption',
+
     }).done(function (data) {
-        document.getElementById("devswing").innerHTML = data.deviation + "%";
-        document.getElementById("actswing").innerHTML = data.actual;
-        document.getElementById("optswing").innerHTML = data.reference;
+        document.getElementById("devncu").innerHTML = data.deviation + "%";
+        document.getElementById("actncu").innerHTML = data.actual;
+        document.getElementById("optncu").innerHTML = data.reference;
     });
 
 }
@@ -259,23 +270,17 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.119:8090/SWING/specificenergyConsumptiontable"
+        url: "http://192.168.1.105:8080/ncu/specificenergyConsumptiontable"
     }).done(function (data) {
         getspecifictable(data)
     })
-    // .fail(function () {
-    //     var faildata = [{ "sec": 67, "reference": 90, "deviation": 23, "type": "Fuel (SRFT/MT Product)" },
-    //     { "sec": 90, "reference": 50, "deviation": -40, "type": "Steam (Eq. SHP MT/MT of Product" },
-    //     { "sec": 80, "reference": 20, "deviation": -60, "type": "Electricity (kWh/T Product)" }]
-    //     getspecifictable(faildata)
-    // })
 }
 function getspecifictable(data) {
     var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.type + '</td>';
-        table_data += '<td>' + value.actual + '</td>';
+        table_data += '<td>' + value.sec + '</td>';
         table_data += '<td>' + value.reference + '</td>';
         if (value.deviation > 0) {
             table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
@@ -286,7 +291,7 @@ function getspecifictable(data) {
 
         table_data += '</tr>';
     });
-    $('#swingtable').append(table_data);
+    $('#ncutable').append(table_data);
     $(".r1").each(function () {
         var text = $(this).text();
         if (/[+-]?\d+(\.\d+)?/.test(text)) {
@@ -301,24 +306,23 @@ function getspecifictable(data) {
     });
 }
 
-
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.119:8090/SWING/SECSteamTabledata"
+        url: "http://192.168.1.105:8080/ncu/parametertable"
     }).done(function (data) {
         getparametertable(data)
     })
-    .fail(function () {
-        var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
-        getparametertable(faildata)
-    })
+    // .fail(function () {
+    //     var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
+    //     { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
+    //     getparametertable(faildata)
+    // })
 }
 function getparametertable(data) {
     var table_data = '';
@@ -336,9 +340,20 @@ function getparametertable(data) {
         //     table_data += '<td class="r1">' + value.deviation + '</td>';
         // }
 
-        // table_data += '</tr>';
+        table_data += '</tr>';
     });
-    $('#swing_card_body').append(table_data);
-    
+    $('#NCU_card_body').append(table_data);
+    // $(".r1").each(function () {
+    //     var text = $(this).text();
+    //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
+    //         var num = parseFloat(text);
+    //         if (num < 0) {
+    //             $(this).addClass("negative");
+    //         } else if (num > 0) {
+    //             $(this).addClass("positive");
+    //         }
+
+    //     }
+    // });
 }
 

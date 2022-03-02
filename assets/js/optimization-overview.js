@@ -9,7 +9,7 @@ $(document).ready(function() {
 });
 function lastupdatedTime(data){
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/api/home/lastupdatedate',
+        url: 'http://192.168.1.123:8080/api/home/lastupdatedate',
         method: "GET"
     }).done(function (data) {
         
@@ -24,7 +24,7 @@ function lastupdatedTime(data){
     function Truncated(){  
         $.ajax({
             method: "GET",
-            url: "http://localhost:8090/EmsPNC/api/cppTpsOverview/CsvTruncate",
+            url: "http://192.168.1.123:8080/api/cppTpsOverview/CsvTruncate",
         }).done(function(data) {
             console.log(data)  
         })
@@ -32,7 +32,7 @@ function lastupdatedTime(data){
     function csvdownload(){   
         $.ajax({
             method: "GET",
-            url: "http://localhost:8090/EmsPNC/api/cppTpsOverview/CsvImport",
+            url: "http://192.168.1.123:8080/api/cppTpsOverview/CsvImport",
         }).done(function(data){
           console.log(data)
     

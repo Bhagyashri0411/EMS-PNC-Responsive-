@@ -32,7 +32,7 @@ function lastupdatedTime(data){
     }
     function totalThroughput(data){
         $.ajax({
-            url: 'http://localhost:8090/EmsPNC/swing/feedratePlantload ',
+            url: 'http://192.168.1.123:8080/swing/feedratePlantload ',
             method: "GET"
         }).done(function (data) {
             
@@ -47,7 +47,7 @@ function lastupdatedTime(data){
         function Truncated(){  
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8090/EmsPNC/home/Truncate",
+                url: "http://192.168.1.123:8080/home/Truncate",
             }).done(function(data) {
                 console.log(data)  
             })
@@ -56,7 +56,7 @@ function lastupdatedTime(data){
         function csvdownload(){   
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8090/EmsPNC/home/Report",
+                url: "http://192.168.1.123:8080/home/Report",
             }).done(function(data){
               console.log(data)
         

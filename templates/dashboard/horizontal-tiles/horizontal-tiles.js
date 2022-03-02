@@ -29,7 +29,7 @@ function getDoughnutData(abc) {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/home/totalfuelconsumed1",
+        url: "http://192.168.1.123:8080/home/totalfuelconsumed1",
     }).done(function (data) {
         loadDoughnutChart(data);
     })
@@ -99,7 +99,7 @@ function loadGaugeChartData() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/home/speedometer",
+        url: "http://192.168.1.123:8080/home/speedometer",
     }).done(function (gaugevalue) {
         console.log(gaugevalue)
         loadGaugeChart(gaugevalue);
@@ -112,7 +112,7 @@ function guagevaluehomeAct() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: 'http://localhost:8090/EmsPNC/home/speedometer',
+        url: 'http://192.168.1.123:8080/home/speedometer',
 
     }).done(function (data) {
         document.getElementById("dev").innerHTML = data.deviation + '%';
@@ -198,7 +198,7 @@ function getcardhome1() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/home/totalenergyconsumed',
+        url: 'http://192.168.1.123:8080/home/totalenergyconsumed',
         method: "GET"
     }).done(function (data) {
 
@@ -234,7 +234,7 @@ function getcardhome2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/home/energyintensity',
+        url: 'http://192.168.1.123:8080/home/energyintensity',
         method: "GET"
     }).done(function (data) {
 

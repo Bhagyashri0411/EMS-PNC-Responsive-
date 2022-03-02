@@ -19,7 +19,7 @@ $(document).ready(function() {
 function Truncated(){  
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Truncate",
+        url: "http://192.168.1.123:8080/home/Truncate",
     }).done(function(data) {
         console.log(data)  
     })

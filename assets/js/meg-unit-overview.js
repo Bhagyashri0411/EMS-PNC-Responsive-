@@ -45,7 +45,7 @@ function lastupdatedTime(){
         function Truncated(){  
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8090/EmsPNC/api/cppTpsOverview/CsvTruncate",
+                url: "http://192.168.1.123:8080/api/cppTpsOverview/CsvTruncate",
             }).done(function(data) {
                 console.log(data)  
             })
@@ -57,7 +57,7 @@ function lastupdatedTime(){
         function csvdownload(){   
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8090/EmsPNC/home/Report",
+                url: "http://192.168.1.123:8080/home/Report",
             }).done(function(data){
               console.log(data)
         

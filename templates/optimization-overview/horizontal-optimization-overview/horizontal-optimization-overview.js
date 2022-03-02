@@ -123,7 +123,7 @@ function recommendations() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/EmsPNC/recommendation",
+        url: "http://192.168.1.123:8080/recommendation",
     }).done(function (data) {
         getrecommendations(data)
     })

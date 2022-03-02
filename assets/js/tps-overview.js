@@ -16,28 +16,25 @@ $(document).ready(function () {
     }
 });
 
-function lastupdatedTime(data) {
+function lastupdatedTime() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp',
+        url: 'http://192.168.1.123:8080/Air/lastUpdateTimestamp',
         method: "GET",
      headers: {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
     }).done(function (data) {
-        // var timestamp=new Date().getTime(); 
         const d = new Date(data.lastupdatetimestamp);
         const dmonth = d.getMonth()+1;
         sessionStorage.setItem("lastUpdateddate",d);
-        document.getElementById("cppTime").innerHTML =  d.getDate()+"-"+dmonth+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+        document.getElementById("cppTime").innerHTML =  String(d.getDate()).padStart(2,'0')+"-"+String(dmonth).padStart(2,'0')+"-"+d.getFullYear()+" "+String(d.getHours()).padStart(2,'0')+":"+String(d.getMinutes()).padStart(2,'0')+":"+String(d.getSeconds()).padStart(2,'0');
     });
-
-
 }
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Report",
+        url: "http://192.168.1.123:8080/home/Report",
     }).done(function (data) {
         console.log(data)
 
@@ -71,7 +68,7 @@ function csvdownload() {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Truncate",
+        url: "http://192.168.1.123:8080/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })
