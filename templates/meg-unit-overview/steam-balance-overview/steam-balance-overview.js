@@ -6,11 +6,11 @@ $(document).ready(function () {
         megsteamoverview();
     });
     
-    $("input[name=fromHomemeg]").on('change', function (event){
+    $("input[name=fromHomemeg]").on('change', function (){
 
         megsteamoverview();
     });
-    $("input[name=toHomemeg]").on('change', function (event){
+    $("input[name=toHomemeg]").on('change', function (){
 
         megsteamoverview();
     });
@@ -24,6 +24,9 @@ $(document).ready(function () {
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#toHomemeg').val(tod.toJSON().slice(0, 19));
+    document.getElementById("toHomemeg").min = $('#fromHomemeg').val();
+    document.getElementById("fromHomemeg").max = $('#toHomemeg').val();
+    
     megsteamoverview();
 });
 
@@ -151,30 +154,7 @@ function megsteamta() {
         getmegsteamta(data);
 
     })
-    .fail(function () {
-        var failData = [{
-            "GeneratorsConsumers": "HP Steam import",
-            "TPH": "3000"
-        },
-        {
-            "GeneratorsConsumers": "MHP Steam Generation",
-            "TPH": "3200"
-        },
-        {
-            "GeneratorsConsumers": "MP Steam Generation",
-            "TPH": "1100"
-        },
-        {
-            "GeneratorsConsumers": "MP Steam Consumption",
-            "TPH": "1800"
-        },
-        {
-            "GeneratorsConsumers": "LP Steam Consumption",
-            "TPH": "750"
-        }
-        ]
-        getmegsteamta(failData);
-    })
+   
 }
 function getmegsteamta(data) {
     var table_data = '';
