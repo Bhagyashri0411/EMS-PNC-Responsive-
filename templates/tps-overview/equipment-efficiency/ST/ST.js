@@ -65,10 +65,10 @@ function getSpecificSTBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/st/steamturbineefficiency",
+        url: "http://localhost:8080/st/steamturbineefficiency",
     }).done(function (data) {
         console.log(data)
-        var Difference_In_Days = data[0].showNumberIndex;
+        var Difference_In_Days = data.showNumberIndex;
         formatSpecificSTBarData(data, Difference_In_Days);
     })
         .fail(function () {
@@ -168,7 +168,7 @@ function getSpecificSTData() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/st/capacityutilization",
+        url: "http://localhost:8080/st/capacityutilization",
         method: "POST",
         data: postdata,
    
@@ -281,7 +281,7 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
 
 function SteamTable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/st/sttable",
+        url: "http://localhost:8080/st/sttable",
         method: "GET"
     }).done(function (data) {
         loadSteamTable(data);
@@ -301,16 +301,16 @@ function loadSteamTable(data) {
 
             table_data += '<td>' + value.type + '</td>';
             table_data += '<td>' + value.Status + '</td>';
-            table_data += '<td>' + value.steamimport + '</td>';
-            table_data += '<td>' + value.mpsteamextracted + '</td>';
-            table_data += '<td>' + value.hpsteamextracted + '</td>';
-            table_data += '<td>' + value.steamcondensate + '</td>';
-            table_data += '<td>' + value.steamduty + '</td>';
-            table_data += '<td>' + value.powergenerationcost + '</td>';
-            table_data += '<td>' + value.powergenerateddesign + '</td>';
-            table_data += '<td>' + value.powergeneratedactual + '</td>';
-            table_data += '<td>' + value.heatratedesign + '</td>';
-            table_data += '<td>' + value.heatrateactual + '</td>';
+            table_data += '<td>' + value.steamimport.toFixed(2) + '</td>';
+            table_data += '<td>' + value.mpsteamextracted.toFixed(2) + '</td>';
+            table_data += '<td>' + value.hpsteamextracted.toFixed(2) + '</td>';
+            table_data += '<td>' + value.steamcondensate.toFixed(2) + '</td>';
+            table_data += '<td>' + value.steamduty.toFixed(2) + '</td>';
+            table_data += '<td>' + value.powergenerationcost.toFixed(2) + '</td>';
+            table_data += '<td>' + value.powergenerateddesign.toFixed(2) + '</td>';
+            table_data += '<td>' + value.powergeneratedactual.toFixed(2) + '</td>';
+            table_data += '<td>' + value.heatratedesign.toFixed(2) + '</td>';
+            table_data += '<td>' + value.heatrateactual.toFixed(2) + '</td>';
             table_data += '</tr>';
 
         });

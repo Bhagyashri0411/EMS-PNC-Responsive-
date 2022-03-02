@@ -42,7 +42,7 @@ getSpecificBOILERData();
 function getSpecificBOILERData() {
   var myJSON = { 'fromdate': $('#fromboiler').val(), 'todate': $('#toboiler').val(),tagname: $('#r1 option:selected').val()};
   const postdata = JSON.stringify(myJSON);
-  
+  console.log(postdata ,"datajson");
   $.ajax({
         headers: {
             "Content-Type": "application/json",
@@ -51,16 +51,11 @@ function getSpecificBOILERData() {
       method: "POST",
       data: postdata,
      
-      url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerEfficencyBarGraph",
+      url: "http://localhost:8080/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
-    var Difference_In_Days = data[0].showNumberIndex;
+    var Difference_In_Days = data.showNumberIndex;
       formatSpecificBOILERData(data ,Difference_In_Days);
   })
-      .fail(function () {
-        var failData = []
-        
-          formatSpecificBOILERData(failData);
-      })
 }
 
 
@@ -155,7 +150,7 @@ function getSteamFuelConsumedData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
     method: "GET",
-    url: "http://localhost:8090/EmsPNC/tpsBoiler/fuelConsumedBarGraph",
+    url: "http://localhost:8080/tpsBoiler/fuelConsumedBarGraph",
 
   }).done(function (data) {
 
@@ -244,7 +239,7 @@ function Fuelconsumed(data) {
         },
         {
           type: "column",
-          name: "OFF Gas",
+          name: "OFFGas",
           color: "#d944b4 ",
           indexLabel: " {y}",
           indexLabelFontColor: "#d9d9d9",
@@ -263,7 +258,7 @@ function Fuelconsumed(data) {
 
 function BoilerTable() {
   $.ajax({
-    url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerTable",
+    url: "http://localhost:8080/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
     loadBoilerTable(data) 
@@ -291,16 +286,16 @@ function loadBoilerTable(data){
 
     table_data += '<td>' + value.BoilerID + '</td>';
     table_data += '<td>' + value.Status + '</td>';
-    table_data += '<td>' + value.Loading + '</td>';    
-    table_data += '<td>' + value.steamgenerationcost+ '</td>';
-    table_data += '<td>' + value.FualConsumed + '</td>';
-    table_data += '<td>' + value.DutyFired + '</td>';
-    table_data += '<td>' + value.SteamGenerated + '</td>';
-    table_data += '<td>' + value.SteamtoFualRatioDesign + '</td>';
-    table_data += '<td>' + value.SteamtoFualRatioActual + '</td>';
-    table_data += '<td>' + value.StackO2 + '</td>';
-    table_data += '<td>' + value.StackExitTempDesign + '</td>';
-    table_data += '<td>' + value.StackExitTempActual + '</td>';
+    table_data += '<td>' + value.Loading.toFixed(2) + '</td>';    
+    table_data += '<td>' + value.steamgenerationcost.toFixed(2)+ '</td>';
+    table_data += '<td>' + value.FualConsumed.toFixed(2) + '</td>';
+    table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
+    table_data += '<td>' + value.SteamGenerated.toFixed(2) + '</td>';
+    table_data += '<td>' + value.SteamtoFualRatioDesign.toFixed(2) + '</td>';
+    table_data += '<td>' + value.SteamtoFualRatioActual.toFixed(2) + '</td>';
+    table_data += '<td>' + value.StackO2.toFixed(2) + '</td>';
+    table_data += '<td>' + value.StackExitTempDesign.toFixed(2) + '</td>';
+    table_data += '<td>' + value.StackExitTempActual.toFixed(2) + '</td>';
     table_data += '</tr>';
 
   });

@@ -41,6 +41,7 @@
 .cpp-balance-tab .headvalue{
     color: #f2f2f2;
     padding: 0 0.5vw;
+    padding-top: 0.2vw;
     font-size: 1vw;
     border: 0.1vw solid #d9d9d9;
     border-radius: 0.4vw;
@@ -52,8 +53,7 @@
 
 .cpp-balance-tab .heading {
     font-size: 1.5vw;
-    padding-top: 0.43vh;
-    padding-bottom: 0.2vw;
+    padding-bottom: 0.5vw;
     display: inline-flex;
     color: #d9d9d9;
 }
@@ -104,7 +104,9 @@
     border-collapse: collapse;
     width: 100%;
 }
-
+.cpp-balance-tab td:nth-child(2){
+    color: #f2f2f2;
+}
 .cpp-balance-tab td {
     color: #d9d9d9;
     border-bottom: 1px solid #686a77;
@@ -112,22 +114,16 @@
     padding-right: 0;
     font-size: 0.8vw;
 }
-.cpp-balance-tab table #consumerstable1 td {
+.cpp-balance-tab table #consumerstable td, table #consumerstable1 td, table #consumerstable2 td, table #consumerstable3 td,
+table #consumerstable4 td,  table #generatorstable3 td
+{
     padding:  0.4vw 0.2vw;
     font-size: 0.7vw;
 }
-.cpp-balance-tab table  #generatorstable2 td {
-    padding:  0.4vw 0.2vw;
-    font-size: 0.7vw;
-}
-.cpp-balance-tab table #consumerstable2 td {
+.cpp-balance-tab table #generatorstable1 td, table #generatorstable2 td {
     padding:  0.4vw 0vw;
-    font-size: 0.7vw;
-}
-.cpp-balance-tab table #consumerstable2 td:nth-child(1) {
-  padding-left: 0.2vw;
-    font-size: 0.7vw;
-}
+    font-size: 0.6vw;
+} 
 .cpp-balance-tab th {
     background-color: #442266;
     color: #d9d9d9;
