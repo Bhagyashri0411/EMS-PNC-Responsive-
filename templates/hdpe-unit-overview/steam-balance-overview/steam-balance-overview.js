@@ -35,39 +35,11 @@ function hdpesteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/EmsPNC/DHDS/steamgenerationgraph",
+        url: "http://192.168.1.125:8080/auth/HDPE/steamgenerationgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex; 
         hdpegetsteamoverview(data ,Difference_In_Days);
     })
-
-        .fail(function () {
-
-            // var failData = [
-            //     { actual: 1000 },
-            //     { actual: 980 },
-            //     { actual: 970 },
-            //     { actual: 960 },
-            //     { actual: 900 },
-            //     { actual: 910 },
-            //     { actual: 900 },
-            //     { actual: 875 },
-            //     { actual: 927 },
-            //     { actual: 949 },
-            //     { actual: 946 },
-            //     { actual: 927 },
-            //     { actual: 950 },
-            //     { actual: 998 },
-            //     { actual: 998 },
-            //     { actual: 1050 },
-            //     { actual: 1050 },
-            //     { actual: 999 },
-            //     { actual: 998 },
-            //     { actual: 998 },
-            //     { actual: 1050 },
-            // ]
-            hdpegetsteamoverview(failData);
-        })
 }
 
 
@@ -145,33 +117,11 @@ function showsteambalancehdpe(data ,Difference_In_Days, interval) {
 
 function hdpesteamta() {
     $.ajax({
-        url: "http://192.168.1.119:8090/auth/HDPE/Steambalance",
+        url: "http://192.168.1.107:8090/auth/HDPE/Steambalance",
         method: "GET"
     }).done(function (data) {
         gethdpesteamta(data);
 
-    })
-    .fail(function () {
-        var failData = [{
-            "name": "HP Steam Consumption",
-            "value": "3000"
-        },
-        
-        {
-            "name": "MP Steam Consumption",
-            "value": "1100"
-        },
-    
-        {
-            "name": "LP Steam Consumption",
-            "value": "750"
-        },
-        {
-            "name": "Imbalance",
-            "value": "750"
-        }
-        ]
-        gethdpesteamta(failData);
     })
 }
 function gethdpesteamta(data) {

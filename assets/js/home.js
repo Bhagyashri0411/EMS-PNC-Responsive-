@@ -10,7 +10,7 @@ $(document).ready(function () {
 });
 function lastupdatedTime() {
   $.ajax({
-    url: 'http://192.168.1.106:8080/Air/lastUpdateTimestamp',
+    url: 'http://192.168.1.107:8090/Air/lastUpdateTimestamp',
     method: "GET",
     headers: {
       "Content-Type": "application/json",

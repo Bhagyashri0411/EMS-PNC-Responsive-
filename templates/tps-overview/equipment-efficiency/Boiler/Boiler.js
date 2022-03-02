@@ -51,9 +51,9 @@ function getSpecificBOILERData() {
       method: "POST",
       data: postdata,
      
-      url: "http://localhost:8080/tpsBoiler/boilerEfficencyBarGraph",
+      url: "http://192.168.1.106:8080/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
-    var Difference_In_Days = data.showNumberIndex;
+    var Difference_In_Days = data[0].showNumberIndex;
       formatSpecificBOILERData(data ,Difference_In_Days);
   })
 }
@@ -150,7 +150,7 @@ function getSteamFuelConsumedData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
     method: "GET",
-    url: "http://localhost:8080/tpsBoiler/fuelConsumedBarGraph",
+    url: "http://192.168.1.106:8080/tpsBoiler/fuelConsumedBarGraph",
 
   }).done(function (data) {
 
@@ -235,7 +235,7 @@ function Fuelconsumed(data) {
           indexLabel: " {y}",
           indexLabelFontColor: "#d9d9d9",
           indexLabelFontSize: 15,
-          dataPoints: data.OFF_Gas
+          dataPoints: data.HSD
         },
         {
           type: "column",
@@ -244,7 +244,7 @@ function Fuelconsumed(data) {
           indexLabel: " {y}",
           indexLabelFontColor: "#d9d9d9",
           indexLabelFontSize: 15,
-          dataPoints: data.HSD
+          dataPoints: data.OFF_Gas
         }
 
 
@@ -258,7 +258,7 @@ function Fuelconsumed(data) {
 
 function BoilerTable() {
   $.ajax({
-    url: "http://localhost:8080/tpsBoiler/boilerTable",
+    url: "http://192.168.1.106:8080/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
     loadBoilerTable(data) 

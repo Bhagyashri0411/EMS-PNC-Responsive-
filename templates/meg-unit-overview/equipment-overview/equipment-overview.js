@@ -36,7 +36,7 @@ function getEquOverMEGData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/OHCUchart",
+        url: "http://192.168.1.105:8080/EquipmentOverview/MEGchart",
 
     }).done(function (data) {
 
