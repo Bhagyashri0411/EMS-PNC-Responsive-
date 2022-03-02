@@ -21,9 +21,7 @@ $(document).ready(function () {
 function megloadGaugeChart() {
     $.ajax({
         type: "GET",
-        
-        // url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
-        url: "http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption",
+        url: "http://192.168.1.109:8080/MEG/GUAGEspecificenergyConsumption",
     }).done(function (gaugevalue) {
         megGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -101,8 +99,7 @@ function megGaugeChartvalue(gaugevalue) {
 function guagevaluemegAct() {
     $.ajax({
         method: "GET",        
-        // url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
-        url: 'http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption',
+        url: 'http://192.168.1.109:8080/MEG/GUAGEspecificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devmeg").innerHTML = data.deviation + "%";
@@ -114,7 +111,7 @@ function guagevaluemegAct() {
 
 function megbreakOverview() {
     $.ajax({
-        url: "http://192.168.1.106:8090//api/srutgtuOverview/steamBalanceOverviewTable",
+        url: "http://192.168.1.106:8080//api/srutgtuOverview/steamBalanceOverviewTable",
         method: "GET"
     }).done(function (data) {
         getmegbreakOverview(data);
@@ -145,21 +142,12 @@ function getmegbreakOverview(data) {
 
 function megOverview() {
     $.ajax({
-        url: "http://192.168.1.109:8090/MEG/MEGParameterTable",
+        url: "http://192.168.1.109:8080/MEG/MEGParameterTable",
         method: "GET"
     }).done(function (data) {
         getmegOverview(data);
     })
-        // .fail(function () {
-        //     var failData = [{ parameter: "S4 Selectivity", UOM: "-", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "CO2 Production", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "EOE", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "Total Electricity Consumption", UOM: "MWh", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "GHG Emission (tCO2e)", UOM: "Ton/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     ]
-
-        //     getmegOverview(failData);
-        // })
+       
 }
 
 function getmegOverview(data) {
@@ -180,7 +168,7 @@ function getmegOverview(data) {
 
 function cardmeg1() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/MEG/MEGtotalSteamConsumptioncard',
+        url: 'http://192.168.1.109:8080/MEG/MEGtotalSteamConsumptioncard',
         method: "GET"
     }).done(function (data) {
         getcardmeg1(data)
@@ -208,7 +196,7 @@ function getDoughnutmeg() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.109:8090/MEG/MEGDoughnutECBU",
+        url: "http://192.168.1.109:8080/MEG/MEGDoughnutECBU",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
         console.log(energyConsumed);
@@ -216,16 +204,6 @@ function getDoughnutmeg() {
         loadDoughnutChartmeg(energyConsumed);
 
     })
-    // .fail(function () {
-    //     var failData ={
-    //         energyConsumed:{
-    //         "fuel":24,"steam":56,"electricity":45,"total":568}
-    //     }
-
-    //     var energyConsumed = failData[0].energyConsumed;
-    //     loadDoughnutChartmeg(energyConsumed);
-        
-    // })
     
 }
 function loadDoughnutChartmeg(energyConsumed) {
@@ -276,20 +254,11 @@ function loadDoughnutChartmeg(energyConsumed) {
 function parametertableMEG() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/NCU/specificenergyConsumptiontable"
+        url: "http://192.168.1.109:8080/NCU/specificenergyConsumptiontable"
     }).done(function (data) {
         getparametertableMEG(data)
     })
-    .fail(function () {
-        var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
-        getparametertableMEG(faildata)
-    })
+    
 }
 function getparametertableMEG(data) {
     var table_data = '';
