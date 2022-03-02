@@ -29,7 +29,7 @@ function tablecard() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8080/CppHome/cppuom",
+        url: "http://192.168.1.106:8080/CppHome/cppuom",
     }).done(function (data) {
         document.getElementById('tem1').innerHTML = data[0]['SHPTEMP'].toFixed(2) + data[0]['SHPTEMPunit'];
         document.getElementById('press1').innerHTML = data[0]['SHPPRESSURE'].toFixed(2) + data[0]['SHPPRESSUREunitmtr'];
@@ -56,7 +56,7 @@ function generatorstable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8080/CppHome/SHPsteambalancegenerators",
+        url: "http://192.168.1.106:8080/CppHome/SHPsteambalancegenerators",
     }).done(function (data) {
         var max1 = 7000
         var table_data = '';
@@ -81,9 +81,9 @@ function consumerstable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8080/CppHome/SHPsteambalanceconsumers",
+        url: "http://192.168.1.106:8080/CppHome/SHPsteambalanceconsumers",
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -109,9 +109,9 @@ function exporttable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/SHPsteambalanceexport',
+        url: 'http://192.168.1.106:8080/CppHome/SHPsteambalanceexport',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -150,9 +150,9 @@ function generatorstable1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/HPsteambalancegenerators',
+        url: 'http://192.168.1.106:8080/CppHome/HPsteambalancegenerators',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -177,9 +177,9 @@ function consumerstable1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/HPsteambalanceconsumers',
+        url: 'http://192.168.1.106:8080/CppHome/HPsteambalanceconsumers',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -205,9 +205,9 @@ function exporttable1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/HPsteambalanceexport',
+        url: 'http://192.168.1.106:8080/CppHome/HPsteambalanceexport',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -246,9 +246,9 @@ function generatorstable2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/Mpsteambalancegenerators',
+        url: 'http://192.168.1.106:8080/CppHome/Mpsteambalancegenerators',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -273,9 +273,9 @@ function consumerstable2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/MPsteambalanceconsumers',
+        url: 'http://192.168.1.106:8080/CppHome/MPsteambalanceconsumers',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -299,9 +299,9 @@ function exporttable2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/MPsteambalanceexport',
+        url: 'http://192.168.1.106:8080/CppHome/MPsteambalanceexport',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -339,9 +339,9 @@ function generatorstable3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/LPsteambalancegenerators',
+        url: 'http://192.168.1.106:8080/CppHome/LPsteambalancegenerators',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -365,9 +365,9 @@ function consumerstable3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/LPsteambalanceconsumers',
+        url: 'http://192.168.1.106:8080/CppHome/LPsteambalanceconsumers',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -391,10 +391,10 @@ function exporttable3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/LPsteambalanceexport',
+        url: 'http://192.168.1.106:8080/CppHome/LPsteambalanceexport',
     }).done(function (data) {
         console.log(data, "ooo hello");
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -431,9 +431,9 @@ function generatorstable4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/BFWsteambalancegenerators',
+        url: 'http://192.168.1.106:8080/CppHome/BFWsteambalancegenerators',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -457,9 +457,9 @@ function consumerstable4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/BFWsteambalanceconsumers',
+        url: 'http://192.168.1.106:8080/CppHome/BFWsteambalanceconsumers',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
@@ -482,9 +482,9 @@ function exporttable4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8080/CppHome/BFWsteambalanceexport',
+        url: 'http://192.168.1.106:8080/CppHome/BFWsteambalanceexport',
     }).done(function (data) {
-        var max1 = 10000
+        var max1 = 200
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';

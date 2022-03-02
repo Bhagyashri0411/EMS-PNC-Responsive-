@@ -52,7 +52,7 @@ function getCardValue1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://192.168.1.106:8090/auth/tpsoverview/totalPowerGenerated",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/totalPowerGenerated",
 
     }).done(function (data) {
         document.getElementById('TPC').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -368,12 +368,13 @@ function getCardValue9() {
 
 
 
-function getTotalGenerationCostData(intervalType) {
-    var postdata = JSON.stringify({ 'fromdate': $('#fromcpp').val(), "kpiname": $('input[name="cpp-tps"]:checked').val(), "day": $('#tps1').val() });
+function getTotalGenerationCostData() {
+    var postdata = JSON.stringify({ 'fromdate': $('#fromcpp').val(), "tagname": $('input[name="cpp-tps"]:checked').val(), "todate": $('#tps1').val() });
     console.log(postdata);
     $.ajax({
         headers: {
             "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "POST",
         data: postdata,
@@ -381,8 +382,9 @@ function getTotalGenerationCostData(intervalType) {
         url: "http://192.168.1.106:8080/auth/tpsoverview/fuelOilConsumptionGraph",
 
     }).done(function (data) {
-
-        formatTotalGenCostData(data, intervalType);
+        var Difference_In_Days1 = data[0].showNumberIndex;
+        formatTotalGenCostData(data, Difference_In_Days1);
+        // formatTotalGenCostData(data, intervalType);
     })
         .fail(function () {
             var failData = []
@@ -390,15 +392,15 @@ function getTotalGenerationCostData(intervalType) {
         })
 }
 
-function formatTotalGenCostData(data ,intervalType ,Difference_In_Days) {
-    console.log(data,'data total generation');
+function formatTotalGenCostData(data, Difference_In_Days) {
+    // console.log(data,'data total generation');
     var chartData = { Actual: [], Optimized: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const tmpDate = new Date(element.date);
         //console.log(tmpDate,'date new');
-        chartData.Optimized.push({ y: element.optimized ,x: tmpDate });
+        chartData.Optimized.push({ y: element.design ,x: tmpDate });
         chartData.Actual.push({ y: element.actual ,x: tmpDate });
         // chartData.Optimized.push({ x: tmpDate});
         // chartData.Actual.push({ x: tmpDate });
@@ -413,11 +415,11 @@ function formatTotalGenCostData(data ,intervalType ,Difference_In_Days) {
       }
      
     }
-    showTotalGenerationCostChart(chartData ,intervalType ,Difference_In_Days ,interval);
+    showTotalGenerationCostChart(chartData, Difference_In_Days, interval);
 
 }
 
-function showTotalGenerationCostChart(data ,intervalType ,Difference_In_Days ,interval) {
+function showTotalGenerationCostChart(data,Difference_In_Days ,interval) {
 console.log(data,"jkljclkdjocj");
     var chart = new CanvasJS.Chart("cpp-tsp-barchart", {
         animationEnabled: true,
@@ -458,7 +460,7 @@ console.log(data,"jkljclkdjocj");
         },
         {
             type: "column",
-            name: "Optimized",
+            name: "Design",
 
             color: "#ffc000",
             dataPoints: data.Optimized

@@ -70,10 +70,10 @@ function getSpecificGTBarData() {
         },
       method: "POST",
       data: postdata,
-      url: "http://localhost:8080/EquipmentEfficiency/GTbargraph",
+      url: "http://192.168.1.106:8080/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
       console.log(data)
-      var Difference_In_Days = data.showNumberIndex;
+      var Difference_In_Days = data[0].showNumberIndex;
       formatSpecificGTBarData(data ,Difference_In_Days);
   })
       .fail(function () {
@@ -85,13 +85,13 @@ function getSpecificGTBarData() {
 
 
 function formatSpecificGTBarData(data ,Difference_In_Days) {
-  var chartData = { Actual: [], Design: [] };
+  var chartData = { actual: [], design: [] };
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     var count = data.length;
     const gtDate = new Date(element.date);
-      chartData.Actual.push({ y: element.actual ,x:gtDate });
-      chartData.Design.push({ y: element.design,x:gtDate });       
+      chartData.actual.push({ y: element.actual ,x:gtDate });
+      chartData.design.push({ y: element.design,x:gtDate });       
     
   }
   console.log("STchartdata", chartData);
@@ -106,7 +106,7 @@ function formatSpecificGTBarData(data ,Difference_In_Days) {
   showSpecificGTBarChart(chartData,Difference_In_Days,interval);
 }
 
-function showSpecificGTBarChart(data,interval,Difference_In_Days) {
+function showSpecificGTBarChart(data,Difference_In_Days,interval) {
   var chart = new CanvasJS.Chart("chartContainerGT", {
     height: 230,
     theme: "dark1",
@@ -146,7 +146,7 @@ function showSpecificGTBarChart(data,interval,Difference_In_Days) {
       name: "Actual",
       markerSize: 0,
       yValueFormatString: "0.00#",
-      dataPoints: data.Actual
+      dataPoints: data.actual
   },
   {
       type: "line",
@@ -155,7 +155,7 @@ function showSpecificGTBarChart(data,interval,Difference_In_Days) {
       name: "Design",
       markerSize: 0,
       yValueFormatString: "0.00#",
-      dataPoints: data.Design
+      dataPoints: data.design
   }
   ]
   });
@@ -175,11 +175,11 @@ function getSpecificGTData() {
         },
     method: "POST",
     data: postdata,
-    url: "http://localhost:8080/EquipmentEfficiency/GTlinegraph",
+    url: "http://192.168.1.106:8080/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
-    var Difference_In_Days1 = data[0].showNumberIndex;
-    formatSpecificGTData(data,Difference_In_Days1);
+    var Difference_In_Days= data[0].showNumberIndex;
+    formatSpecificGTData(data,Difference_In_Days);
   })
     .fail(function () {
       var failData = []
@@ -188,7 +188,7 @@ function getSpecificGTData() {
     })
 }
 
-function formatSpecificGTData(data ,Difference_In_Days1) {
+function formatSpecificGTData(data ,Difference_In_Days) {
   var chartData = { GT3: [], GT4: [], GT1: [], GT2: [], GT5: [] };
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
@@ -201,20 +201,20 @@ function formatSpecificGTData(data ,Difference_In_Days1) {
     chartData.GT5.push({ y: element.gt5,x:gt1Date });
   }
   console.log("GTdata", chartData);
-  var interval1 = 1;
-  if (!Difference_In_Days1) {
+  var interval = 1;
+  if (!Difference_In_Days) {
     if (count/8 > 1) {
-       interval1 =Math.round(count/8);
+       interval =Math.round(count/8);
     }else{
-      interval1 = 1;
+      interval = 1;
     }
    
   }
-  showSpecificGTChart(chartData ,Difference_In_Days1 ,interval1);
+  showSpecificGTChart(chartData ,Difference_In_Days,interval);
 }
 
 
-function showSpecificGTChart(data ,Difference_In_Days1 ,interval1) {
+function showSpecificGTChart(data ,Difference_In_Days ,interval) {
   var chart = new CanvasJS.Chart("GT-line", {
     height: 230,
     theme: "dark1",
@@ -226,10 +226,10 @@ function showSpecificGTChart(data ,Difference_In_Days1 ,interval1) {
       gridThickness: 0,
       tickLength: 0,
       lineThickness: 0,
-      intervalType:Difference_In_Days1 == true?  "hour":"day",
-            valueFormatString:Difference_In_Days1 == true?  "HH":"DD MMM YYYY" ,
-            title:Difference_In_Days1 == true?  "In hours":" In Days",
-           interval: interval1,
+      intervalType:Difference_In_Days == true?  "hour":"day",
+            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+            title:Difference_In_Days== true?  "In hours":" In Days",
+           interval: interval,
       labelFontColor: "#d9d9d9",
       labelFontSize: 15,
       fontFamily: "Bahnschrift Light",
@@ -300,7 +300,7 @@ function showSpecificGTChart(data ,Difference_In_Days1 ,interval1) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://localhost:8080/EquipmentEfficiency/GTTable",
+    url: "http://192.168.1.106:8080/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
     loadGasTable(data);
@@ -442,6 +442,3 @@ function loadGasTable(data) {
   $('#bodyGas_table').append(table_data);
 
 }
-
-
-
