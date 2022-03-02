@@ -70,10 +70,10 @@ function getSpecificGTBarData() {
         },
       method: "POST",
       data: postdata,
-      url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTbargraph",
+      url: "http://localhost:8080/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
       console.log(data)
-      var Difference_In_Days = data[0].showNumberIndex;
+      var Difference_In_Days = data.showNumberIndex;
       formatSpecificGTBarData(data ,Difference_In_Days);
   })
       .fail(function () {
@@ -175,7 +175,7 @@ function getSpecificGTData() {
         },
     method: "POST",
     data: postdata,
-    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTlinegraph",
+    url: "http://localhost:8080/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
     var Difference_In_Days1 = data[0].showNumberIndex;
@@ -300,7 +300,7 @@ function showSpecificGTChart(data ,Difference_In_Days1 ,interval1) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTTable",
+    url: "http://localhost:8080/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
     loadGasTable(data);
@@ -428,14 +428,14 @@ function loadGasTable(data) {
  
     table_data += '<td>' + value.GasTurbineID + '</td>';
     table_data += '<td>' + value.STATUS + '</td>';
-    table_data += '<td>' + value.CapacityUtilizationDesign + '</td>';
-    table_data += '<td>' + value.CapacityUtilizationActual + '</td>';
-    table_data += '<td>' + value.DutyFired + '</td>';
-    table_data += '<td>' + value.PowerGenerationCost + '</td>';
-    table_data += '<td>' + value.HeatRateDesign + '</td>';
-    table_data += '<td>' + value.HeatRateActual + '</td>';
-    table_data += '<td>' + value.ExhaustTemperatureDesign + '</td>';
-    table_data += '<td>' + value.ExhaustTemperatureActual + '</td>';
+    table_data += '<td>' + value.CapacityUtilizationDesign.toFixed(2) + '</td>';
+    table_data += '<td>' + value.CapacityUtilizationActual.toFixed(2) + '</td>';
+    table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
+    table_data += '<td>' + value.PowerGenerationCost.toFixed(2) + '</td>';
+    table_data += '<td>' + value.HeatRateDesign.toFixed(2) + '</td>';
+    table_data += '<td>' + value.HeatRateActual.toFixed(2) + '</td>';
+    table_data += '<td>' + value.ExhaustTemperatureDesign.toFixed(2) + '</td>';
+    table_data += '<td>' + value.ExhaustTemperatureActual.toFixed(2) + '</td>';
     table_data += '</tr>';
 
   });

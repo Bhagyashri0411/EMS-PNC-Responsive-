@@ -52,19 +52,24 @@ function getCardValue1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/totalPowerGenerated",
+        url: "http://192.168.1.106:8090/auth/tpsoverview/totalPowerGenerated",
 
     }).done(function (data) {
-        document.getElementById('TPC').innerHTML = data[0]['tagvalue'];
-        document.getElementById('TPGR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES1').innerHTML = data[0]['currentvalue'];
+        document.getElementById('TPC').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('TPGR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES1').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES1').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -81,20 +86,25 @@ function getCardValue2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/SpecificFuelConsumtion",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/SpecificFuelConsumtion",
 
     }).done(function (data) {
 
-        document.getElementById('SFC').innerHTML = data[0]['tagvalue'];
-        document.getElementById('SFCR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES2').innerHTML = data[0]['currentvalue'];
+        document.getElementById('SFC').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('SFCR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES2').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES2').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -112,12 +122,17 @@ function getCardValue3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/specificWater",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/specificWater",
 
     }).done(function (data) {
-        document.getElementById('SW').innerHTML = data[0]['tagvalue'];
-        document.getElementById('SWR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES3').innerHTML = data[0]['currentvalue'];
+        document.getElementById('SW').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('SWR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES3').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES3').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
 
         $(".result").each(function () {
             var text = $(this).text();
@@ -125,7 +140,7 @@ function getCardValue3() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -144,13 +159,18 @@ function getCardValue4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/specificSteam",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/specificSteam",
 
     }).done(function (data) {
 
-        document.getElementById('SS').innerHTML = data[0]['tagvalue'];
-        document.getElementById('SSR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES4').innerHTML = data[0]['currentvalue'];
+        document.getElementById('SS').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('SSR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES4').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES4').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
 
         $(".result").each(function () {
             var text = $(this).text();
@@ -158,7 +178,7 @@ function getCardValue4() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -177,11 +197,11 @@ function getCardValue5() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/optimumPowerGeneration",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/optimumPowerGeneration",
 
     }).done(function (data) {
 
-        document.getElementById('OPGC').innerHTML = data[0]['tagvalue'];
+        document.getElementById('OPGC').innerHTML = data[0]['tagvalue'].toFixed(2);
 
         $(".result").each(function () {
             var text = $(this).text();
@@ -189,7 +209,7 @@ function getCardValue5() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -208,12 +228,17 @@ function getCardValue6() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/CPPPowerGenerationCost",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/CPPPowerGenerationCost",
 
     }).done(function (data) {
-        document.getElementById('CPGC').innerHTML = data[0]['tagvalue'];
-        document.getElementById('CPGCR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES5').innerHTML = data[0]['currentvalue'];
+        document.getElementById('CPGC').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('CPGCR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES5').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES5').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
 
         $(".result").each(function () {
             var text = $(this).text();
@@ -221,7 +246,7 @@ function getCardValue6() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -240,12 +265,17 @@ function getCardValue7() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/totalSteamGenerated",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/totalSteamGenerated",
 
     }).done(function (data) {
-        document.getElementById('TSG').innerHTML = data[0]['tagvalue'];
-        document.getElementById('TSGR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES6').innerHTML = data[0]['currentvalue'];
+        document.getElementById('TSG').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('TSGR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES6').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES6').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
 
         $(".result").each(function () {
             var text = $(this).text();
@@ -253,7 +283,7 @@ function getCardValue7() {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -272,20 +302,24 @@ function getCardValue8() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/overallEfficiency",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/overallEfficiency",
 
     }).done(function (data) {
-        document.getElementById('OE').innerHTML = data[0]['tagvalue'];
-        document.getElementById('OER').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES7').innerHTML = data[0]['currentvalue'];
-
+        document.getElementById('OE').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('OER').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES7').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES7').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -303,19 +337,24 @@ function getCardValue9() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/grossHeatRate",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/grossHeatRate",
 
     }).done(function (data) {
-        document.getElementById('GHR').innerHTML = data[0]['tagvalue'];
-        document.getElementById('GHRR').innerHTML = data[0]['refvalue'];
-        document.getElementById('RES8').innerHTML = data[0]['currentvalue'];
+        document.getElementById('GHR').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('GHRR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES8').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES8').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {
                 var num = parseFloat(text);
                 if (num < 0) {
                     $(this).addClass("red");
-                } else if (num > 0) {
+                } else if (num >= 0) {
                     $(this).addClass("green");
                 }
 
@@ -339,7 +378,7 @@ function getTotalGenerationCostData(intervalType) {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/fuelOilConsumptionGraph",
+        url: "http://192.168.1.106:8080/auth/tpsoverview/fuelOilConsumptionGraph",
 
     }).done(function (data) {
 
@@ -434,7 +473,7 @@ console.log(data,"jkljclkdjocj");
 
 function tpsTable() {
     $.ajax({
-      url: "http://localhost:8090/EmsPNC/auth/tpsoverview/ParameterTable",
+      url: "http://192.168.1.106:8080/auth/tpsoverview/ParameterTable",
       method: "GET"
     }).done(function (data) {
         loadtpsTable(data) 

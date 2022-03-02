@@ -193,28 +193,19 @@ function showSpecificNCUOverviewData(data) {
 }
 
 function convectiontable(){
-    var myJSON = { 'tagname': $("#NCUA option:selected").val()}
+    var myJSON = { 'name': $("#NCUA option:selected").val()}
     const postdata = JSON.stringify(myJSON);
     console.log(postdata,"NCUA");
 
     $.ajax({
         method: "POST",
         data: postdata,
-        url: "http://192.168.0.131:8090/api/npruunitOverview/SECOverview",
+        url: "http://192.168.1.113:8090/NCU/ConvectionTable",
     }).done(function(data) {
         console.log(data)
 
         formatconvectiontable(data);
         svg(data)
-    })
-    .fail(function(){
-        var failData = [
-            { "kpi":"% Avg. Temperature IN<br> to design","UFP":514,	"BFP":234 ,"LFP":24,"DSSH":258,"UMP":479,"USSH":753,"LSSH":532,"LMP":879},            
-            { "kpi":"Avg. Temperature OUT<br> to design","UFP":514,	"BFP":234 ,"LFP":24,"DSSH":258,"UMP":479,"USSH":753,"LSSH":532,"LMP":879},            
-            { "kpi":"% Heat Recovery compared<br> to design","UFP":514,	"BFP":234 ,"LFP":24,"DSSH":258,"UMP":479,"USSH":753,"LSSH":532,"LMP":879},
-            ]
-        formatconvectiontable(failData);
-        svg(failData);
     })
 }
 

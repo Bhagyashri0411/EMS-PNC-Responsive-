@@ -66,7 +66,7 @@ function getSpecificHRSGBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/HrsgEfficiency",
+        url: "http://localhost:8080/auth/equipmentefficiencyHRSG/HrsgEfficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -228,7 +228,7 @@ function getSpecificHRSGData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/SteamGenerated",
+        url: "http://localhost:8080/auth/equipmentefficiencyHRSG/SteamGenerated",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data.showNumberIndex;
@@ -354,7 +354,7 @@ function showSpecificHRSGChart(data ,Difference_In_Days,interval) {
 //table
 function HRSGTable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/HrsgTable",
+        url: "http://localhost:8080/auth/equipmentefficiencyHRSG/HrsgTable",
         method: "GET"
     }).done(function (data) {
         loadHRSGTable(data);
@@ -474,14 +474,14 @@ function loadHRSGTable(data) {
         
         table_data += '<td>' + value.hrsgid + '</td>';
         table_data += '<td>' + value.Status + '</td>';
-        table_data += '<td>' + value.GENERATION_COST + '</td>';
-        table_data += '<td>' + value.auxfuelDuty + '</td>';
-        table_data += '<td>' + value.flowRateActualMT + '</td>';
-        table_data += '<td>' + value.flowRateActualSRFT+ '</td>';
-        table_data += '<td>' + value.fuelRatioDesign + '</td>';
-        table_data += '<td>' + value.fuelRatioActual + '</td>';
-        table_data += '<td>' + value.exhaustTemperatureDesign + '</td>';
-        table_data += '<td>' + value.exhaustTemperatureActual + '</td>';
+        table_data += '<td>' + value.GENERATION_COST.toFixed(2) + '</td>';
+        table_data += '<td>' + value.auxfuelDuty.toFixed(2) + '</td>';
+        table_data += '<td>' + value.flowRateActualMT.toFixed(2) + '</td>';
+        table_data += '<td>' + value.flowRateActualSRFT.toFixed(2) + '</td>';
+        table_data += '<td>' + value.fuelRatioDesign.toFixed(2) + '</td>';
+        table_data += '<td>' + value.fuelRatioActual.toFixed(2) + '</td>';
+        table_data += '<td>' + value.exhaustTemperatureDesign.toFixed(2) + '</td>';
+        table_data += '<td>' + value.exhaustTemperatureActual.toFixed(2) + '</td>';
         table_data += '</tr>';
 
     });
