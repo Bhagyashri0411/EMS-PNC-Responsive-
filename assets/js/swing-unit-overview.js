@@ -38,7 +38,7 @@ $(document).ready(function () {
 // }
 function totalThroughput(data) {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/swing/feedratePlantload ',
+        url: 'http://192.168.1.106:8090/EmsPNC/swing/feedratePlantload ',
         method: "GET"
     }).done(function (data) {
 
@@ -53,7 +53,7 @@ function totalThroughput(data) {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Truncate",
+        url: "http://192.168.1.106:8090/EmsPNC/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })
@@ -62,7 +62,7 @@ function Truncated() {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Report",
+        url: "http://192.168.1.106:8090/EmsPNC/home/Report",
     }).done(function (data) {
         console.log(data)
 
