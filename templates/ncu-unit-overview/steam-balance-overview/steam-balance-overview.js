@@ -35,8 +35,7 @@ function ncusteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },        
-        url: "http://localhost:8090/EmsPNC/HCU/steamgenerationgraph",
-        // url: "http://192.168.1.109:8090/NCU/steamgenerationgraph",
+        url: "",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;  
         ncugetsteamoverview(data ,Difference_In_Days);
@@ -145,60 +144,13 @@ function showsteambalancencu(data ,Difference_In_Days, interval) {
 
 function ncusteamta() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/NCU/steambalance",
+        url: "http://192.168.1.107:8090/ncu/Steambalance",
         method: "GET"
     }).done(function (data) {
         getncusteamta(data);
 
     })
-        .fail(function () {
-            var failData = [{
-                "name": "SHP steam Generation",
-                "value": "3000"
-            },
-            {
-                "name": "HP Steam Generation",
-                "value": "3200"
-            },
-            {
-                "name": "MP Steam Generation",
-                "value": "1100"
-            },
-            {
-                "name": "LP Steam Generation",
-                "value": "1800"
-            },
-            {
-                "name": "SHP Steam Consumption",
-                "value": "750"
-            },
-            {
-                "name": "HP Steam Consumption",
-                "value": "150"
-            },
-            {
-                "name": "MP Steam Consumption",
-                "value": "150"
-            },
-            {
-                "name": "LP Steam Consumption",
-                "value": "150"
-            },
-            {
-                "name": "Export Steam",
-                "value": "150"
-            },
-            {
-                "name": "Import Steam",
-                "value": "150"
-            },
-            {
-                "name": "Imbalance",
-                "value": "150"
-            }
-            ]
-            getncusteamta(failData);
-        })
+      
 }
 function getncusteamta(data) {
     var table_data = '';

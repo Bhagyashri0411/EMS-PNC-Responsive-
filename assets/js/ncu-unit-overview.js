@@ -19,26 +19,13 @@ $(document).ready(function () {
     console.log(b, 'b');
     const dmonth = b.getMonth() + 1;
     const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
-    document.getElementById("ncuTimeStamp").innerHTML = setdate;
-
+  var abc =  document.getElementById("ncuTimeStamp").innerHTML = setdate;
+console.log(abc ,"nvnvbvbv");
 });
-
-// function lastupdatedTime(data) {
-
-//     var today = new Date();
-
-//     var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
-
-//     var time = today.getHours() + ":" + today.getMinutes();
-
-//     var dateTime = date + ' ' + time;
-//     document.getElementById("ncuTimeStamp").innerHTML = dateTime;
-
-// }
 
 function totalThroughput(data) {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/ncu/feedratePlantload',
+        url: 'http://192.168.1.106:8090/EmsPNC/ncu/feedratePlantload',
         method: "GET"
     }).done(function (data) {
 
@@ -53,7 +40,7 @@ function totalThroughput(data) {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Truncate",
+        url: "http://192.168.1.106:8090/EmsPNC/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })
@@ -63,7 +50,7 @@ function Truncated() {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Report",
+        url: "http://192.168.1.106:8090/EmsPNC/home/Report",
     }).done(function (data) {
         console.log(data)
 
