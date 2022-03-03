@@ -38,7 +38,6 @@ $(document).ready(function () {
 // }
 function totalThroughput(data) {
     $.ajax({
-        url: 'http://192.168.1.106:8090/EmsPNC/swing/feedratePlantload ',
         method: "GET"
     }).done(function (data) {
 

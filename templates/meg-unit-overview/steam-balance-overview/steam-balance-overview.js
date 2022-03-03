@@ -38,7 +38,7 @@ function megsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.109:8090/MEGsteambalanceoverview/steambalanceoverviewgraph",
+        url: "http://192.168.1.107:8090/MEGsteambalanceoverview/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex; 
         meggetsteamoverview(data ,Difference_In_Days);
@@ -148,7 +148,7 @@ function showsteambalancemeg(data ,Difference_In_Days, interval) {
 
 function megsteamta() {
     $.ajax({
-        url: "http://192.168.1.109:8090/MEGsteambalanceoverview/MEGSteambalanceTable",
+        url: "http://192.168.1.107:8090/MEGsteambalanceoverview/MEGSteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getmegsteamta(data);
