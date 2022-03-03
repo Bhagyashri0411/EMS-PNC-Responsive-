@@ -3,11 +3,11 @@
 <div class="col-md-12 megtiles-row">
     <div class="col-md-7">
         <div class="row">
-            <div class="col-md-3 card-col">
+            <div class="col-md-3 card-col-5">
                 <div class="card">
-                    <div class="row" style="display: inline-flex;">
+                    <div class="row" >
                         <div class="title"> Specific Energy Consumption
-                            </div>
+                        </div>
                     </div>
                     <div class="body col">
                         <div id="meg-zingChart" style="height: 7vw;"></div>
@@ -18,101 +18,85 @@
                         </div>
                         <div class="actual text-center">
                             <div style="display: inline-flex;">
-                                <span class="label">Actual | Reference : </span> <span class="count"> <span
-                                        id="actmeg"> &nbsp;  </span> |  <span id="optmeg"> </span></span>
+                                <span class="label">Actual | Reference : </span> <span class="count"> <span id="actmeg">
+                                         </span> | <span id="optmeg"> </span></span>
                             </div>
-                            
+
                             <span class="label">(TOE/MT of Product)</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12 card-col">
-                        <div class="card clearfix">
-                            <div class="title">Specific Energy Consumption</div>
-                           
-                            <div class="body">
-                                <div class="overflow secondtableheight-1">
-                                <table id="MEG_card_table">
-                                    <tr>
-                                        <!-- <th>Parameters</th> -->
-                                        <th class="hydro-tab">Type</th>
-                                        <th class="hydro-tab">Sec</th>
-                                        <th class="hydro-tab">Referance</th>
-                                        <th class="hydro-tab">Deviation</th>
-                                    </tr>
-                                    <tbody id="MEG_card_body"></tbody>
-                                </table>
-                                </div>
-                            </div>
 
+            <div class="col-md-6 card-col-5">
+                <div class="card clearfix">
+                    <div class="title">Specific Energy Consumption</div>
+
+                    <div class="body">
+                        <div class="overflow secondtableheight-1">
+                            <table id="MEG_card_table">
+                                <tr>
+                                    <!-- <th>Parameters</th> -->
+                                    <th class="hydro-tab">Type</th>
+                                    <th class="hydro-tab">Sec</th>
+                                    <th class="hydro-tab">Referance</th>
+                                    <th class="hydro-tab">Deviation</th>
+                                </tr>
+                                <tbody id="MEG_card_body"></tbody>
+                            </table>
                         </div>
                     </div>
 
                 </div>
             </div>
+
             <div class="col-md-3 card-col-5">
                 <div class="card clearfix">
-                    <div class="title" style="padding: 0;">
-                        <div class="main-title ">
-                            Energy Consumed Break Up
+                    <div class="title" style="padding: 0;"> Energy Consumed Break Up</div>
+                    <div class="main-title">
+                        <div class="meg-title" style="display: inline-flex;">
+                            <input type="radio" class="meg-doughnut" name="ratio-name" value="TOE/MT" id="Ton" checked>
+                             
+                            <label for="html" class="lebel-style"> TOE/MT</label>
+                            <input type="radio" class="meg-doughnut" name="ratio-name" value="TOE/hr" id="hr">  
+                            <label for="html" class="lebel-style"> TOE/hr</label>
+                            <input type="radio" class="meg-doughnut" name="ratio-name" value="INR/hr" id="INR">  
+                            <label for="html" class="lebel-style"> INR/hr</label>
                         </div>
-
-                        <div class="main-title">
-                            <div class="meg-title" style="display: inline-flex;">
-                                <input type="radio" class="meg-doughnut" name="ratio-name" value="TOE/TON" id="Ton"
-                                    checked>  
-                                <label for="html" class="lebel-style"> TOE/MT</label>
-                                <input type="radio" class="meg-doughnut" name="ratio-name" value="TOE/hr" id="hr">  
-                                <label for="html" class="lebel-style"> TOE/hr</label>
-                                <input type="radio" class="meg-doughnut" name="ratio-name" value="INR/hr" id="INR">  
-                                <label for="html" class="lebel-style"> INR/hr</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="body clearfix">
-                                    <div class="donut1">
-                                        <div id="titles-meg" style="height: 
+                    </div>
+                    <div class="body clearfix">
+                        <div class="donut1">
+                            <div id="titles-meg" style="height: 
                                     7vw;" class="text-left"></div>
 
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="chart-legends gap1">
+                        <div class="row" style="display: inline-flex;">
+                            <div class="legend">
+                                <span class="legend-circle legend-solid"></span><span class="legend-text">Fuel</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-liquid"></span><span class="legend-text">Steam</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-gas"></span><span
+                                    class="legend-text">Electricity</span>
                             </div>
                         </div>
-                        <div class="chart-legends gap1">
-                            <div class="row" style="display: inline-flex;">
-                                <div class="legend">
-                                    <span class="legend-circle legend-solid"></span><span
-                                        class="legend-text">Fuel</span>
-                                </div>
-                                <div class="legend">
-                                    <span class="legend-circle legend-liquid"></span><span
-                                        class="legend-text">Steam</span>
-                                </div>
-                                <div class="legend">
-                                    <span class="legend-circle legend-gas"></span><span
-                                        class="legend-text">Electricity</span>
-                                </div>
-                            </div>
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="col-md-5">
         <div class="row">
-            <div class="col-md-3" style="padding: 0 3px;">
-                <div class="card clearfix" id="SRFT"  style="padding: 0.5vw;">
+            <div class="col-md-3 card-col-5">
+                <div class="card clearfix" id="SRFT" style="padding: 0.5vw;">
                     <div class="title" style="padding: 0;"> Total Steam Consumption <br> (SHP Equivalent) <br>
                         Ton/hr
-                        </div>
+                    </div>
                     <div class="body">
                         <div id="count-meg1" class="count"></div>
                     </div>
@@ -122,9 +106,9 @@
                         </span>
                     </div> -->
                 </div>
-               
+
             </div>
-            <div class="col-md-9 card-col">
+            <div class="col-md-9 card-col-5">
                 <div class="card clearfix">
                     <div class="body specific-table">
                         <div class="overflow secondtableheight">

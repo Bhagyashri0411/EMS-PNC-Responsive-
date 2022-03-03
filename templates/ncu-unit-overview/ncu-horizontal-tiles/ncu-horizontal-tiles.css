@@ -77,8 +77,9 @@
 
 #ncu-horizontal-tiles .footer .deviation .count,
 #ncu-horizontal-tiles .footer .actual .count {
-   font-size: 0.9vw;
+   font-size: 0.7vw;
     color: #f2f2f2;
+    margin-top: 0.1vw;
 }
 
 #ncu-horizontal-tiles table {

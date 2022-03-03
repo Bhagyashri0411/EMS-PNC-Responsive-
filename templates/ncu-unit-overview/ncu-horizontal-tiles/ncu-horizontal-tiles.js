@@ -73,10 +73,10 @@ function loadpiechartncu(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.shp, name: "RLNG", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.hp, name: "LPG", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.mp, name: "FG Export", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.lp, name: "FG Generation", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.shp, name: "SHP", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.hp, name: "HP", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.mp, name: "MP", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.lp, name: "LP", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
 
             ]
         }]

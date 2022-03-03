@@ -1,14 +1,16 @@
 $(document).ready(function () {
     ncusteamta();
     $("#ncudrop").on('change', function () {
-        var demoncu = $(this).find(":selected").val() + "Trends";
+        var demoncu = $(this).find(":selected").val();
         $('#ncucharts').html(demoncu);
         ncusteamoverview();
     });
-    $("input[name=fromHomencu]").on('change', function (event) {
+    $("input[name=fromHomencu]").on('change', function () {
+        document.getElementById("toHomencu").min = $('#fromHomencu').val();
         ncusteamoverview();
     });
     $("input[name=toHomencu]").on('change', function (event) {
+        document.getElementById("fromHomencu").max = $('#toHomencu').val();
         ncusteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
@@ -40,39 +42,10 @@ function ncusteamoverview() {
         var Difference_In_Days = data[0].showNumberIndex;
         ncugetsteamoverview(data, Difference_In_Days);
     })
-
-        .fail(function () {
-            var failData = []
-            // var failData = [
-            //     { actual: 1000 },
-            //     { actual: 980 },
-            //     { actual: 970 },
-            //     { actual: 960 },
-            //     { actual: 900 },
-            //     { actual: 910 },
-            //     { actual: 900 },
-            //     { actual: 875 },
-            //     { actual: 927 },
-            //     { actual: 949 },
-            //     { actual: 946 },
-            //     { actual: 927 },
-            //     { actual: 950 },
-            //     { actual: 998 },
-            //     { actual: 998 },
-            //     { actual: 1050 },
-            //     { actual: 1050 },
-            //     { actual: 999 },
-            //     { actual: 998 },
-            //     { actual: 998 },
-            //     { actual: 1050 },
-            // ]
-            ncugetsteamoverview(failData);
-        })
 }
 
 
 function ncugetsteamoverview(data, Difference_In_Days) {
-
     var chartData = { actual: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
@@ -123,6 +96,9 @@ function showsteambalancencu(data, Difference_In_Days, interval) {
             labelFontColor: "#d9d9d9",
             labelFontSize: 15
         },
+        toolTip: {
+            shared: true
+        },
         legend: {
             cursor: "pointer",
             verticalAlign: "top",
@@ -132,7 +108,7 @@ function showsteambalancencu(data, Difference_In_Days, interval) {
             type: "line",
             lineThickness: 4,
             color: "#02a6e3",
-            name: "actual",
+            name: "Actual",
             markerSize: 0,
             //toolTipContent: "{name}: {y}",
             yValueFormatString: "0.00#",
@@ -147,22 +123,17 @@ function ncusteamta() {
         url: "http://localhost:8090/ncusteam/Steambalance",
         method: "GET"
     }).done(function (data) {
-        getncusteamta(data);
-
+        getDropNcu(data);
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.name + '</td>';
+            table_data += '<td class="steam-gen2">' + value.value + '</td>';
+            table_data += '</tr>';
+        });
+        $('#ncu_table').append(table_data);   
     })
 
-}
-function getncusteamta(data) {
-    getDropNcu(data);
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.name + '</td>';
-        table_data += '<td class="steam-gen2">' + value.value + '</td>';
-        table_data += '</tr>';
-    });
-    $('#ncu_table').append(table_data);
-    
 }
 function getDropNcu(data) {
     $.each(data, function (key, value) {
