@@ -37,7 +37,7 @@ function getSteamBalanceOverviewPP() {
             method: "POST",
             data: postdata,
             headers: { 'Content-Type': 'application/json' },
-            url: "http://192.168.1.125:8090/ppsteam/steamgenerationgraph",
+            url: "http://localhost:8090/ppsteam/steamgenerationgraph",
         }).done(function(data) {
             var Difference_In_Days = data[0].showNumberIndex;  
             formatSteamPPData(data ,Difference_In_Days);
@@ -118,7 +118,7 @@ function showSteambalancePP(data ,Difference_In_Days, interval) {
 
 function generationandconsumer() {
     $.ajax({
-        url: "http://192.168.1.125:8090/ppsteam/Steambalance",
+        url: "http://localhost:8090/ppsteam/Steambalance",
         method: "GET"
     }).done(function(data) {
         var table_data = '';

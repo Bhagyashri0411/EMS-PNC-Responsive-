@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 function totalThroughput() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/MEG/feedratePlantload',
+        url: 'http://localhost:8090/MEG/feedratePlantload',
         method: "GET"
     }).done(function (data) {
         document.getElementById("totalThroughput").innerHTML = data.feedrate;

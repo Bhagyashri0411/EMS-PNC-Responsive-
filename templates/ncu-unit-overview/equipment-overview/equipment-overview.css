@@ -126,7 +126,6 @@
 .ncu-equipment-overview .line-1 {
     height: 0.3vw;
     width: 1.6vw;
-    top: -0.6vw;
     display: none;
     margin: 0 0.5vw;
     position: relative;
@@ -171,7 +170,6 @@
 }
 
 .ncu-equipment-overview .col-rt-1 {
-    top: -0.5vw;
     position: relative;
     color: #d9d9d9;
     display: none;

@@ -1,14 +1,12 @@
 $(document).ready(function () {
-    getEquOverFCCUData();
-    // tablehgu();
-
-    $("input[name=fromeqncu]").click(function (event) {
-        // console.log("from", event.target.value);
+    getEquOverNCUData();
+    $("input[name=fromeqncu]").on('change',function () {
+        document.getElementById("toeqncu").min = $('#fromeqncu').val();
         getSpecificEquipmentOverviewDataNCU();
     });
 
-    $("input[name=toeqncu]").change(function (event) {
-        // console.log(event.target.value);
+    $("input[name=toeqncu]").on('change',function () {
+        document.getElementById("fromeqncu").max = $('#toeqncu').val();
         getSpecificEquipmentOverviewDataNCU();
     });
 
@@ -24,16 +22,22 @@ $(document).ready(function () {
     tod.setSeconds(0);
     $('#toeqncu').val(tod.toJSON().slice(0, 19));
 
-    getSpecificEquipmentOverviewDataNCU();
+    document.getElementById("toeqncu").min = $('#fromeqncu').val();
+    document.getElementById("fromeqncu").max = $('#toeqncu').val();
+ 
     posttableequipment();
 
 });
 
 //bar
-function getEquOverFCCUData() {
+function getEquOverNCUData() {
     $.ajax({
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
+        },
         method: "GET",
-        url: "http://192.168.1.125:8090/ncuequip/ncuchart",
+        url: "http://localhost:8090/ncuequip/ncuchart",
 
     }).done(function (data) {
         var chartData = { actual: [], design: [] };
@@ -48,9 +52,10 @@ function getEquOverFCCUData() {
 
 function loadcolumnequ(data) {
     var chart = new CanvasJS.Chart("Equ-columnncu", {
-        // height: 120,
-
         backgroundColor: "#26293c",
+        toolTip: {
+            shared: true
+        },
         title: {
             text: ""
         },
@@ -78,7 +83,7 @@ function loadcolumnequ(data) {
             type: "column",
             name: "RLNG",
             color: "#0795cc",
-            indexLabel: " {y}",
+            // indexLabel: " {y}",
             indexLabelFontColor: "#bfbfbf",
             indexLabelFontSize: 15,
             dataPoints: data.actual
@@ -87,7 +92,7 @@ function loadcolumnequ(data) {
             type: "column",
             name: "Naphtha",
             color: "#d3a10c",
-            indexLabel: " {y}",
+            // indexLabel: " {y}",
             indexLabelFontColor: "#bfbfbf",
             indexLabelFontSize: 15,
             dataPoints: data.design
@@ -101,42 +106,93 @@ function loadcolumnequ(data) {
 }
 
 var globledatavariable1;
-function posttableequipment() {
-    var selectdata = { 'name': $('#kpiTablencu option:selected').val() }
-    f1();
+var globledatavariable2;
+var globledatavariable3;
+var globledatavariable4;
+var globledatavariable5;
+var globledatavariable6;
+var globledatavariable7;
+
+function posttableequipment(){
+    var selectedData = document.getElementById('kpiTablencu');
+    selectedOption = { 'name': selectedData.options[selectedData.selectedIndex].value };
+    console.log(selectedOption);
+
+   var selectedData1 = document.getElementById('kpiTablencu').value;
+    console.log(selectedData1, "selectData1");
+    f1(selectedData1)
     $.ajax({
+        url: "http://localhost:8090/ncuequip/ncutable",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "POST",
-        data: JSON.stringify(selectdata),
-
-        url: "http://192.168.1.125:8090/ncuequip/ncutable",
+        data: JSON.stringify(selectedOption),        
+        
     }).done(function (data) {
-        globledatavariable1 = data[0].id1;
+        globledatavariable1 = data[0].equipment1;
+        globledatavariable2= data[0].equipment2;
+        globledatavariable3 = data[0].equipment3;
+        globledatavariable4 = data[0].equipment4;
+        globledatavariable5 = data[0].equipment5;
+        globledatavariable6 = data[0].equipment6;
+        globledatavariable7 = data[0].equipment7;
         gblArry.push(globledatavariable1);
-        document.getElementById('efficiencyTrendline1').innerHTML = globledatavariable1;
-        document.getElementById('equipment1').innerHTML = globledatavariable1;
-
-        gettablehgu(globledatavariable1);
+        gblArry.push(globledatavariable2);
+        gblArry.push(globledatavariable3);
+        gblArry.push(globledatavariable4);
+        gblArry.push(globledatavariable5);
+        gblArry.push(globledatavariable6);
+        gblArry.push(globledatavariable7);
+        
+        tableNcuPostMapping(data);
+        getSpecificEquipmentOverviewDataNCU();
     })
-
 }
+function tableNcuPostMapping(data) {
+    var tabledata = data;
+    var assignTable1;
 
-function gettablehgu(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.kpi + '</td>';
-        table_data += '<td>' + value.uom + '</td>';
-        table_data += '<td>' + value.value1 + '</td>';
-        table_data += '<td>' + value.value2 + '</td>';
-        table_data += '</tr>';
-    });
-    $('#bodyncuOverview').append(table_data);
+    if (tabledata[0].equipment1 == 'STACK_O2') {
+        assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>H100</th><th>H200</th><th>H300</th><th>H400</th><th>H500</th><th>H600</th><th>H700</th></tr>';
+    }
+    
+   if (tabledata[0].equipment1 == 'CGC STEAM INLET') {
+        assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>CGC</th><th>PRC</th><th>ERC</th></tr>';
+
+    }
+    document.getElementById("headncuOverview").innerHTML = assignTable1;
+
+    var assignTable = '';
+
+    assignTable += '<tr>';
+    //var index = 1;
+    for (let i = 0; i < tabledata.length; i++) {
+        var val = tabledata[i];
+        if (tabledata[0].equipment1 == 'STACK_O2') {
+            assignTable += '<td>' + val['kpi'] + '</td>';
+            assignTable += '<td>' + val['uom'] + '</td>';
+            assignTable += '<td>' + val['value1'] + '</td>';
+            assignTable += '<td>' + val['value2'] + '</td>';
+            assignTable += '<td>' + val['value3'] + '</td>';
+            assignTable += '<td>' + val['value4'] + '</td>';
+            assignTable += '<td>' + val['value5'] + '</td>';            
+            assignTable += '<td>' + val['value6'] + '</td>';
+            assignTable += '<td>' + val['value7'] + '</td>';
+        }
+        if (tabledata[0].equipment1 == 'CGC STEAM INLET') {
+            assignTable += '<td>' + val['kpi'] + '</td>';
+            assignTable += '<td>' + val['uom'] + '</td>';
+            assignTable += '<td>' + val['value1'] + '</td>';
+            assignTable += '<td>' + val['value2'] + '</td>';
+            assignTable += '<td>' + val['value3'] + '</td>';
+        }
+        assignTable += '</tr>';
+
+    }
+    document.getElementById("bodyncuOverview").innerHTML = assignTable;
 }
-
 
 console.log(gblArry);
 
@@ -144,19 +200,16 @@ var gblArry = []
 
 function getSpecificEquipmentOverviewDataNCU() {
     var myJSON = { 'fromdate': $('#fromeqncu').val(), 'todate': $('#toeqncu').val(), 'name': $('#kpiTablencu option:selected').val() };
-    console.log(myJSON, "mes");
-
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
+        url: "http://localhost:8090/ncuequip/ncugraph",
         headers: {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "POST",
-        data: postdata,
-
-        url: "http://192.168.1.125:8090/ncuequip/ncugraph",
+        data: postdata,      
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -192,7 +245,6 @@ function formatSpecificEquipmentOverviewNCU(data, Difference_In_Days) {
 
 function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("Equ-line-ncu", {
-        height: 125,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
@@ -227,13 +279,13 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             cursor: "pointer",
             verticalAlign: "top",
             horizontalAlign: "center",
-            itemclick: toogleDataSeries
+           // itemclick: toogleDataSeries
         },
         data: [{
             type: "line",
             lineThickness: 2,
             color: "#C55B11",
-            name: "H100",
+            name: globledatavariable1,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value1
@@ -242,7 +294,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             type: "line",
             lineThickness: 2,
             color: "#D945B4",
-            name: "H200",
+            name: globledatavariable2,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value2
@@ -251,7 +303,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             type: "line",
             lineThickness: 2,
             color: "#FFA700",
-            name: "H300",
+            name: globledatavariable3,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value3
@@ -260,7 +312,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             type: "line",
             lineThickness: 2,
             color: "#0896CC",
-            name: "H400",
+            name: globledatavariable4,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value4
@@ -269,7 +321,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             type: "line",
             lineThickness: 2,
             color: "#7030a0",
-            name: 'H500',
+            name: globledatavariable5,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value5
@@ -278,7 +330,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             type: "line",
             lineThickness: 2,
             color: "#08cc12",
-            name: "H600",
+            name: globledatavariable6,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value6
@@ -287,7 +339,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             type: "line",
             lineThickness: 2,
             color: "#08cc12",
-            name: "H700",
+            name: globledatavariable7,
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.value7
@@ -325,7 +377,6 @@ function f1(y1) {
 
         $(".line-1").css("display", "inline-block");
         $(".col-rt-1").css("display", "inline-block");
-
 
     }
 
