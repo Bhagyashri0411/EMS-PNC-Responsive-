@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function totalThroughput() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/pp/feedratePlantload',
+        url: 'http://localhost:8090/pp/feedratePlantload',
         method: "GET"
     }).done(function (data) {
         document.getElementById("feedratepp").innerHTML = data.feedrate;

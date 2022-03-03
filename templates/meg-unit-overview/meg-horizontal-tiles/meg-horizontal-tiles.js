@@ -21,7 +21,7 @@ $(document).ready(function () {
 function megloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption",
+        url: "http://localhost:8090/MEG/GUAGEspecificenergyConsumption",
     }).done(function (gaugevalue) {
         megGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -99,7 +99,7 @@ function megGaugeChartvalue(gaugevalue) {
 function guagevaluemegAct() {
     $.ajax({
         method: "GET",        
-        url: 'http://192.168.1.109:8090/MEG/GUAGEspecificenergyConsumption',
+        url: 'http://localhost:8090/MEG/GUAGEspecificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devmeg").innerHTML = data.deviation + "%";
@@ -142,7 +142,7 @@ function getmegbreakOverview(data) {
 
 function cardmeg1() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/MEG/MEGtotalSteamConsumptioncard',
+        url: 'http://localhost:8090/MEG/MEGtotalSteamConsumptioncard',
         method: "GET"
     }).done(function (data) {
         getcardmeg1(data)
@@ -170,7 +170,7 @@ function getDoughnutmeg() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.109:8090/MEG/MEGDoughnutECBU",
+        url: "http://localhost:8090/MEG/MEGDoughnutECBU",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
         console.log(energyConsumed);
@@ -228,7 +228,7 @@ function loadDoughnutChartmeg(energyConsumed) {
 function parametertableMEG() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/MEG/MEGSpecificEnergyConsumptionTable"
+        url: "http://localhost:8090/MEG/MEGSpecificEnergyConsumptionTable"
     }).done(function (data) {
         getparametertableMEG(data)
     })
@@ -269,7 +269,7 @@ function getparametertableMEG(data) {
 }
 function megOverview() {
     $.ajax({
-        url: "http://192.168.1.109:8090/MEG/MEGParameterTable",
+        url: "http://localhost:8090/MEG/MEGParameterTable",
         method: "GET"
     }).done(function (data) {
         getmegOverview(data);

@@ -25,7 +25,7 @@ console.log(abc ,"nvnvbvbv");
 
 function totalThroughput() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/ncu/feedratePlantload',
+        url: 'http://localhost:8090/ncu/feedratePlantload',
         method: "GET"
     }).done(function (data) {
         document.getElementById("feedrate").innerHTML = data.feedrate;

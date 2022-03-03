@@ -21,7 +21,7 @@ $(document).ready(function () {
 function getpiechartswing() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/SWING/SteamSHPEquivalent",
+        url: "http://localhost:8090/SWING/SteamSHPEquivalent",
     }).done(function (data) {
 
         var fuelConsumed = data;
@@ -106,7 +106,7 @@ function postFuelDoughnutDataswing1() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.109:8090/SWING/FCCUDoughnut",
+        url: "http://localhost:8090/SWING/FCCUDoughnut",
     })
         .done(function (data) {
             
@@ -168,7 +168,7 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/SWING/specificenergyConsumption",
+        url: "http://localhost:8090/SWING/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -177,7 +177,7 @@ function loadGaugeChart() {
 function guagevalueswingAct() {
     $.ajax({
         method: "GET",
-        url: 'http://192.168.1.109:8090/SWING/specificenergyConsumption',
+        url: 'http://localhost:8090/SWING/specificenergyConsumption',
     }).done(function (data) {
         document.getElementById("devswing").innerHTML = data.deviation + "%";
         document.getElementById("actswing").innerHTML = data.actual;
@@ -257,7 +257,7 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/SWING/ParameterTable"
+        url: "http://localhost:8090/SWING/ParameterTable"
     }).done(function (data) {
         getspecifictable(data)
     })
@@ -303,7 +303,7 @@ function getspecifictable(data) {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/SWING/SECSteamTabledata"
+        url: "http://localhost:8090/SWING/SECSteamTabledata"
     }).done(function (data) {
         getparametertable(data)
     })
