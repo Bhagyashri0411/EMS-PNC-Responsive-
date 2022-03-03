@@ -35,38 +35,13 @@ function swingsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.109:8090/SWINGsbo/steambalanceoverviewgraph",
+        url: "http://192.168.1.107:8090/SWINGsbo/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;        
         swinggetsteamoverview(data ,Difference_In_Days);
     })
 
-        .fail(function () {
-            var failData = []
-            //     { actual: 1000 },
-            //     { actual: 980 },
-            //     { actual: 970 },
-            //     { actual: 960 },
-            //     { actual: 900 },
-            //     { actual: 910 },
-            //     { actual: 900 },
-            //     { actual: 875 },
-            //     { actual: 927 },
-            //     { actual: 949 },
-            //     { actual: 946 },
-            //     { actual: 927 },
-            //     { actual: 950 },
-            //     { actual: 998 },
-            //     { actual: 998 },
-            //     { actual: 1050 },
-            //     { actual: 1050 },
-            //     { actual: 999 },
-            //     { actual: 998 },
-            //     { actual: 998 },
-            //     { actual: 1050 },
-            // ]
-            swinggetsteamoverview(failData);
-        })
+      
 }
 
 
@@ -144,7 +119,7 @@ function showSteambalancefccu(data ,Difference_In_Days, interval) {
 
 function swingsteamta() {
     $.ajax({
-        url: "http://192.168.1.109:8090/SWINGsbo/SteambalanceTable",
+        url: "http://192.168.1.107:8090/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getgenerationandconsumer(data);

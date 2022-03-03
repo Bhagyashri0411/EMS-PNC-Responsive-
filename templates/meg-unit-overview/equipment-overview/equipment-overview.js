@@ -36,7 +36,7 @@ function getEquOverMEGData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://192.168.1.105:8080/EquipmentOverview/MEGchart",
+        url: "http://192.168.1.107:8090/EquipmentOverview/MEGchart",
 
     }).done(function (data) {
 
@@ -155,7 +155,7 @@ function equipmentOverviewKpiTableMeg() {
         method: "POST",
         data: JSON.stringify(selectedOption),
          
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/OHCUtable",
+        url: "192.168.1.125:8090/EquipmentOverview/MEGtable",
     }).done(function (data) {
         globledatavariable1 = data[0].equipment1;
         globledatavariable2 = data[0].equipment2;
@@ -227,7 +227,7 @@ function getSpecificEquipmentOverviewDataMEG() {
         method: "POST",
         data: postdata,
          
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/OHCUgraph",
+        url: "http://192.168.1.125:8090/EquipmentOverview/MEGgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

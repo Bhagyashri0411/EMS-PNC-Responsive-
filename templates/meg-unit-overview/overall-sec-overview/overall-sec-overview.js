@@ -32,7 +32,7 @@ function megoverview() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8090/EmsPNC/dhds/overallsecOverviewgraph",
+        url: "http://192.168.1.107:8090/MEG/MEGoverallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

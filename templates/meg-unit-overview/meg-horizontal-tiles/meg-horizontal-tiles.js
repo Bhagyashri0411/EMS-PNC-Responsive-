@@ -21,7 +21,7 @@ $(document).ready(function () {
 function megloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8080/MEG/GUAGEspecificenergyConsumption",
+        url: "http://192.168.1.107:8090/MEG/GUAGEspecificenergyConsumption",
     }).done(function (gaugevalue) {
         megGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -99,7 +99,7 @@ function megGaugeChartvalue(gaugevalue) {
 function guagevaluemegAct() {
     $.ajax({
         method: "GET",        
-        url: 'http://192.168.1.109:8080/MEG/GUAGEspecificenergyConsumption',
+        url: 'http://192.168.1.107:8090/MEG/GUAGEspecificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devmeg").innerHTML = data.deviation + "%";
@@ -111,7 +111,7 @@ function guagevaluemegAct() {
 
 function megbreakOverview() {
     $.ajax({
-        url: "http://192.168.1.106:8080//api/srutgtuOverview/steamBalanceOverviewTable",
+        url: "http://192.168.1.106:8090//api/srutgtuOverview/steamBalanceOverviewTable",
         method: "GET"
     }).done(function (data) {
         getmegbreakOverview(data);
@@ -140,35 +140,9 @@ function getmegbreakOverview(data) {
     $('#Break_table').append(table_data);
 }
 
-function megOverview() {
-    $.ajax({
-        url: "http://192.168.1.109:8080/MEG/MEGParameterTable",
-        method: "GET"
-    }).done(function (data) {
-        getmegOverview(data);
-    })
-       
-}
-
-function getmegOverview(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-
-        table_data += '<tr>';
-        table_data += '<td>' + value.Parameter + '</td>';
-        table_data += '<td class="meg-tab">' + value.UOM + '</td>';
-        table_data += '<td class="meg-tab">' + value.Reference + '</td>';
-        table_data += '<td class="meg-tab">' + value.Actual + '</td>';
-        table_data += '<td class="meg-tab">' + value.Deviation + '</td>';
-        table_data += '</tr>';
-
-    });
-    $('#Parameter_table_meg').append(table_data);
-}
-
 function cardmeg1() {
     $.ajax({
-        url: 'http://192.168.1.109:8080/MEG/MEGtotalSteamConsumptioncard',
+        url: 'http://192.168.1.107:8090/MEG/MEGtotalSteamConsumptioncard',
         method: "GET"
     }).done(function (data) {
         getcardmeg1(data)
@@ -196,7 +170,7 @@ function getDoughnutmeg() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.109:8080/MEG/MEGDoughnutECBU",
+        url: "http://192.168.1.107:8090/MEG/MEGDoughnutECBU",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
         console.log(energyConsumed);
@@ -254,7 +228,7 @@ function loadDoughnutChartmeg(energyConsumed) {
 function parametertableMEG() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8080/NCU/specificenergyConsumptiontable"
+        url: "http://192.168.1.107:8090/MEG/MEGSpecificEnergyConsumptionTable"
     }).done(function (data) {
         getparametertableMEG(data)
     })
@@ -264,31 +238,57 @@ function getparametertableMEG(data) {
     var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
-        table_data += '<td>' + value.parameter + '</td>';
-        table_data += '<td>' + value.uom + '</td>';
-        table_data += '<td>' + value.reference + '</td>';        
-        table_data += '<td>' + value.actual + '</td>';
-        table_data += '<td>' + value.deviation + '</td>';
-        // if (value.deviation > 0) {
-        //     table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
-        // }
-        // else {
-        //     table_data += '<td class="r1">' + value.deviation + '</td>';
-        // }
+        table_data += '<td>' + value.type + '</td>';
+        table_data += '<td>' + value.Actual + '</td>';
+        table_data += '<td>' + value.Reference + '</td>';        
+        // table_data += '<td>' + value.actual + '</td>';
+        // table_data += '<td>' + value.Deviation + '</td>';
+        if (value.Deviation > 0) {
+            table_data += '<td class="r1">' + "+" + value.Deviation + '</td>';
+        }
+        else {
+            table_data += '<td class="r1">' + value.Deviation + '</td>';
+        }
 
         table_data += '</tr>';
     });
+   
     $('#MEG_card_body').append(table_data);
-    // $(".r1").each(function () {
-    //     var text = $(this).text();
-    //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
-    //         var num = parseFloat(text);
-    //         if (num < 0) {
-    //             $(this).addClass("negative");
-    //         } else if (num > 0) {
-    //             $(this).addClass("positive");
-    //         }
+    $(".r1").each(function () {
+        var text = $(this).text();
+        if (/[+-]?\d+(\.\d+)?/.test(text)) {
+            var num = parseFloat(text);
+            if (num < 0) {
+                $(this).addClass("negative");
+            } else if (num >= 0) {
+                $(this).addClass("positive");
+            }
 
-    //     }
-    // });
+        }
+    });
+}
+function megOverview() {
+    $.ajax({
+        url: "http://192.168.1.107:8090/MEG/MEGParameterTable",
+        method: "GET"
+    }).done(function (data) {
+        getmegOverview(data);
+    })
+       
+}
+
+function getmegOverview(data) {
+    var table_data = '';
+    $.each(data, function (key, value) {
+
+        table_data += '<tr>';
+        table_data += '<td>' + value.Parameter + '</td>';
+        table_data += '<td class="meg-tab">' + value.UOM + '</td>';
+        table_data += '<td class="meg-tab">' + value.Reference + '</td>';
+        table_data += '<td class="meg-tab">' + value.Actual + '</td>';
+        table_data += '<td class="meg-tab">' + value.Deviation + '</td>';
+        table_data += '</tr>';
+
+    });
+    $('#Parameter_table_meg').append(table_data);
 }

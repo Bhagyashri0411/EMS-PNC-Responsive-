@@ -21,18 +21,18 @@ $(document).ready(function () {
 function getpiechartswing() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.119:8090/SWING/SteamSHPEquivalent",
+        url: "http://192.168.1.107:8090/SWING/SteamSHPEquivalent",
     }).done(function (data) {
 
-        var fuelConsumed = data[0];
+        var fuelConsumed = data;
         console.log(fuelConsumed);
         loadpiechartswing(fuelConsumed);
     })
-        .fail(function () {
-            var faildata =
-                { "hp": 63.0, "lp": 64.0,"total": 258.0 }
-            loadpiechartswing(faildata);
-        })
+        // .fail(function () {
+        //     var faildata =
+        //         { "hp": 63.0, "lp": 64.0,"total": 258.0 }
+        //     loadpiechartswing(faildata);
+        // })
 
 }
 function loadpiechartswing(fuelConsumed) {
@@ -106,7 +106,7 @@ function postFuelDoughnutDataswing1() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.119:8090/SWING/FCCUDoughnut",
+        url: "http://192.168.1.107:8090/SWING/FCCUDoughnut",
     })
         .done(function (data) {
             
@@ -168,8 +168,7 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
-        // url: "http://192.168.1.109:8090/swing/specificenergyConsumption",
+        url: "http://192.168.1.107:8090/SWING/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -178,8 +177,7 @@ function loadGaugeChart() {
 function guagevalueswingAct() {
     $.ajax({
         method: "GET",
-        url: 'http://192.168.1.119:8090/SWING/specificenergyConsumption',
-        // url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
+        url: 'http://192.168.1.107:8090/SWING/specificenergyConsumption',
     }).done(function (data) {
         document.getElementById("devswing").innerHTML = data.deviation + "%";
         document.getElementById("actswing").innerHTML = data.actual;
@@ -259,7 +257,7 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.119:8090/SWING/specificenergyConsumptiontable"
+        url: "http://192.168.1.107:8090/SWING/ParameterTable"
     }).done(function (data) {
         getspecifictable(data)
     })
@@ -305,7 +303,7 @@ function getspecifictable(data) {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.119:8090/SWING/SECSteamTabledata"
+        url: "http://192.168.1.107:8090/SWING/SECSteamTabledata"
     }).done(function (data) {
         getparametertable(data)
     })

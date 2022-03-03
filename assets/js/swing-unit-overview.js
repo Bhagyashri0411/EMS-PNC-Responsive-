@@ -38,7 +38,7 @@ $(document).ready(function () {
 // }
 function totalThroughput(data) {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/swing/feedratePlantload ',
+        url: 'http://localhost:8090/SWING/feedratePlantload ',
         method: "GET"
     }).done(function (data) {
 

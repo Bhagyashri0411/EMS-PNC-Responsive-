@@ -151,7 +151,7 @@
     font-weight: normal;
     font-size: 0.9vw;
     top: 0;
-    /* position: sticky; */
+    background-color: #432b64;
     border-bottom: 1px solid #f2f2f2;
 }
 #meg-horizontal-tiles td {
@@ -270,4 +270,12 @@
 #meg-horizontal-tiles input[type=radio] {
     height: 0.8vw;
     margin-left: 0.5vw;
+}
+
+#meg-horizontal-tiles td.positive {
+    color: #00aa55;
+}
+
+#meg-horizontal-tiles td.negative {
+    color: #ff0000;
 }
