@@ -81,7 +81,7 @@ function loadcolumnequ(data) {
         },
         data: [{
             type: "column",
-            name: "RLNG",
+            name: "Actual",
             color: "#0795cc",
             // indexLabel: " {y}",
             indexLabelFontColor: "#bfbfbf",
@@ -90,7 +90,7 @@ function loadcolumnequ(data) {
         },
         {
             type: "column",
-            name: "Naphtha",
+            name: "Design",
             color: "#d3a10c",
             // indexLabel: " {y}",
             indexLabelFontColor: "#bfbfbf",
@@ -154,11 +154,11 @@ function tableNcuPostMapping(data) {
     var tabledata = data;
     var assignTable1;
 
-    if (tabledata[0].equipment1 == 'FUEL_CONSUMED_(MT/HR)') {
+    if (tabledata[0].equipment1 == 'H100') {
         assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>H100</th><th>H200</th><th>H300</th><th>H400</th><th>H500</th><th>H600</th><th>H700</th></tr>';
     }
     
-   if (tabledata[0].equipment1 == 'CGC STEAM INLET') {
+   if (tabledata[0].equipment1 == 'CGCT') {
         assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>CGC</th><th>PRC</th><th>ERC</th></tr>';
 
     }
@@ -170,7 +170,7 @@ function tableNcuPostMapping(data) {
     //var index = 1;
     for (let i = 0; i < tabledata.length; i++) {
         var val = tabledata[i];
-        if (tabledata[0].equipment1 == 'FUEL_CONSUMED_(MT/HR)') {
+        if (tabledata[0].equipment1 == 'H100') {
             assignTable += '<td>' + val['kpi'] + '</td>';
             assignTable += '<td>' + val['uom'] + '</td>';
             assignTable += '<td>' + val['value1'] + '</td>';
@@ -181,7 +181,7 @@ function tableNcuPostMapping(data) {
             assignTable += '<td>' + val['value6'] + '</td>';
             assignTable += '<td>' + val['value7'] + '</td>';
         }
-        if (tabledata[0].equipment1 == 'CGC STEAM INLET') {
+        if (tabledata[0].equipment1 == 'CGC') {
             assignTable += '<td>' + val['kpi'] + '</td>';
             assignTable += '<td>' + val['uom'] + '</td>';
             assignTable += '<td>' + val['value1'] + '</td>';

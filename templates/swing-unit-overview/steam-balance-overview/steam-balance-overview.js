@@ -1,17 +1,16 @@
 $(document).ready(function () {
     swingsteamta();
     $("#swingdrop").on('change', function () {
-        var demoswing = $(this).find(":selected").attr('name');
+        var demoswing = $(this).find(":selected").val();
         $('#swingcharts').html(demoswing);
         swingsteamoverview();
-        // console.log($(this).find(":selected").val());
     });
-    $("input[name=fromHomeswing]").on('change',function (event) {
-        // console.log($('["#swingdrop"]:selected').val());
+    $("input[name=fromHomeswing]").on('change', function () {
+        document.getElementById("toHomeswing").min = $('#fromHomeswing').val();
         swingsteamoverview();
     });
-    $("input[name=toHomeswing]").on('change',function (event) {
-        // console.log($('["#swingdrop"]:selected').val());
+    $("input[name=toHomeswing]").on('change', function (event) {
+        document.getElementById("fromHomeswing").max = $('#toHomeswing').val();
         swingsteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
@@ -24,11 +23,14 @@ $(document).ready(function () {
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#toHomeswing').val(tod.toJSON().slice(0, 19));
+    document.getElementById("toHomeswing").min = $('#fromHomeswing').val();
+    document.getElementById("fromHomeswing").max = $('#toHomeswing').val();
+
     swingsteamoverview();
 });
 
 function swingsteamoverview() {
-    var myJSON = { 'fromdate': $('#fromHomeswing').val(), 'todate': $('#toHomeswing').val(), 'tagname':$("#swingdrop option:selected").val() };
+    var myJSON = { 'fromdate': $('#fromHomeswing').val(), 'todate': $('#toHomeswing').val(), 'tagname': $("#swingdrop option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -37,54 +39,53 @@ function swingsteamoverview() {
         headers: { 'Content-Type': 'application/json' },
         url: "http://localhost:8090/SWINGsbo/steambalanceoverviewgraph",
     }).done(function (data) {
-        var Difference_In_Days = data[0].showNumberIndex;        
-        swinggetsteamoverview(data ,Difference_In_Days);
-    })      
+        var Difference_In_Days = data[0].showNumberIndex;
+        swinggetsteamoverview(data, Difference_In_Days);
+    })
 }
 
-function swinggetsteamoverview(data ,Difference_In_Days) {
 
+function swinggetsteamoverview(data, Difference_In_Days) {
     var chartData = { actual: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
-        const swingSBDate = new Date(element.date );
-        chartData.actual.push({ y: element.actual,x:swingSBDate });
+        const swingSBDate = new Date(element.date);
+        chartData.actual.push({ y: element.actual, x: swingSBDate });
     }
     console.log("FccuData", chartData);
     var interval = 1;
     if (!Difference_In_Days) {
-      if (count/8 > 1) {
-         interval =Math.round(count/8);
-      }else{
-        interval = 1;
-      }
-     
+        if (count / 8 > 1) {
+            interval = Math.round(count / 8);
+        } else {
+            interval = 1;
+        }
+
     }
-    showSteambalancefccu(chartData ,Difference_In_Days, interval);
+    showsteambalanceswing(chartData, Difference_In_Days, interval);
 }
 
-function showSteambalancefccu(data ,Difference_In_Days, interval) {
+function showsteambalanceswing(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("chartSteamBalanceswing", {
         height: 225,
         theme: "dark1",
         backgroundColor: "#26293c",
         toolTip: {
             shared: true  //disable here. 
-          },
+        },
         axisX: {
             gridThickness: 0,
             tickLength: 0,
             lineThickness: 0,
-            intervalType:Difference_In_Days == true?  "hour":"day",
-            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-         //valueFormatString: "DD MMM" ,
-           title:Difference_In_Days == true?  "In hours":" In Days",
-           interval: interval,
+            intervalType: Difference_In_Days == true ? "hour" : "day",
+            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == true ? "In hours" : " In Days",
+            interval: interval,
             tickThickness: 0,
             labelFontColor: "#d9d9d9",
             labelFontSize: 15
-
         },
         axisY: {
             title: "",
@@ -95,6 +96,9 @@ function showSteambalancefccu(data ,Difference_In_Days, interval) {
             labelFontColor: "#d9d9d9",
             labelFontSize: 15
         },
+        toolTip: {
+            shared: true
+        },
         legend: {
             cursor: "pointer",
             verticalAlign: "top",
@@ -104,8 +108,8 @@ function showSteambalancefccu(data ,Difference_In_Days, interval) {
             type: "line",
             lineThickness: 4,
             color: "#02a6e3",
-            name: "actual",
-            markerSize: 0,   
+            name: "Actual",
+            markerSize: 0,
             //toolTipContent: "{name}: {y}",
             yValueFormatString: "0.00#",
             dataPoints: data.actual
@@ -119,17 +123,17 @@ function swingsteamta() {
         url: "http://localhost:8090/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
-        getDropswing(data) ;
+        getDropswing(data);
         var table_data = '';
-    $.each(data, function (key, value) {
-       
-        table_data += '<tr>';
-        table_data += '<td>' + value.GeneratorsConsumers + '</td>';
-        table_data += '<td class="steam-gen2">' + value.TPH + '</td>';
-        table_data += '</tr>';
-    });
-    $('#swing_table').append(table_data);
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.GeneratorsConsumers + '</td>';
+            table_data += '<td class="steam-gen2">' + value.TPH + '</td>';
+            table_data += '</tr>';
+        });
+        $('#swing_table').append(table_data);
     })
+
 }
 function getDropswing(data) {
     $.each(data, function (key, value) {

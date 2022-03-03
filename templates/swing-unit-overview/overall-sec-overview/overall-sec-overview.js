@@ -1,8 +1,10 @@
 $(document).ready(function () {
     $("input[name=swingoveralldate]").on('change', function () {
+        document.getElementById("swingfromFccu").max = $('#swingoveralldate').val();
         swingoverview();
     });
     $("input[name=swingfromFccu]").on('change', function () {
+        document.getElementById("swingoveralldate").min = $('#swingfromFccu').val();
         swingoverview();
     });
     // // setting from date, to date - 24hrs.
@@ -34,138 +36,6 @@ function swingoverview() {
         var Difference_In_Days = data[0].showNumberIndex;
         swinggetoverview(data ,Difference_In_Days);
     })
-        .fail(function () {
-            var failData = [];
-            // var failData = [{
-            //     "reference": 920.0,
-            //     "feedrate": 979.0,
-            //     "actual": 975.0,
-            //     "date": '12/10/2021'
-            // },
-            // {
-            //     "reference": 953.0,
-            //     "feedrate": 963.0,
-            //     "actual": 972.0,
-            //     "date": '17/10/2021'
-            // },
-            // {
-            //     "reference": 950.0,
-            //     "feedrate": 972.0,
-            //     "actual": 979.0,
-            //     "date": '20/10/2021'
-            // },
-            // {
-            //     "reference": 945.0,
-            //     "feedrate": 976.0,
-            //     "actual": 980.0,
-            //     "date": '20/10/2021'
-            // },
-            // {
-            //     "reference": 910.0,
-            //     "feedrate": 981.0,
-            //     "actual": 980.0,
-            //     "date": '22/10/2021'
-            // },
-            // {
-            //     "reference": 963.0,
-            //     "feedrate": 979.0,
-            //     "actual": 982.0,
-            //     "date": '23/10/2021'
-            // },
-            // {
-            //     "reference": 938.0,
-            //     "feedrate": 980.0,
-            //     "actual": 968.0,
-            //     "date": '24/10/2021'
-            // },
-            // {
-            //     "reference": 939.0,
-            //     "feedrate": 974.0,
-            //     "actual": 982.0,
-            //     "date": '25/10/2021'
-            // },
-            // {
-            //     "reference": 983.0,
-            //     "feedrate": 981.0,
-            //     "actual": 982.0,
-            //     "date": '26/10/2021'
-            // },
-            // {
-            //     "reference": 980.0,
-            //     "feedrate": 965.0,
-            //     "actual": 899.0,
-            //     "date": '27/10/2021'
-            // },
-            // {
-            //     "reference": 939.0,
-            //     "feedrate": 980.0,
-            //     "actual": 888.0,
-            //     "date": '28/10/2021'
-            // },
-            // {
-            //     "reference": 948.0,
-            //     "feedrate": 950.0,
-            //     "actual": 904.0,
-            //     "date": '29/10/2021'
-            // }, 
-            // {
-            //     "reference": 920.0,
-            //     "feedrate": 979.0,
-            //     "actual": 975.0,
-            //     "date": '12/10/2021'
-            // },
-            // {
-            //     "reference": 953.0,
-            //     "feedrate": 963.0,
-            //     "actual": 972.0,
-            //     "date": '17/10/2021'
-            // },
-            // {
-            //     "reference": 950.0,
-            //     "feedrate": 972.0,
-            //     "actual": 979.0,
-            //     "date": '20/10/2021'
-            // },
-            // {
-            //     "reference": 945.0,
-            //     "feedrate": 976.0,
-            //     "actual": 980.0,
-            //     "date": '21/10/2021'
-            // },
-            // {
-            //     "reference": 910.0,
-            //     "feedrate": 981.0,
-            //     "actual": 980.0,
-            //     "date": '22/10/2021'
-            // },
-            // {
-            //     "reference": 963.0,
-            //     "feedrate": 979.0,
-            //     "actual": 982.0,
-            //     "date": '23/10/2021'
-            // },
-            // {
-            //     "reference": 938.0,
-            //     "feedrate": 980.0,
-            //     "actual": 968.0,
-            //     "date": '24/10/2021'
-            // },
-            // {
-            //     "reference": 939.0,
-            //     "feedrate": 974.0,
-            //     "actual": 982.0,
-            //     "date": '25/10/2021'
-            // },
-            // {
-            //     "reference": 983.0,
-            //     "feedrate": 981.0,
-            //     "actual": 982.0,
-            //     "date": '26/10/2021'
-            // }
-            // ]
-
-            swinggetoverview(failData);
-        })
 }
 
 function swinggetoverview(data ,Difference_In_Days) {
@@ -222,11 +92,13 @@ function swingshowoverview(data ,Difference_In_Days ,interval) {
             gridDashType: "dot",
             gridThickness: 1,
             labelFontColor: "#d9d9d9",
+            labelFontSize: 12
         },
         axisY2: {      
             title: "Plant Load(%)",       
             gridThickness: 0,
-            labelFontColor: "#d9d9d9"
+            labelFontColor: "#d9d9d9",
+            labelFontSize: 12
         },
         data: [{
             type: "column",

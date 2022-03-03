@@ -1,17 +1,16 @@
 $(document).ready(function () {
     hdpesteamta();
     $("#hdpedrop").on('change', function () {
-        var demohdpe = $(this).find(":selected").attr('name') ;
+        var demohdpe = $(this).find(":selected").val();
         $('#hdpecharts').html(demohdpe);
         hdpesteamoverview();
-        // console.log($(this).find(":selected").val());
     });
-    $("input[name=fromHomehdpe]").on('change', function (event) {
-        // console.log($('["#hdpedrop"]:selected').val());
+    $("input[name=fromHomehdpe]").on('change', function () {
+        document.getElementById("toHomehdpe").min = $('#fromHomehdpe').val();
         hdpesteamoverview();
     });
     $("input[name=toHomehdpe]").on('change', function (event) {
-        // console.log($('["#hdpedrop"]:selected').val());
+        document.getElementById("fromHomehdpe").max = $('#toHomehdpe').val();
         hdpesteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
@@ -24,6 +23,9 @@ $(document).ready(function () {
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#toHomehdpe').val(tod.toJSON().slice(0, 19));
+    document.getElementById("toHomehdpe").min = $('#fromHomehdpe').val();
+    document.getElementById("fromHomehdpe").max = $('#toHomehdpe').val();
+
     hdpesteamoverview();
 });
 
@@ -37,55 +39,53 @@ function hdpesteamoverview() {
         headers: { 'Content-Type': 'application/json' },
         url: "http://localhost:8090/HDPE/steamgenerationgraph",
     }).done(function (data) {
-        var Difference_In_Days = data[0].showNumberIndex; 
-        hdpegetsteamoverview(data ,Difference_In_Days);
+        var Difference_In_Days = data[0].showNumberIndex;
+        hdpegetsteamoverview(data, Difference_In_Days);
     })
 }
 
 
-function hdpegetsteamoverview(data ,Difference_In_Days) {
-
+function hdpegetsteamoverview(data, Difference_In_Days) {
     var chartData = { actual: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
-        const HDPESBDate = new Date(element.date );
-        chartData.actual.push({ y: element.actual,x:HDPESBDate  });
+        const hdpeSBDate = new Date(element.date);
+        chartData.actual.push({ y: element.actual, x: hdpeSBDate });
     }
     console.log("FccuData", chartData);
     var interval = 1;
     if (!Difference_In_Days) {
-      if (count/8 > 1) {
-         interval =Math.round(count/8);
-      }else{
-        interval = 1;
-      }
-     
+        if (count / 8 > 1) {
+            interval = Math.round(count / 8);
+        } else {
+            interval = 1;
+        }
+
     }
-    showsteambalancehdpe(chartData ,Difference_In_Days, interval);
+    showsteambalancehdpe(chartData, Difference_In_Days, interval);
 }
 
-function showsteambalancehdpe(data ,Difference_In_Days, interval) {
+function showsteambalancehdpe(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("chartSteamBalancehdpe", {
         height: 225,
         theme: "dark1",
         backgroundColor: "#26293c",
         toolTip: {
             shared: true  //disable here. 
-          },
+        },
         axisX: {
             gridThickness: 0,
             tickLength: 0,
             lineThickness: 0,
-            intervalType:Difference_In_Days == true?  "hour":"day",
-            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-         //valueFormatString: "DD MMM" ,
-           title:Difference_In_Days == true?  "In hours":" In Days",
-           interval: interval,
+            intervalType: Difference_In_Days == true ? "hour" : "day",
+            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == true ? "In hours" : " In Days",
+            interval: interval,
             tickThickness: 0,
             labelFontColor: "#d9d9d9",
             labelFontSize: 15
-
         },
         axisY: {
             title: "",
@@ -96,6 +96,9 @@ function showsteambalancehdpe(data ,Difference_In_Days, interval) {
             labelFontColor: "#d9d9d9",
             labelFontSize: 15
         },
+        toolTip: {
+            shared: true
+        },
         legend: {
             cursor: "pointer",
             verticalAlign: "top",
@@ -105,8 +108,8 @@ function showsteambalancehdpe(data ,Difference_In_Days, interval) {
             type: "line",
             lineThickness: 4,
             color: "#02a6e3",
-            name: "actual",
-            markerSize: 0,   
+            name: "Actual",
+            markerSize: 0,
             //toolTipContent: "{name}: {y}",
             yValueFormatString: "0.00#",
             dataPoints: data.actual
@@ -120,21 +123,19 @@ function hdpesteamta() {
         url: "http://localhost:8090/auth/HDPE/Steambalance",
         method: "GET"
     }).done(function (data) {
-        gethdpesteamta(data);
-
-    })
-}
-function gethdpesteamta(data) {
-    getDrophdpe(data);
-    var table_data = '';
-    $.each(data, function (key, value) {
-      
-        table_data += '<tr>';
-        table_data += '<td>' + value.name + '</td>';
-        table_data += '<td class="steam-gen2">' + value.value + '</td>';
-        table_data += '</tr>';
-    });
+        getDrophdpe(data);
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.name + '</td>';
+            table_data += '<td class="steam-gen2">' + value.value + '</td>';
+            table_data += '</tr>';
+        });
+        $('#hdpe_table').append(table_data);   
     $('#hdpe_table').append(table_data);
+        $('#hdpe_table').append(table_data);   
+    })
+
 }
 function getDrophdpe(data) {
     $.each(data, function (key, value) {
