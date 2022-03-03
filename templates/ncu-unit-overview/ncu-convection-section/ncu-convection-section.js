@@ -40,85 +40,24 @@ function getSpecificNCUOverviewData() {
     $.ajax({
             method: "POST",
             data: postdata,
-            url: "http://192.168.0.131:8090/api/npruunitOverview/SECOverview",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+            },
+            url: "http://192.168.1.113:8090/NCU/ConvectionGraph",
         }).done(function(data) {
             console.log(data)
 
             formatSpecificNCUOverviewData(data);
         })
-        .fail(function() {
-            var failData = [{
-                "Reference": 950.0,
-                "FeedRate": 998.0,
-                "Actual": 975.0
-            },
-            {
-                "Reference": 953.0,
-                "FeedRate": 980.0,
-                "Actual": 972.0
-            },
-            {
-                "Reference": 966.0,
-                "FeedRate": 980.0,
-                "Actual": 979.0
-            },
-            {
-                "Reference": 974.0,
-                "FeedRate": 960.0,
-                "Actual": 980.0
-            },
-            {
-                "Reference": 910.0,
-                "FeedRate": 980.0,
-                "Actual": 980.0
-            },
-            {
-                "Reference": 963.0,
-                "FeedRate": 955.0,
-                "Actual": 982.0
-            },
-            {
-                "Reference": 938.0,
-                "FeedRate": 980.0,
-                "Actual": 984.0
-            },
-            {
-                "Reference": 939.0,
-                "FeedRate": 940.0,
-                "Actual": 982.0
-            },
-            {
-                "Reference": 983.0,
-                "FeedRate": 960.0,
-                "Actual": 982.0
-            },
-            {
-                "Reference": 980.0,
-                "FeedRate": 950.0,
-                "Actual": 899.0
-            },
-            {
-                "Reference": 900.0,
-                "FeedRate": 980.0,
-                "Actual": 888.0
-            },
-            {
-                "Reference": 948.0,
-                "FeedRate": 950.0,
-                "Actual": 904.0
-            }
-            ]
-            formatSpecificNCUOverviewData(failData);
-        })
 }
 
 function formatSpecificNCUOverviewData(data) {
-    var chartData = { FeedRate: [], Reference: [], Actual: [] };
+    var chartData = { design: [], actual: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
-        chartData.FeedRate.push({ y: element.FeedRate});
-        chartData.Reference.push({ y: element.Reference});
-        chartData.Actual.push({ y: element.Actual});
+        chartData.design.push({ y: element.design});
+        chartData.actual.push({ y: element.actual});
     }
     console.log("NCUchartdata", chartData);
     showSpecificNCUOverviewData(chartData);
@@ -160,30 +99,22 @@ function showSpecificNCUOverviewData(data) {
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
         },
-        data: [{
-                type: "column",
-                color: "#00b0f0",
-                name: " % Heat Recovery Compared to Design",
-                axisYType: "secondary",
-                toolTipContent: "{label} <br> <b>{name}:</b> {y} ",
-                dataPoints: data.FeedRate
-
-            },
+        data: [
             {
                 type: "line",
                 color: "orange",
-                name: " Avg. Temp IN",
+                name: "Desing",
                 markerSize: 0,
                 toolTipContent: "<b>{name}:{y}",
-                dataPoints: data.Actual
+                dataPoints: data.design
             },
             {
                 type: "line",
                 color: "#D945B4",
-                name: "Avg. Temp OUT ",
+                name: "Actual",
                 markerSize: 0,
                 toolTipContent: "<b>{name}:{y}",
-                dataPoints: data.Reference
+                dataPoints: data.actual
             }
 
         ]
@@ -199,11 +130,15 @@ function convectiontable(){
 
     $.ajax({
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
         data: postdata,
         url: "http://192.168.1.113:8090/NCU/ConvectionTable",
     }).done(function(data) {
         console.log(data)
-
+       // [{"value6":577.23,"value5":574.23,"value8":583.23,"value7":580.23,"value2":565.23,"value1":562.23,"kpi":"Avg. Temperature IN","value4":571.23,"value3":568.23,"equipment2":"BFP","equipment3":"LFP","equipment4":"DSSH","equipment5":"UMP","equipment1":"UFP","equipment6":"USSH","equipment7":"LSSH","equipment8":"LMP"},{"value6":578.23,"value5":575.23,"value8":584.23,"value7":581.23,"value2":566.23,"value1":563.23,"kpi":"Avg. Temperature OUT","value4":572.23,"value3":569.23,"equipment2":"BFP","equipment3":"LFP","equipment4":"DSSH","equipment5":"UMP","equipment1":"UFP","equipment6":"USSH","equipment7":"LSSH","equipment8":"LMP"},{"value6":67.0,"value5":67.0,"value8":67.0,"value7":67.0,"value2":67.0,"value1":67.0,"kpi":"% Heat Recovery(Actual/Design)","value4":67.0,"value3":67.0,"equipment2":"BFP","equipment3":"LFP","equipment4":"DSSH","equipment5":"UMP","equipment1":"UFP","equipment6":"USSH","equipment7":"LSSH","equipment8":"LMP"}]
         formatconvectiontable(data);
         svg(data)
     })
@@ -215,28 +150,27 @@ function formatconvectiontable(data){
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.kpi + '</td>';
-        table_data += '<td>' + value.UFP + '</td>';
-        table_data += '<td>' + value.BFP + '</td>';
-        table_data += '<td>' + value.LFP + '</td>';        
-        table_data += '<td>' + value.DSSH + '</td>';
-        table_data += '<td>' + value.UMP + '</td>';
-        table_data += '<td>' + value.USSH + '</td>';
-        table_data += '<td>' + value.LSSH + '</td>';
-        table_data += '<td>' + value.LMP + '</td>';
+        table_data += '<td>' + value.value1 + '</td>';
+        table_data += '<td>' + value.value2 + '</td>';
+        table_data += '<td>' + value.value3 + '</td>';        
+        table_data += '<td>' + value.value4 + '</td>';
+        table_data += '<td>' + value.value5 + '</td>';
+        table_data += '<td>' + value.value6 + '</td>';
+        table_data += '<td>' + value.value7 + '</td>';
+        table_data += '<td>' + value.value8 + '</td>';
         table_data += '</tr>';
     });
     $('#Equipment_body_ncu').append(table_data);
 }
 
 function svg(data){
-    console.log(data[2].UFP,"data[2].UFP");
-    document.getElementById("EMS_NWD_UFP_01").innerHTML = data[2].UFP;
-    document.getElementById("EMS_NWD_BFP_02").innerHTML = data[2].BFP;
-    document.getElementById("EMS_NWD_LPF_03").innerHTML = data[2].LFP;
-    document.getElementById("EMS_NWD_DSSH_04").innerHTML = data[2].DSSH;
-    document.getElementById("EMS_NWD_UMP_05").innerHTML = data[2].UMP;
-    document.getElementById("EMS_NWD_USSH_06").innerHTML = data[2].USSH;
-    document.getElementById("EMS_NWD_LSSH_07").innerHTML = data[2].LSSH;
-    document.getElementById("EMS_NWD_LMP_08").innerHTML = data[2].LMP;
+    document.getElementById("EMS_NWD_UFP_01").innerHTML = data[2].value1;
+    document.getElementById("EMS_NWD_BFP_02").innerHTML = data[2].value2;
+    document.getElementById("EMS_NWD_LPF_03").innerHTML = data[2].value3;
+    document.getElementById("EMS_NWD_DSSH_04").innerHTML = data[2].value4;
+    document.getElementById("EMS_NWD_UMP_05").innerHTML = data[2].value5;
+    document.getElementById("EMS_NWD_USSH_06").innerHTML = data[2].value6;
+    document.getElementById("EMS_NWD_LSSH_07").innerHTML = data[2].value7;
+    document.getElementById("EMS_NWD_LMP_08").innerHTML = data[2].value8;
 }
 

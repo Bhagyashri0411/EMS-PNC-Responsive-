@@ -8,24 +8,22 @@ $(document).ready(function () {
         var das_write_back = $(this).closest('tr').find('td:eq(3)').text();
         var result_tag = $(this).closest('tr').find('td:eq(4)').text();
         var Result = $(this).closest('tr').find('td:eq(5)').text();
-        var min = $(this).closest('tr').find('td:eq(6)').text();
-        var max = $(this).closest('tr').find('td:eq(7)').text();
-        var email_notification = $(this).closest('tr').find('td:eq(8)').text();
-        var decimal_point = parseInt($(this).closest('tr').find('td:eq(9)').text());
+       
+        var decimal_point = parseInt($(this).closest('tr').find('td:eq(6)').text());
         document.getElementById("alias").value = Alias;
         document.getElementById("formulaTag").value = Formula;
         document.getElementById("descriptionTag").value = Description;
         document.getElementById("result_tag").value = Result;
         document.getElementById("storeResulttag").value = das_write_back;
         document.getElementById("resultTag1").value = result_tag;
-        document.getElementById("min_tag").value = min;
-        document.getElementById("max_tag").value = max;
-        document.getElementById("email_tag").value = email_notification;
+      
         document.getElementById("decimal_tag").value = decimal_point;
         $('#updateRow').show();
     });
     $("#searchSysConfing").on("click", function () {
         var value = $("#SearchInput").val().toLowerCase();
+     
+        
         $("#bodytablesCalculatedTag tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
@@ -39,11 +37,9 @@ $(document).ready(function () {
         // var Result1 =  document.getElementById('ResultTag').value;
         var storeResulttag1 = document.getElementById('storeResulttag').value;
         var resultTag1 = document.getElementById('resultTag1').value;
-        var minTag1 = document.getElementById('min_tag').value;
-        var maxTag1 = document.getElementById('max_tag').value;
-        var EmailNotTag1 = document.getElementById('email_tag').value;
+        
         var DecimalPointTag1 = document.getElementById('decimal_tag').value;
-        var addRowValue1 = { 'alias': alias1, 'formula': Formula1, 'description': Description1, 'das_write_back': storeResulttag1, 'result_tag': resultTag1, 'min': minTag1, 'max': maxTag1, 'email_notification': EmailNotTag1, 'decimal_point': DecimalPointTag1 };
+        var addRowValue1 = { 'alias': alias1, 'formula': Formula1, 'description': Description1, 'das_write_back': storeResulttag1, 'result_tag': resultTag1,'decimal_point': DecimalPointTag1 };
         $.ajax({
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +47,7 @@ $(document).ready(function () {
             },
             type: "post",
 
-            url: "http://localhost:8090/EmsPNC/update",
+            url: "http://localhost:8080/update",
             data: JSON.stringify(addRowValue1),
             success: function (status) {
                 //  var msg1 = msg;
@@ -145,7 +141,7 @@ function getCalculatedTag() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/alldata",
+        url: "http://localhost:8090/alldata",
 
     }).done(function (data) {
         var tabledata = data;
@@ -159,11 +155,9 @@ function getCalculatedTag() {
             student += '<td>' + val['description'] + '</td>';
             student += '<td class="w4">' + val['das_write_back'] + '</td>';
             student += '<td>' + val['result_tag'] + '</td>';
-            student += '<td class="w4">' + val['result'] + '</td>';
-            student += '<td class="w4">' + val['min'] + '</td>';
-            student += '<td class="w4">' + val['max'] + '</td>';
-            student += '<td class="w4">' + val['email_notification'] + '</td>';
-            student += '<td class="w4">' + val['decimal_point'] + '</td>';
+            student += '<td class="w4" style="text-align: center;">' + val['result'] + '</td>';
+           
+            student += '<td class="w4" style="text-align: center;">' + val['decimal_point'] + '</td>';
             student += '<td><input class="editValues btn btn-primary" type="button" value="Edit"</input></td>';
             // student += '<td><input class="deleteValues btn btn-primary" type="button" name="delBox" value="Delete" /></td>';
             student += '</tr>';
@@ -184,14 +178,14 @@ function exportFunction() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/alldata",
+        url: "http://localhost:8080/alldata",
         //url:"./../../../templates/Formula-management/formula-management/csvgenerate.json",
     }).done(function (data) {
         console.log(data)
 
         const csvRows = [];
 
-        const headers = "alias,formula,description,das_write_back,result_tag,result,min,max,email_notification,decimal_point";
+        const headers = "alias,formula,description,das_write_back,result_tag,result,decimal_point";
         csvRows.push(headers);
         console.log(data, "name");
 
@@ -199,7 +193,7 @@ function exportFunction() {
 
         for (const row of data) {
             csvRows.join('\n');
-            var abc = '\n"' + row.alias + '","' + row.formula + '","' + row.description + '",' + row.das_write_back + ',"' + row.result_tag + '",' + row.result + ',' + row.min + ',' + row.max + ',' + row.email_notification + ',' + row.decimal_point;
+            var abc = '\n"' + row.alias + '","' + row.formula + '","' + row.description + '",' + row.das_write_back + ',"' + row.result_tag + '",' + row.result + ','+ row.decimal_point;
             csvRows.push(abc);
         }
 
@@ -217,7 +211,7 @@ function exportFunction() {
 }
 function sampledownload() {
     var data = [];
-    var csv = 'alias,formula,description,das_write_back,result_tag,result,min,max,email_notification,decimal_point\n';
+    var csv = 'alias,formula,description,das_write_back,result_tag,result,decimal_point\n';
     data.forEach(function (row) {
         csv += row.join(',');
         csv += "\n";
@@ -247,7 +241,7 @@ function ServiceCall() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/auth/formula/GetFormulaData",
+        url: "http://localhost:8080/auth/formula/GetFormulaData",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -264,9 +258,7 @@ function ServiceCall() {
 
             student += '<td>' + val['result_tag'] + '</td>';
             student += '<td>' + val['das_write_back'] + '</td>';
-            student += '<td>' + val['min'] + '</td>';
-            student += '<td>' + val['max'] + '</td>';
-            student += '<td>' + val['email_notification'] + '</td>';
+           
             student += '<td>' + val['decimal_point'] + '</td>';
             student += '<td><input class="editValues btn btn-primary" onclick="addRow()"  type="button" value="Edit"</input></td>';
             // student += '<td><input class="deleteValues btn btn-primary" type="button" name="delBox" value="Delete" /></td>';
@@ -292,7 +284,7 @@ $("#datatablesCalculatedTag").on('click', '.deleteValues', function () {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "http://localhost:8090/EmsPNC/delete",
+        url: "http://localhost:8080/delete",
         data: JSON.stringify(aliasValue),
         success: function (msg) {
             var msg1 = msg;
@@ -315,13 +307,10 @@ function addNewData() {
     // var Result =  document.getElementById('ResultAdd').value;
     var resultTag = document.getElementById('resultTagAdd').value;
     var storeResulttag = document.getElementById('storeResulttagAdd').value;
-    var minResulttag = document.getElementById('min_tagAdd').value;
-    var maxResulttag = document.getElementById('max_tagAdd').value;
-    var emailnottag = document.getElementById('email_tagAdd').value;
     var decimalpointtag = document.getElementById('decimal_tagAdd').value;
 
 
-    var addRowValue = { 'alias': alias, 'formula': Formula, 'description': Description, 'result_tag': resultTag, 'das_write_back': storeResulttag, 'min': minResulttag, 'max': maxResulttag, 'email_notification': emailnottag, 'decimal_point': decimalpointtag };
+    var addRowValue = { 'alias': alias, 'formula': Formula, 'description': Description, 'result_tag': resultTag, 'das_write_back': storeResulttag, 'decimal_point': decimalpointtag };
     $.ajax({
         headers: {
             "Content-Type": "application/json",
@@ -331,7 +320,7 @@ function addNewData() {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "http://localhost:8090/EmsPNC/insert",
+        url: "http://localhost:8080/insert",
         data: JSON.stringify(addRowValue),
         success: function (status) {
             //  var msg1 = msg;
@@ -410,7 +399,7 @@ function addNewData() {
     //             headers: {
     //                 'Content-Type': 'application/json'
     //             },
-    //             url: "http://localhost:8090/EmsPNC/insert",
+    //             url: "http://localhost:8080/insert",
     //             data:JSON.stringify(addRowValue),
     //             success: function (msg) {
     //                  var msg1 = msg;
@@ -466,7 +455,7 @@ for (var i = 0; i < files.length; i++) {
   }
   
 var xhr = new XMLHttpRequest();
-xhr.open('POST', 'http://localhost:8090/EmsPNC/upload-csv-fileformula', true);
+xhr.open('POST', 'http://localhost:8080/upload-csv-fileformula', true);
 xhr.onload = function (status) {
     if (status == 'Success') {
       uploadButton.innerHTML = 'Upload';

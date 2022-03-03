@@ -21,124 +21,98 @@ $(document).ready(function () {
 function hdpeloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
+        url: "http://192.168.1.107:8090/auth/HDPE/specificenergyConsumption",
         // url: "http://192.168.1.106:8090/home/speedometer",
-    }).done(function (gaugevalue) {
-        hdpeGaugeChartvalue(gaugevalue);
-        console.log(gaugevalue)
-    });
-}
-
-function hdpeGaugeChartvalue(gaugevalue) {
-    ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
-    var myConfig12 = {
-        "type": "gauge",
-        "height": "19%",
-        "width": "60%",
-        "x": "20%",
-        "backgroundColor": "#26293c",
-        "scale": {
-            "size-factor": "250%", //Modify your gauge chart size.
-            offsetY: '10px'
-        },
-        plotarea: {
-            padding: '10 0 0 0'
-        },
-        "scale-r": {
-            "aperture": 180,
-            "values": "0:100:0",
-            item: {
-                'font-color': "#bfbfbf",
-                'offset-r': -10,
-                'font-size': 10,
+    }).done(function (data) {
+        ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
+        var myConfig12 = {
+            "type": "gauge",
+            "height": "19%",
+            "width": "60%",
+            "x": "20%",
+            "backgroundColor": "#26293c",
+            "scale": {
+                "size-factor": "250%", //Modify your gauge chart size.
+                offsetY: '10px'
             },
-            "center": {
-                "size": 4,
-                "background-color": "transparent",
-                "border-color": "none"
+            plotarea: {
+                padding: '10 0 0 0'
             },
-            "ring": {
-                "size": 24,
-                "rules": [{
-                    "rule": "%v >= 0 && %v <= 10",
-                    "background-color": "#02b04f"
+            "scale-r": {
+                "aperture": 180,
+                "values": "0:100:0",
+                item: {
+                    'font-color': "#bfbfbf",
+                    'offset-r': -10,
+                    'font-size': 10,
                 },
-
-                {
-                    "rule": "%v >= 11 && %v <= 30",
-                    "background-color": "#ffc000"
+                "center": {
+                    "size": 4,
+                    "background-color": "transparent",
+                    "border-color": "none"
                 },
-
-                {
-                    "rule": "%v >= 31 && %v <=100",
-                    "background-color": "#ff0000"
+                "ring": {
+                    "size": 24,
+                    "rules": [{
+                        "rule": "%v >= 0 && %v <= 10",
+                        "background-color": "#02b04f"
+                    },
+    
+                    {
+                        "rule": "%v >= 11 && %v <= 30",
+                        "background-color": "#ffc000"
+                    },
+    
+                    {
+                        "rule": "%v >= 31 && %v <=100",
+                        "background-color": "#ff0000"
+                    }
+                    ]
+                },
+                "guide": {
+                    "alpha": 0.8
                 }
-                ]
             },
-            "guide": {
-                "alpha": 0.8
-            }
-        },
-        "plot": {
-            "csize": "3%",
-            "size": "100%",
-            "background-color": "black"
-        },
-        "series": [{
-            "background-color": "black",
-            "values": gaugevalue.TagValue,
-        }]
-    };
-
-    setTimeout(() => {
-        zingchart.render({
-            id: 'hdpe-zingChart',
-            data: myConfig12
-        });
-    }, 100);
+            "plot": {
+                "csize": "3%",
+                "size": "100%",
+                "background-color": "black"
+            },
+            "series": [{
+                "background-color": "black",
+                "values": data.TagValue,
+            }] 
+        };
+    
+        setTimeout(() => {
+            zingchart.render({
+                id: 'hdpe-zingChart',
+                data: myConfig12
+            });
+        }, 100);
+    });
 }
 
 function hdpeGaugeChart() {
     $.ajax({
         type: "GET",
-        // url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
-        url: "http://192.168.1.119:8090/auth/HDPE/specificenergyConsumption",
-    }).done(function (gaugevalue) {
-        hdpeGaugeChartvalue(gaugevalue);
-        guagevaluehdpeAct()
+        url: "http://192.168.1.107:8090/auth/HDPE/specificenergyConsumption",
+    }).done(function (data) {
+        document.getElementById("devhdpe").innerHTML = data.deviation + "%";
+        document.getElementById("acthdpe").innerHTML = data.actual;
+        document.getElementById("opthdpe").innerHTML = data.reference;
         
     });
-}
-function guagevaluehdpeAct() {
-    $.ajax({
-        method: "GET",
-        url: "http://localhost:8090/EmsPNC/fccu/specificenergyConsumption",
-        // url: 'http://localhost:8090/EmsPNC/auth/HDPE/specificenergyConsumption',
-
-    }).done(function (data) {
-    document.getElementById("devhdpe").innerHTML = data.deviation + "%";
-    document.getElementById("acthdpe").innerHTML = data.actual;
-    document.getElementById("opthdpe").innerHTML = data.reference;
-    });
-
 }
 
 function hdpebreakOverview() {
     $.ajax({
-        url: "http://192.168.1.119:8090/auth/HDPE/SECSteamTabledata",
+        url: "http://192.168.1.107:8090/auth/HDPE/SECSteamTabledata",
         method: "GET"
     }).done(function (data) {
         gethdpebreakOverview(data);
     })
-        .fail(function () {
-            var failData = [{ breakUp: "HP", percent: "XX", TtProduct: "XX" },
-            { breakUp: "MHP", percent: "XX", TtProduct: "XX" },
-            { breakUp: "MP", percent: "XX", TtProduct: "XX" },
-            { breakUp: "LP", percent: "XX", TtProduct: "XX" }
-            ]
-
-            gethdpebreakOverview(failData);
-        })
+       
 }
 
 function gethdpebreakOverview(data) {
@@ -156,7 +130,7 @@ function gethdpebreakOverview(data) {
 
 function shdpebreakOverview() {
     $.ajax({
-        url: "http://192.168.1.119:8090/auth/HDPE/SECSteam",
+        url: "http://192.168.1.107:8090/auth/HDPE/SECSteam",
         method: "GET"
     }).done(function (data) {
         console.log(data,);
@@ -180,21 +154,11 @@ function getshdpebreakOverview(data) {
 
 function hdpeOverview() {
     $.ajax({
-        url: "http://192.168.1.119:8090/auth/HDPE/parameterhdpe",
+        url: "http://192.168.1.107:8090/auth/HDPE/parameterhdpe",
         method: "GET"
     }).done(function (data) {
         gethdpeOverview(data);
     })
-        // .fail(function () {
-        //     var failData = [{ parameter: "S4 Selectivity", UOM: "-", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "CO2 Production", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "EOE", UOM: "T/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "Total Electricity Consumption", UOM: "MWh", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     { parameter: "GHG Emission (tCO2e)", UOM: "Ton/hr", Reference: "xx", Actual: "xx", Deviation: "xx" },
-        //     ]
-
-        //     gethdpeOverview(failData);
-        // })
 }
 
 function gethdpeOverview(data) {
@@ -215,7 +179,7 @@ function gethdpeOverview(data) {
 
 function cardhdpe1() {
     $.ajax({
-        url: 'http://192.168.1.119:8090/auth/HDPE/SECElectricity',
+        url: 'http://192.168.1.107:8090/auth/HDPE/SECElectricity',
         method: "GET"
     }).done(function (data) {
         getcardhdpe1(data)
@@ -265,18 +229,15 @@ function getDoughnuthdpe() {
 
 }
 function loadDoughnutHoriCharthdpe1(energyConsumed) {
-    // console.log(energyConsumed)
     CanvasJS.addColorSet("greenShades", [
-        "#ffa600",    //yellow
-        "#00aa7e",  //green
-        // "#005374"   //blue
+        "#ffa600",  
+        "#00aa7e",
     ]);
     var dataPoints = [];
     var chart = new CanvasJS.Chart("titles-hdpe", {
 
         colorSet: "greenShades",
         height: 120,
-        // width: 160,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
@@ -301,7 +262,6 @@ function loadDoughnutHoriCharthdpe1(energyConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 100,
             dataPoints: [
-                // { y: energyConsumed.fuel, name: "Fuel", indexLabel: ((energyConsumed.fuel / energyConsumed.total) * 100).toFixed(2) + "% " },
                 { y: energyConsumed.steam, name: "Steam", indexLabel: ((energyConsumed.steam / energyConsumed.total) * 100).toFixed(2) + "% " },
                 { y: energyConsumed.electicity, name: "Electricity", indexLabel: ((energyConsumed.electicity / energyConsumed.total) * 100).toFixed(2) + "% " }
             ]
