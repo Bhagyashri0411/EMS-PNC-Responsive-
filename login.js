@@ -22,7 +22,7 @@ function loginClick() {
     //             sessionStorage.setItem("token", res.accessToken);
     //             sessionStorage.setItem("username", res.username);
     //             sessionStorage.setItem("roles", res.roles[0]);
-    //          $(location).attr('href', "tps-overview.html");
+    //          $(location).attr('href', "cpp-overview.html");
     //         }
     //     },
     //     error: function() {
