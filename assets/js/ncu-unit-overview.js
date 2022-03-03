@@ -23,16 +23,13 @@ $(document).ready(function () {
 console.log(abc ,"nvnvbvbv");
 });
 
-function totalThroughput(data) {
+function totalThroughput() {
     $.ajax({
-        url: 'http://192.168.1.106:8090/EmsPNC/ncu/feedratePlantload',
+        url: 'http://192.168.1.109:8090/ncu/feedratePlantload',
         method: "GET"
     }).done(function (data) {
-
-
-        document.getElementById("totalThroughput").innerHTML = data.feedrate;
-        document.getElementById("Power").innerHTML = data.plantload;
-
+        document.getElementById("feedrate").innerHTML = data.feedrate;
+        document.getElementById("plantload").innerHTML = data.plantload;
     });
 
 

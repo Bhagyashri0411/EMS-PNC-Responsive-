@@ -35,7 +35,7 @@ $(document).ready(function () {
 function getEquOverFCCUData() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/DHDSchart",
+        url: "http://192.168.1.109:8090:8090/EmsPNC/EquipmentOverview/DHDSchart",
 
     }).done(function (data) {
 
@@ -115,25 +115,6 @@ function loadcolumnequ(data) {
     chart.render();
 }
 
-// function tablehgu() {
-//     $.ajax({
-//         url: "http://192.168.1.107:8090/EquipmentOverview/ncutable",
-//         method: "GET"
-
-//     }).done(function (data) {
-//         gettablehgu(data);
-//     })
-//         .fail(function () {
-//             var newdata = [{ "uom": "%", "value1": 653.0, "value2": 653.0, "kpi": "Loading ", "equipment1": "FF-201" },
-//             { "uom": "MT/hr", "value1": 345.0, "value2": 653.0, "kpi": "Fuel consumed" },
-//             { "uom": "Gcal/hr", "value1": 642.0, "value2": 653.0, "kpi": "Duty Fired" },
-//             { "uom": "%", "value1": 642.0, "value2": 653.0, "kpi": "Stack O2" },
-//             { "uom": "°C", "value1": 642.0, "value2": 653.0, "kpi": "Stack Temp" }
-//             ]
-//             gettablehgu(newdata);
-//         })
-// }
-
 var globledatavariable1;
 function posttableequipment() {
     var selectdata = { 'name': $('#kpiTablencu option:selected').val() }
@@ -149,7 +130,7 @@ function posttableequipment() {
         method: "POST",
         data: JSON.stringify(selectdata),
 
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/DHDStable",
+        url: "http://192.168.1.109:8090:8090/EmsPNC/EquipmentOverview/DHDStable",
     }).done(function (data) {
         console.log(data[0].equipment1, "jjjjjjjjjjj");
         globledatavariable1 = data[0].equipment1;
@@ -197,7 +178,7 @@ function getSpecificEquipmentOverviewDataNCU() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/DHDSgraph",
+        url: "http://192.168.1.109:8090:8090/ncu/fccugraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

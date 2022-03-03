@@ -21,7 +21,7 @@ $(document).ready(function () {
 function hdpeloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.107:8090/auth/HDPE/specificenergyConsumption",
+        url: "http://192.168.1.109:8090/auth/HDPE/specificenergyConsumption",
         // url: "http://192.168.1.106:8090/home/speedometer",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
@@ -96,7 +96,7 @@ function hdpeloadGaugeChart() {
 function hdpeGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.107:8090/auth/HDPE/specificenergyConsumption",
+        url: "http://192.168.1.109:8090/auth/HDPE/specificenergyConsumption",
     }).done(function (data) {
         document.getElementById("devhdpe").innerHTML = data.deviation + "%";
         document.getElementById("acthdpe").innerHTML = data.actual;
@@ -107,7 +107,7 @@ function hdpeGaugeChart() {
 
 function hdpebreakOverview() {
     $.ajax({
-        url: "http://192.168.1.107:8090/auth/HDPE/SECSteamTabledata",
+        url: "http://192.168.1.109:8090/auth/HDPE/SECSteamTabledata",
         method: "GET"
     }).done(function (data) {
         gethdpebreakOverview(data);
@@ -130,7 +130,7 @@ function gethdpebreakOverview(data) {
 
 function shdpebreakOverview() {
     $.ajax({
-        url: "http://192.168.1.107:8090/auth/HDPE/SECSteam",
+        url: "http://192.168.1.109:8090/auth/HDPE/SECSteam",
         method: "GET"
     }).done(function (data) {
         console.log(data,);
@@ -154,7 +154,7 @@ function getshdpebreakOverview(data) {
 
 function hdpeOverview() {
     $.ajax({
-        url: "http://192.168.1.107:8090/auth/HDPE/parameterhdpe",
+        url: "http://192.168.1.109:8090/auth/HDPE/parameterhdpe",
         method: "GET"
     }).done(function (data) {
         gethdpeOverview(data);
@@ -179,7 +179,7 @@ function gethdpeOverview(data) {
 
 function cardhdpe1() {
     $.ajax({
-        url: 'http://192.168.1.107:8090/auth/HDPE/SECElectricity',
+        url: 'http://192.168.1.109:8090/auth/HDPE/SECElectricity',
         method: "GET"
     }).done(function (data) {
         getcardhdpe1(data)
@@ -218,7 +218,7 @@ function getDoughnuthdpe() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.119:8090/auth/HDPE/FCCUDoughnut",
+        url: "http://192.168.1.109:8090/auth/HDPE/HDPEDoughnut",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
             console.log(energyConsumed);
