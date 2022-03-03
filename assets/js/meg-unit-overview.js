@@ -22,25 +22,11 @@ $(document).ready(function () {
     const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
     document.getElementById("megTimeStamp").innerHTML = setdate;
 });
-
-// function lastupdatedTime() {
-//     var today = new Date();
-
-//     var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
-
-//     var time = today.getHours() + ":" + today.getMinutes();
-
-//     var dateTime = date + ' ' + time;
-//     document.getElementById("megTimeStamp").innerHTML = dateTime;
-
-// }
 function totalThroughput() {
     $.ajax({
-        url: 'http://localhost:8090/MEG/feedratePlantload',
+        url: 'http://192.168.1.109:8090/MEG/feedratePlantload',
         method: "GET"
     }).done(function (data) {
-
-
         document.getElementById("totalThroughput").innerHTML = data.feedrate;
         document.getElementById("Power").innerHTML = data.plantload;
 

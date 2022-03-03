@@ -35,15 +35,12 @@ function swingsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.107:8090/SWINGsbo/steambalanceoverviewgraph",
+        url: "http://192.168.1.109:8090/SWINGsbo/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;        
         swinggetsteamoverview(data ,Difference_In_Days);
-    })
-
-      
+    })      
 }
-
 
 function swinggetsteamoverview(data ,Difference_In_Days) {
 
@@ -119,45 +116,10 @@ function showSteambalancefccu(data ,Difference_In_Days, interval) {
 
 function swingsteamta() {
     $.ajax({
-        url: "http://192.168.1.107:8090/SWINGsbo/SteambalanceTable",
+        url: "http://192.168.1.109:8090/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
-        getgenerationandconsumer(data);
-
-    })
-        .fail(function () {
-            var failData = []
-            //     {
-            //         "name": "HP Steam Import",
-            //         "value": "3200"
-            //     },
-            //     {
-            //         "name": "LP Steam Generation",
-            //         "value": "1800"
-            //     },
-            //     {
-            //         "name": "LP Steam export",
-            //         "value": "150"
-            //     },
-            //     {
-            //         "name": "LP Steam Consumption",
-            //         "value": "1800"
-            //     },
-            //     {
-            //         "name": "LP Steam export",
-            //         "value": "150"
-            //     },
-            //     {
-            //         "name": "Imbalance",
-            //         "value": "150"
-            //     }
-            // ]
-            getgenerationandconsumer(failData);
-        })
-}
-// })
-function getgenerationandconsumer(data) {
-    var table_data = '';
+        var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.GeneratorsConsumers + '</td>';
@@ -165,6 +127,6 @@ function getgenerationandconsumer(data) {
         table_data += '</tr>';
     });
     $('#swing_table').append(table_data);
-    // });
+    })
 }
 

@@ -100,7 +100,8 @@
 
 #pp-horizontal-tiles .footer-deviation .deviation .count,
 #pp-horizontal-tiles .footer-deviation .actual .count {
-   font-size: 0.7vw;
+   font-size: 0.9vw;
+   display: inline-flex;
     color: #f2f2f2;
 }
 

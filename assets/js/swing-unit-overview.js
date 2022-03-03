@@ -23,28 +23,13 @@ $(document).ready(function () {
     document.getElementById("swingTimeStamp").innerHTML = setdate;
 });
 
-// function lastupdatedTime(data) {
-
-//     var today = new Date();
-
-//     var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear()
-
-//     var time = today.getHours() + ":" + today.getMinutes();
-
-//     var dateTime = date + ' ' + time;
-//     document.getElementById("swingTimeStamp").innerHTML = dateTime;
-
-
-// }
-function totalThroughput(data) {
+function totalThroughput() {
     $.ajax({
+        url: "http://192.168.1.109:8090/SWING/feedratePlantload",
         method: "GET"
     }).done(function (data) {
-
-
         document.getElementById("totalThroughput").innerHTML = data.feedrate;
         document.getElementById("Power").innerHTML = data.plantload;
-
     });
 
 
