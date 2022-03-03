@@ -18,7 +18,7 @@ $(document).ready(function () {
 function pploadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.107:8090/pp/specificenergyConsumption",
+        url: "http://192.168.1.109:8090/pp/specificenergyConsumption",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
@@ -92,7 +92,7 @@ function pploadGaugeChart() {
 function ppGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.107:8090/pp/specificenergyConsumption",
+        url: "http://192.168.1.109:8090/pp/specificenergyConsumption",
     }).done(function (data) {
         document.getElementById("devpp").innerHTML = data.deviation + "%";
         document.getElementById("actpp").innerHTML = data.actual;
@@ -101,7 +101,7 @@ function ppGaugeChart() {
 }
 function cardpp1() {
     $.ajax({
-        url: 'http://192.168.1.107:8090/pp/secsteamcart',
+        url: 'http://192.168.1.109:8090/pp/secsteamcart',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp1").innerHTML = data.tagvalue;
@@ -128,7 +128,7 @@ function cardpp1() {
 }
 function cardpp2() {
     $.ajax({
-        url: 'http://192.168.1.107:8090/pp/secelectricitycart',
+        url: 'http://192.168.1.109:8090/pp/secelectricitycart',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp2").innerHTML = data.tagvalue;
@@ -155,7 +155,7 @@ function cardpp2() {
 }
 function cardpp3() {
     $.ajax({
-        url: 'http://192.168.1.107:8090/pp/totalelectricityConsumption',
+        url: 'http://192.168.1.109:8090/pp/totalelectricityConsumption',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp3").innerHTML = data.totalelectricityConsumption;
@@ -163,7 +163,7 @@ function cardpp3() {
 }
 function cardpp4() {
     $.ajax({
-        url: 'http://192.168.1.107:8090/pp/totalelectricityConsumptionSHPEquivalent',
+        url: 'http://192.168.1.109:8090/pp/totalelectricityConsumptionSHPEquivalent',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp4").innerHTML = data.totalelectricityConsumptionshp;
@@ -174,66 +174,63 @@ function getDoughnutpp() {
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.107:8090/PP/PPDoughnut",
-    }).done(function (data) {
-        showDoughnutpp(data);
+        url: "http://192.168.1.109:8090/pp/PPDoughnut",
     })
-    .fail(function(){
-        faildata = {
-            "total":100, "steam":50,"electricity":50
-        }
-    })
+    .done(function (data) {
+        var energyConsumed = data[0].energyConsumed;
+        console.log(energyConsumed);
 
+        loadDoughnutChartpp(energyConsumed);
+
+    })
+    
 }
-function showDoughnutpp(data){
+function loadDoughnutChartpp(energyConsumed) {
+    // console.log(energyConsumed)
     CanvasJS.addColorSet("greenShades", [
         "#ffa600",
-        "#00aa7e"
+        "#00aa7e",
+        "#005374"
     ]);
     var dataPoints = [];
     var chart = new CanvasJS.Chart("titles-pp", {
 
         colorSet: "greenShades",
-        // height: 130,
-        // width: 190,
+        height: 120,
         theme: "dark1",
         backgroundColor: "#26293c",
-
         title: {
-            text: data.total,
+            text: energyConsumed.total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
-            fontWeight: 700,
-            fontColor: "#f2f2f2",
+            fontWeight: 500,
+            fontColor: "#f2f1e7",
             fontFamily: "Bahnschrift Light"
         },
-        legend: {
-            horizontalAlign: "right",
-            verticalAlign: "center", // "top" , "bottom"
-            fontSize: 15,
-        },
+
         axisY: {
             title: "Units",
             titleFontSize: 24,
             includeZero: true
+
         },
-        legend: {
-            verticalAlign: "bottom",
-            horizontalAlign: "center"
-        },
+
         data: [{
             type: "doughnut",
-            showInLegend: false,
             yValueFormatString: "0.00#",
             indexLabelPlacement: "outside",
-            startAngle: 120,
+            startAngle: 100,
             dataPoints: [
-                // { y: data.fuel, name: "Fuel" },
-                { y: data.steam, name: "Steam",indexLabel: ((data.steam / data.total) * 100).toFixed(2) + "% "  },
-                { y: data.electricity, name: "Electricity", name: "Steam", indexLabel: ((data.electricity / data.total) * 100).toFixed(2) + "% "  }
+                // { y: energyConsumed.fuel, name: "Fuel", indexLabel: ((energyConsumed.fuel / energyConsumed.total) * 100).toFixed(2) + "% " },
+                { y: energyConsumed.steam, name: "Steam", indexLabel: ((energyConsumed.steam / energyConsumed.total) * 100).toFixed(2) + "% " },
+                { y: energyConsumed.electicity, name: "Electricity", indexLabel: ((energyConsumed.electicity / energyConsumed.total) * 100).toFixed(2) + "% " }
             ]
         }]
     });

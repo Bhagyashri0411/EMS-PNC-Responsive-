@@ -15,7 +15,7 @@
 
 .steam-balance-overview-pp  td
  {
-    border-bottom: 1pp solid #b2b2b9;
+    border-bottom: 1px solid #b2b2b9;
     font-size: 1vw;
     padding: 0.5vw;
 }

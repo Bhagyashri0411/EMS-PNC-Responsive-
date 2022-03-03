@@ -35,7 +35,7 @@ function ncusteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },        
-        url: "",
+        url: "http://192.168.1.125:8090/ncusteam/steamgenerationgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;  
         ncugetsteamoverview(data ,Difference_In_Days);
@@ -144,7 +144,7 @@ function showsteambalancencu(data ,Difference_In_Days, interval) {
 
 function ncusteamta() {
     $.ajax({
-        url: "http://192.168.1.107:8090/ncu/Steambalance",
+        url: "http://192.168.1.109:8090/ncu/Steambalance",
         method: "GET"
     }).done(function (data) {
         getncusteamta(data);
