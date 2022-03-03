@@ -121,6 +121,7 @@ function generationandconsumer() {
         url: "http://localhost:8090/ppsteam/Steambalance",
         method: "GET"
     }).done(function(data) {
+        getDroppp(data);
         var table_data = '';
         $.each(data, function(key, value) {
             table_data += '<tr>';
@@ -130,4 +131,14 @@ function generationandconsumer() {
         });
         $('#pp_table').append(table_data);
     });
+}
+function getDroppp(data) {
+    $.each(data, function (key, value) {
+        $('#ppdrop').append(`<option value="${value.name}">
+                                           ${value.name}
+                                      </option>`);
+    });
+    var demogen1 = $("#ppdrop option:selected").val();
+    $('#ppCharts').html(demogen1);
+    getSteamBalanceOverviewPP();
 }

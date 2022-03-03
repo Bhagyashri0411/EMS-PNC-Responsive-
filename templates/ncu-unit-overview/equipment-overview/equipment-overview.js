@@ -154,7 +154,7 @@ function tableNcuPostMapping(data) {
     var tabledata = data;
     var assignTable1;
 
-    if (tabledata[0].equipment1 == 'STACK_O2') {
+    if (tabledata[0].equipment1 == 'FUEL_CONSUMED_(MT/HR)') {
         assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>H100</th><th>H200</th><th>H300</th><th>H400</th><th>H500</th><th>H600</th><th>H700</th></tr>';
     }
     
@@ -170,7 +170,7 @@ function tableNcuPostMapping(data) {
     //var index = 1;
     for (let i = 0; i < tabledata.length; i++) {
         var val = tabledata[i];
-        if (tabledata[0].equipment1 == 'STACK_O2') {
+        if (tabledata[0].equipment1 == 'FUEL_CONSUMED_(MT/HR)') {
             assignTable += '<td>' + val['kpi'] + '</td>';
             assignTable += '<td>' + val['uom'] + '</td>';
             assignTable += '<td>' + val['value1'] + '</td>';

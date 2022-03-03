@@ -119,8 +119,10 @@ function swingsteamta() {
         url: "http://localhost:8090/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
+        getDropswing(data) ;
         var table_data = '';
     $.each(data, function (key, value) {
+       
         table_data += '<tr>';
         table_data += '<td>' + value.GeneratorsConsumers + '</td>';
         table_data += '<td class="steam-gen2">' + value.TPH + '</td>';
@@ -129,4 +131,13 @@ function swingsteamta() {
     $('#swing_table').append(table_data);
     })
 }
-
+function getDropswing(data) {
+    $.each(data, function (key, value) {
+        $('#swingdrop').append(`<option value="${value.GeneratorsConsumers}">
+                                           ${value.GeneratorsConsumers}
+                                      </option>`);
+    });
+    var demogen1 = $("#swingdrop option:selected").val();
+    $('#swingcharts').html(demogen1);
+    swingsteamoverview();
+}

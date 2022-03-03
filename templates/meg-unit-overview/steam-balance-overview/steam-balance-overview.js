@@ -157,12 +157,24 @@ function megsteamta() {
    
 }
 function getmegsteamta(data) {
+    getDropmeg(data);
     var table_data = '';
     $.each(data, function (key, value) {
+     
         table_data += '<tr>';
         table_data += '<td>' + value.GeneratorsConsumers + '</td>';
         table_data += '<td class="steam-gen2">' + value.TPH + '</td>';
         table_data += '</tr>';
     });
     $('#meg_table').append(table_data);
+}
+function getDropmeg(data) {
+    $.each(data, function (key, value) {
+        $('#megdrop').append(`<option value="${value.GeneratorsConsumers}">
+                                           ${value.GeneratorsConsumers}
+                                      </option>`);
+    });
+    var demogen1 = $("#megdrop option:selected").val();
+    $('#megcharts').html(demogen1);
+    megsteamoverview();
 }

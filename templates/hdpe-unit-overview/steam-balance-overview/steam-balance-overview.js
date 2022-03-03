@@ -125,12 +125,24 @@ function hdpesteamta() {
     })
 }
 function gethdpesteamta(data) {
+    getDrophdpe(data);
     var table_data = '';
     $.each(data, function (key, value) {
+      
         table_data += '<tr>';
         table_data += '<td>' + value.name + '</td>';
         table_data += '<td class="steam-gen2">' + value.value + '</td>';
         table_data += '</tr>';
     });
     $('#hdpe_table').append(table_data);
+}
+function getDrophdpe(data) {
+    $.each(data, function (key, value) {
+        $('#hdpedrop').append(`<option value="${value.name}">
+                                           ${value.name}
+                                      </option>`);
+    });
+    var demogen1 = $("#hdpedrop option:selected").val();
+    $('#hdpecharts').html(demogen1);
+    hdpesteamoverview();
 }
