@@ -3,21 +3,25 @@
     border-radius: 10px;
     padding: 10px 6px;
 }
-#hdpe-horizontal-tiles .unit-pro{
- font-size: 0.7vw; 
- color: #d9d9d9;
- text-align: center;
- } 
+
+#hdpe-horizontal-tiles .unit-pro {
+    font-size: 0.7vw;
+    color: #d9d9d9;
+    text-align: center;
+}
+
 #hdpe-horizontal-tiles .card .title {
     font-size: 1vw;
     font-weight: normal;
     color: #d9d9d9;
     text-align: center;
 }
+
 #hdpe-horizontal-tiles .footer-deviation .deviation .label {
     font-size: 0.9vw;
     padding: 0;
 }
+
 #hdpe-horizontal-tiles .card .body .count {
     text-align: center;
     font-size: 3vw;
@@ -27,6 +31,7 @@
     padding-top: 2.5vw;
     padding-bottom: 2.5vw;
 }
+
 #hdpe-horizontal-tiles .card .footer .ref {
     color: #d9d9d9;
     font-size: 0.8vw;
@@ -34,7 +39,8 @@
     display: inline-block;
     /* padding: 5px 0px; */
 }
-#hdpe-horizontal-tiles #ref-hdpe1{
+
+#hdpe-horizontal-tiles #ref-hdpe1 {
     color: #f2f2f2;
 }
 
@@ -56,7 +62,7 @@
 }
 
 
-#hdpe-horizontal-tiles  .main-title {
+#hdpe-horizontal-tiles .main-title {
     font-size: 0.9vw;
     text-align: center;
     color: #d9d9d9;
@@ -76,15 +82,15 @@
 #hdpe-horizontal-tiles .footer-deviation .actual .label {
     font-weight: normal;
     color: #d9d9d9;
-     font-size: 0.9vw;
-     padding: 0;
+    font-size: 0.9vw;
+    padding: 0;
 
 }
 
- #hdpe-horizontal-tiles .footer-deviation .deviation .label {
+#hdpe-horizontal-tiles .footer-deviation .deviation .label {
     font-size: 1vw;
     padding: 0;
-} 
+}
 
 #hdpe-horizontal-tiles .footer-deviation .actual .label {
     padding: 0;
@@ -95,8 +101,8 @@
 #hdpe-horizontal-tiles .footer-deviation .actual .count {
     /* font-weight: bold; */
     color: #f2f2f2;
-    font-size: 0.6vw;
-margin-top: 0.3vw;
+    font-size: 0.9vw;
+    display: inline-flex;
 }
 
 
@@ -140,6 +146,7 @@ margin-top: 0.3vw;
     font-family: Yu Gothic UI;
     line-height: 1.12;
 }
+
 #hdpe-horizontal-tiles th {
     text-align: left;
     padding: 0.5vw;
@@ -149,6 +156,7 @@ margin-top: 0.3vw;
     top: 0;
     position: sticky;
 }
+
 #hdpe-horizontal-tiles td {
     border-bottom: 0.1vw solid #8d8b96;
     text-align: end;
@@ -156,33 +164,38 @@ margin-top: 0.3vw;
     color: #f2f2f2;
     font-size: 1vw;
 }
-#hdpe-horizontal-tiles td:nth-child(1){
+
+#hdpe-horizontal-tiles td:nth-child(1) {
     color: #d9d9d9;
     text-align: start;
 }
-#hdpe-horizontal-tiles tbody#Parameter_table td:nth-child(2){
+
+#hdpe-horizontal-tiles tbody#Parameter_table td:nth-child(2) {
     color: #d9d9d9;
 }
-#hdpe-horizontal-tiles table.shptable td:nth-child(2){
+
+#hdpe-horizontal-tiles table.shptable td:nth-child(2) {
     color: #d9d9d9;
 }
+
 #hdpe-horizontal-tiles #hdpetable {
     line-height: 1.30;
 }
 
-#hdpe-horizontal-tiles table.shptable td:nth-child(2){
-   text-align: center;
+#hdpe-horizontal-tiles table.shptable td:nth-child(2) {
+    text-align: center;
 }
 
-#hdpe-horizontal-tiles table.shptable td{
- padding: 0.2vw;
- }
+#hdpe-horizontal-tiles table.shptable td {
+    padding: 0.2vw;
+}
 
 
- #hdpe-horizontal-tiles input[type=radio]{
+#hdpe-horizontal-tiles input[type=radio] {
     height: 0.7vw;
     /* margin: 0.2vw 0.5vw; */
 }
+
 #hdpe-horizontal-tiles .lebel-style {
     display: inline-block;
     font-size: 0.8vw;
@@ -191,21 +204,24 @@ margin-top: 0.3vw;
     font-weight: 100;
 }
 
-#hdpe-horizontal-tiles .percents{
+#hdpe-horizontal-tiles .percents {
     text-align: center;
 }
-#hdpe-horizontal-tiles table th:nth-child(3){
+
+#hdpe-horizontal-tiles table th:nth-child(3) {
     text-align: end;
 }
 
 #hdpe-horizontal-tiles table tr:last-child td {
     border-bottom: 0;
-} 
-#hdpe-horizontal-tiles .col{
+}
+
+#hdpe-horizontal-tiles .col {
     padding: 1px;
     height: 6.3vw;
 }
-#hdpe-horizontal-tiles .footer{
+
+#hdpe-horizontal-tiles .footer {
     padding: 0.1vw;
 }
 
@@ -246,15 +262,18 @@ margin-top: 0.3vw;
 }
 
 #hdpe-horizontal-tiles ::-webkit-scrollbar-thumb:hover {
-    background:#8d8a95;
+    background: #8d8a95;
 }
+
 /* add css */
 #hdpe-horizontal-tiles .gap1 {
     padding-top: 0.3vw;
 }
+
 #hdpe-horizontal-tiles .card .body .donut1 {
     height: 7.4vw;
 }
-#hdpe-horizontal-tiles .footer-deviation{
+
+#hdpe-horizontal-tiles .footer-deviation {
     padding: 0.3vw;
 }

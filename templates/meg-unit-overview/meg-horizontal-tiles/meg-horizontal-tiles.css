@@ -89,7 +89,7 @@
 
 #meg-horizontal-tiles .footer-deviation .deviation .count,
 #meg-horizontal-tiles .footer-deviation .actual .count {
-    /* font-weight: bold; */
+  display: inline-flex;
     color: #f2f2f2;
     font-size: 0.9vw;
 
