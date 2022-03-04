@@ -64,7 +64,7 @@ function getSpecificAirConsumptionData() {
         },
         method: "POST",
         data: postdata,
-        url: " http://localhost:8090/EMSPro/auth/Air/PlantAirGeneration",
+        url: " http://localhost:8090/Air/PlantAirGeneration",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -180,7 +180,6 @@ function plantair(kpiname) {
             "Content-Type": "application/json",
         },
         data: postdata,
-        // url: "http://localhost:8090/EMSPro/auth/Air/airconsumerTable",
         url: "http://localhost:8090/Air/plantairtable",
         method: "POST"
 
@@ -208,7 +207,7 @@ function instrumentair(kpiname) {
         data: postdata,
 
         url: "http://localhost:8090/Air/airconsumerTable",
-        // url: "http://localhost:8090/EMSPro/auth/Air/airconsumerTable",
+        // url: "http://localhost:8090/Air/airconsumerTable",
         method: "POST"
 
     }).done(function (data) {
@@ -226,31 +225,19 @@ function instrumentair(kpiname) {
 
 function airDecoking() {
     $.ajax({
-        url: "http://192.168.1.116:8090/auth/hydogen/airgeneratorTable",
+        url: "http://localhost:8090/auth/electricity/ElectrityInputCost",
         method: "GET"
 
     }).done(function (data) {
         getairDecoking(data)
     })
-
-        .fail(function () {
-            var faildata = [
-                {
-                    "Unit": "NCU",
-                    "Actual": 1100,
-
-                }]
-
-            getairDecoking(faildata);
-
-        })
 }
 function getairDecoking(data) {
     var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
-        table_data += '<td>' + value.Unit + '</td>';
-        table_data += '<td>' + value.Actual + '</td>';
+        table_data += '<td>' + value.kpiname + '</td>';
+        table_data += '<td>' + value.value + '</td>';
         table_data += '</tr>';
     });
     document.getElementById("decokingair").innerHTML = table_data
@@ -263,7 +250,7 @@ function Aircard1() {
         headers: {
             "Content-Type": "application/json",
         },
-        url: "http://localhost:8090/Air/PlantAirTotalGeneration", 
+        url: "http://localhost:8090/Air/PlantAirTotalConsumption", 
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -298,7 +285,7 @@ function Aircard2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/Air/PlantAirTotalConsumption",
+        url: "http://localhost:8090/Air/InstrumentAirTotalGeneration",
         method: "GET",
     }).done(function (data) {
         console.log(data)
@@ -398,7 +385,7 @@ function Aircard5() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/Air/InstrumentAirTotalConsumption",
+        url: "http://localhost:8090/Air/AirGenerationCost",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -406,10 +393,10 @@ function Aircard5() {
             document.getElementById("result_air5").innerHTML = "+" + data.currentvalue;
         }
         else {
-            document.getElementById("result_air5").innerHTML = data.currentvalue;
+            document.getElementById("result_air5").innerHTML = "null";
         }
-        document.getElementById("ref_air5").innerHTML = data.refvalue;
-        document.getElementById("count_air5").innerHTML = data.tagvalue;
+        document.getElementById("ref_air5").innerHTML = "null";
+        document.getElementById("count_air5").innerHTML = data.aircostgeneration;
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {

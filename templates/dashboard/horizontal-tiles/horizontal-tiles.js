@@ -1,14 +1,10 @@
 $(document).ready(function () {
-    var abc = 'TOE/hr';
-    getDoughnutData(abc);
     loadGaugeChartData();
     guagevaluehomeAct();
     getcardhome1();
     getcardhome2();
-
-    getcardhome3();
-    var abc = 'TOE/hr';
-
+    var abc = 'Gcal/hr';
+    getDoughnutData(abc);
 
     $(".donougt-radio").click(function () {
         console.log($("input[name=fav_language]:checked").val());
@@ -33,7 +29,7 @@ function getDoughnutData(abc) {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/home/totalfuelconsumed",
+        url: "http://localhost:8090/home/totalfuelconsumed1",
     }).done(function (data) {
         loadDoughnutChart(data);
     })
@@ -238,47 +234,13 @@ function getcardhome2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/home/GHGemmission',
+        url: 'http://localhost:8090/home/energyintensity',
         method: "GET"
     }).done(function (data) {
 
         document.getElementById("resulthome2").innerHTML = data.currentvalue;
         document.getElementById("ref2").innerHTML = data.refvalue;
         document.getElementById("countHorizon2").innerHTML = data.kpivalue;
-        if (data.currentvalue > 0) {
-            document.getElementById("resulthome2").innerHTML = "+" + data.currentvalue;
-        }
-        else {
-            document.getElementById("resulthome2").innerHTML = data.currentvalue;
-        }
-        $(".result").each(function () {
-            var text = $(this).text();
-            if (/[+-]?\d+(\.\d+)?/.test(text)) {
-                var num = parseFloat(text);
-                if (num < 0) {
-                    $(this).addClass("red");
-                } else if (num > 0) {
-                    $(this).addClass("green");
-                }
-
-            }
-        });
-    });
-
-}
-function getcardhome3() {
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        url: 'http://localhost:8090/home/SpecificEnergyConsumption',
-        method: "GET"
-    }).done(function (data) {
-
-        document.getElementById("resulthome3").innerHTML = data.currentvalue;
-        document.getElementById("ref3").innerHTML = data.refvalue;
-        document.getElementById("countHorizon3").innerHTML = data.kpivalue;
         if (data.currentvalue > 0) {
             document.getElementById("resulthome2").innerHTML = "+" + data.currentvalue;
         }

@@ -132,7 +132,8 @@ function showSpecificEletricityConsumptionChart(data ,Difference_In_Days ,interv
         data: [{
             type: "column",
             color: "#00b0f0",
-            name: "Specific Electricity Consumption",
+            name: "Throughput",
+           
             axisYType: "secondary",
             yValueFormatString: "0.00#",
             markerSize: 0,
@@ -141,7 +142,7 @@ function showSpecificEletricityConsumptionChart(data ,Difference_In_Days ,interv
         {
             type: "spline",
             color: "#ED7E31",
-            name: "Throughput",
+            name: "Specific Electricity Consumption",
             yValueFormatString: "0.00#",
             markerSize: 0,
             dataPoints: data.TotalEnergyConsumption
@@ -167,7 +168,7 @@ function electricityprogressbarchartload() {
 
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.113:8090/api/energyConsumption/steamGenerationCapacity",
+        url: "http://localhost:8090/api/energyConsumption/steamGenerationCapacity",
     }).done(function (electricityprogressvalue) {
         console.log(electricityprogressvalue);
         loadProgressChart(electricityprogressvalue);
@@ -347,135 +348,6 @@ function getcardElectricity4() {
 
 }
 
-// function getElectricityStackedData() {
-//     $.ajax({
-//         method: "GET",
-//         url: "http://localhost:8090/auth/electricity/TotalElectricity",
-
-//     }).done(function (data) {
-
-//         formatElectricityStackedData(data);
-//     })
-       
-// }
-
-// function formatElectricityStackedData(data) {
-//     var chartData = { Generation: [], Electricity: [], Grid: [], Export: [] };
-//     for (let index = 0; index < data.length; index++) {
-//         const element = data[index];
-
-//         chartData.Generation.push({ y: element.Generation });
-
-//         chartData.Electricity.push({ y: element.Electricity });
-
-//         chartData.Grid.push({ y: element.Grid });
-
-//         chartData.Export.push({ y: element.Export });
-
-
-//     }
-//     stackedBar(chartData);
-// }
-
-// function stackedBar(data) {
-//     console.log(data, "tttttttttt");
-//     var chart = new CanvasJS.Chart("ctx",
-//         {
-//             backgroundColor: "transparent",
-//             color: "#d9d9d9",
-//             // height: 200,
-//             axisX: {
-//                 gridColor: "gray",
-//                 gridThickness: 0,
-//                 gridDashType: "dot",
-//                 tickThickness: 0,
-//                 lineThickness: 0,
-//                 labelFontColor: "#d9d9d9",
-//                 labelFontSize: 0,
-//                 fontFamily: "Bahnschrift Light",
-
-//             },
-//             dataPointWidth: 50,
-
-//             axisY: {
-
-//                 titleFontSize: 15,
-//                 tickThickness: 0,
-//                 labelFontSize: 0,
-//                 lineThickness: 0,
-//                 titleFontFamily: "Yu Gothic UI Semibold",
-//                 titleFontColor: "#D9DAD9",
-//                 gridThickness: 0,
-//                 indexLabelFontColor: "#d9d9d9",
-//                 fontFamily: "Bahnschrift Light",
-//                 "minimum": 0
-//             },
-//             data: [
-
-//                 {
-//                     type: "stackedColumn",
-//                     indexLabelOrientation: "horizontal",  // "horizontal", "vertical"
-//                     indexLabel: " {y}%",
-//                     color: "#4d5463",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     dataPoints: data.electricityGeneration,
-
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     color: "#00ab7e",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     dataPoints: data.renewableElectricity,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     color: "#00405c",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     dataPoints: data.Grid,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#ffc100",
-//                     dataPoints: data.Export,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#72ad5f",
-//                     dataPoints: data.Grid,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#732278",
-//                     dataPoints: data.Export,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#9f2c76",
-//                     dataPoints: data.Electricity,
-//                 }
-//             ]
-//         });
-
-//     chart.render();
-// }
 var max1=100;
 function getStackBarvalue() {
     $.ajax({

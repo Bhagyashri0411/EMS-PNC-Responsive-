@@ -49,7 +49,7 @@ function getSpecificlinesteamTurData(tagname) {
         method: "POST",
         data: postdata,
          
-        url: "http://192.168.1.120:8090/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowGraph",
+        url: "http://localhost:8090/auth/Equipmentlevelopt/SteamTurbineExtractionGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -142,21 +142,57 @@ function showSpecificlinesteamGenData(data ,Difference_In_Days, interval) {
 function steamturbinetable() {
     $.ajax({
         method: 'GET',
-        url: 'http://192.168.1.120:8090/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowTable',
+        url: 'http://localhost:8090/auth/Equipmentlevelopt/SteamTurbineExtraction',
     }).done(function (data) {
         getsteamturbinetable(data);
     })
-       
+        .fail(function () {
+            var failData = [
+                {"actual":94.2,
+                "tagname":"STG #1 HP Extraction",
+                "optimized":0.0,
+                "deviation": 94.2
+            },
+            {"actual":94.2,
+                "tagname":"STG #2 HP Extraction",
+                "optimized":0.0,
+                "deviation": 94.2
+            },
+            {"actual":94.2,
+                "tagname":"STG #3 HP Extraction",
+                "optimized":0.0,
+                "deviation": 94.2
+            },
+            {"actual":94.2,
+                "tagname":"STG #1 MP Extraction",
+                "optimized":0.0,
+                "deviation": 94.2
+            },
+            {"actual":94.2,
+            "tagname":"STG #2 MP Extraction",
+            "optimized":0.0,
+            "deviation": 94.2
+            },
+            {"actual":94.2,
+            "tagname":"STG #3 MP Extraction",
+            "optimized":0.0,
+            "deviation": 94.2
+            }
+            
+        ]
+
+            getsteamturbinetable(failData)
+        })
 }
 function getsteamturbinetable(data) {
     var max1= 500;
    var table_data = '';
    $.each(data, function (key, value) {
        table_data += '<tr>';
-       table_data += '<td>' + value.kpiname + '</td>';
+       table_data += '<td>' + value.tagname + '</td>';
        table_data += '<td>' + value.actual + '</td>';
-       table_data += '<td>' + value.optimized + '</td>';
-       table_data += '<td>' + value.deviation.toFixed(2) + '</td>';
+       table_data += '<td>' + value.optimised + '</td>';
+       table_data += '<td>' + value.derivation + '</td>';
     //    table_data += '<td> <progress value =' + value.derivation + ' max=' + max1 + '></progress></td>';
 
        table_data += '</tr>';

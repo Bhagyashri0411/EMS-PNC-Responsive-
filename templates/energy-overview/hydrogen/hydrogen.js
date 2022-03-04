@@ -51,7 +51,7 @@ function getSpecificHydrogenConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.120:8090/HydrogenScreen/TotalHydrogenGenerationGraph",
+        url: "http://localhost:8090/HydrogenScreen/TotalHydrogenGenerationGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -155,7 +155,7 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
 
 function genratortable() {
     $.ajax({
-        url: "http://192.168.1.120:8090/HydrogenScreen/TableGenerators",
+        url: "http://localhost:8090/HydrogenScreen/TableGenerators",
         method: "GET"
 
     }).done(function (data) {
@@ -163,8 +163,8 @@ function genratortable() {
         $.each(data, function (key, value) {
             table_data += '<tr>';
             table_data += '<td>' + value.Generators + '</td>';
-            table_data += '<td>' + value.kpivalue + '</td>';
-            table_data += '<td>' + value.kpivalue + '</td>';
+            table_data += '<td>' + value.Actual + '</td>';
+            table_data += '<td>' + value.value + '</td>';
             table_data += '</tr>';
 
         });
@@ -176,15 +176,16 @@ function genratortable() {
 
 function consumertable() {
     $.ajax({
-        url: "http://192.168.1.120:8090/HydrogenScreen/TableConsumers",
+        url: "http://localhost:8090/HydrogenScreen/TableConsumers",
         method: "GET"
 
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
-            table_data += '<td>' + value.kpiname + '</td>';
-            table_data += '<td>' + value.kpivalue + '</td>';
+            table_data += '<td>' + value.Consumers + '</td>';
+            table_data += '<td>' + value.Actual + '</td>';
+            table_data += '<td>' + value.SHC + '</td>';
             table_data += '</tr>';
 
         });
@@ -196,15 +197,15 @@ function consumertable() {
 
 function exporttable() {
     $.ajax({
-        url: "http://192.168.1.120:8090/HydrogenScreen/TableExportImport",
+        url: "http://localhost:8090/HydrogenScreen/TableExportImport",
         method: "GET"
 
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
-            table_data += '<td>' + value.kpiname + '</td>';
-            table_data += '<td>' + value.kpivalue + '</td>';
+            table_data += '<td>' + value.ExportImport + '</td>';
+            table_data += '<td>' + value.Actual + '</td>';
             table_data += '</tr>';
 
         });
@@ -215,7 +216,7 @@ function exporttable() {
 function hydrogencard1() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/HydrogenScreen/Card1TotalHydrogenGeneration",
+        url: "http://localhost:8090/HydrogenScreen/Card1TotalHydrogenGeneration",
 
     }).done(function (data) {
         document.getElementById("count_hydro1").innerHTML = data.tagvalue;
@@ -243,7 +244,7 @@ function hydrogencard1() {
 function hydrogencard2() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/HydrogenScreen/Card2TotalHydrogenconsumption",
+        url: "http://localhost:8090/HydrogenScreen/Card2TotalHydrogenconsumption",
 
     }).done(function (data) {
         document.getElementById("count_hydro2").innerHTML = data.tagvalue;
@@ -271,7 +272,7 @@ function hydrogencard2() {
 function hydrogencard3() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/HydrogenScreen/Card3HydrogentoOffgas",
+        url: "http://localhost:8090/HydrogenScreen/Card3HydrogentoOffgas",
 
     }).done(function (data) {
         document.getElementById("count_hydro3").innerHTML = data.tagvalue;
@@ -281,7 +282,7 @@ function hydrogencard3() {
 function hydrogencard4() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.120:8090/HydrogenScreen/Card4imbalance",
+        url: "http://localhost:8090/HydrogenScreen/Card4imbalance",
 
     }).done(function (data) {
         document.getElementById("count_hydro4").innerHTML = data.tagvalue;
