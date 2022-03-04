@@ -8,25 +8,19 @@ $(document).ready(function () {
     optimizedtable();
     optimizedfuel();
     optimizedElectrical();
-    steamPotential();
-    recommendations();
-   // lastupdatedTime();
+
    const b =new Date(sessionStorage.getItem("lastUpdateddate"));
-   console.log(b,'b');
    const dmonth = b.getMonth() + 1;
    const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
    document.getElementById("optTime").innerHTML = setdate
-    $("#sbo1avu1").on("change", function () {
-        getPotentialAreaData();
-    });
-    getPotentialAreaData();
-    $("input[name=fromOpt]").on('change', function (event) {
-        // console.log(event.target.value);
+  
+    $("input[name=fromOpt]").on('change', function () {
+
         document.getElementById("optimizedrop").min = $('#fromopt').val();
         getSpecificOptConsumptionData();
     });
-    $("#optimizedrop").on('change', function (event) {
-        //console.log($('["#optimizedrop"]:selected').val());
+    $("#optimizedrop").on('change', function () {
+
         document.getElementById("fromopt").max = $('#optimizedrop').val();
         getSpecificOptConsumptionData();
     });
@@ -45,116 +39,7 @@ $(document).ready(function () {
 
     getSpecificOptConsumptionData();
 });
-// function lastupdatedTime() {
-//     $.ajax({
-//         headers: {
-//             "Content-Type": "application/json",
-//             Authorization:
-//                 sessionStorage.getItem("tokenType") +
-//                 " " +
-//                 sessionStorage.getItem("accessToken"),
-//         },
-//         url: "http://localhost:8090/Air/lastUpdateTimestamp",
-//         method: "GET",
-//     }).done(function (data) {
-//         const d = new Date(data.lastupdatetimestamp);
-//         sessionStorage.setItem("lastUpdateddate", d);
-//         const dmonth = d.getMonth() + 1;
-//         //alert(sessionStorage.getItem("lastUpdateddate"));
-//         document.getElementById("optTime").innerHTML = d.getDate() + "-" + dmonth + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 
-//     });
-// }
-function getPotentialAreaData() {
-    var myJSON = { 'kpiname': $("#sbo1avu1 option:selected").val() };
-    const postdata = JSON.stringify(myJSON);
-    console.log(postdata);
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: "POST",
-
-        url: "http://localhost:8090/potentialgraph",
-
-    }).done(function (data) {
-
-        formatPotentialOpportunityAreaData(data);
-    })
-        .fail(function () {
-            var failData = [{ "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-15T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-16T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-17T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-18T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-19T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-20T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-21T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-22T00:00:00" }, { "actual": 0.0, "showNumberIndex": false, "xAxisNumbers": "0", "date": "2021-08-23T00:00:00" }]
-
-            formatPotentialOpportunityAreaData(failData);
-
-        })
-}
-
-function formatPotentialOpportunityAreaData(data) {
-    var chartData = { actual: [] };
-    for (let index = 0; index < data.length; index++) {
-        const element = data[index];
-        chartData.actual.push({ y: element.actual });
-        // chartData.yvalue.push({ y: element.yvalue });
-
-    }
-    loadAreagraph(chartData);
-
-}
-
-function loadAreagraph(data) {
-    var chart = new CanvasJS.Chart("chartContainerrArea", {
-        backgroundColor: "#26293c",
-        height: 100,
-        animationEnabled: true,
-        title: {
-            text: ""
-        },
-
-        axisX: {
-            gridColor: "gray",
-            gridThickness: 1,
-            gridDashType: "dot",
-            lineThickness: 0,
-            tickLength: 0,
-            // "minimum":0,
-
-
-
-            labelFormatter: function () {
-                return " ";
-
-            }
-        },
-        dataPointMaxWidth: 15,
-        axisY: {
-
-            lineThickness: 0,
-            gridThickness: 0,
-            tickLength: 0,
-            "minimum": 0,
-
-            labelFormatter: function () {
-                return " ";
-            }
-        },
-        data: [{
-            indexLabelFontColor: "darkSlateGray",
-            name: "views",
-            type: "area",
-            color: "#116646",
-            ValueFormatString: "#,##0.0mn",
-
-            dataPoints: data.actual
-
-
-        }],
-
-
-    });
-    chart.render();
-
-}
 
 function getSpecificOptConsumptionData() {
     var myJSON = { 'fromdate': $('#fromopt').val(), day: $('#optimizedrop').val() };
@@ -168,9 +53,9 @@ function getSpecificOptConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/overallenergycost",
+        url: "http://localhost:8090/OptimizationOverview/overallenergycost",
     }).done(function (data) {
-        console.log(data, "data 12")
+        // console.log(data, "data 12")
         var Difference_In_Days = data[0].showNumberIndex;
         formatSpecificOptConsumptionData(data, Difference_In_Days);
     })
@@ -178,14 +63,14 @@ function getSpecificOptConsumptionData() {
 }
 
 function formatSpecificOptConsumptionData(data, Difference_In_Days) {
-    var chartData = { EnergyCostDesign: [], Throughput: [], energycostActual: [] };
+    var chartData = { design: [], reference: [], actual: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const optDate = new Date(element.date);
-        chartData.EnergyCostDesign.push({ y: element.design, x: optDate });
-        chartData.Throughput.push({ y: element.reference, x: optDate });
-        chartData.energycostActual.push({ y: element.actual, x: optDate });
+        chartData.design.push({ y: element.design, x: optDate });
+        chartData.reference.push({ y: element.reference, x: optDate });
+        chartData.actual.push({ y: element.actual, x: optDate });
     }
     console.log("Optchartdata", chartData);
     var interval = 1;
@@ -248,7 +133,7 @@ function showSpecificOptConsumptionChart(data, Difference_In_Days, interval) {
             //showInLegend: true,
             axisYType: "secondary",
             // toolTipcontent: "{name}: {y}",
-            dataPoints: data.Throughput
+            dataPoints: data.reference
         },
         {
             type: "line",
@@ -257,7 +142,7 @@ function showSpecificOptConsumptionChart(data, Difference_In_Days, interval) {
             markerSize: 0,
             lineThickness: 4,
             // toolTipcontent: "{name}: {y}",
-            dataPoints: data.EnergyCostDesign
+            dataPoints: data.design
         },
         {
             type: "line",
@@ -266,38 +151,13 @@ function showSpecificOptConsumptionChart(data, Difference_In_Days, interval) {
             markerSize: 0,
             lineThickness: 4,
             // toolTipcontent: "{name}: {y}",
-            dataPoints: data.energycostActual
+            dataPoints: data.actual
         }
 
         ]
     });
 
     chart.render();
-}
-
-function optimizedtable() {
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: 'GET',
-        url: "http://localhost:8090/majorcontributor",
-    }).done(function (data) {
-        var table_data = '';
-        var max1 = 500;
-        $.each(data, function (key, value) {
-            table_data += '<tr>';
-            table_data += '<td>' + value.majorcontributor(INR/hr) + '</td>';
-            table_data += '<td style="text-align: center;">' + value.Actual + '</td>';
-            table_data += '<td style="text-align: center;">' + value.Optimized + '</td>';
-            table_data += '<td>' + value.Deviation + '</td>';
-           // table_data += '<td> <progress value =' + value.Deviation + ' max=' + max1 + '></progress></td>';
-            table_data += '</tr>';
-        });
-        $('#optimizemajortable').append(table_data);
-
-    })
 }
 
 function optimizedfuel() {
@@ -307,13 +167,13 @@ function optimizedfuel() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/fuelsystemoverview",
+        url: "http://localhost:8090/OptimizationOverview/fuelsystemoverview",
     }).done(function (data) {
         var table_data = '';
         var max1 = 500;
         $.each(data, function (key, value) {
             table_data += '<tr>';
-            table_data += '<td>' + value.fualsystemoverview + '</td>';
+            table_data += '<td>' + value.name + '</td>';
             table_data += '<td style="text-align: center;">' + value.actual + '</td>';
             table_data += '<td style="text-align: center;">' + value.design + '</td>';
             table_data += '<td style="text-align: center;">' + value.deviation + '</td>';
@@ -332,16 +192,16 @@ function optimizedElectrical() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/electricalpowersystem",
+        url: "http://localhost:8090/OptimizationOverview/electricalpowersystem",
     }).done(function (data) {
         var table_data1 = '';
         var max1 = 700;
         $.each(data, function (key, value) {
             table_data1 += '<tr>';
-            table_data1 += '<td>' + value.ElectricalPS + '</td>';
-            table_data1 += '<td style="text-align: center;">' + value.Actual + '</td>';
-            table_data1 += '<td style="text-align: center;">' + value.Design + '</td>';
-            table_data1 += '<td style="text-align: center;">' + value.Deviation + '</td>';
+            table_data1 += '<td>' + value.name + '</td>';
+            table_data1 += '<td style="text-align: center;">' + value.actual + '</td>';
+            table_data1 += '<td style="text-align: center;">' + value.design + '</td>';
+            table_data1 += '<td style="text-align: center;">' + value.deviation + '</td>';
             // table_data1 += '<td> <progress value =' + value.Deviation + ' max=' + max1 + '></progress></td>';
             table_data1 += '</tr>';
         });
@@ -350,51 +210,10 @@ function optimizedElectrical() {
     })
 }
 
-function steamPotential() {
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: 'GET',
-        url: 'http://localhost:8090/potentialopportunity',
-    }).done(function (data) {
-        document.getElementById("num").innerHTML = data.potentialopportunity;
-        document.getElementById("num-Actual").innerHTML = data.actualCost;
-        document.getElementById("num-Optimum").innerHTML = data.designCost;
-
-    });
-}
-
-function recommendations() {
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: 'GET',
-        url: "http://localhost:8090/recommendation",
-    }).done(function (data) {
-        getrecommendations(data)
-    })
-
-}
-function getrecommendations(data) {
-    console.log(data, "hiii");
-    var table_data = '';
-    var max1 = 700;
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.message + '</td>';
-        table_data += '</tr>';
-    });
-    $('#recommendations').append(table_data);
-
-}
 function optimizedtable() {
     $.ajax({
         method: 'GET',
-        url: "http://localhost:8090/fuelsystemoverview",
+        url: "http://localhost:8090/OptimizationOverview/majorcontributor",
     }).done(function (data) {
         var table_data = '';
         var max1 = 700;
