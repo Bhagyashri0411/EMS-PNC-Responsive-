@@ -51,7 +51,7 @@ function getSpecificHydrogenConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/hydrogengraph",
+        url: "http://localhost:8090/auth/hydogen/hydrogengraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -155,7 +155,7 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
 
 function genratortable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/hydrogengeneratorTable",
+        url: "http://localhost:8090/auth/hydogen/hydrogengeneratorTable",
         method: "GET"
 
     }).done(function (data) {
@@ -175,7 +175,7 @@ function genratortable() {
 
 function consumertable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/hydrogenconsumerTable",
+        url: "http://localhost:8090/auth/hydogen/hydrogenconsumerTable",
         method: "GET"
 
     }).done(function (data) {
@@ -195,7 +195,7 @@ function consumertable() {
 
 function exporttable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/newtable",
+        url: "http://localhost:8090/auth/hydogen/newtable",
         method: "GET"
 
     }).done(function (data) {
@@ -214,7 +214,7 @@ function exporttable() {
 function hydrogencard1() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/totalhydogengen",
+        url: "http://localhost:8090/auth/hydogen/totalhydogengen",
 
     }).done(function (data) {
         document.getElementById("count_hydro1").innerHTML = data.tagvalue;
@@ -242,7 +242,7 @@ function hydrogencard1() {
 function hydrogencard2() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/totalhydrogenconsmptn",
+        url: "http://localhost:8090/auth/hydogen/totalhydrogenconsmptn",
 
     }).done(function (data) {
         document.getElementById("count_hydro2").innerHTML = data.tagvalue;
@@ -270,7 +270,7 @@ function hydrogencard2() {
 function hydrogencard3() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/hydroloss",
+        url: "http://localhost:8090/auth/hydogen/hydroloss",
 
     }).done(function (data) {
         document.getElementById("count_hydro3").innerHTML = data.tagvalue;
@@ -298,7 +298,7 @@ function hydrogencard3() {
 function hydrogencard4() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/hydogen/imbalance",
+        url: "http://localhost:8090/auth/hydogen/imbalance",
 
     }).done(function (data) {
         document.getElementById("count_hydro4").innerHTML = data.tagvalue;

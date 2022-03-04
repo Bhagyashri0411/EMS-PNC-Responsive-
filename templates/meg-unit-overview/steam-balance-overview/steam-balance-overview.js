@@ -1,7 +1,7 @@
 $(document).ready(function () {
     megsteamta();
     $("#megdrop").on('change', function () {
-        var demomeg = $(this).find(":selected").attr('name');
+        var demomeg = $(this).find(":selected").val()
         $('#megcharts').html(demomeg);
         megsteamoverview();
     });

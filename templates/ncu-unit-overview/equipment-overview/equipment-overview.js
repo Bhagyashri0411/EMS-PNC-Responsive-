@@ -158,7 +158,7 @@ function tableNcuPostMapping(data) {
         assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>H100</th><th>H200</th><th>H300</th><th>H400</th><th>H500</th><th>H600</th><th>H700</th></tr>';
     }
     
-   if (tabledata[0].equipment1 == 'CGCT') {
+   if (tabledata[0].equipment1 == 'CGC') {
         assignTable1 = '<tr><th>KPI</th><th>UOM</th><th>CGC</th><th>PRC</th><th>ERC</th></tr>';
 
     }

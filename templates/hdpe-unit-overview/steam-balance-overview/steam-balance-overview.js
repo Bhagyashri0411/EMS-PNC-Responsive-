@@ -132,8 +132,7 @@ function hdpesteamta() {
             table_data += '</tr>';
         });
         $('#hdpe_table').append(table_data);   
-    $('#hdpe_table').append(table_data);
-        $('#hdpe_table').append(table_data);   
+   
     })
 
 }

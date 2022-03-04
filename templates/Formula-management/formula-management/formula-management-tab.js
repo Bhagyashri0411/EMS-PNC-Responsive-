@@ -47,7 +47,7 @@ $(document).ready(function () {
             },
             type: "post",
 
-            url: "http://localhost:8080/update",
+            url: "http://localhost:8090/update",
             data: JSON.stringify(addRowValue1),
             success: function (status) {
                 //  var msg1 = msg;
@@ -178,7 +178,7 @@ function exportFunction() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8080/alldata",
+        url: "http://localhost:8090/alldata",
         //url:"./../../../templates/Formula-management/formula-management/csvgenerate.json",
     }).done(function (data) {
         console.log(data)
@@ -241,7 +241,7 @@ function ServiceCall() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8080/auth/formula/GetFormulaData",
+        url: "http://localhost:8090/auth/formula/GetFormulaData",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -284,7 +284,7 @@ $("#datatablesCalculatedTag").on('click', '.deleteValues', function () {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "http://localhost:8080/delete",
+        url: "http://localhost:8090/delete",
         data: JSON.stringify(aliasValue),
         success: function (msg) {
             var msg1 = msg;
@@ -320,7 +320,7 @@ function addNewData() {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "http://localhost:8080/insert",
+        url: "http://localhost:8090/insert",
         data: JSON.stringify(addRowValue),
         success: function (status) {
             //  var msg1 = msg;
@@ -399,7 +399,7 @@ function addNewData() {
     //             headers: {
     //                 'Content-Type': 'application/json'
     //             },
-    //             url: "http://localhost:8080/insert",
+    //             url: "http://localhost:8090/insert",
     //             data:JSON.stringify(addRowValue),
     //             success: function (msg) {
     //                  var msg1 = msg;
@@ -455,7 +455,7 @@ for (var i = 0; i < files.length; i++) {
   }
   
 var xhr = new XMLHttpRequest();
-xhr.open('POST', 'http://localhost:8080/upload-csv-fileformula', true);
+xhr.open('POST', 'http://localhost:8090/upload-csv-fileformula', true);
 xhr.onload = function (status) {
     if (status == 'Success') {
       uploadButton.innerHTML = 'Upload';

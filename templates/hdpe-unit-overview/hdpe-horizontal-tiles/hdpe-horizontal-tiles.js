@@ -22,7 +22,7 @@ function hdpeloadGaugeChart() {
     $.ajax({
         type: "GET",
         url: "http://localhost:8090/auth/HDPE/specificenergyConsumption",
-        // url: "http://192.168.1.106:8090/home/speedometer",
+        // url: "http://localhost:8090/home/speedometer",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
@@ -80,7 +80,7 @@ function hdpeloadGaugeChart() {
             },
             "series": [{
                 "background-color": "black",
-                "values": data.TagValue,
+                "values": data.specificenergy,
             }] 
         };
     
