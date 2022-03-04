@@ -51,7 +51,7 @@ function getSpecificHydrogenConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/auth/hydogen/hydrogengraph",
+        url: "http://192.168.1.120:8090/HydrogenScreen/TotalHydrogenGenerationGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -155,14 +155,15 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
 
 function genratortable() {
     $.ajax({
-        url: "http://localhost:8090/auth/hydogen/hydrogengeneratorTable",
+        url: "http://192.168.1.120:8090/HydrogenScreen/TableGenerators",
         method: "GET"
 
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
-            table_data += '<td>' + value.kpiname + '</td>';
+            table_data += '<td>' + value.Generators + '</td>';
+            table_data += '<td>' + value.kpivalue + '</td>';
             table_data += '<td>' + value.kpivalue + '</td>';
             table_data += '</tr>';
 
@@ -175,7 +176,7 @@ function genratortable() {
 
 function consumertable() {
     $.ajax({
-        url: "http://localhost:8090/auth/hydogen/hydrogenconsumerTable",
+        url: "http://192.168.1.120:8090/HydrogenScreen/TableConsumers",
         method: "GET"
 
     }).done(function (data) {
@@ -195,7 +196,7 @@ function consumertable() {
 
 function exporttable() {
     $.ajax({
-        url: "http://localhost:8090/auth/hydogen/newtable",
+        url: "http://192.168.1.120:8090/HydrogenScreen/TableExportImport",
         method: "GET"
 
     }).done(function (data) {
@@ -214,7 +215,7 @@ function exporttable() {
 function hydrogencard1() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/auth/hydogen/totalhydogengen",
+        url: "http://192.168.1.120:8090/HydrogenScreen/Card1TotalHydrogenGeneration",
 
     }).done(function (data) {
         document.getElementById("count_hydro1").innerHTML = data.tagvalue;
@@ -242,7 +243,7 @@ function hydrogencard1() {
 function hydrogencard2() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/auth/hydogen/totalhydrogenconsmptn",
+        url: "http://192.168.1.120:8090/HydrogenScreen/Card2TotalHydrogenconsumption",
 
     }).done(function (data) {
         document.getElementById("count_hydro2").innerHTML = data.tagvalue;
@@ -270,56 +271,38 @@ function hydrogencard2() {
 function hydrogencard3() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/auth/hydogen/hydroloss",
+        url: "http://192.168.1.120:8090/HydrogenScreen/Card3HydrogentoOffgas",
 
     }).done(function (data) {
         document.getElementById("count_hydro3").innerHTML = data.tagvalue;
-        document.getElementById("ref_hydro3").innerHTML = data.refvalue;
-        if (data.currentvalue > 0) {
-            document.getElementById("result_hydro3").innerHTML = "+" + data.currentvalue;
-        }
-        else {
-            document.getElementById("result_hydro3").innerHTML = data.currentvalue;
-        }
-        $(".result").each(function () {
-            var text = $(this).text();
-            if (/[+-]?\d+(\.\d+)?/.test(text)) {
-                var num = parseFloat(text);
-                if (num < 0) {
-                    $(this).addClass("red");
-                } else if (num > 0) {
-                    $(this).addClass("green");
-                }
 
-            }
-        });
     })
 }
 function hydrogencard4() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/auth/hydogen/imbalance",
+        url: "http://192.168.1.120:8090/HydrogenScreen/Card4imbalance",
 
     }).done(function (data) {
         document.getElementById("count_hydro4").innerHTML = data.tagvalue;
-        document.getElementById("ref_hydro4").innerHTML = data.refvalue;
-        if (data.currentvalue > 0) {
-            document.getElementById("result_hydro4").innerHTML = "+" + data.currentvalue;
-        }
-        else {
-            document.getElementById("result_hydro4").innerHTML = data.currentvalue;
-        }
-        $(".result").each(function () {
-            var text = $(this).text();
-            if (/[+-]?\d+(\.\d+)?/.test(text)) {
-                var num = parseFloat(text);
-                if (num < 0) {
-                    $(this).addClass("red");
-                } else if (num > 0) {
-                    $(this).addClass("green");
-                }
+        // document.getElementById("ref_hydro4").innerHTML = data.refvalue;
+        // if (data.currentvalue > 0) {
+        //     document.getElementById("result_hydro4").innerHTML = "+" + data.currentvalue;
+        // }
+        // else {
+        //     document.getElementById("result_hydro4").innerHTML = data.currentvalue;
+        // }
+        // $(".result").each(function () {
+        //     var text = $(this).text();
+        //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
+        //         var num = parseFloat(text);
+        //         if (num < 0) {
+        //             $(this).addClass("red");
+        //         } else if (num > 0) {
+        //             $(this).addClass("green");
+        //         }
 
-            }
-        });
+        //     }
+        // });
     })
 }
