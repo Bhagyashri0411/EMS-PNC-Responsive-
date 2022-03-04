@@ -25,6 +25,7 @@ $(document).ready(function () {
     document.getElementById("toeqmeg").min = $('#fromeqmeg').val();
     document.getElementById("fromeqmeg").max = $('#toeqmeg').val();
     equipmentOverviewKpiTableMeg();
+    getSpecificEquipmentOverviewDataMEG();
 });
 
 //bar
@@ -139,10 +140,11 @@ function getSpecificEquipmentOverviewDataMEG() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
+        url: "http://localhost:8090/EquipmentOverview/MEGgraphEquip",
+
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EquipmentOverview/MEGgraphEquip",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

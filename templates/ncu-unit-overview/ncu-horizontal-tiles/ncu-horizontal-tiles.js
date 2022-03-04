@@ -43,7 +43,7 @@ function loadpiechartncu(fuelConsumed) {
         backgroundColor: "#26293c",
 
         title: {
-            text: fuelConsumed.total,
+            text: fuelConsumed.total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 100,
@@ -287,7 +287,7 @@ function parametertable() {
         $.each(data, function (key, value) {
             table_data += '<tr>';
             table_data += '<td>' + value.parameter + '</td>';
-            table_data += '<td>' + value.uom + '</td>';
+            // table_data += '<td>' + value.uom + '</td>';
             table_data += '<td>' + value.reference + '</td>';
             table_data += '<td>' + value.actual + '</td>';
             table_data += '<td>' + value.deviation + '</td>';

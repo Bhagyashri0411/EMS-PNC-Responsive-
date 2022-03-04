@@ -167,7 +167,7 @@ function gethdpeOverview(data) {
 
         table_data += '<tr>';
         table_data += '<td>' + value.parameter + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.uom + '</td>';
+        // table_data += '<td class="hdpe-tab">' + value.uom + '</td>';
         table_data += '<td class="hdpe-tab">' + value.reference + '</td>';
         table_data += '<td class="hdpe-tab">' + value.actual + '</td>';
         table_data += '<td class="hdpe-tab">' + value.deviation + '</td>';
