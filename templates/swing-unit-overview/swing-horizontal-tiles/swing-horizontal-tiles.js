@@ -253,7 +253,7 @@ function specifictable() {
         $.each(data, function (key, value) {
             table_data += '<tr>';
             table_data += '<td>' + value.type + '</td>';
-            table_data += '<td>' + value.actual + '</td>';
+            table_data += '<td>' + value.sec + '</td>';
             table_data += '<td>' + value.reference + '</td>';
             if (value.deviation > 0) {
                 table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
@@ -288,7 +288,7 @@ function parametertable() {
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.parameter + '</td>';
-        table_data += '<td>' + value.uom + '</td>';
+        // table_data += '<td>' + value.uom + '</td>';
         table_data += '<td>' + value.reference + '</td>';        
         table_data += '<td>' + value.actual + '</td>';
         table_data += '<td>' + value.deviation + '</td>';

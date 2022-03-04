@@ -34,87 +34,128 @@ $(document).ready(function () {
 });
 
 function getSpecificNCUOverviewData() {
-    var myJSON = { 'fromdate': $('#nccuconvfromFccu').val(), 'todate': $('#nccuconvoveralldate').val(), 'tagname': $("#dropvalue option:selected").val() };
+    var myJSON = { 'fromdate': $('#nccuconvfromFccu').val(), 'day': $('#nccuconvoveralldate').val(), 'tagname': $("#dropvalue option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
-        method: "POST",
-        data: postdata,
+       
         headers: {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         url: "http://localhost:8090/NCU/ConvectionGraph",
+        method: "POST",
+        data: postdata,
     }).done(function (data) {
         console.log(data)
-
-        formatSpecificNCUOverviewData(data);
+        var Difference_In_Days = data[0].showNumberIndex;
+       
+        formatSpecificNCUOverviewData(data ,Difference_In_Days);
     })
 }
 
-function formatSpecificNCUOverviewData(data) {
-    var chartData = { design: [], actual: [] };
+function formatSpecificNCUOverviewData(data ,Difference_In_Days) {
+    var chartData = { tin: [], tout: [],recovery:[] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
-        chartData.design.push({ y: element.design });
-        chartData.actual.push({ y: element.actual });
+        var count = data.length;
+        const NCUconDate = new Date(element.date);
+        chartData.tin.push({ y: element.tin , x:NCUconDate});
+        chartData.tout.push({ y: element.tout, x:NCUconDate });
+        chartData.recovery.push({ y: element.recovery, x:NCUconDate });
     }
     console.log("NCUchartdata", chartData);
-    showSpecificNCUOverviewData(chartData);
+    var interval = 1;
+    if (!Difference_In_Days) {
+      if (count/8 > 1) {
+         interval =Math.round(count/8);
+      }else{
+        interval = 1;
+      }
+     
+    }  
+    showSpecificNCUOverviewData(chartData ,Difference_In_Days ,interval);
 }
 
-function showSpecificNCUOverviewData(data) {
+function showSpecificNCUOverviewData(data ,Difference_In_Days ,interval) {
     var chart = new CanvasJS.Chart("NCU-chart-container", {
         // height: 180,
         animationEnabled: true,
         theme: "dark1",
         backgroundColor: " #26293c",
+        toolTip:{
+            shared: true 
+        },
         axisX: {
             gridColor: "gray",
-            gridThickness: 2,
+            tickLength: 0,
+            gridThickness: 0,
+            labelFontColor: "#d9d9d9",
+            intervalType:Difference_In_Days == true?  "hour":"day",
+            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+            //valueFormatString: "DD MMM" ,
+          title:Difference_In_Days == true?  "In hours":" In Days",
+           interval: interval,
+            labelFontSize: 10,
             gridDashType: "dot",
-            tickThickness: 0,
             lineThickness: 0,
-            labelFontColor: "#bfbfbf",
-            labelFontSize: 15,
-            fontFamily: "Bahnschrift Light",
 
         },
         dataPointMaxWidth: 15,
         axisY: {
             title: "°C",
-            gridThickness: 0,
-            labelFontColor: "#bfbfbf",
-            labelFontSize: 15,
-            fontFamily: "Bahnschrift Light",
-            "minimum": 0
+            gridColor: "gray",
+            gridDashType: "dot",
+            gridThickness: 1,
+            labelFontColor: "#d9d9d9",
+            labelFontSize: 12
+          
         },
         axisY2: {
             title: "%",
-            titleFontSize: 15,
-            titleFontFamily: "Yu Gothic UI Semibold",
-            titleFontColor: "#D9DAD9",
             gridThickness: 0,
-            labelFontColor: "#bfbfbf",
-            labelFontSize: 15,
-            fontFamily: "Bahnschrift Light",
+            labelFontColor: "#d9d9d9",
+            labelFontSize: 12
         },
         data: [
+            // {
+            //     type: "line",
+            //     color: "orange",
+            //     name: "Desing",
+            //     markerSize: 0,
+            //     toolTipContent: "<b>{name}:{y}",
+            //     dataPoints: data.design
+            // },
+            // {
+            //     type: "line",
+            //     color: "#D945B4",
+            //     name: "Actual",
+            //     markerSize: 0,
+            //     toolTipContent: "<b>{name}:{y}",
+            //     dataPoints: data.actual
+            // }
             {
-                type: "line",
-                color: "orange",
-                name: "Desing",
-                markerSize: 0,
-                toolTipContent: "<b>{name}:{y}",
-                dataPoints: data.design
+                type: "column",
+                color: "#0796CC",
+                name: "%HeatRecovery",               
+                axisYType: "secondary",
+                dataPoints: data.recovery
             },
             {
                 type: "line",
                 color: "#D945B4",
-                name: "Actual",
+                name: "TOUT",
                 markerSize: 0,
-                toolTipContent: "<b>{name}:{y}",
-                dataPoints: data.actual
+                lineThickness: 2,
+                dataPoints: data.tout
+            },
+            {
+                type: "line",
+                color: "#C55B11",
+                name: "TIN",
+                markerSize: 0,
+                lineThickness: 2,
+                dataPoints: data.tin
             }
 
         ]

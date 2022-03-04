@@ -33,7 +33,7 @@ function lastupdatedTime() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/Air/lastUpdateTimestamp",
+    url: "http://192.168.1.101:8090/Air/lastUpdateTimestamp",
     method: "GET",
   }).done(function (data) {
     const d = new Date(data.lastupdatetimestamp);

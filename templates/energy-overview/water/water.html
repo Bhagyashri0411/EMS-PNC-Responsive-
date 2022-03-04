@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="./../../../templates/energy-overview/water/water.css" />
-<script src="./../../../templates/energy-overview/water/water.js"></script>9
+<link rel="stylesheet" href="templates/energy-overview/water/water.css" />
+<script src="templates/energy-overview/water/water.js"></script>
 <div class="col-md-12" id="water-tab"></div>
-<!-- <div class="col-md-12 water-tab" id="water-tab">
+<div class="col-md-12 water-tab" id="water-tab">
 
     <div class="row">
         <div class="col-md-8">
@@ -11,7 +11,7 @@
                     <div class="body">
                         <table id="specificwater">
                             <tr>
-                                <th>Type (m3/MT of Crude)</th>
+                                <th>Type (m3/MT of feed)</th>
                                 <th>Actual</th>
                                 <th>Reference</th>
                             </tr>
@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-md-6 card-col">
                     <div class="card clearfix">
-                        <div id="EneInt" class="title">Energy Intensity Index <br>m3/hr</div>
+                        <div id="EneInt" class="title">RAW Water Intake <br>m3/hr</div>
 
                         <div class="body">
                             <div id="count0" class="count"></div>
@@ -75,7 +75,7 @@
 
                 <div class="col-md-6 card-col">
                     <div class="card clearfix">
-                        <div id="totalenergy" class="title">DM Wter Consumption<br>m3/hr</div>
+                        <div id="totalenergy" class="title">DM Water Consumption<br>m3/hr</div>
                         <div class="body">
                             <div id="count2" class="count"></div>
                         </div>
@@ -128,9 +128,10 @@
                         <div class="row col-first">
                             <div class="col-md-7">
                                 <div class="row">
-                                    <div class="col-md-8 col-st">
+                                    <div class="col-md-4 col-st">
                                         <span >
-                                            <span>Specific Raw Water Consumption (m3/MT of Crude)</span>
+                                            <span id="Chartwatertur" style="font-size: 1.5vw;"></span><span style="font-size: 1.5vw; color: #f2f2f2;">&nbsp;(m3/MT of Crude)</span>
+                                            <!-- <span>Specific Raw Water Consumption (m3/MT of Crude)</span> -->
                                         </span>
                                         <div class="vl"></div>
                                     </div>
@@ -150,25 +151,25 @@
                                 </div>
                             </div>
                             <div class="col-md-5">
-                                <div class="pull-right">
+                                <div class="">
                                     <div class="col-thr">
-                                        <span class="input-title">KPI</span>
-                                        <select name="water" id="water" >
-                                            <option value="Specific Raw Water Consumption"> Specific Raw Water Consumption</option>
+                                        <span class="input-title"></span>
+                                        <select name="water" id="waterCondensate" >
+                                            <!-- <option value="Specific Raw Water Consumption"> Specific Raw Water Consumption</option>
                                             <option value="Condensate at CPU"> Condensate at CPU </option>
                                             <option value="Condensate in other units ">Condensate in other units  </option>
-                                            <option value="Condensate Imbalance"> Condensate Imbalance</option>
+                                            <option value="Condensate Imbalance"> Condensate Imbalance</option> -->
                                         </select>  
                                     </div>
                                     <div class="col-thr">
                                         <span class="from">
-                                            <span class="input-title">From</span>
+                                            <span class="input-title"></span>
                                             <input type="datetime-local" id="fromwater" name="fromwater">
                                         </span>
                                     </div>
                                     <div class="col-thr">
                                         <span class="to">
-                                            <span class="input-title">To</span>
+                                            <span class="input-title"></span>
                                             <input type="datetime-local" id="towater" name="towater">
                                         </span>
                                     </div>
@@ -185,5 +186,5 @@
             </div>
         </div>
    
-</div> -->
+</div>
 
