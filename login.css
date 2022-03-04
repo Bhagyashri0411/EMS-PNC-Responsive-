@@ -10,7 +10,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-   
+
 }
 
 .main_container {
@@ -22,76 +22,60 @@ body {
 }
 
 .sub_container {
-   
+
     height: 102%;
     width: 72%;
     margin-left: 14%;
     margin-top: -6%;
-    background-color: whitesmoke;
+    background: rgb(249, 249, 249, 0.5);
     border-radius: 15px;
-    opacity: 0.8;
+
 }
 
 .ems_container {
-    background-color: #000033;
+    background: rgb(0, 0, 51, 0.8);
     height: 89vh;
-    /* width: 120%; */
     color: white;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
-
 .ems_heading {
     font-size: 9vw;
     margin-top: -48px;
     margin-left: 20px;
-  
-}
 
+}
 
 .ems_name {
     font-size: 2.8vw;
     margin-left: 28px;
     margin-top: -2vw;
 }
-hr{
+
+hr {
     height: 3px;
     margin-left: 28px;
     color: white;
     width: 41vw;
 }
-/* hr {
-    border: 1px solid;
-    width: 503px;
-    color: white;
-    height: 1px; 
-    margin-left: 19px;
-} */
 
 .ems_subcontainer {
     margin-top: 203px;
 }
-input[type=text] {
-    background-color: white;
-  
-  }
-.userNamePass{
-    background-color: #f2f2f2;
+
+.userNamePass {
+    background:rgb(249, 249, 249, 0.9);
     margin-top: 9px;
     border-radius: 5px;
-    height: 4vh;
+    height: 5vh;
     width: 16vw;
     margin-left: 4vw;
     border: 1px solid #c9c4c4;
-    /* width: 14vw;
-    background-color: white;
-    margin-left: 4vw;
-    border: 1px solid gray; */
 }
 
 .signin-btn {
-    background: rgb(33, 15, 116);
+    background: rgb(33, 15, 116, 0.9);
     width: 70%;
     height: 38px;
     color: white;
@@ -103,22 +87,19 @@ input[type=text] {
 }
 
 .fafa-icon {
-    font-size: 36px; 
-    margin-left: 20px; 
+    font-size: 36px;
+    margin-left: 20px;
     padding: 12px;
-   
+
 }
-.img-login{
+
+.img-login {
     height: 26vh;
     width: 50%;
     margin-left: 5.5vw;
 }
 
-.pngIcon{
+.pngIcon {
     width: 4vw;
     margin-left: 23px;
 }
-/* #logpanipat body{
-    
-    background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.biopetroclean.com%2Fportfolio%2Fetp-iocl-crude-oil-panipat%2F&psig=AOvVaw0CuEPOJbOdlfFYfCTMlAQZ&ust=1637000520257000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOin1aq8mPQCFQAAAAAdAAAAABAD");
-} */

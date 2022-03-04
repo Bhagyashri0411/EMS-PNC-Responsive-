@@ -1,22 +1,21 @@
 #ncu-convection-section .actbox {
     background-color: #C55B11;
-    width: 2vw;
+    width: 1.7vw;
     height: 0.3vw;
-    /* padding-left: 20px; */
     display: inline-block;
     margin: 0.2vw 0.5vw;
 }
 
 #ncu-convection-section .leg {
-    font-size: 1vw;
+    font-size: 0.9vw;
+    margin-top: 0.2vw;
     color: #d9d9d9;
 }
 
 #ncu-convection-section .refbox {
     background-color: #D945B4;
-    width: 2.5vw;
+    width: 2vw;
     height: 0.3vw;
-    padding-left: 20px;
     display: inline-block;
     margin: 0.2vw 0.5vw;
 }
@@ -31,13 +30,15 @@
 #ncu-convection-section input {
     font-size: 0.8vw;
     background-color: #26293c;
-    border: 1px solid #f2f2f2;
-    border-radius: 5px;
-    max-width: 149px;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.2vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 15vw;
     cursor: pointer;
-    color: #bfbfbf;
+    color: #f2f2f2;
+    margin-right: 0.1vw;
 }
-
 #ncu-convection-section table {
     font-family: Yu Gothic UI;
     border-collapse: collapse;
@@ -54,7 +55,6 @@
 
 #ncu-convection-section tr:last-child td {
     border-bottom: 2px solid #585a64;
-    padding-bottom: 0;
 }
 
 #ncu-convection-section th {
@@ -69,7 +69,7 @@
 }
 
 #ncu-convection-section .count-line {
-    height: 20.5vh;
+    height: 8vw;
 }
 
 #ncu-convection-section .title-1 {
@@ -103,6 +103,7 @@
     padding: 0px 1vw;
 
 }
+
 #ncu-convection-section .ncu-headline {
     font-size: 1.vw;
     font-weight: 600;
@@ -115,37 +116,37 @@
     font-size: 1.2vw;
 }
 
-            /* scroll */
-            #ncu-convection-section .overflow {
-                overflow: auto;
-            }
-            
-            #ncu-convection-section .genratorsHeight {
-                height: 20vh;
-                padding-right: 5px;
-            }
-            
-            #ncu-convection-section .scroll {
-                width: 40%;
-                height: 280px;
-                overflow: auto;
-            }
-            
-            #ncu-convection-section ::-webkit-scrollbar {
-                width: 0.3vw;
-                height: 0.8vh;
-            }
-            
-            #ncu-convection-section ::-webkit-scrollbar-track {
-                border: 1px solid #262A3C;
-                border-radius: 15px;
-            }
-            
-            #ncu-convection-section ::-webkit-scrollbar-thumb {
-                background: #8d8a95;
-                border-radius: 15px;
-            }
-            
-            #ncu-convection-section ::-webkit-scrollbar-thumb:hover {
-                background:#8d8a95;
-            }
+/* scroll */
+#ncu-convection-section .overflow {
+    overflow: auto;
+}
+
+#ncu-convection-section .genratorsHeight {
+    height: 8vw;
+    padding-right: 5px;
+}
+
+#ncu-convection-section .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+#ncu-convection-section ::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0.3vw;
+}
+
+#ncu-convection-section ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+#ncu-convection-section ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+#ncu-convection-section ::-webkit-scrollbar-thumb:hover {
+    background: #8d8a95;
+}

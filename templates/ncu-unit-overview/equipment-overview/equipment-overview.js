@@ -54,6 +54,7 @@ function loadcolumnequ(data) {
     var chart = new CanvasJS.Chart("Equ-columnncu", {
         theme: "dark1",
         backgroundColor: "#26293c",
+        theme:"dark1",
         toolTip: {
             shared: true
         },
