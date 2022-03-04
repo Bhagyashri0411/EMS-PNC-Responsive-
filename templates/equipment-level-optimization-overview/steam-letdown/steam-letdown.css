@@ -1,18 +1,21 @@
 /* CSS for Line graph */
-.steam-letdown-tab .line{
+.steam-letdown-tab .line {
     height: 0.3vw;
     width: 2.5vw;
     display: inline-block;
     margin: 0.2vw 0;
     position: relative;
 }
-.steam-letdown-tab .first-spa{
-    background-color: #00b0f0;   
+
+.steam-letdown-tab .first-spa {
+    background-color: #00b0f0;
 }
-.steam-letdown-tab .secd-spa{
+
+.steam-letdown-tab .secd-spa {
     background-color: #00F66E;
-   }
-.steam-letdown-tab .count-line{
+}
+
+.steam-letdown-tab .count-line {
     height: 32vw;
 }
 
@@ -22,10 +25,12 @@
     display: inline-block;
     font-size: 0.9vw;
 }
-.steam-letdown-tab .col-tb{
-    border-left : 1px solid #686a77;
+
+.steam-letdown-tab .col-tb {
+    border-left: 1px solid #686a77;
 }
-.steam-letdown-tab select,input{
+
+.steam-letdown-tab select, input {
     font-size: 0.8vw;
     background-color: #26293c;
     border: 1px solid #f2f2f2;
@@ -36,10 +41,12 @@
     color: #f2f2f2;
     margin-right: 0.5vw;
 }
-.steam-letdown-tab select{
+
+.steam-letdown-tab select {
     padding: 4px;
 }
-.steam-letdown-tab #letdown{
+
+.steam-letdown-tab #letdown {
     max-width: 12vw;
     font-size: 0.9vw;
     padding: 3px;
@@ -47,9 +54,11 @@
     color: #d9d9d9;
     font-weight: normal;
 }
-.steam-letdown-tab .title{
+
+.steam-letdown-tab .title {
     font-size: 2vw;
 }
+
 /* Table css */
 .steam-letdown-tab table {
     font-family: arial, sans-serif;
@@ -74,31 +83,81 @@
     padding: 0.9vw 0.5vw;
     font-size: 1vw;
 }
+
 .steam-letdown-tab table tr:last-child td {
     border-bottom: 0;
 }
-.steam-letdown-tab table td:nth-child(1){
-  color: #d9d9d9;
-   }
-.steam-letdown-tab table td:nth-child(2){
- text-align: center;
+
+.steam-letdown-tab table td:nth-child(1) {
+    color: #d9d9d9;
 }
-.steam-letdown-tab table td:nth-child(3){
+
+.steam-letdown-tab table td:nth-child(2) {
     text-align: center;
-   }
+}
+
+.steam-letdown-tab table td:nth-child(3) {
+    text-align: center;
+}
+
 /* scroll */
+.steam-letdown-tab .overflow {
+    overflow: auto;
+}
+
 .steam-letdown-tab .genratorsHeight {
     height: 35vw;
-    padding-right: 0.5vw;
 }
+
+.steam-letdown-tab .scroll {
+    width: 40%;
+    height: 280px;
+    overflow: auto;
+}
+
+.steam-letdown-tab ::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+.steam-letdown-tab ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.steam-letdown-tab ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+.steam-letdown-tab ::-webkit-scrollbar-thumb:hover {
+    background: #8d8a95;
+}
+
+.steam-letdown-tab progress {
+    border-radius: 7px;
+    height: 10px;
+}
+
+.steam-letdown-tab progress::-webkit-progress-bar {
+    background-color: #26293c;
+}
+
+.steam-letdown-tab progress::-webkit-progress-value {
+    background-color: #c55a11;
+    /* box-shadow: 1px 1px 5px 3px rgba( 255, 0, 0, 0.8 ); */
+}
+
 /* progress */
 .steam-letdown-tab progress {
-   border-radius: 7px;
-   height: 10px;
+    border-radius: 7px;
+    height: 10px;
 }
-.steam-letdown-tab  progress::-webkit-progress-bar {
-   background-color: #26293c;
+
+.steam-letdown-tab progress::-webkit-progress-bar {
+    background-color: #26293c;
 }
-.steam-letdown-tab  progress::-webkit-progress-value {
-   background-color: #c55a11;
+
+.steam-letdown-tab progress::-webkit-progress-value {
+    background-color: #c55a11;
 }
