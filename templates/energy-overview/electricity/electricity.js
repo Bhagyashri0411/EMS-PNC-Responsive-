@@ -132,7 +132,8 @@ function showSpecificEletricityConsumptionChart(data ,Difference_In_Days ,interv
         data: [{
             type: "column",
             color: "#00b0f0",
-            name: "Specific Electricity Consumption",
+            name: "Throughput",
+           
             axisYType: "secondary",
             yValueFormatString: "0.00#",
             markerSize: 0,
@@ -141,7 +142,7 @@ function showSpecificEletricityConsumptionChart(data ,Difference_In_Days ,interv
         {
             type: "spline",
             color: "#ED7E31",
-            name: "Throughput",
+            name: "Specific Electricity Consumption",
             yValueFormatString: "0.00#",
             markerSize: 0,
             dataPoints: data.TotalEnergyConsumption
@@ -167,7 +168,7 @@ function electricityprogressbarchartload() {
 
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.113:8090/api/energyConsumption/steamGenerationCapacity",
+        url: "http://localhost:8090/api/energyConsumption/steamGenerationCapacity",
     }).done(function (electricityprogressvalue) {
         console.log(electricityprogressvalue);
         loadProgressChart(electricityprogressvalue);
@@ -347,135 +348,6 @@ function getcardElectricity4() {
 
 }
 
-// function getElectricityStackedData() {
-//     $.ajax({
-//         method: "GET",
-//         url: "http://localhost:8090/auth/electricity/TotalElectricity",
-
-//     }).done(function (data) {
-
-//         formatElectricityStackedData(data);
-//     })
-       
-// }
-
-// function formatElectricityStackedData(data) {
-//     var chartData = { Generation: [], Electricity: [], Grid: [], Export: [] };
-//     for (let index = 0; index < data.length; index++) {
-//         const element = data[index];
-
-//         chartData.Generation.push({ y: element.Generation });
-
-//         chartData.Electricity.push({ y: element.Electricity });
-
-//         chartData.Grid.push({ y: element.Grid });
-
-//         chartData.Export.push({ y: element.Export });
-
-
-//     }
-//     stackedBar(chartData);
-// }
-
-// function stackedBar(data) {
-//     console.log(data, "tttttttttt");
-//     var chart = new CanvasJS.Chart("ctx",
-//         {
-//             backgroundColor: "transparent",
-//             color: "#d9d9d9",
-//             // height: 200,
-//             axisX: {
-//                 gridColor: "gray",
-//                 gridThickness: 0,
-//                 gridDashType: "dot",
-//                 tickThickness: 0,
-//                 lineThickness: 0,
-//                 labelFontColor: "#d9d9d9",
-//                 labelFontSize: 0,
-//                 fontFamily: "Bahnschrift Light",
-
-//             },
-//             dataPointWidth: 50,
-
-//             axisY: {
-
-//                 titleFontSize: 15,
-//                 tickThickness: 0,
-//                 labelFontSize: 0,
-//                 lineThickness: 0,
-//                 titleFontFamily: "Yu Gothic UI Semibold",
-//                 titleFontColor: "#D9DAD9",
-//                 gridThickness: 0,
-//                 indexLabelFontColor: "#d9d9d9",
-//                 fontFamily: "Bahnschrift Light",
-//                 "minimum": 0
-//             },
-//             data: [
-
-//                 {
-//                     type: "stackedColumn",
-//                     indexLabelOrientation: "horizontal",  // "horizontal", "vertical"
-//                     indexLabel: " {y}%",
-//                     color: "#4d5463",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     dataPoints: data.electricityGeneration,
-
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     color: "#00ab7e",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     dataPoints: data.renewableElectricity,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     color: "#00405c",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     dataPoints: data.Grid,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#ffc100",
-//                     dataPoints: data.Export,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#72ad5f",
-//                     dataPoints: data.Grid,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#732278",
-//                     dataPoints: data.Export,
-//                 }, {
-//                     type: "stackedColumn",
-//                     indexLabel: " {y}%",
-//                     indexLabelFontColor: "#d9d9d9",
-//                     indexLabelFontWeight: "1",
-//                     indexLabelFontSize: 13,
-//                     color: "#9f2c76",
-//                     dataPoints: data.Electricity,
-//                 }
-//             ]
-//         });
-
-//     chart.render();
-// }
 var max1=100;
 function getStackBarvalue() {
     $.ajax({
@@ -486,21 +358,21 @@ function getStackBarvalue() {
         url: 'http://localhost:8090/auth/electricity/TotalElectricity',
         method: "GET"
     }).done(function (data) {
-        var abc=(data[0].electricityGeneration /data[0].total)*100;
-        var def=(data[0].renewableElectricity /data[0].total)*100;
-        var ghi=(data[0].gridElectricityImport /data[0].total)*100;
-        var jkl=(data[0].prelectricityImport /data[0].total)*100;
-        var mno=(data[0].prelectricityExport /data[0].total)*100;
-        var pqr=(data[0].alniExport /data[0].total)*100;
+        var abc=(data[0].Generation /data[0].total)*100;
+        var def=(data[0].Electricity /data[0].total)*100;
+        var ghi=(data[0].Grid /data[0].total)*100;
+        var jkl=(data[0].prImport /data[0].total)*100;
+        var mno=(data[0].prExport /data[0].total)*100;
+        var pqr=(data[0].alinExport /data[0].total)*100;
         var stu=(data[0].isrlExport /data[0].total)*100;
         var pad=(data[0].padcExport /data[0].total)*100;
         console.log(abc,"fggjh");
-        document.getElementById("stack1").innerHTML = data[0].electricityGeneration;
-        document.getElementById("stack2").innerHTML = data[0].renewableElectricity;
-        document.getElementById("stack3").innerHTML = data[0].gridElectricityImport;
-        document.getElementById("stack4").innerHTML = data[0].prelectricityImport;
-        document.getElementById("stack5").innerHTML = data[0].prelectricityExport;
-        document.getElementById("stack6").innerHTML = data[0].alniExport;
+        document.getElementById("stack1").innerHTML = data[0].Generation;
+        document.getElementById("stack2").innerHTML = data[0].Electricity;
+        document.getElementById("stack3").innerHTML = data[0].Grid;
+        document.getElementById("stack4").innerHTML = data[0].prImport;
+        document.getElementById("stack5").innerHTML = data[0].prExport;
+        document.getElementById("stack6").innerHTML = data[0].alinExport;
         document.getElementById("stack7").innerHTML = data[0].isrlExport;
         document.getElementById("stack8").innerHTML = data[0].padcExport;
         document.getElementById("prog1").innerHTML = '<progress value =' + abc + ' max=' + max1 + ' data-toggle="tooltip" title=' + abc.toFixed(2)+'%' + '></progress>'

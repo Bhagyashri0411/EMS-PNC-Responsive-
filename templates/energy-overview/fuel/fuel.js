@@ -57,7 +57,7 @@ function getSpecificFuelPNCData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/auth/Fuel/fuelgraph",
+        url: "http://localhost:8090/eco/fuelgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -83,6 +83,7 @@ function formatSpecificFuelPNCData(data, Difference_In_Days) {
         } else {
             interval = 1;
         }
+
     }
     showSpecificFuelPNCChart(chartData, Difference_In_Days, interval);
 }
@@ -97,7 +98,7 @@ function getFuelDoughnutData() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8090/auth/Fuel/totalfuelconsumed",
+        url: "http://localhost:8090/eco/totalfuelconsumed",
     }).done(function (data) {
         if (myJSON.uom == 'INR/hr') {
 
@@ -108,6 +109,23 @@ function getFuelDoughnutData() {
             loadDoughnutChartFuel(data);
         }
     })
+    // .fail(function () {
+    //     //    var faildata =  {'liquid':100, 'gas': 156,'totalfuel':277}
+    //     console.log(postdata, 'hiii');
+    //     var faildata = { 'RFG': 100, 'RLNG': 156, 'totalfuel': 277, 'FO': 100, 'Naphta': 100, 'HSD': 100 }
+
+    //     // if (myJSON.uom == 'INR/hr') 
+    //     if (myJSON.uom == 'INR/hr') {
+
+
+    //         loadDoughnutChartFuelINR(faildata);
+
+    //     }
+    //     else {
+    //         loadDoughnutChartFuel(faildata);
+    //     }
+    // })
+
 }
 
 
@@ -123,7 +141,6 @@ function loadDoughnutChartFuelINR(data) {
         "#005374",
 
     ]);
-
     var dataPoints = [];
     var chart = new CanvasJS.Chart("doughnutChart", {
         colorSet: "greenShades",
@@ -151,10 +168,11 @@ function loadDoughnutChartFuelINR(data) {
             startAngle: 64,
             dataPoints: [
                 { y: data[0].FO, name: "FO", indexLabel: ((data[0].FO / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].Naphta, name: "Naphta", indexLabel: ((data[0].Naphta / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].HSD, name: "HSD", indexLabel: ((data[0].HSD / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].RFG, name: "RFG", indexLabel: ((data[0].RFG / data[0].totalfuel) * 100).toFixed(2) + "%" },
+                { y: data[0].Naphta, name: "Naphta", indexLabel:  ((data[0].Naphta / data[0].totalfuel) * 100).toFixed(2) + "%" },
+                { y: data[0].HSD, name: "HSD", indexLabel:  ((data[0].HSD / data[0].totalfuel) * 100).toFixed(2) + "%" },
+                { y: data[0].RFG, name: "RFG", indexLabel:  ((data[0].RFG / data[0].totalfuel) * 100).toFixed(2) + "%" },
                 { y: data[0].RLNG, name: "RLNG", indexLabel: ((data[0].RLNG / data[0].totalfuel) * 100).toFixed(2) + "%" },
+
             ]
         }]
     });
@@ -170,7 +188,6 @@ function loadDoughnutChartFuel(data) {
         "#005374",
 
     ]);
-
     var dataPoints = [];
     var chart = new CanvasJS.Chart("doughnutChart", {
         colorSet: "greenShades",
@@ -198,8 +215,9 @@ function loadDoughnutChartFuel(data) {
             indexLabelPlacement: "outside",
             startAngle: 64,
             dataPoints: [
-                { y: data[0].liquid, indexLabel: ((data[0].liquid / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].gas, indexLabel: ((data[0].gas / data[0].totalfuel) * 100).toFixed(2) + "%" },
+                { y: data[0].liquid, indexLabel:  ((data[0].liquid / data[0].totalfuel) * 100).toFixed(2) + "%" },
+                { y: data[0].gas, indexLabel:  ((data[0].gas / data[0].totalfuel) * 100).toFixed(2) + "%" },
+
             ]
         }]
     });
@@ -216,15 +234,14 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
         toolTip: {
             shared: true
         },
-
         axisX: {
             gridColor: "gray",
             gridThickness: 2,
             gridDashType: "dot",
             intervalType: Difference_In_Days == true ? "hour" : "day",
             valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            title: Difference_In_Days == true ? "In hours" : " In Days",
-            titleFontSize: 15,
+            title:Difference_In_Days == true?  "In hours":" In Days",
+            titleFontSize:15,
             interval: interval,
             tickThickness: 0,
             lineThickness: 0,
@@ -232,11 +249,11 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
 
-        },
+        },  
 
         dataPointMaxWidth: 15,
         axisY: {
-            title: "Specific Fuel Consumption" + $("input[type=radio][name=srs]:checked").val() + "of Product",
+            title: "Specific Fuel Consumption" + $("input[type=radio][name=srs]:checked").val()+ "of Product",
             titleFontSize: 15,
             titleFontFamily: "Yu Gothic UI Semibold",
             titleFontColor: "#D9DAD9",
@@ -274,6 +291,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             yValueFormatString: "0.00#",
             dataPoints: data.FuelConsumption
         }
+
         ]
     });
 
@@ -294,7 +312,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
 function loadCardfuel1() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/auth/Fuel/secfuelMTMT",
+        url: "http://localhost:8090/eco/secfuelMT",
 
     }).done(function (data) {
         console.log(data, "321222");
@@ -316,6 +334,7 @@ function loadCardfuel1() {
                 } else if (num >= 0) {
                     $(this).addClass("green");
                 }
+
             }
         });
     })
@@ -324,7 +343,7 @@ function loadCardfuel1() {
 function loadCardfuel2() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/auth/Fuel/secfuelToeMT",
+        url: "http://localhost:8090/eco/secfuelGcal",
 
     }).done(function (data) {
         console.log(data, "321222");
@@ -345,6 +364,7 @@ function loadCardfuel2() {
                 } else if (num >= 0) {
                     $(this).addClass("green");
                 }
+
             }
         });
     })
