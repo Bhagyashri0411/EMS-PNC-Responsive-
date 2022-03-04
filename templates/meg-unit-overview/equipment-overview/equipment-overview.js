@@ -1,6 +1,5 @@
 $(document).ready(function () {
     getEquOverMEGData();
-
     $("input[name=fromeqmeg]").on('change', function () {
         // console.log("from", event.target.value);
         document.getElementById("toeqmeg").min = $('#fromeqmeg').val();

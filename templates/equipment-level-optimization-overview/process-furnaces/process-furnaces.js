@@ -53,7 +53,7 @@ function steamprofurnacesdata() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.106:8090/auth/Equipmentlevelopt/SteamprofurnacesGraph",
+        url: "http://localhost:8090/auth/Equipmentlevelopt/SteamprofurnacesGraph",
     }).done(function (data) {
         console.log(data)
 

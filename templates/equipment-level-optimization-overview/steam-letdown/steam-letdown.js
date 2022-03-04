@@ -50,7 +50,7 @@ function getSpecificlinesteamLenData() {
         method: "POST",
         data: postdata,
          
-        url: "http://localhost:8090/EmsPNC/auth/Equipmentlevelopt/steamletdownGraph",
+        url: "http://localhost:8090/auth/Equipmentlevelopt/steamletdownGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -143,7 +143,7 @@ function showSpecificlinesteamLenData(data ,Difference_In_Days, interval) {
 function steamletdowntable() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8090/EmsPNC/auth/Equipmentlevelopt/Steamletdown',
+        url: 'http://localhost:8090/auth/Equipmentlevelopt/Steamletdown',
     }).done(function (data) {
         getsteamletdowntable(data);
     })

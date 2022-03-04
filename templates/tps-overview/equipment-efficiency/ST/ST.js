@@ -37,15 +37,15 @@ console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
 // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
 // var timeArray = hoursString.split(':');
 const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-d.setHours(-05);
-d.setMinutes(01);
+d.setHours(05);
+d.setMinutes(30);
 d.setSeconds(0);
 
 $('#fromstBar').val(d.toJSON().slice(0, 19));
 $('#STF').val(d.toJSON().slice(0, 19));
 const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-tod.setHours(18);
-tod.setMinutes(59);
+tod.setHours(29);
+tod.setMinutes(29);
 tod.setSeconds(0);
 $('#tostBar').val(tod.toJSON().slice(0, 19));
 $('#STT').val(tod.toJSON().slice(0, 19));
@@ -65,7 +65,7 @@ function getSpecificSTBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://192.168.1.106:8080/st/steamturbineefficiency",
+        url: "http://localhost:8090/st/steamturbineefficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -170,7 +170,7 @@ function getSpecificSTData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://192.168.1.106:8080/st/capacityutilization",
+        url: "http://localhost:8090/st/capacityutilization",
        
    
     }).done(function (data) {
@@ -282,7 +282,7 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
 
 function SteamTable() {
     $.ajax({
-        url: "http://192.168.1.106:8080/st/sttable",
+        url: "http://localhost:8090/st/sttable",
         method: "GET"
     }).done(function (data) {
         loadSteamTable(data);

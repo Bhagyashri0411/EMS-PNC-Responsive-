@@ -85,7 +85,7 @@ function megGaugeChartvalue(gaugevalue) {
         },
         "series": [{
             "background-color": "black",
-            "values": gaugevalue.TagValue,
+            "values": gaugevalue.specificenergy,
         }]
     };
 
@@ -111,7 +111,7 @@ function guagevaluemegAct() {
 
 function megbreakOverview() {
     $.ajax({
-        url: "http://192.168.1.106:8090//api/srutgtuOverview/steamBalanceOverviewTable",
+        url: "http://localhost:8090//api/srutgtuOverview/steamBalanceOverviewTable",
         method: "GET"
     }).done(function (data) {
         var table_data = '';
