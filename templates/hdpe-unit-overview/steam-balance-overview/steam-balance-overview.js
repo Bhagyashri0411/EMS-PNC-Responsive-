@@ -120,7 +120,7 @@ function showsteambalancehdpe(data, Difference_In_Days, interval) {
 
 function hdpesteamta() {
     $.ajax({
-        url: "http://localhost:8090/auth/HDPE/Steambalance",
+        url: "http://localhost:8090/HDPE/Steambalance",
         method: "GET"
     }).done(function (data) {
         getDrophdpe(data);
