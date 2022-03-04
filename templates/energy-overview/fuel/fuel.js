@@ -97,74 +97,12 @@ function getFuelDoughnutData() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-
-
-
         url: "http://localhost:8090/auth/Fuel/totalfuelconsumed",
 
-    }).done(function (data) {
-        if (myJSON.uom == 'INR/hr') {
-
-            loadDoughnutChartFuelINR(data);
-        }
-        else {
-
-            loadDoughnutChartFuel(data);
-        }
+    }).done(function (data) {       
+            loadDoughnutChartFuel(data);      
     })
 
-}
-
-
-function loadDoughnutChartFuelINR(data) {
-    CanvasJS.addColorSet("greenShades", [ //colorSet Array
-
-        "#ffa600",
-        "#00aa7e",
-        "#00aa7e",
-        "#00aa7e",
-        "#005374",
-        "#005374",
-        "#005374",
-
-    ]);
-    var dataPoints = [];
-    var chart = new CanvasJS.Chart("doughnutChart", {
-        colorSet: "greenShades",
-        theme: "dark1",
-        backgroundColor: "#26293c",
-        title: {
-            text: data.totalfuel.toFixed(2),
-            verticalAlign: "center",
-            dockInsidePlotArea: true,
-            fontWeight: 300,
-            fontColor: "#f2f1e7",
-            fontFamily: "Bahnschrift Light"
-
-        },
-        axisY: {
-            title: "Units",
-            titleFontSize: 24,
-            includeZero: true
-
-        },
-        data: [{
-            type: "doughnut",
-            yValueFormatString: "0.00#",
-            indexLabelPlacement: "outside",
-            startAngle: 64,
-            dataPoints: [
-                { y: data[0].FO, name: "FO", indexLabel: ((data[0].FO / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].Naphta, name: "Naphta", indexLabel:  ((data[0].Naphta / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].HSD, name: "HSD", indexLabel:  ((data[0].HSD / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].RFG, name: "RFG", indexLabel:  ((data[0].RFG / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].RLNG, name: "RLNG", indexLabel: ((data[0].RLNG / data[0].totalfuel) * 100).toFixed(2) + "%" },
-
-            ]
-        }]
-    });
-
-    chart.render();
 }
 
 function loadDoughnutChartFuel(data) {
@@ -182,7 +120,7 @@ function loadDoughnutChartFuel(data) {
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
-            text: (data.totalfuel).toFixed(2),
+            text: data.total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 300,
@@ -202,8 +140,8 @@ function loadDoughnutChartFuel(data) {
             indexLabelPlacement: "outside",
             startAngle: 64,
             dataPoints: [
-                { y: data[0].liquid, indexLabel:  ((data[0].liquid / data[0].totalfuel) * 100).toFixed(2) + "%" },
-                { y: data[0].gas, indexLabel:  ((data[0].gas / data[0].totalfuel) * 100).toFixed(2) + "%" },
+                { y: data[0].liquid, indexLabel:  ((data[0].liquid / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].gas, indexLabel:  ((data[0].gas / data[0].total) * 100).toFixed(2) + "%" },
 
             ]
         }]

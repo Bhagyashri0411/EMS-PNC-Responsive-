@@ -14,11 +14,11 @@ $(document).ready(function () {
 
     //    second line graph
     $("input[name=fromsteamline2]").on('change', function () {
-
+        document.getElementById("tosteamline2").min = $('#fromsteamline2').val();
         getSpecificSteamline1ConsumptionData();
     });
     $("input[name=tosteamline2]").on('change', function (event) {
-
+        document.getElementById("fromsteamline2").max = $('#tosteamline2').val();
         getSpecificSteamline1ConsumptionData();
     });
 
@@ -46,7 +46,7 @@ $(document).ready(function () {
 function getSpecificSteamline1ConsumptionData() {
     var myJSON = { 'fromdate': $('#fromSteamline2').val(), 'todate': $('#toSteamline2').val() };
     const postdata = JSON.stringify(myJSON);
-    console.log(postdata);
+    console.log(postdata,"hhdban");
     $.ajax({
         headers: {
             "Content-Type": "application/json",
