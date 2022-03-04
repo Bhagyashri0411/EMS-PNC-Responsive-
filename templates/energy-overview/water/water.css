@@ -1,16 +1,18 @@
 #water-tab .card {
+   
     background-color: #26293c;
-    padding: 7px;
+    padding: 1px;
     border-radius: 10px;
     position: relative;
     left: -23px;
+
 }
 #water-tab .cardnew {
     background-color: #26293c;
     padding: 10px;
     border-radius: 10px;
-    font-size: 12px;
-    color: #d9d9d9;
+    font-size: 1.1vw;
+    color: #f2f2f2;
     text-align: center;
     height: 25rem;
 }
@@ -35,10 +37,10 @@
 }
 
 #water-tab .card .title {
-    font-size: 12px;
+    font-size: 1vw;
     font-weight: normal;
     padding: 0 10px;
-    color: #d9d9d9;
+    color: #f2f2f2;
     text-align: center;
 }
 
@@ -47,36 +49,38 @@
     position: relative;
     left: 7px;
     top: -16px;
-    color: #d9d9d9;
+    color: #f2f2f2;
     font-family: Yu Gothic UI;
     text-align: left;
+    font-weight: 600;
 }
 
 #water-tab .card2 .title {
     position: relative;
     left: 7px;
     top: -16px;
-    color: #d9d9d9;
+    color: #f2f2f2;
     font-family: Yu Gothic UI;
     text-align: left;
+    font-weight: 600;
 }
 
 #water-tab .card .body .count {
     text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
     color: #d9d9d9;
-    padding-top: 1px;
-    padding-bottom: 6px;
+    /* padding-top: 1px; */
+    /* padding-bottom: 6px; */
     font-weight: bold;
     font-family: Bahnschrift Light;
 }
 
 #water-tab .cardnew .body .count {
     text-align: center;
-    font-size: 44px;
+    font-size: 2.5vw;
     color: #d9d9d9;
-    padding-top: 34px;
-    padding-bottom: 25px;
+    padding-top: 23px;
+    /* padding-bottom: 25px; */
     font-weight: 700;
     font-family: Bahnschrift Light;
 }
@@ -224,8 +228,7 @@
     font-size: 13px;
 }
 #water-tab .body .count-line{
-    height: 42rem;
-    padding-top: 24px;
+   height: 22vw;
 }
 #water-tab .xyz{
     padding-left: 0px;

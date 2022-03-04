@@ -1,111 +1,152 @@
-$(document).ready(function() {
+$(document).ready(function () {
     waterspecificConsumption();
     condensatesystem();
-    // Watercard();
+    Watercard1();
+    Watercard2();
+    Watercard3();
+    Watercard4();
+    Watercard5();
 
-    $("#water").on('change', function() {
-        getSpecificwaterConsumptionData($(this).find(":selected").val());
+    $("input[name=fromwater]").on('change', function (event) {
+        console.log(event.target.value);
+        getSpecificwaterConsumptionData();
+    });
+
+    $("input[name=towater]").on('change', function (event) {
+        // console.log($('["#waterCondensate"]:selected').val());
+        console.log(event.target.value);
+        getSpecificwaterConsumptionData();
+    });
+    $("#waterCondensate").on('change', function () {
+        var demoTur = ($(this).find(":selected").val());
+        $('#Chartwatertur').html(demoTur);
+        getSpecificwaterConsumptionData();
+        
         console.log($(this).find(":selected").val());
+        // console.log($(this).find(":selected").val());
     });
 
-    $("input[name=fromwater]").change(function(event) {
-        console.log($('["#water"]:selected').val());
-        getSpecificwaterConsumptionData($('[#water]:selected').val());
-    });
-
-    $("input[name=towater]").change(function(event) {
-        console.log($('["#water"]:selected').val());
-        getSpecificwaterConsumptionData($('[#water]:selected').val());
-    });
-
-    // // setting to date
     var now = new Date();
-    var toDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-    $('#towater').val(toDate);
+    // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
+    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
+    var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+    var timeArray = hoursString.split(':');
+    const d = new Date(sessionStorage.getItem("lastUpdateddate"));
+    d.setHours(05);
+    d.setMinutes(30);
+    d.setSeconds(0);
 
-    // // setting from date, to date - 24hrs.
-    var fromDate = new Date();
-    fromDate.setDate(fromDate.getDate() - 1);
-    fromDateString = new Date(fromDate.getTime() - fromDate.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-    $('#fromwater').val(fromDateString);
-
-    getSpecificwaterConsumptionData('Specific Raw Water Consumption');
+    $('#fromwater').val(d.toJSON().slice(0, 19));
+    const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
+    tod.setHours(29);
+    tod.setMinutes(29);
+    tod.setSeconds(0);
+    $('#towater').val(tod.toJSON().slice(0, 19));
+     
 
 });
 
-function getSpecificwaterConsumptionData(tagName) {
-    var myJSON = { 'fromdate': $('#fromwater').val(), 'todate': $('#towater').val(), tagName: tagName };
+function getSpecificwaterConsumptionData() {
+    var myJSON = { 'fromdate': $('#fromwater').val(), 'todate': $('#towater').val(), 'kpi_name': $("#waterCondensate option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
-            method: "POST",
-            data: postdata,
-            headers: { 'Content-Type': 'application/json' },
-            url: " http://192.168.1.116/api/energyconsumtion/watergraph  ",
-        }).done(function(data) {
-            console.log(data)
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "POST",
+        data: postdata,
 
-            formatSpecificwaterConsumptionData(data);
-        })
-        .fail(function() {
-            // var failData = {
-            //     reference: 2530,
-            //     actual: [{
-            //             "actual": 2555.0
-            //         },
-            //         {
-            //             "actual": 2544.0
-            //         },
-            //         {
-            //             "actual": 2581.0
-            //         },
-            //         {
-            //             "actual": 2539.0
-            //         },
-            //         {
-            //             "actual": 2600.0
-            //         },
-            //         {
-            //             "actual": 2560.0
-            //         },
-            //         {
-            //             "actual": 2555.0
-            //         },
-            //         {
-            //             "actual": 2578.0
-            //         },
-            //         {
-            //             "actual": 2543.0
-            //         },
-            //         {
-            //             "actual": 2598.0
-            //         },
-            //         {
-            //             "actual": 2517.0
-            //         },
-            //         {
-            //             "actual": 2590.0
-            //         }
+        url: " http://localhost:8090/water/watergraph",
+    }).done(function (data) {
+        console.log(data)
+        var Difference_In_Days = data[0].showNumberIndex;
+        formatSpecificwaterConsumptionData(data, Difference_In_Days);
+    })
+        .fail(function () {
+             var failData=[]
+            // var failData = [{
+            //     "actual": 2544.0,
+            //     "reference":34343
+            //     },
+            //     {
+            //         "actual": 2544.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2581.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2539.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2600.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2560.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2555.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2578.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2543.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2598.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2517.0,
+            //         "reference":34343
+            //     },
+            //     {
+            //         "actual": 2590.0,
+            //         "reference":34343
+            //     }
 
             //     ]
-            // }
-            // formatSpecificwaterConsumptionData(failData);
+            
+            formatSpecificwaterConsumptionData(failData);
         })
 }
 
-function formatSpecificwaterConsumptionData(data) {
-    var chartData = { actual: [], reference: data.reference };
-    for (let index = 0; index < data.actual.length; index++) {
-        const element = data.actual[index];
-        chartData.actual.push({ y: element.actual });
+function formatSpecificwaterConsumptionData(data, Difference_In_Days) {
+    var chartData = { actual: [], reference:[] };
+    for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+        var count = data.length;
+        const waterData = new Date(element.date);
+        chartData.actual.push({ y: element.actual, x: waterData });
+        chartData.reference.push({ y: element.reference, x: waterData });
     }
     console.log("waterhartdata", chartData);
-    showSpecificwaterConsumptionChart(chartData);
+    var interval = 1;
+    if (!Difference_In_Days) {
+        if (count / 8 > 1) {
+            interval = Math.round(count / 8);
+        } else {
+            interval = 1;
+        }
+
+    }
+    showSpecificwaterConsumptionChart(chartData, Difference_In_Days, interval);
 }
 
-function showSpecificwaterConsumptionChart(data) {
+function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("water-chartLine", {
         theme: "dark1",
+        height:325,
         backgroundColor: "#26293c",
         axisX: {
             gridColor: "gray",
@@ -113,8 +154,11 @@ function showSpecificwaterConsumptionChart(data) {
             gridDashType: "dot",
             tickLength: 0,
             lineThickness: 0,
-            interval: 2,
-            "minimum": 0,
+            intervalType: Difference_In_Days == true ? "hour" : "day",
+            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == true ? "In hours" : " In Days",
+            interval: interval
         },
         axisY: {
             gridColor: "gray",
@@ -124,12 +168,12 @@ function showSpecificwaterConsumptionChart(data) {
             labelFontColor: "#d9d9d9",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
-            stripLines: [{
-                value: data.reference,
-                thickness: 4,
-                color: "#FFC100",
-                lineDashType: "dash",
-            }]
+            // stripLines: [{
+            //     value: data.reference,
+            //     thickness: 4,
+            //     color: "#FFC100",
+            //     lineDashType: "dash",
+            // }]
         },
 
         dataPointMaxWidth: 15,
@@ -143,47 +187,70 @@ function showSpecificwaterConsumptionChart(data) {
             color: "#00B1F0",
             name: "Actual",
             markerSize: 0,
-            yValueFormatString: "#,###",
+            yValueFormatString: "0.00#",
             dataPoints: data.actual
+        },{
+            type: "spline",
+            lineThickness: 4,
+            lineDashType: "dash",
+            color: "#00B1F0",
+            name: "Reference",
+            markerSize: 0,
+            yValueFormatString: "0.00#",
+            dataPoints: data.reference
         }]
     });
     chart.render();
 
 }
 
+
+
 function waterspecificConsumption() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/specificwater",
-        method: "GET"
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/water/SpecificWaterConsumption",
 
-    }).done(function(data) {
 
-        var table_data = '';
-        $.each(data, function(key, value) {
-            table_data += '<tr>';
-            table_data += '<td>' + value.type + '</td>';
-            table_data += '<td>' + value.actual + '</td>';
-            table_data += '<td>' + value.reference + '</td>';
-            table_data += '</tr>';
-        });
-        $('#specificwater').append(table_data);
+    }).done(function (data) {
+
+        waterspecificConsumptionRate(data);
+        getDropdownvalue(data);
 
     });
 }
-
+function waterspecificConsumptionRate(data){
+    var table_data = '';
+    $.each(data, function (key, value) {
+        table_data += '<tr>';
+        table_data += '<td>' + value.kpi_name + '</td>';
+        table_data += '<td>' + value.actual + '</td>';
+        table_data += '<td>' + value.Refrance + '</td>';
+        table_data += '</tr>';
+    });
+    $('#specificwater').append(table_data);
+}
 function condensatesystem() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/condensateSystem",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+         url: "http://localhost:8090/water/TotalCondensateGeneration",
         method: "GET"
 
-    }).done(function(data) {
+    }).done(function (data) {
 
         var table_data = '';
-        $.each(data, function(key, value) {
+        $.each(data, function (key, value) {
             table_data += '<tr>';
-            table_data += '<td>' + value.type + '</td>';
+            table_data += '<td>' + value.kpi + '</td>';
             table_data += '<td>' + value.actual + '</td>';
-            table_data += '<td>' + value.reference + '</td>';
+            table_data += '<td>' + value.Refrance + '</td>';
             table_data += '</tr>';
         });
         $('#consystem').append(table_data);
@@ -193,64 +260,197 @@ function condensatesystem() {
 
 function Watercard1() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/waterCard",
-        method: "GET"
-    }).done(function(data) {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/water/CondensateRecovery",
+        
+    }).done(function (data) {
         console.log(data)
-        document.getElementById("resultwater0").innerHTML = data[0].diff;
-        document.getElementById("refnew").innerHTML = data[0].tagBenchmarkValue;
-        document.getElementById("countnew").innerHTML = data[0].tagValue;
+        document.getElementById("resultnew").innerHTML = data.currentvalue;
+        document.getElementById("refnew").innerHTML = data.refvalue;
+        document.getElementById("countnew").innerHTML = data.tagvalue;
+        document.getElementById("countnew").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        if (data.currentvalue > 0) {
+            document.getElementById("resultnew").innerHTML = "+" + data.currentvalue;
+        }
+        else {
+            document.getElementById("resultnew").innerHTML = data.currentvalue;
+        }
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
     });
 
 }
 function Watercard2() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/waterCard",
-        method: "GET"
-    }).done(function(data) {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/water/RawWaterIntake",
+        
+    }).done(function (data) {
         console.log(data)
 
-        document.getElementById("resultwater1").innerHTML = data[1].diff;
-        document.getElementById("ref0").innerHTML = data[1].tagBenchmarkValue;
-        document.getElementById("count0").innerHTML = data[1].tagValue;
+        document.getElementById("result0").innerHTML = data.currentvalue;
+        document.getElementById("ref0").innerHTML = data.refvalue;
+        document.getElementById("count0").innerHTML = data.tagvalue;
+        document.getElementById("count0").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        if (data.currentvalue > 0) {
+            document.getElementById("result0").innerHTML = "+" + data.currentvalue;
+        }
+        else {
+            document.getElementById("result0").innerHTML = data.currentvalue;
+        }
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
     });
 
 }
 function Watercard3() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/waterCard",
-        method: "GET"
-    }).done(function(data) {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/water/DMWaterConsumption",
+        
+    }).done(function (data) {
         console.log(data)
-        document.getElementById("resultwater2").innerHTML = data[2].diff;
-        document.getElementById("ref2").innerHTML = data[2].tagBenchmarkValue;
-        document.getElementById("count2").innerHTML = data[2].tagValue;
+        document.getElementById("result2").innerHTML = data.currentvalue;
+        document.getElementById("ref2").innerHTML = data.refvalue;
+        document.getElementById("count2").innerHTML = data.tagvalue;
+        document.getElementById("count2").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        if (data.currentvalue > 0) {
+            document.getElementById("result2").innerHTML = "+" + data.currentvalue;
+        }
+        else {
+            document.getElementById("result2").innerHTML = data.currentvalue;
+        }
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
+
 
     });
 
 }
 function Watercard4() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/waterCard",
-        method: "GET"
-    }).done(function(data) {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/water/BFWConsumption",
+        
+    }).done(function (data) {
         console.log(data)
 
-        document.getElementById("resultwater3").innerHTML = data[3].diff;
-        document.getElementById("ref3").innerHTML = data[3].tagBenchmarkValue;
-        document.getElementById("count3").innerHTML = data[3].tagValue;
+        document.getElementById("result3").innerHTML = data.currentvalue;
+        document.getElementById("ref3").innerHTML = data.refvalue;
+        document.getElementById("count3").innerHTML = data.tagvalue;
+        document.getElementById("count3").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        if (data.currentvalue > 0) {
+            document.getElementById("result3").innerHTML = "+" + data.currentvalue;
+        }
+        else {
+            document.getElementById("result3").innerHTML = data.currentvalue;
+        }
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
+
     });
 
 }
 function Watercard5() {
     $.ajax({
-        url: "http://192.168.1.116/api/energyconsumtion/waterCard",
-        method: "GET"
-    }).done(function(data) {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/water/ROWaterProduction",
+       
+    }).done(function (data) {
         console.log(data)
-        document.getElementById("resultwater4").innerHTML = data[4].diff;
-        document.getElementById("ref4").innerHTML = data[4].tagBenchmarkValue;
-        document.getElementById("count4").innerHTML = data[4].tagValue;
+        document.getElementById("result4").innerHTML = data.currentvalue;
+        document.getElementById("ref4").innerHTML = data.refvalue;
+        document.getElementById("count4").innerHTML = data.tagvalue;
+        document.getElementById("count4").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        if (data.currentvalue > 0) {
+            document.getElementById("result4").innerHTML = "+" + data.currentvalue;
+        }
+        else {
+            document.getElementById("result4").innerHTML = data.currentvalue;
+        }
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
     });
 
+}
+
+function getDropdownvalue(data){
+    $.each(data, function (key, value) {
+        $('#waterCondensate').append(`<option value="${value.kpi_name}">
+                                           ${value.kpi_name}
+                                      </option>`);
+        });
+        var demogen1=$("#waterCondensate option:selected").val();
+            $('#Chartwatertur').html(demogen1);
+            getSpecificwaterConsumptionData();
 }

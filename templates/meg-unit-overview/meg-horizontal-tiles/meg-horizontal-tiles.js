@@ -250,14 +250,32 @@ function megOverview() {
     
             table_data += '<tr>';
             table_data += '<td>' + value.Parameter + '</td>';
-            table_data += '<td class="meg-tab">' + value.UOM + '</td>';
-            table_data += '<td class="meg-tab">' + value.Reference + '</td>';
+            // table_data += '<td class="meg-tab">' + value.UOM + '</td>';
+            table_data += '<td class="meg-tab" style="text-align:center">' + value.Reference + '</td>';
             table_data += '<td class="meg-tab">' + value.Actual + '</td>';
-            table_data += '<td class="meg-tab">' + value.Deviation + '</td>';
+            // table_data += '<td class="meg-tab">' + value.Deviation + '</td>';
+            if (value.Deviation > 0) {
+                table_data += '<td class="r2">' + "+" + value.Deviation + '</td>';
+            }
+            else {
+                table_data += '<td class="r2">' + value.Deviation + '</td>';
+            }
             table_data += '</tr>';
     
         });
         $('#Parameter_table_meg').append(table_data);
+        $(".r2").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("negative");
+                } else if (num >= 0) {
+                    $(this).addClass("positive");
+                }
+    
+            }
+        });
     })
        
 }
