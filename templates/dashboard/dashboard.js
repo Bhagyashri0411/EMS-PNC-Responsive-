@@ -47,6 +47,7 @@ $(document).ready(function () {
   // setInterval(lastupdatedTime,10000);
 });
 function lastupdatedTime() {
+
     $.ajax({
       headers: {
         "Content-Type": "application/json",
@@ -88,6 +89,8 @@ $('#homeEms1').val(tod.toJSON().slice(0,19));
   getSpecificHomeConsumptionData("1");
     });
   }
+=======
+
 
 function getSpecificHomeConsumptionData(intervalType ,domLebal1) {
   var myJSON = {
@@ -246,11 +249,10 @@ function totalThroughput() {
     url: "http://localhost:8090/home/totalbalance",
     method: "GET",
   }).done(function (data) {
-    document.getElementById("totalThroughput").innerHTML =
-      data.totalthroughputprocessed;
-    document.getElementById("Power").innerHTML = data.tpspower;
-    document.getElementById("Steam").innerHTML = data.tpssteam;
-    // document.getElementById("RenPower").innerHTML = data[3].tagValue;
+    document.getElementById("totalThroughput").innerHTML = data.totalNaphthaProcessed;
+    document.getElementById("Power").innerHTML = data.cpppower;
+    document.getElementById("Steam").innerHTML = data.cppsteam;
+    document.getElementById("Renepower").innerHTML = data.renewablepower;
   });
 }
 
