@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="./../../templates/pp-unit-overview/pp-horizontal-tiles/pp-horizontal-tiles.css" />
 <script src="./../../templates/pp-unit-overview/pp-horizontal-tiles/pp-horizontal-tiles.js"></script>
 <div class="col-md-12 tiles-row">
-    <div class="col-md-7">
+    <div class="col-md-8">
         <div class="row">
             <div class="col-md-3 card-col-5">
                 <div class="card">
-                    <div class="row" style="display: inline-flex;">
+                    <div class="row" >
                         <div class="title" style="padding: 0 1.1vw;"> Specific Energy Consumption
-                            </div>
+                        </div>
                     </div>
                     <div class="body col">
                         <div id="pp-zingChart" style="height: 7vw;"></div>
@@ -18,22 +18,23 @@
                         </div>
                         <div class="actual text-center">
                             <div style="display: inline-flex;">
-                                <span class="label">Actual | Reference : </span> <span class="count"> <span
-                                        id="actpp"> &nbsp;  </span> |  <span id="optpp"> </span></span>
+                                <span class="label">Actual | Reference : </span> <span class="count"> <span id="actpp">
+                                        &nbsp; </span> | <span id="optpp"> </span></span>
                             </div>
-                            
+
                             <span class="label">(TOE/MT of Product)</span>
                         </div>
                     </div>
                 </div>
-              
+
             </div>
             <div class="col-md-3 card-col-5">
                 <div class="card clearfix">
                     <div class="title" style="padding: 0;"> Energy Consumed Break Up </div>
                     <div class="main-title">
                         <div class="pp-title" style="display: inline-flex;">
-                            <input type="radio" class="pp-doughnut" name="ratio-name" value="TOE/MT" id="Ton-pp" checked>
+                            <input type="radio" class="pp-doughnut" name="ratio-name" value="TOE/MT" id="Ton-pp"
+                                checked>
                              
                             <label for="html" class="lebel-style"> TOE/MT</label>
                             <input type="radio" class="pp-doughnut" name="ratio-name" value="TOE/hr" id="hr-pp">  
@@ -56,7 +57,8 @@
                                 <span class="legend-circle legend-solid"></span><span class="legend-text"> Steam</span>
                             </div>
                             <div class="legend">
-                                <span class="legend-circle legend-liquid"></span><span class="legend-text"> Electricity</span>
+                                <span class="legend-circle legend-liquid"></span><span class="legend-text">
+                                    Electricity</span>
                             </div>
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                     </div>
                     <div class="footer">
                         <span class="ref pull-left">REF : <span id="ref-pp1"> </span> </span><span id="result-pp1"
-                            class="result pull-right"> 
+                            class="result pull-right">
                         </span>
                     </div>
                 </div>
@@ -95,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="row">
             <div class="col-md-6 card-col-5">
                 <div class="card clearfix" style="padding: 0.5vw; padding-top: 0.9vw;">
@@ -108,20 +110,18 @@
                     </div>
 
                 </div>
-               
+
             </div>
             <div class="col-md-6 card-col-5">
-                    <div class="card clearfix" style="padding: 0.5vw;">
-                        <div class="title" style="padding: 0;"> Total Steam Consumption <br>
-                            (SHP Equivalent)
-                           
-                             </div>
-                        <div class="title"> Ton/hr</div>
-    
-                        <div class="body" style="padding: 0.2vw;">
-                            <div id="count-pp4" class="count"> </div>
-                        </div>
+                <div class="card clearfix" style="padding: 0.5vw;">
+                    <div class="title" style="padding: 0;"> Total Steam Consumption <br>
+                        (SHP Equivalent)
+
                     </div>
+                    <div class="title"> Ton/hr</div>
+
+                    <div class="body" style="padding: 0.2vw;">
+                        <div id="count-pp4" class="count"> </div>
                     </div>
                 </div>
             </div>
