@@ -43,7 +43,7 @@ function loadpiechartncu(fuelConsumed) {
         backgroundColor: "#26293c",
 
         title: {
-            text: fuelConsumed.total,
+            text: fuelConsumed.total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 100,
@@ -120,7 +120,6 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
 
         colorSet: "greenShades",
         height: 120,
-        // width: 160,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {

@@ -1,10 +1,8 @@
 #pp-horizontal-tiles .tiles-row .card .title {
-    font-size: 1vw;
+    font-size: 1.1vw;
     font-weight: normal;
-    padding: 0 10px;
     color: #d9d9d9;
     text-align: center;
-    /* font-family: Bahnschrift; */
 }
 
 #pp-horizontal-tiles .card {
@@ -14,11 +12,12 @@
 }
 
 #pp-horizontal-tiles .card .body .count {
-    font-size: 3.6vw;
+    font-size: 3.4vw;
     color: #f2f2f2;
+    text-align: center;
     font-weight: 700;
     font-family: Bahnschrift Light;
-    padding: 1.6vw;
+    padding: 1.7vw;
 }
 
 #pp-horizontal-tiles .card .footer .ref {
@@ -26,10 +25,9 @@
     font-size: 1vw;
     font-family: Bahnschrift Light;
     display: inline-block;
-    /* padding: 5px 0px; */
 }
 
-#pp-horizontal-tiles #ref-pp1 {
+#pp-horizontal-tiles #ref-pp1, #ref-pp2 {
     color: #f2f2f2;
     font-size: 1.1vw;
 }
@@ -56,7 +54,6 @@
     font-size: 0.9vw;
     text-align: center;
     color: #d9d9d9;
-    /* font-family: Bahnschrift; */
 }
 
 #pp-horizontal-tiles .card .title .col-cc {
@@ -244,7 +241,7 @@
 }
 
 #pp-horizontal-tiles .footer-deviation {
-    padding: 0.3vw;
+    padding: 0.45vw;
 }
 
 /* scroll */
