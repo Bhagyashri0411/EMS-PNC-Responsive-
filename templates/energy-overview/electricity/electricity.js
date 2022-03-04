@@ -486,21 +486,21 @@ function getStackBarvalue() {
         url: 'http://localhost:8090/auth/electricity/TotalElectricity',
         method: "GET"
     }).done(function (data) {
-        var abc=(data[0].electricityGeneration /data[0].total)*100;
-        var def=(data[0].renewableElectricity /data[0].total)*100;
-        var ghi=(data[0].gridElectricityImport /data[0].total)*100;
-        var jkl=(data[0].prelectricityImport /data[0].total)*100;
-        var mno=(data[0].prelectricityExport /data[0].total)*100;
-        var pqr=(data[0].alniExport /data[0].total)*100;
+        var abc=(data[0].Generation /data[0].total)*100;
+        var def=(data[0].Electricity /data[0].total)*100;
+        var ghi=(data[0].Grid /data[0].total)*100;
+        var jkl=(data[0].prImport /data[0].total)*100;
+        var mno=(data[0].prExport /data[0].total)*100;
+        var pqr=(data[0].alinExport /data[0].total)*100;
         var stu=(data[0].isrlExport /data[0].total)*100;
         var pad=(data[0].padcExport /data[0].total)*100;
         console.log(abc,"fggjh");
-        document.getElementById("stack1").innerHTML = data[0].electricityGeneration;
-        document.getElementById("stack2").innerHTML = data[0].renewableElectricity;
-        document.getElementById("stack3").innerHTML = data[0].gridElectricityImport;
-        document.getElementById("stack4").innerHTML = data[0].prelectricityImport;
-        document.getElementById("stack5").innerHTML = data[0].prelectricityExport;
-        document.getElementById("stack6").innerHTML = data[0].alniExport;
+        document.getElementById("stack1").innerHTML = data[0].Generation;
+        document.getElementById("stack2").innerHTML = data[0].Electricity;
+        document.getElementById("stack3").innerHTML = data[0].Grid;
+        document.getElementById("stack4").innerHTML = data[0].prImport;
+        document.getElementById("stack5").innerHTML = data[0].prExport;
+        document.getElementById("stack6").innerHTML = data[0].alinExport;
         document.getElementById("stack7").innerHTML = data[0].isrlExport;
         document.getElementById("stack8").innerHTML = data[0].padcExport;
         document.getElementById("prog1").innerHTML = '<progress value =' + abc + ' max=' + max1 + ' data-toggle="tooltip" title=' + abc.toFixed(2)+'%' + '></progress>'
