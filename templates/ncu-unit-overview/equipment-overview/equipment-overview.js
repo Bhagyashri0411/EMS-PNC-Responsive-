@@ -53,6 +53,7 @@ function getEquOverNCUData() {
 function loadcolumnequ(data) {
     var chart = new CanvasJS.Chart("Equ-columnncu", {
         backgroundColor: "#26293c",
+        theme:"dark1",
         toolTip: {
             shared: true
         },
