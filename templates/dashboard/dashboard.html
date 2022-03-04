@@ -37,51 +37,42 @@
                         <div class="chart-title title">
                             <div class="row">
                                 <div class="col-md-12 col-first">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-one">
                                         <span class="input-title" style="color: #26293c;">Trend</span>
                                         <div class="row">
                                             <span class="firstbox"> </span>
                                             <span class="first-box-title" id="first-box-title"
-                                                style="display: inline-flex;">Total Energy
-                                                Consumption (TOE/hr)
-                                            </span>
-                                            <div style="display: inline-flex;padding-top: 4px;">
-                                                <span class="secondbox" style="margin-right: 4px;"></span>
-                                                <span class="first-box-title">Actual Production
-                                                    <!-- <span class="in-title"> -->
-                                                    (MT/Day)
-                                                    <!-- </span> -->
+                                                style="display: inline-flex;">Specific Energy Consumption
+                                                </span>
+                                            <div style="display: inline-flex;">
+                                                <span class="secondbox"></span>
+                                                <span class="second-box-title">&nbsp;Actual Production<span
+                                                        class="in-title">(MT/Day)</span>
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 col-two">
                                         <span class="trend">
                                             <span class="input-title">Trend</span>
                                             <div style="display: inline-flex;">
                                                 <select name="s1" id="r1">
-                                                    <option value=" Specific Energy Consumption "
-                                                        label="TOE/MT of Actual Production (TOE/MT)"> Specific Energy Consumption
-                                                        TOE/MT of Actual Production
-                                                    </option>
-                                                    <option value="Total Energy Consumed (TOE/hr)"
-                                                        label="Total Energy Consumed (TOE/hr) ">
-                                                        Total Energy Consumed (TOE/hr) </option>
-                                                    <option value="GHG Emission(tCO2e)(Ton/hr)" 
-                                                    label=" GHG Emission(tCO2e)(Ton/hr) "> 
-                                                    GHG Emission(tCO2e)(Ton/hr
-                                                    </option>
+
+
+                                                    <option value="TOE/MT of Actual Production" label="Specific Energy Consumption"selected></option>
+                                                    <option value="TOE/hr" label="Total Energy Consumed"></option>
+                                                   
+                                                    <option value="Ton/hr" label="GHG Emission (tCO2e)"></option>
+
                                                 </select>
                                         </span>
 
                                         <span class="from">
 
                                             <input type="datetime-local" id="fromHome1" name="fromHome">
-
                                         </span>
                                         <span class="to">
-
-                                            <input type="datetime-local" id="homeEms1" name="frohomeEmsmHome">
+                                            <input type="datetime-local" id="homeEms1" name="homeEms">
                                             <!-- <select name="homeEms" id="homeEms1">
                                                 <option value="1"> 1 Day</option>
                                                 <option value="7"> 7 Days</option>
@@ -97,21 +88,22 @@
                     </div>
                     <div class="line text-left">
                         <span class="axis"> Primary Axis Trends :</span>&nbsp;&nbsp;
-                        <select id="chartTypedata" name="Chart Type">
-                            <option value="column">Bar</option>
-                            <option value="spline">Line</option>
-                        </select>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="axis"> Secondary Axis Trends :</span>&nbsp;&nbsp;
                         <select id="chartType1data" name="Chart Type1">
                             <option value="spline">Line</option>
                             <option value="column">Bar</option>
+                        </select>
+                       
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="axis"> Secondary Axis Trends :</span>&nbsp;&nbsp;
+                        <select id="chartTypedata" name="Chart Type">
+                            <option value="column">Bar</option>
+                            <option value="spline">Line</option>
                         </select>
                     </div>
                     <div class="body">
                         <div class="count-line">
                             <div class="col-md-12">
-                                <div id="chartContainer" style="height: 20vw;"></div>
+                                <div id="chartContainer" style="height: 40vh;"></div>
                             </div>
                         </div>
                     </div>
