@@ -3,11 +3,11 @@
 <div class="col-md-12 hdpetiles-row">
     <div class="col-md-7">
         <div class="row">
-            <div class="col-md-3 card-col">
+            <div class="col-md-3 card-col-5">
                 <div class="card">
-                    <div class="row" style="display: inline-flex;">
+                    <div class="row">
                         <div class="title"> Specific Energy Consumption
-                            </div>
+                        </div>
                     </div>
                     <div class="body col">
                         <div id="hdpe-zingChart" style="height: 7vw;"></div>
@@ -19,40 +19,35 @@
                         <div class="actual text-center">
                             <div style="display: inline-flex;">
                                 <span class="label">Actual | Reference : </span> <span class="count"> <span
-                                        id="acthdpe"> &nbsp;  </span> |  <span id="opthdpe"> </span></span>
+                                        id="acthdpe"> &nbsp; </span> | <span id="opthdpe"> </span></span>
                             </div>
-                            
-                            <span class="label">(TOE/MT of Product))</span>
+
+                            <span class="label">(TOE/MT of Product)</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12 card-col">
-                        <div class="card clearfix">
-                            <div class="body">
-                                <!-- <div class="overflow tableheight"> -->
-                                <table class="shptable" >
-                                    <tbody id="shptable"></tbody>
-                                </table>
-                            </div>
-                            <div class="body" style="padding-top: 0.3vw;">
-                                <div class="overflow tableheight">
-                                    <table>
-                                        <tr>
-                                            <th style="width: 65%;">Break Up</th>
-                                            <th class="percents">%</th>
-                                            <th class="hdpes">T/T Product</th>
-                                        </tr>
-                                        <tbody id="Break_table">
+            <div class="col-md-6 card-col-5">
+                <div class="card clearfix">
+                    <div class="body">
+                        <!-- <div class="overflow tableheight"> -->
+                        <table class="shptable">
+                            <tbody id="shptable"></tbody>
+                        </table>
+                    </div>
+                    <div class="body" style="padding-top: 0.3vw;">
+                        <div class="overflow tableheight">
+                            <table>
+                                <tr>
+                                    <th>Break Up</th>
+                                    <th class="percents">%</th>
+                                    <th class="hdpes">T/T Product</th>
+                                </tr>
+                                <tbody id="Break_table">
 
-                                        </tbody>
+                                </tbody>
 
-                                    </table>
-                                </div>
-                            </div>
-
+                            </table>
                         </div>
                     </div>
 
@@ -60,107 +55,93 @@
             </div>
             <div class="col-md-3 card-col-5">
                 <div class="card clearfix">
-                    <div class="title" style="padding: 0;">
-                        <div class="main-title ">
-                            Energy Consumed Break Up
-                        </div>
+                    <div class="title" style="padding: 0;"> Energy Consumed Break Up
+                    </div>
 
-                        <div class="main-title">
-                            <div class="hdpe-title" style="display: inline-flex;position: relative;right: 10px;">
-                                <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/MT"  id="Tonhdpe"
-                                    checked>  
-                                <label for="html" class="lebel-style">TOE/MT</label>
-                                <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/hr" id="hrhdpe">  
-                                <label for="html" class="lebel-style"> TOE/hr</label>
-                                <input type="radio" class="hdpe-doughnut"  name="ratio-name" value="INR/hr" id="INRhdpe">
-                                <label for="html" class="lebel-style">INR/hr</label>
-                            </div>
+                    <div class="main-title">
+                        <div class="hdpe-title" style="display: inline-flex;position: relative;right: 10px;">
+                            <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/MT" id="Tonhdpe"
+                                checked>  
+                            <label for="html" class="lebel-style">TOE/MT</label>
+                            <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/hr" id="hrhdpe">
+                             
+                            <label for="html" class="lebel-style"> TOE/hr</label>
+                            <input type="radio" class="hdpe-doughnut" name="ratio-name" value="INR/hr" id="INRhdpe">
+                            <label for="html" class="lebel-style">INR/hr</label>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="body clearfix">
-                                    <div class="donut1">
-                                        <div id="titles-hdpe" style="height: 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="body clearfix">
+                                <div class="donut1">
+                                    <div id="titles-hdpe" style="height: 
                                     7vw;" class="text-left"></div>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="chart-legends gap1">
-                            <div class="row" style="display: inline-flex;">
-                                <div class="legend">
-                                    <span class="legend-circle legend-solid"></span><span
-                                        class="legend-text">Steam</span>
-                                </div>
-                                <div class="legend">
-                                    <span class="legend-circle legend-liquid"></span><span
-                                        class="legend-text">Electricity</span>
-                                </div>
-                                <!-- <div class="legend">
+                    </div>
+                    <div class="chart-legends gap1">
+                        <div class="row" style="display: inline-flex;">
+                            <div class="legend">
+                                <span class="legend-circle legend-solid"></span><span class="legend-text">Steam</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-liquid"></span><span
+                                    class="legend-text">Electricity</span>
+                            </div>
+                            <!-- <div class="legend">
                                     <span class="legend-circle legend-gas"></span><span
                                         class="legend-text">Electricity</span>
                                 </div> -->
-                            </div>
-
                         </div>
+
                     </div>
-                </div>
             </div>
-            
         </div>
+
     </div>
+</div>
 
-    <div class="col-md-5">
-        <div class="row">
-            <div class="col-md-3" style="padding: 0 3px;">
-                <div class="card clearfix" style="padding: 0.5vw;">
-                    <div class="title" style="padding: 0;"> SEC Electricity</div>
-                    <div class="unit-pro"> kWh/MT of product</div>
+<div class="col-md-5">
+    <div class="row">
+        <div class="col-md-3 card-col-5">
+            <div class="card clearfix" style="padding: 0.5vw;">
+                <div class="title" style="padding: 0;"> SEC Electricity</div>
+                <div class="unit-pro"> kWh/MT of product</div>
 
-                    <div class="body">
-                        <div id="count-hdpe1" class="count"></div>
-                    </div>
-                    <div class="footer">
-                        <span class="ref pull-left">REF : <span id="ref-hdpe1"></span> </span><span id="result-hdpe1"
-                            class="result pull-right">
-                        </span>
-                    </div>
+                <div class="body">
+                    <div id="count-hdpe1" class="count"></div>
                 </div>
-                <!-- <div class="card clearfix mt-10" style="padding: 0.5vw 0;">
-                    <div id="totalenergy" class="title" style="padding: 0 ;font-size: 0.9vw;">Total fuel Consumed </div>
-                    <div class="unit-pro">Ton/hr</div>
-
-                    <div class="body">
-                        <div id="count-hdpe2" class="count"> </div>
-                    </div>
-
-                </div> -->
+                <div class="footer">
+                    <span class="ref pull-left">REF : <span id="ref-hdpe1"></span> </span><span id="result-hdpe1"
+                        class="result pull-right">
+                    </span>
+                </div>
             </div>
-            <div class="col-md-9 card-col">
-                <div class="card clearfix">
-                    <div class="body specific-table">
-                        <div class="overflow secondtableheight">
-                            <table id="hdpetable">
-                                <tr>
-                                    <th>Parameter</th>
-                                    <th class="percent">UOM</th>
-                                    <th class="hdpe">Referance</th>
-                                    <th class="percent">Actual</th>
-                                    <th class="hdpe">%Deviation</th>
+        </div>
+        <div class="col-md-9 card-col-5">
+            <div class="card clearfix">
+                <div class="body specific-table">
+                    <div class="overflow secondtableheight">
+                        <table id="hdpetable">
+                            <tr>
+                                <th>Parameter</th>
+                                <th >UOM</th>
+                                <th>Reference</th>
+                                <th>Actual</th>
+                                <th>Deviation</th>
 
-                                </tr>
-                                <tbody id="Parameter_table">
+                            </tr>
+                            <tbody id="Parameter_table">
 
-                                </tbody>
+                            </tbody>
 
-                            </table>
-                        </div>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
+</div>
 </div>

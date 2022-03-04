@@ -14,11 +14,10 @@ $(document).ready(function () {
 
 });
 
-
 function pploadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/pp/specificenergyConsumption",
+        url: "http://localhost:8090/pp/specificenergyConsumption",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
@@ -92,7 +91,7 @@ function pploadGaugeChart() {
 function ppGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/pp/specificenergyConsumption",
+        url: "http://localhost:8090/pp/specificenergyConsumption",
     }).done(function (data) {
         document.getElementById("devpp").innerHTML = data.deviation + "%";
         document.getElementById("actpp").innerHTML = data.actual;
@@ -101,7 +100,7 @@ function ppGaugeChart() {
 }
 function cardpp1() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/pp/secsteamcart',
+        url: 'http://localhost:8090/pp/secsteamcart',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp1").innerHTML = data.tagvalue;
@@ -128,7 +127,7 @@ function cardpp1() {
 }
 function cardpp2() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/pp/secelectricitycart',
+        url: 'http://localhost:8090/pp/secelectricitycart',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp2").innerHTML = data.tagvalue;
@@ -155,7 +154,7 @@ function cardpp2() {
 }
 function cardpp3() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/pp/totalelectricityConsumption',
+        url: 'http://localhost:8090/pp/totalelectricityConsumption',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp3").innerHTML = data.totalelectricityConsumption;
@@ -163,7 +162,7 @@ function cardpp3() {
 }
 function cardpp4() {
     $.ajax({
-        url: 'http://192.168.1.109:8090/pp/totalelectricityConsumptionSHPEquivalent',
+        url: 'http://localhost:8090/pp/totalelectricityConsumptionSHPEquivalent',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp4").innerHTML = data.totalelectricityConsumptionshp;
@@ -181,7 +180,7 @@ function getDoughnutpp() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://192.168.1.109:8090/pp/PPDoughnut",
+        url: "http://localhost:8090/pp/PPDoughnut",
     })
     .done(function (data) {
         var energyConsumed = data[0].energyConsumed;
@@ -228,7 +227,7 @@ function loadDoughnutChartpp(energyConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 100,
             dataPoints: [
-                // { y: energyConsumed.fuel, name: "Fuel", indexLabel: ((energyConsumed.fuel / energyConsumed.total) * 100).toFixed(2) + "% " },
+                { y: energyConsumed.fuel, name: "Fuel", indexLabel: ((energyConsumed.fuel / energyConsumed.total) * 100).toFixed(2) + "% " },
                 { y: energyConsumed.steam, name: "Steam", indexLabel: ((energyConsumed.steam / energyConsumed.total) * 100).toFixed(2) + "% " },
                 { y: energyConsumed.electicity, name: "Electricity", indexLabel: ((energyConsumed.electicity / energyConsumed.total) * 100).toFixed(2) + "% " }
             ]

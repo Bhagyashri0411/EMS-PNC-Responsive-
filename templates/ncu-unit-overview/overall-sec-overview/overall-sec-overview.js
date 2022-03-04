@@ -1,8 +1,10 @@
 $(document).ready(function () {
     $("#ncuoveralldate").on('change', function () {
+        document.getElementById("ncufromFccu").max = $('#ncuoveralldate').val();
         ncuoverview();
     });
     $("input[name=ncufromFccu]").on('change', function () {
+        document.getElementById("ncuoveralldate").min = $('#ncufromFccu').val();
         ncuoverview();
     });
     // // setting from date, to date - 24hrs.
@@ -30,7 +32,7 @@ function ncuoverview() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://192.168.1.125:8090/ncu/overallsecOverviewgraph",
+        url: "http://localhost:8090/ncu/overallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -92,11 +94,13 @@ function ncushowoverview(data ,Difference_In_Days ,interval) {
             gridDashType: "dot",
             gridThickness: 1,
             labelFontColor: "#d9d9d9",
+            labelFontSize: 12
         },
         axisY2: {                         
             title: "Plant Load(%)",   
             gridThickness: 0,
-            labelFontColor: "#d9d9d9"
+            labelFontColor: "#d9d9d9",
+            labelFontSize: 12
         },
         data: [{
             type: "column",

@@ -6,22 +6,23 @@
             <div class="col-md-4 card-col-5">
                 <div class="card">
                     <div class="row">
-                        <div class="title"> Specific Energy  Consumption
-                            </div>
+                        <div class="title"> Specific Energy Consumption
+                        </div>
                     </div>
                     <div class="body col">
                         <div id="zingChart" style="height: 6.5vw;"></div>
                     </div>
                     <div class="footer">
                         <div class="deviation text-center">
-                            <span class="label">Deviation :</span><span class="count" id="devncu"> </span>
+                            <span class="label">Deviation :</span><span class="count" id="devncu"
+                                style="font-size: 0.9vw;"> </span>
                         </div>
                         <div class="actual text-center">
                             <div class="row" style="display: inline-flex;">
                                 <span class="label">Actual | Reference : </span><span class="count"> <span id="actncu">
-                                    </span> &nbsp; | <span id="optncu"> </span></span>
+                                    </span> | <span id="optncu"> </span></span>
                             </div>
-                            
+
                             <span class="label">(TOE/MT of Product)</span>
                         </div>
                     </div>
@@ -33,18 +34,18 @@
                     <div class="main-title">
                         T/T Feed
                     </div>
-                    
-                    <div  class="body">
-                    <div class="overflow genratorsHeight-1">
-                        <table id="tablebody">
-                            <tr>
-                                <th>Type</th>
-                                <th>SEC</th>
-                                <th>Reference</th>
-                                <th>Deviation</th>
-                            </tr>
-                            <tbody id="ncutable"></tbody>
-                        </table>
+
+                    <div class="body">
+                        <div class="overflow genratorsHeight-1">
+                            <table id="tablebody">
+                                <tr>
+                                    <th>Type</th>
+                                    <th>SEC</th>
+                                    <th>Reference</th>
+                                    <th>Deviation</th>
+                                </tr>
+                                <tbody id="ncutable"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -59,15 +60,16 @@
                 <div class="card clearfix">
                     <div class="title" style="padding: 0;"> Energy Consumed Break Up </div>
                     <div class="main-title">
-                    <div class="ncu-title" style="display: inline-flex;">
-                        <input type="radio" class="ncu-doughnut" name="ratio-name" value="TOE/hr" id="Ton-ncu" checked> 
-                        <label for="html" class="lebel-style">TOE/MT</label>
-                        <input type="radio" class="ncu-doughnut" name="ratio-name" value="TOE/hr" id="hr-ncu"> 
-                        <label for="html" class="lebel-style"> TOE/hr</label>
-                        <input type="radio" class="ncu-doughnut" name="ratio-name" value="INR/hr" id="INR-ncu"> 
-                        <label for="html" class="lebel-style"> INR/hr</label>
+                        <div class="ncu-title" style="display: inline-flex;">
+                            <input type="radio" class="ncu-doughnut" name="ratio-name" value="TOE/MT" id="Ton-ncu"
+                                checked>
+                            <label for="html" class="lebel-style">TOE/MT</label>
+                            <input type="radio" class="ncu-doughnut" name="ratio-name" value="TOE/hr" id="hr-ncu">
+                            <label for="html" class="lebel-style"> TOE/hr</label>
+                            <input type="radio" class="ncu-doughnut" name="ratio-name" value="INR/hr" id="INR-ncu">
+                            <label for="html" class="lebel-style"> INR/hr</label>
+                        </div>
                     </div>
-                </div>
                     <div class="body clearfix">
                         <div class="donut">
                             <div id="titles-ncu" style="height: 8vw;"></div>
@@ -77,7 +79,7 @@
 
 
                     <div class="chart-legends gap">
-                        <div class="line" style="display: inline-flex;">
+                        <div class="linestyle" style="display: inline-flex;">
                             <div class="legend">
                                 <span class="legend-circle legend-solid"></span><span class="legend-text">Fuel</span>
                             </div>
@@ -93,12 +95,12 @@
 
                 </div>
             </div>
-            
+
             <div class="col-md-3 card-col-5" id="ncuw2">
                 <div class="card clearfix donought-card">
                     <div class="title" style="padding: 0;"> Steam Consumption Break Up <br>
                         (SHP Equivalent) Ton/hr
-                         </div>
+                    </div>
 
                     <div class="body clearfix">
                         <div class="donut">
@@ -107,21 +109,21 @@
 
                     </div>
                     <div class="chart-legends gap" style="padding-top: 1.25vw;">
-                        <div class="line" style="display: inline-flex;">
-                        <div class="legend">
-                            <span class="legend-circle legend-solid"></span><span class="legend-text">SHP</span>
+                        <div class="linestyle" style="display: inline-flex;">
+                            <div class="legend">
+                                <span class="legend-circle legend-solid"></span><span class="legend-text">SHP</span>
+                            </div>
+
+                            <div class="legend">
+                                <span class="legend-circle legend-liquid"></span><span class="legend-text">HP</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-gas"></span><span class="legend-text">MP</span>
+                            </div>
+                            <div class="legend">
+                                <span class="legend-circle legend-pink"></span><span class="legend-text">LP</span>
+                            </div>
                         </div>
-                       
-                        <div class="legend">
-                            <span class="legend-circle legend-liquid"></span><span class="legend-text">HP</span>
-                        </div>
-                        <div class="legend">
-                            <span class="legend-circle legend-gas"></span><span class="legend-text">MP</span>
-                        </div>
-                        <div class="legend">
-                            <span class="legend-circle legend-pink"></span><span class="legend-text">LP</span>
-                        </div>
-                    </div>
                     </div>
 
                 </div>
@@ -129,8 +131,8 @@
             <div class="col-md-6 card-col-5">
                 <div class="card clearfix donought-card">
 
-                        <div class="body">
-                            <div class="overflow genratorsHeight">
+                    <div class="body">
+                        <div class="overflow genratorsHeight">
                             <table id="NCU_card_table">
                                 <tr>
                                     <th>Parameters</th>
@@ -141,14 +143,14 @@
                                 </tr>
                                 <tbody id="NCU_card_body"></tbody>
                             </table>
-                            </div>
                         </div>
-                    <!-- </div> -->
                     </div>
-
+                    <!-- </div> -->
                 </div>
+
             </div>
-           
         </div>
+
     </div>
+</div>
 </div>

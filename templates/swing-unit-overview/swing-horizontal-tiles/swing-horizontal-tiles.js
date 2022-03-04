@@ -2,10 +2,7 @@ $(document).ready(function () {
     loadGaugeChart();
     specifictable();
     parametertable();
-    // cardswing4();
     guagevalueswingAct();
-
-
     $(".swing-doughnut").click(function () {
         console.log($("input[name=ratio-name]:checked").val(),"uiuhkik");
         var abc = $("input[name=ratio-name]:checked").val()
@@ -21,18 +18,13 @@ $(document).ready(function () {
 function getpiechartswing() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/SWING/SteamSHPEquivalent",
+        url: "http://localhost:8090/SWING/SteamSHPEquivalent",
     }).done(function (data) {
 
         var fuelConsumed = data;
         console.log(fuelConsumed);
         loadpiechartswing(fuelConsumed);
     })
-        // .fail(function () {
-        //     var faildata =
-        //         { "hp": 63.0, "lp": 64.0,"total": 258.0 }
-        //     loadpiechartswing(faildata);
-        // })
 
 }
 function loadpiechartswing(fuelConsumed) {
@@ -47,8 +39,6 @@ function loadpiechartswing(fuelConsumed) {
     var chart = new CanvasJS.Chart("Fuel-swing", {
 
         colorSet: "greenShades",
-        // height: 145,
-        // width: 190,
         theme: "dark1",
         backgroundColor: "#26293c",
 
@@ -83,8 +73,8 @@ function loadpiechartswing(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.hp, name: "RLNG",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.lp, name: "LPG",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.hp, name: "HP",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
+                { y: fuelConsumed.lp, name: "LP",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
                 
             ]
         }]
@@ -106,7 +96,7 @@ function postFuelDoughnutDataswing1() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.109:8090/SWING/FCCUDoughnut",
+        url: "http://localhost:8090/SWING/FCCUDoughnut",
     })
         .done(function (data) {
             
@@ -168,7 +158,7 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/SWING/specificenergyConsumption",
+        url: "http://localhost:8090/SWING/specificenergyConsumption",
     }).done(function (gaugevalue) {
         loadGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -177,7 +167,7 @@ function loadGaugeChart() {
 function guagevalueswingAct() {
     $.ajax({
         method: "GET",
-        url: 'http://192.168.1.109:8090/SWING/specificenergyConsumption',
+        url: 'http://localhost:8090/SWING/specificenergyConsumption',
     }).done(function (data) {
         document.getElementById("devswing").innerHTML = data.deviation + "%";
         document.getElementById("actswing").innerHTML = data.actual;
@@ -257,69 +247,44 @@ function loadGaugeChartvalue(gaugevalue) {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/SWING/ParameterTable"
+        url: "http://localhost:8090/SWING/ParameterTable"
     }).done(function (data) {
-        getspecifictable(data)
-    })
-    // .fail(function () {
-    //     var faildata = [{ "sec": 67, "reference": 90, "deviation": 23, "type": "Fuel (SRFT/MT Product)" },
-    //     { "sec": 90, "reference": 50, "deviation": -40, "type": "Steam (Eq. SHP MT/MT of Product" },
-    //     { "sec": 80, "reference": 20, "deviation": -60, "type": "Electricity (kWh/T Product)" }]
-    //     getspecifictable(faildata)
-    // })
-}
-function getspecifictable(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.type + '</td>';
-        table_data += '<td>' + value.actual + '</td>';
-        table_data += '<td>' + value.reference + '</td>';
-        if (value.deviation > 0) {
-            table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
-        }
-        else {
-            table_data += '<td class="r1">' + value.deviation + '</td>';
-        }
-
-        table_data += '</tr>';
-    });
-    $('#swingtable').append(table_data);
-    $(".r1").each(function () {
-        var text = $(this).text();
-        if (/[+-]?\d+(\.\d+)?/.test(text)) {
-            var num = parseFloat(text);
-            if (num < 0) {
-                $(this).addClass("negative");
-            } else if (num > 0) {
-                $(this).addClass("positive");
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.type + '</td>';
+            table_data += '<td>' + value.actual + '</td>';
+            table_data += '<td>' + value.reference + '</td>';
+            if (value.deviation > 0) {
+                table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
             }
-
-        }
-    });
+            else {
+                table_data += '<td class="r1">' + value.deviation + '</td>';
+            }
+    
+            table_data += '</tr>';
+        });
+        $('#swingtable').append(table_data);
+        $(".r1").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("negative");
+                } else if (num > 0) {
+                    $(this).addClass("positive");
+                }
+    
+            }
+        });
+    })
 }
-
-
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/SWING/SECSteamTabledata"
+        url: "http://localhost:8090/SWING/SECSteamTabledata"
     }).done(function (data) {
-        getparametertable(data)
-    })
-    .fail(function () {
-        var faildata = [{ "parameter": "GHG Emission (tCO2e) ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Total Electricity  ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Consumption ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "Net import Energy ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "RLNG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "LPG import ", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 },
-        { "parameter": "OFFGas Export", "uom": "Ton/hr", "reference": 23, "actual": 0,"deviation":0 }]
-        getparametertable(faildata)
-    })
-}
-function getparametertable(data) {
-    var table_data = '';
+        var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.parameter + '</td>';
@@ -327,16 +292,9 @@ function getparametertable(data) {
         table_data += '<td>' + value.reference + '</td>';        
         table_data += '<td>' + value.actual + '</td>';
         table_data += '<td>' + value.deviation + '</td>';
-        // if (value.deviation > 0) {
-        //     table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
-        // }
-        // else {
-        //     table_data += '<td class="r1">' + value.deviation + '</td>';
-        // }
-
-        // table_data += '</tr>';
+         table_data += '</tr>';
     });
     $('#swing_card_body').append(table_data);
     
+    })
 }
-

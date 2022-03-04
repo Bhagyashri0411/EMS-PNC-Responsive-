@@ -34,7 +34,7 @@ function getSpecificTGTUOverviewData() {
             method: "POST",
             data: postdata,
             headers: { 'Content-Type': 'application/json' },
-            url: "http://localhost:8090/EmsPNC/api/srutgtuOverview/efficiencyTrends",
+            url: "http://localhost:8090/api/srutgtuOverview/efficiencyTrends",
         }).done(function(data) {
             console.log(data)
 
@@ -198,7 +198,7 @@ function showSpecificTGTUOverviewData(data) {
 function getEquOverTGTUData() {
     $.ajax({
             method: "GET",
-            url: "http://localhost:8090/EmsPNC/api/srutgtuOverview/equipmentEfficiencies",
+            url: "http://localhost:8090/api/srutgtuOverview/equipmentEfficiencies",
         }).done(function(data) {
             formatEquOverTGTUData(data);
         })
@@ -288,7 +288,7 @@ function loadcolumntgtu(data) {
 
 //table
 $.ajax({
-    url: "http://localhost:8090/EmsPNC/api/srutgtuOverview//kpiOverview",
+    url: "http://localhost:8090/api/srutgtuOverview//kpiOverview",
     method: "GET"
 }).done(function(data) {
     var table_data = '';

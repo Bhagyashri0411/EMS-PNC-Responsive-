@@ -25,7 +25,7 @@ $(document).ready(function () {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Report",
+        url: "http://localhost:8090/home/Report",
     }).done(function (data) {
         console.log(data)
 
@@ -59,7 +59,7 @@ function csvdownload() {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Truncate",
+        url: "http://localhost:8090/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })

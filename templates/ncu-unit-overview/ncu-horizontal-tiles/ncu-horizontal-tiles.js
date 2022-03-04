@@ -17,7 +17,7 @@ $(document).ready(function () {
 function getpiechartncu() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/ncu/donutgraph",
+        url: "http://localhost:8090/ncu/donutgraph",
     }).done(function (data) {
 
         var fuelConsumed = data[0].steamConsumed;
@@ -73,10 +73,10 @@ function loadpiechartncu(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.shp, name: "RLNG", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.hp, name: "LPG", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.mp, name: "FG Export", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.lp, name: "FG Generation", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.shp, name: "SHP", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.hp, name: "HP", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.mp, name: "MP", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.lp, name: "LP", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
 
             ]
         }]
@@ -97,7 +97,7 @@ function postFuelDoughnutDataNCU1() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.109:8090/ncu/NCUDoughnut",
+        url: "http://localhost:8090/ncu/NCUDoughnut",
     })
         .done(function (data) {
             var energyConsumed = data[0].energyConsumed;
@@ -158,7 +158,7 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/ncu/specificenergyConsumption",
+        url: "http://localhost:8090/ncu/specificenergyConsumption",
     }).done(function (data) {
         console.log(data.specificenergy, "bbmefnmenfm");
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
@@ -232,7 +232,7 @@ function loadGaugeChart() {
 function guagevaluencuAct() {
     $.ajax({
         method: "GET",
-        url: 'http://192.168.1.109:8090/ncu/specificenergyConsumption',
+        url: 'http://localhost:8090/ncu/specificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devncu").innerHTML = data.deviation + "%";
@@ -245,7 +245,7 @@ function guagevaluencuAct() {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/ncu/specificenergyConsumptiontable"
+        url: "http://localhost:8090/ncu/specificenergyConsumptiontable"
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
@@ -281,7 +281,7 @@ function specifictable() {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://192.168.1.109:8090/ncu/parametertable"
+        url: "http://localhost:8090/ncu/parametertable"
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {

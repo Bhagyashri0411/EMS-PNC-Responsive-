@@ -5,7 +5,7 @@ $(document).ready(function() {
 function getTableData() {
     $.ajax({
             method: "GET",
-            url: "http://192.168.1.106:8090/api/optimizationOverview/switchableDriver",
+            url: "http://localhost:8090/api/optimizationOverview/switchableDriver",
 
         }).done(function(data) {
             printTableData(data);

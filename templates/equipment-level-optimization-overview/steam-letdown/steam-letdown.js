@@ -49,7 +49,8 @@ function getSpecificlinesteamLenData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://192.168.1.120:8090/EquipmentLevelOptimizedOverview/steamletdownGraph",
+        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/steamletdownGraph",
+      
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data.showNumberIndex;
@@ -142,7 +143,7 @@ function showSpecificlinesteamLenData(data, Difference_In_Days, interval) {
 function steamletdowntable() {
     $.ajax({
         method: 'GET',
-        url: 'http://192.168.1.120:8090/EquipmentLevelOptimizedOverview/steamletdownTable'
+        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/steamletdownTable'
     }).done(function (data) {
         console.log(data ,"bhagahbab");
         getDropsteamletdown(data)

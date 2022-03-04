@@ -9,7 +9,7 @@ $(document).ready(function() {
 function tgtuloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/api/npruunitOverview/specificeneryconsumption",
+        url: "http://localhost:8090/api/npruunitOverview/specificeneryconsumption",
     }).done(function(gaugevalue) {
         tgtuGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -88,7 +88,7 @@ function tgtuGaugeChartvalue(gaugevalue) {
 
 function srusteamconsumptionbreakup() {
     $.ajax({
-      url: "http://localhost:8090/EmsPNC/api/srutgtuOverview/SteamConsumptionBreakup",
+      url: "http://localhost:8090/api/srutgtuOverview/SteamConsumptionBreakup",
       method: "GET"
   
     }).done(function (data) {
@@ -108,7 +108,7 @@ function srusteamconsumptionbreakup() {
 
   function getcard() {
     $.ajax({
-         url:"http://localhost:8090/EmsPNC/api/srutgtuOverview/getCardDetails",
+         url:"http://localhost:8090/api/srutgtuOverview/getCardDetails",
         method: "GET"
     }).done(function(data) {
         console.log(data)

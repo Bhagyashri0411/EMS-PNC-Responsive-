@@ -1,6 +1,5 @@
 $(document).ready(function () {
     getEquOverMEGData();
-
     $("input[name=fromeqmeg]").on('change', function () {
         // console.log("from", event.target.value);
         document.getElementById("toeqmeg").min = $('#fromeqmeg').val();
@@ -36,7 +35,7 @@ function getEquOverMEGData() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://192.168.1.109:8090/EquipmentOverview/MEGchart",
+        url: "http://localhost:8090/EquipmentOverview/MEGchart",
 
     }).done(function (data) {
         var chartData = { actual: [], design: [] };
@@ -115,7 +114,7 @@ var selectedData1;
 function equipmentOverviewKpiTableMeg() {
 
     $.ajax({
-        url: 'http://192.168.1.109:8090/EquipmentOverview/MEGtable',
+        url: 'http://localhost:8090/EquipmentOverview/MEGtable',
         method: "GET",
 
     }).done(function (data) {
@@ -143,7 +142,7 @@ function getSpecificEquipmentOverviewDataMEG() {
         method: "POST",
         data: postdata,
 
-        url: "http://192.168.1.109:8090/EquipmentOverview/MEGgraphEquip",
+        url: "http://localhost:8090/EquipmentOverview/MEGgraphEquip",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
