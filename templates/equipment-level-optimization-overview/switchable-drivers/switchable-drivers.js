@@ -5,22 +5,12 @@ $(document).ready(function() {
 function getTableData() {
     $.ajax({
             method: "GET",
-            url: "http://localhost:8090/api/optimizationOverview/switchableDriver",
+            url: "http://192.168.1.109:8090/auth/Equipmentlevelopt/Switchabledrivers",
 
         }).done(function(data) {
             printTableData(data);
         })
-        .fail(function() {
-            var data = [
-                { "actual": { "t": "TRUE", "m": "FAlSE" }, "optimized": { "t": "TRUE", "m": "FAlSE" }, "description": "BFW Pump 1" },
-                { "actual": { "t": "TRUE", "m": "FAlSE" }, "optimized": { "t": "TRUE", "m": "FAlSE" }, "description": "BFW Pump 2" },
-                { "actual": { "t": "TRUE", "m": "FAlSE" }, "optimized": { "t": "FAlSE", "m": "TRUE" }, "description": "#3" },
-                { "actual": { "t": "TRUE", "m": "FAlSE" }, "optimized": { "t": "FAlSE", "m": "TRUE" }, "description": "#4" },
-                { "actual": { "t": "FAlSE", "m": "TRUE" }, "optimized": { "t": "TRUE", "m": "FAlSE" }, "description": "#5" },
-                { "actual": { "t": "TRUE", "m": "FAlSE" }, "optimized": { "t": "TRUE", "m": "FAlSE" }, "description": "#6" }
-            ];
-            printTableData(data);
-        })
+       
 }
 
 function printTableData(data) {
@@ -32,8 +22,8 @@ function printTableData(data) {
         tableHtml += '<td class="text-center"><span class="indicator ' + rowData.actual.m + '"></span><span class="indicator-label">M</span>';
         tableHtml += '<span class="indicator ' + rowData.actual.t + '"></span><span class="indicator-label">T</span></td>';
 
-        tableHtml += '<td class="text-center"><span class="indicator ' + rowData.optimized.m + '"></span><span class="indicator-label">M</span>';
-        tableHtml += '<span class="indicator ' + rowData.optimized.t + '"></span><span class="indicator-label">T</span></td></tr>';
+        tableHtml += '<td class="text-center"><span class="indicator ' + rowData.optimised.m + '"></span><span class="indicator-label">M</span>';
+        tableHtml += '<span class="indicator ' + rowData.optimised.t + '"></span><span class="indicator-label">T</span></td></tr>';
 
         $('#switchable-table').append(tableHtml);
     });
