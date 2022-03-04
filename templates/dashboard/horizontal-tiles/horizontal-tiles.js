@@ -87,8 +87,8 @@ function loadDoughnutChart(data) {
             startAngle: 120,
             dataPoints: [
                 // { y: data[0].solid, name: "Solid" },
-                { y: data.liquid, name: "Liquid", indexLabel: "Liquid " + ((data.liquid / data.totalfuel) * 100).toFixed(2) + "%" },
-                { y: data.gas, name: "Gas", indexLabel: "Gas " + ((data.gas / data.totalfuel) * 100).toFixed(2) + "%" },
+                { y: data.liquid, name: "Liquid", indexLabel:((data.liquid / data.totalfuel) * 100).toFixed(2) + "%" },
+                { y: data.gas, name: "Gas", indexLabel:((data.gas / data.totalfuel) * 100).toFixed(2) + "%" },
             ]
         }]
     });

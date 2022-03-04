@@ -3,7 +3,13 @@
 .card .title .col-md-2 #Ton {
     margin: 18px -5px;
 }
-
+.card .title .in-title {
+    font-weight: 200;
+    font-size: 1vw;
+}
+.second-box-title{
+    font-size: 1vw;
+}
 .card .title .col-md-2 #Gcal {
     margin: 15px 5px;
 }
@@ -52,12 +58,11 @@
 } */
 .card .title .in-title {
     font-weight: 200;
-    font-size: 0.5vw;
+    font-size: 1vw;
 }
 
 .second-box-title {
-    font-size: 0.7vw;
-    margin-top: 0.2vw;
+    font-size: 1vw;
 }
 
 .card .chart-title.title .firstbox {
