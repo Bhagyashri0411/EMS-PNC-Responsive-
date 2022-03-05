@@ -36,17 +36,21 @@ $(document).ready(function () {
     document.getElementById("fromsteam").max = $('#steamto').val();
 
     $('#fromsteamline2').val(d.toJSON().slice(0, 19));
+    // console.log(d,'daa');
+    // const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
+    // tod.setHours(29);
+    // tod.setMinutes(29);
+    // tod.setSeconds(0);
     $('#tosteamline2').val(d.toJSON().slice(0, 19));
     document.getElementById("tosteamline2").min = $('#fromsteamline2').val();
     document.getElementById("fromsteamline2").max = $('#tosteamline2').val();
     getSpecificSteamConsumptionData();
     getSpecificSteamline1ConsumptionData();
-
 });
 function getSpecificSteamline1ConsumptionData() {
-    var myJSON = { 'fromdate': $('#fromSteamline2').val(), 'todate': $('#toSteamline2').val() };
+    var myJSON = { 'fromdate': $('#fromsteamline2').val(), 'todate': $('#tosteamline2').val() };
     const postdata = JSON.stringify(myJSON);
-    console.log(postdata,"hhdban");
+    console.log(postdata);
     $.ajax({
         headers: {
             "Content-Type": "application/json",
