@@ -32,14 +32,14 @@ $(document).ready(function () {
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
 
     $('#fromwater').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#towater').val(tod.toJSON().slice(0, 19));
      
@@ -58,7 +58,7 @@ function getSpecificwaterConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: " http://localhost:8090/water/watergraph",
+        url: " http://localhost:8090/EmsPNC/water/watergraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -193,7 +193,7 @@ function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
             type: "spline",
             lineThickness: 4,
             lineDashType: "dash",
-            color: "#00B1F0",
+            color: "#FFC100",
             name: "Reference",
             markerSize: 0,
             yValueFormatString: "0.00#",
@@ -213,7 +213,7 @@ function waterspecificConsumption() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/water/SpecificWaterConsumption",
+        url: "http://localhost:8090/EmsPNC/water/SpecificWaterConsumption",
 
 
     }).done(function (data) {
@@ -240,7 +240,7 @@ function condensatesystem() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-         url: "http://localhost:8090/water/TotalCondensateGeneration",
+         url: "http://localhost:8090/EmsPNC/water/TotalCondensateGeneration",
         method: "GET"
 
     }).done(function (data) {
@@ -265,7 +265,7 @@ function Watercard1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/water/CondensateRecovery",
+        url: "http://localhost:8090/EmsPNC/water/CondensateRecovery",
         
     }).done(function (data) {
         console.log(data)
@@ -301,7 +301,7 @@ function Watercard2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/water/RawWaterIntake",
+        url: "http://localhost:8090/EmsPNC/water/RawWaterIntake",
         
     }).done(function (data) {
         console.log(data)
@@ -338,7 +338,7 @@ function Watercard3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/water/DMWaterConsumption",
+        url: "http://localhost:8090/EmsPNC/water/DMWaterConsumption",
         
     }).done(function (data) {
         console.log(data)
@@ -376,7 +376,7 @@ function Watercard4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/water/BFWConsumption",
+        url: "http://localhost:8090/EmsPNC/water/ROWaterProduction",
         
     }).done(function (data) {
         console.log(data)
@@ -414,7 +414,7 @@ function Watercard5() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/water/ROWaterProduction",
+        url: "http://localhost:8090/EmsPNC/water/BFWConsumption",
        
     }).done(function (data) {
         console.log(data)

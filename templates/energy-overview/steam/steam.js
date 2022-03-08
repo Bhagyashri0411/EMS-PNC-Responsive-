@@ -23,13 +23,13 @@ $(document).ready(function () {
     });
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromsteam').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#steamto').val(tod.toJSON().slice(0, 19));
     document.getElementById("steamto").min = $('#fromsteam').val();
@@ -38,8 +38,8 @@ $(document).ready(function () {
     $('#fromsteamline2').val(d.toJSON().slice(0, 19));
     // console.log(d,'daa');
     // const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    // tod.setHours(29);
-    // tod.setMinutes(29);
+    // tod.setHours(18);
+    // tod.setMinutes(59);
     // tod.setSeconds(0);
     $('#tosteamline2').val(d.toJSON().slice(0, 19));
     document.getElementById("tosteamline2").min = $('#fromsteamline2').val();
@@ -59,7 +59,7 @@ function getSpecificSteamline1ConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/steam/steamGraph",
+        url: "http://localhost:8090/EmsPNC/steam/steamGraph",
     }).done(function (data) {
         console.log(data)
 
@@ -68,19 +68,13 @@ function getSpecificSteamline1ConsumptionData() {
 }
 
 function formatSpecificSteamline1ConsumptionData(data) {
-    var chartData = { lp_STEAM_TO_FLASHEXPX_PTA: [], lp_STEAM_VENT_AT_PTA: [], hp_STEAM_VENT_AT_HGU: [], mlp_STEAM_VENT_AT_HGU: [], mp_STEAM_VENT_AT_HGU: [], lp_STEAM_VENT_AT_HGU: [], elp_STEAM_VENT: [] };
+    var chartData = { value1: [], value2: [], value3: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
-        chartData.lp_STEAM_VENT_AT_PTA.push({ y: element.lp_STEAM_VENT_AT_PTA });
-        chartData.lp_STEAM_TO_FLASHEXPX_PTA.push({ y: element.lp_STEAM_TO_FLASHEXPX_PTA });
-        chartData.hp_STEAM_VENT_AT_HGU.push({ y: element.hp_STEAM_VENT_AT_HGU });
-        chartData.mlp_STEAM_VENT_AT_HGU.push({ y: element.mlp_STEAM_VENT_AT_HGU });
-
-        chartData.mp_STEAM_VENT_AT_HGU.push({ y: element.mp_STEAM_VENT_AT_HGU });
-
-        chartData.lp_STEAM_VENT_AT_HGU.push({ y: element.lp_STEAM_VENT_AT_HGU });
-
-        chartData.elp_STEAM_VENT.push({ y: element.elp_STEAM_VENT });
+        chartData.value1.push({ y: element.value1 });
+        chartData.value2.push({ y: element.value2 });
+        chartData.value3.push({ y: element.value3 });
+       
     }
     console.log("steamchartdata", chartData);
     showSpecificSteamline1ConsumptionChart(chartData);
@@ -118,53 +112,28 @@ function showSpecificSteamline1ConsumptionChart(data) {
         },
 
         data: [{
-            type: "column",
+            type: "spline",
             color: "#0896CC",
             lineThickness: 2,
-            name: "MP-HGU",
-            dataPoints: data.lp_STEAM_TO_FLASHEXPX_PTA
+            name: "LP-CPP",
+            dataPoints: data.value1
         },
         {
             type: "spline",
             color: "#c55B11",
-            name: "MLP-HGU ",
+            name: "LP-NCU",
             lineThickness: 2,
             markerSize: 0,
-            dataPoints: data.lp_STEAM_VENT_AT_PTA
+            dataPoints: data.value2
         }, {
-            type: "column",
-            color: "#c55B11",
-            name: "LP-HGU",
+            type: "spline",
+            color: "#F50548",
+            name: "LP-SWING",
             lineThickness: 2,
-            dataPoints: data.hp_STEAM_VENT_AT_HGU
+            dataPoints: data.value3
         },
-        {
-            type: "column",
-            color: "#D945B4",
-            name: "LP-PTA",
-            lineThickness: 2,
-            dataPoints: data.mlp_STEAM_VENT_AT_HGU
-        },
-        {
-            type: "column",
-            color: "#FFA700",
-            name: "ELP",
-            lineThickness: 2,
-            dataPoints: data.mp_STEAM_VENT_AT_HGU
-        }, {
-            type: "column",
-            color: "#a708f9",
-            name: "LP-PX-PTA",
-            lineThickness: 2,
-            dataPoints: data.lp_STEAM_VENT_AT_HGU
-        }, {
-            type: "column",
-            color: "#08CC12",
-            name: "HP-HGU",
-            lineThickness: 2,
-            dataPoints: data.elp_STEAM_VENT
-        },
-
+       
+       
         ]
     });
 
@@ -193,7 +162,7 @@ function getSpecificSteamConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/steam/specificsteamconsumption",
+        url: "http://localhost:8090/EmsPNC/steam/specificsteamconsumption",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -302,7 +271,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
 function steamDoughnut() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/steam/steamBreakup",
+        url: "http://localhost:8090/EmsPNC/steam/steamBreakup",
     }).done(function (data) {
         loadDoughnutChart(data);
     })
@@ -353,7 +322,7 @@ function loadDoughnutChart(data) {
 
 function steamtable() {
     $.ajax({
-        url: "http://localhost:8090/steam/secSteam",
+        url: "http://localhost:8090/EmsPNC/steam/secSteam",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -391,7 +360,7 @@ function steamtable() {
 function steamtable2() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8090/steam/steamTable'
+        url: 'http://localhost:8090/EmsPNC/steam/steamTable'
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
@@ -412,7 +381,7 @@ function steamDoughnutProgress2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/steam/steamCapacityUtilization",
+        url: "http://localhost:8090/EmsPNC/steam/steamCapacityUtilization",
     }).done(function (data) {
 
         loadDoughnutChartProgress2(data);

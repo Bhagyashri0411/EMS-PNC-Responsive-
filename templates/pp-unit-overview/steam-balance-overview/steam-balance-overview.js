@@ -14,13 +14,13 @@ $(document).ready(function () {
         ppsteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromHomepp').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#toHomepp').val(tod.toJSON().slice(0, 19));
     document.getElementById("toHomepp").min = $('#fromHomepp').val();
@@ -37,7 +37,7 @@ function ppsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/ppsteam/steamgenerationgraph",
+        url: "http://localhost:8090/EmsPNC/ppsteam/steamgenerationgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         ppgetsteamoverview(data, Difference_In_Days);
@@ -119,7 +119,7 @@ function showsteambalancepp(data, Difference_In_Days, interval) {
 
 function ppsteamta() {
     $.ajax({
-        url: "http://localhost:8090/ppsteam/Steambalance",
+        url: "http://localhost:8090/EmsPNC/ppsteam/Steambalance",
         method: "GET"
     }).done(function (data) {
         getDroppp(data);

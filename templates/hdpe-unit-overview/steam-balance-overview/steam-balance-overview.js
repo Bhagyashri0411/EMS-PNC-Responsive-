@@ -14,13 +14,13 @@ $(document).ready(function () {
         hdpesteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromHomehdpe').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#toHomehdpe').val(tod.toJSON().slice(0, 19));
     document.getElementById("toHomehdpe").min = $('#fromHomehdpe').val();
@@ -37,7 +37,7 @@ function hdpesteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/HDPE/steamgenerationgraph",
+        url: "http://localhost:8090/EmsPNC/HDPE/steamgenerationgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         hdpegetsteamoverview(data, Difference_In_Days);
@@ -120,7 +120,7 @@ function showsteambalancehdpe(data, Difference_In_Days, interval) {
 
 function hdpesteamta() {
     $.ajax({
-        url: "http://localhost:8090/HDPE/Steambalance",
+        url: "http://localhost:8090/EmsPNC/HDPE/Steambalance",
         method: "GET"
     }).done(function (data) {
         getDrophdpe(data);

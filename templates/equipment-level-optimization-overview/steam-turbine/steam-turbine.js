@@ -23,14 +23,14 @@ $(document).ready(function () {
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
 
     $('#fromsteamurbine').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#tosteamturbine').val(tod.toJSON().slice(0, 19));
    
@@ -50,7 +50,7 @@ function getSpecificlinesteamTurData(tagname) {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowGraph",
+        url: "http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -143,7 +143,7 @@ function showSpecificlinesteamGenData(data, Difference_In_Days, interval) {
 function steamturbinetable() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowTable',
+        url: 'http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowTable',
     }).done(function (data) {
         getsteamturbinetable(data);
     })

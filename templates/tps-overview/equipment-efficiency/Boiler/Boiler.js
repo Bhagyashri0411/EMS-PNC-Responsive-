@@ -26,14 +26,14 @@ console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
 // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
 // var timeArray = hoursString.split(':');
 const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-           d.setHours(05);
-           d.setMinutes(30);
+           d.setHours(-05);
+           d.setMinutes(00);
            d.setSeconds(0);
         
 $('#fromboiler').val(d.toJSON().slice(0,19));
 const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(29);
-           tod.setMinutes(29);
+           tod.setHours(18);
+           tod.setMinutes(59);
            tod.setSeconds(0);
 $('#toboiler').val(tod.toJSON().slice(0,19));
 getSpecificBOILERData();
@@ -51,7 +51,7 @@ function getSpecificBOILERData() {
       method: "POST",
       data: postdata,
      
-      url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
+      url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
     var Difference_In_Days = data[0].showNumberIndex;
       formatSpecificBOILERData(data ,Difference_In_Days);
@@ -150,7 +150,7 @@ function getSteamFuelConsumedData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
     method: "GET",
-    url: "http://localhost:8090/tpsBoiler/fuelConsumedBarGraph",
+    url: "http://localhost:8090/EmsPNC/tpsBoiler/fuelConsumedBarGraph",
 
   }).done(function (data) {
 
@@ -258,7 +258,7 @@ function Fuelconsumed(data) {
 
 function BoilerTable() {
   $.ajax({
-    url: "http://localhost:8090/tpsBoiler/boilerTable",
+    url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
     loadBoilerTable(data) 

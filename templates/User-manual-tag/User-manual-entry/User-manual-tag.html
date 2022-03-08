@@ -6,15 +6,6 @@
             <div class="col-md-12 summary-heading">
                 <span class="heading-item pull-left" style="padding-right: 10px;"><input type="button"
                         class="btn btn-primary" name="" id="" onclick="exportFunction()" value="Report"></span>
-
-                <!-- <span class="heading-item pull-right" style="padding-right: 10px;">
-                    <input type="file" name="file" class="btn btn-primary" name="" id="chooseFile" value="Import">
-                </span>
-                <span class="heading-item pull-right" style="padding-right: 10px;">
-                    <input type="button" value="Upload File" class="btn btn-primary" onclick="uploadFunction()" >
-                </span> -->
-                <!-- <form action="http://localhost:8090/upload-csv-file" method="post" id="form_ip" onsubmit=""
-                    enctype=multipart/form-data novalidate> -->
                 <form action="" method="post" id="form_ip" onsubmit="" enctype=multipart/form-data novalidate>
                     <span class="heading-item pull-left" style="padding-right: 10px;">
                         <input type="file" class="btn btn-primary" name="file" id="chooseFile" value="Import">
@@ -23,210 +14,191 @@
                         <input type="submit" value="Upload File" class="btn btn-primary" id="upload-button">
                     </span>
                 </form>
-                <!-- <span id="result"> </span> -->
-
-                <!-- <script>
-                    $("#sub").click(function () {
-
-                        var data = $("#form_ip :input").serializeArray();
-
-                        $.post($("#form_ip").attr("action"),
-                            data, function (info) {
-                                $("#result").html(info);
-                            })
-                    });
-
-                    $("#form_ip").submit(function () {
-
-                        return true;
-
-                    });
-                </script> -->
+                <span class="heading-item pull-right" style="padding-right: 10px;">
+                    <input type="button" value="Sample CSV" class="btn btn-primary" onclick="sampledownloaduser()">
+                </span>
 
             </div>
-
         </div>
         <div class="row">
-            <div class="col-md-6 card-col">
-
+            <div class="col-md-12 card-col">
                 <div class="card">
                     <div class="header">
                         <div class="row">
-
                             <div class="col-md-6">
                                 <label for="searchSysConfing" style="color: #d9d9d9;">Search</label>
-                                <input type="text" id="searchSysConfing" class="searchInput" onkeyup="myFunction()"
+                                <input type="text" id="searchSysConfing" class="searchInput"
                                     placeholder="Search for Tag" title="Type in a name">
                             </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" onclick="usermodel()" style="margin:0 1vw;"> Add</button>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" onclick="userdeletedata()">Delete</button>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <br>
-                    <div class="card-body mt-4" >
+                    <div class="card-body mt-4">
                         <div class="overflow genratorsHeight">
-                        <table id="datatablesCalculatedTag" class="DataTable">
-                            <thead>
-                                <tr>
-                                    <th>ManualEntry</th>
-                                    <th>Tag Values</th>
-                                    <th>Timestamp</th>
-                                    <th>UOM</th>
-                                    <th>Description</th>
-
-                                    <th>Edit</th>
-
-                                </tr>
-                            </thead>
-                            <tbody id="bodytablesCalculatedTag" class="DataTable" style="height: 500px; overflow: auto;">
-
-                            </tbody>
-                        </table>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="footer">
-                        <!-- <input type="button" id="Save_button_table" class="btn btn-primary" value="Save" > -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 card-col">
-                <div class="card clearfix">
-                    <div class="card mb-4">
-                        <div class="form-floating mb-3">
-                            <!-- <input class="form-control" id="tableName" type="text" placeholder="Enter your User" />
-                              <label for="tableName">Table Name</label> -->
-                            
-                        </div>
-                        <div class="card-body">
-                            <table id="datatablesSimple1" style="width: 96%;">
+                            <table id="datatablesCalculatedTag" class="DataTable">
                                 <thead>
                                     <tr>
                                         <th>ManualEntry</th>
-                                        <th>Tag Values</th>
-                                        <!-- <th>Timestamp</th> -->
+                                        <th style="width: 8vw;">Tag Values</th>
+                                        <th style="width: 16vw;">Timestamp</th>
                                         <th>UOM</th>
                                         <th>Description</th>
-                                        <th></th>
+                                        <th>Edit</th>
+                                        <th style="width: 8vw;"><label
+                                           >&nbsp; Delete</label></th>
                                     </tr>
                                 </thead>
-                                <tbody id="datatablebody">
-                                    <tr>
-                                        <td><input class="form-control" id="inputColumnName" type="text"
-                                                placeholder="Enter Tag Name" /></td>
-                                        <td><input class="form-control" id="tagValueManual" type="number"
-                                                placeholder="Enter Values" /></td>
-                                        <!-- <td><input class="form-control" id="Timestampmanual" type="text"
-                                                placeholder="Enter Timestamp" /></td> -->
-                                        <td><input class="form-control" id="UOMmanual" type="text"
-                                                placeholder="Enter UOM" /></td>
-                                        <td><input class="form-control" id="descriptmanual" type="text"
-                                                placeholder="Enter Description" /></td>
-                                        <td><input class="btn btn-primary" id="deleteRow" type="button"
-                                                value="Delete" />
-                                        </td>
-                                    </tr>
+                                <tbody id="bodytablesCalculatedTag" class="DataTable">
                                 </tbody>
                             </table>
-
-                            <div class="row mt-4" style="margin-top: 10px;">
-
-                                <div class="col-md-7">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <!-- <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"/> -->
-                                        <label id="ERRORtblconfig" style="color: red;"></label>
-                                        <span class="error" style="color: green;" id="eTable"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-
-                                    <!-- <input class="btn btn-primary" id="addRow" type="button"
-                                            value="Add row" onclick="addRow()"/> -->
-
-
-                                </div>
-                                <div class="col-md-3">
-                                    <input class="btn btn-primary " id="saveTable" type="button" value="Insert" />
-                                </div>
-
-                            </div>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- style="display: none;" -->
-    <!-- popup -->
-    <div class="modal" id="updateRow">
-
-
+    <div class="modal" id="AdduserRow">
         <div class="modal-content">
             <div class="row">
-                <div class="col-md-10">
-                    <h3>Update Tag</h3>
+                <div class="col-md-12">
+                    <button id="adduserclose" onclick="adduserclose()">&times;</button>
                 </div>
-                <div class="col-md-2"><button style="margin-top: 20px; margin-bottom: 10px;"
-                        class="close">&times;</button></div>
+            </div>
+            <div class="header">
+                <span>Add Tag</span>
             </div>
             <div class="row">
-                <label for="">Tag Name</label>
-                <input type="text" id="tagNamep" class="form-control" readonly>
 
+                <div class="col-md-12 card-col">
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Manual Entry <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="inputColumnName" type="text"
+                                    placeholder="Enter Tag Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Tag Values <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="tagValueManual" type="number"
+                                    placeholder="Enter Values" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> UOM <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="UOMmanual" type="text" placeholder="Enter UOM" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Description <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="descriptmanual" type="text"
+                                    placeholder="Enter Description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <span class="error" style="color: green;" id="eTable"></span>
+                            <span class="error" style="color: red;" id="eTableerroe"></span>
+                        </div>
+                        <input class="btn btn-primary " onclick="saveTable()" type="button" value="Insert" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="updateRow">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <button onclick="closeuserupdate()" id="closeuserupdate">&times;</button>
+                </div>
+            </div>
+            <div class="header">
+                <span>Update Tag</span>
             </div>
             <div class="row">
-                <label for="">Tag Values</label>
-                <input type="text" id="tagValuep" class="form-control">
+                <div class="col-md-12 card-col">
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Manual Entry <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="tagNamep" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Tag Values <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="number" id="tagValuep" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> UOM <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="uomp" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Description <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="discriptionp" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <button class="addbtn btn btn-primary" id="updateRowBtn"> save</button>
+                    </div>
+                </div>
 
             </div>
-            <!-- <div class="row">
-                <label for="">Time Stamp</label>
-                <input type="text" id="timeStampp" class="form-control" readonly>
-
-            </div> -->
-            <div class="row">
-                <label for="">UOM</label>
-                <input type="text" id="uomp" class="form-control" readonly>
-
-            </div>
-            <div class="row">
-                <label for="">Description</label>
-                <input type="text" id="discriptionp" class="form-control" readonly>
-
-            </div>
-            <div class="row">
-                <input type="button" class="btn " value="save" id="updateRowBtn"
-                    style="background-color: blueviolet; width: 109px; margin-top: 20px;">
-            </div>
-
         </div>
     </div>
 </div>
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateRow">
-    Launch demo modal
-  </button> -->
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="updateRow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div> -->

@@ -25,13 +25,13 @@ $(document).ready(function () {
         getSpecificOptConsumptionData();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromopt').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#optimizedrop').val(tod.toJSON().slice(0, 19));
     document.getElementById("optimizedrop").min = $('#fromopt').val();
@@ -53,7 +53,7 @@ function getSpecificOptConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/OptimizationOverview/overallenergycost",
+        url: "http://localhost:8090/EmsPNC/OptimizationOverview/overallenergycost",
     }).done(function (data) {
         // console.log(data, "data 12")
         var Difference_In_Days = data[0].showNumberIndex;
@@ -167,7 +167,7 @@ function optimizedfuel() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/OptimizationOverview/fuelsystemoverview",
+        url: "http://localhost:8090/EmsPNC/OptimizationOverview/fuelsystemoverview",
     }).done(function (data) {
         var table_data = '';
         var max1 = 500;
@@ -192,7 +192,7 @@ function optimizedElectrical() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/OptimizationOverview/electricalpowersystem",
+        url: "http://localhost:8090/EmsPNC/OptimizationOverview/electricalpowersystem",
     }).done(function (data) {
         var table_data1 = '';
         var max1 = 700;
@@ -213,7 +213,7 @@ function optimizedElectrical() {
 function optimizedtable() {
     $.ajax({
         method: 'GET',
-        url: "http://localhost:8090/OptimizationOverview/majorcontributor",
+        url: "http://localhost:8090/EmsPNC/OptimizationOverview/majorcontributor",
     }).done(function (data) {
         var table_data = '';
         var max1 = 700;

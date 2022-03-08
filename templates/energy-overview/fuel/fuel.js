@@ -1,7 +1,7 @@
 $(document).ready(function () {
     loadCardfuel1();
     loadCardfuel2();
-
+    // var xyz = "TON/HR";
     $("input[name=from]").on('change', function (event) {
 
         document.getElementById("PNCfuelto").min = $('#PNCfuelfrom').val();
@@ -19,13 +19,13 @@ $(document).ready(function () {
 
     // // setting from date, to date - 24hrs.
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#PNCfuelfrom').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#PNCfuelto').val(tod.toJSON().slice(0, 19));
     document.getElementById("PNCfuelto").min = $('#PNCfuelfrom').val();
@@ -37,11 +37,11 @@ $(document).ready(function () {
 
     // for doughnut radio button
     getFuelDoughnutData();
-
     $(".fuel-doughnut").click(function () {
         var xyz = $("input[name=dtdt]:checked").val()
         getFuelDoughnutData(xyz);
     });
+    getFuelDoughnutData();
 });
 
 
@@ -57,7 +57,7 @@ function getSpecificFuelPNCData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/auth/Fuel/fuelgraph",
+        url: "http://localhost:8090/EmsPNC/auth/Fuel/fuelgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -90,14 +90,18 @@ function formatSpecificFuelPNCData(data, Difference_In_Days) {
 
 
 function getFuelDoughnutData() {
-    var myJSON = { uom: $("input[name=dtdt]:checked").val() }
+    var myJSON = { uom:  $("input[name=dtdt]:checked").val()}
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
         method: "POST",
         data: postdata,
-        headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/auth/Fuel/totalfuelconsumed",
+       
+        url: "http://localhost:8090/EmsPNC/auth/Fuel/totalfuelconsumed",
 
     }).done(function (data) {       
             loadDoughnutChartFuel(data);      
@@ -120,7 +124,7 @@ function loadDoughnutChartFuel(data) {
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
-            text: data.total.toFixed(2),
+            text: data[0].total.toFixed(2),
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 300,
@@ -140,8 +144,8 @@ function loadDoughnutChartFuel(data) {
             indexLabelPlacement: "outside",
             startAngle: 64,
             dataPoints: [
-                { y: data[0].liquid, indexLabel:  ((data[0].liquid / data[0].total) * 100).toFixed(2) + "%" },
-                { y: data[0].gas, indexLabel:  ((data[0].gas / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].liquid,name: "Liquid", indexLabel:  ((data[0].liquid / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].gas,name: "Gas", indexLabel:  ((data[0].gas / data[0].total) * 100).toFixed(2) + "%" },
 
             ]
         }]
@@ -238,7 +242,7 @@ function loadCardfuel1() {
     $.ajax({
         method: "GET",
 
-        url: "http://localhost:8090/auth/Fuel/secfuelMTMT",
+        url: "http://localhost:8090/EmsPNC/auth/Fuel/secfuelMTMT",
 
 
 
@@ -272,7 +276,7 @@ function loadCardfuel2() {
     $.ajax({
         method: "GET",
 
-        url: "http://localhost:8090/auth/Fuel/secfuelToeMT",
+        url: "http://localhost:8090/EmsPNC/auth/Fuel/secfuelToeMT",
 
 
 

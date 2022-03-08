@@ -27,13 +27,13 @@ $(document).ready(function () {
   
     var now = new Date();
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromcpp').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#tps1').val(tod.toJSON().slice(0, 19));
     document.getElementById("tps1").min = $('#fromcpp').val();
@@ -52,7 +52,7 @@ function getCardValue1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/totalPowerGenerated",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/totalPowerGenerated",
 
     }).done(function (data) {
         document.getElementById('TPC').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -86,7 +86,7 @@ function getCardValue2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/SpecificFuelConsumtion",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/SpecificFuelConsumtion",
 
     }).done(function (data) {
 
@@ -122,7 +122,7 @@ function getCardValue3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/specificWater",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/specificWater",
 
     }).done(function (data) {
         document.getElementById('SW').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -159,7 +159,7 @@ function getCardValue4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/specificSteam",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/specificSteam",
 
     }).done(function (data) {
 
@@ -197,7 +197,7 @@ function getCardValue5() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/optimumPowerGeneration",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/optimumPowerGeneration",
 
     }).done(function (data) {
 
@@ -228,7 +228,7 @@ function getCardValue6() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/CPPPowerGenerationCost",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/CPPPowerGenerationCost",
 
     }).done(function (data) {
         document.getElementById('CPGC').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -265,7 +265,7 @@ function getCardValue7() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/totalSteamGenerated",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/totalSteamGenerated",
 
     }).done(function (data) {
         document.getElementById('TSG').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -302,7 +302,7 @@ function getCardValue8() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/overallEfficiency",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/overallEfficiency",
 
     }).done(function (data) {
         document.getElementById('OE').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -337,7 +337,7 @@ function getCardValue9() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/grossHeatRate",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/grossHeatRate",
 
     }).done(function (data) {
         document.getElementById('GHR').innerHTML = data[0]['tagvalue'].toFixed(2);
@@ -379,7 +379,7 @@ function getTotalGenerationCostData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/auth/tpsoverview/fuelOilConsumptionGraph",
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/fuelOilConsumptionGraph",
 
     }).done(function (data) {
         var Difference_In_Days1 = data[0].showNumberIndex;
@@ -475,7 +475,7 @@ console.log(data,"jkljclkdjocj");
 
 function tpsTable() {
     $.ajax({
-      url: "http://localhost:8090/auth/tpsoverview/ParameterTable",
+      url: "http://localhost:8090/EmsPNC/auth/tpsoverview/ParameterTable",
       method: "GET"
     }).done(function (data) {
         loadtpsTable(data) 
