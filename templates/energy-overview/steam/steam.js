@@ -238,7 +238,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
         data: [{
             type: "column",
             color: "#00b0f0",
-            name: "Through put",
+            name: "Throughput",
             markerSize: 0,
             axisYType: "secondary",
             dataPoints: data.throughput
