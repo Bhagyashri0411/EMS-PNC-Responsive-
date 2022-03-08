@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var abc = 'TOE/hr';
+    var abc = 'Ton/hr';
     getDoughnutData(abc);
     loadGaugeChartData();
     guagevaluehomeAct();
@@ -7,7 +7,7 @@ $(document).ready(function () {
     getcardhome2();
 
     getcardhome3();
-    var abc = 'TOE/hr';
+    var abc = 'Ton/hr';
 
 
     $(".donougt-radio").click(function () {

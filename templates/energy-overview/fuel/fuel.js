@@ -215,7 +215,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
         {
             type: "spline",
             color: "#ED7E31",
-            name: "FuelConsumption",
+            name: "Specific Fuel Consumption",
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.FuelConsumption

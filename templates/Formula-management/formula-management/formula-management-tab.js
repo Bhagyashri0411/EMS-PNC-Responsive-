@@ -8,7 +8,6 @@ $(document).ready(function () {
         var das_write_back = $(this).closest('tr').find('td:eq(3)').text();
         var result_tag = $(this).closest('tr').find('td:eq(4)').text();
         var Result = $(this).closest('tr').find('td:eq(5)').text();
-       
         var decimal_point = parseInt($(this).closest('tr').find('td:eq(6)').text());
         document.getElementById("alias").value = Alias;
         document.getElementById("formulaTag").value = Formula;
@@ -16,14 +15,11 @@ $(document).ready(function () {
         document.getElementById("result_tag").value = Result;
         document.getElementById("storeResulttag").value = das_write_back;
         document.getElementById("resultTag1").value = result_tag;
-      
         document.getElementById("decimal_tag").value = decimal_point;
         $('#updateRow').show();
     });
     $("#searchSysConfing").on("click", function () {
         var value = $("#SearchInput").val().toLowerCase();
-     
-        
         $("#bodytablesCalculatedTag tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
@@ -34,12 +30,10 @@ $(document).ready(function () {
         var alias1 = document.getElementById('alias').value;
         var Formula1 = document.getElementById('formulaTag').value;
         var Description1 = document.getElementById('descriptionTag').value;
-        // var Result1 =  document.getElementById('ResultTag').value;
         var storeResulttag1 = document.getElementById('storeResulttag').value;
         var resultTag1 = document.getElementById('resultTag1').value;
-        
         var DecimalPointTag1 = document.getElementById('decimal_tag').value;
-        var addRowValue1 = { 'alias': alias1, 'formula': Formula1, 'description': Description1, 'das_write_back': storeResulttag1, 'result_tag': resultTag1,'decimal_point': DecimalPointTag1 };
+        var addRowValue1 = { 'alias': alias1, 'formula': Formula1, 'description': Description1, 'das_write_back': storeResulttag1, 'result_tag': resultTag1, 'decimal_point': DecimalPointTag1 };
         $.ajax({
             headers: {
                 "Content-Type": "application/json",
@@ -50,9 +44,6 @@ $(document).ready(function () {
             url: "http://localhost:8090/EmsPNC/update",
             data: JSON.stringify(addRowValue1),
             success: function (status) {
-                //  var msg1 = msg;
-                //  console.log(msg1);
-
                 if (status == 'Updated sucessfully') {
                     getCalculatedTag();
                     $('#updateRow').hide();
@@ -124,13 +115,10 @@ function addRow() {
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
-        //  var cell6 = row.insertCell(5);
         cell1.innerHTML = '<input class="form-control" id="inputColumnName" type="text" placeholder="Enter Tag Name"/>';
         cell2.innerHTML = '<input class="form-control" id="tagValueManual" type="text" placeholder="Enter Values"/>';
-        // cell3.innerHTML = '<input class="form-control" id="Timestampmanual" type="text" placeholder="Enter Timestamp"/>';
         cell3.innerHTML = '<input class="form-control" id="UOMmanual" type="text" placeholder="Enter UOM"/>';
         cell4.innerHTML = '<input class="form-control" id="descriptmanual" type="text" placeholder="Enter Description"/>';
-        // cell5.innerHTML = '<input class="btn btn-primary" id="deleteRow" type="button" value="Delete" />';
     }
 }
 
@@ -151,15 +139,13 @@ function getCalculatedTag() {
         student += '<tr>';
         for (const val of tabledata) {
             student += '<td>' + val['alias'] + '</td>';
-            student += '<td>' + val['formula'] + '</td>';
-            student += '<td>' + val['description'] + '</td>';
+            student += '<td style="table-layout: fixed; width: 100px;">' + val['formula'] + '</td>';
+            student += '<td style="overflow : auto"> ' + val['description'] + '</td>';
             student += '<td class="w4">' + val['das_write_back'] + '</td>';
-            student += '<td>' + val['result_tag'] + '</td>';
-            student += '<td class="w4" style="text-align: center;">' + val['result'] + '</td>';
-           
-            student += '<td class="w4" style="text-align: center;">' + val['decimal_point'] + '</td>';
+            student += '<td style="overflow : auto">' + val['result_tag'] + '</td>';
+            student += '<td class="w4">' + val['result'] + '</td>';
+            student += '<td class="w4">' + val['decimal_point'] + '</td>';
             student += '<td><input class="editValues btn btn-primary" type="button" value="Edit"</input></td>';
-            // student += '<td><input class="deleteValues btn btn-primary" type="button" name="delBox" value="Delete" /></td>';
             student += '</tr>';
         }
         document.getElementById("bodytablesCalculatedTag").innerHTML = student;
@@ -179,7 +165,6 @@ function exportFunction() {
         },
         method: "GET",
         url: "http://localhost:8090/EmsPNC/alldata",
-        //url:"./../../../templates/Formula-management/formula-management/csvgenerate.json",
     }).done(function (data) {
         console.log(data)
 
@@ -193,7 +178,7 @@ function exportFunction() {
 
         for (const row of data) {
             csvRows.join('\n');
-            var abc = '\n"' + row.alias + '","' + row.formula + '","' + row.description + '",' + row.das_write_back + ',"' + row.result_tag + '",' + row.result + ','+ row.decimal_point;
+            var abc = '\n"' + row.alias + '","' + row.formula + '","' + row.description + '",' + row.das_write_back + ',"' + row.result_tag + '",' + row.result + ',' + row.decimal_point;
             csvRows.push(abc);
         }
 
@@ -254,20 +239,14 @@ function ServiceCall() {
             student += '<td>' + val['alias'] + '</td>';
             student += '<td>' + val['formula'] + '</td>';
             student += '<td>' + val['description'] + '</td>';
-            // student += '<td>' + val['result'] + '</td>';
-
             student += '<td>' + val['result_tag'] + '</td>';
             student += '<td>' + val['das_write_back'] + '</td>';
-           
             student += '<td>' + val['decimal_point'] + '</td>';
             student += '<td><input class="editValues btn btn-primary" onclick="addRow()"  type="button" value="Edit"</input></td>';
-            // student += '<td><input class="deleteValues btn btn-primary" type="button" name="delBox" value="Delete" /></td>';
             student += '</tr>';
         }
         document.getElementById("bodytablesCalculatedTag").innerHTML = student;
         console.log('hello');
-        //document.getElementById("count1").innerHTML = data.totalelectricityConsumption;
-
     });
 }
 //Delete
@@ -304,13 +283,12 @@ function addNewData() {
     var alias = document.getElementById('aliasAdd').value;
     var Formula = document.getElementById('formulaTagAdd').value;
     var Description = document.getElementById('descriptionTagAdd').value;
-    // var Result =  document.getElementById('ResultAdd').value;
     var resultTag = document.getElementById('resultTagAdd').value;
     var storeResulttag = document.getElementById('storeResulttagAdd').value;
     var decimalpointtag = document.getElementById('decimal_tagAdd').value;
 
 
-    var addRowValue = { 'alias': alias, 'formula': Formula, 'description': Description, 'result_tag': resultTag, 'das_write_back': storeResulttag, 'decimal_point': decimalpointtag };
+    var addRowValue = { 'alias': alias, 'formula': Formula, 'description': Description, 'result_tag': resultTag, 'decimal_point': decimalpointtag };
     $.ajax({
         headers: {
             "Content-Type": "application/json",
@@ -326,14 +304,14 @@ function addNewData() {
             //  var msg1 = msg;
             console.log(status, 'sttatus');
             if (status == 'Alias already present, please try with new alias or edit existing one.') {
-               
+
                 alert('Alias already present, please try with new alias or edit existing one.');
             }
             if (status == 'Formula inserted successfully.') {
-                
-               
+
+
                 getCalculatedTag();
-                
+
                 alert('Formula inserted successfully.');
             }
             else {
@@ -342,96 +320,17 @@ function addNewData() {
                 console.log(status, 'tttttt');
                 alert(status);
             }
-             if (status === 500) {
+            if (status === 500) {
                 getCalculatedTag();
 
                 $('#addRowData').hide();
                 alert('uuukj');
 
 
-            } 
-            // else {
-            //     document.getElementById('ERRORconfig').innerHTML = "Alias already present, please try with new alias or edit existing one.";
-            //     alert('Alias already present, please try with new alias or edit existing one.');
-            // }
-
-
+            }
         }
 
     });
-
-    // if (alias.includes('$') && Formula && Description && resultTag && storeResulttag)
-    // {
-    //     if ((Formula.includes("{") && Formula.includes("}")))
-    //     {
-    //         if (Formula.includes("'")) {
-    //             document.getElementById('ERRORformula').innerHTML = "Please do not use both sign in formula";
-    //         }else{
-    //             document.getElementById('ERRORformula').innerHTML = "";
-    //             document.getElementById('ERRORconfig').innerHTML = "";
-    //             console.log('yes');
-    //             var abc = Formula;
-    //             console.log(abc);
-    //             //var addRowValue = {'Alias':alias ,'Formula':Formula ,'Description':Description ,'Result':Result ,'StoreResult':storeResulttag ,'ResultTag':resultTag };
-    //         }
-    //     }
-    //     if (Formula.includes("'"))
-    //     {
-    //         if ((Formula.includes("{") && Formula.includes("}"))) {
-    //             document.getElementById('ERRORformula').innerHTML = "Please do not use both sign in formula";
-    //         }else{
-    //             document.getElementById('ERRORformula').innerHTML = "";
-    //             document.getElementById('ERRORconfig').innerHTML = "";
-    //             console.log('yes');
-    //             abc = Formula;
-    //             console.log(abc);
-    //         }
-
-    //     }
-    //     if (abc) {
-    //         var addRowValue = {'alias':alias ,'formula':abc ,'description':Description ,'result_tag':resultTag ,'storeResult':storeResulttag }; 
-    //         $.ajax({
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //         "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
-    //     },
-    //             type: "post",
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             url: "http://localhost:8090/EmsPNC/insert",
-    //             data:JSON.stringify(addRowValue),
-    //             success: function (msg) {
-    //                  var msg1 = msg;
-    //                  console.log(msg1);
-    //                  if (msg =='tag inserted sucessfully') {
-    //                     getCalculatedTag();
-    //                     $('#addRowData').hide();
-    //                  } else {
-
-    //                  }
-    //                  if (msg =='tag is already exist') {
-    //                     document.getElementById('ERRORconfig').innerHTML = "Tag is already exist";
-    //                  } else {
-
-    //                  }
-
-    //               }
-
-    //         }); 
-    //     }
-    //     else{
-    //         document.getElementById('ERRORconfig').innerHTML = "Please enter valid formula";
-    //     }
-
-
-
-
-    // }
-    // else{
-    //     document.getElementById('ERRORconfig').innerHTML = "Please enter valid Alias";
-    //     console.log('no');
-    // }
 
 }
 
@@ -440,41 +339,40 @@ var form = document.getElementById('form_ipformula');
 var fileSelect = document.getElementById('chooseFileformula');
 var uploadButton = document.getElementById('upload-buttonformula');
 
-form.onsubmit = function(event) {
-  console.log("in form action");
+form.onsubmit = function (event) {
+    console.log("in form action");
     event.preventDefault();
-  
+
     // Update button text.
     uploadButton.innerHTML = 'Uploading...';
     var files = fileSelect.files;
-    
+
     var formData = new FormData();
-for (var i = 0; i < files.length; i++) {
-    var file = files[i];
-    formData.append('file', file, file.name);
-  }
-  
-var xhr = new XMLHttpRequest();
-xhr.open('POST', 'http://localhost:8090/EmsPNC/upload-csv-fileformula', true);
-xhr.onload = function (status) {
-    if (status == 'Success') {
-      uploadButton.innerHTML = 'Upload';
-      getCalculatedTag();
-      alert('Success');
-    } 
-   
-    else {
-        alert(xhr.responseText);
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        formData.append('file', file, file.name);
     }
 
-    if (status =! 200) {
-        
-        console.log(status,'ffgfhgvvhg');
-        //  getCalculatedTag();
-         alert('Please Contact Customer Support!');
-       
-    }
-  };
-  xhr.send(formData);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8090/EmsPNC/upload-csv-fileformula', true);
+    xhr.onload = function (status) {
+        if (status == 'Success') {
+            uploadButton.innerHTML = 'Upload';
+            getCalculatedTag();
+            alert('Success');
+        }
+
+        else {
+            alert(xhr.responseText);
+        }
+
+        if (status = !200) {
+
+            console.log(status, 'ffgfhgvvhg');
+            //  getCalculatedTag();
+            alert('Please Contact Customer Support!');
+
+        }
+    };
+    xhr.send(formData);
 }
-
