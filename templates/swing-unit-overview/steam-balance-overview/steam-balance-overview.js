@@ -14,13 +14,13 @@ $(document).ready(function () {
         swingsteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromHomeswing').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#toHomeswing').val(tod.toJSON().slice(0, 19));
     document.getElementById("toHomeswing").min = $('#fromHomeswing').val();
@@ -37,7 +37,7 @@ function swingsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/SWINGsbo/steambalanceoverviewgraph",
+        url: "http://localhost:8090/EmsPNC/SWINGsbo/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         swinggetsteamoverview(data, Difference_In_Days);
@@ -120,7 +120,7 @@ function showsteambalanceswing(data, Difference_In_Days, interval) {
 
 function swingsteamta() {
     $.ajax({
-        url: "http://localhost:8090/SWINGsbo/SteambalanceTable",
+        url: "http://localhost:8090/EmsPNC/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getDropswing(data);

@@ -84,7 +84,7 @@
 }
 .optitles-row table.table2 td 
 {
-  padding: 6px;
+  padding: 9px;
   color: #d9d9d9;
   font-weight: 500;
   font-size: 16px;
@@ -198,8 +198,8 @@ margin-right: 6px;
 }
 
 .optitles-row #num{
-  padding: 20px;
-  font-size: 55px;
+  padding: 25px;
+  font-size: 2.5vw;
   color: #f2f2f2;
   float: left;
   font-weight: bold;
@@ -251,4 +251,15 @@ margin-right: 6px;
 
 .optitles-row ::-webkit-scrollbar-thumb:hover {
   background:#8d8a95;
+}
+.optitles-row #aera-drop-pncp{
+  background-color: #26293c;
+  border: 1px solid #f2f2f2;
+  max-width: 15vw;
+  cursor: pointer;
+  color: #f2f2f2;
+  border-radius: 4px;
+  margin-left: 15vw;
+  padding: 0.1px;
+  font-size: 0.5vw;
 }

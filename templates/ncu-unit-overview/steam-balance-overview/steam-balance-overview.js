@@ -14,13 +14,13 @@ $(document).ready(function () {
         ncusteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromHomencu').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#toHomencu').val(tod.toJSON().slice(0, 19));
     document.getElementById("toHomencu").min = $('#fromHomencu').val();
@@ -37,7 +37,7 @@ function ncusteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/ncusteam/steamgenerationgraph",
+        url: "http://localhost:8090/EmsPNC/ncusteam/steamgenerationgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         ncugetsteamoverview(data, Difference_In_Days);
@@ -120,7 +120,7 @@ function showsteambalancencu(data, Difference_In_Days, interval) {
 
 function ncusteamta() {
     $.ajax({
-        url: "http://localhost:8090/ncusteam/Steambalance",
+        url: "http://localhost:8090/EmsPNC/ncusteam/Steambalance",
         method: "GET"
     }).done(function (data) {
         getDropNcu(data);

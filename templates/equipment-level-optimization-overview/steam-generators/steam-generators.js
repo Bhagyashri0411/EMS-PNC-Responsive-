@@ -24,14 +24,14 @@ $(document).ready(function () {
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
 
     $('#fromstreamgene').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#toStreamgene').val(tod.toJSON().slice(0, 19));
     getSpecificlinesteamGenData();
@@ -50,7 +50,7 @@ function getSpecificlinesteamGenData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/SteamGeneratorGraph",
+        url: "http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamGeneratorGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -147,7 +147,7 @@ function steamgeneratorstable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/SteamGeneratorTable',
+        url: 'http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamGeneratorTable',
     }).done(function (data) {
         getSteamgenerator(data)
         var max1 = 500;
@@ -158,7 +158,7 @@ function steamgeneratorstable() {
             table_data += '<td>' + value.actual + '</td>';
             table_data += '<td>' + value.optimized + '</td>';
             table_data += '<td>' + value.deviation.toFixed(2) + '</td>';
-            table_data += '<td> <progress value =' + value.deviation + ' max=' + max1 + '></progress></td>';
+            // table_data += '<td> <progress value =' + value.deviation + ' max=' + max1 + '></progress></td>';
 
             table_data += '</tr>';
         });

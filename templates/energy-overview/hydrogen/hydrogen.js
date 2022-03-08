@@ -28,13 +28,13 @@ $(document).ready(function () {
 
     // // setting from date, to date - 24hrs.
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromhydrogen').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#tohydrogen').val(tod.toJSON().slice(0, 19));
 
@@ -51,7 +51,7 @@ function getSpecificHydrogenConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/HydrogenScreen/TotalHydrogenGenerationGraph",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/TotalHydrogenGenerationGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -155,7 +155,7 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
 
 function genratortable() {
     $.ajax({
-        url: "http://localhost:8090/HydrogenScreen/TableGenerators",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/TableGenerators",
         method: "GET"
 
     }).done(function (data) {
@@ -176,7 +176,7 @@ function genratortable() {
 
 function consumertable() {
     $.ajax({
-        url: "http://localhost:8090/HydrogenScreen/TableConsumers",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/TableConsumers",
         method: "GET"
 
     }).done(function (data) {
@@ -197,7 +197,7 @@ function consumertable() {
 
 function exporttable() {
     $.ajax({
-        url: "http://localhost:8090/HydrogenScreen/TableExportImport",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/TableExportImport",
         method: "GET"
 
     }).done(function (data) {
@@ -216,7 +216,7 @@ function exporttable() {
 function hydrogencard1() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/HydrogenScreen/Card1TotalHydrogenGeneration",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/Card1TotalHydrogenGeneration",
 
     }).done(function (data) {
         document.getElementById("count_hydro1").innerHTML = data.tagvalue;
@@ -244,7 +244,7 @@ function hydrogencard1() {
 function hydrogencard2() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/HydrogenScreen/Card2TotalHydrogenconsumption",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/Card2TotalHydrogenconsumption",
 
     }).done(function (data) {
         document.getElementById("count_hydro2").innerHTML = data.tagvalue;
@@ -272,7 +272,7 @@ function hydrogencard2() {
 function hydrogencard3() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/HydrogenScreen/Card3HydrogentoOffgas",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/Card3HydrogentoOffgas",
 
     }).done(function (data) {
         document.getElementById("count_hydro3").innerHTML = data.tagvalue;
@@ -282,7 +282,7 @@ function hydrogencard3() {
 function hydrogencard4() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/HydrogenScreen/Card4imbalance",
+        url: "http://localhost:8090/EmsPNC/HydrogenScreen/Card4imbalance",
 
     }).done(function (data) {
         document.getElementById("count_hydro4").innerHTML = data.tagvalue;

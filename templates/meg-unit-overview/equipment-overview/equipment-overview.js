@@ -12,14 +12,14 @@ $(document).ready(function () {
         getSpecificEquipmentOverviewDataMEG();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
 
     $('#fromeqmeg').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#toeqmeg').val(tod.toJSON().slice(0, 19));
     document.getElementById("toeqmeg").min = $('#fromeqmeg').val();
@@ -36,7 +36,7 @@ function getEquOverMEGData() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EquipmentOverview/MEGchart",
+        url: "http://localhost:8090/EmsPNC/EquipmentOverview/MEGchart",
 
     }).done(function (data) {
         var chartData = { actual: [], design: [] };
@@ -115,7 +115,7 @@ var selectedData1;
 function equipmentOverviewKpiTableMeg() {
 
     $.ajax({
-        url: 'http://localhost:8090/EquipmentOverview/MEGtable',
+        url: 'http://localhost:8090/EmsPNC/EquipmentOverview/MEGtable',
         method: "GET",
 
     }).done(function (data) {
@@ -140,7 +140,7 @@ function getSpecificEquipmentOverviewDataMEG() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EquipmentOverview/MEGgraphEquip",
+        url: "http://localhost:8090/EmsPNC/EquipmentOverview/MEGgraphEquip",
 
         method: "POST",
         data: postdata,

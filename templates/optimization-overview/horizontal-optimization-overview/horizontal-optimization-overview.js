@@ -14,13 +14,14 @@ function getPotentialAreaData() {
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
-        method: "post",
+        
         headers: {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
+        method: "post",
         data:postdata,
-        url: "http://localhost:8090/OptimizationOverview/potentialgraph",
+        url: "http://localhost:8090/EmsPNC/OptimizationOverview/potentialgraph",
 
     }).done(function (data) {
 
@@ -135,7 +136,7 @@ function recommendations() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/recommendation",
+        url: "http://localhost:8090/EmsPNC/recommendation",
     }).done(function (data) {
         getrecommendations(data)
     })
@@ -185,7 +186,7 @@ function steamPotential() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8090/OptimizationOverview/potentialopportunity',
+        url: 'http://localhost:8090/EmsPNC/OptimizationOverview/potentialopportunity',
     }).done(function (data) {
        document.getElementById("num").innerHTML = data[0].value
        document.getElementById("num-Actual").innerHTML =data[0].actual

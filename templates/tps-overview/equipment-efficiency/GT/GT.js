@@ -41,15 +41,15 @@ console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
 // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
 // var timeArray = hoursString.split(':');
 const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-           d.setHours(05);
-           d.setMinutes(30);
+           d.setHours(-05);
+           d.setMinutes(00);
            d.setSeconds(0);
         
 $('#fromgtBar').val(d.toJSON().slice(0,19));
 $('#fromGT').val(d.toJSON().slice(0,19));
 const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(29);
-           tod.setMinutes(29);
+           tod.setHours(18);
+           tod.setMinutes(59);
            tod.setSeconds(0);
 $('#togtBar').val(tod.toJSON().slice(0,19));
 $('#toGT').val(tod.toJSON().slice(0,19));
@@ -70,7 +70,7 @@ function getSpecificGTBarData() {
         },
       method: "POST",
       data: postdata,
-      url: "http://localhost:8090/EquipmentEfficiency/GTbargraph",
+      url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
       console.log(data)
       var Difference_In_Days = data[0].showNumberIndex;
@@ -175,7 +175,7 @@ function getSpecificGTData() {
         },
     method: "POST",
     data: postdata,
-    url: "http://localhost:8090/EquipmentEfficiency/GTlinegraph",
+    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
     var Difference_In_Days= data[0].showNumberIndex;
@@ -300,7 +300,7 @@ function showSpecificGTChart(data ,Difference_In_Days ,interval) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://localhost:8090/EquipmentEfficiency/GTTable",
+    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
     loadGasTable(data);
