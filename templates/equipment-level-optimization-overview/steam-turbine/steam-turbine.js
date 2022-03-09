@@ -50,7 +50,7 @@ function getSpecificlinesteamTurData(tagname) {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowGraph",
+        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -143,7 +143,7 @@ function showSpecificlinesteamGenData(data, Difference_In_Days, interval) {
 function steamturbinetable() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowTable',
+        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/SteamTurbineExtractionFlowTable',
     }).done(function (data) {
         getsteamturbinetable(data);
     })

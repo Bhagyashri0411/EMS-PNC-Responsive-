@@ -57,7 +57,7 @@ function getSpecificFuelPNCData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/fuelgraph",
+        url: "http://localhost:8090/auth/Fuel/fuelgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -101,7 +101,7 @@ function getFuelDoughnutData() {
         method: "POST",
         data: postdata,
        
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/totalfuelconsumed",
+        url: "http://localhost:8090/auth/Fuel/totalfuelconsumed",
 
     }).done(function (data) {       
             loadDoughnutChartFuel(data);      
@@ -242,7 +242,7 @@ function loadCardfuel1() {
     $.ajax({
         method: "GET",
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/secfuelMTMT",
+        url: "http://localhost:8090/auth/Fuel/secfuelMTMT",
 
 
 
@@ -276,7 +276,7 @@ function loadCardfuel2() {
     $.ajax({
         method: "GET",
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/secfuelToeMT",
+        url: "http://localhost:8090/auth/Fuel/secfuelToeMT",
 
 
 

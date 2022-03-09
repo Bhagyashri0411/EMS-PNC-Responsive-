@@ -66,7 +66,7 @@ function getSpecificHRSGBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/HrsgEfficiency",
+        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/HrsgEfficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -228,7 +228,7 @@ function getSpecificHRSGData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/SteamGenerated",
+        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/SteamGenerated",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -354,7 +354,7 @@ function showSpecificHRSGChart(data ,Difference_In_Days,interval) {
 //table
 function HRSGTable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/HrsgTable",
+        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/HrsgTable",
         method: "GET"
     }).done(function (data) {
         loadHRSGTable(data);

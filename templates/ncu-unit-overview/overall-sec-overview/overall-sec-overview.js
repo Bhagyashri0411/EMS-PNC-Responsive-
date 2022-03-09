@@ -32,7 +32,7 @@ function ncuoverview() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8090/EmsPNC/ncu/overallsecOverviewgraph",
+        url: "http://localhost:8090/ncu/overallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

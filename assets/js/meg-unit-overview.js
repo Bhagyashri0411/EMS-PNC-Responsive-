@@ -24,7 +24,7 @@ $(document).ready(function () {
 });
 function totalThroughput() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/MEG/feedratePlantload',
+        url: 'http://localhost:8090/MEG/feedratePlantload',
         method: "GET"
     }).done(function (data) {
         document.getElementById("totalThroughput").innerHTML = data.feedrate;
@@ -37,7 +37,7 @@ function totalThroughput() {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/api/cppTpsOverview/CsvTruncate",
+        url: "http://localhost:8090/api/cppTpsOverview/CsvTruncate",
     }).done(function (data) {
         console.log(data)
     })
@@ -49,7 +49,7 @@ function Truncated() {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/Report",
+        url: "http://localhost:8090/home/Report",
     }).done(function (data) {
         console.log(data)
 
