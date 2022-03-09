@@ -58,7 +58,7 @@ function getSpecificwaterConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: " http://localhost:8090/EmsPNC/water/watergraph",
+        url: " http://localhost:8090/water/watergraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -213,7 +213,7 @@ function waterspecificConsumption() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/water/SpecificWaterConsumption",
+        url: "http://localhost:8090/water/SpecificWaterConsumption",
 
 
     }).done(function (data) {
@@ -240,7 +240,7 @@ function condensatesystem() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-         url: "http://localhost:8090/EmsPNC/water/TotalCondensateGeneration",
+         url: "http://localhost:8090/water/TotalCondensateGeneration",
         method: "GET"
 
     }).done(function (data) {
@@ -265,7 +265,7 @@ function Watercard1() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/water/CondensateRecovery",
+        url: "http://localhost:8090/water/CondensateRecovery",
         
     }).done(function (data) {
         console.log(data)
@@ -301,7 +301,7 @@ function Watercard2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/water/RawWaterIntake",
+        url: "http://localhost:8090/water/RawWaterIntake",
         
     }).done(function (data) {
         console.log(data)
@@ -338,7 +338,7 @@ function Watercard3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/water/DMWaterConsumption",
+        url: "http://localhost:8090/water/DMWaterConsumption",
         
     }).done(function (data) {
         console.log(data)
@@ -376,7 +376,7 @@ function Watercard4() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/water/ROWaterProduction",
+        url: "http://localhost:8090/water/ROWaterProduction",
         
     }).done(function (data) {
         console.log(data)
@@ -414,7 +414,7 @@ function Watercard5() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/water/BFWConsumption",
+        url: "http://localhost:8090/water/BFWConsumption",
        
     }).done(function (data) {
         console.log(data)

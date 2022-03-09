@@ -43,7 +43,7 @@ function getSpecificNCUOverviewData() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/NCU/ConvectionGraph",
+        url: "http://localhost:8090/NCU/ConvectionGraph",
         method: "POST",
         data: postdata,
     }).done(function (data) {
@@ -176,7 +176,7 @@ function convectiontable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/NCU/ConvectionTable",
+        url: "http://localhost:8090/NCU/ConvectionTable",
     }).done(function (data) {
         console.log(data)
         // [{"value6":577.23,"value5":574.23,"value8":583.23,"value7":580.23,"value2":565.23,"value1":562.23,"kpi":"Avg. Temperature IN","value4":571.23,"value3":568.23,"equipment2":"BFP","equipment3":"LFP","equipment4":"DSSH","equipment5":"UMP","equipment1":"UFP","equipment6":"USSH","equipment7":"LSSH","equipment8":"LMP"},{"value6":578.23,"value5":575.23,"value8":584.23,"value7":581.23,"value2":566.23,"value1":563.23,"kpi":"Avg. Temperature OUT","value4":572.23,"value3":569.23,"equipment2":"BFP","equipment3":"LFP","equipment4":"DSSH","equipment5":"UMP","equipment1":"UFP","equipment6":"USSH","equipment7":"LSSH","equipment8":"LMP"},{"value6":67.0,"value5":67.0,"value8":67.0,"value7":67.0,"value2":67.0,"value1":67.0,"kpi":"% Heat Recovery(Actual/Design)","value4":67.0,"value3":67.0,"equipment2":"BFP","equipment3":"LFP","equipment4":"DSSH","equipment5":"UMP","equipment1":"UFP","equipment6":"USSH","equipment7":"LSSH","equipment8":"LMP"}]

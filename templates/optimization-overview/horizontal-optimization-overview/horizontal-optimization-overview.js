@@ -21,7 +21,7 @@ function getPotentialAreaData() {
         },
         method: "post",
         data:postdata,
-        url: "http://localhost:8090/EmsPNC/OptimizationOverview/potentialgraph",
+        url: "http://localhost:8090/OptimizationOverview/potentialgraph",
 
     }).done(function (data) {
 
@@ -136,7 +136,7 @@ function recommendations() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/EmsPNC/recommendation",
+        url: "http://localhost:8090/recommendation",
     }).done(function (data) {
         getrecommendations(data)
     })
@@ -186,7 +186,7 @@ function steamPotential() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8090/EmsPNC/OptimizationOverview/potentialopportunity',
+        url: 'http://localhost:8090/OptimizationOverview/potentialopportunity',
     }).done(function (data) {
        document.getElementById("num").innerHTML = data[0].value
        document.getElementById("num-Actual").innerHTML =data[0].actual

@@ -49,7 +49,7 @@ function getSpecificlinesteamLenData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/steamletdownGraph",
+        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/steamletdownGraph",
       
     }).done(function (data) {
         console.log(data)
@@ -143,7 +143,7 @@ function showSpecificlinesteamLenData(data, Difference_In_Days, interval) {
 function steamletdowntable() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/steamletdownTable'
+        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/steamletdownTable'
     }).done(function (data) {
         console.log(data ,"bhagahbab");
         getDropsteamletdown(data)

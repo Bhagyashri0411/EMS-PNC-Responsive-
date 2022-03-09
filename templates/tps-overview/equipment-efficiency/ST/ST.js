@@ -1,56 +1,42 @@
 $(document).ready(function () {
     SteamTable();
-   // loadline();
+    $("input[name=stf]").on('change', function (event) {
+        getSpecificSTData();
+    });
+    $("#str1").on('change', function () {
+        demo1 = ($(this).find(":selected").val());
+        getSpecificSTBarData();
+        let domLebal1 = ($(this).find(":selected").val());
+        console.log('tag1', demo1);
+        $("#first_ST").html(domLebal1);
+        console.log($(this).find(":selected").val());
+    });
+    $("input[name=fromSTBar]").on('change', function (event) {
 
-        //second line graph
-   $("input[name=stf]").on('change', function (event) {
+        getSpecificSTBarData();
+    });
+
+    $("input[name=toSTBar]").on('change', function (event) {
+        getSpecificSTBarData();
+    });
+
+    var now = new Date();
+    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
+    const d = new Date(sessionStorage.getItem("lastUpdateddate"));
+    d.setHours(-05);
+    d.setMinutes(00);
+    d.setSeconds(0);
+
+    $('#fromstBar').val(d.toJSON().slice(0, 19));
+    $('#STF').val(d.toJSON().slice(0, 19));
+    const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
+    tod.setHours(18);
+    tod.setMinutes(29);
+    tod.setSeconds(0);
+    $('#tostBar').val(tod.toJSON().slice(0, 19));
+    $('#STT').val(tod.toJSON().slice(0, 19));
     getSpecificSTData();
-});
-
-// $("input[name=stt]").on('change', function (event) {
-//     getSpecificSTData();
-// });
-
-$("#str1").on('change', function () {
-    demo1 = ($(this).find(":selected").val());
     getSpecificSTBarData();
-    let domLebal1 = ($(this).find(":selected").val());
-    console.log('tag1', demo1);
-    $("#first_ST").html(domLebal1);
-    console.log($(this).find(":selected").val());
-});
-$("input[name=fromSTBar]").on('change', function (event) {
-
-    getSpecificSTBarData();
-});
-
-
-
-$("input[name=toSTBar]").on('change', function (event) {
-    //   console.log($('["#str1"]:selected').val());
-    getSpecificSTBarData();
-});
-
-// // setting to date
-var now = new Date();
-console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
-// var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-// var timeArray = hoursString.split(':');
-const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-d.setHours(-05);
-d.setMinutes(00);
-d.setSeconds(0);
-
-$('#fromstBar').val(d.toJSON().slice(0, 19));
-$('#STF').val(d.toJSON().slice(0, 19));
-const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-tod.setHours(18);
-tod.setMinutes(29);
-tod.setSeconds(0);
-$('#tostBar').val(tod.toJSON().slice(0, 19));
-$('#STT').val(tod.toJSON().slice(0, 19));
-getSpecificSTData();
-getSpecificSTBarData();
 
 
 });
@@ -65,17 +51,12 @@ function getSpecificSTBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/st/steamturbineefficiency",
+        url: "http://localhost:8090/st/steamturbineefficiency",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
         formatSpecificSTBarData(data, Difference_In_Days);
     })
-        .fail(function () {
-            var failData = []
-
-            formatSpecificSTBarData(failData);
-        })
 }
 
 
@@ -98,11 +79,11 @@ function formatSpecificSTBarData(data, Difference_In_Days) {
             interval = 1;
         }
     }
-    showSpecificSTBarChart(chartData, Difference_In_Days,interval);
+    showSpecificSTBarChart(chartData, Difference_In_Days, interval);
 
 }
 
-function showSpecificSTBarChart(data, Difference_In_Days,interval) {
+function showSpecificSTBarChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("chartContainerST", {
         height: 230,
         theme: "dark1",
@@ -116,7 +97,7 @@ function showSpecificSTBarChart(data, Difference_In_Days,interval) {
             lineThickness: 0,
             intervalType: Difference_In_Days == true ? "hour" : "day",
             valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            title:Difference_In_Days == true?  "In hours":" In Days",
+            title: Difference_In_Days == true ? "In hours" : " In Days",
             interval: interval,
             labelAngle: -50,
             labelFontColor: "#d9d9d9",
@@ -170,19 +151,12 @@ function getSpecificSTData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/st/capacityutilization",
-       
-   
+        url: "http://localhost:8090/st/capacityutilization",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days1 = data[0].showNumberIndex;
         formatSpecificSTData(data, Difference_In_Days1);
     })
-        .fail(function () {
-            var failData = []
-
-            formatSpecificSTData(failData);
-        })
 }
 
 
@@ -225,7 +199,7 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
             lineThickness: 0,
             intervalType: Difference_In_Days1 == true ? "hour" : "day",
             valueFormatString: Difference_In_Days1 == true ? "HH" : "DD MMM YYYY",
-            title:Difference_In_Days1 == true?  "In hours":" In Days",
+            title: Difference_In_Days1 == true ? "In hours" : " In Days",
             interval: interval1,
             labelFontColor: "#d9d9d9",
             labelFontSize: 15,
@@ -282,24 +256,12 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
 
 function SteamTable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/st/sttable",
+        url: "http://localhost:8090/st/sttable",
         method: "GET"
     }).done(function (data) {
-        loadSteamTable(data);
-    })
-    .fail(function() {
-        var failData = []
-      
-        loadSteamTable(failData);
-    })
-}
-function loadSteamTable(data) {
         var table_data = '';
-        $.each(data, function (key, value) {
-          
-           
-            table_data += '<tr>';
-
+        $.each(data, function (key, value) {    
+            table_data += '<tr>';    
             table_data += '<td>' + value.type + '</td>';
             table_data += '<td>' + value.Status + '</td>';
             table_data += '<td>' + value.steamimport.toFixed(2) + '</td>';
@@ -313,9 +275,7 @@ function loadSteamTable(data) {
             table_data += '<td>' + value.heatratedesign.toFixed(2) + '</td>';
             table_data += '<td>' + value.heatrateactual.toFixed(2) + '</td>';
             table_data += '</tr>';
-
         });
-        $('#bodySteam_table').append(table_data);
-
-    
+        $('#bodySteam_table').append(table_data);    
+    })
 }

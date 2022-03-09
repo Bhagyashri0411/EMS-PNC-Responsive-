@@ -36,7 +36,7 @@ function getEquOverMEGData() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/MEGchart",
+        url: "http://localhost:8090/EquipmentOverview/MEGchart",
 
     }).done(function (data) {
         var chartData = { actual: [], design: [] };
@@ -115,7 +115,7 @@ var selectedData1;
 function equipmentOverviewKpiTableMeg() {
 
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/EquipmentOverview/MEGtable',
+        url: 'http://localhost:8090/EquipmentOverview/MEGtable',
         method: "GET",
 
     }).done(function (data) {
@@ -140,7 +140,7 @@ function getSpecificEquipmentOverviewDataMEG() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/EquipmentOverview/MEGgraphEquip",
+        url: "http://localhost:8090/EquipmentOverview/MEGgraphEquip",
 
         method: "POST",
         data: postdata,

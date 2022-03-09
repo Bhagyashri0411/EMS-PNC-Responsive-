@@ -50,7 +50,7 @@ function getSpecificlinesteamGenData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamGeneratorGraph",
+        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/SteamGeneratorGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -147,7 +147,7 @@ function steamgeneratorstable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamGeneratorTable',
+        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/SteamGeneratorTable',
     }).done(function (data) {
         getSteamgenerator(data)
         var max1 = 500;
