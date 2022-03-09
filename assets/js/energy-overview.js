@@ -23,7 +23,7 @@ $(document).ready(function () {
 //             "Content-Type": "application/json",
 //             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
 //         },
-//         url: 'http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp',
+//         url: 'http://localhost:8090/Air/lastUpdateTimestamp',
 //         method: "GET"
 //     }).done(function (data) {
 //         console.log(data, "gjhdik");
@@ -38,7 +38,7 @@ $(document).ready(function () {
 //     function Truncated() {
 //         $.ajax({
 //             method: "GET",
-//             url: "http://localhost:8090/EmsPNC/home/Truncate",
+//             url: "http://localhost:8090/home/Truncate",
 //         }).done(function (data) {
 //             console.log(data)
 //         })
@@ -46,7 +46,7 @@ $(document).ready(function () {
 //     function csvdownload() {
 //         $.ajax({
 //             method: "GET",
-//             url: "http://localhost:8090/EmsPNC/home/Report",
+//             url: "http://localhost:8090/home/Report",
 //         }).done(function (data) {
 //             console.log(data)
 

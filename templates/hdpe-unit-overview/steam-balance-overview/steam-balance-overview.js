@@ -37,7 +37,7 @@ function hdpesteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/EmsPNC/HDPE/steamgenerationgraph",
+        url: "http://localhost:8090/HDPE/steamgenerationgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         hdpegetsteamoverview(data, Difference_In_Days);
@@ -120,7 +120,7 @@ function showsteambalancehdpe(data, Difference_In_Days, interval) {
 
 function hdpesteamta() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/HDPE/Steambalance",
+        url: "http://localhost:8090/HDPE/Steambalance",
         method: "GET"
     }).done(function (data) {
         getDrophdpe(data);

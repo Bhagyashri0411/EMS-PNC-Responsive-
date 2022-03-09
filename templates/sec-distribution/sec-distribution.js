@@ -6,7 +6,7 @@ $(document).ready(function() {
 function getAreaWise() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/areawiseSEC",
+        url: "http://localhost:8090/home/areawiseSEC",
 
     }).done(function(data) {
         var keysArray = Object.keys(data);
@@ -25,7 +25,7 @@ function rengeAreawise(){
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/home/areadevref",
+        url: "http://localhost:8090/home/areadevref",
       
 
     }).done(function(data) {

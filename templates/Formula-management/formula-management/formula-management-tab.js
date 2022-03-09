@@ -8,6 +8,9 @@ $(document).ready(function () {
         var das_write_back = $(this).closest('tr').find('td:eq(3)').text();
         var result_tag = $(this).closest('tr').find('td:eq(4)').text();
         var Result = $(this).closest('tr').find('td:eq(5)').text();
+        // var min = $(this).closest('tr').find('td:eq(6)').text();
+        // var max = $(this).closest('tr').find('td:eq(7)').text();
+        // var email_notification = $(this).closest('tr').find('td:eq(8)').text();
         var decimal_point = parseInt($(this).closest('tr').find('td:eq(6)').text());
         document.getElementById("alias").value = Alias;
         document.getElementById("formulaTag").value = Formula;
@@ -15,6 +18,9 @@ $(document).ready(function () {
         document.getElementById("result_tag").value = Result;
         document.getElementById("storeResulttag").value = das_write_back;
         document.getElementById("resultTag1").value = result_tag;
+        // document.getElementById("min_tag").value = min;
+        // document.getElementById("max_tag").value = max;
+        // document.getElementById("email_tag").value = email_notification;
         document.getElementById("decimal_tag").value = decimal_point;
         $('#updateRow').show();
     });
@@ -41,9 +47,12 @@ $(document).ready(function () {
             },
             type: "post",
 
-            url: "http://localhost:8090/EmsPNC/update",
+            url: "http://localhost:8090/update",
             data: JSON.stringify(addRowValue1),
             success: function (status) {
+                //  var msg1 = msg;
+                //  console.log(msg1);
+
                 if (status == 'Updated sucessfully') {
                     getCalculatedTag();
                     $('#updateRow').hide();
@@ -115,10 +124,13 @@ function addRow() {
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
+        //  var cell6 = row.insertCell(5);
         cell1.innerHTML = '<input class="form-control" id="inputColumnName" type="text" placeholder="Enter Tag Name"/>';
         cell2.innerHTML = '<input class="form-control" id="tagValueManual" type="text" placeholder="Enter Values"/>';
+        // cell3.innerHTML = '<input class="form-control" id="Timestampmanual" type="text" placeholder="Enter Timestamp"/>';
         cell3.innerHTML = '<input class="form-control" id="UOMmanual" type="text" placeholder="Enter UOM"/>';
         cell4.innerHTML = '<input class="form-control" id="descriptmanual" type="text" placeholder="Enter Description"/>';
+        // cell5.innerHTML = '<input class="btn btn-primary" id="deleteRow" type="button" value="Delete" />';
     }
 }
 
@@ -129,7 +141,7 @@ function getCalculatedTag() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/alldata",
+        url: "http://localhost:8090/alldata",
 
     }).done(function (data) {
         var tabledata = data;
@@ -146,6 +158,7 @@ function getCalculatedTag() {
             student += '<td class="w4">' + val['result'] + '</td>';
             student += '<td class="w4">' + val['decimal_point'] + '</td>';
             student += '<td><input class="editValues btn btn-primary" type="button" value="Edit"</input></td>';
+            // student += '<td><input class="deleteValues btn btn-primary" type="button" name="delBox" value="Delete" /></td>';
             student += '</tr>';
         }
         document.getElementById("bodytablesCalculatedTag").innerHTML = student;
@@ -164,7 +177,7 @@ function exportFunction() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/alldata",
+        url: "http://localhost:8090/alldata",
     }).done(function (data) {
         console.log(data)
 
@@ -226,7 +239,7 @@ function ServiceCall() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/auth/formula/GetFormulaData",
+        url: "http://localhost:8090/auth/formula/GetFormulaData",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -263,7 +276,7 @@ $("#datatablesCalculatedTag").on('click', '.deleteValues', function () {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "http://localhost:8090/EmsPNC/delete",
+        url: "http://localhost:8090/delete",
         data: JSON.stringify(aliasValue),
         success: function (msg) {
             var msg1 = msg;
@@ -298,7 +311,7 @@ function addNewData() {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "http://localhost:8090/EmsPNC/insert",
+        url: "http://localhost:8090/insert",
         data: JSON.stringify(addRowValue),
         success: function (status) {
             //  var msg1 = msg;
@@ -354,7 +367,7 @@ form.onsubmit = function (event) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8090/EmsPNC/upload-csv-fileformula', true);
+    xhr.open('POST', 'http://localhost:8090/upload-csv-fileformula', true);
     xhr.onload = function (status) {
         if (status == 'Success') {
             uploadButton.innerHTML = 'Upload';

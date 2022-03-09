@@ -51,7 +51,7 @@ function getSpecificBOILERData() {
       method: "POST",
       data: postdata,
      
-      url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerEfficencyBarGraph",
+      url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
     var Difference_In_Days = data[0].showNumberIndex;
       formatSpecificBOILERData(data ,Difference_In_Days);
@@ -150,7 +150,7 @@ function getSteamFuelConsumedData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
     method: "GET",
-    url: "http://localhost:8090/EmsPNC/tpsBoiler/fuelConsumedBarGraph",
+    url: "http://localhost:8090/tpsBoiler/fuelConsumedBarGraph",
 
   }).done(function (data) {
 
@@ -258,7 +258,7 @@ function Fuelconsumed(data) {
 
 function BoilerTable() {
   $.ajax({
-    url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerTable",
+    url: "http://localhost:8090/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
     loadBoilerTable(data) 

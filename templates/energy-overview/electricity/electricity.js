@@ -50,7 +50,7 @@ function getSpecificElectricityConsumptionData() {
         method: "POST",
         data: postdata,
          
-        url: "http://localhost:8090/EmsPNC/auth/electricity/SpecificElectricity",
+        url: "http://localhost:8090/auth/electricity/SpecificElectricity",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -168,7 +168,7 @@ function electricityprogressbarchartload() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/api/energyConsumption/steamGenerationCapacity",
+        url: "http://localhost:8090/api/energyConsumption/steamGenerationCapacity",
     }).done(function (electricityprogressvalue) {
         console.log(electricityprogressvalue);
         loadProgressChart(electricityprogressvalue);
@@ -182,7 +182,7 @@ function electricityDoughnutProgress2() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/electricity/ElectricityCapacity",
+        url: "http://localhost:8090/auth/electricity/ElectricityCapacity",
     }).done(function (data) {
 
     loadDoughnutChartelectricityProgress2(data);
@@ -238,7 +238,7 @@ function loadDoughnutChartelectricityProgress2(data) {
 
 function getcardElectricity1() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/secelectricity',
+        url: 'http://localhost:8090/auth/electricity/secelectricity',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data1");
@@ -268,7 +268,7 @@ function getcardElectricity1() {
 }
 function getcardElectricity2() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/electricity/ElectricityTotalGeneration",
+        url: "http://localhost:8090/auth/electricity/ElectricityTotalGeneration",
         method: "GET"
     }).done(function (data) {
         console.log(data, "data2");
@@ -297,7 +297,7 @@ function getcardElectricity2() {
 }
 function getcardElectricity3() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/ElectricityTotalConsumption',
+        url: 'http://localhost:8090/auth/electricity/ElectricityTotalConsumption',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data3");
@@ -326,7 +326,7 @@ function getcardElectricity3() {
 }
 function getcardElectricity4() {
     $.ajax({
-    url: 'http://localhost:8090/EmsPNC/auth/electricity/ElectricityGenerationCost',
+    url: 'http://localhost:8090/auth/electricity/ElectricityGenerationCost',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data4");
@@ -355,7 +355,7 @@ function getStackBarvalue() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/TotalElectricity',
+        url: 'http://localhost:8090/auth/electricity/TotalElectricity',
         method: "GET"
     }).done(function (data) {
         var abc=(data[0].Generation /data[0].total)*100;

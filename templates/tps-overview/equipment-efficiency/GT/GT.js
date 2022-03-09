@@ -70,7 +70,7 @@ function getSpecificGTBarData() {
         },
       method: "POST",
       data: postdata,
-      url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTbargraph",
+      url: "http://localhost:8090/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
       console.log(data)
       var Difference_In_Days = data[0].showNumberIndex;
@@ -175,7 +175,7 @@ function getSpecificGTData() {
         },
     method: "POST",
     data: postdata,
-    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTlinegraph",
+    url: "http://localhost:8090/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
     var Difference_In_Days= data[0].showNumberIndex;
@@ -300,7 +300,7 @@ function showSpecificGTChart(data ,Difference_In_Days ,interval) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTTable",
+    url: "http://localhost:8090/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
     loadGasTable(data);
