@@ -180,3 +180,15 @@
 .ST-equipment-efficiency .card  ::-webkit-scrollbar-thumb:hover {
     background: #d9d9d9;
 }
+.ST-equipment-efficiency #str1, #fromstBar, #tostBar{  
+    font-size: 0.7vw;
+    background-color: #26293c;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 9.6vw;
+    cursor: pointer;
+    color: #d9d9d9;
+    margin-top: 12px;
+}
