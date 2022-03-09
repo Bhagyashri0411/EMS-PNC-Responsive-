@@ -303,8 +303,8 @@ function loadSteamTable(data) {
             table_data += '<td>' + value.type + '</td>';
             table_data += '<td>' + value.Status + '</td>';
             table_data += '<td>' + value.steamimport.toFixed(2) + '</td>';
-            table_data += '<td>' + value.mpsteamextracted.toFixed(2) + '</td>';
             table_data += '<td>' + value.hpsteamextracted.toFixed(2) + '</td>';
+            table_data += '<td>' + value.mpsteamextracted.toFixed(2) + '</td>';
             table_data += '<td>' + value.steamcondensate.toFixed(2) + '</td>';
             table_data += '<td>' + value.steamduty.toFixed(2) + '</td>';
             table_data += '<td>' + value.powergenerationcost.toFixed(2) + '</td>';
