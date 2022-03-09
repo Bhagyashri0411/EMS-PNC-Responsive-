@@ -64,7 +64,7 @@ function getSpecificAirConsumptionData() {
         },
         method: "POST",
         data: postdata,
-        url: " http://localhost:8090/EmsPNC/Air/PlantAirGeneration",
+        url: " http://localhost:8090/Air/PlantAirGeneration",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -180,7 +180,7 @@ function plantair(kpiname) {
             "Content-Type": "application/json",
         },
         data: postdata,
-        url: "http://localhost:8090/EmsPNC/Air/plantairtable",
+        url: "http://localhost:8090/Air/plantairtable",
         method: "POST"
 
     }).done(function (data) {
@@ -206,8 +206,8 @@ function instrumentair(kpiname) {
         },
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/Air/airconsumerTable",
-        // url: "http://localhost:8090/EmsPNC/Air/airconsumerTable",
+        url: "http://localhost:8090/Air/airconsumerTable",
+        // url: "http://localhost:8090/Air/airconsumerTable",
         method: "POST"
 
     }).done(function (data) {
@@ -225,7 +225,7 @@ function instrumentair(kpiname) {
 
 function airDecoking() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/electricity/ElectrityInputCost",
+        url: "http://localhost:8090/auth/electricity/ElectrityInputCost",
         method: "GET"
 
     }).done(function (data) {
@@ -250,7 +250,7 @@ function Aircard1() {
         headers: {
             "Content-Type": "application/json",
         },
-        url: "http://localhost:8090/EmsPNC/Air/PlantAirTotalConsumption", 
+        url: "http://localhost:8090/Air/PlantAirTotalConsumption", 
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -285,7 +285,7 @@ function Aircard2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/Air/InstrumentAirTotalGeneration",
+        url: "http://localhost:8090/Air/InstrumentAirTotalGeneration",
         method: "GET",
     }).done(function (data) {
         console.log(data)
@@ -318,7 +318,7 @@ function Aircard3() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/Air/InstrumentAirTotalGeneration",
+        url: "http://localhost:8090/Air/InstrumentAirTotalGeneration",
         method: "GET",
     }).done(function (data) {
         console.log(data)
@@ -352,7 +352,7 @@ function Aircard4() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/Air/InstrumentAirTotalConsumption",
+        url: "http://localhost:8090/Air/InstrumentAirTotalConsumption",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -385,7 +385,7 @@ function Aircard5() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/Air/AirGenerationCost",
+        url: "http://localhost:8090/Air/AirGenerationCost",
         method: "GET"
     }).done(function (data) {
         console.log(data)

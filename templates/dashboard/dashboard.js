@@ -50,7 +50,7 @@ function lastupdatedTime() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp",
+    url: "http://localhost:8090/Air/lastUpdateTimestamp",
     method: "GET",
   }).done(function (data) {
     const d = new Date(data.lastupdatetimestamp);
@@ -104,7 +104,7 @@ function getSpecificHomeConsumptionData(intervalType ,domLebal1) {
     method: "POST",
     data: postdata,
 
-    url: "http://localhost:8090/EmsPNC/home/homepagegraph",
+    url: "http://localhost:8090/home/homepagegraph",
   }).done(function (data) {
     console.log(data);
     var Difference_In_Days = data[0].showNumberIndex;
@@ -239,7 +239,7 @@ function totalThroughput() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/EmsPNC/home/totalbalance",
+    url: "http://localhost:8090/home/totalbalance",
     method: "GET",
   }).done(function (data) {
     document.getElementById("totalThroughput").innerHTML = data.totalNaphthaProcessed;
@@ -259,7 +259,7 @@ function Truncated() {
         sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/EmsPNC/home/Truncate",
+    url: "http://localhost:8090/home/Truncate",
   }).done(function (data) {
     console.log(data);
   });
@@ -274,7 +274,7 @@ function csvdownload() {
         sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/EmsPNC/home/Report",
+    url: "http://localhost:8090/home/Report",
   }).done(function (data) {
     console.log(data);
 

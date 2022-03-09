@@ -21,7 +21,7 @@ $(document).ready(function () {
 function megloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/MEG/GUAGEspecificenergyConsumption",
+        url: "http://localhost:8090/MEG/GUAGEspecificenergyConsumption",
     }).done(function (gaugevalue) {
         megGaugeChartvalue(gaugevalue);
         console.log(gaugevalue)
@@ -99,7 +99,7 @@ function megGaugeChartvalue(gaugevalue) {
 function guagevaluemegAct() {
     $.ajax({
         method: "GET",        
-        url: 'http://localhost:8090/EmsPNC/MEG/GUAGEspecificenergyConsumption',
+        url: 'http://localhost:8090/MEG/GUAGEspecificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devmeg").innerHTML = data.deviation + "%";
@@ -111,7 +111,7 @@ function guagevaluemegAct() {
 
 function megbreakOverview() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC//api/srutgtuOverview/steamBalanceOverviewTable",
+        url: "http://localhost:8090//api/srutgtuOverview/steamBalanceOverviewTable",
         method: "GET"
     }).done(function (data) {
         var table_data = '';
@@ -129,7 +129,7 @@ function megbreakOverview() {
 
 function cardmeg1() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/MEG/MEGtotalSteamConsumptioncard',
+        url: 'http://localhost:8090/MEG/MEGtotalSteamConsumptioncard',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-meg1").innerHTML = data.TotalSteamConsumption;
@@ -146,7 +146,7 @@ function getDoughnutmeg() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/EmsPNC/MEG/MEGDoughnutECBU",
+        url: "http://localhost:8090/MEG/MEGDoughnutECBU",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
         console.log(energyConsumed);
@@ -204,7 +204,7 @@ function loadDoughnutChartmeg(energyConsumed) {
 function parametertableMEG() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/MEG/MEGSpecificEnergyConsumptionTable"
+        url: "http://localhost:8090/MEG/MEGSpecificEnergyConsumptionTable"
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
@@ -242,7 +242,7 @@ function parametertableMEG() {
 }
 function megOverview() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/MEG/MEGParameterTable",
+        url: "http://localhost:8090/MEG/MEGParameterTable",
         method: "GET"
     }).done(function (data) {
         var table_data = '';

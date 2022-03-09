@@ -53,7 +53,7 @@ function getSpecificOptConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/OptimizationOverview/overallenergycost",
+        url: "http://localhost:8090/OptimizationOverview/overallenergycost",
     }).done(function (data) {
         // console.log(data, "data 12")
         var Difference_In_Days = data[0].showNumberIndex;
@@ -167,7 +167,7 @@ function optimizedfuel() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/EmsPNC/OptimizationOverview/fuelsystemoverview",
+        url: "http://localhost:8090/OptimizationOverview/fuelsystemoverview",
     }).done(function (data) {
         var table_data = '';
         var max1 = 500;
@@ -192,7 +192,7 @@ function optimizedElectrical() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: "http://localhost:8090/EmsPNC/OptimizationOverview/electricalpowersystem",
+        url: "http://localhost:8090/OptimizationOverview/electricalpowersystem",
     }).done(function (data) {
         var table_data1 = '';
         var max1 = 700;
@@ -213,7 +213,7 @@ function optimizedElectrical() {
 function optimizedtable() {
     $.ajax({
         method: 'GET',
-        url: "http://localhost:8090/EmsPNC/OptimizationOverview/majorcontributor",
+        url: "http://localhost:8090/OptimizationOverview/majorcontributor",
     }).done(function (data) {
         var table_data = '';
         var max1 = 700;

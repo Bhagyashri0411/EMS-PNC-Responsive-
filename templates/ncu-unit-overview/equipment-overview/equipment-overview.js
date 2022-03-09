@@ -37,7 +37,7 @@ function getEquOverNCUData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/ncuequip/ncuchart",
+        url: "http://localhost:8090/ncuequip/ncuchart",
 
     }).done(function (data) {
         var chartData = { actual: [], design: [] };
@@ -124,7 +124,7 @@ function posttableequipment(){
     console.log(selectedData1, "selectData1");
     f1(selectedData1)
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/ncuequip/ncutable",
+        url: "http://localhost:8090/ncuequip/ncutable",
         headers: {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
@@ -205,7 +205,7 @@ function getSpecificEquipmentOverviewDataNCU() {
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/ncuequip/ncugraph",
+        url: "http://localhost:8090/ncuequip/ncugraph",
         headers: {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
