@@ -1,13 +1,13 @@
 $(document).ready(function () {
     getCardValue1();
     getCardValue2();
-    // getCardValue3();
+    getCardValue3();
     getCardValue4();
     getCardValue5();
     getCardValue6();
     getCardValue7();
     getCardValue8();
-    getCardValue9();
+   // getCardValue9();
     tpsTable();
 
     $("input[name=from]").on('change', function (event) {
@@ -122,44 +122,6 @@ function getCardValue3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/specificWater",
-
-    }).done(function (data) {
-        document.getElementById('SW').innerHTML = data[0]['tagvalue'].toFixed(2);
-        document.getElementById('SWR').innerHTML = data[0]['refvalue'].toFixed(2);
-        if (data[0]['currentvalue'] > 0) {
-            document.getElementById('RES3').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
-        }
-        else {
-            document.getElementById('RES3').innerHTML = data[0]['currentvalue'].toFixed(2);
-        }
-
-        $(".result").each(function () {
-            var text = $(this).text();
-            if (/[+-]?\d+(\.\d+)?/.test(text)) {
-                var num = parseFloat(text);
-                if (num < 0) {
-                    $(this).addClass("red");
-                } else if (num >= 0) {
-                    $(this).addClass("green");
-                }
-
-            }
-        });
-
-
-
-    })
-}
-function getCardValue4() {
-
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/specificSteam",
 
     }).done(function (data) {
 
@@ -189,7 +151,7 @@ function getCardValue4() {
 
     })
 }
-function getCardValue5() {
+function getCardValue4() {
 
     $.ajax({
         headers: {
@@ -220,7 +182,7 @@ function getCardValue5() {
 
     })
 }
-function getCardValue6() {
+function getCardValue5() {
 
     $.ajax({
         headers: {
@@ -257,7 +219,7 @@ function getCardValue6() {
 
     })
 }
-function getCardValue7() {
+function getCardValue6() {
 
     $.ajax({
         headers: {
@@ -294,7 +256,7 @@ function getCardValue7() {
 
     })
 }
-function getCardValue8() {
+function getCardValue7() {
 
     $.ajax({
         headers: {
@@ -329,7 +291,7 @@ function getCardValue8() {
 
     })
 }
-function getCardValue9() {
+function getCardValue8() {
 
     $.ajax({
         headers: {
@@ -453,7 +415,6 @@ function showTotalGenerationCostChart(data, Difference_In_Days, interval) {
         {
             type: "column",
             name: "Design",
-
             color: "#ffc000",
             dataPoints: data.Optimized
         },
