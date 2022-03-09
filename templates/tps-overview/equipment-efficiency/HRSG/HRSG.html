@@ -4,130 +4,129 @@
 
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-5 card-col">
+            <div class="col-md-6 card-col">
                 <div class="card mt-14 HRSG-eff-equ ">
-                    <div class="row">
-                        <div class="col-md-4" style="border-right: 1px solid whitesmoke; padding-top: 15px;">
-                            <span style="color:#d9d9d9; font-size: 1.2VW;">Efficiency (%)
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <div class="col-md-4 fuel-PT">
+                                <span class="heading_graph"> Efficiency (%)</span>
+                            </div>
+                            <div class="col-md-8 mt-5">
+                                <div class="row" style="display: inline-block;">
+                                    <span class="trend">
+                                        <select name="s1" id="hrsgr1" style="padding: 0.2vw;">
+                                            <option value="HRSG01">HRSG01</option>
+                                            <option value="HRSG02">HRSG02</option>
+                                            <option value="HRSG03"> HRSG03 </option>
+                                            <option value="HRSG04"> HRSG04 </option>
+                                            <option value="HRSG05"> HRSG05 </option>
 
-                            </span>
-                        </div>
-                        <div class="col-md-8 eff-act">
+                                        </select>
+                                    </span>
+                                    <span class="from">
 
-                            <div class="row">
-                                <span class="trend">
+                                        <input type="datetime-local" id="fromhrsgBar" name="fromHRSGBar">
+                                    </span>
+                                    <span class="from">
 
-                                    <select name="s1" id="hrsgr1">
-                                        <option value="HRSG01">HRSG01</option>
-                                        <option value="HRSG02">HRSG02</option>
-                                        <option value="HRSG03"> HRSG03 </option>
-                                        <option value="HRSG04"> HRSG04 </option>
-                                        <option value="HRSG05"> HRSG05 </option>
+                                        <input type="datetime-local" id="tohrsgBar" name="toHRSGBar">
 
-                                    </select>
-                                </span>
-
-                                <span class="from">
-
-                                    <input type="datetime-local" id="fromhrsgBar" name="fromHRSGBar">
-                                </span>
-                                <span class="from">
-
-                                    <input type="datetime-local" id="tohrsgBar" name="toHRSGBar">
-                                
-                                </span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
-                    <div style="padding-top: 0.3vw;">
-                        <div class="box-marg" style="height: 4vh;">
-
+                    <div class="row col-md-12">
+                        <div class="box-marg">
                             <div class="box-eff box-blue"></div>
                             <span class="color-eff"> Actual</span>
 
                             <div class="box-eff box-yellow"></div>
                             <span class="color-eff">Design</span>
-
                         </div>
                     </div>
-                    <div id="chartContainerHRSG"></div>
-
+                    <div class="row col-md-12 mt-5">
+                        <div id="chartContainerHRSG"></div>
+                    </div>
                 </div>
 
             </div>
-            <div class="col-md-7 card-col fuel-color">
+            <div class="col-md-6 card-col fuel-color">
                 <div class="card mt-14 fuel-card">
-                    <div class="row col-first">
-                        <div class="col-md-5">
-                            <span class="first-box-title">Steam Generated (Ton/hr) </span>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="col-tr pull-right">
-
-                                <input type="datetime-local" id="fromHRSG" name="FromHRSG">
-
-                                <input type="datetime-local" id="toHRSG" name="ToHRSG">
-
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <div class="col-md-4 pr-0">
+                                <span class="heading_graph" style="font-size: 1.3vw;">Steam Generated (Ton/hr) </span>
                             </div>
+                            <div class="col-md-8 mt-5">
+                                <div class="row">
+
+                                    <input type="datetime-local" id="fromHRSG" name="FromHRSG">
+
+                                    <input type="datetime-local" id="toHRSG" name="ToHRSG">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 mt-5">
+
+                            <div class="first-spa"> </div>
+                            <span class="col-rt">HRSG01</span>
+
+                            <div class="secd-spa"> </div>
+                            <span class="col-rt">HRSG02</span>
+
+                            <div class="third-spa"> </div>
+                            <span class="col-rt">HRSG03</span>
+
+                            <div class="four-spa"> </div>
+                            <span class="col-rt">HRSG04</span>
+
+                            <div class="fifth-spa"> </div>
+                            <span class="col-rt">HRSG05</span>
+
+                        </div>
+                        <div class="row col-md-12 mt-10">
+                            <div class="col-md-12">
+                                <div id="HRSG-line"> </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 card-col">
+                    <div class="card card-col mt-14 HRSG-table-eff">
+                        <div class="overflow genratorsHeight">
+                            <table id="HRSG_table">
+                                <thead>
+                                    <tr>
+                                        <th>HRSG ID</th>
+                                        <th>Status</th>
+                                        <th>Steam generation  Cost (INR/MT)</th>
+                                        <th>Aux. Fuel Duty Gcal/hr</th>
+                                        <th>Aux. Fuel Flow Rate (Actual) MT/hr</th>
+                                        <th>Aux. Fuel Flow Rate (Actual) SRFT/hr</th>
+                                        <th>Steam To Fuel Ratio (Design) MT/SRFT</th>
+                                        <th>Steam To Fuel Ratio (Actual) MT/SRFT</th>
+                                        <th>Exhaust Temperature (Design) °C</th>
+                                        <th>Exhaust Temperature (Actual) °C</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyHRSG_table">
+
+                                </tbody>
+                            </table>
                         </div>
 
-                    </div>
-                    <div class="rightorder">
 
-                        <div class="first-spa"> </div>
-                        <span class="col-rt">HRSG01</span>
-
-                        <div class="secd-spa"> </div>
-                        <span class="col-rt">HRSG02</span>
-
-                        <div class="third-spa"> </div>
-                        <span class="col-rt">HRSG03</span>
-
-                        <div class="four-spa"> </div>
-                        <span class="col-rt">HRSG04</span>
-
-                        <div class="fifth-spa"> </div>
-                        <span class="col-rt">HRSG05</span>
 
                     </div>
-                    <div id="HRSG-line"> </div>
-
                 </div>
-
             </div>
+
         </div>
-
-        <div class="row">
-            <div class="col-md-12 card-col">
-            <div class="card card-col mt-14 HRSG-table-eff">
-                <div class="overflow genratorsHeight">
-                    <table id="HRSG_table">
-                        <thead>
-                            <tr>
-                                <th>HRSG ID</th>
-                                <th>Status</th>
-                                <th>Steam generation <br> Cost (INR/MT)</th>
-                                <th>Aux. Fuel Duty<br> Gcal/hr</th>
-                                <th>Aux. Fuel Flow Rate<br> (Actual)<br> MT/hr</th>
-                                <th>Aux. Fuel Flow Rate<br> (Actual)<br> SRFT/hr</th>
-                                <th>Steam To Fuel Ratio<br> (Design)<br> MT/SRFT</th>
-                                <th>Steam To Fuel Ratio <br>(Actual) <br>MT/SRFT</th>
-                                <th>Exhaust Temperature<br> (Design)<br> °C</th>
-                                <th>Exhaust Temperature<br> (Actual)<br> °C</th>
-                            </tr>
-                        </thead>
-                        <tbody id="bodyHRSG_table">
-
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-            </div>
-            </div>
-        </div>
-
-    </div>

@@ -3,86 +3,80 @@
 <div class="two-tab ST-equipment-efficiency">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-5 card-col">
-                <div class="card mt-14 ST-eff-equ ">
-                   
-                    <div class="row">
-                        <div class="col-md-4" style="border-right: 1px solid whitesmoke; padding-top: 15px;">
-                            <span style="color:#d9d9d9; font-size: 1.3VW;">Efficiency (%)
-                               
-                              </span>
-                        </div>
-                        <div class="col-md-8 eff-act">
-                           
-                            <div class="row" style="display: inline-block;">
-                                <span class="trend">
+            <div class="col-md-6 card-col">
+                <div class="card mt-14 ST-eff-equ">
 
-                                    <select name="s1" id="str1">
-                                        <option value="STG1">STG01</option>
-                                        <option value="STG2">STG02</option>
-                                        <option value="STG3"> STG03 </option>
-                                       
-                                    </select>
-                                </span>
-
-                                <span class="from">
-
-                                    <input type="datetime-local" id="fromstBar" name="fromSTBar">
-                                </span>
-                                <span class="from">
-
-                                    <input type="datetime-local" id="tostBar" name="toSTBar">
-                                </span>
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <div class="col-md-4 fuel-PT">
+                                <span class="heading_graph"> Efficiency (%)</span>
+                            </div>
+                            <div class="col-md-8 mt-5">
+                                <div class="row" style="display: inline-block;">
+                                    <span class="trend">
+                                        <select name="s1" id="str1" style="padding: 0.2vw;">
+                                            <option value="STG1">STG01</option>
+                                            <option value="STG2">STG02</option>
+                                            <option value="STG3"> STG03 </option>
+                                        </select>
+                                    </span>
+                                    <span class="from">
+                                        <input type="datetime-local" id="fromstBar" name="fromSTBar">
+                                    </span>
+                                    <span class="from">
+                                        <input type="datetime-local" id="tostBar" name="toSTBar">
+                                    </span>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
-                    <div style="padding-top: 0.3vw;">
-                         <div class="box-marg" style="height: 4vh;">
+                    <div class="row col-md-12">
+                        <div class="box-marg">
+                            <div class="box-eff box-blue"></div>
+                            <span class="color-eff"> Actual</span>
 
-                                <div class="box-eff box-blue"></div>
-                                <span class="color-eff"> Actual</span>
-
-                                <div class="box-eff box-yellow"></div>
-                                <span class="color-eff">Design</span>
-
-                            </div>
+                            <div class="box-eff box-yellow"></div>
+                            <span class="color-eff">Design</span>
+                        </div>
                     </div>
-                    <div id="chartContainerST"></div>
+                    <div class="row col-md-12 mt-5">
+                        <div id="chartContainerST"></div>
+                    </div>
                 </div>
 
             </div>
-            <div class="col-md-7 card-col fuel-color">
+            <div class="col-md-6 card-col fuel-color">
                 <div class="card mt-14 fuel-card">
-                    <div class="row col-first">
-                        <div class="col-md-4">
-                            <span class="first-box-title">Capacity Utilization % </span>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="col-tr pull-right">
-                                
-                                <input type="datetime-local" id="STF" name="stf">
-                                   
-                                <input type="datetime-local" id="STT" name="stf">
-                                   
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <div class="col-md-4 pr-0">
+                                <span class="heading_graph">Capacity Utilization % </span>
+                            </div>
+                            <div class="col-md-8 mt-5">
+                                <div class="row">
+                                    <input type="datetime-local" id="STF" name="stf">
+
+                                    <input type="datetime-local" id="STT" name="stf">
+
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                    <span>
+                    <div class="col-md-12">
 
                         <div class="first-spa"> </div>
                         <span class="col-rt">STG01</span>
 
                         <div class="secd-spa"> </div>
                         <span class="col-rt">STG02</span>
-                       
+
                         <div class="third-spa"> </div>
                         <span class="col-rt">STG03</span>
 
-                    </span>
-                    <div id="ST-line"> </div>
+                    </div>
+                    <div class="row col-md-12 mt-10">
+                        <div id="ST-line"> </div>
+                    </div>
                 </div>
 
             </div>
@@ -90,34 +84,34 @@
         </div>
         <div class="row">
             <div class="col-md-12 card-col">
-            <div class="card mt-14 ST-table-eff">
-                <div class="overflow genratorsHeight">
-                    <table id="Steam_table">
-                        <thead>
-                            <tr>
-                                <th> Steam <br> Turbine <br>  ID</th>
-                                <th>Status</th>
-                                <th> Steam <br> Import <br> Ton/Hr</th>
-                                <th> HP Steam<br>extracted <br> Ton/Hr</th>
-                                <th>MP Steam <br> extracted <br> Ton/Hr</th>
-                                <th> Steam <br> condensate <br> Ton/Hr</th>
-                                <th>Steam Duty <br>Gcal/hr</th>
-                                <th>Power Generation <br> Cost (INR/KW)</th>
-                                <th>Power Generated<br> (Design) <br>MW</th>
-                                <th>Power Generated<br> (Actual)<br> MW</th>
-                                <th>Heat Rate <br>(Design) <br>kcal/kwh</th>
-                                <th>Heat Rate <br>(Actual) <br>kcal/kwh</th>
-                            </tr>
-                        </thead>
-                        <tbody id="bodySteam_table">
-    
-                        </tbody>
-                    </table>
+                <div class="card mt-14 ST-table-eff">
+                    <div class="overflow genratorsHeight">
+                        <table id="Steam_table">
+                            <thead>
+                                <tr>
+                                    <th> Steam  Turbine  ID</th>
+                                    <th>Status</th>
+                                    <th> Steam  Import  Ton/Hr</th>
+                                    <th> HP Steamextracted  Ton/Hr</th>
+                                    <th>MP Steam  extracted  Ton/Hr</th>
+                                    <th> Steam  condensate  Ton/Hr</th>
+                                    <th>Steam Duty Gcal/hr</th>
+                                    <th>Power Generation  Cost (INR/KW)</th>
+                                    <th>Power Generated (Design) MW</th>
+                                    <th>Power Generated (Actual) MW</th>
+                                    <th>Heat Rate (Design) kcal/kwh</th>
+                                    <th>Heat Rate (Actual) kcal/kwh</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodySteam_table">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
-    
-        </div>
-    
+
         </div>
     </div>
 </div>

@@ -4,72 +4,66 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-6 card-col">
-                <div class="card mt-14 boiler-eff-equ ">
-                    <div class="row">
-                        <div class="col-md-4" style="border-right: 1px solid whitesmoke; padding-top: 10px;">
-                            <span style="color:#d9d9d9; font-size: 1.3VW;">Efficiency (%)
+                <div class="card mt-14 boiler-eff-equ">
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <div class="col-md-4 fuel-PT">
+                                <span class="heading_graph"> Efficiency (%)</span>
+                            </div>
+                            <div class="col-md-8 mt-5">
+                                <div class="row" style="display: inline-block;">
+                                    <span class="trend">
+                                        <select name="s1" id="r1" style="padding: 0.2vw;">
+                                            <option value="UB1">UB-1</option>
+                                            <option value="UB2">UB-2</option>
+                                        </select>
+                                    </span>
 
-                            </span>
-                        </div>
-                        <div class="col-md-8 eff-act">
-
-                            <div class="row">
-                                <span class="trend">
-
-                                    <select name="s1" id="r1">
-                                        <option value="UB1">UB-1</option>
-                                        <option value="UB2">UB-2</option>
-                                       
-                                    </select>
-                                </span>
-
-                                <span class="from">
-
-                                    <input type="datetime-local" id="fromboiler" name="fromBoiler">
-                                </span>
-                                <span class="from">
-
-                                    <input type="datetime-local" id="toboiler" name="toBoiler">
-                                </span>
+                                    <span class="from">
+                                        <input type="datetime-local" id="fromboiler" name="fromBoiler">
+                                    </span>
+                                    <span class="from">
+                                        <input type="datetime-local" id="toboiler" name="toBoiler">
+                                    </span>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
-                    <div style="padding-top: 0.3vw;">
-                        <div class="box-marg" style="height: 4vh;">
-
+                    <div class="row col-md-12">
+                        <div class="box-marg">
                             <div class="box-eff box-blue"></div>
                             <span class="color-eff"> Actual</span>
 
                             <div class="box-eff box-yellow"></div>
                             <span class="color-eff">Design</span>
-
                         </div>
                     </div>
-                    <div id="chartContainerBoiler"></div>
+                    <div class="row col-md-12 mt-5">
+                        <div id="chartContainerBoiler"> </div>
+                    </div>
                 </div>
 
             </div>
             <div class="col-md-6 card-col fuel-color">
                 <div class="card mt-14 fuel-card">
-                    <div class="row">
-                        <div class="col-md-4 fuel-PT">
-                            <h4>Fuel Consumed (MT/hr)
-                                <!-- <div class="vl"></div> -->
-                            </h4>
-                        </div>
-                        <div class="col-md-8 eff-act" style="  padding-top: 10px;">
-                            <div class="row box-marg">
-                                <div class="box-eff box-yellow"></div> <span class="color-eff">RLNG</span>
-                                <div class="box-eff box-blue"></div> <span class="color-eff">BFO</span>
-                                <div class="box-eff box-gray"></div> <span class="color-eff">HSD</span>
-                                <div class="box-eff box-pink"></div> <span class="color-eff">OFFGas</span>
+                    <div class="row mt-10">
+                        <div class="col-md-12">
+                            <div class="col-md-5 fuel-PT">
+                                <span class="heading_graph"> Fuel Consumed (MT/hr)</span>
+                            </div>
+                            <div class="col-md-7 mt-5">
+                                <div class="row box-marg">
+                                    <div class="box-eff box-yellow"></div> <span class="color-eff">RLNG</span>
+                                    <div class="box-eff box-blue"></div> <span class="color-eff">BFO</span>
+                                    <div class="box-eff box-gray"></div> <span class="color-eff">HSD</span>
+                                    <div class="box-eff box-pink"></div> <span class="color-eff">OFFGas</span>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                    <div id="chartBoiler2"> </div>
+                    <div class="row col-md-12 mt-10">
+                        <div id="chartBoiler2"> </div>
+                    </div>
                 </div>
             </div>
         </div>

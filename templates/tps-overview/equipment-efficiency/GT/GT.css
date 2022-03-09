@@ -1,98 +1,36 @@
+
  .GT-equipment-efficiency .box-eff{
     width: 10px;
     height: 10px;
     display: inline-block;
     margin-left: 10px;
 }
-
-.GT-equipment-efficiency .color-eff{
+.GT-equipment-efficiency .color-eff{   
     font-size: 1vw;
     color: #d9d9d9;
-    padding-left: 6px; 
+    padding-left: 6px;
 }
-.GT-equipment-efficiency .eff-act{
-    padding-top: 3px;
-}
- 
-  .GT-equipment-efficiency .box-yellow{
-    background-color: #ffc000;
-}
-
-.GT-equipment-efficiency .box-blue{
-    background-color: #0895cc;
-}
-
-.GT-equipment-efficiency h4{
-    color: #d9d9d9;
-    font-size: 1.5vw;
-    position: relative;
-    left: 10px;
-}
-.GT-equipment-efficiency .GT-eff-equ{
+.GT-equipment-efficiency #gtr1, #fromgtBar, #togtBar {  
+    font-size: 0.8vw;
     background-color: #26293c;
-    height: 320px;
-}
-
-.GT-equipment-efficiency .GT-tab{
-    height:46rem;
-}
-.GT-equipment-efficiency .GT-table-eff{
-    background-color: #26293c;
-    margin-top: 14px;
-}
-
-.GT-equipment-efficiency table{
-    font-family: Yu Gothic UI;
-    border-collapse: collapse;
-    color: #f2f2f2;
-    width: 100%;
-}
-
-.GT-equipment-efficiency td
- {
-    border-bottom: 1px solid #b2b2b9;
-    text-align: center;
-    padding: 10px;
-    font-size: 1vw;
-}
-.GT-equipment-efficiency th {
-    text-align: center;
-    padding: 3px;
-    background-color: #442266;
-    font-size: 1.1vw;
-    font-weight: 500;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 12vw;
+    cursor: pointer;
     color: #d9d9d9;
-    border-right-color: #552d7c;
-    border-right-style: solid;
-    border-right-width: 1px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    overflow: auto;
 }
-.GT-equipment-efficiency table tr:last-child td{
-    border-bottom: 0;
-}
-.GT-equipment-efficiency #fromST{
-    float: right;
-}
-
-/* graph */
-
-.GT-equipment-efficiency input {
+.GT-equipment-efficiency #fromGT, #toGT {
     font-size: 1vw;
     background-color: #26293c;
     border: 1px solid #f2f2f2;
     padding: 1px;
     border-radius: 5px;
-    width: 16vw;
+    width: 14vw;
     cursor: pointer;
     color: #d9d9d9;
     margin-left: 20px;
-}
-.GT-equipment-efficiency .first-box-title{
-    color: #d9d9d9;
-    font-size: 1.5vw;
 }
 .GT-equipment-efficiency .first-spa{
     background-color: #C55B11;
@@ -100,6 +38,7 @@
     width: 31px;
     display: inline-block;
 }
+
 .GT-equipment-efficiency .secd-spa{
     background-color: #D945B4;
     height: 5px;
@@ -125,17 +64,85 @@
     display: inline-block;
 }
 .GT-equipment-efficiency .col-rt {
-   display: inline-block;
-    color: #d9d9d9;
+    display: inline-block;
+     color: #d9d9d9;
+ }
+.GT-equipment-efficiency .fuel-PT{
+    border-right: 1px solid #d9d9d9;
+}
+.GT-equipment-efficiency .canvasjs-chart-credit{
+    display: none;
+   
+  }
+  .GT-equipment-efficiency table{
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    color: #f2f2f2;
+    width: 100%;
 }
 
-.GT-equipment-efficiency .col-tr{
-    display: inline-flex;
-    padding-top: 10px;
+.GT-equipment-efficiency td
+ {
+    border-bottom: 1px solid #b2b2b9;
+    text-align: center;
+    padding: 10px;
+    font-size: 1vw;
+}
+.GT-equipment-efficiency th {
+    text-align: center;
+    width: 7vw;
+    padding: 3px;
+    background-color: #442266;
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: #d9d9d9;
+    border-right-color: #552d7c;
+    border-right-style: solid;
+    border-right-width: 1px;
+    overflow: auto;
+    position: sticky;
+    top: 0;
+}
+.GT-equipment-efficiency  table tr:last-child td{
+    border-bottom: 0;
+}
+
+.GT-equipment-efficiency .box-yellow{
+    background-color: #ffc000;
+}
+
+.GT-equipment-efficiency .box-blue{
+    background-color: #0895cc;
+}
+
+.GT-equipment-efficiency .box-gray{
+    background-color:#a5a5a5;
+}
+
+.GT-equipment-efficiency .box-pink{
+    background-color:#d944b4;
+}
+
+.GT-equipment-efficiency .heading_graph{
+    color: #d9d9d9;
+    font-size: 1.5vw;
+    position: relative;
+}
+.GT-equipment-efficiency .GT-eff-equ{
+    background-color: #26293c;
+     height: 310px;
+}
+
+.GT-equipment-efficiency .two-tab{
+    height:46rem;
 }
 .GT-equipment-efficiency .fuel-card{
     background-color: #26293c;
-     height: 320px;
+     height: 310px;
+}
+
+.GT-equipment-efficiency .two-tab-eff{
+    background-color: #26293c;
 }
 
 /* scrollbar css */
@@ -145,12 +152,8 @@
 }
 
 .GT-equipment-efficiency .card .genratorsHeight {
-    height: 16vw;
+    height: 16.5vw;
     padding-right: 0.5vw;
-}
-
-.GT-equipment-efficiency .card .customerHeight {
-    height: 22rem;
 }
 
 .GT-equipment-efficiency .card  .scroll {
@@ -160,8 +163,8 @@
 }
 
 .GT-equipment-efficiency .card  ::-webkit-scrollbar {
-    width: 6px;
-    height: 12px;
+    width: 0.3vw;
+    height: 0.3vw;
 }
 
 .GT-equipment-efficiency .card  ::-webkit-scrollbar-track {
@@ -176,15 +179,4 @@
 
 .GT-equipment-efficiency .card  ::-webkit-scrollbar-thumb:hover {
     background: #d9d9d9;
-}
-.GT-equipment-efficiency #gtr1, #fromgtBar, #togtBar{  
-    font-size: 0.7vw;
-    background-color: #26293c;
-    border: 0.1vw solid #f2f2f2;
-    padding: 0.1vw;
-    border-radius: 0.3vw;
-    margin-left: 0.5vw;
-    max-width: 9.6vw;
-    cursor: pointer;
-    color: #d9d9d9;
 }
