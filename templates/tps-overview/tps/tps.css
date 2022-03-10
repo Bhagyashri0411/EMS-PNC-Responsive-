@@ -99,7 +99,7 @@
     margin-top: 10px;
 }
 
-input {
+.tiles-row input {
     background-color: #26293c;
     border: 1px solid #f2f2f2;
     border-radius: 5px; 

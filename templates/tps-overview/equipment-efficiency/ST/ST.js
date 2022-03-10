@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $("#str1").on('change', function () {
+        var demost = $(this).find(":selected").attr('name');
+        $('#stgvalue').html(demost);
+    });
     SteamTable();
     $("input[name=stf]").on('change', function (event) {
         getSpecificSTData();
@@ -213,6 +217,7 @@ function showSpecificSTChart(data, Difference_In_Days1, interval1) {
             labelFontColor: "#d9d9d9",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
+
         },
         toolTip: {
             shared: true
@@ -260,8 +265,8 @@ function SteamTable() {
         method: "GET"
     }).done(function (data) {
         var table_data = '';
-        $.each(data, function (key, value) {    
-            table_data += '<tr>';    
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
             table_data += '<td>' + value.type + '</td>';
             table_data += '<td>' + value.Status + '</td>';
             table_data += '<td>' + value.steamimport.toFixed(2) + '</td>';
@@ -276,6 +281,6 @@ function SteamTable() {
             table_data += '<td>' + value.heatrateactual.toFixed(2) + '</td>';
             table_data += '</tr>';
         });
-        $('#bodySteam_table').append(table_data);    
+        $('#bodySteam_table').append(table_data);
     })
 }
