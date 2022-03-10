@@ -22,7 +22,6 @@ function hdpeloadGaugeChart() {
     $.ajax({
         type: "GET",
         url: "http://localhost:8090/auth/HDPE/specificenergyConsumption",
-        // url: "http://localhost:8090/home/speedometer",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
