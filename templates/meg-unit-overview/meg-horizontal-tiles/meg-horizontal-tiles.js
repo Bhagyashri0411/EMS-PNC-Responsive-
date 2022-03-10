@@ -1,7 +1,7 @@
 $(document).ready(function () {
     megloadGaugeChart();
     megOverview();
-    megbreakOverview();
+    // megbreakOverview();
     parametertableMEG();
     cardmeg1()
     // megGaugeChart()
@@ -109,23 +109,23 @@ function guagevaluemegAct() {
 
 }
 
-function megbreakOverview() {
-    $.ajax({
-        url: "http://localhost:8090//api/srutgtuOverview/steamBalanceOverviewTable",
-        method: "GET"
-    }).done(function (data) {
-        var table_data = '';
-        $.each(data, function (key, value) {
-            table_data += '<tr>';
-            table_data += '<td>' + value.breakUp + '</td>';
-            table_data += '<td class="percents ">' + value.percent + '</td>';
-            table_data += '<td class=" product">' + value.TtProduct + '</td>';
-            table_data += '</tr>';
+// function megbreakOverview() {
+//     $.ajax({
+//         url: "http://localhost:8090//api/srutgtuOverview/steamBalanceOverviewTable",
+//         method: "GET"
+//     }).done(function (data) {
+//         var table_data = '';
+//         $.each(data, function (key, value) {
+//             table_data += '<tr>';
+//             table_data += '<td>' + value.breakUp + '</td>';
+//             table_data += '<td class="percents ">' + value.percent + '</td>';
+//             table_data += '<td class=" product">' + value.TtProduct + '</td>';
+//             table_data += '</tr>';
     
-        });
-        $('#Break_table').append(table_data);
-    })
-}
+//         });
+//         $('#Break_table').append(table_data);
+//     })
+// }
 
 function cardmeg1() {
     $.ajax({
