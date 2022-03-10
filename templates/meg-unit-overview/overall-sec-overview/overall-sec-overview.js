@@ -24,7 +24,7 @@ $(document).ready(function () {
   megoverview();
 })
 function megoverview() {
-    var myJSON = { 'fromdate': $('#megfromFccu').val(), "day": $('#megoveralldate').val() };
+    var myJSON = { 'fromdate': $('#megfromFccu').val(), "todate": $('#megoveralldate').val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
