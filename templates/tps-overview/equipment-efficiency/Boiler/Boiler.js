@@ -1,143 +1,150 @@
 $(document).ready(function () {
- 
+  var time = new Date();
+  console.log(
+    time.toLocaleString('en-US', { hour: 'numeric', hour12: true }), "messa"
+  );
+  $("#r1").on('change', function () {
+    var demoboiler = $(this).find(":selected").attr('name');
+    $('#ubivalue').html(demoboiler);
+  });
   getSteamFuelConsumedData();
- 
+
   BoilerTable();
   $("#r1").on('change', function () {
     getSpecificBOILERData();
-    let domLebal1=( $(this).find(":selected").val());
+    let domLebal1 = ($(this).find(":selected").val());
     $("#first_Boiler").html(domLebal1);
-});
-  $("input[name=fromBoiler]").on('change',function (event) {
+  });
+  $("input[name=fromBoiler]").on('change', function (event) {
     // console.log($('["#r1"]:selected').val());
     getSpecificBOILERData();
-});
-   
- 
+  });
 
-$("input[name=toBoiler]").on('change',function (event) {
-  // console.log($('["#r1"]:selected').val());
+
+
+  $("input[name=toBoiler]").on('change', function (event) {
+    // console.log($('["#r1"]:selected').val());
+    getSpecificBOILERData();
+  });
+
+  // // setting to date
+  // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
+  console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
+  // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
+  // var timeArray = hoursString.split(':');
+  const d = new Date(sessionStorage.getItem("lastUpdateddate"));
+  d.setHours(-05);
+  d.setMinutes(00);
+  d.setSeconds(0);
+
+  $('#fromboiler').val(d.toJSON().slice(0, 19));
+  const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
+  tod.setHours(18);
+  tod.setMinutes(59);
+  tod.setSeconds(0);
+  $('#toboiler').val(tod.toJSON().slice(0, 19));
   getSpecificBOILERData();
-});
-
-// // setting to date
-// var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
-// var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-// var timeArray = hoursString.split(':');
-const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-           d.setHours(-05);
-           d.setMinutes(00);
-           d.setSeconds(0);
-        
-$('#fromboiler').val(d.toJSON().slice(0,19));
-const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(18);
-           tod.setMinutes(59);
-           tod.setSeconds(0);
-$('#toboiler').val(tod.toJSON().slice(0,19));
-getSpecificBOILERData();
 
 });
 function getSpecificBOILERData() {
-  var myJSON = { 'fromdate': $('#fromboiler').val(), 'todate': $('#toboiler').val(),tagname: $('#r1 option:selected').val()};
+  var myJSON = { 'fromdate': $('#fromboiler').val(), 'todate': $('#toboiler').val(), tagname: $('#r1 option:selected').val() };
   const postdata = JSON.stringify(myJSON);
-  console.log(postdata ,"datajson");
+  console.log(postdata, "datajson");
   $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
-        },
-      method: "POST",
-      data: postdata,
-     
-      url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+    },
+    method: "POST",
+    data: postdata,
+
+    url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
     var Difference_In_Days = data[0].showNumberIndex;
-      formatSpecificBOILERData(data ,Difference_In_Days);
+    formatSpecificBOILERData(data, Difference_In_Days);
   })
 }
 
 
-function formatSpecificBOILERData(data,Difference_In_Days) {
+function formatSpecificBOILERData(data, Difference_In_Days) {
   var chartData = { Actual: [], Design: [] };
   for (let index = 0; index < data.length; index++) {
-      const element = data[index];
-      var count = data.length;
-      const boilerDate = new Date(element.date);
-      chartData.Actual.push({ y: element.actual,x:boilerDate });
-      chartData.Design.push({ y: element.design,x:boilerDate });       
-    
+    const element = data[index];
+    var count = data.length;
+    const boilerDate = new Date(element.date);
+    chartData.Actual.push({ y: element.actual, x: boilerDate });
+    chartData.Design.push({ y: element.design, x: boilerDate });
+
   }
-  console.log(count,'count');
+  console.log(count, 'count');
   console.log("STchartdata", chartData);
   var interval = 1;
   if (!Difference_In_Days) {
-    if (count/8 > 1) {
-       interval =Math.round(count/8);
-    }else{
+    if (count / 8 > 1) {
+      interval = Math.round(count / 8);
+    } else {
       interval = 1;
     }
-   
+
   }
-  showSpecificBOILERChart(chartData ,Difference_In_Days, interval);
+  showSpecificBOILERChart(chartData, Difference_In_Days, interval);
 }
 
-function showSpecificBOILERChart(data ,Difference_In_Days ,interval) {
+function showSpecificBOILERChart(data, Difference_In_Days, interval) {
   console.log('kjkj');
   var chart = new CanvasJS.Chart("chartContainerBoiler", {
-      height: 230,
-      theme: "dark1",
-      backgroundColor: "#26293c",
-      title: {
-          text: ""
-      },
-      toolTip: {
-        shared: true  //disable here. 
-      },
-      axisX: {
-        labelFontColor: "#d9d9d9",
-        lineColor: "gray",
-        tickThickness: 0,
-        intervalType:Difference_In_Days == true?  "hour":"day",
-        valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-        title:Difference_In_Days== true?  "In hours":" In Days",
-        interval: interval,
-        labelAngle: -20
-         
-      },
-      axisY: {
-          title: "",
-          gridColor: "gray",
-          gridThickness: 1,
-          gridDashType: "dot",
-          labelFontColor: "#d9d9d9",
-          labelFontSize: 15,
-          fontFamily: "Bahnschrift Light",
-      },
-      toolTip: {
-          shared: true
-      },
+    height: 230,
+    theme: "dark1",
+    backgroundColor: "#26293c",
+    title: {
+      text: ""
+    },
+    toolTip: {
+      shared: true  //disable here. 
+    },
+    axisX: {
+      labelFontColor: "#d9d9d9",
+      lineColor: "gray",
+      tickThickness: 0,
+      intervalType: Difference_In_Days == true ? "hour" : "day",
+      valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+      title: Difference_In_Days == true ? "In hours" : " In Days",
+      interval: interval,
+      labelAngle: -20
 
-      data: [{
-        type: "line",
-        lineThickness: 2,
-        color: "#0895cc",
-        name: "Actual",
-        markerSize: 0,
-        yValueFormatString: "0.00#",
-        dataPoints: data.Actual
+    },
+    axisY: {
+      title: "",
+      gridColor: "gray",
+      gridThickness: 1,
+      gridDashType: "dot",
+      labelFontColor: "#d9d9d9",
+      labelFontSize: 15,
+      fontFamily: "Bahnschrift Light",
+    },
+    toolTip: {
+      shared: true
+    },
+
+    data: [{
+      type: "line",
+      lineThickness: 2,
+      color: "#0895cc",
+      name: "Actual",
+      markerSize: 0,
+      yValueFormatString: "0.00#",
+      dataPoints: data.Actual
     },
     {
-        type: "line",
-        lineThickness: 2,
-        color: "#ffc000",
-        name: "Design",
-        markerSize: 0,
-        yValueFormatString: "0.00#",
-        dataPoints: data.Design
+      type: "line",
+      lineThickness: 2,
+      color: "#ffc000",
+      name: "Design",
+      markerSize: 0,
+      yValueFormatString: "0.00#",
+      dataPoints: data.Design
     }
-  ]
+    ]
   });
   chart.render();
 }
@@ -145,10 +152,10 @@ function showSpecificBOILERChart(data ,Difference_In_Days ,interval) {
 //three bar
 function getSteamFuelConsumedData() {
   $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
-        },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+    },
     method: "GET",
     url: "http://localhost:8090/tpsBoiler/fuelConsumedBarGraph",
 
@@ -157,14 +164,14 @@ function getSteamFuelConsumedData() {
     formatSteamFuelConsumedData(data);
   })
     .fail(function () {
-      var failData=[]
-      
+      var failData = []
+
       formatSteamFuelConsumedData(failData);
 
     })
 }
 function formatSteamFuelConsumedData(data) {
-  var chartData = { RLNG: [],BFO: [], OFF_Gas:[],HSD:[]  };
+  var chartData = { RLNG: [], BFO: [], OFF_Gas: [], HSD: [] };
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
 
@@ -178,7 +185,7 @@ function formatSteamFuelConsumedData(data) {
 }
 
 function Fuelconsumed(data) {
-  console.log(data,"hhhh");
+  console.log(data, "hhhh");
   var chart = new CanvasJS.Chart("chartBoiler2",
     {
       height: 240,
@@ -261,7 +268,7 @@ function BoilerTable() {
     url: "http://localhost:8090/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
-    loadBoilerTable(data) 
+    loadBoilerTable(data)
   })
   // .fail(function () {
   //   var failData = [
@@ -271,14 +278,14 @@ function BoilerTable() {
   //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
   //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
   //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},]
-   
+
   //     loadBoilerTable(failData);
 
- // })
+  // })
 
 }
 
-function loadBoilerTable(data){
+function loadBoilerTable(data) {
   var table_data = '';
   $.each(data, function (key, value) {
 
@@ -286,8 +293,8 @@ function loadBoilerTable(data){
 
     table_data += '<td>' + value.BoilerID + '</td>';
     table_data += '<td>' + value.Status + '</td>';
-    table_data += '<td>' + value.Loading.toFixed(2) + '</td>';    
-    table_data += '<td>' + value.steamgenerationcost.toFixed(2)+ '</td>';
+    table_data += '<td>' + value.Loading.toFixed(2) + '</td>';
+    table_data += '<td>' + value.steamgenerationcost.toFixed(2) + '</td>';
     table_data += '<td>' + value.FualConsumed.toFixed(2) + '</td>';
     table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
     table_data += '<td>' + value.SteamGenerated.toFixed(2) + '</td>';

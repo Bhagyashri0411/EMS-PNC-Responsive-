@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $("#gtr1").on('change', function () {
+    var demogt = $(this).find(":selected").val();
+    $('#gtvalue').html(demogt);
+  });
   GasTable();
 
   // loadlineGT();

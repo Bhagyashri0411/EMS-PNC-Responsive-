@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $("#hrsgr1").on('change', function () {
+        var demohrsgr = $(this).find(":selected").val();
+        $('#hrefvalue').html(demohrsgr);
+    });
     HRSGTable();
     $("input[name=FromHRSG]").on('change', function (event) {
         console.log("from", event.target.value);
@@ -184,7 +188,7 @@ function formatSpecificHRSGData(data, Difference_In_Days) {
         const element = data[index];
         var count = data.length;
         const hrsg1Date = new Date(element.date);
-        chartData.hrsg3.push({ y: element.hrsg3, x: hrsg1Date });        
+        chartData.hrsg3.push({ y: element.hrsg3, x: hrsg1Date });
         chartData.hrsg4.push({ y: element.hrsg4, x: hrsg1Date });
         chartData.hrsg1.push({ y: element.hrsg1, x: hrsg1Date });
         chartData.hrsg2.push({ y: element.hrsg2, x: hrsg1Date });

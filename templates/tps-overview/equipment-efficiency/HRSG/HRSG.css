@@ -1,104 +1,28 @@
+
  .HRSG-equipment-efficiency .box-eff{
     width: 10px;
     height: 10px;
     display: inline-block;
     margin-left: 10px;
 }
-.HRSG-equipment-efficiency .color-eff{
+.HRSG-equipment-efficiency .color-eff{   
     font-size: 1vw;
     color: #d9d9d9;
-    padding-left: 6px; 
+    padding-left: 6px;
 }
-  
-.HRSG-equipment-efficiency .box-yellow{
-    background-color: #ffc000;
-}
-
-.HRSG-equipment-efficiency .box-blue{
-    background-color: #0895cc;
-}
-.HRSG-equipment-efficiency h4{
-    color: #d9d9d9;
-    font-size: 1.5vw;
-    position: relative;
-    left: 10px;
-}
-.HRSG-equipment-efficiency .HRSG-eff-equ{
-    background-color: #26293c;
-    height: 320px;
-}
-
-.HRSG-equipment-efficiency .HRSG-eff{
-    height: 337px;
-}
-.HRSG-equipment-efficiency .HRSG-tab{
-    height:46rem;
-
-}
-.HRSG-equipment-efficiency .HRSG-table-eff{
-    background-color: #26293c;
-}
-
-.HRSG-equipment-efficiency .fuel-card{
-    background-color: #26293c;
-     height: 320px;
-}
-
-.HRSG-equipment-efficiency table{
-    font-family: Yu Gothic UI;
-    border-collapse: collapse;
-    color: #f2f2f2;
-    width: 100%;
-}
-
-.HRSG-equipment-efficiency td
- {
-    border-bottom: 1px solid #b2b2b9;
-    text-align: center;
-    padding: 10px;
-    font-size: 1vw;
-}
-.HRSG-equipment-efficiency th {
-    text-align: center;
-    padding: 3px;
-    background-color: #442266;
-    font-size: 1.1vw;
-    font-weight: 500;
-    color: #d9d9d9;
-    border-right-color: #552d7c;
-    border-right-style: solid;
-    border-right-width: 1px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-.HRSG-equipment-efficiency table tr:last-child td{
-    border-bottom: 0;
-}
-
-.HRSG-equipment-efficiency #fromST{
-    float: right;
-}
-
-/* graph */
-
-.HRSG-equipment-efficiency input {
+.HRSG-equipment-efficiency #hrsgr1, #fromhrsgBar, #tohrsgBar, #fromHRSG, #toHRSG {  
     font-size: 1vw;
     background-color: #26293c;
-    border: 1px solid #f2f2f2;
-    padding: 1px;
-    border-radius: 5px;
-    width: 16vw;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 11.9vw;
     cursor: pointer;
     color: #d9d9d9;
-    margin-left: 20px;
 }
-.HRSG-equipment-efficiency .first-box-title{
-    color: #d9d9d9;
-    font-size: 1.5vw;
-}
-.HRSG-equipment-efficiency .wdt{
-    width: 12%;
+.HRSG-equipment-efficiency #hrsgr1, #fromhrsgBar, #tohrsgBar{
+    margin-left: 0.2vw;
 }
 .HRSG-equipment-efficiency .first-spa{
     background-color: #C55B11;
@@ -106,6 +30,7 @@
     width: 31px;
     display: inline-block;
 }
+
 .HRSG-equipment-efficiency .secd-spa{
     background-color: #D945B4;
     height: 5px;
@@ -124,6 +49,12 @@
     width: 31px;
     display: inline-block;
 }
+.HRSG-equipment-efficiency .five-spa{
+    background-color: #08cc12;
+    height: 5px;
+    width: 31px;
+    display: inline-block;
+}
 .HRSG-equipment-efficiency .fifth-spa{
     background-color: #00bc55;
     height: 5px;
@@ -131,18 +62,87 @@
     display: inline-block;
 }
 .HRSG-equipment-efficiency .col-rt {
-    color: #d9d9d9;
     display: inline-block;
+     color: #d9d9d9;
+ }
+.HRSG-equipment-efficiency .fuel-PT{
+    border-right: 1px solid #d9d9d9;
+}
+.HRSG-equipment-efficiency .canvasjs-chart-credit{
+    display: none;
+   
+  }
+  .HRSG-equipment-efficiency table{
+    font-family: Yu Gothic UI;
+    border-collapse: collapse;
+    color: #f2f2f2;
+    width: 100%;
 }
 
-.HRSG-equipment-efficiency .col-tr{
-    display: inline-flex;
+.HRSG-equipment-efficiency td
+ {
+    border-bottom: 1px solid #b2b2b9;
+    text-align: center;
+    padding: 10px;
+    font-size: 1vw;
+}
+.HRSG-equipment-efficiency th {
+    text-align: center;
+    width: 7vw;
+    padding: 3px;
+    background-color: #442266;
+    font-size: 1.1vw;
+    font-weight: 500;
+    color: #d9d9d9;
+    border-right-color: #552d7c;
+    border-right-style: solid;
+    border-right-width: 1px;
+    overflow: auto;
+    position: sticky;
+    top: 0;
+}
+.HRSG-equipment-efficiency  table tr:last-child td{
+    border-bottom: 0;
 }
 
-.HRSG-equipment-efficiency .rightorder
-{
-    margin-top: 9px;
+.HRSG-equipment-efficiency .box-yellow{
+    background-color: #ffc000;
 }
+
+.HRSG-equipment-efficiency .box-blue{
+    background-color: #0895cc;
+}
+
+.HRSG-equipment-efficiency .box-gray{
+    background-color:#a5a5a5;
+}
+
+.HRSG-equipment-efficiency .box-pink{
+    background-color:#d944b4;
+}
+
+.HRSG-equipment-efficiency .heading_graph{
+    color: #d9d9d9;
+    font-size: 1.5vw;
+    position: relative;
+}
+.HRSG-equipment-efficiency .HRSG-eff-equ{
+    background-color: #26293c;
+     height: 310px;
+}
+
+.HRSG-equipment-efficiency .two-tab{
+    height:46rem;
+}
+.HRSG-equipment-efficiency .fuel-card{
+    background-color: #26293c;
+     height: 310px;
+}
+
+.HRSG-equipment-efficiency .two-tab-eff{
+    background-color: #26293c;
+}
+
 /* scrollbar css */
 
 .HRSG-equipment-efficiency .card .overflow {
@@ -150,12 +150,8 @@
 }
 
 .HRSG-equipment-efficiency .card .genratorsHeight {
-    height: 16vw;
+    height: 16.5vw;
     padding-right: 0.5vw;
-}
-
-.HRSG-equipment-efficiency .card .customerHeight {
-    height: 22rem;
 }
 
 .HRSG-equipment-efficiency .card  .scroll {
@@ -165,8 +161,8 @@
 }
 
 .HRSG-equipment-efficiency .card  ::-webkit-scrollbar {
-    width: 6px;
-    height: 12px;
+    width: 0.3vw;
+    height: 0.3vw;
 }
 
 .HRSG-equipment-efficiency .card  ::-webkit-scrollbar-track {
@@ -181,15 +177,4 @@
 
 .HRSG-equipment-efficiency .card  ::-webkit-scrollbar-thumb:hover {
     background: #d9d9d9;
-}
-.HRSG-equipment-efficiency #hrsgr1, #fromhrsgBar, #tohrsgBar{  
-    font-size: 0.7vw;
-    background-color: #26293c;
-    border: 0.1vw solid #f2f2f2;
-    padding: 0.1vw;
-    border-radius: 0.3vw;
-    margin-left: 0.5vw;
-    max-width: 9.3vw;
-    cursor: pointer;
-    color: #d9d9d9;
 }
