@@ -41,6 +41,8 @@ function ppsteamoverview() {
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         ppgetsteamoverview(data, Difference_In_Days);
+        var demogen1 = $("#ppdrop option:selected").val();
+        $('#ppCharts').html(demogen1);
     })
 }
 
@@ -140,7 +142,6 @@ function getDroppp(data) {
                                            ${value.name}
                                       </option>`);
     });
-    var demogen1 = $("#ppdrop option:selected").val();
-    $('#ppCharts').html(demogen1);
+
     ppsteamoverview();
 }
