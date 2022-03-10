@@ -1,22 +1,22 @@
 $(document).ready(function () {
     getCardValue1();
     getCardValue2();
-    // getCardValue3();
+    getCardValue3();
     getCardValue4();
     getCardValue5();
     getCardValue6();
     getCardValue7();
     getCardValue8();
-    getCardValue9();
+   // getCardValue9();
     tpsTable();
 
     $("input[name=from]").on('change', function (event) {
-
+        
         document.getElementById("tps1").min = $('#fromcpp').val();
         getTotalGenerationCostData();
     });
     $("input[name=tps]").on('change', function (event) {
-
+        
         document.getElementById("fromcpp").min = $('#tps1').val();
         getTotalGenerationCostData();
     });
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
         getTotalGenerationCostData();
     });
-
+  
     var now = new Date();
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
     d.setHours(-05);
@@ -60,7 +60,7 @@ function getCardValue1() {
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES1').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else {
+        else{
             document.getElementById('RES1').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -95,7 +95,7 @@ function getCardValue2() {
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES2').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else {
+        else{
             document.getElementById('RES2').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -122,43 +122,6 @@ function getCardValue3() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/specificWater",
-
-    }).done(function (data) {
-        document.getElementById('SW').innerHTML = data[0]['tagvalue'].toFixed(2);
-        document.getElementById('SWR').innerHTML = data[0]['refvalue'].toFixed(2);
-        if (data[0]['currentvalue'] > 0) {
-            document.getElementById('RES3').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
-        }
-        else {
-            document.getElementById('RES3').innerHTML = data[0]['currentvalue'].toFixed(2);
-        }
-
-        $(".result").each(function () {
-            var text = $(this).text();
-            if (/[+-]?\d+(\.\d+)?/.test(text)) {
-                var num = parseFloat(text);
-                if (num < 0) {
-                    $(this).addClass("red");
-                } else if (num >= 0) {
-                    $(this).addClass("green");
-                }
-
-            }
-        });
-
-
-
-    })
-}
-function getCardValue4() {
-
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: "GET",
         url: "http://localhost:8090/auth/tpsoverview/specificSteam",
 
     }).done(function (data) {
@@ -168,7 +131,7 @@ function getCardValue4() {
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES4').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else {
+        else{
             document.getElementById('RES4').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
 
@@ -189,7 +152,7 @@ function getCardValue4() {
 
     })
 }
-function getCardValue5() {
+function getCardValue4() {
 
     $.ajax({
         headers: {
@@ -220,7 +183,7 @@ function getCardValue5() {
 
     })
 }
-function getCardValue6() {
+function getCardValue5() {
 
     $.ajax({
         headers: {
@@ -236,8 +199,45 @@ function getCardValue6() {
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES5').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else {
+        else{
             document.getElementById('RES5').innerHTML = data[0]['currentvalue'].toFixed(2);
+        }
+
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num >= 0) {
+                    $(this).addClass("green");
+                }
+
+            }
+        });
+
+
+
+    })
+}
+function getCardValue6() {
+
+    $.ajax({
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+        },
+        method: "GET",
+        url: "http://localhost:8090/auth/tpsoverview/totalSteamGenerated",
+
+    }).done(function (data) {
+        document.getElementById('TSG').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById('TSGR').innerHTML = data[0]['refvalue'].toFixed(2);
+        if (data[0]['currentvalue'] > 0) {
+            document.getElementById('RES6').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
+        }
+        else{
+            document.getElementById('RES6').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
 
         $(".result").each(function () {
@@ -265,43 +265,6 @@ function getCardValue7() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/auth/tpsoverview/totalSteamGenerated",
-
-    }).done(function (data) {
-        document.getElementById('TSG').innerHTML = data[0]['tagvalue'].toFixed(2);
-        document.getElementById('TSGR').innerHTML = data[0]['refvalue'].toFixed(2);
-        if (data[0]['currentvalue'] > 0) {
-            document.getElementById('RES6').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
-        }
-        else {
-            document.getElementById('RES6').innerHTML = data[0]['currentvalue'].toFixed(2);
-        }
-
-        $(".result").each(function () {
-            var text = $(this).text();
-            if (/[+-]?\d+(\.\d+)?/.test(text)) {
-                var num = parseFloat(text);
-                if (num < 0) {
-                    $(this).addClass("red");
-                } else if (num >= 0) {
-                    $(this).addClass("green");
-                }
-
-            }
-        });
-
-
-
-    })
-}
-function getCardValue8() {
-
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: "GET",
         url: "http://localhost:8090/auth/tpsoverview/overallEfficiency",
 
     }).done(function (data) {
@@ -310,7 +273,7 @@ function getCardValue8() {
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES7').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else {
+        else{
             document.getElementById('RES7').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -329,7 +292,7 @@ function getCardValue8() {
 
     })
 }
-function getCardValue9() {
+function getCardValue8() {
 
     $.ajax({
         headers: {
@@ -345,7 +308,7 @@ function getCardValue9() {
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES8').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else {
+        else{
             document.getElementById('RES8').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -382,40 +345,48 @@ function getTotalGenerationCostData() {
         url: "http://localhost:8090/auth/tpsoverview/fuelOilConsumptionGraph",
 
     }).done(function (data) {
-        console.log(data ,"bhagyashri");
         var Difference_In_Days1 = data[0].showNumberIndex;
         formatTotalGenCostData(data, Difference_In_Days1);
+        // formatTotalGenCostData(data, intervalType);
     })
+        .fail(function () {
+            var failData = []
+            formatTotalGenCostData(failData);
+        })
 }
 
 function formatTotalGenCostData(data, Difference_In_Days) {
+    // console.log(data,'data total generation');
     var chartData = { Actual: [], Optimized: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const tmpDate = new Date(element.date);
-        chartData.Optimized.push({ y: element.design, x: tmpDate });
-        chartData.Actual.push({ y: element.actual, x: tmpDate });
+        //console.log(tmpDate,'date new');
+        chartData.Optimized.push({ y: element.design ,x: tmpDate });
+        chartData.Actual.push({ y: element.actual ,x: tmpDate });
+        // chartData.Optimized.push({ x: tmpDate});
+        // chartData.Actual.push({ x: tmpDate });
     }
-    console.log(chartData, 'blob');
+    console.log(chartData , 'blob');
     var interval = 1;
     if (!Difference_In_Days) {
-        if (count / 8 > 1) {
-            interval = Math.round(count / 8);
-        } else {
-            interval = 1;
-        }
-
+      if (count/8 > 1) {
+         interval =Math.round(count/8);
+      }else{
+        interval = 1;
+      }
+     
     }
     showTotalGenerationCostChart(chartData, Difference_In_Days, interval);
 
 }
 
-function showTotalGenerationCostChart(data, Difference_In_Days, interval) {
-    console.log(data, "jkljclkdjocj");
+function showTotalGenerationCostChart(data,Difference_In_Days ,interval) {
+console.log(data,"jkljclkdjocj");
     var chart = new CanvasJS.Chart("cpp-tsp-barchart", {
         animationEnabled: true,
-        theme: "dark1",
+         theme: "dark1",
         backgroundColor: "#26293c",
         height: 320,
         title: {
@@ -424,17 +395,17 @@ function showTotalGenerationCostChart(data, Difference_In_Days, interval) {
         toolTip: {
             shared: true  //disable here. 
         },
-
+        
         dataPointMaxWidth: 20,
         axisX: {
             labelFontColor: "#d9d9d9",
             lineColor: "gray",
             tickThickness: 0,
-            intervalType: Difference_In_Days == true ? "hour" : "day",
-            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            //valueFormatString: "DD MMM" ,
-            title: Difference_In_Days == true ? "In hours" : " In Days",
-            interval: interval,
+            intervalType:Difference_In_Days == true?  "hour":"day",
+            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+             //valueFormatString: "DD MMM" ,
+             title:Difference_In_Days == true?  "In hours":" In Days",
+             interval: interval,
             labelAngle: -20
         },
         axisY: {
@@ -453,7 +424,6 @@ function showTotalGenerationCostChart(data, Difference_In_Days, interval) {
         {
             type: "column",
             name: "Design",
-
             color: "#ffc000",
             dataPoints: data.Optimized
         },
@@ -467,19 +437,27 @@ function showTotalGenerationCostChart(data, Difference_In_Days, interval) {
 
 function tpsTable() {
     $.ajax({
-        url: "http://localhost:8090/auth/tpsoverview/ParameterTable",
-        method: "GET"
+      url: "http://localhost:8090/auth/tpsoverview/ParameterTable",
+      method: "GET"
     }).done(function (data) {
-        var table_data = '';
-        $.each(data, function (key, value) {
-
-            table_data += '<tr>';
-
-            table_data += '<td>' + value.parameter + '</td>';
-            table_data += '<td>' + value.actual + '</td>';
-            table_data += '</tr>';
-
-        });
-        $('#tps_card_body').append(table_data);
+        loadtpsTable(data) 
     })
-}
+    
+  
+  }
+  
+  function loadtpsTable(data){
+    var table_data = '';
+    $.each(data, function (key, value) {
+  
+      table_data += '<tr>';
+  
+      table_data += '<td>' + value.parameter + '</td>';
+      table_data += '<td>' + value.actual + '</td>';
+      table_data += '</tr>';
+  
+    });
+    $('#tps_card_body').append(table_data);
+  
+  }
+
