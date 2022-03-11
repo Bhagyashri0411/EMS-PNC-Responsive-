@@ -149,16 +149,15 @@ function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
         height:325,
         backgroundColor: "#26293c",
         axisX: {
-            gridColor: "gray",
-            gridThickness: 2,
-            gridDashType: "dot",
-            tickLength: 0,
-            lineThickness: 0,
-            intervalType: Difference_In_Days == true ? "hour" : "day",
-            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            //valueFormatString: "DD MMM" ,
-            title: Difference_In_Days == true ? "In hours" : " In Days",
-            interval: interval
+            labelFontColor: "#d9d9d9",
+            lineColor: "gray",
+            tickThickness: 0,
+             intervalType:Difference_In_Days == true?  "hour":"day",
+             valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+             //valueFormatString: "DD MMM" ,
+             title:Difference_In_Days == true? "In hours":"In Days",
+            interval: interval,
+            labelAngle: -20
         },
         axisY: {
             gridColor: "gray",

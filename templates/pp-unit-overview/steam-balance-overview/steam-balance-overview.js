@@ -2,7 +2,7 @@ $(document).ready(function () {
     ppsteamta();
     $("#ppdrop").on('change', function () {
         var demopp = $(this).find(":selected").val();
-        $('#ppcharts').html(demopp);
+        $('#ppCharts').html(demopp);
         ppsteamoverview();
     });
     $("input[name=fromHomepp]").on('change', function () {

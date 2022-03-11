@@ -164,19 +164,15 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             shared: true
         },
         axisX: {
-            gridColor: "gray",
-            gridThickness: 2,
-            gridDashType: "dot",
-            intervalType: Difference_In_Days == true ? "hour" : "day",
-            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            title:Difference_In_Days == true?  "In hours":" In Days",
-            titleFontSize:15,
-            interval: interval,
-            tickThickness: 0,
-            lineThickness: 0,
             labelFontColor: "#d9d9d9",
-            labelFontSize: 15,
-            fontFamily: "Bahnschrift Light",
+            lineColor: "gray",
+            tickThickness: 0,
+             intervalType:Difference_In_Days == 1?  "hour":"day",
+             valueFormatString:Difference_In_Days == 1?  "HH":"DD MMM YYYY" ,
+             //valueFormatString: "DD MMM" ,
+             title:Difference_In_Days == 1? "In hours":"In Days",
+            interval: interval,
+            labelAngle: -20
 
         },  
 

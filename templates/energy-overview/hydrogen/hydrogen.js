@@ -95,19 +95,15 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
             shared: true  //disable here. 
         },
         axisX: {
-            gridColor: "gray",
-            gridThickness: 2,
-            gridDashType: "dot",
-            intervalType: Difference_In_Days == true ? "hour" : "day",
-            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            title: Difference_In_Days == true ? "In hours" : " In Days",
-            titleFontSize: 15,
-            interval: interval,
-            tickThickness: 0,
-            lineThickness: 0,
             labelFontColor: "#d9d9d9",
-            labelFontSize: 15,
-            fontFamily: "Bahnschrift Light",
+            lineColor: "gray",
+            tickThickness: 0,
+             intervalType:Difference_In_Days == true?  "hour":"day",
+             valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
+             //valueFormatString: "DD MMM" ,
+             title:Difference_In_Days == true? "In hours":"In Days",
+            interval: interval,
+            labelAngle: -20
 
         },
         axisY: {
@@ -115,11 +111,11 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
             gridThickness: 2,
             gridThickness: 0,
             gridDashType: "dot",
-            stripLines: [{
-                thickness: 4,
-                color: "#FFC100",
-                lineDashType: "dash",
-            }]
+            // stripLines: [{
+            //     thickness: 4,
+            //     color: "#FFC100",
+            //     lineDashType: "dash",
+            // }]
         },
 
         dataPointMaxWidth: 15,
@@ -139,6 +135,7 @@ function showSpecificHydrogenConsumptionChart(data, Difference_In_Days, interval
         {
             type: "spline",
             lineThickness: 4,
+            lineDashType: "dash",
             color: "#ffc000",
             name: "Reference",
             markerSize: 0,
