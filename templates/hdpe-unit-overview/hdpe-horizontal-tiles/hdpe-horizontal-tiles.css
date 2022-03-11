@@ -5,7 +5,7 @@
 }
 
 #hdpe-horizontal-tiles .unit-pro {
-    font-size: 0.7vw;
+    font-size: 0.9vw;
     color: #d9d9d9;
     text-align: center;
 }
@@ -23,21 +23,19 @@
 }
 
 #hdpe-horizontal-tiles .card .body .count {
-    text-align: center;
-    font-size: 3vw;
+    font-size: 2.4vw;
     color: #f2f2f2;
+    text-align: center;
     font-weight: 700;
     font-family: Bahnschrift Light;
-    padding-top: 2.5vw;
-    padding-bottom: 2.5vw;
+    padding: 2.5vw 0;
 }
 
 #hdpe-horizontal-tiles .card .footer .ref {
     color: #d9d9d9;
-    font-size: 0.8vw;
+    font-size: 1vw;
     font-family: Bahnschrift Light;
     display: inline-block;
-    /* padding: 5px 0px; */
 }
 
 #hdpe-horizontal-tiles #ref-hdpe1 {
@@ -46,9 +44,9 @@
 
 #hdpe-horizontal-tiles .card .footer .result {
     color: #f2f2f2;
-    font-size: 0.8vw;
+    font-size: 1.1vw;
     font-family: Bahnschrift Light;
-    padding: 1px 4px;
+    padding: 1px 10px;
     border-radius: 5px;
     display: inline-block;
 }
@@ -217,7 +215,7 @@
 
 #hdpe-horizontal-tiles .col {
     padding: 1px;
-    height: 6.3vw;
+    height: 6.9vw;
 }
 
 #hdpe-horizontal-tiles .footer {

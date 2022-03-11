@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var abc = 'TOE/MT';
+    getDoughnuthdpe(abc);
     hdpeloadGaugeChart();
     hdpeOverview();
     hdpebreakOverview();
@@ -6,8 +8,6 @@ $(document).ready(function () {
     cardhdpe1()
     // cardhdpe2();
     hdpeGaugeChart()
-
-    getDoughnuthdpe();
 
     $(".hdpe-doughnut").click(function () {
         console.log($("input[name=ratio-name]:checked").val());
@@ -109,22 +109,18 @@ function hdpebreakOverview() {
         url: "http://localhost:8090/auth/HDPE/SECSteamTabledata",
         method: "GET"
     }).done(function (data) {
-        gethdpebreakOverview(data);
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.breakUp + '</td>';
+            table_data += '<td class="percents ">' + value.percent + '</td>';
+            table_data += '<td class=" product">' + value.product + '</td>';
+            table_data += '</tr>';
+    
+        });
+        $('#Break_table').append(table_data);
     })
        
-}
-
-function gethdpebreakOverview(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.breakUp + '</td>';
-        table_data += '<td class="percents ">' + value.percent + '</td>';
-        table_data += '<td class=" product">' + value.product + '</td>';
-        table_data += '</tr>';
-
-    });
-    $('#Break_table').append(table_data);
 }
 
 function shdpebreakOverview() {
@@ -132,23 +128,16 @@ function shdpebreakOverview() {
         url: "http://localhost:8090/auth/HDPE/SECSteam",
         method: "GET"
     }).done(function (data) {
-        console.log(data,);
-        getshdpebreakOverview(data);
-
-    })
-        
-}
-function getshdpebreakOverview(data) {
-    var table_data = '';
+        var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
         table_data += '<td>' + value.id + '</td>';
-        // table_data += '<td class="percents ">' + value.produt + '</td>';
         table_data += '<td class=" product">' + value.value + '</td>';
         table_data += '</tr>';
-
     });
     $('#shptable').append(table_data);
+
+    })        
 }
 
 function hdpeOverview() {
@@ -156,24 +145,19 @@ function hdpeOverview() {
         url: "http://localhost:8090/auth/HDPE/parameterhdpe",
         method: "GET"
     }).done(function (data) {
-        gethdpeOverview(data);
+        var table_data = '';
+        $.each(data, function (key, value) {
+    
+            table_data += '<tr>';
+            table_data += '<td>' + value.parameter + '</td>';
+            table_data += '<td class="hdpe-tab">' + value.reference + '</td>';
+            table_data += '<td class="hdpe-tab">' + value.actual + '</td>';
+            table_data += '<td class="hdpe-tab">' + value.deviation + '</td>';
+            table_data += '</tr>';
+    
+        });
+        $('#Parameter_table').append(table_data);
     })
-}
-
-function gethdpeOverview(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-
-        table_data += '<tr>';
-        table_data += '<td>' + value.parameter + '</td>';
-        // table_data += '<td class="hdpe-tab">' + value.uom + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.reference + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.actual + '</td>';
-        table_data += '<td class="hdpe-tab">' + value.deviation + '</td>';
-        table_data += '</tr>';
-
-    });
-    $('#Parameter_table').append(table_data);
 }
 
 function cardhdpe1() {
@@ -181,33 +165,29 @@ function cardhdpe1() {
         url: 'http://localhost:8090/auth/HDPE/SECElectricity',
         method: "GET"
     }).done(function (data) {
-        getcardhdpe1(data)
+        document.getElementById("count-hdpe1").innerHTML = data.actual;
+        if (data.deviation > 0) {
+            document.getElementById("result-hdpe1").innerHTML = "+" + data.deviation;
+        }
+        else {
+            document.getElementById("result-hdpe1").innerHTML = data.deviation;
+        }
+        document.getElementById("ref-hdpe1").innerHTML = data.reference;
+        $(".result").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("red");
+                } else if (num > 0) {
+                    $(this).addClass("green");
+                }
+    
+            }
+        });
     })
         
 }
-function getcardhdpe1(data) {
-    document.getElementById("count-hdpe1").innerHTML = data.reference;
-    if (data.deviation > 0) {
-        document.getElementById("result-hdpe1").innerHTML = "+" + data.deviation;
-    }
-    else {
-        document.getElementById("result-hdpe1").innerHTML = data.deviation;
-    }
-    document.getElementById("ref-hdpe1").innerHTML = data.actual;
-    $(".result").each(function () {
-        var text = $(this).text();
-        if (/[+-]?\d+(\.\d+)?/.test(text)) {
-            var num = parseFloat(text);
-            if (num < 0) {
-                $(this).addClass("red");
-            } else if (num > 0) {
-                $(this).addClass("green");
-            }
-
-        }
-    });
-}
-
 
 function getDoughnuthdpe() {
     var myJSON = { uom: $("input[name=ratio-name]:checked").val() }
@@ -221,7 +201,6 @@ function getDoughnuthdpe() {
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
             console.log(energyConsumed);
-
             loadDoughnutHoriCharthdpe1(energyConsumed);
     })
         
