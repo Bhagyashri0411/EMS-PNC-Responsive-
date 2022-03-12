@@ -109,24 +109,6 @@ function guagevaluemegAct() {
 
 }
 
-// function megbreakOverview() {
-//     $.ajax({
-//         url: "http://localhost:8090//api/srutgtuOverview/steamBalanceOverviewTable",
-//         method: "GET"
-//     }).done(function (data) {
-//         var table_data = '';
-//         $.each(data, function (key, value) {
-//             table_data += '<tr>';
-//             table_data += '<td>' + value.breakUp + '</td>';
-//             table_data += '<td class="percents ">' + value.percent + '</td>';
-//             table_data += '<td class=" product">' + value.TtProduct + '</td>';
-//             table_data += '</tr>';
-    
-//         });
-//         $('#Break_table').append(table_data);
-//     })
-// }
-
 function cardmeg1() {
     $.ajax({
         url: 'http://localhost:8090/MEG/MEGtotalSteamConsumptioncard',
@@ -167,7 +149,7 @@ function loadDoughnutChartmeg(energyConsumed) {
     var chart = new CanvasJS.Chart("titles-meg", {
 
         colorSet: "greenShades",
-        height: 120,
+        // height: 120,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
@@ -211,9 +193,7 @@ function parametertableMEG() {
             table_data += '<tr>';
             table_data += '<td>' + value.type + '</td>';
             table_data += '<td>' + value.Actual + '</td>';
-            table_data += '<td>' + value.Reference + '</td>';        
-            // table_data += '<td>' + value.actual + '</td>';
-            // table_data += '<td>' + value.Deviation + '</td>';
+            table_data += '<td>' + value.Reference + '</td>';     
             if (value.Deviation > 0) {
                 table_data += '<td class="r1">' + "+" + value.Deviation + '</td>';
             }
@@ -250,10 +230,9 @@ function megOverview() {
     
             table_data += '<tr>';
             table_data += '<td>' + value.Parameter + '</td>';
-            // table_data += '<td class="meg-tab">' + value.UOM + '</td>';
-            table_data += '<td class="meg-tab" style="text-align:center">' + value.Reference + '</td>';
+       
             table_data += '<td class="meg-tab">' + value.Actual + '</td>';
-            // table_data += '<td class="meg-tab">' + value.Deviation + '</td>';
+            table_data += '<td class="meg-tab" style="text-align:center">' + value.Reference + '</td>';
             if (value.Deviation > 0) {
                 table_data += '<td class="r2">' + "+" + value.Deviation + '</td>';
             }

@@ -160,7 +160,10 @@
     background-color: #08cc12;
 
 }
+.ncu-equipment-overview .red-spa {
+    background-color: #ff0000;
 
+}
 .ncu-equipment-overview .col-rt {
     top: -0.5vw;
     position: relative;

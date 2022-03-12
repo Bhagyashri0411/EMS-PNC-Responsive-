@@ -136,23 +136,15 @@
     font-family: Yu Gothic UI;
     line-height: 1.12;
 }
-#meg-horizontal-tiles #megtable th {
-    text-align: left;
+#meg-horizontal-tiles  th {
     padding: 0.5vw;
+    background-color: #442266;
+    font-size: 1.1vw;
+    color: #d9d9d9;
     font-weight: normal;
-    font-size: 0.9vw;
-    background-color: #432b64;
-    top: 0;
     position: sticky;
-}
-#meg-horizontal-tiles #MEG_card_table th {
-    text-align: left;
-    padding: 0.5vw;
-    font-weight: normal;
-    font-size: 0.9vw;
+    position: -webkit-sticky;
     top: 0;
-    background-color: #432b64;
-    border-bottom: 1px solid #f2f2f2;
 }
 #meg-horizontal-tiles td {
     border-bottom: 0.1vw solid #8d8b96;

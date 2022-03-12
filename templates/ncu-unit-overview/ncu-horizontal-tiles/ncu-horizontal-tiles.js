@@ -19,70 +19,64 @@ function getpiechartncu() {
         method: "GET",
         url: "http://localhost:8090/ncu/donutgraph",
     }).done(function (data) {
-
         var fuelConsumed = data[0].steamConsumed;
-        console.log(fuelConsumed);
-        loadpiechartncu(fuelConsumed);
+        CanvasJS.addColorSet("greenShades", [
+            "#ffa600",
+            "#00aa7e",
+            "#005374",
+            "#d944b4"
+        ]);
+        var dataPoints = [];
+        var chart = new CanvasJS.Chart("Fuel-ncu", {
+    
+            colorSet: "greenShades",
+            // height: 145,
+            // width: 190,
+            theme: "dark1",
+            backgroundColor: "#26293c",
+    
+            title: {
+                text: fuelConsumed.total.toFixed(2),
+                verticalAlign: "center",
+                dockInsidePlotArea: true,
+                fontWeight: 100,
+                fontColor: "#f2f2f2",
+                fontFamily: "Bahnschrift Light"
+            },
+            legend: {
+                horizontalAlign: "right",
+                verticalAlign: "center", // "top" , "bottom"
+                fontSize: 15,
+            },
+            axisY: {
+                title: "Units",
+                titleFontSize: 24,
+                includeZero: true
+            },
+            legend: {
+                verticalAlign: "bottom",
+                horizontalAlign: "center"
+            },
+            data: [{
+                type: "doughnut",
+                showInLegend: false,
+                // toolTipContent: "{name} : {y}%",
+                // indexLabel: " {y}%",
+                yValueFormatString: "0.00#",
+                indexLabelPlacement: "outside",
+                startAngle: 120,
+                dataPoints: [
+                    { y: fuelConsumed.shp, name: "SHP", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                    { y: fuelConsumed.hp, name: "HP", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                    { y: fuelConsumed.mp, name: "MP", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                    { y: fuelConsumed.lp, name: "LP", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+    
+                ]
+            }]
+        });
+    
+        chart.render();
     })
-}
-function loadpiechartncu(fuelConsumed) {
-    console.log(fuelConsumed);
-    CanvasJS.addColorSet("greenShades", [
-        "#ffa600",
-        "#00aa7e",
-        "#005374",
-        "#d944b4"
-    ]);
-    var dataPoints = [];
-    var chart = new CanvasJS.Chart("Fuel-ncu", {
-
-        colorSet: "greenShades",
-        // height: 145,
-        // width: 190,
-        theme: "dark1",
-        backgroundColor: "#26293c",
-
-        title: {
-            text: fuelConsumed.total.toFixed(2),
-            verticalAlign: "center",
-            dockInsidePlotArea: true,
-            fontWeight: 100,
-            fontColor: "#f2f2f2",
-            fontFamily: "Bahnschrift Light"
-        },
-        legend: {
-            horizontalAlign: "right",
-            verticalAlign: "center", // "top" , "bottom"
-            fontSize: 15,
-        },
-        axisY: {
-            title: "Units",
-            titleFontSize: 24,
-            includeZero: true
-        },
-        legend: {
-            verticalAlign: "bottom",
-            horizontalAlign: "center"
-        },
-        data: [{
-            type: "doughnut",
-            showInLegend: false,
-            // toolTipContent: "{name} : {y}%",
-            // indexLabel: " {y}%",
-            yValueFormatString: "0.00#",
-            indexLabelPlacement: "outside",
-            startAngle: 120,
-            dataPoints: [
-                { y: fuelConsumed.shp, name: "SHP", indexLabel: ((fuelConsumed.shp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.hp, name: "HP", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.mp, name: "MP", indexLabel: ((fuelConsumed.mp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-                { y: fuelConsumed.lp, name: "LP", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
-
-            ]
-        }]
-    });
-
-    chart.render();
 }
 
 function postFuelDoughnutDataNCU1() {
@@ -119,7 +113,7 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
     var chart = new CanvasJS.Chart("titles-ncu", {
 
         colorSet: "greenShades",
-        height: 120,
+        // height: 120,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
@@ -285,10 +279,9 @@ function parametertable() {
         var table_data = '';
         $.each(data, function (key, value) {
             table_data += '<tr>';
-            table_data += '<td>' + value.parameter + '</td>';
-            // table_data += '<td>' + value.uom + '</td>';
-            table_data += '<td>' + value.reference + '</td>';
+            table_data += '<td>' + value.parameter + '</td>';           
             table_data += '<td>' + value.actual + '</td>';
+            table_data += '<td>' + value.reference + '</td>';
             table_data += '<td>' + value.deviation + '</td>';
             table_data += '</tr>';
         });
