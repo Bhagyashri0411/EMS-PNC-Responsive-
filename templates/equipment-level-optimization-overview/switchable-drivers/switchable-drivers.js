@@ -9,7 +9,7 @@ function getTableData() {
             "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
         },
             method: "GET",
-            url: "http://localhost:8090/EMSPro/auth/Equipmentlevelopt/Switchabledrivers",
+            url: "http://localhost:8090/auth/Equipmentlevelopt/Switchabledrivers",
 
         }).done(function(data) {
             printTableData(data);

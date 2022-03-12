@@ -25,13 +25,13 @@ $(document).ready(function () {
         getSpecificOptConsumptionData();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
     $('#fromopt').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#optimizedrop').val(tod.toJSON().slice(0, 19));
     document.getElementById("optimizedrop").min = $('#fromopt').val();

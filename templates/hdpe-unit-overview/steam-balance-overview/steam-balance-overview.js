@@ -14,19 +14,20 @@ $(document).ready(function () {
         hdpesteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
     $('#fromHomehdpe').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#toHomehdpe').val(tod.toJSON().slice(0, 19));
     document.getElementById("toHomehdpe").min = $('#fromHomehdpe').val();
     document.getElementById("fromHomehdpe").max = $('#toHomehdpe').val();
 
     hdpesteamoverview();
+    console.log("steamdata");
 });
 
 function hdpesteamoverview() {

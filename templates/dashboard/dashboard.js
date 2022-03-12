@@ -74,8 +74,8 @@ function lastupdatedTime() {
     dateVal.setSeconds(0);
     $("#fromHome1").val(dateVal.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#homeEms1').val(tod.toJSON().slice(0, 19));
     // console.log(dateVal.toJSON().slice(0,19), "daa");
