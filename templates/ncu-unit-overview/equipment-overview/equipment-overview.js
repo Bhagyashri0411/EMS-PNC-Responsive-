@@ -54,15 +54,14 @@ function loadcolumnequ(data) {
     var chart = new CanvasJS.Chart("Equ-columnncu", {
         theme: "dark1",
         backgroundColor: "#26293c",
-        theme:"dark1",
         toolTip: {
             shared: true
         },
         title: {
             text: ""
         },
-        dataPointMaxWidth: 40,
-        dataPointWidth: 50,
+        dataPointMaxWidth: 30,
+        dataPointWidth: 40,
         legend: {
             verticalAlign: "top", // "top" , "bottom"
             horizontalAlign: "left"
@@ -331,7 +330,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
         {
             type: "line",
             lineThickness: 2,
-            color: "#08cc12",
+            color: "#ff0000",
             name: globledatavariable6,
             markerSize: 0,
             yValueFormatString: "0.00#",
