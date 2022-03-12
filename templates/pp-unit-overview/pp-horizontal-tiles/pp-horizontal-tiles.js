@@ -202,7 +202,7 @@ function loadDoughnutChartpp(energyConsumed) {
     var chart = new CanvasJS.Chart("titles-pp", {
 
         colorSet: "greenShades",
-        height: 120,
+        // height: 120,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {

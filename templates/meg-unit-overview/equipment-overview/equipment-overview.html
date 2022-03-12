@@ -1,104 +1,77 @@
 <script src="./../../../templates/meg-unit-overview/equipment-overview/equipment-overview.js"></script>
 <link rel="stylesheet" href="./../../../templates/meg-unit-overview/equipment-overview/equipment-overview.css">
 <div class="meg-headline">Equipment-Overview </div>
-<div class="row">
-    <div class="col-md-8">
-        <div class="row">
+<div class="meg-equipment-overview">
+    <div class="row">
+        <div class="col-md-8 col-tb">
             <div class="title-1">
-                <div class="col-md-4">
-                    <span class="left-box title">
-                        <span class="col-st">Overall Equipment Efficiencies (%)</span>
-                        <div class="vl"></div>
+                <div class="col-md-4 col-left">
+                    <span class="left-box">
+                        <span class="col-st">
+                            <div style="display: inline-flex;"> Overall Equipment Efficiencies (%)</div>
+                        </span>
                     </span>
                 </div>
-                <div class="col-md-5 eff-act">
-                    <div class="row">
-                        <div class="col-md-2 col-sb">
-                            <div class="box-eff box1-blue"></div> <span class="color-eff"> Actual</span>
-                        </div>
-                        <div class="col-md-5 col-ref">
-                            <div class="box-eff box1-yellow"></div> <span class="color-eff">Design</span>
-                        </div>
-                        <div class="col-md-5"></div>
-                    </div>
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-8 eff-act">
+                    <div class="box-eff box1-blue"></div> <span class="color-eff"> Actual</span>
+
+                    <div class="box-eff box1-yellow"></div> <span class="color-eff">Design</span>
 
                 </div>
-
             </div>
             <div class="body">
                 <div class="count-line">
-                    <div id="Equ-columnmeg"></div>
+                    <div id="Equ-columnmeg" style="height:8vw"></div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="title">
+            <!-- </div>  -->
+            <hr>
+            <div class="row">
                 <div class="col-md-7">
                     <div class="row">
                         <div class="col-md-4 col-ty">
                             <span class="left-box title">
-                                <span class="second-title">Efficiency Trends (%)</span>
+                                <span class="col-st">
+                                    <div style="display: inline-flex;"> Efficiency Trends (%)</div>
+                                </span>
                             </span>
                         </div>
+
                         <div class="col-md-8">
-                            <div class="row" style="display: inline-flex;margin-left: 0.1vw;">
-                                <div class="first-spa line"> </div>
-                                <span class="col-rt"> LM_910</span>
-
-                                <!-- <div class="secd-spa line"> </div>
-                            <span class="col-rt">F_502</span>
-
-                            <div class="third-spa line"> </div>
-                            <span class="col-rt">F_503</span>
-
-                            <div class="four-spa line"> </div>
-                            <span class="col-rt">FF-01</span>
-
-                            <div class="first-spa line-1"> </div>
-                            <span class="col-rt-1">KC001</span> -->
-                            </div>
-
+                                <div class="line org-spa"> </div>
+                                <span class="col-rt" > LM_910 </span>     
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 col-dt" style="display: inline-flex;">
-                    <input type="datetime-local" id="fromeqmeg" name="fromeqmeg">
-                    <input type="datetime-local" id="toeqmeg" name="toeqmeg">
+                <div class="col-md-5">
+                    <div style="display: inline-flex;">
+                        <input type="datetime-local" id="fromeqmeg" name="fromeqmeg">
+                        <input type="datetime-local" id="toeqmeg" name="toeqmeg">
+                    </div>
                 </div>
             </div>
             <div class="body">
-                <div class="count-line2">
-                    <div id="Equ-line-meg"></div>
+                <div class="count-line">
+                    <div id="Equ-line-meg" style="height:9vw"></div>
                 </div>
-
             </div>
         </div>
-    </div>
-    <div class="col-md-4 col-tb">
-        <div class="title ">
-            <span class="pull-left">Equipment KPI Overview</span>
-            <div class="pull-right">
-                <!-- <select name="" id="kpiTablemeg" onchange="equipmentOverviewKpiTableMeg()">
-                    <option value="Furnace"> Furnace</option>
-                    <option value="Turbine"> Turbine</option>
 
-                </select> -->
+        <div class="col-md-4">
+            <div class="title">
+                <span class="pull-left">Equipment KPI Overview</span>
             </div>
-        </div>
-        <br>
-        <div class="body">
-            <div class="overflow genratorsHeight">
-                <table>
-                    <th> Kpi name</th>
-                    <th> UOM</th>
-                    <th> LM_910</th>
-                    <tbody id="bodymegOverview"> </tbody>
-                </table>
+            <br>
+            <div class="body">
+                <div class="overflow genratorsHeight">
+                    <table>
+                        <th> Kpi name</th>
+                        <th> UOM</th>
+                        <th> LM_910</th>
+                        <tbody id="bodymegOverview"> </tbody>
+                    </table>
+                </div>
             </div>
-
         </div>
     </div>
 </div>

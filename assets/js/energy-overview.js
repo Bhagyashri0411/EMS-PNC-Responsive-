@@ -46,7 +46,7 @@ $(document).ready(function () {
 //     function csvdownload() {
 //         $.ajax({
 //             method: "GET",
-//             url: "http://localhost:8090/home/Report",
+//             url: "http://192.168.1.125:8090/home/Report",
 //         }).done(function (data) {
 //             console.log(data)
 

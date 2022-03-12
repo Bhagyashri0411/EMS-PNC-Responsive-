@@ -3,86 +3,94 @@
     padding-left: 1vw;
     color: #d9d9d9;
 }
-.steam-balance-overview-hdpe .steam-table{
+
+.steam-balance-overview-hdpe .steam-table {
     border-right: 0.2vw solid #525462;
 }
-.steam-balance-overview-hdpe  table{
+
+.steam-balance-overview-hdpe table {
     font-family: Yu Gothic UI;
     border-collapse: collapse;
-       color: #d9d9d9;
+    color: #d9d9d9;
     width: 100%;
 }
 
-.steam-balance-overview-hdpe  td
- {
+.steam-balance-overview-hdpe td {
     border-bottom: 1px solid #b2b2b9;
     font-size: 1vw;
     padding: 0.5vw;
     color: #d9d9d9;
 }
-.steam-balance-overview-hdpe  td:nth-child(2){
+
+.steam-balance-overview-hdpe td:nth-child(2) {
     color: #f2f2f2;
-    text-align:right;
+    text-align: right;
 }
-.steam-balance-overview-hdpe  th {
+
+.steam-balance-overview-hdpe th {
     padding: 0.5vw;
     background-color: #442266;
     font-size: 1.1vw;
-       color: #d9d9d9;
+    color: #d9d9d9;
     font-weight: normal;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
 }
 
-.steam-balance-overview-hdpe .count-line{
+.steam-balance-overview-hdpe .count-line {
     height: 39vh;
 }
+
 .steam-balance-overview-hdpe table tr:last-child td {
     border-bottom: 0;
-  }
+}
 
-.steam-balance-overview-hdpe .steam-gen2{
-    text-align:right;
- }
+.steam-balance-overview-hdpe .steam-gen2 {
+    text-align: right;
+}
 
- .steam-balance-overview-hdpe input,select {  
-        font-size: 1vw;
-        background-color: #26293c;
-        border: 0.1vw solid #f2f2f2;
-        padding: 0.1vw;
-        border-radius: 0.3vw;
-        margin-left: 0.5vw;
-        max-width: 15vw;          
-        cursor: pointer;
-        color: #f2f2f2;
-    }
-    .steam-balance-overview-hdpe #hdpedrop{
-        padding: 0.2vw;
-        color: #d9d9d9;
-    }
-    .steam-balance-overview-hdpe .actual-line{
-       padding-top: 0.6vw;
-   }
-    .steam-balance-overview-hdpe .actbox {
-        background-color: #00b0f0;
-        width: 1.9vw;
+.steam-balance-overview-hdpe input, select {
+    font-size: 1vw;
+    background-color: rgb(38, 41, 60);
+    border: 1px solid rgb(242, 242, 242);
+    padding: 0px;
+    border-radius: 5px;
+    margin-left: 1vw;
+    max-width: 15vw;
+    cursor: pointer;
+    color: rgb(217, 217, 217);
+}
+
+.steam-balance-overview-hdpe #hdpedrop {
+    padding: 0.1vw;
+    color: #d9d9d9;
+}
+
+.steam-balance-overview-hdpe .actual-line {
+    padding-top: 0.6vw;
+}
+
+.steam-balance-overview-hdpe .actbox {
+    background-color: #00b0f0;
+    width: 1.9vw;
     height: 0.5vh;
-        display: inline-block;
-       margin: 0.1vw;
-    }
-    
-    .steam-balance-overview-hdpe .leg {
-        font-size: 0.9vw;
-        color: #d9d9d9;
-    }
-    .steam-balance-overview-hdpe .first-box-title{
-        font-size: 1.6vw;
-        color: #d9d9d9;
-    }
+    display: inline-block;
+    margin: 0.1vw;
+}
 
-    
-            /* scroll */
+.steam-balance-overview-hdpe .leg {
+    font-size: 0.9vw;
+    color: #d9d9d9;
+}
+
+.steam-balance-overview-hdpe .first-box-title {
+    font-size: 1.6vw;
+    color: #d9d9d9;
+}
+
+
+/* scroll */
 .steam-balance-overview-hdpe .overflow {
     overflow: auto;
 }
@@ -114,5 +122,5 @@
 }
 
 .steam-balance-overview-hdpe ::-webkit-scrollbar-thumb:hover {
-    background:#8d8a95;
+    background: #8d8a95;
 }

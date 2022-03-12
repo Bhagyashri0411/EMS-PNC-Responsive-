@@ -2,30 +2,32 @@
     font-size: 1.7vw;
     font-weight: 600;
     color: #d9d9d9;
-font-family: Yu Gothic UI Semibold;
+    font-family: Yu Gothic UI Semibold;
 }
+
 .meg-Overview-tab .leg, .leg1 {
     font-size: 0.9vw;
     color: #d9d9d9;
 
 }
+
 .meg-headline {
     font-size: 1.7vw;
     font-weight: 600;
     color: #d9d9d9;
-font-family: Yu Gothic UI Semibold;
-    padding: 5px 15px;
-    
+    font-family: Yu Gothic UI Semibold;
+    padding: 0px 15px;
 }
+
 .meg-Overview-tab .osv {
-    background-color:#e97b31;
+    background-color: #e97b31;
     width: 1.8vw;
     height: 0.25vw;
     display: inline-block;
     margin: 0.2vw;
 }
 
-.meg-Overview-tab .refbox1{
+.meg-Overview-tab .refbox1 {
     background-color: #ffc000;
     width: 1.8vw;
     height: 0.25vw;
@@ -33,33 +35,30 @@ font-family: Yu Gothic UI Semibold;
     display: inline-block;
     margin: 0.2vw;
 }
-.meg-Overview-tab .feedbox{
+
+.meg-Overview-tab .feedbox {
     background-color: #00b0f0;
     width: 0.9vw;
     height: 0.9vw;
     display: inline-block;
-    margin: 0vw 0.3vw ;
+    margin: 0vw 0.3vw;
 }
 
 .meg-Overview-tab #megfromFccu, #megoveralldate {
     display: inline-block;
-    font-size: 0.9vw;
+    font-size: 1vw;
     background-color: #26293c;
-    border: 0.1vw solid #f2f2f2;
-    padding: 0.1vw;
-    border-radius: 0.3vw;
-    margin-left: 2.5vw;
-    max-width: 30vw;
+    border: 1px solid #f2f2f2;
+    padding: 3px;
+    border-radius: 5px;
     cursor: pointer;
     color: #f2f2f2;
-
 }
+
 .meg-Overview-tab #megoveralldate {
-    padding: 0.25vw;
     margin-left: 1.1vw;
-    min-width: 6vw;
 }
 
-.meg-Overview-tab .count-line{
+.meg-Overview-tab .count-line {
     height: 42vh;
 }
