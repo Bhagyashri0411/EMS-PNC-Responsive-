@@ -150,8 +150,8 @@ function hdpeOverview() {
     
             table_data += '<tr>';
             table_data += '<td>' + value.parameter + '</td>';
-            table_data += '<td class="hdpe-tab">' + value.reference + '</td>';
             table_data += '<td class="hdpe-tab">' + value.actual + '</td>';
+            table_data += '<td class="hdpe-tab">' + value.reference + '</td>';            
             table_data += '<td class="hdpe-tab">' + value.deviation + '</td>';
             table_data += '</tr>';
     
@@ -215,7 +215,7 @@ function loadDoughnutHoriCharthdpe1(energyConsumed) {
     var chart = new CanvasJS.Chart("titles-hdpe", {
 
         colorSet: "greenShades",
-        height: 120,
+        // height: 120,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {

@@ -209,7 +209,7 @@
 }
 
 #pp-horizontal-tiles .gap {
-    padding-top: 1.02vw;
+    padding-top: 1vw;
     text-align: center;
 }
 
@@ -241,7 +241,7 @@
 }
 
 #pp-horizontal-tiles .footer-deviation {
-    padding: 0.45vw;
+    padding: 0.3vw;
 }
 
 /* scroll */

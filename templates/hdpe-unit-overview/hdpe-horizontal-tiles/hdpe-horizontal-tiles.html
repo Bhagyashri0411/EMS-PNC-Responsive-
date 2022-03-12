@@ -9,15 +9,15 @@
                         <div class="title"> Specific Energy Consumption
                         </div>
                     </div>
-                    <div class="body col">
-                        <div id="hdpe-zingChart" style="height: 7vw;"></div>
+                    <div class="body">
+                        <div id="hdpe-zingChart" style="height: 6.5vw;"></div>
                     </div>
                     <div class="footer-deviation">
                         <div class="deviation text-center">
                             <span class="label">Deviation : </span><span class="count" id="devhdpe"> </span>
                         </div>
                         <div class="actual text-center">
-                            <div style="display: inline-flex;">
+                            <div class="row" style="display: inline-flex;">
                                 <span class="label">Actual | Reference : </span> <span class="count"> <span
                                         id="acthdpe"> &nbsp; </span> | <span id="opthdpe"> </span></span>
                             </div>
@@ -30,7 +30,6 @@
             <div class="col-md-6 card-col-5">
                 <div class="card clearfix">
                     <div class="body">
-                        <!-- <div class="overflow tableheight"> -->
                         <table class="shptable">
                             <tbody id="shptable"></tbody>
                         </table>
@@ -59,9 +58,9 @@
                     </div>
 
                     <div class="main-title">
-                        <div class="hdpe-title" style="display: inline-flex;position: relative;right: 10px;">
-                            <input type="radio" class="hdpe-doughnut" name="ratio-name"
-                                value="TOE/MT" id="Tonhdpe" checked>  
+                        <div class="hdpe-title" style="display: inline-flex;">
+                            <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/MT" id="Tonhdpe"
+                                checked>  
                             <label for="html" class="lebel-style">TOE/MT</label>
                             <input type="radio" class="hdpe-doughnut" name="ratio-name" value="TOE/hr" id="hrhdpe">
                              
@@ -74,9 +73,7 @@
                         <div class="col-md-12">
                             <div class="body clearfix">
                                 <div class="donut1">
-                                    <div id="titles-hdpe" style="height: 
-                                    7vw;" class="text-left"></div>
-
+                                    <div id="titles-hdpe" style="height:8.2vw;" class="text-left"></div>
                                 </div>
                             </div>
                         </div>
@@ -90,10 +87,6 @@
                                 <span class="legend-circle legend-liquid"></span><span
                                     class="legend-text">Electricity</span>
                             </div>
-                            <!-- <div class="legend">
-                                    <span class="legend-circle legend-gas"></span><span
-                                        class="legend-text">Electricity</span>
-                                </div> -->
                         </div>
 
                     </div>
@@ -127,8 +120,8 @@
                             <table id="hdpetable">
                                 <tr>
                                     <th>Parameters&nbsp;(UOM)</th>
-                                    <th>Reference</th>
                                     <th>Actual</th>
+                                    <th>Reference</th>                            
                                     <th>Deviation</th>
 
                                 </tr>

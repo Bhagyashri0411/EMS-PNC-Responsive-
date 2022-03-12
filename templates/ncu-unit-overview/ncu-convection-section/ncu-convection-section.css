@@ -30,14 +30,14 @@
 #ncu-convection-section input {
     font-size: 0.8vw;
     background-color: #26293c;
-    border: 0.1vw solid #f2f2f2;
-    padding: 0.2vw;
-    border-radius: 0.3vw;
-    margin-left: 0.5vw;
-    max-width: 15vw;
+    border: 1px solid #f2f2f2;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 15px;
+    max-width: 10.8vw;
     cursor: pointer;
     color: #f2f2f2;
-    margin-right: 0.1vw;
+    margin-right: 4PX;
 }
 #ncu-convection-section table {
     font-family: Yu Gothic UI;
@@ -49,10 +49,12 @@
 #ncu-convection-section td {
     padding: 0.5vw;
     font-size: 0.9vw;
-    color: #d9d9d9;
+    color: #f2f2f2;
     border-bottom: 0.13vw solid #7e808b;
 }
-
+#ncu-convection-section td:nth-child(1){
+    color: #d9d9d9;
+}
 #ncu-convection-section tr:last-child td {
     border-bottom: 2px solid #585a64;
 }
@@ -88,7 +90,7 @@
     font-size: 0.9vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
-    padding: 0.2vw;
+    padding: 0.1vw;
     border-radius: 0.3vw;
     width: 7vw;
     cursor: pointer;

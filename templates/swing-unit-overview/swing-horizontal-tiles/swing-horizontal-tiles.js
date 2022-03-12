@@ -119,7 +119,7 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
     var chart = new CanvasJS.Chart("titles-swing", {
 
         colorSet: "greenShades",
-        height: 120,
+        // height: 120,
         // width: 160,
         theme: "dark1",
         backgroundColor: "#26293c",
@@ -287,10 +287,9 @@ function parametertable() {
         var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
-        table_data += '<td>' + value.parameter + '</td>';
-        // table_data += '<td>' + value.uom + '</td>';
-        table_data += '<td>' + value.reference + '</td>';        
+        table_data += '<td>' + value.parameter + '</td>';              
         table_data += '<td>' + value.actual + '</td>';
+        table_data += '<td>' + value.reference + '</td>'; 
         table_data += '<td>' + value.deviation + '</td>';
          table_data += '</tr>';
     });
