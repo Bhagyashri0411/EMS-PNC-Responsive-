@@ -120,7 +120,7 @@ function showSpecificlinesteamGenData(data, Difference_In_Days, interval) {
         },
         data: [{
             type: "line",
-            lineThickness: 4,
+            lineThickness: 2,
             color: "#00B1F0",
             name: "Actual",
             markerSize: 0,
@@ -129,7 +129,7 @@ function showSpecificlinesteamGenData(data, Difference_In_Days, interval) {
         },
         {
             type: "line",
-            lineThickness: 4,
+            lineThickness: 2,
             color: "#00F76E",
             name: "Optimized",
             markerSize: 0,
@@ -158,7 +158,7 @@ function getsteamturbinetable(data) {
         table_data += '<td>' + value.actual + '</td>';
         table_data += '<td>' + value.optimized + '</td>';
         table_data += '<td>' + value.deviation.toFixed(2) + '</td>';
-        table_data += '<td> <progress value =' + value.deviation + ' max=' + max1 + '></progress></td>';
+        // table_data += '<td> <progress value =' + value.deviation + ' max=' + max1 + '></progress></td>';
 
         table_data += '</tr>';
     });

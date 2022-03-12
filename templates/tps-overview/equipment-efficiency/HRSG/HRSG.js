@@ -43,15 +43,15 @@ $(document).ready(function () {
     // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     // var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(00);
 
     $('#fromhrsgBar').val(d.toJSON().slice(0, 19));
     $('#fromHRSG').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#tohrsgBar').val(tod.toJSON().slice(0, 19));
     $('#toHRSG').val(tod.toJSON().slice(0, 19));

@@ -280,10 +280,10 @@ function getcardhome3() {
         document.getElementById("ref3").innerHTML = data.refvalue;
         document.getElementById("countHorizon3").innerHTML = data.kpivalue;
         if (data.currentvalue > 0) {
-            document.getElementById("resulthome2").innerHTML = "+" + data.currentvalue;
+            document.getElementById("resulthome3").innerHTML = "+" + data.currentvalue;
         }
         else {
-            document.getElementById("resulthome2").innerHTML = data.currentvalue;
+            document.getElementById("resulthome3").innerHTML = data.currentvalue;
         }
         $(".result").each(function () {
             var text = $(this).text();

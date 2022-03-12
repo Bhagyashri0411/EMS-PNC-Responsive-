@@ -10,19 +10,21 @@ $(document).ready(function () {
         getSpecificNCUOverviewData();
     })
     $("input[name=nccuconvfromFccu]").on('change', function () {
+        document.getElementById("nccuconvoveralldate").min = $('#nccuconvfromFccu').val(); 
         getSpecificNCUOverviewData();
     });
     $("input[name=nccuconvoveralldate]").on('change', function () {
+        document.getElementById("nccuconvfromFccu").max = $('#nccuconvoveralldate').val();
         getSpecificNCUOverviewData();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
     $('#nccuconvfromFccu').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#nccuconvoveralldate').val(tod.toJSON().slice(0, 19));
     document.getElementById("nccuconvoveralldate").min = $('#nccuconvfromFccu').val();
