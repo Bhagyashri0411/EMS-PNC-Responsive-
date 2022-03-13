@@ -21,7 +21,7 @@ $(document).ready(function () {
 function hdpeloadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/auth/HDPE/specificenergyConsumption",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/specificenergyConsumption",
     }).done(function (data) {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
@@ -95,7 +95,7 @@ function hdpeloadGaugeChart() {
 function hdpeGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/auth/HDPE/specificenergyConsumption",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/specificenergyConsumption",
     }).done(function (data) {
         document.getElementById("devhdpe").innerHTML = data.deviation + "%";
         document.getElementById("acthdpe").innerHTML = data.actual;
@@ -106,7 +106,7 @@ function hdpeGaugeChart() {
 
 function hdpebreakOverview() {
     $.ajax({
-        url: "http://localhost:8090/auth/HDPE/SECSteamTabledata",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/SECSteamTabledata",
         method: "GET"
     }).done(function (data) {
         var table_data = '';
@@ -125,7 +125,7 @@ function hdpebreakOverview() {
 
 function shdpebreakOverview() {
     $.ajax({
-        url: "http://localhost:8090/auth/HDPE/SECSteam",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/SECSteam",
         method: "GET"
     }).done(function (data) {
         var table_data = '';
@@ -142,7 +142,7 @@ function shdpebreakOverview() {
 
 function hdpeOverview() {
     $.ajax({
-        url: "http://localhost:8090/auth/HDPE/parameterhdpe",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/parameterhdpe",
         method: "GET"
     }).done(function (data) {
         var table_data = '';
@@ -162,7 +162,7 @@ function hdpeOverview() {
 
 function cardhdpe1() {
     $.ajax({
-        url: 'http://localhost:8090/auth/HDPE/SECElectricity',
+        url: 'http://localhost:8090/EmsPNC/auth/HDPE/SECElectricity',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-hdpe1").innerHTML = data.actual;
@@ -197,7 +197,7 @@ function getDoughnuthdpe() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/auth/HDPE/HDPEDoughnut",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/HDPEDoughnut",
     }).done(function (data) {
         var energyConsumed = data[0].energyConsumed;
             console.log(energyConsumed);

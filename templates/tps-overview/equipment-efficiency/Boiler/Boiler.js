@@ -1,8 +1,4 @@
 $(document).ready(function () {
-  var time = new Date();
-  console.log(
-    time.toLocaleString('en-US', { hour: 'numeric', hour12: true }), "messa"
-  );
   $("#r1").on('change', function () {
     var demoboiler = $(this).find(":selected").attr('name');
     $('#ubivalue').html(demoboiler);
@@ -16,22 +12,15 @@ $(document).ready(function () {
     $("#first_Boiler").html(domLebal1);
   });
   $("input[name=fromBoiler]").on('change', function (event) {
-    // console.log($('["#r1"]:selected').val());
+    document.getElementById("toboiler").min= $("#fromboiler").val();
     getSpecificBOILERData();
   });
-
-
 
   $("input[name=toBoiler]").on('change', function (event) {
-    // console.log($('["#r1"]:selected').val());
+    document.getElementById("fromboiler").max= $("#toboiler").val();
     getSpecificBOILERData();
   });
 
-  // // setting to date
-  // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-  console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
-  // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-  // var timeArray = hoursString.split(':');
   const d = new Date(sessionStorage.getItem("lastUpdateddate"));
   d.setHours(05);
   d.setMinutes(30);
@@ -43,6 +32,8 @@ $(document).ready(function () {
   tod.setMinutes(29);
   tod.setSeconds(0);
   $('#toboiler').val(tod.toJSON().slice(0, 19));
+  document.getElementById("toboiler").min= $("#fromboiler").val();
+  document.getElementById("fromboiler").max= $("#toboiler").val();
   getSpecificBOILERData();
 
 });
@@ -58,36 +49,31 @@ function getSpecificBOILERData() {
     method: "POST",
     data: postdata,
 
-    url: "http://localhost:8090/tpsBoiler/boilerEfficencyBarGraph",
+    url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerEfficencyBarGraph",
   }).done(function (data) {
     var Difference_In_Days = data[0].showNumberIndex;
-    formatSpecificBOILERData(data, Difference_In_Days);
-  })
-}
+    var chartData = { Actual: [], Design: [] };
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      var count = data.length;
+      const boilerDate = new Date(element.date);
+      chartData.Actual.push({ y: element.actual, x: boilerDate });
+      chartData.Design.push({ y: element.design, x: boilerDate });
 
-
-function formatSpecificBOILERData(data, Difference_In_Days) {
-  var chartData = { Actual: [], Design: [] };
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
-    var count = data.length;
-    const boilerDate = new Date(element.date);
-    chartData.Actual.push({ y: element.actual, x: boilerDate });
-    chartData.Design.push({ y: element.design, x: boilerDate });
-
-  }
-  console.log(count, 'count');
-  console.log("STchartdata", chartData);
-  var interval = 1;
-  if (!Difference_In_Days) {
-    if (count / 8 > 1) {
-      interval = Math.round(count / 8);
-    } else {
-      interval = 1;
     }
+    console.log(count, 'count');
+    console.log("STchartdata", chartData);
+    var interval = 1;
+    if (!Difference_In_Days) {
+      if (count / 8 > 1) {
+        interval = Math.round(count / 8);
+      } else {
+        interval = 1;
+      }
 
-  }
-  showSpecificBOILERChart(chartData, Difference_In_Days, interval);
+    }
+    showSpecificBOILERChart(chartData, Difference_In_Days, interval);
+  })
 }
 
 function showSpecificBOILERChart(data, Difference_In_Days, interval) {
@@ -157,35 +143,22 @@ function getSteamFuelConsumedData() {
       "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/tpsBoiler/fuelConsumedBarGraph",
+    url: "http://localhost:8090/EmsPNC/tpsBoiler/fuelConsumedBarGraph",
 
   }).done(function (data) {
+    var chartData = { RLNG: [], BFO: [], OFF_Gas: [], HSD: [] };
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
 
-    formatSteamFuelConsumedData(data);
+      chartData.RLNG.push({ y: element.RLNG, label: element.BoilerID });
+      chartData.BFO.push({ y: element.BFO, label: element.BoilerID });
+      chartData.OFF_Gas.push({ y: element.OFF_Gas, label: element.BoilerID });
+      chartData.HSD.push({ y: element.HSD, label: element.BoilerID });
+    }
+    Fuelconsumed(chartData);
   })
-    .fail(function () {
-      var failData = []
-
-      formatSteamFuelConsumedData(failData);
-
-    })
 }
-function formatSteamFuelConsumedData(data) {
-  var chartData = { RLNG: [], BFO: [], OFF_Gas: [], HSD: [] };
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
-
-    chartData.RLNG.push({ y: element.RLNG, label: element.BoilerID });
-    chartData.BFO.push({ y: element.BFO, label: element.BoilerID });
-    chartData.OFF_Gas.push({ y: element.OFF_Gas, label: element.BoilerID });
-    chartData.HSD.push({ y: element.HSD, label: element.BoilerID });
-  }
-  Fuelconsumed(chartData);
-
-}
-
 function Fuelconsumed(data) {
-  console.log(data, "hhhh");
   var chart = new CanvasJS.Chart("chartBoiler2",
     {
       height: 240,
@@ -265,47 +238,28 @@ function Fuelconsumed(data) {
 
 function BoilerTable() {
   $.ajax({
-    url: "http://localhost:8090/tpsBoiler/boilerTable",
+    url: "http://localhost:8090/EmsPNC/tpsBoiler/boilerTable",
     method: "GET"
   }).done(function (data) {
-    loadBoilerTable(data)
+    var table_data = '';
+    $.each(data, function (key, value) {
+
+      table_data += '<tr>';
+      table_data += '<td>' + value.BoilerID + '</td>';
+      table_data += '<td>' + value.Status + '</td>';
+      table_data += '<td>' + value.Loading.toFixed(2) + '</td>';
+      table_data += '<td>' + value.steamgenerationcost.toFixed(2) + '</td>';
+      table_data += '<td>' + value.FualConsumed.toFixed(2) + '</td>';
+      table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
+      table_data += '<td>' + value.SteamGenerated.toFixed(2) + '</td>';
+      table_data += '<td>' + value.SteamtoFualRatioDesign.toFixed(2) + '</td>';
+      table_data += '<td>' + value.SteamtoFualRatioActual.toFixed(2) + '</td>';
+      table_data += '<td>' + value.StackO2.toFixed(2) + '</td>';
+      table_data += '<td>' + value.StackExitTempDesign.toFixed(2) + '</td>';
+      table_data += '<td>' + value.StackExitTempActual.toFixed(2) + '</td>';
+      table_data += '</tr>';
+
+    });
+    $('#bodyboiler_table').append(table_data);
   })
-  // .fail(function () {
-  //   var failData = [
-  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
-  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
-  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},
-  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-1","steamgenerationcost":59, "SteamGenerated":80.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":80.0,"StackO2":80.0,"StackExitTempDesign":80.0,"StackExitTempActual":58},
-  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-2","steamgenerationcost":59, "SteamGenerated":60.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":60.0,"StackO2":60.0,"StackExitTempDesign":60.0,"StackExitTempActual":58},
-  //   {"Status":"ON","Loading":72,"FualConsumed":96,"DutyFired":63,"BoilerID":"UB-3","steamgenerationcost":59, "SteamGenerated":70.0,"SteamtoFualRatioDesign":0.0,"SteamtoFualRatioActual":70.0,"StackO2":70.0,"StackExitTempDesign":70.0,"StackExitTempActual":58},]
-
-  //     loadBoilerTable(failData);
-
-  // })
-
-}
-
-function loadBoilerTable(data) {
-  var table_data = '';
-  $.each(data, function (key, value) {
-
-    table_data += '<tr>';
-
-    table_data += '<td>' + value.BoilerID + '</td>';
-    table_data += '<td>' + value.Status + '</td>';
-    table_data += '<td>' + value.Loading.toFixed(2) + '</td>';
-    table_data += '<td>' + value.steamgenerationcost.toFixed(2) + '</td>';
-    table_data += '<td>' + value.FualConsumed.toFixed(2) + '</td>';
-    table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
-    table_data += '<td>' + value.SteamGenerated.toFixed(2) + '</td>';
-    table_data += '<td>' + value.SteamtoFualRatioDesign.toFixed(2) + '</td>';
-    table_data += '<td>' + value.SteamtoFualRatioActual.toFixed(2) + '</td>';
-    table_data += '<td>' + value.StackO2.toFixed(2) + '</td>';
-    table_data += '<td>' + value.StackExitTempDesign.toFixed(2) + '</td>';
-    table_data += '<td>' + value.StackExitTempActual.toFixed(2) + '</td>';
-    table_data += '</tr>';
-
-  });
-  $('#bodyboiler_table').append(table_data);
-
 }

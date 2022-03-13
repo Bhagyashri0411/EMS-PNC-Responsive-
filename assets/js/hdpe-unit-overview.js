@@ -18,7 +18,7 @@ $(document).ready(function () {
 });
 function totalThroughput(data) {
     $.ajax({
-        url: 'http://localhost:8090/auth/HDPE/feedratePlantload',
+        url: 'http://localhost:8090/EmsPNC/auth/HDPE/feedratePlantload',
         method: "GET"
     }).done(function (data) {
         document.getElementById("totalThroughput").innerHTML = data.feedrate;

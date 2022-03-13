@@ -38,7 +38,7 @@ function megsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/MEGsteambalanceoverview/steambalanceoverviewgraph",
+        url: "http://localhost:8090/EmsPNC/MEGsteambalanceoverview/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         meggetsteamoverview(data, Difference_In_Days);
@@ -117,7 +117,7 @@ function showsteambalancemeg(data, Difference_In_Days, interval) {
 
 function megsteamta() {
     $.ajax({
-        url: "http://localhost:8090/MEGsteambalanceoverview/MEGSteambalanceTable",
+        url: "http://localhost:8090/EmsPNC/MEGsteambalanceoverview/MEGSteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getDropmeg(data);

@@ -1,12 +1,13 @@
 $(document).ready(function () {
-    $("#ncuoveralldate").on('change', function () {
-        document.getElementById("ncufromFccu").max = $('#ncuoveralldate').val();
-        ncuoverview();
-    });
-    $("input[name=ncufromFccu]").on('change', function () {
+    $("#ncufromFccu").on('change', function () {
         document.getElementById("ncuoveralldate").min = $('#ncufromFccu').val();
         ncuoverview();
     });
+
+    $("#ncuoveralldate").on('change', function () {
+        document.getElementById("ncufromFccu").max = $('#ncuoveralldate').val();
+        ncuoverview();
+    });    
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
     d.setHours(05);
@@ -32,7 +33,7 @@ function ncuoverview() {
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
 
-        url: "http://localhost:8090/ncu/overallsecOverviewgraph",
+        url: "http://localhost:8090/EmsPNC/ncu/overallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

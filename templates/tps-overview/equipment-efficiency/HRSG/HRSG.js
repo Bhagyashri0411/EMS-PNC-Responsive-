@@ -1,66 +1,55 @@
 $(document).ready(function () {
+    HRSGTable();
+    // 1st card code
     $("#hrsgr1").on('change', function () {
         var demohrsgr = $(this).find(":selected").val();
         $('#hrefvalue').html(demohrsgr);
+        getSpecificHRSGBarData();
     });
-    HRSGTable();
-    $("input[name=FromHRSG]").on('change', function (event) {
-        console.log("from", event.target.value);
+    $("input[name=fromHRSGBar]").on('change', function () {
+        document.getElementById('toHRSGBar').min = $('#fromHRSGBar').val();
+        getSpecificHRSGBarData();
+    });
+
+    $("input[name=toHRSGBar]").on('change', function () {
+        document.getElementById('fromHRSGBar').max = $('#toHRSGBar').val();
+        getSpecificHRSGBarData();
+    });
+
+    //multiline date code
+    $("input[name=fromHRSG]").on('change', function () {
+        document.getElementById('toHRSG').min = $('#fromHRSG').val();
         getSpecificHRSGData();
     });
 
-    $("input[name=ToHRSG]").on('change', function (event) {
-        console.log(event.target.value);
+    $("input[name=toHRSG]").on('change', function () {
+        document.getElementById('fromHRSG').max = $('#toHRSG').val();
         getSpecificHRSGData();
     });
 
-
-    $("#hrsgr1").on('change', function () {
-        demo1 = ($(this).find(":selected").val());
-        getSpecificHRSGBarData();
-
-        let domLebal1 = ($(this).find(":selected").val());
-        console.log('tag1', demo1);
-        $("#first_HRSG").html(domLebal1);
-        console.log($(this).find(":selected").val());
-    });
-    $("input[name=fromHRSGBar]").on('change', function (event) {
-        // console.log($('["#hrsgr1"]:selected').val());
-        getSpecificHRSGBarData();
-    });
-
-
-
-    $("input[name=toHRSGBar]").on('change', function (event) {
-        //   console.log($('["#hrsgr1"]:selected').val());
-        getSpecificHRSGBarData();
-    });
-
-    // // setting to date
-    var now = new Date();
-    // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
-    // var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-    // var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
     d.setHours(05);
     d.setMinutes(30);
     d.setSeconds(00);
 
-    $('#fromhrsgBar').val(d.toJSON().slice(0, 19));
+    $('#fromHRSGBar').val(d.toJSON().slice(0, 19));
     $('#fromHRSG').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
     tod.setHours(29);
     tod.setMinutes(29);
     tod.setSeconds(0);
-    $('#tohrsgBar').val(tod.toJSON().slice(0, 19));
+    $('#toHRSGBar').val(tod.toJSON().slice(0, 19));
     $('#toHRSG').val(tod.toJSON().slice(0, 19));
+
+    document.getElementById('toHRSGBar').min = $('#fromHRSGBar').val();
+    document.getElementById('fromHRSGBar').max = $('#toHRSGBar').val();
+    document.getElementById('toHRSG').min = $('#fromHRSG').val();
+    document.getElementById('fromHRSG').max = $('#toHRSG').val();
     getSpecificHRSGBarData();
     getSpecificHRSGData();
-
 });
 function getSpecificHRSGBarData() {
-    var myJSON = { 'fromdate': $('#fromhrsgBar').val(), 'todate': $('#tohrsgBar').val(), tagname: $('#hrsgr1 option:selected').val() };
+    var myJSON = { 'fromdate': $('#fromHRSGBar').val(), 'todate': $('#toHRSGBar').val(), tagname: $('#hrsgr1 option:selected').val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -70,35 +59,29 @@ function getSpecificHRSGBarData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/HrsgEfficiency",
+        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/HrsgEfficiency",
     }).done(function (data) {
-        console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
-        formatSpecificHRSGBarData(data, Difference_In_Days);
-    })
-}
-
-
-function formatSpecificHRSGBarData(data, Difference_In_Days) {
-    var chartData = { Actual: [], Design: [] };
-    for (let index = 0; index < data.length; index++) {
-        const element = data[index];
-        var count = data.length;
-        const hrsgDate = new Date(element.date);
-        chartData.Actual.push({ y: element.actual, x: hrsgDate });
-        chartData.Design.push({ y: element.design, x: hrsgDate });
-
-    }
-    console.log("STchartdata", chartData);
-    var interval = 1;
-    if (!Difference_In_Days) {
-        if (count / 10 > 1) {
-            interval = Math.round(count / 10);
-        } else {
-            interval = 1;
+        var chartData = { Actual: [], Design: [] };
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            var count = data.length;
+            const hrsgDate = new Date(element.date);
+            chartData.Actual.push({ y: element.actual, x: hrsgDate });
+            chartData.Design.push({ y: element.design, x: hrsgDate });
+    
         }
-    }
-    showSpecificHRSGBarChart(chartData, Difference_In_Days, interval);
+        console.log("STchartdata", chartData);
+        var interval = 1;
+        if (!Difference_In_Days) {
+            if (count / 10 > 1) {
+                interval = Math.round(count / 10);
+            } else {
+                interval = 1;
+            }
+        }
+        showSpecificHRSGBarChart(chartData, Difference_In_Days, interval);
+    })
 }
 
 function showSpecificHRSGBarChart(data, Difference_In_Days, interval) {
@@ -160,8 +143,6 @@ function showSpecificHRSGBarChart(data, Difference_In_Days, interval) {
 //line
 
 function getSpecificHRSGData() {
-
-
     var hrsgData = { 'fromdate': $('#fromHRSG').val(), 'todate': $('#toHRSG').val() };
     const postdata = JSON.stringify(hrsgData);
     console.log(postdata);
@@ -172,39 +153,32 @@ function getSpecificHRSGData() {
         },
         method: "POST",
         data: postdata,
-        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/SteamGenerated",
+        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/SteamGenerated",
     }).done(function (data) {
-        console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
-        console.log(Difference_In_Days, 'gjhghgh');
-        formatSpecificHRSGData(data, Difference_In_Days);
-    })
-}
-
-
-function formatSpecificHRSGData(data, Difference_In_Days) {
-    var chartData = { hrsg3: [], hrsg4: [], hrsg1: [], hrsg2: [], hrsg5: [] };
-    for (let index = 0; index < data.length; index++) {
-        const element = data[index];
-        var count = data.length;
-        const hrsg1Date = new Date(element.date);
-        chartData.hrsg3.push({ y: element.hrsg3, x: hrsg1Date });
-        chartData.hrsg4.push({ y: element.hrsg4, x: hrsg1Date });
-        chartData.hrsg1.push({ y: element.hrsg1, x: hrsg1Date });
-        chartData.hrsg2.push({ y: element.hrsg2, x: hrsg1Date });
-        chartData.hrsg5.push({ y: element.hrsg5, x: hrsg1Date });
-    }
-    console.log("HRSGchartdata", chartData);
-    var interval = 1;
-    if (!Difference_In_Days) {
-        if (count / 8 > 1) {
-            interval = Math.round(count / 8);
-        } else {
-            interval = 1;
+        var chartData = { hrsg3: [], hrsg4: [], hrsg1: [], hrsg2: [], hrsg5: [] };
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            var count = data.length;
+            const hrsg1Date = new Date(element.date);
+            chartData.hrsg3.push({ y: element.hrsg3, x: hrsg1Date });
+            chartData.hrsg4.push({ y: element.hrsg4, x: hrsg1Date });
+            chartData.hrsg1.push({ y: element.hrsg1, x: hrsg1Date });
+            chartData.hrsg2.push({ y: element.hrsg2, x: hrsg1Date });
+            chartData.hrsg5.push({ y: element.hrsg5, x: hrsg1Date });
         }
-
-    }
-    showSpecificHRSGChart(chartData, Difference_In_Days, interval);
+        console.log("HRSGchartdata", chartData);
+        var interval = 1;
+        if (!Difference_In_Days) {
+            if (count / 8 > 1) {
+                interval = Math.round(count / 8);
+            } else {
+                interval = 1;
+            }
+    
+        }
+        showSpecificHRSGChart(chartData, Difference_In_Days, interval);
+    })
 }
 
 function showSpecificHRSGChart(data, Difference_In_Days, interval) {
@@ -294,7 +268,7 @@ function showSpecificHRSGChart(data, Difference_In_Days, interval) {
 //table
 function HRSGTable() {
     $.ajax({
-        url: "http://localhost:8090/auth/equipmentefficiencyHRSG/HrsgTable",
+        url: "http://localhost:8090/EmsPNC/auth/equipmentefficiencyHRSG/HrsgTable",
         method: "GET"
     }).done(function (data) {
         var table_data = '';

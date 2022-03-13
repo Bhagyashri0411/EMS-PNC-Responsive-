@@ -1,13 +1,13 @@
 $(document).ready(function () {
     steamgeneratorstable();
 
-    $("input[name=fromStreamGene]").on('change', function (event) {
-        console.log(event.target.value);
+    $("#fromstreamgene").on('change', function (event) {
+        document.getElementById("tostreamgene").min = $('#fromstreamgene').val();
         getSpecificlinesteamGenData();
     });
 
-    $("input[name=tostreamgene]").on('change', function (event) {
-        console.log(event.target.value);
+    $("#tostreamgene").on('change', function (event) {
+        document.getElementById("fromstreamgene").max = $('#tostreamgene').val();
         getSpecificlinesteamGenData();
     });
 
@@ -18,28 +18,28 @@ $(document).ready(function () {
         console.log($(this).find(":selected").val());
     });
 
-    var now = new Date();
-    // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
+    console.log(hoursString ,"hgdhjghfgdfghdgfhg");
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
 
     $('#fromstreamgene').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
-    $('#toStreamgene').val(tod.toJSON().slice(0, 19));
+    $('#tostreamgene').val(tod.toJSON().slice(0, 19));
+    document.getElementById("tostreamgene").min = $('#fromstreamgene').val();
+    document.getElementById("fromstreamgene").max = $('#tostreamgene').val();
     getSpecificlinesteamGenData();
 
 });
 
 function getSpecificlinesteamGenData() {
-    var myJSON = { 'fromdate': $('#fromstreamgene').val(), 'todate': $('#toStreamgene').val(), 'tagname': $("#steamSelect option:selected").val() };
+    var myJSON = { 'fromdate': $('#fromstreamgene').val(), 'todate': $('#tostreamgene').val(), 'tagname': $("#steamSelect option:selected").val() };
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -50,7 +50,7 @@ function getSpecificlinesteamGenData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EquipmentLevelOptimizedOverview/SteamGeneratorGraph",
+        url: "http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamGeneratorGraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -147,7 +147,7 @@ function steamgeneratorstable() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: 'GET',
-        url: 'http://localhost:8090/EquipmentLevelOptimizedOverview/SteamGeneratorTable',
+        url: 'http://localhost:8090/EmsPNC/EquipmentLevelOptimizedOverview/SteamGeneratorTable',
     }).done(function (data) {
         getSteamgenerator(data)
         var max1 = 500;

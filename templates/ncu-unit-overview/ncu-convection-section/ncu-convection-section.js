@@ -46,7 +46,7 @@ function getSpecificNCUOverviewData() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/NCU/ConvectionGraph",
+        url: "http://localhost:8090/EmsPNC/NCU/ConvectionGraph",
         method: "POST",
         data: postdata,
     }).done(function (data) {
@@ -164,7 +164,7 @@ function convectiontable(data) {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         data: postdata,
-        url: "http://localhost:8090/NCU/ConvectionTable",
+        url: "http://localhost:8090/EmsPNC/NCU/ConvectionTable",
     }).done(function (data) {
         console.log(data)
         formatconvectiontable(data);

@@ -70,7 +70,7 @@ function saveTable() {
         "Content-Type": "application/json",
         "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
       },      
-      url: "http://localhost:8090/auth/ManualEntry/Insert",
+      url: "http://localhost:8090/EmsPNC/auth/ManualEntry/Insert",
       data: rowdata1,
       success: function (msg) {
         var msg1 = msg;
@@ -104,7 +104,7 @@ function getCalculatedTag() {
       "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/auth/ManualEntry/getData",
+    url: "http://localhost:8090/EmsPNC/auth/ManualEntry/getData",
   }).done(function (data) {
     var tabledata = data;
     var student = '';
@@ -142,7 +142,7 @@ $('#updateRowBtn').click(function () {8
     headers: {
       'Content-Type': 'application/json'
     },
-    url: "http://localhost:8090/auth/ManualEntry/Update",
+    url: "http://localhost:8090/EmsPNC/auth/ManualEntry/Update",
     data: JSON.stringify(updateRow),
     success: function (msg) {
       var status = msg.status;
@@ -191,7 +191,7 @@ function userdeletedata() {
         "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
       },
       data: JSON.stringify(deletedRowemail),
-      url: "http://localhost:8090/auth/ManualEntry/Delete",
+      url: "http://localhost:8090/EmsPNC/auth/ManualEntry/Delete",
       success: function (msg) {
         if (msg == "Deletion Sucessfully Completed") {
           getCalculatedTag();
@@ -232,7 +232,7 @@ function exportFunction() {
       "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/auth/ManualEntry/getData",
+    url: "http://localhost:8090/EmsPNC/auth/ManualEntry/getData",
   }).done(function (data) {
 
     console.log(data)
@@ -274,7 +274,7 @@ form.onsubmit = function (event) {
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://localhost:8090/auth/ManualEntry/upload-csv-fileManualTag', true);
+  xhr.open('POST', 'http://localhost:8090/EmsPNC/auth/ManualEntry/upload-csv-fileManualTag', true);
   xhr.onload = function () {
     if (xhr.status === 200) {
       uploadButton.innerHTML = 'Upload';

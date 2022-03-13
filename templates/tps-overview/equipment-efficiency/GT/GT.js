@@ -1,146 +1,123 @@
 $(document).ready(function () {
-  $("#gtr1").on('change', function () {
-    var demogt = $(this).find(":selected").val();
-    $('#gtvalue').html(demogt);
-  });
   GasTable();
 
-  // loadlineGT();
-  $("input[name=fromGT]").on('change',function (event) {
-    console.log("from", event.target.value);
-    getSpecificGTData();
-  });
-
-  $("input[name=toGT]").on('change',function (event) {
-    console.log(event.target.value);
-    getSpecificGTData();
-  });
-  
-
   $("#gtr1").on('change', function () {
-    demo1=( $(this).find(":selected").val() );
+    demo1 = ($(this).find(":selected").val());
+    $("#gtvalue").html(demo1);
     getSpecificGTBarData();
-    
-    let domLebal1=( $(this).find(":selected").val());
-    console.log('tag1', demo1);
-    $("#first_GT").html(domLebal1);
-    console.log($(this).find(":selected").val());
-});
-  $("input[name=fromGTBar]").on('change',function (event) {
-    // console.log($('["#gtr1"]:selected').val());
-    getSpecificGTBarData();
-});
-   
- 
+  });
 
-$("input[name=toGTBar]").on('change',function (event) {
-  // console.log($('["#gtr1"]:selected').val());
+  // loadlineGT();
+  $("input[name=fromGT]").on('change', function () {
+    document.getElementById("toGT").min = $("#fromGT").val();
+    getSpecificGTData();
+  });
+
+  $("input[name=toGT]").on('change', function () {
+    document.getElementById("fromGT").max = $("#toGT").val();
+    getSpecificGTData();
+  });
+
+  $("input[name=fromGTBar]").on('change', function (event) {
+    document.getElementById("togtBar").min = $("#fromgtBar").val();
+    getSpecificGTBarData();
+  });
+
+  $("input[name=toGTBar]").on('change', function (event) {
+    document.getElementById("fromgtBar").max = $("#togtBar").val();
+    getSpecificGTBarData();
+  });
+
+  const d = new Date(sessionStorage.getItem("lastUpdateddate"));
+  d.setHours(05);
+  d.setMinutes(30);
+  d.setSeconds(0);
+  $('#fromgtBar').val(d.toJSON().slice(0, 19));
+  $('#fromGT').val(d.toJSON().slice(0, 19));
+  const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
+  tod.setHours(29);
+  tod.setMinutes(29);
+  tod.setSeconds(0);
+  $('#togtBar').val(tod.toJSON().slice(0, 19));
+  $('#toGT').val(tod.toJSON().slice(0, 19));
   getSpecificGTBarData();
-});
+  getSpecificGTData();
 
-// // setting to date
-var now = new Date();
-// var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-console.log(new Date(sessionStorage.getItem("lastUpdateddate")),'new date');
-// var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
-// var timeArray = hoursString.split(':');
-const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-           d.setHours(05);
-           d.setMinutes(30);
-           d.setSeconds(0);
-        
-$('#fromgtBar').val(d.toJSON().slice(0,19));
-$('#fromGT').val(d.toJSON().slice(0,19));
-const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-           tod.setHours(29);
-           tod.setMinutes(29);
-           tod.setSeconds(0);
-$('#togtBar').val(tod.toJSON().slice(0,19));
-$('#toGT').val(tod.toJSON().slice(0,19));
-getSpecificGTBarData();
-getSpecificGTData();
+  document.getElementById("toGT").min = $("#fromGT").val();
+  document.getElementById("fromGT").max = $("#toGT").val();
 
-
+  document.getElementById("togtBar").min = $("#fromgtBar").val();
+  document.getElementById("fromgtBar").max = $("#togtBar").val();
 
 });
 function getSpecificGTBarData() {
-  var myJSON = { 'fromdate': $('#fromgtBar').val(), 'todate': $('#togtBar').val(),tagname: $('#gtr1 option:selected').val()};
+  var myJSON = { 'fromdate': $('#fromgtBar').val(), 'todate': $('#togtBar').val(), tagname: $('#gtr1 option:selected').val() };
   const postdata = JSON.stringify(myJSON);
   console.log(postdata);
   $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
-        },
-      method: "POST",
-      data: postdata,
-      url: "http://localhost:8090/EquipmentEfficiency/GTbargraph",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+    },
+    method: "POST",
+    data: postdata,
+    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTbargraph",
   }).done(function (data) {
-      console.log(data)
-      var Difference_In_Days = data[0].showNumberIndex;
-      formatSpecificGTBarData(data ,Difference_In_Days);
-  })
-      .fail(function () {
-        var failData = []
-          
-          formatSpecificGTBarData(failData);
-      })
-}
+    console.log(data)
+    var Difference_In_Days = data[0].showNumberIndex;
+    var chartData = { actual: [], design: [] };
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      var count = data.length;
+      const gtDate = new Date(element.date);
+      chartData.actual.push({ y: element.actual, x: gtDate });
+      chartData.design.push({ y: element.design, x: gtDate });
 
-
-function formatSpecificGTBarData(data ,Difference_In_Days) {
-  var chartData = { actual: [], design: [] };
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
-    var count = data.length;
-    const gtDate = new Date(element.date);
-      chartData.actual.push({ y: element.actual ,x:gtDate });
-      chartData.design.push({ y: element.design,x:gtDate });       
-    
-  }
-  console.log("STchartdata", chartData);
-  var interval = 1;
-  if (!Difference_In_Days) {
-    if (count/10 > 1) {
-       interval =Math.round(count/10);
-    }else{
-      interval = 1;
     }
-}
-  showSpecificGTBarChart(chartData,Difference_In_Days,interval);
+    console.log("STchartdata", chartData);
+    var interval = 1;
+    if (!Difference_In_Days) {
+      if (count / 10 > 1) {
+        interval = Math.round(count / 10);
+      } else {
+        interval = 1;
+      }
+    }
+    showSpecificGTBarChart(chartData, Difference_In_Days, interval);
+  })
 }
 
-function showSpecificGTBarChart(data,Difference_In_Days,interval) {
+function showSpecificGTBarChart(data, Difference_In_Days, interval) {
   var chart = new CanvasJS.Chart("chartContainerGT", {
     height: 230,
     theme: "dark1",
     backgroundColor: "#26293c",
     title: {
-        text: ""
+      text: ""
     },
     axisX: {
-        gridThickness: 0,
-        tickLength: 0,
-        lineThickness: 0,
-        intervalType:Difference_In_Days == true?  "hour":"day",
-        valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-        title:Difference_In_Days == true?  "In hours":" In Days",
-        interval: interval,
-        labelFontColor: "#d9d9d9",
-        labelFontSize: 15,
-        fontFamily: "Bahnschrift Light",
+      gridThickness: 0,
+      tickLength: 0,
+      lineThickness: 0,
+      intervalType: Difference_In_Days == true ? "hour" : "day",
+      valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+      title: Difference_In_Days == true ? "In hours" : " In Days",
+      interval: interval,
+      labelFontColor: "#d9d9d9",
+      labelFontSize: 15,
+      fontFamily: "Bahnschrift Light",
     },
     axisY: {
-        title: "",
-        gridColor: "gray",
-        gridThickness: 1,
-        gridDashType: "dot",
-        labelFontColor: "#d9d9d9",
-        labelFontSize: 15,
-        fontFamily: "Bahnschrift Light",
+      title: "",
+      gridColor: "gray",
+      gridThickness: 1,
+      gridDashType: "dot",
+      labelFontColor: "#d9d9d9",
+      labelFontSize: 15,
+      fontFamily: "Bahnschrift Light",
     },
     toolTip: {
-        shared: true
+      shared: true
     },
 
     data: [{
@@ -151,8 +128,8 @@ function showSpecificGTBarChart(data,Difference_In_Days,interval) {
       markerSize: 0,
       yValueFormatString: "0.00#",
       dataPoints: data.actual
-  },
-  {
+    },
+    {
       type: "line",
       lineThickness: 2,
       color: "#ffc000",
@@ -160,8 +137,8 @@ function showSpecificGTBarChart(data,Difference_In_Days,interval) {
       markerSize: 0,
       yValueFormatString: "0.00#",
       dataPoints: data.design
-  }
-  ]
+    }
+    ]
   });
   chart.render();
 }
@@ -173,52 +150,42 @@ function getSpecificGTData() {
   const postdata = JSON.stringify(myJSON);
   console.log(postdata);
   $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType")+" "+sessionStorage.getItem("accessToken"),
-        },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+    },
     method: "POST",
     data: postdata,
-    url: "http://localhost:8090/EquipmentEfficiency/GTlinegraph",
+    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTlinegraph",
   }).done(function (data) {
     console.log(data)
-    var Difference_In_Days= data[0].showNumberIndex;
-    formatSpecificGTData(data,Difference_In_Days);
-  })
-    .fail(function () {
-      var failData = []
-     
-      formatSpecificGTData(failData);
-    })
-}
-
-function formatSpecificGTData(data ,Difference_In_Days) {
-  var chartData = { GT3: [], GT4: [], GT1: [], GT2: [], GT5: [] };
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
-    var count = data.length;
-        const gt1Date = new Date(element.date);
-    chartData.GT3.push({ y: element.gt3,x:gt1Date });
-    chartData.GT4.push({ y: element.gt4,x:gt1Date });
-    chartData.GT1.push({ y: element.gt1,x:gt1Date });
-    chartData.GT2.push({ y: element.gt2,x:gt1Date });
-    chartData.GT5.push({ y: element.gt5,x:gt1Date });
-  }
-  console.log("GTdata", chartData);
-  var interval = 1;
-  if (!Difference_In_Days) {
-    if (count/8 > 1) {
-       interval =Math.round(count/8);
-    }else{
-      interval = 1;
+    var Difference_In_Days = data[0].showNumberIndex;
+    var chartData = { GT3: [], GT4: [], GT1: [], GT2: [], GT5: [] };
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      var count = data.length;
+      const gt1Date = new Date(element.date);
+      chartData.GT3.push({ y: element.gt3, x: gt1Date });
+      chartData.GT4.push({ y: element.gt4, x: gt1Date });
+      chartData.GT1.push({ y: element.gt1, x: gt1Date });
+      chartData.GT2.push({ y: element.gt2, x: gt1Date });
+      chartData.GT5.push({ y: element.gt5, x: gt1Date });
     }
-   
-  }
-  showSpecificGTChart(chartData ,Difference_In_Days,interval);
+    console.log("GTdata", chartData);
+    var interval = 1;
+    if (!Difference_In_Days) {
+      if (count / 8 > 1) {
+        interval = Math.round(count / 8);
+      } else {
+        interval = 1;
+      }
+
+    }
+    showSpecificGTChart(chartData, Difference_In_Days, interval);
+  })
 }
 
-
-function showSpecificGTChart(data ,Difference_In_Days ,interval) {
+function showSpecificGTChart(data, Difference_In_Days, interval) {
   var chart = new CanvasJS.Chart("GT-line", {
     height: 230,
     theme: "dark1",
@@ -230,10 +197,10 @@ function showSpecificGTChart(data ,Difference_In_Days ,interval) {
       gridThickness: 0,
       tickLength: 0,
       lineThickness: 0,
-      intervalType:Difference_In_Days == true?  "hour":"day",
-            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-            title:Difference_In_Days== true?  "In hours":" In Days",
-           interval: interval,
+      intervalType: Difference_In_Days == true ? "hour" : "day",
+      valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+      title: Difference_In_Days == true ? "In hours" : " In Days",
+      interval: interval,
       labelFontColor: "#d9d9d9",
       labelFontSize: 15,
       fontFamily: "Bahnschrift Light",
@@ -304,145 +271,27 @@ function showSpecificGTChart(data ,Difference_In_Days ,interval) {
 //table
 function GasTable() {
   $.ajax({
-    url: "http://localhost:8090/EquipmentEfficiency/GTTable",
+    url: "http://localhost:8090/EmsPNC/EquipmentEfficiency/GTTable",
     method: "GET"
   }).done(function (data) {
-    loadGasTable(data);
+    var table_data = '';
+    $.each(data, function (key, value) {
+
+      table_data += '<tr>';
+      table_data += '<td>' + value.GasTurbineID + '</td>';
+      table_data += '<td>' + value.STATUS + '</td>';
+      table_data += '<td>' + value.CapacityUtilizationDesign.toFixed(2) + '</td>';
+      table_data += '<td>' + value.CapacityUtilizationActual.toFixed(2) + '</td>';
+      table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
+      table_data += '<td>' + value.PowerGenerationCost.toFixed(2) + '</td>';
+      table_data += '<td>' + value.HeatRateDesign.toFixed(2) + '</td>';
+      table_data += '<td>' + value.HeatRateActual.toFixed(2) + '</td>';
+      table_data += '<td>' + value.ExhaustTemperatureDesign.toFixed(2) + '</td>';
+      table_data += '<td>' + value.ExhaustTemperatureActual.toFixed(2) + '</td>';
+      table_data += '</tr>';
+
+    });
+    $('#bodyGas_table').append(table_data);
   })
-  // .fail(function () {
-  //   var failData = [
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT1",
-  //       "CapacityUtilisationDesign": 80.0,
-  //       "CapacityUtilisationActual": 80.0,
-  //       "ExhaustTemperatureDesign": 80.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 80.0,
-  //       "DutyFired": 80.0,
-  //       "HeatRateDesign": 80.0,
-  //       "HeatRateActual": 80.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT2",
-  //       "CapacityUtilisationDesign": 60.0,
-  //       "CapacityUtilisationActual": 60.0,
-  //       "ExhaustTemperatureDesign": 60.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 60.0,
-  //       "DutyFired": 60.0,
-  //       "HeatRateDesign": 60.0,
-  //       "HeatRateActual": 60.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT3",
-  //       "CapacityUtilisationDesign": 70.0,
-  //       "CapacityUtilisationActual": 70.0,
-  //       "ExhaustTemperatureDesign": 70.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 70.0,
-  //       "DutyFired": 70.0,
-  //       "HeatRateDesign": 70.0,
-  //       "HeatRateActual": 70.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT4",
-  //       "CapacityUtilisationDesign": 90.0,
-  //       "CapacityUtilisationActual": 90.0,
-  //       "ExhaustTemperatureDesign": 90.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 90.0,
-  //       "DutyFired": 90.0,
-  //       "HeatRateDesign": 90.0,
-  //       "HeatRateActual": 90.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT1",
-  //       "CapacityUtilisationDesign": 80.0,
-  //       "CapacityUtilisationActual": 80.0,
-  //       "ExhaustTemperatureDesign": 80.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 80.0,
-  //       "DutyFired": 80.0,
-  //       "HeatRateDesign": 80.0,
-  //       "HeatRateActual": 80.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT2",
-  //       "CapacityUtilisationDesign": 60.0,
-  //       "CapacityUtilisationActual": 60.0,
-  //       "ExhaustTemperatureDesign": 60.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 60.0,
-  //       "DutyFired": 60.0,
-  //       "HeatRateDesign": 60.0,
-  //       "HeatRateActual": 60.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT3",
-  //       "CapacityUtilisationDesign": 70.0,
-  //       "CapacityUtilisationActual": 70.0,
-  //       "ExhaustTemperatureDesign": 70.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 70.0,
-  //       "DutyFired": 70.0,
-  //       "HeatRateDesign": 70.0,
-  //       "HeatRateActual": 70.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT4",
-  //       "CapacityUtilisationDesign": 90.0,
-  //       "CapacityUtilisationActual": 90.0,
-  //       "ExhaustTemperatureDesign": 90.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 90.0,
-  //       "DutyFired": 90.0,
-  //       "HeatRateDesign": 90.0,
-  //       "HeatRateActual": 90.0
-  //     },
-  //     {
-  //       "Status": "ON",
-  //       "GasTurbineID": "GT5",
-  //       "CapacityUtilisationDesign": 90.0,
-  //       "CapacityUtilisationActual": 90.0,
-  //       "ExhaustTemperatureDesign": 90.0,
-  //       "PowerGenerationCost": 62.0,
-  //       "ExhaustTemperatureActual": 90.0,
-  //       "DutyFired": 90.0,
-  //       "HeatRateDesign": 90.0,
-  //       "HeatRateActual": 90.0
-  //     }]
-       
-  //     loadGasTable(failData);
-  //   })
-}
-function loadGasTable(data) {
-  var table_data = '';
-  $.each(data, function (key, value) {
-
-    table_data += '<tr>';
-
- 
-    table_data += '<td>' + value.GasTurbineID + '</td>';
-    table_data += '<td>' + value.STATUS + '</td>';
-    table_data += '<td>' + value.CapacityUtilizationDesign.toFixed(2) + '</td>';
-    table_data += '<td>' + value.CapacityUtilizationActual.toFixed(2) + '</td>';
-    table_data += '<td>' + value.DutyFired.toFixed(2) + '</td>';
-    table_data += '<td>' + value.PowerGenerationCost.toFixed(2) + '</td>';
-    table_data += '<td>' + value.HeatRateDesign.toFixed(2) + '</td>';
-    table_data += '<td>' + value.HeatRateActual.toFixed(2) + '</td>';
-    table_data += '<td>' + value.ExhaustTemperatureDesign.toFixed(2) + '</td>';
-    table_data += '<td>' + value.ExhaustTemperatureActual.toFixed(2) + '</td>';
-    table_data += '</tr>';
-
-  });
-  $('#bodyGas_table').append(table_data);
 
 }
