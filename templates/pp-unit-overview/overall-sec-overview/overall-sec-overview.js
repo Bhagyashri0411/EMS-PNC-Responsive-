@@ -33,7 +33,7 @@ function getSpecificppConsumptionData(
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/pp/overallsecOverviewgraph",
+        url: "http://localhost:8090/EmsPNC/pp/overallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

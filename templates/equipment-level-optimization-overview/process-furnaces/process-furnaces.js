@@ -24,7 +24,7 @@ $(document).ready(function () {
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
+    d.setHours(05);
     d.setMinutes(00);
     d.setSeconds(0);
 
@@ -53,7 +53,7 @@ function steamprofurnacesdata() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/auth/Equipmentlevelopt/SteamprofurnacesGraph",
+        url: "http://localhost:8090/EmsPNC/auth/Equipmentlevelopt/SteamprofurnacesGraph",
     }).done(function (data) {
         console.log(data)
 

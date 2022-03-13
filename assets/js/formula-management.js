@@ -19,7 +19,7 @@ $(document).ready(function() {
 function Truncated(){  
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/api/cppTpsOverview/CsvTruncate",
+        url: "http://localhost:8090/EmsPNC/api/cppTpsOverview/CsvTruncate",
     }).done(function(data) {
         console.log(data)  
     })

@@ -1,14 +1,12 @@
 $(document).ready(function () {
     totalThroughput();
-    // lastupdatedTime();
     $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function () {
-        // alert('navigation loaded');
     });
     $("#left-sidebar").load("./../../templates/left-sidebar/left-sidebar.html");
     $("#ncu-horizontal-tiles").load("./../../templates/ncu-unit-overview/ncu-horizontal-tiles/ncu-horizontal-tiles.html");
     // $("#layoutSidenav_content").load("./../../templates/dashboard/dashboard.html");
 
-    $("#overall-sec-overview").load("./../../templates/ncu-unit-overview/overall-sec-overview/overall-sec-overview.html", function () { });
+    $("#ncu-overall-sec-overview").load("./../../templates/ncu-unit-overview/ncu-overall-sec-overview/ncu-overall-sec-overview.html", function () { });
     $('#ncu-unit-overview-tab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         var target = $(e.target).attr("href") // activated tab
         var fileName = target.substring(1);
@@ -25,7 +23,7 @@ console.log(abc ,"nvnvbvbv");
 
 function totalThroughput() {
     $.ajax({
-        url: 'http://localhost:8090/ncu/feedratePlantload',
+        url: 'http://localhost:8090/EmsPNC/ncu/feedratePlantload',
         method: "GET"
     }).done(function (data) {
         document.getElementById("feedrate").innerHTML = data.feedrate;
@@ -37,7 +35,7 @@ function totalThroughput() {
 function Truncated() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/home/Truncate",
+        url: "http://localhost:8090/EmsPNC/home/Truncate",
     }).done(function (data) {
         console.log(data)
     })
@@ -47,7 +45,7 @@ function Truncated() {
 function csvdownload() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/home/Report",
+        url: "http://localhost:8090/EmsPNC/home/Report",
     }).done(function (data) {
         console.log(data)
 

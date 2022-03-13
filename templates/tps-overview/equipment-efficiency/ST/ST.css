@@ -10,7 +10,7 @@
     color: #d9d9d9;
     padding-left: 6px;
 }
-.ST-equipment-efficiency #str1, #fromstBar, #tostBar,#STF, #STT {  
+.ST-equipment-efficiency #str1, #fromstBar, #tostBar,#stf, #stt {  
     font-size: 0.7vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
@@ -21,17 +21,6 @@
     cursor: pointer;
     color: #d9d9d9;
 }
-/* .ST-equipment-efficiency #STF, #STT {
-    font-size: 1vw;
-    background-color: #26293c;
-    border: 1px solid #f2f2f2;
-    padding: 1px;
-    border-radius: 5px;
-    width: 14vw;
-    cursor: pointer;
-    color: #d9d9d9;
-    margin-left: 20px;
-} */
 .ST-equipment-efficiency .first-spa{
     background-color: #C55B11;
     height: 5px;

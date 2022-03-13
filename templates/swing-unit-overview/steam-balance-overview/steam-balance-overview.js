@@ -37,7 +37,7 @@ function swingsteamoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/SWINGsbo/steambalanceoverviewgraph",
+        url: "http://localhost:8090/EmsPNC/SWINGsbo/steambalanceoverviewgraph",
     }).done(function (data) {
         var Difference_In_Days = data[0].showNumberIndex;
         swinggetsteamoverview(data, Difference_In_Days);
@@ -120,7 +120,7 @@ function showsteambalanceswing(data, Difference_In_Days, interval) {
 
 function swingsteamta() {
     $.ajax({
-        url: "http://localhost:8090/SWINGsbo/SteambalanceTable",
+        url: "http://localhost:8090/EmsPNC/SWINGsbo/SteambalanceTable",
         method: "GET"
     }).done(function (data) {
         getDropswing(data);

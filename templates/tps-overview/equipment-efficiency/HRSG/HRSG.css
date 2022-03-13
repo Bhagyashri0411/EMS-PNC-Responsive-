@@ -10,7 +10,7 @@
     color: #d9d9d9;
     padding-left: 6px;
 }
-.HRSG-equipment-efficiency #hrsgr1, #fromhrsgBar, #tohrsgBar, #fromHRSG, #toHRSG {  
+.HRSG-equipment-efficiency #hrsgr1, #fromHRSGBar, #toHRSGBar, #fromHRSG, #toHRSG {  
     font-size: 0.7vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
@@ -20,9 +20,6 @@
     max-width: 9.6vw;
     cursor: pointer;
     color: #d9d9d9;
-}
-.HRSG-equipment-efficiency #hrsgr1, #fromhrsgBar, #tohrsgBar{
-    margin-left: 0.2vw;
 }
 .HRSG-equipment-efficiency .first-spa{
     background-color: #C55B11;

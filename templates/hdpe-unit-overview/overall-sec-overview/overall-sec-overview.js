@@ -32,7 +32,7 @@ function hdpeoverview() {
         method: "POST",
         data: postdata,
         headers: { 'Content-Type': 'application/json' },
-        url: "http://localhost:8090/auth/HDPE/overallsecOverviewgraph",
+        url: "http://localhost:8090/EmsPNC/auth/HDPE/overallsecOverviewgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;

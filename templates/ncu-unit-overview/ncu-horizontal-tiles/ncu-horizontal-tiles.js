@@ -17,7 +17,7 @@ $(document).ready(function () {
 function getpiechartncu() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/ncu/donutgraph",
+        url: "http://localhost:8090/EmsPNC/ncu/donutgraph",
     }).done(function (data) {
         var fuelConsumed = data[0].steamConsumed;
         CanvasJS.addColorSet("greenShades", [
@@ -91,7 +91,7 @@ function postFuelDoughnutDataNCU1() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/ncu/NCUDoughnut",
+        url: "http://localhost:8090/EmsPNC/ncu/NCUDoughnut",
     })
         .done(function (data) {
             var energyConsumed = data[0].energyConsumed;
@@ -151,7 +151,7 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
 function loadGaugeChart() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/ncu/specificenergyConsumption",
+        url: "http://localhost:8090/EmsPNC/ncu/specificenergyConsumption",
     }).done(function (data) {
         console.log(data.specificenergy, "bbmefnmenfm");
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
@@ -225,7 +225,7 @@ function loadGaugeChart() {
 function guagevaluencuAct() {
     $.ajax({
         method: "GET",
-        url: 'http://localhost:8090/ncu/specificenergyConsumption',
+        url: 'http://localhost:8090/EmsPNC/ncu/specificenergyConsumption',
 
     }).done(function (data) {
         document.getElementById("devncu").innerHTML = data.deviation + "%";
@@ -238,7 +238,7 @@ function guagevaluencuAct() {
 function specifictable() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/ncu/specificenergyConsumptiontable"
+        url: "http://localhost:8090/EmsPNC/ncu/specificenergyConsumptiontable"
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
@@ -274,7 +274,7 @@ function specifictable() {
 function parametertable() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/ncu/parametertable"
+        url: "http://localhost:8090/EmsPNC/ncu/parametertable"
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
