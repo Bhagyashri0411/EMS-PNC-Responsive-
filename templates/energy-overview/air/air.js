@@ -113,10 +113,10 @@ function showSpecificAirConsumptionChart(data, Difference_In_Days, interval) {
             labelFontColor: "#d9d9d9",
             lineColor: "gray",
             tickThickness: 0,
-             intervalType:Difference_In_Days == true?  "hour":"day",
-             valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-             //valueFormatString: "DD MMM" ,
-             title:Difference_In_Days == true? "In hours":"In Days",
+            intervalType: Difference_In_Days == true ? "hour" : "day",
+            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
             labelAngle: -20
 
@@ -222,32 +222,27 @@ function instrumentair(kpiname) {
 
 function airDecoking() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/electricity/ElectrityInputCost",
+        url: "http://localhost:8090/EmsPNC/Air/DecokingAirTable",
         method: "GET"
 
     }).done(function (data) {
-        getairDecoking(data)
+        var table_data = '';
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.Unit + '</td>';
+            table_data += '<td>' + value.actual + '</td>';
+            table_data += '</tr>';
+        });
+        document.getElementById("decokingair").innerHTML = table_data
     })
 }
-function getairDecoking(data) {
-    var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.kpiname + '</td>';
-        table_data += '<td>' + value.value + '</td>';
-        table_data += '</tr>';
-    });
-    document.getElementById("decokingair").innerHTML = table_data
-
-}
-
 
 function Aircard1() {
     $.ajax({
         headers: {
             "Content-Type": "application/json",
         },
-        url: "http://localhost:8090/EmsPNC/Air/PlantAirTotalConsumption", 
+        url: "http://localhost:8090/EmsPNC/Air/PlantAirTotalGeneration",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -282,7 +277,7 @@ function Aircard2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: "http://localhost:8090/EmsPNC/Air/InstrumentAirTotalGeneration",
+        url: "http://localhost:8090/EmsPNC/Air/PlantAirTotalConsumption",
         method: "GET",
     }).done(function (data) {
         console.log(data)

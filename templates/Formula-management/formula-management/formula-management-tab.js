@@ -151,14 +151,13 @@ function getCalculatedTag() {
         student += '<tr>';
         for (const val of tabledata) {
             student += '<td>' + val['alias'] + '</td>';
-            student += '<td style="table-layout: fixed; width: 100px;">' + val['formula'] + '</td>';
-            student += '<td style="overflow : auto"> ' + val['description'] + '</td>';
+            student += '<td style="table-layout: fixed; width: 100px; overflow-wrap: anywhere;">' + val['formula'] + '</td>';
+            student += '<td style=" width: 100px; overflow-wrap: anywhere;"> ' + val['description'] + '</td>';
             student += '<td class="w4">' + val['das_write_back'] + '</td>';
-            student += '<td style="overflow : auto">' + val['result_tag'] + '</td>';
+            student += '<td style="width: 100px; overflow-wrap: anywhere;">' + val['result_tag'] + '</td>';
             student += '<td class="w4">' + val['result'] + '</td>';
             student += '<td class="w4">' + val['decimal_point'] + '</td>';
             student += '<td><input class="editValues btn btn-primary" type="button" value="Edit"</input></td>';
-            // student += '<td><input class="deleteValues btn btn-primary" type="button" name="delBox" value="Delete" /></td>';
             student += '</tr>';
         }
         document.getElementById("bodytablesCalculatedTag").innerHTML = student;
@@ -326,6 +325,7 @@ function addNewData() {
                 getCalculatedTag();
 
                 alert('Formula inserted successfully.');
+                $('#addRowData').hide();
             }
             else {
 
@@ -338,7 +338,6 @@ function addNewData() {
 
                 $('#addRowData').hide();
                 alert('uuukj');
-
 
             }
         }
