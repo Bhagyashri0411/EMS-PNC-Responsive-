@@ -194,9 +194,9 @@ function getDoughnutpp() {
 function loadDoughnutChartpp(energyConsumed) {
     // console.log(energyConsumed)
     CanvasJS.addColorSet("greenShades", [
-        "#ffa600",
+         "#ffa600",
         "#00aa7e",
-        "#005374"
+        //"#005374"
     ]);
     var dataPoints = [];
     var chart = new CanvasJS.Chart("titles-pp", {

@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="templates/Defaultpage/Defaultpage-title.css" />
+<script src="templates/Defaultpage/Defaultpage-title.js"></script>
+<div class="col-md-12 Defaultpage">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 card-col">
+
+                <div class="card">
+                    <div class="card-body mt-4">
+                        <div class="overflow genratorsHeight">
+                            <table id="emailTypehead" class="DataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Email Type</th>
+                                        <th>to email </th>
+                                        <th>cc email </th>
+                                        <th>bcc email</th>
+                                        <th>Status</th>
+                                        <th style="text-align: center;">Edit</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="emailTypeBody" class="DataTable"
+                                    style="height: 500px; overflow: auto;">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="updateRow">
+
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <button id="closeadddefault" onclick="defaultclosemodel()">&times;</button>
+                </div>
+            </div>
+            <div class="header">
+                <span>Update Row</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle">Email Type <span class="pull-right">:</span></span> 
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="" id="emailType" readonly>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle"> To Email <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <!-- <input type="text" class="form-control" name="" id="toEmail"> -->
+                                <textarea class="form-control" name="" id="toEmail" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle"> CC Email <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <!-- <input type="text" class="form-control" name="" id="ccEmail"> -->
+                                <textarea class="form-control" name="" id="ccEmail"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle"> BCC Email <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <!-- <input type="text" class="form-control" name="" id="bccEmail"> -->
+                                <textarea class="form-control" name="" id="bccEmail"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle">Status <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <!-- <input type="text" class="form-control" name="" id="emailStatus"> -->
+                                <select name="s1" id="emailStatus">
+                                    <option value="true" label="true"selected></option>
+                                    <option value="false" label="false"></option>
+                                   
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-12 mt-14">
+                        <!-- <button class="addbtn" id="" onclick=""> Insert</button> -->
+                        <label id="ERRORformula" style="color: red;">Note:&nbsp; email should be separated by ";"</label>
+                        <button class="addbtn" id="" onclick="updateData()"> Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,12 +17,12 @@ $(document).ready(function () {
     });
 
     $("input[name=fromair]").on('change', function () {
-        // console.log($('["#Air"]:selected').val());
+        document.getElementById('toair').min = $('#fromair').val();
         getSpecificAirConsumptionData();
     });
 
     $("input[name=toair]").on('change', function () {
-        // console.log($('["#Air"]:selected').val());
+        document.getElementById('fromair').max = $('#toair').val();
         getSpecificAirConsumptionData();
     });
 
@@ -50,7 +50,8 @@ $(document).ready(function () {
         console.log($(this).find(":selected").val());
     });
     instrumentair('Consumers')
-
+    document.getElementById('toair').min = $('#fromair').val();
+    document.getElementById('fromair').max = $('#toair').val();
 });
 
 function getSpecificAirConsumptionData() {
