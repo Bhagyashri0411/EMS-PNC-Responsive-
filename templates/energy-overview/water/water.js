@@ -8,27 +8,23 @@ $(document).ready(function () {
     Watercard5();
 
     $("input[name=fromwater]").on('change', function (event) {
-        console.log(event.target.value);
+      document.getElementById('towater').min = $('#fromwater').val();
         getSpecificwaterConsumptionData();
     });
 
     $("input[name=towater]").on('change', function (event) {
-        // console.log($('["#waterCondensate"]:selected').val());
-        console.log(event.target.value);
+        document.getElementById('fromwater').max = $('#towater').val();
         getSpecificwaterConsumptionData();
     });
     $("#waterCondensate").on('change', function () {
         var demoTur = ($(this).find(":selected").val());
         $('#Chartwatertur').html(demoTur);
         getSpecificwaterConsumptionData();
-        
+
         console.log($(this).find(":selected").val());
         // console.log($(this).find(":selected").val());
     });
 
-    var now = new Date();
-    // var fromDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().substring(0, 19);
-    console.log(new Date(sessionStorage.getItem("lastUpdateddate")), 'new date');
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
@@ -42,8 +38,9 @@ $(document).ready(function () {
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#towater').val(tod.toJSON().slice(0, 19));
-     
 
+    document.getElementById('towater').min = $('#fromwater').val();
+    document.getElementById('fromwater').max = $('#towater').val();
 });
 
 function getSpecificwaterConsumptionData() {
@@ -64,65 +61,10 @@ function getSpecificwaterConsumptionData() {
         var Difference_In_Days = data[0].showNumberIndex;
         formatSpecificwaterConsumptionData(data, Difference_In_Days);
     })
-        .fail(function () {
-             var failData=[]
-            // var failData = [{
-            //     "actual": 2544.0,
-            //     "reference":34343
-            //     },
-            //     {
-            //         "actual": 2544.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2581.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2539.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2600.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2560.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2555.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2578.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2543.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2598.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2517.0,
-            //         "reference":34343
-            //     },
-            //     {
-            //         "actual": 2590.0,
-            //         "reference":34343
-            //     }
-
-            //     ]
-            
-            formatSpecificwaterConsumptionData(failData);
-        })
 }
 
 function formatSpecificwaterConsumptionData(data, Difference_In_Days) {
-    var chartData = { actual: [], reference:[] };
+    var chartData = { actual: [], reference: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
@@ -146,16 +88,16 @@ function formatSpecificwaterConsumptionData(data, Difference_In_Days) {
 function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("water-chartLine", {
         theme: "dark1",
-        height:325,
+        height: 300,
         backgroundColor: "#26293c",
         axisX: {
             labelFontColor: "#d9d9d9",
             lineColor: "gray",
             tickThickness: 0,
-             intervalType:Difference_In_Days == true?  "hour":"day",
-             valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-             //valueFormatString: "DD MMM" ,
-             title:Difference_In_Days == true? "In hours":"In Days",
+            intervalType: Difference_In_Days == true ? "hour" : "day",
+            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
             labelAngle: -20
         },
@@ -167,12 +109,6 @@ function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
             labelFontColor: "#d9d9d9",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
-            // stripLines: [{
-            //     value: data.reference,
-            //     thickness: 4,
-            //     color: "#FFC100",
-            //     lineDashType: "dash",
-            // }]
         },
 
         dataPointMaxWidth: 15,
@@ -188,7 +124,7 @@ function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
             markerSize: 0,
             yValueFormatString: "0.00#",
             dataPoints: data.actual
-        },{
+        }, {
             type: "spline",
             lineThickness: 4,
             lineDashType: "dash",
@@ -222,7 +158,7 @@ function waterspecificConsumption() {
 
     });
 }
-function waterspecificConsumptionRate(data){
+function waterspecificConsumptionRate(data) {
     var table_data = '';
     $.each(data, function (key, value) {
         table_data += '<tr>';
@@ -239,7 +175,7 @@ function condensatesystem() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-         url: "http://localhost:8090/EmsPNC/water/TotalCondensateGeneration",
+        url: "http://localhost:8090/EmsPNC/water/TotalCondensateGeneration",
         method: "GET"
 
     }).done(function (data) {
@@ -265,13 +201,13 @@ function Watercard1() {
         },
         method: "GET",
         url: "http://localhost:8090/EmsPNC/water/CondensateRecovery",
-        
+
     }).done(function (data) {
         console.log(data)
         document.getElementById("resultnew").innerHTML = data.currentvalue;
         document.getElementById("refnew").innerHTML = data.refvalue;
         document.getElementById("countnew").innerHTML = data.tagvalue;
-        document.getElementById("countnew").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        document.getElementById("countnew").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("resultnew").innerHTML = "+" + data.currentvalue;
         }
@@ -301,14 +237,14 @@ function Watercard2() {
         },
         method: "GET",
         url: "http://localhost:8090/EmsPNC/water/RawWaterIntake",
-        
+
     }).done(function (data) {
         console.log(data)
 
         document.getElementById("result0").innerHTML = data.currentvalue;
         document.getElementById("ref0").innerHTML = data.refvalue;
         document.getElementById("count0").innerHTML = data.tagvalue;
-        document.getElementById("count0").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        document.getElementById("count0").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result0").innerHTML = "+" + data.currentvalue;
         }
@@ -338,13 +274,13 @@ function Watercard3() {
         },
         method: "GET",
         url: "http://localhost:8090/EmsPNC/water/DMWaterConsumption",
-        
+
     }).done(function (data) {
         console.log(data)
         document.getElementById("result2").innerHTML = data.currentvalue;
         document.getElementById("ref2").innerHTML = data.refvalue;
         document.getElementById("count2").innerHTML = data.tagvalue;
-        document.getElementById("count2").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        document.getElementById("count2").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result2").innerHTML = "+" + data.currentvalue;
         }
@@ -376,14 +312,14 @@ function Watercard4() {
         },
         method: "GET",
         url: "http://localhost:8090/EmsPNC/water/ROWaterProduction",
-        
+
     }).done(function (data) {
         console.log(data)
 
         document.getElementById("result3").innerHTML = data.currentvalue;
         document.getElementById("ref3").innerHTML = data.refvalue;
         document.getElementById("count3").innerHTML = data.tagvalue;
-        document.getElementById("count3").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        document.getElementById("count3").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result3").innerHTML = "+" + data.currentvalue;
         }
@@ -414,13 +350,13 @@ function Watercard5() {
         },
         method: "GET",
         url: "http://localhost:8090/EmsPNC/water/BFWConsumption",
-       
+
     }).done(function (data) {
         console.log(data)
         document.getElementById("result4").innerHTML = data.currentvalue;
         document.getElementById("ref4").innerHTML = data.refvalue;
         document.getElementById("count4").innerHTML = data.tagvalue;
-        document.getElementById("count4").style.color =data.colorcode == "none" ? "white" : data.colorcode;
+        document.getElementById("count4").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result4").innerHTML = "+" + data.currentvalue;
         }
@@ -443,13 +379,13 @@ function Watercard5() {
 
 }
 
-function getDropdownvalue(data){
+function getDropdownvalue(data) {
     $.each(data, function (key, value) {
         $('#waterCondensate').append(`<option value="${value.kpi_name}">
                                            ${value.kpi_name}
                                       </option>`);
-        });
-        var demogen1=$("#waterCondensate option:selected").val();
-            $('#Chartwatertur').html(demogen1);
-            getSpecificwaterConsumptionData();
+    });
+    var demogen1 = $("#waterCondensate option:selected").val();
+    $('#Chartwatertur').html(demogen1);
+    getSpecificwaterConsumptionData();
 }

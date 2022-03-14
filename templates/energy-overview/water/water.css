@@ -1,250 +1,174 @@
-#water-tab .card {
-   
-    background-color: #26293c;
-    padding: 1px;
-    border-radius: 10px;
-    position: relative;
-    left: -23px;
-
-}
-#water-tab .cardnew {
-    background-color: #26293c;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 1.1vw;
-    color: #f2f2f2;
-    text-align: center;
-    height: 25rem;
-}
-
-#water-tab .card1 {
-    background-color: #26293c;
-    border-radius: 10px;
-    height: 15%;
-    width: 100%;
-    padding: 11px;
-}
-#water-tab.card .clearfix .mt-14{
-    padding-top: 0px;
-}
-#water-tab .card2 {
-    background-color: #26293c;
-    border-radius: 10px;
-    height: 18%;
-    width: 100%;
-    padding: 11px;
-   
-}
-
 #water-tab .card .title {
-    font-size: 1vw;
+    font-size: 1.1vw;
     font-weight: normal;
     padding: 0 10px;
-    color: #f2f2f2;
+    color: #d9d9d9;
+    padding: 1vw;
+}
+#water-tab .card .head {
+    font-size: 1vw;
+    padding: 0;
     text-align: center;
 }
-
-#water-tab .card1 .title {
-    
-    position: relative;
-    left: 7px;
-    top: -16px;
-    color: #f2f2f2;
-    font-family: Yu Gothic UI;
-    text-align: left;
-    font-weight: 600;
+#water-tab .first-box-title {
+    font-size: 1.16vw;
+    color: #d9d9d9;
 }
 
-#water-tab .card2 .title {
-    position: relative;
-    left: 7px;
-    top: -16px;
+#water-tab #waterCondensate, #fromwater, #towater {
+    font-size: 1vw;
+    background-color: #26293c;
+    border: 0.1vw solid #f2f2f2;
+    padding: 0.1vw;
+    border-radius: 0.3vw;
+    margin-left: 0.5vw;
+    max-width: 15vw;
+    cursor: pointer;
     color: #f2f2f2;
-    font-family: Yu Gothic UI;
-    text-align: left;
-    font-weight: 600;
+}
+
+#water-tab #waterCondensate {
+    padding: 0.2vw;
+    font-size: 0.9vw;
+    color: #d9d9d9;
 }
 
 #water-tab .card .body .count {
     text-align: center;
-    font-size: 2vw;
-    color: #d9d9d9;
-    /* padding-top: 1px; */
-    /* padding-bottom: 6px; */
-    font-weight: bold;
-    font-family: Bahnschrift Light;
-}
-
-#water-tab .cardnew .body .count {
-    text-align: center;
-    font-size: 2.5vw;
-    color: #d9d9d9;
-    padding-top: 23px;
-    /* padding-bottom: 25px; */
+    font-size: 1.5vw;
+    color: #f2f2f2;
     font-weight: 700;
-    font-family: Bahnschrift Light;
-}
-
-#count1{
-    font-family: Bahnschrift Light;
-    font-size: 88px;
 }
 
 #water-tab .card .footer .ref {
     color: #d9d9d9;
-    font-size: 12px;
+    font-size: 1vw;
     display: inline-block;
-    padding: 5px 0px;
+    padding: 0vw 0vw;
 }
 
-#water-tab .cardnew .footer .ref {
-    color: #d9d9d9;
-    font-size: 12px;
-    display: inline-block;
-    padding: 5px 0px;
+#ref_air1, #refnew, #ref0, #ref2, #ref3, #ref4 {
+    color: #f2f2f2;
+    font-size: 1.1vw;
 }
 
 #water-tab .card .footer .result {
-    color: #d9d9d9;
-    font-size: 14px;
-    padding: 0px 10px;
+    color: #f2f2f2;
+    font-size: 1vw;
+    padding: 0vw 0.9vw;
     border-radius: 5px;
     display: inline-block;
 }
 
-#water-tab .card .footer .result.red {
-    background-color: #ff0000;
-}
-#water-tab .cardnew .footer .result.red {
-    border-radius: 3px;
-    font-size: 15px;
-    background-color: #ff0000;
-}
 
-#water-tab .card .footer .result.green {
-    background-color: #00b050;
-}
-
-#water-tab .card-col {
-    padding-left: 7px;
-    padding-right: 7px;
+#water-tab .card .body .count-line {
+    height: 21vw;
 }
 
 
-#water-tab .card .title .main-title {
-    font-size: 14px;
+/* Line Graph CSS */
+#water-tab .refbox {
+    background-color: #ffc000;
+    width: 1vw;
+    height: 0.25vw;
+    padding-left: 1vw;
+    display: inline-block;
+    margin: 0.2vw;
 }
 
-#water-tab .headerbottom-card {
-    padding-top: 0px;
+#water-tab .osv {
+    background-color: #00aaee;
+    width: 2vw;
+    height: 0.25vw;
+    display: inline-block;
+    margin: 0.2vw;
 }
 
+#water-tab .leg {
+    font-size: 1vw;
+    margin-right: 1vw;
+    color: #d9d9d9;
+}
+
+#water-tab .col-tre {
+    display: inline-block;
+    text-align: left;
+}
+
+/* table css */
 #water-tab table {
     font-family: Yu Gothic UI;
     border-collapse: collapse;
-    width: 100%;
-    font-size: 15px;
     color: #d9d9d9;
-    position: relative;
+    width: 100%;
 }
 
 #water-tab td {
-    border-bottom: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    border-bottom: 1px solid #b2b2b9;
+    font-size: 1vw;
+    color: #f2f2f2;
+    padding: 0.3vw;
 }
 
-#water-tab th {
-    text-align: left;
-    padding: 8px;
-    font-size: 12px;
-    background-color: #432b64;
-    border-right-color:#552d7c;
-    border-right-style: solid;
-    border-right-width: 1px;
+#water-tab table th {
+    padding: 0.4vw;
+    background-color: #442266;
+    font-size: 1vw;
+    color: #d9d9d9;
+    font-weight: normal;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 }
 
-/* line graph CSS */
-#water-tab .col-thr{
-    display: inline-block;
-}
-#water-tab .vl {
-    border-left: 2px solid whitesmoke;
-    height: 35px;
-    float: right;
-  }
-  #water-tab .actbox {
-    background-color: #00B1F0;
-    /* width: 30px; */
-    height: 3px;
-    padding-left: 20px;
-    display: inline-block;
-    margin-bottom: 3px;
-    margin-right: 5px;
-}
-#water-tab .refbox {
-    background-color: #FFC100;
-    width: 20px;
-    height: 3.5px;
-    padding-left: 20px;
-    display: inline-block;
-    margin-bottom: 3px;
-    margin-right: 5px;
+#water-tab table th:last-child {
+    text-align: end;
 }
 
-#water-tab .leg{
-    font-size: 17px;
-}
-#water-tab #fromwater{
-    max-width: 15rem;
-}
-#water-tab #towater{
-    max-width: 15rem;
-}
-#water-tab #hydro{
-    max-width: 18rem;
-    font-size: 13px;
-}
-
-#water-tab .card .left-box{
-    font-size: 23px;
-}
-#water-tab .unit-sec{
-    padding-top: 10px;
-}
-/* .col-ref{
-    width: 161px;
-} */
-#water-tab .col-sb{
-    width: 12rem;
-}
-#water-tab .col-st{
-    text-align: left;
-    font-size: 23px;
-}
-
-#water-tab #watersel{
-    max-width: 18rem;
-    font-size: 13px;
-}
-#water-tab .body .count-line{
-   height: 22vw;
-}
-#water-tab .xyz{
-    padding-left: 0px;
-}
-
-#water-tab .pr-0{
-    position: relative;
-    left: 14px;
-    width: 100%;
-}
-
-#water-tab .row{
-    margin-left: -9px;
-    text-align: left;
+#water-tab table td:first-child {
+    /* text-align: end; */
+    color: #d9d9d9;
 }
 
 #water-tab table tr:last-child td {
     border-bottom: 0;
-} 
+}
+
+#water-tab .chart-title.title .col-first .input-title {
+    font-size: 0.9vw;
+    color: #d9d9d9;
+}
+
+/* scroll */
+
+#water-tab .genratorsHeight {
+    height: 11.5vw;
+}
+
+#water-tab .scroll {
+    width: 40%;
+    overflow: auto;
+}
+
+#water-tab .overflow {
+    overflow: auto;
+}
+
+#water-tab ::-webkit-scrollbar {
+    width: 0.3vw;
+    height: 0.3vw;
+}
+
+#water-tab ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+#water-tab ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+#water-tab ::-webkit-scrollbar-thumb:hover {
+    background: #8d8a95;
+}

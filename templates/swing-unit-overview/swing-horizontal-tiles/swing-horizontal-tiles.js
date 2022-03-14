@@ -31,9 +31,7 @@ function loadpiechartswing(fuelConsumed) {
     console.log(fuelConsumed);
     CanvasJS.addColorSet("greenShades", [
         "#ffa600",
-        "#00aa7e",
         "#005374",
-        "#d944b4"
     ]);
     var dataPoints = [];
     var chart = new CanvasJS.Chart("Fuel-swing", {

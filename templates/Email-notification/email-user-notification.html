@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="templates/Email-notification/email-user-notification.css" />
+<script src="templates/Email-notification/email-user-notification.js"></script>
+<div class="col-md-12 Email-notification">
+    <div class="col-md-12">
+        <!-- <div class="row">
+            <div class="col-md-12 summary-heading">
+                <div class="pull-right">
+                    <button class="btn btn-primary" onclick="emailmodel()"> Add</button>
+                </div>
+            </div>
+
+        </div> -->
+        <div class="row">
+            <div class="col-md-12 card-col">
+
+                <div class="card">
+                    <div class="header">
+                        <div class="row">
+                            <!-- onkeyup="myFunction()" -->
+                            <div class="col-md-6">
+                                <label for="searchSysConfing" style="color: #d9d9d9;">Search</label>
+                                <input type="text" id="searchemail" class="searchInput" placeholder="Search for Tag"
+                                    title="Type in a name">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" onclick="emailmodel()"> Add</button>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" id="deleteNotification">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-body mt-4">
+                        <div class="overflow genratorsHeight">
+                            <table id="notificationTable" class="DataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Page name</th>
+                                        <th>Kpi name</th>
+                                        <th style="text-align: center;">Min value</th>
+                                        <th style="text-align: center;">Max value</th>
+                                        <th style="text-align: center;">Edit</th>
+                                        <th style="text-align: center;"><input type="checkbox" id="caldeledataemail" value="Delete"><label
+                                                for="caldeledataemail">&nbsp; Delete All</label></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyNotificationTable" class="DataTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="addRow">
+
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <button id="closeaddemail" onclick="emailclosemodel()">&times;</button>
+                </div>
+            </div>
+            <div class="header">
+                <span>Add Row</span>
+            </div>
+            <div class="row">
+                <form id="clearaddingdata">
+                    <div class="col-md-12">
+
+                        <div class="col-md-12 mt-14">
+                            <div class="row">
+                                <div class="col-md-2 pl-0 pr-0 mt-5">
+                                    <span class="textstyle">Page Name <span class="pull-right">:</span></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" name="" id="pageName">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 mt-14">
+                            <div class="row">
+                                <div class="col-md-2 pl-0 pr-0 mt-5">
+                                    <span class="textstyle"> Kpi name <span class="pull-right">:</span></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <!-- <input type="text" class="form-control" name="" id="kpiName"> -->
+                                    <div class="dropdown">
+                                        <button class="form-control" type="button" id="dropdown_coins"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            style="height: 3vw;">
+                                            Select Kpi
+                                        </button>
+                                        <div id="menu" class="dropdown-menu" aria-labelledby="dropdown_coins">
+                                            <form class="px-4 py-2">
+                                                <input type="search" class="form-control" id="addsearchCoin"
+                                                    placeholder="search kpi here...." autofocus="autofocus">
+                                            </form>
+                                            <div id="menuItems"></div>
+                                            <div id="empty" class="dropdown-header">No coins found</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-14">
+                            <div class="row">
+                                <div class="col-md-2 pl-0 pr-0 mt-5">
+                                    <span class="textstyle"> Min value <span class="pull-right">:</span></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="number" class="form-control" name="" id="minValue">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-14">
+                            <div class="row">
+                                <div class="col-md-2 pl-0 pr-0 mt-5">
+                                    <span class="textstyle"> Max value <span class="pull-right">:</span></span>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="number" class="form-control" name="" id="maxValue">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <div class="col-md-12 mt-14">
+                    <span class="textchanges" id="filldata"> </span>
+                </div>
+                <div class="col-md-12 mt-14">
+                    <button class="addbtn btn btn-primary" onclick="addNewData()"> Insert</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="updateRow">
+
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <button id="upcloseaddemail" onclick="upemailclosemodel()">&times;</button>
+                </div>
+            </div>
+            <div class="header">
+                <span>Update Row</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle"> Page Name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" name="" id="pageNameUpdate">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle"> Kpi name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <!-- <input type="text" class="form-control" name="" id="kpiName"> -->
+                                <div class="dropdown">
+                                    <button class="form-control" type="button" id="updropdown_coins"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Select Kpi
+                                    </button>
+                                    <div id="upmenu" class="dropdown-menu" aria-labelledby="updropdown_coins">
+                                        <form class="px-4 py-2">
+                                            <input type="search" class="form-control" id="upsearchCoin"
+                                                placeholder="search kpi here...." autofocus="autofocus">
+                                        </form>
+                                        <div id="upmenuItems"></div>
+                                        <div id="upempty" class="updropdown-header">No coins found</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle">Min value <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="" id="minValueUpdate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2 pl-0 pr-0 mt-5">
+                                <span class="textstyle"> Max value <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" name="" id="maxValueUpdate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <button class="addbtn" id="" onclick="upaddNewData()"> Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

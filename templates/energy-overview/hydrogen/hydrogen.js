@@ -17,12 +17,12 @@ $(document).ready(function () {
     });
 
     $("input[name=fromhydrogen]").on('change', function () {
-        // console.log($('["#Hydrogen"]:selected').val());
+        document.getElementById('tohydrogen').min = $('#fromhydrogen').val();
         getSpecificHydrogenConsumptionData();
     });
 
     $("input[name=tohydrogen]").on('change', function () {
-        // console.log($('["#Hydrogen"]:selected').val());
+        document.getElementById('fromhydrogen').max = $('#tohydrogen').val();
         getSpecificHydrogenConsumptionData();
     });
 
@@ -37,7 +37,8 @@ $(document).ready(function () {
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#tohydrogen').val(tod.toJSON().slice(0, 19));
-
+    document.getElementById('tohydrogen').min = $('#fromhydrogen').val();
+    document.getElementById('fromhydrogen').max = $('#tohydrogen').val();
     getSpecificHydrogenConsumptionData();
 });
 function getSpecificHydrogenConsumptionData() {
