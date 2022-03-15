@@ -48,7 +48,7 @@
     padding: 0.1vw;
     border-radius: 0.3vw;
     margin-left: 0.5vw;
-    max-width: 15vw;
+    max-width: 12vw;
     cursor: pointer;
     color: #d9d9d9;
 }
@@ -131,7 +131,7 @@
     padding: 2px;
     border-radius: 0.3vw;
     margin-left: 0.3vw;
-    max-width: 13.3vw;
+    max-width: 12vw;
     cursor: pointer;
     color: #d9d9d9;
 }

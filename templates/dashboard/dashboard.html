@@ -40,11 +40,14 @@
                                     <div class="col-md-6 col-one">
                                         <span class="input-title" style="color: #26293c;">Trend</span>
                                         <div class="row">
-                                            <span class="firstbox"> </span>
-                                            <span class="first-box-title" id="first-box-title"
-                                                style="display: inline-flex;">Specific Energy Consumption
+                                            <div class="pull-left">
+                                                <span class="firstbox"> </span>
+                                                <span class="first-box-title" id="first-box-title"
+                                                    style="display: inline-flex;">Specific Energy Consumption TOE/MT
                                                 </span>
-                                            <div style="display: inline-flex;">
+                                            </div>
+                                           
+                                            <div class="pull-left" style="display: inline-flex;">
                                                 <span class="secondbox"></span>
                                                 <span class="second-box-title">&nbsp;Actual Production<span
                                                         class="in-title">(MT/Day)</span>
@@ -59,10 +62,14 @@
                                                 <select name="s1" id="r1">
 
 
-                                                    <option value="TOE/MT of Actual Production" label="Specific Energy Consumption"selected></option>
-                                                    <option value="TOE/hr" label="Total Energy Consumed"></option>
-                                                   
-                                                    <option value="Ton/hr" label="GHG Emission (tCO2e)"></option>
+                                                    <option value="TOE/MT of Actual Production"
+                                                        label="Specific Energy Consumption"
+                                                        name="Specific Energy Consumption TOE/MT" selected></option>
+                                                    <option value="TOE/hr" label="Total Energy Consumed"
+                                                        name="Total Energy Consumed (TOE/hr)"></option>
+
+                                                    <option value="Ton/hr" label="GHG Emission (tCO2e)" name="GHG Emission(tCO2e)
+                                                    (Ton/hr)"></option>
 
                                                 </select>
                                         </span>
@@ -73,12 +80,6 @@
                                         </span>
                                         <span class="to">
                                             <input type="datetime-local" id="homeEms1" name="homeEms">
-                                            <!-- <select name="homeEms" id="homeEms1">
-                                                <option value="1"> 1 Day</option>
-                                                <option value="7"> 7 Days</option>
-                                                <option value="15"> 15 Days</option>
-                                                <option value="30"> 30 Days</option>
-                                            </select> -->
                                         </span>
 
                                     </div>
@@ -92,7 +93,7 @@
                             <option value="spline">Line</option>
                             <option value="column">Bar</option>
                         </select>
-                       
+
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="axis"> Secondary Axis Trends :</span>&nbsp;&nbsp;
                         <select id="chartTypedata" name="Chart Type">

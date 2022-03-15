@@ -36,12 +36,7 @@ $(document).ready(function () {
     document.getElementById("fromsteam").max = $('#steamto').val();
 
     $('#fromsteamline2').val(d.toJSON().slice(0, 19));
-    // console.log(d,'daa');
-    // const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    // tod.setHours(18);
-    // tod.setMinutes(29);
-    // tod.setSeconds(0);
-    $('#tosteamline2').val(d.toJSON().slice(0, 19));
+    $('#tosteamline2').val(tod.toJSON().slice(0, 19));
     document.getElementById("tosteamline2").min = $('#fromsteamline2').val();
     document.getElementById("fromsteamline2").max = $('#tosteamline2').val();
     getSpecificSteamConsumptionData();
@@ -74,7 +69,7 @@ function formatSpecificSteamline1ConsumptionData(data) {
         chartData.value1.push({ y: element.value1 });
         chartData.value2.push({ y: element.value2 });
         chartData.value3.push({ y: element.value3 });
-       
+
     }
     console.log("steamchartdata", chartData);
     showSpecificSteamline1ConsumptionChart(chartData);
@@ -82,7 +77,7 @@ function formatSpecificSteamline1ConsumptionData(data) {
 function showSpecificSteamline1ConsumptionChart(data) {
 
     var chart = new CanvasJS.Chart("PNCsteamLine2", {
-        height: 220,
+        height: 200,
         animationEnabled: true,
         theme: "dark1",
         backgroundColor: " #26293c",
@@ -103,10 +98,9 @@ function showSpecificSteamline1ConsumptionChart(data) {
         },
         dataPointMaxWidth: 15,
         axisY: {
-            title: "Specific Steam Consumption" + "MT/MT",
+            title: "Steam Vent Control Valve OP %",
             gridColor: "gray",
             gridThickness: 0,
-            // gridDashType: "dot",
             labelFontColor: "#d9d9d9",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
@@ -133,23 +127,13 @@ function showSpecificSteamline1ConsumptionChart(data) {
             lineThickness: 2,
             dataPoints: data.value3
         },
-       
-       
+
+
         ]
     });
 
     chart.render();
-    var chartsteamdata = document.getElementById('chartsteamdata');
-    chartsteamdata.addEventListener("change", function () {
-        chart.options.data[0].type = chartsteamdata.options[chartsteamdata.selectedIndex].value;
-        chart.render();
-    });
 
-    var chartsteamdata1 = document.getElementById('chartsteamdata1');
-    chartsteamdata1.addEventListener("change", function () {
-        chart.options.data[1].type = chartsteamdata1.options[chartsteamdata1.selectedIndex].value;
-        chart.render();
-    });
 }
 function getSpecificSteamConsumptionData() {
     var myJSON = { 'fromdate': $('#fromsteam').val(), 'day': $('#steamto').val() };
@@ -194,7 +178,7 @@ function formatSpecificSteamConsumptionData(data, Difference_In_Days) {
 }
 function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("steamchartLine", {
-        height: 220,
+        height: 197,
         animationEnabled: true,
         theme: "dark1",
         backgroundColor: " #26293c",
@@ -210,7 +194,6 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             lineColor: "#d9d9d9",
             intervalType: Difference_In_Days == true ? "hour" : "day",
             valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
-            //valueFormatString: "DD MMM" ,
             title: Difference_In_Days == true ? "In hours" : " In Days",
             interval: interval,
             labelFontColor: "#bfbfbf",
@@ -238,7 +221,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             fontFamily: "Bahnschrift Light",
         },
         data: [{
-            type: "column",
+            type: $("#chartsteamdata1 option:selected").val(),
             color: "#00b0f0",
             name: "Throughput",
             markerSize: 0,
@@ -246,7 +229,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             dataPoints: data.throughput
         },
         {
-            type: "spline",
+            type: $("#chartsteamdata option:selected").val(),
             color: "orange",
             name: "Specific Steam Consumption",
             markerSize: 0,
@@ -259,13 +242,13 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
     chart.render();
     var chartsteamdata = document.getElementById('chartsteamdata');
     chartsteamdata.addEventListener("change", function () {
-        chart.options.data[0].type = chartsteamdata.options[chartsteamdata.selectedIndex].value;
+        chart.options.data[1].type = chartsteamdata.options[chartsteamdata.selectedIndex].value;
         chart.render();
     });
 
     var chartsteamdata1 = document.getElementById('chartsteamdata1');
     chartsteamdata1.addEventListener("change", function () {
-        chart.options.data[1].type = chartsteamdata1.options[chartsteamdata1.selectedIndex].value;
+        chart.options.data[0].type = chartsteamdata1.options[chartsteamdata1.selectedIndex].value;
         chart.render();
     });
 }
@@ -393,7 +376,7 @@ function steamDoughnutProgress2() {
 
 function loadDoughnutChartProgress2(data) {
     CanvasJS.addColorSet("greenShades", [
-        "#ffa600",
+        "#00b0f0",
         "#D9D9D9"
     ]);
     var dataPoints = [];

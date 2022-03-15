@@ -119,7 +119,8 @@ function showSpecificAirConsumptionChart(data, Difference_In_Days, interval) {
             //valueFormatString: "DD MMM" ,
             title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
-            labelAngle: -20
+            labelAngle: -20,
+            titleFontSize: 14,
 
         },
         axisY: {

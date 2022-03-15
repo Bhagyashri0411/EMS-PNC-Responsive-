@@ -8,7 +8,7 @@ $(document).ready(function () {
   });
 
   $("#r1").on("change", function () {
-    domLebal1 = $(this).find(":selected").attr('label');
+    domLebal1 = $(this).find(":selected").attr('name');
     $("#first-box-title").html(domLebal1);
     getSpecificHomeConsumptionData();
   });
@@ -148,7 +148,7 @@ function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Differe
       labelFontColor: "#d9d9d9",
       labelFontSize: 15,
       fontFamily: "Bahnschrift Light",
-      minimum: 35000
+      // minimum: 35000
     },
     toolTip: {
       shared: true  //disable here. 
@@ -158,7 +158,7 @@ function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Differe
       {
         type: $("#chartTypedata option:selected").val(),
         color: "#00b0f0",
-        name: "Throughput",
+        name: "Actual Production",
         markerSize: 0,
         axisYType: "secondary",
         dataPoints: data.Throughput,

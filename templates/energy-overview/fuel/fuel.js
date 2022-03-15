@@ -62,8 +62,8 @@ function getSpecificFuelPNCData() {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
         formatSpecificFuelPNCData(data, Difference_In_Days);
+         
     })
-
 }
 
 function formatSpecificFuelPNCData(data, Difference_In_Days) {
@@ -90,7 +90,7 @@ function formatSpecificFuelPNCData(data, Difference_In_Days) {
 
 
 function getFuelDoughnutData() {
-    var myJSON = { uom:  $("input[name=dtdt]:checked").val()}
+    var myJSON = { uom: $("input[name=dtdt]:checked").val() }
     const postdata = JSON.stringify(myJSON);
     console.log(postdata);
     $.ajax({
@@ -100,11 +100,11 @@ function getFuelDoughnutData() {
         },
         method: "POST",
         data: postdata,
-       
+
         url: "http://localhost:8090/EmsPNC/auth/Fuel/totalfuelconsumed",
 
-    }).done(function (data) {       
-            loadDoughnutChartFuel(data);      
+    }).done(function (data) {
+        loadDoughnutChartFuel(data);
     })
 
 }
@@ -134,7 +134,7 @@ function loadDoughnutChartFuel(data) {
         },
         axisY: {
             title: "Units",
-            titleFontSize: 24,
+            titleFontSize: 14,
             includeZero: true
 
         },
@@ -144,8 +144,8 @@ function loadDoughnutChartFuel(data) {
             indexLabelPlacement: "outside",
             startAngle: 64,
             dataPoints: [
-                { y: data[0].liquid,name: "Liquid", indexLabel:  ((data[0].liquid / data[0].total) * 100).toFixed(2) + "%" },
-                { y: data[0].gas,name: "Gas", indexLabel:  ((data[0].gas / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].liquid, name: "Liquid", indexLabel: ((data[0].liquid / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].gas, name: "Gas", indexLabel: ((data[0].gas / data[0].total) * 100).toFixed(2) + "%" },
 
             ]
         }]
@@ -167,18 +167,18 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             labelFontColor: "#d9d9d9",
             lineColor: "gray",
             tickThickness: 0,
-             intervalType:Difference_In_Days == 1?  "hour":"day",
-             valueFormatString:Difference_In_Days == 1?  "HH":"DD MMM YYYY" ,
-             //valueFormatString: "DD MMM" ,
-             title:Difference_In_Days == 1? "In hours":"In Days",
+            intervalType: Difference_In_Days == 1 ? "hour" : "day",
+            valueFormatString: Difference_In_Days == 1 ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == 1 ? "In hours" : "In Days",
             interval: interval,
-            labelAngle: -20
-
-        },  
+            labelAngle: -20,
+            titleFontSize: 14,
+        },
 
         dataPointMaxWidth: 15,
         axisY: {
-            title: "Specific Fuel Consumption" + $("input[type=radio][name=srs]:checked").val()+ "of Product",
+            title: "Specific Fuel Consumption" + $("input[type=radio][name=srs]:checked").val() + "of Product",
             titleFontSize: 15,
             titleFontFamily: "Yu Gothic UI Semibold",
             titleFontColor: "#D9DAD9",
@@ -199,7 +199,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             fontFamily: "Bahnschrift Light",
         },
         data: [{
-            type: "column",
+            type: $("#chartType1 option:selected").val(),
             color: "#00b0f0",
             name: "Throughput",
             markerSize: 0,
@@ -209,7 +209,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
 
         },
         {
-            type: "spline",
+            type: $("#chartType option:selected").val(),            
             color: "#ED7E31",
             name: "Specific Fuel Consumption",
             markerSize: 0,
@@ -221,15 +221,18 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
     });
 
     chart.render();
+    renderdatagraph(chart)
+}
+function renderdatagraph(chart) {
     var chartType = document.getElementById('chartType');
     chartType.addEventListener("change", function () {
-        chart.options.data[0].type = chartType.options[chartType.selectedIndex].value;
+        chart.options.data[1].type = chartType.options[chartType.selectedIndex].value;
         chart.render();
     });
 
     var chartType1 = document.getElementById('chartType1');
     chartType1.addEventListener("change", function () {
-        chart.options.data[1].type = chartType1.options[chartType1.selectedIndex].value;
+        chart.options.data[0].type = chartType1.options[chartType1.selectedIndex].value;
         chart.render();
     });
 }

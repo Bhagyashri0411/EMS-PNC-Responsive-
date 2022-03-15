@@ -283,3 +283,10 @@
 #hdpe-horizontal-tiles .footer-deviation {
     padding: 0.1vw;
 }
+#hdpe-horizontal-tiles td.positive {
+    color: #00aa55;
+}
+
+#hdpe-horizontal-tiles td.negative {
+    color: #ff0000;
+}

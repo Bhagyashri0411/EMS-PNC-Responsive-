@@ -22,7 +22,7 @@ function defaultclosemodel() {
 function getUserEmail() {
     $.ajax({
         method: "GET",
-         url: "http://192.168.1.125:8090/emaildata",
+         url: "http://localhost:8090/EmsPNC/emaildata",
 
     }).done(function (data) {
         tableRender(data)
@@ -63,15 +63,8 @@ function updateData() {
             'Content-Type': 'application/json'
         },
         data: JSON.stringify(objectarryemail),
-        url: "http://192.168.1.125:8090/UpdateRecords",
+        url: "http://localhost:8090/EmsPNC/UpdateRecords",
         success: function (status) {
-            // alert("Data was saved successfully");
-            // toastr.success("Tag Save", "Success");
-            // objectarryemail = [];
-            // var msg1 = msg;
-            // alert("updated successfully");
-            // console.log(msg1);
-
             if (status == 'Record Updated Sucessfully!') {
                 getUserEmail();
                 $('#updateRow').hide();
