@@ -4,7 +4,7 @@ $(document).ready(function () {
     parametertable();
     guagevalueswingAct();
     $(".swing-doughnut").click(function () {
-        console.log($("input[name=ratio-name]:checked").val(),"uiuhkik");
+        console.log($("input[name=ratio-name]:checked").val(), "uiuhkik");
         var abc = $("input[name=ratio-name]:checked").val()
         postFuelDoughnutDataswing1(abc);
     });
@@ -71,9 +71,9 @@ function loadpiechartswing(fuelConsumed) {
             indexLabelPlacement: "outside",
             startAngle: 120,
             dataPoints: [
-                { y: fuelConsumed.hp, name: "HP",indexLabel: ((fuelConsumed.hp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                { y: fuelConsumed.lp, name: "LP",indexLabel: ((fuelConsumed.lp/fuelConsumed.total)*100).toFixed(2)+"%"},
-                
+                { y: fuelConsumed.hp, name: "HP", indexLabel: ((fuelConsumed.hp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+                { y: fuelConsumed.lp, name: "LP", indexLabel: ((fuelConsumed.lp / fuelConsumed.total) * 100).toFixed(2) + "%" },
+
             ]
         }]
     });
@@ -97,14 +97,14 @@ function postFuelDoughnutDataswing1() {
         url: "http://localhost:8090/EmsPNC/SWING/FCCUDoughnut",
     })
         .done(function (data) {
-            
+
             var energyConsumed = data[0].energyConsumed;
             console.log(energyConsumed);
 
             loadDoughnutHoriChartswing1(energyConsumed);
 
         })
-        
+
 }
 function loadDoughnutHoriChartswing1(energyConsumed) {
     // console.log(energyConsumed)
@@ -259,7 +259,7 @@ function specifictable() {
             else {
                 table_data += '<td class="r1">' + value.deviation + '</td>';
             }
-    
+
             table_data += '</tr>';
         });
         $('#swingtable').append(table_data);
@@ -272,7 +272,7 @@ function specifictable() {
                 } else if (num > 0) {
                     $(this).addClass("positive");
                 }
-    
+
             }
         });
     })
@@ -283,15 +283,31 @@ function parametertable() {
         url: "http://localhost:8090/EmsPNC/SWING/SECSteamTabledata"
     }).done(function (data) {
         var table_data = '';
-    $.each(data, function (key, value) {
-        table_data += '<tr>';
-        table_data += '<td>' + value.parameter + '</td>';              
-        table_data += '<td>' + value.actual + '</td>';
-        table_data += '<td>' + value.reference + '</td>'; 
-        table_data += '<td>' + value.deviation + '</td>';
-         table_data += '</tr>';
-    });
-    $('#swing_card_body').append(table_data);
-    
+        $.each(data, function (key, value) {
+            table_data += '<tr>';
+            table_data += '<td>' + value.parameter + '</td>';
+            table_data += '<td>' + value.actual + '</td>';
+            table_data += '<td>' + value.reference + '</td>';
+            if (value.deviation > 0) {
+                table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
+            }
+            else {
+                table_data += '<td class="r1">' + value.deviation + '</td>';
+            }
+            table_data += '</tr>';
+        });
+        $('#swing_card_body').append(table_data);
+        $(".r1").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("negative");
+                } else if (num > 0) {
+                    $(this).addClass("positive");
+                }
+
+            }
+        });
     })
 }

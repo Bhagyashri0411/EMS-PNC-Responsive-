@@ -151,12 +151,29 @@ function hdpeOverview() {
             table_data += '<tr>';
             table_data += '<td>' + value.parameter + '</td>';
             table_data += '<td class="hdpe-tab">' + value.actual + '</td>';
-            table_data += '<td class="hdpe-tab">' + value.reference + '</td>';            
-            table_data += '<td class="hdpe-tab">' + value.deviation + '</td>';
+            table_data += '<td class="hdpe-tab">' + value.reference + '</td>'; 
+            if (value.deviation > 0) {
+                table_data += '<td class="r1">' + "+" + value.deviation + '</td>';
+            }
+            else {
+                table_data += '<td class="r1">' + value.deviation + '</td>';
+            }           
             table_data += '</tr>';
     
         });
         $('#Parameter_table').append(table_data);
+        $(".r1").each(function () {
+            var text = $(this).text();
+            if (/[+-]?\d+(\.\d+)?/.test(text)) {
+                var num = parseFloat(text);
+                if (num < 0) {
+                    $(this).addClass("negative");
+                } else if (num > 0) {
+                    $(this).addClass("positive");
+                }
+
+            }
+        });
     })
 }
 

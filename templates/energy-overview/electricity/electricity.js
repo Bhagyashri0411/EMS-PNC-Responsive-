@@ -99,7 +99,8 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             //valueFormatString: "DD MMM" ,
             title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
-            labelAngle: -20
+            labelAngle: -20,
+            titleFontSize: 14,
         },
         dataPointMaxWidth: 15,
         axisY: {
@@ -126,7 +127,7 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             shared: true  //disable here. 
         },
         data: [{
-            type: "column",
+            type: $("#chartType1data option:selected").val(),
             color: "#00b0f0",
             name: "Throughput",
 
@@ -136,7 +137,7 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             dataPoints: data.Throughput
         },
         {
-            type: "spline",
+            type: $("#chartTypedata option:selected").val(),
             color: "#ED7E31",
             name: "Specific Electricity Consumption",
             yValueFormatString: "0.00#",
@@ -149,13 +150,13 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
     chart.render();
     var chartTypedata = document.getElementById('chartTypedata');
     chartTypedata.addEventListener("change", function () {
-        chart.options.data[0].type = chartTypedata.options[chartTypedata.selectedIndex].value;
+        chart.options.data[1].type = chartTypedata.options[chartTypedata.selectedIndex].value;
         chart.render();
     });
 
     var chartType1data = document.getElementById('chartType1data');
     chartType1data.addEventListener("change", function () {
-        chart.options.data[1].type = chartType1data.options[chartType1data.selectedIndex].value;
+        chart.options.data[0].type = chartType1data.options[chartType1data.selectedIndex].value;
         chart.render();
     });
 }
@@ -189,7 +190,7 @@ function electricityDoughnutProgress2() {
 function loadDoughnutChartelectricityProgress2(data) {
 
     CanvasJS.addColorSet("greenShades", [
-        "#ffa600",
+        "#00b0f0",
         "#D9D9D9"
     ]);
     var dataPoints = [];
