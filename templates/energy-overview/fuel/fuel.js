@@ -178,7 +178,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
 
         dataPointMaxWidth: 15,
         axisY: {
-            title: "Specific Fuel Consumption" + $("input[type=radio][name=srs]:checked").val() + "of Product",
+            title: "Specific Fuel Consumption " + $("input[type=radio][name=srs]:checked").val() + "of Product",
             titleFontSize: 15,
             titleFontFamily: "Yu Gothic UI Semibold",
             titleFontColor: "#D9DAD9",

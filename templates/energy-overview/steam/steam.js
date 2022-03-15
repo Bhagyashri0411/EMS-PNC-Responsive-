@@ -57,24 +57,35 @@ function getSpecificSteamline1ConsumptionData() {
         url: "http://localhost:8090/EmsPNC/steam/steamGraph",
     }).done(function (data) {
         console.log(data)
-
-        formatSpecificSteamline1ConsumptionData(data);
+        var linediff_In_Days = data[0].showNumberIndex;
+        formatSpecificSteamline1ConsumptionData(data, linediff_In_Days);
     })
 }
 
-function formatSpecificSteamline1ConsumptionData(data) {
+function formatSpecificSteamline1ConsumptionData(data, linediff_In_Days) {
     var chartData = { value1: [], value2: [], value3: [] };
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
-        chartData.value1.push({ y: element.value1 });
-        chartData.value2.push({ y: element.value2 });
-        chartData.value3.push({ y: element.value3 });
+        var countline = data.length;
+        const steamDateline = new Date(element.date);
+        chartData.value1.push({ y: element.value1, x : steamDateline });
+        chartData.value2.push({ y: element.value2, x : steamDateline });
+        chartData.value3.push({ y: element.value3, x : steamDateline });
 
     }
     console.log("steamchartdata", chartData);
-    showSpecificSteamline1ConsumptionChart(chartData);
+    var line_interval = 1;
+    if (!linediff_In_Days) {
+        if (countline / 8 > 1) {
+            line_interval = Math.round(countline / 8);
+        } else {
+            line_interval = 1;
+        }
+
+    }
+    showSpecificSteamline1ConsumptionChart(chartData, linediff_In_Days, line_interval);
 }
-function showSpecificSteamline1ConsumptionChart(data) {
+function showSpecificSteamline1ConsumptionChart(data, linediff_In_Days, line_interval) {
 
     var chart = new CanvasJS.Chart("PNCsteamLine2", {
         height: 200,
@@ -91,6 +102,10 @@ function showSpecificSteamline1ConsumptionChart(data) {
             tickThickness: 0,
             lineThickness: 1,
             lineColor: "#d9d9d9",
+            intervalType: linediff_In_Days == true ? "hour" : "day",
+            valueFormatString: linediff_In_Days == true ? "HH" : "DD MMM YYYY",
+            title: linediff_In_Days == true ? "In hours" : " In Days",
+            interval: line_interval,
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
