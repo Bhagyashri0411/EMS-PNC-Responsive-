@@ -24,7 +24,7 @@ $(document).ready(function () {
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
+    d.setHours(01);
     d.setMinutes(00);
     d.setSeconds(0);
 

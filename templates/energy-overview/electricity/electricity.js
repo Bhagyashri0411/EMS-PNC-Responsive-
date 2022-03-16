@@ -20,13 +20,13 @@ $(document).ready(function () {
 
     // // setting from date, to date - 24hrs.   
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(01);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromelectricity').val(d.toJSON().slice(0, 19));
     console.log(d, 'daa');
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
+    tod.setHours(18);
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#toelectricity').val(tod.toJSON().slice(0, 19));
@@ -364,15 +364,14 @@ function getStackBarvalue() {
         url: 'http://localhost:8090/EmsPNC/auth/electricity/TotalElectricity',
         method: "GET"
     }).done(function (data) {
-        var abc = (data[0].Generation / data[0].total) * 100;
-        var def = (data[0].Electricity / data[0].total) * 100;
-        var ghi = (data[0].Grid / data[0].total) * 100;
-        var jkl = (data[0].prImport / data[0].total) * 100;
-        var mno = (data[0].prExport / data[0].total) * 100;
-        var pqr = (data[0].alinExport / data[0].total) * 100;
-        var stu = (data[0].isrlExport / data[0].total) * 100;
-        var pad = (data[0].padcExport / data[0].total) * 100;
-        console.log(abc, "fggjh");
+        // var abc = (data[0].Generation / data[0].total) * 100;
+        // var def = (data[0].Electricity / data[0].total) * 100;
+        // var ghi = (data[0].Grid / data[0].total) * 100;
+        // var jkl = (data[0].prImport / data[0].total) * 100;
+        // var mno = (data[0].prExport / data[0].total) * 100;
+        // var pqr = (data[0].alinExport / data[0].total) * 100;
+        // var stu = (data[0].isrlExport / data[0].total) * 100;
+        // var pad = (data[0].padcExport / data[0].total) * 100;
         document.getElementById("stack1").innerHTML = data[0].Generation;
         document.getElementById("stack2").innerHTML = data[0].Electricity;
         document.getElementById("stack3").innerHTML = data[0].Grid;
@@ -381,13 +380,13 @@ function getStackBarvalue() {
         document.getElementById("stack6").innerHTML = data[0].alinExport;
         document.getElementById("stack7").innerHTML = data[0].isrlExport;
         document.getElementById("stack8").innerHTML = data[0].padcExport;
-        document.getElementById("prog1").innerHTML = '<progress value =' + abc + ' max=' + max1 + ' data-toggle="tooltip" title=' + abc.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog2").innerHTML = '<progress value =' + def + ' max=' + max1 + ' data-toggle="tooltip" title=' + def.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog3").innerHTML = '<progress value =' + ghi + ' max=' + max1 + ' data-toggle="tooltip" title=' + ghi.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog4").innerHTML = '<progress value =' + jkl + ' max=' + max1 + ' data-toggle="tooltip" title=' + jkl.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog5").innerHTML = '<progress value =' + mno + ' max=' + max1 + ' data-toggle="tooltip" title=' + mno.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog6").innerHTML = '<progress value =' + pqr + ' max=' + max1 + ' data-toggle="tooltip" title=' + pqr.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog7").innerHTML = '<progress value =' + stu + ' max=' + max1 + ' data-toggle="tooltip" title=' + stu.toFixed(2) + '%' + '></progress>'
-        document.getElementById("prog7").innerHTML = '<progress value =' + pad + ' max=' + max1 + ' data-toggle="tooltip" title=' + pad.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog1").innerHTML = '<progress value =' + abc + ' max=' + max1 + ' data-toggle="tooltip" title=' + abc.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog2").innerHTML = '<progress value =' + def + ' max=' + max1 + ' data-toggle="tooltip" title=' + def.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog3").innerHTML = '<progress value =' + ghi + ' max=' + max1 + ' data-toggle="tooltip" title=' + ghi.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog4").innerHTML = '<progress value =' + jkl + ' max=' + max1 + ' data-toggle="tooltip" title=' + jkl.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog5").innerHTML = '<progress value =' + mno + ' max=' + max1 + ' data-toggle="tooltip" title=' + mno.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog6").innerHTML = '<progress value =' + pqr + ' max=' + max1 + ' data-toggle="tooltip" title=' + pqr.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog7").innerHTML = '<progress value =' + stu + ' max=' + max1 + ' data-toggle="tooltip" title=' + stu.toFixed(2) + '%' + '></progress>'
+        // document.getElementById("prog7").innerHTML = '<progress value =' + pad + ' max=' + max1 + ' data-toggle="tooltip" title=' + pad.toFixed(2) + '%' + '></progress>'
     });
 }

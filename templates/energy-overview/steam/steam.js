@@ -3,7 +3,7 @@ $(document).ready(function () {
     steamtable2();
     steamDoughnut();
     steamDoughnutProgress2();
-    $("input[name=fromSteam]").on('change', function () {
+    $("input[name=fromsteam]").on('change', function () {
         document.getElementById("steamto").min = $('#fromsteam').val();
         getSpecificSteamConsumptionData();
     });
@@ -23,12 +23,12 @@ $(document).ready(function () {
     });
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(01);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromsteam').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
+    tod.setHours(18);
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#steamto').val(tod.toJSON().slice(0, 19));
@@ -150,6 +150,7 @@ function showSpecificSteamline1ConsumptionChart(data, linediff_In_Days, line_int
     chart.render();
 
 }
+
 function getSpecificSteamConsumptionData() {
     var myJSON = { 'fromdate': $('#fromsteam').val(), 'day': $('#steamto').val() };
     const postdata = JSON.stringify(myJSON);
