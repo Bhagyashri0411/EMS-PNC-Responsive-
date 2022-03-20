@@ -189,6 +189,7 @@ function Fuelconsumed(data) {
         lineColor: "white",
         labelFontColor: "#d9d9d9",
         labelFontSize: 15,
+        maximum:16
       },
       data: [
         {

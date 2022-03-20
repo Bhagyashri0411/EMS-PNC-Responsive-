@@ -183,6 +183,7 @@ function cardhdpe1() {
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-hdpe1").innerHTML = data.actual;
+        document.getElementById("count-hdpe1").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         if (data.deviation > 0) {
             document.getElementById("result-hdpe1").innerHTML = "+" + data.deviation;
         }
@@ -240,7 +241,8 @@ function loadDoughnutHoriCharthdpe1(energyConsumed) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 500,
-            fontColor: "#f2f1e7",
+            // fontColor: "#f2f1e7",
+            fontColor : energyConsumed.colorcode == "none"? "white":energyConsumed.colorcode,
             fontFamily: "Bahnschrift Light"
         },
 

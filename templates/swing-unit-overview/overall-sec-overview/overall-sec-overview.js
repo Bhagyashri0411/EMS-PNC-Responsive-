@@ -95,7 +95,7 @@ function swingshowoverview(data ,Difference_In_Days ,interval) {
             labelFontSize: 12
         },
         axisY2: {      
-            title: "Plant Load(%)",       
+            title: "Plant Load (%)",       
             gridThickness: 0,
             labelFontColor: "#d9d9d9",
             labelFontSize: 12

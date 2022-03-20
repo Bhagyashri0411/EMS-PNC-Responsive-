@@ -40,7 +40,8 @@ function getpiechartncu() {
                 verticalAlign: "center",
                 dockInsidePlotArea: true,
                 fontWeight: 100,
-                fontColor: "#f2f2f2",
+                // fontColor: "#f2f2f2",
+                fontColor :fuelConsumed.colorcode == "none"? "white":fuelConsumed.colorcode,
                 fontFamily: "Bahnschrift Light"
             },
             legend: {
@@ -121,7 +122,8 @@ function loadDoughnutHoriChartNCU1(energyConsumed) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 500,
-            fontColor: "#f2f1e7",
+            // fontColor: "#f2f1e7",
+            fontColor :energyConsumed.colorcode == "none"? "white":energyConsumed.colorcode,
             fontFamily: "Bahnschrift Light"
         },
 

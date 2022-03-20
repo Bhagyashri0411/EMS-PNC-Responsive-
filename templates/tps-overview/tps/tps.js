@@ -7,22 +7,22 @@ $(document).ready(function () {
     getCardValue6();
     getCardValue7();
     getCardValue8();
-   // getCardValue9();
+    // getCardValue9();
     tpsTable();
 
-    $("input[name=from]").on('change', function (event) {        
+    $("input[name=from]").on('change', function (event) {
         document.getElementById("tps1").min = $('#fromcpp').val();
         getTotalGenerationCostData();
     });
-    $("input[name=tps]").on('change', function (event) {        
+    $("input[name=tps]").on('change', function (event) {
         document.getElementById("fromcpp").max = $('#tps1').val();
         getTotalGenerationCostData();
     });
-    
+
     $("input[name=cpp-tps]").click(function (event) {
         getTotalGenerationCostData();
     });
-  
+
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
     d.setHours(01);
     d.setMinutes(00);
@@ -51,11 +51,12 @@ function getCardValue1() {
 
     }).done(function (data) {
         document.getElementById('TPC').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("TPC").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById('TPGR').innerHTML = data[0]['refvalue'].toFixed(2);
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES1').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else{
+        else {
             document.getElementById('RES1').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -86,11 +87,12 @@ function getCardValue2() {
     }).done(function (data) {
 
         document.getElementById('SFC').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("SFC").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById('SFCR').innerHTML = data[0]['refvalue'].toFixed(2);
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES2').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else{
+        else {
             document.getElementById('RES2').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -122,11 +124,12 @@ function getCardValue3() {
     }).done(function (data) {
 
         document.getElementById('SS').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("SS").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById('SSR').innerHTML = data[0]['refvalue'].toFixed(2);
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES4').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else{
+        else {
             document.getElementById('RES4').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
 
@@ -160,7 +163,7 @@ function getCardValue4() {
     }).done(function (data) {
 
         document.getElementById('OPGC').innerHTML = data[0]['tagvalue'].toFixed(2);
-
+        document.getElementById("OPGC").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {
@@ -190,6 +193,7 @@ function getCardValue5() {
 
     }).done(function (data) {
         document.getElementById('CPGC').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("CPGC").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         // document.getElementById('CPGCR').innerHTML = data[0]['refvalue'].toFixed(2);
         // if (data[0]['currentvalue'] > 0) {
         //     document.getElementById('RES5').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
@@ -227,11 +231,12 @@ function getCardValue6() {
 
     }).done(function (data) {
         document.getElementById('TSG').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("TSG").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById('TSGR').innerHTML = data[0]['refvalue'].toFixed(2);
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES6').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else{
+        else {
             document.getElementById('RES6').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
 
@@ -264,11 +269,12 @@ function getCardValue7() {
 
     }).done(function (data) {
         document.getElementById('OE').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("OE").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById('OER').innerHTML = data[0]['refvalue'].toFixed(2);
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES7').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else{
+        else {
             document.getElementById('RES7').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -299,11 +305,12 @@ function getCardValue8() {
 
     }).done(function (data) {
         document.getElementById('GHR').innerHTML = data[0]['tagvalue'].toFixed(2);
+        document.getElementById("GHR").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById('GHRR').innerHTML = data[0]['refvalue'].toFixed(2);
         if (data[0]['currentvalue'] > 0) {
             document.getElementById('RES8').innerHTML = "+" + data[0]['currentvalue'].toFixed(2);
         }
-        else{
+        else {
             document.getElementById('RES8').innerHTML = data[0]['currentvalue'].toFixed(2);
         }
         $(".result").each(function () {
@@ -358,30 +365,30 @@ function formatTotalGenCostData(data, Difference_In_Days) {
         var count = data.length;
         const tmpDate = new Date(element.date);
         //console.log(tmpDate,'date new');
-        chartData.Optimized.push({ y: element.design ,x: tmpDate });
-        chartData.Actual.push({ y: element.actual ,x: tmpDate });
+        chartData.Optimized.push({ y: element.design, x: tmpDate });
+        chartData.Actual.push({ y: element.actual, x: tmpDate });
         // chartData.Optimized.push({ x: tmpDate});
         // chartData.Actual.push({ x: tmpDate });
     }
-    console.log(chartData , 'blob');
+    console.log(chartData, 'blob');
     var interval = 1;
     if (!Difference_In_Days) {
-      if (count/8 > 1) {
-         interval =Math.round(count/8);
-      }else{
-        interval = 1;
-      }
-     
+        if (count / 8 > 1) {
+            interval = Math.round(count / 8);
+        } else {
+            interval = 1;
+        }
+
     }
     showTotalGenerationCostChart(chartData, Difference_In_Days, interval);
 
 }
 
-function showTotalGenerationCostChart(data,Difference_In_Days ,interval) {
-console.log(data,"jkljclkdjocj");
+function showTotalGenerationCostChart(data, Difference_In_Days, interval) {
+    console.log(data, "jkljclkdjocj");
     var chart = new CanvasJS.Chart("cpp-tsp-barchart", {
         animationEnabled: true,
-         theme: "dark1",
+        theme: "dark1",
         backgroundColor: "#26293c",
         height: 320,
         title: {
@@ -390,17 +397,17 @@ console.log(data,"jkljclkdjocj");
         toolTip: {
             shared: true  //disable here. 
         },
-        
+
         dataPointMaxWidth: 20,
         axisX: {
             labelFontColor: "#d9d9d9",
             lineColor: "gray",
             tickThickness: 0,
-            intervalType:Difference_In_Days == true?  "hour":"day",
-            valueFormatString:Difference_In_Days == true?  "HH":"DD MMM YYYY" ,
-             //valueFormatString: "DD MMM" ,
-             title:Difference_In_Days == true?  "In hours":" In Days",
-             interval: interval,
+            intervalType: Difference_In_Days == true ? "hour" : "day",
+            valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
+            //valueFormatString: "DD MMM" ,
+            title: Difference_In_Days == true ? "In hours" : " In Days",
+            interval: interval,
             labelAngle: -20
         },
         axisY: {
@@ -432,27 +439,27 @@ console.log(data,"jkljclkdjocj");
 
 function tpsTable() {
     $.ajax({
-      url: "http://localhost:8090/EmsPNC/auth/tpsoverview/ParameterTable",
-      method: "GET"
+        url: "http://localhost:8090/EmsPNC/auth/tpsoverview/ParameterTable",
+        method: "GET"
     }).done(function (data) {
-        loadtpsTable(data) 
+        loadtpsTable(data)
     })
-    
-  
-  }
-  
-  function loadtpsTable(data){
+
+
+}
+
+function loadtpsTable(data) {
     var table_data = '';
     $.each(data, function (key, value) {
-  
-      table_data += '<tr>';
-  
-      table_data += '<td>' + value.parameter + '</td>';
-      table_data += '<td>' + value.actual + '</td>';
-      table_data += '</tr>';
-  
+
+        table_data += '<tr>';
+
+        table_data += '<td>' + value.parameter + '</td>';
+        table_data += '<td>' + value.actual + '</td>';
+        table_data += '</tr>';
+
     });
     $('#tps_card_body').append(table_data);
-  
-  }
+
+}
 

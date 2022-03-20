@@ -235,6 +235,8 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
+            minimum:1400,
+            maximum:2600
         },
         data: [{
             type: $("#chartsteamdata1 option:selected").val(),
@@ -296,7 +298,9 @@ function loadDoughnutChart(data) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             color: "white",
-            fontFamily: "Bahnschrift Light"
+            fontFamily: "Bahnschrift Light",
+            // fontColor :"white"
+           fontColor :data.colorcode == "none"? "white":data.colorcode,
 
         },
         axisY: {
@@ -408,8 +412,9 @@ function loadDoughnutChartProgress2(data) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             color: "white",
-            fontFamily: "Bahnschrift Light"
-
+            fontFamily: "Bahnschrift Light",
+            // fontColor : "white"
+           fontColor :data.colorcode == "none"? "white":data.colorcode,
         },
         axisY: {
             title: "Units",

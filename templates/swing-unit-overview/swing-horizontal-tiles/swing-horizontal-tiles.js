@@ -45,7 +45,8 @@ function loadpiechartswing(fuelConsumed) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 100,
-            fontColor: "#f2f2f2",
+            // fontColor: "#f2f2f2",
+            fontColor : fuelConsumed.colorcode == "none"? "white":fuelConsumed.colorcode,
             fontFamily: "Bahnschrift Light"
         },
         legend: {
@@ -126,7 +127,8 @@ function loadDoughnutHoriChartswing1(energyConsumed) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 500,
-            fontColor: "#f2f1e7",
+            // fontColor: "#f2f1e7",
+            fontColor : energyConsumed.colorcode == "none"? "white":energyConsumed.colorcode,
             fontFamily: "Bahnschrift Light"
         },
 
@@ -167,9 +169,9 @@ function guagevalueswingAct() {
         method: "GET",
         url: 'http://localhost:8090/EmsPNC/SWING/specificenergyConsumption',
     }).done(function (data) {
-        document.getElementById("devswing").innerHTML = data.deviation + "%";
-        document.getElementById("actswing").innerHTML = data.actual;
-        document.getElementById("optswing").innerHTML = data.reference;
+        document.getElementById("devswing").innerHTML = data.deviation.toFixed(2) + "%";
+        document.getElementById("actswing").innerHTML = data.actual.toFixed(2);
+        document.getElementById("optswing").innerHTML = data.reference.toFixed(2);
     });
 
 }

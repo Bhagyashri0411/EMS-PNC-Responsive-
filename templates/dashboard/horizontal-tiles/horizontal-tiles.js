@@ -59,7 +59,8 @@ function loadDoughnutChart(data) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 700,
-            fontColor: "#f2f2f2",
+            // fontColor :"white",
+           fontColor :data.colorcode == "none"? "white":data.colorcode,
             fontFamily: "Bahnschrift Light"
         },
         legend: {
@@ -208,6 +209,7 @@ function getcardhome1() {
 
 
         document.getElementById("resulthome1").innerHTML = data.currentvalue;
+      document.getElementById("countHorizon1").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref1").innerHTML = data.refvalue;
         document.getElementById("countHorizon1").innerHTML = data.kpivalue;
         if (data.currentvalue > 0) {
@@ -243,6 +245,7 @@ function getcardhome2() {
     }).done(function (data) {
 
         document.getElementById("resulthome2").innerHTML = data.currentvalue;
+        document.getElementById("countHorizon2").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref2").innerHTML = data.refvalue;
         document.getElementById("countHorizon2").innerHTML = data.kpivalue;
         if (data.currentvalue > 0) {
@@ -279,6 +282,7 @@ function getcardhome3() {
         document.getElementById("resulthome3").innerHTML = data.currentvalue;
         document.getElementById("ref3").innerHTML = data.refvalue;
         document.getElementById("countHorizon3").innerHTML = data.kpivalue;
+      document.getElementById("countHorizon3").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("resulthome3").innerHTML = "+" + data.currentvalue;
         }
