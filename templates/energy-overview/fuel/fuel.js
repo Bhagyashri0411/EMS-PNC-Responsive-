@@ -23,7 +23,6 @@ $(document).ready(function () {
     d.setMinutes(00);
     d.setSeconds(0);
     $('#PNCfuelfrom').val(d.toJSON().slice(0, 19));
-    console.log(d.toJSON().slice(0, 19),'fgfgf');
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
     tod.setHours(18);
     tod.setMinutes(29);
@@ -63,7 +62,7 @@ function getSpecificFuelPNCData() {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
         formatSpecificFuelPNCData(data, Difference_In_Days);
-         
+
     })
 }
 
@@ -103,13 +102,98 @@ function getFuelDoughnutData() {
         data: postdata,
 
         url: "http://localhost:8090/EmsPNC/auth/Fuel/totalfuelconsumed",
-
     }).done(function (data) {
-        loadDoughnutChartFuel(data);
+        if (myJSON.uom == 'INR/hr') {
+
+            loadDoughnutChartFuelINR(data);
+        }
+        else {
+
+            loadDoughnutChartFuel(data);
+        }
     })
+        .fail(function () {
+            var faildata = {};
+            var faildata = { 'liquid': 100, 'gas': 156, 'total': 277 }
+            console.log(postdata, 'hiii');
+            var faildata = { 'bfo': 100, 'rlng': 156, 'total': 277, 'off': 100, 'hsd': 100, 'Grease': 90 }
+
+            if (myJSON.uom == 'INR/hr')
+                if (myJSON.uom == 'INR/hr') {
+
+
+                    loadDoughnutChartFuelINR(faildata);
+
+                }
+                else {
+                    loadDoughnutChartFuel(faildata);
+                }
+        })
 
 }
+function loadDoughnutChartFuelINR(data) {
+    CanvasJS.addColorSet("greenShades", [ //colorSet Array
+        "#ffa600",
+        "#ffa600",
+        "#ffa600",
 
+        "#00aa7e",
+        "#00aa7e",
+
+
+        //  "#ffa600",
+        // "#00aa7e",
+        // "#00aa7e",
+        // "#00aa7e",
+        // "#005374",
+        // "#005374",
+        // "#005374",
+
+    ]);
+    var dataPoints = [];
+    var chart = new CanvasJS.Chart("doughnutChart", {
+        colorSet: "greenShades",
+        height: 150,
+        // width: 180,
+        theme: "dark1",
+        backgroundColor: "#26293c",
+        title: {
+            text: data[0].total.toFixed(2),
+            verticalAlign: "center",
+            dockInsidePlotArea: true,
+            fontSize: 15,
+            fontWeight: 700,
+            // fontColor : "white",
+     fontColor :data[0].colorcode == "none"? "white":data[0].colorcode,
+            fontFamily: "Bahnschrift Light"
+
+        },
+        axisY: {
+            title: "Units",
+            titleFontSize: 24,
+            includeZero: true
+
+        },
+        data: [{
+            type: "doughnut",
+            // showInLegend: true,
+            // toolTipContent: " {name}:{y}%",
+            // indexLabel: " {y}%",
+            yValueFormatString: "0.00#",
+            indexLabelPlacement: "outside",
+            startAngle: 64,
+            dataPoints: [
+                { y: data[0].bfo, name: "BFO", indexLabel: ((data[0].bfo / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].hsd, name: "HSD", indexLabel: ((data[0].hsd / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].Grease, name: "GREASE", indexLabel: ((data[0].Grease / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].off, name: "OFFGAS", indexLabel: ((data[0].off / data[0].total) * 100).toFixed(2) + "%" },
+                { y: data[0].rlng, name: "RLNG", indexLabel: ((data[0].rlng / data[0].total) * 100).toFixed(2) + "%" },
+            ]
+        }]
+    });
+
+    chart.render();
+}
 function loadDoughnutChartFuel(data) {
     CanvasJS.addColorSet("greenShades", [ //colorSet Array
 
@@ -129,7 +213,8 @@ function loadDoughnutChartFuel(data) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 300,
-            fontColor: "#f2f1e7",
+            // fontColor : "white",
+             fontColor :data[0].colorcode == "none"? "white":data[0].colorcode,
             fontFamily: "Bahnschrift Light"
 
         },
@@ -198,6 +283,8 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
+            minimum:1400,
+            maximum:2600
         },
         data: [{
             type: $("#chartType1 option:selected").val(),
@@ -210,7 +297,7 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
 
         },
         {
-            type: $("#chartType option:selected").val(),            
+            type: $("#chartType option:selected").val(),
             color: "#ED7E31",
             name: "Specific Fuel Consumption",
             markerSize: 0,
@@ -249,6 +336,7 @@ function loadCardfuel1() {
     }).done(function (data) {
         console.log(data, "321222");
         document.getElementById("count_fuel1").innerHTML = data.tagvalue;
+        document.getElementById("count_fuel1").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref_fuel1").innerHTML = data.refvalue;
         if (data.currentvalue > 0) {
             document.getElementById("result_fuel1").innerHTML = "+" + data.currentvalue;
@@ -283,6 +371,7 @@ function loadCardfuel2() {
     }).done(function (data) {
         console.log(data, "321222");
         document.getElementById("count_fuel2").innerHTML = data.tagvalue;
+       document.getElementById("count_fuel2").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref_fuel2").innerHTML = data.refvalue;
         if (data.currentvalue > 0) {
             document.getElementById("result_fuel2").innerHTML = "+" + data.currentvalue;

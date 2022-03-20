@@ -112,7 +112,9 @@ function steamPotential() {
     }).done(function (data) {
         document.getElementById("num").innerHTML = data[0].value
         document.getElementById("num-Actual").innerHTML = data[0].actual
+        document.getElementById("num-Actual").style.color =data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById("num-Optimum").innerHTML = data[0].optimum
+        document.getElementById("num-Optimum").style.color =data[0].colorcode == "none" ? "white" : data[0].colorcode;
 
     });
 }

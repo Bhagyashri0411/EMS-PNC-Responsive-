@@ -244,7 +244,7 @@ function Watercard2() {
         document.getElementById("result0").innerHTML = data.currentvalue;
         document.getElementById("ref0").innerHTML = data.refvalue;
         document.getElementById("count0").innerHTML = data.tagvalue;
-        document.getElementById("count0").style.color = data.colorcode == "none" ? "white" : data.colorcode;
+       document.getElementById("count0").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result0").innerHTML = "+" + data.currentvalue;
         }
@@ -319,7 +319,7 @@ function Watercard4() {
         document.getElementById("result3").innerHTML = data.currentvalue;
         document.getElementById("ref3").innerHTML = data.refvalue;
         document.getElementById("count3").innerHTML = data.tagvalue;
-        document.getElementById("count3").style.color = data.colorcode == "none" ? "white" : data.colorcode;
+       document.getElementById("count3").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result3").innerHTML = "+" + data.currentvalue;
         }
@@ -356,7 +356,7 @@ function Watercard5() {
         document.getElementById("result4").innerHTML = data.currentvalue;
         document.getElementById("ref4").innerHTML = data.refvalue;
         document.getElementById("count4").innerHTML = data.tagvalue;
-        document.getElementById("count4").style.color = data.colorcode == "none" ? "white" : data.colorcode;
+     document.getElementById("count4").style.color = data.colorcode == "none" ? "white" : data.colorcode;
         if (data.currentvalue > 0) {
             document.getElementById("result4").innerHTML = "+" + data.currentvalue;
         }

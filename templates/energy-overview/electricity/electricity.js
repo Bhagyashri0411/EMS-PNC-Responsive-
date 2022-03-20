@@ -122,6 +122,8 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
+            minimum: 1400,
+            maximum: 2600
         },
         toolTip: {
             shared: true  //disable here. 
@@ -209,7 +211,9 @@ function loadDoughnutChartelectricityProgress2(data) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             color: "white",
-            fontFamily: "Bahnschrift Light"
+            fontFamily: "Bahnschrift Light",
+            // fontColor : "white"
+            fontColor: data[0].colorcode == "none" ? "white" : data[0].colorcode,
 
         },
         axisY: {
@@ -240,6 +244,7 @@ function getcardElectricity1() {
     }).done(function (data) {
         console.log(data, "data1");
         document.getElementById("count_ele1").innerHTML = data[0].tagvalue;
+        document.getElementById("count_ele1").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById("ref_ele1").innerHTML = data[0].refvalue;
         if (data[0].currentvalue > 0) {
             document.getElementById("result_ele1").innerHTML = '+' + data[0].currentvalue;
@@ -270,6 +275,7 @@ function getcardElectricity2() {
     }).done(function (data) {
         console.log(data, "data2");
         document.getElementById("count_ele2").innerHTML = data[0].tagvalue;
+        document.getElementById("count_ele2").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById("ref_ele2").innerHTML = data[0].refvalue;
         if (data[0].currentvalue > 0) {
             document.getElementById("result_ele2").innerHTML = '+' + data[0].currentvalue;
@@ -299,6 +305,7 @@ function getcardElectricity3() {
     }).done(function (data) {
         console.log(data, "data3");
         document.getElementById("count_ele3").innerHTML = data[0].tagvalue;
+        document.getElementById("count_ele3").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         document.getElementById("ref_ele3").innerHTML = data[0].refvalue;
         if (data[0].currentvalue > 0) {
             document.getElementById("result_ele3").innerHTML = '+' + data[0].currentvalue;
@@ -326,8 +333,8 @@ function getcardElectricity4() {
         url: 'http://localhost:8090/EmsPNC/auth/electricity/ElectricityGenerationCost',
         method: "GET"
     }).done(function (data) {
-        console.log(data, "data4");
         document.getElementById("count_ele4").innerHTML = data[0].tagvalue;
+        document.getElementById("count_ele4").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
         $(".result").each(function () {
             var text = $(this).text();
             if (/[+-]?\d+(\.\d+)?/.test(text)) {
@@ -352,6 +359,7 @@ function getcardElectricity5() {
     }).done(function (data) {
         console.log(data, "data4");
         document.getElementById("count_ele5").innerHTML = data[0].value;
+        document.getElementById("count_ele5").style.color = data[0].colorcode == "none" ? "white" : data[0].colorcode;
     });
 }
 var max1 = 100;

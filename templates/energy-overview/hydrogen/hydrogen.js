@@ -218,6 +218,7 @@ function hydrogencard1() {
 
     }).done(function (data) {
         document.getElementById("count_hydro1").innerHTML = data.tagvalue;
+        document.getElementById("count_hydro1").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref_hydro1").innerHTML = data.refvalue;
         if (data.currentvalue > 0) {
             document.getElementById("result_hydro1").innerHTML = "+" + data.currentvalue;
@@ -246,6 +247,7 @@ function hydrogencard2() {
 
     }).done(function (data) {
         document.getElementById("count_hydro2").innerHTML = data.tagvalue;
+        document.getElementById("count_hydro2").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref_hydro2").innerHTML = data.refvalue;
         if (data.currentvalue > 0) {
             document.getElementById("result_hydro2").innerHTML = "+" + data.currentvalue;
@@ -274,7 +276,7 @@ function hydrogencard3() {
 
     }).done(function (data) {
         document.getElementById("count_hydro3").innerHTML = data.tagvalue;
-
+        document.getElementById("count_hydro3").style.color =data.colorcode == "none" ? "white" : data.colorcode;
     })
 }
 function hydrogencard4() {
@@ -284,24 +286,6 @@ function hydrogencard4() {
 
     }).done(function (data) {
         document.getElementById("count_hydro4").innerHTML = data.tagvalue;
-        // document.getElementById("ref_hydro4").innerHTML = data.refvalue;
-        // if (data.currentvalue > 0) {
-        //     document.getElementById("result_hydro4").innerHTML = "+" + data.currentvalue;
-        // }
-        // else {
-        //     document.getElementById("result_hydro4").innerHTML = data.currentvalue;
-        // }
-        // $(".result").each(function () {
-        //     var text = $(this).text();
-        //     if (/[+-]?\d+(\.\d+)?/.test(text)) {
-        //         var num = parseFloat(text);
-        //         if (num < 0) {
-        //             $(this).addClass("red");
-        //         } else if (num > 0) {
-        //             $(this).addClass("green");
-        //         }
-
-        //     }
-        // });
+        document.getElementById("count_hydro4").style.color =data.colorcode == "none" ? "white" : data.colorcode;
     })
 }

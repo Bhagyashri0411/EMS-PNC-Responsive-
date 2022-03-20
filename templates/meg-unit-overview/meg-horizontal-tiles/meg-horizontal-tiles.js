@@ -115,6 +115,7 @@ function cardmeg1() {
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-meg1").innerHTML = data.TotalSteamConsumption;
+        document.getElementById("count-meg1").style.color =data.colorcode == "none" ? "white" : data.colorcode;
     })
         
 }
@@ -157,7 +158,8 @@ function loadDoughnutChartmeg(energyConsumed) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 500,
-            fontColor: "#f2f1e7",
+            // fontColor: "#f2f1e7",
+            fontColor :energyConsumed.colorcode == "none"? "white":energyConsumed.colorcode,
             fontFamily: "Bahnschrift Light"
         },
 

@@ -104,6 +104,7 @@ function cardpp1() {
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp1").innerHTML = data.tagvalue;
+        document.getElementById("count-pp1").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref-pp1").innerHTML = data.refvalue;
         if (data.currentvalue > 0) {
             document.getElementById("result-pp1").innerHTML = "+" + data.currentvalue;
@@ -131,6 +132,7 @@ function cardpp2() {
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp2").innerHTML = data.tagvalue;
+        document.getElementById("count-pp2").style.color =data.colorcode == "none" ? "white" : data.colorcode;
         document.getElementById("ref-pp2").innerHTML = data.refvalue;
         if (data.currentvalue > 0) {
             document.getElementById("result-pp2").innerHTML = "+" + data.currentvalue;
@@ -158,6 +160,7 @@ function cardpp3() {
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp3").innerHTML = data.totalelectricityConsumption;
+        document.getElementById("count-pp3").style.color =data.colorcode == "none" ? "white" : data.colorcode;
     })
 }
 function cardpp4() {
@@ -166,6 +169,7 @@ function cardpp4() {
         method: "GET"
     }).done(function (data) {
         document.getElementById("count-pp4").innerHTML = data.totalelectricityConsumptionshp;
+        document.getElementById("count-pp4").style.color =data.colorcode == "none" ? "white" : data.colorcode;
     })
 }
 function getDoughnutpp() {
@@ -210,7 +214,8 @@ function loadDoughnutChartpp(energyConsumed) {
             verticalAlign: "center",
             dockInsidePlotArea: true,
             fontWeight: 500,
-            fontColor: "#f2f1e7",
+            // fontColor: "#f2f1e7",
+            fontColor : energyConsumed.colorcode == "none"? "white":energyConsumed.colorcode,
             fontFamily: "Bahnschrift Light"
         },
 
