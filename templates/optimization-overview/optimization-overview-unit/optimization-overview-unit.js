@@ -87,7 +87,7 @@ function formatSpecificOptConsumptionData(data, Difference_In_Days) {
 
 function showSpecificOptConsumptionChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("SVOptimizationsecgraph", {
-        height: 200,
+        height: 220,
         animationEnabled: true,
         theme: "dark1",
         backgroundColor: " #26293c",
