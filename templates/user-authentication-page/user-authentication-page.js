@@ -122,7 +122,7 @@ function saveTable() {
                 "Content-Type": "application/json",
                 "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
             },
-            url: "https://192.168.1.120:8090/insertuserdetails",
+            url: "http://localhost:8090/EMSPNC/insertuserdetails",
             data: rowdata1,
             success: function (msg) {
 
@@ -163,31 +163,32 @@ function getCalculatedTag() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "https://192.168.1.120:8090/getalldata",
+        url: "http://localhost:8090/EMSPNC/getalldata",
     }).done(function (data) {
         fetchgetCalculatedTag(data)
 
     })
-        .fail(function () {
-            var dummyjson = [{
-                "username": "priyanka@iocl",
-        "role": "systemadmin",
-        "role_id": 1,
-        "employee_name": "Priyanka Wagh",
-        "email_id": "priyankawagh31@gmail.com",
-        "email_notification": true,
-        "password": "priyanka123",
-        "mobile_no": 8999.0,
-        "login_time": "2022-03-15T15:00:00",
-        "logout_time": "2022-03-15T15:00:00",
-        "status": "Active",
-        "token": 123,
-        "user_type": "L-Dap"               
-            }]
-            fetchgetCalculatedTag(dummyjson)
-        });
+        // .fail(function () {
+        //     var dummyjson = [{
+        //         "username": "priyanka@iocl",
+        // "role": "systemadmin",
+        // "role_id": 1,
+        // "employee_name": "Priyanka Wagh",
+        // "email_id": "priyankawagh31@gmail.com",
+        // "email_notification": true,
+        // "password": "priyanka123",
+        // "mobile_no": 8999.0,
+        // "login_time": "2022-03-15T15:00:00",
+        // "logout_time": "2022-03-15T15:00:00",
+        // "status": "Active",
+        // "token": 123,
+        // "user_type": "L-Dap"               
+        //     }]
+        //     fetchgetCalculatedTag(dummyjson)
+        // });
 }
 function fetchgetCalculatedTag(data) {
+    console.log(data,"hjhji");
     var tabledata = data;
     var student = '';
     student += '<tr>';
@@ -236,7 +237,7 @@ $('#updateRowBtn').click(function () {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "POST",
-        url: "https://192.168.1.120:8090/updateuserdetails",
+        url: "http://localhost:8090/EMSPNC/updateuserdetails",
         data: JSON.stringify(updateRow),
         success: function (msg) {
             var status = msg.status;
@@ -284,7 +285,7 @@ function userdeletedata() {
                 // "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
             },
             data: JSON.stringify(deletedRowemail),
-            url: "https://192.168.1.120:8090/deleteuserdetails",
+            url: "http://localhost:8090/EMSPNC/deleteuserdetails",
             success: function (msg) {
                 if (msg.status == "Record deleted Sucessfully") {
                     getCalculatedTag();
@@ -318,38 +319,38 @@ function sampledownloaduser() {
 }
 
 // download csv
-function exportFunction() {
-    $.ajax({
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
-        },
-        method: "GET",
-        url: "http://192.168.1.117:8090/auth/ManualEntry/getData",
-    }).done(function (data) {
+// function exportFunction() {
+//     $.ajax({
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
+//         },
+//         method: "GET",
+//         url: "http://localhost:8090/EMSPNC/auth/ManualEntry/getData",
+//     }).done(function (data) {
 
-        console.log(data)
-        const csvRows = [];
-        const headers = "description,reference_value,manual_tag_name,uom,Timestamp";
-        csvRows.push(headers);
-        console.log(data, "name");
-        for (const row of data) {
-            csvRows.join('\n');
-            var abc = '\n' + row.description + ',' + row.reference_value + ',' + row.manual_tag_name + ',' + row.uom + ',' + row.timestamp;
-            csvRows.push(abc);
-        }
-        console.log(csvRows, "name");
-        const blob = new Blob(csvRows, { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.setAttribute('hidden', '');
-        a.setAttribute('href', url);
-        a.setAttribute('download', 'User-manual.csv');
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    });
-}
+//         console.log(data)
+//         const csvRows = [];
+//         const headers = "description,reference_value,manual_tag_name,uom,Timestamp";
+//         csvRows.push(headers);
+//         console.log(data, "name");
+//         for (const row of data) {
+//             csvRows.join('\n');
+//             var abc = '\n' + row.description + ',' + row.reference_value + ',' + row.manual_tag_name + ',' + row.uom + ',' + row.timestamp;
+//             csvRows.push(abc);
+//         }
+//         console.log(csvRows, "name");
+//         const blob = new Blob(csvRows, { type: 'text/csv' });
+//         const url = window.URL.createObjectURL(blob);
+//         const a = document.createElement('a');
+//         a.setAttribute('hidden', '');
+//         a.setAttribute('href', url);
+//         a.setAttribute('download', 'User-manual.csv');
+//         document.body.appendChild(a);
+//         a.click();
+//         document.body.removeChild(a);
+//     });
+// }
 
 // upload csv code
 var form = document.getElementById('form_ip');
@@ -367,7 +368,7 @@ form.onsubmit = function (event) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://192.168.1.117:8090/auth/ManualEntry/upload-csv-fileManualTag', true);
+    xhr.open('POST', 'http://localhost:8090/EMSPNC/auth/ManualEntry/upload-csv-fileManualTag', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
             uploadButton.innerHTML = 'Upload';
