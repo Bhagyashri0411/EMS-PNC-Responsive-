@@ -122,7 +122,7 @@ function saveTable() {
                 "Content-Type": "application/json",
                 "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
             },
-            url: "https://192.168.1.119:8090/EMSPro/insertuserdetails",
+            url: "https://192.168.1.120:8090/insertuserdetails",
             data: rowdata1,
             success: function (msg) {
 
@@ -163,7 +163,7 @@ function getCalculatedTag() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "https://192.168.1.119:8090/EMSPro/getalldata",
+        url: "https://192.168.1.120:8090/getalldata",
     }).done(function (data) {
         fetchgetCalculatedTag(data)
 
@@ -236,7 +236,7 @@ $('#updateRowBtn').click(function () {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "POST",
-        url: "https://192.168.1.119:8090/EMSPro/updateuserdetails",
+        url: "https://192.168.1.120:8090/updateuserdetails",
         data: JSON.stringify(updateRow),
         success: function (msg) {
             var status = msg.status;
@@ -284,7 +284,7 @@ function userdeletedata() {
                 // "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
             },
             data: JSON.stringify(deletedRowemail),
-            url: "https://192.168.1.119:8090/EMSPro/deleteuserdetails",
+            url: "https://192.168.1.120:8090/deleteuserdetails",
             success: function (msg) {
                 if (msg.status == "Record deleted Sucessfully") {
                     getCalculatedTag();

@@ -10,10 +10,11 @@ $(document).ready(function () {
         }
 
     });
-    user1();
+    // user1();
 });
 function user1() {
-    document.getElementById("user").innerHTML = sessionStorage.getItem("roles");
+  var var1=  document.getElementById("user").innerHTML = sessionStorage.getItem("roles");  
+  console.log(var1 ,"fvrvfvrrgrg");
     if (sessionStorage.getItem("roles") == "ROLE_USER") {
         $('#energyOverviewRole').remove();
         $('#tpsUnitRole').remove();
@@ -45,5 +46,12 @@ function user1() {
        
        
       
+    }
+    if (sessionStorage.getItem("roles") == "user") {
+        $('#formulaUnitRole').remove();
+        $('#userAuth').remove();
+        $('#emailShow').remove();
+        $('#userUnitRole').remove();
+        
     }
 }

@@ -48,12 +48,12 @@ function lastupdatedTime() {
     var hoursString = sessionStorage.getItem("lastUpdateddate");
     var timeArray = hoursString.split(":");
     const dateVal = new Date(sessionStorage.getItem("lastUpdateddate"));
-    dateVal.setHours(01);
-    dateVal.setMinutes(00);
+    dateVal.setHours(05);
+    dateVal.setMinutes(30);
     dateVal.setSeconds(0);
     $("#fromHome1").val(dateVal.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
+    tod.setHours(29);
     tod.setMinutes(29);
     tod.setSeconds(0);
     $('#homeEms1').val(tod.toJSON().slice(0, 19));
