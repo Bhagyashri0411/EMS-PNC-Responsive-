@@ -1,0 +1,167 @@
+.Usermanual-tabb-2 table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+.Usermanual-tabb-2 th {
+    background-color: #432b64;
+    color: #d9d9d9;
+    font-weight: normal;
+    padding: 1vw;
+    top: 0;
+    position: sticky;
+}
+
+.Usermanual-tabb-2 td {
+    color: #d9d9d9;
+    text-align: left;
+    border-bottom: 1px solid #686a77;
+    padding: 1vw;
+}
+
+.Usermanual-tabb-2 td:nth-child(7) {
+    text-align: center;
+}
+
+.Usermanual-tabb-2 .editValues {
+    background: #432b64;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3vw 2vw;
+    color: #FFFFFF;
+}
+
+/* scroll css  */
+.Usermanual-tabb-2 .scroll {
+    width: 40%;
+    height: 280px;
+}
+
+.Usermanual-tabb-2 .genratorsHeight {
+    height: 35vw;
+    overflow: auto;
+}
+
+.Usermanual-tabb-2 ::-webkit-scrollbar {
+    width: 0.5vw;
+    height: 0.5vw;
+}
+
+.Usermanual-tabb-2 ::-webkit-scrollbar-track {
+    border: 1px solid #262A3C;
+    border-radius: 15px;
+}
+
+.Usermanual-tabb-2 ::-webkit-scrollbar-thumb {
+    background: #8d8a95;
+    border-radius: 15px;
+}
+
+.Usermanual-tabb-2 ::-webkit-scrollbar-thumb:hover {
+    background: #8d8a95;
+}
+
+.Usermanual-tabb-2 .btn-primary {
+    background-color: #432b64;
+    border: #432b64;
+}
+
+/* model  */
+.Usermanual-tabb-2 .modal .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.Usermanual-tabb-2 .modal .modal-content {
+    background-color: #fefefe;
+    margin: 12vw 18vw;
+    padding: 1vw;
+    box-shadow: none;
+    border: 2px solid #432b64;
+    border-radius: 10px;
+}
+
+.Usermanual-tabb-2 .modal .dropdown-menu {
+    max-height: 20rem;
+    overflow-y: auto;
+    max-width: 100%;
+    text-align: start;
+}
+
+.Usermanual-tabb-2 .modal #adduserclose, #closeuserupdate {
+    color: #432b64;
+    font-size: 2.5vw;
+    opacity: 1;
+    background: none;
+    height: 1vw;
+    border: none;
+    float: right;
+}
+
+.Usermanual-tabb-2 .modal .textstyle {
+    font-size: 1vw;
+    color: #000000;
+    font-weight: 600;
+}
+
+.Usermanual-tabb-2 .form-control {
+    height: 2vw;
+    padding: 0.3vw;
+    font-size: 0.9vw;
+    text-align: start;
+}
+
+.Usermanual-tabb-2 .modal .header {
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.Usermanual-tabb-2 .addbtn {
+    margin: 0vw 18vw;
+    background: #432b64;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3vw 2vw;
+    color: #FFFFFF;
+}
+
+.Usermanual-tabb-2 .selectWrapper {
+    width: 100%;
+    height: 2vw;
+    overflow: hidden;
+    position: relative; 
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.Usermanual-tabb-2 .selectWrapper select {
+    padding: 0.3vw;
+    font-size: 0.9vw;
+    line-height: 1.42857143;
+    width: 100%;
+    color: #555;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+}

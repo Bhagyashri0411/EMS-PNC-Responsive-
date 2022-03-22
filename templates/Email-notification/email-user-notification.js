@@ -16,7 +16,7 @@ $(document).ready(function () {
 function getAllKpidetails() {
     $.ajax({
         method: "GET",
-        url: "/",
+        url: "http://localhost:8090/EmsPNC/AllNotificationData",
 
     }).done(function (data) {
         console.log(data);
