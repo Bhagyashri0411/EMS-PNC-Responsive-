@@ -124,7 +124,9 @@
 #water-tab table th:last-child {
     text-align: end;
 }
-
+#water-tab table td:nth-child(3){
+    text-align: end;
+}
 #water-tab table td:first-child {
     /* text-align: end; */
     color: #d9d9d9;

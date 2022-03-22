@@ -1,0 +1,314 @@
+<link rel="stylesheet" href="templates/user-authentication-page/user-authentication-page.css" />
+<script src="templates/user-authentication-page/user-authentication-page.js"></script>
+<div class="col-md-12 Usermanual-tabb-2">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 card-col">
+                <div class="card">
+                    <div class="header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="searchSysConfing" style="color: #d9d9d9;">Search</label>
+                                <input type="text" id="searchSysConfing" class="searchInput" onkeyup="myFunction()"
+                                    placeholder="Search for Tag" title="Type in a name">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" onclick="usermodel()" style="margin:0 1vw;">
+                                        Add</button>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="btn btn-primary" onclick="userdeletedata()">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="card-body mt-4">
+                        <div class="overflow genratorsHeight">
+                            <table id="datatablesCalculatedTag1" class="DataTable">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th style="width: 8vw;">Role</th>
+                                        <th>Employee Name</th>
+                                        <th>Email Id</th>
+                                        <th>Email Notification</th>
+                                        <th>Mobile No.</th>
+                                        <th>Login_Time</th>
+                                        <th>Logout_Time</th>
+                                        <th>status</th>
+                                        <th>User Type</th>
+                                        <th>Edit</th>
+                                        <th style="width: 8vw;"><label for="deleteuserdata">&nbsp; Delete</label>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodytablesCalculatedTag" class="DataTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="AdduserRow">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <button id="adduserclose" onclick="adduserclose()">&times;</button>
+                </div>
+            </div>
+            <div class="header">
+                <span>Add Details</span>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12 card-col">
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> User Name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="inputColumnName" type="text"
+                                    placeholder="Enter User Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Role <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="selectWrapper" id="addUserRole" aria-label="Default select example">
+                                    <option value="user"> User</option>
+                                    <option value="admin"> Admin</option>
+                                    <option value="superadmin"> Super Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Employee Name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="addUserName" type="text" placeholder="Enter First Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Email Id <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="addEmailId" type="text"
+                                    placeholder="Enter Email Id" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Email Notification <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="selectWrapper" id="addEmailNotification" aria-label="Default select example">
+                                    <option value="true"> True</option>
+                                    <option value="false"> False</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Mobile No <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control" id="addMobile" type="number"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> User Type <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="selectWrapper" id="addUserType" aria-label="Default select example">
+                                    <option value="L-Dap"> L-Dap</option>
+                                    <option value="Local"> Local</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-14" id="addlocalPassword" style="display: none">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle">Password <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="password" id="addempPassword" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <span class="error" style="color: green;" id="eTable"></span>
+                            <span class="error" style="color: red;" id="eTableerroe"></span>
+                        </div>
+                        <input class="btn btn-primary " onclick="saveTable()" type="button" value="Insert" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="updateRow">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <button onclick="closeuserupdate()" id="closeuserupdate">&times;</button>
+                </div>
+            </div>
+            <div class="header">
+                <span> Update Details</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12 card-col">
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> User Name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="tagNamep" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Role <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="selectWrapper" id="tagValuep" aria-label="Default select example">
+                                    <option value="user"> User</option>
+                                    <option value="admin"> Admin</option>
+                                    <option value="superadmin"> Super Admin</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Employee Name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="empName" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Emp Last Name <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="discriptionp" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div> -->
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Email Id <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="empEmailId" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> Email Notification <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="selectWrapper" id="empEmailnotificaton" aria-label="Default select example">
+                                    <option value="true"> True</option>
+                                    <option value="false"> False</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle">Mobile No. <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="number" id="empMobileNo" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle"> User Type <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="selectWrapper" id="userType" aria-label="Default select example">
+                                    <option value="Local">Local</option>
+                                    <option value="L-Dap"> L-Dap</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14" id="localPassword" style="display: none">
+                        <div class="row">
+                            <div class="col-md-2  mt-5">
+                                <span class="textstyle">Password <span class="pull-right">:</span></span>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="password" id="empPassword" class="form-control">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mt-14">
+                        <button class="addbtn btn btn-primary" id="updateRowBtn"> save</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
