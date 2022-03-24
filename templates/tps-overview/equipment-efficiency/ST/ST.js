@@ -87,7 +87,7 @@ function getSpecificSTBarData() {
 
 function showSpecificSTBarChart(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("chartContainerST", {
-        height: 230,
+        // height: 230,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
@@ -183,7 +183,7 @@ function getSpecificSTData() {
 
 function showSpecificSTChart(data, Difference_In_Days1, interval1) {
     var chart = new CanvasJS.Chart("ST-line", {
-        height: 230,
+        // height: 230,
         theme: "dark1",
         backgroundColor: "#26293c",
         title: {
