@@ -7,7 +7,7 @@ $(document).ready(function () {
 function pncpsvg() {
     $.ajax({
         type: "GET",
-        url: "http://192.168.1.109:8090/Network-Diagram/UpgradSteamNetworkSystem",
+        url: "http://localhost:8090/EmsPNC/Network-Diagram/UpgradSteamNetworkSystem",
     }).done(function (data) {
         //addData(data);
         var keysArray = Object.keys(data);
