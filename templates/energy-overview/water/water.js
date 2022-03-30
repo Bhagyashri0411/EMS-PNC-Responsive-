@@ -28,14 +28,14 @@ $(document).ready(function () {
     var hoursString = sessionStorage.getItem("lastUpdateddate").split(' ')[1];
     var timeArray = hoursString.split(':');
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
 
     $('#fromwater').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setSeconds(59);
     tod.setSeconds(0);
     $('#towater').val(tod.toJSON().slice(0, 19));
 
@@ -99,7 +99,7 @@ function showSpecificwaterConsumptionChart(data, Difference_In_Days, interval) {
             //valueFormatString: "DD MMM" ,
             title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
-            labelAngle: -20
+            //labelAngle: -20
         },
         axisY: {
             gridColor: "gray",

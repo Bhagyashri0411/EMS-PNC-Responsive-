@@ -20,14 +20,14 @@ $(document).ready(function () {
 
     // // setting from date, to date - 24hrs.   
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromelectricity').val(d.toJSON().slice(0, 19));
     console.log(d, 'daa');
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setSeconds(59);
     tod.setSeconds(0);
     $('#toelectricity').val(tod.toJSON().slice(0, 19));
     document.getElementById("toelectricity").min = $('#fromelectricity').val();
@@ -99,7 +99,8 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             //valueFormatString: "DD MMM" ,
             title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
-            labelAngle: -20,
+            //labelAngle: -20,
+            labelFontSize: 12,
             titleFontSize: 14,
         },
         dataPointMaxWidth: 15,

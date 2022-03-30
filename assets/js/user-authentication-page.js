@@ -1,10 +1,20 @@
 $(document).ready(function () {
+  var token = sessionStorage.getItem('accessToken');
+  var decoded = jwt_decode(token);
+  console.log(decoded,'decode');
+
+
+if (sessionStorage.getItem('user') != decoded.sub) {
+  sessionStorage.clear();
+  $(location).prop('href', 'login.html')
+} else {
   $("#bs-example-navbar-collapse-1").load("/../templates/nav/nav.html", function () {
     // alert('navigation loaded');
+    document.getElementById("user").innerHTML = sessionStorage.getItem("user");
   });
   $("#left-sidebar").load("/../templates/left-sidebar/left-sidebar.html");
   $("#user-authentication-page").load("/../templates/user-authentication-page/user-authentication-page.html");
-
+}
 
   //     // totalThroughput();
   //     // lastupdatedTime();

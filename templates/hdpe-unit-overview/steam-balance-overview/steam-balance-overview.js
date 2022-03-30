@@ -14,13 +14,13 @@ $(document).ready(function () {
         hdpesteamoverview();
     });
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromHomehdpe').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setSeconds(59);
     tod.setSeconds(0);
     $('#toHomehdpe').val(tod.toJSON().slice(0, 19));
     document.getElementById("toHomehdpe").min = $('#fromHomehdpe').val();

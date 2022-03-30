@@ -1,8 +1,18 @@
 $(document).ready(function() {
     // totalThroughput();
     // lastupdatedTime();
+    var token = sessionStorage.getItem('accessToken');
+    var decoded = jwt_decode(token);
+    console.log(decoded, 'decode');
+
+
+    if (sessionStorage.getItem('user') != decoded.sub) {
+        sessionStorage.clear();
+        $(location).prop('href', 'login.html')
+    } else {
     $("#bs-example-navbar-collapse-1").load("/../templates/nav/nav.html", function() {
         // alert('navigation loaded');
+        document.getElementById("user").innerHTML = sessionStorage.getItem("user");
     });
     $("#left-sidebar").load("/../templates/left-sidebar/left-sidebar.html");
     $("#Defaultpage-title").load("/../templates/Defaultpage/Defaultpage-title.html");
@@ -15,6 +25,7 @@ $(document).ready(function() {
         $(target).load("/../templates/npru-unit-overview/" + fileName + "/" + fileName + ".html", function() {});
 
     });
+}
 });
 function Truncated(){  
     $.ajax({
