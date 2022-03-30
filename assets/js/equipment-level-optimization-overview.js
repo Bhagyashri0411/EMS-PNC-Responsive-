@@ -1,22 +1,32 @@
-$(document).ready(function () {
-    // lastupdatedTime();
-    $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function () {
-        // alert('navigation loaded');
+$(document).ready(function() {
+    var token = sessionStorage.getItem('accessToken');
+        var decoded = jwt_decode(token);
+        console.log(decoded,'decode');
+
+
+    if (sessionStorage.getItem('user') != decoded.sub) {
+        sessionStorage.clear();
+        $(location).prop('href', 'login.html')
+      } else {
+   
+        
+    $("#bs-example-navbar-collapse-1").load("./../templates/nav/nav.html", function() {
+        document.getElementById("user").innerHTML = sessionStorage.getItem("user");
     });
-    $("#left-sidebar").load("./../../templates/left-sidebar/left-sidebar.html");
+    $("#left-sidebar").load("./../templates/left-sidebar/left-sidebar.html");
 
     $("#steam-generators").load("./../../templates/equipment-level-optimization-overview/steam-generators/steam-generators.html");
-    $('#eqipment-level-tab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('#eqipment-level-tab a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         var target = $(e.target).attr("href")
         var fileName = target.substring(1);
-        $(target).load("./../../templates/equipment-level-optimization-overview/" + fileName + "/" + fileName + ".html", function () { });
+        $(target).load("./../../templates/equipment-level-optimization-overview/" + fileName + "/" + fileName + ".html", function() {});
 
     });
-    const b = new Date(sessionStorage.getItem("lastUpdateddate"));
-    console.log(b, 'b');
-    const dmonth = b.getMonth() + 1;
-    const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
-    document.getElementById("equOptTime").innerHTML = setdate;
+}
+const v = sessionStorage.getItem("lastUpdateddate");
+const d =new Date(v);
+const dmonth = d.getMonth()+1;
+document.getElementById("equOptTime").innerHTML = String(d.getDate()).padStart(2,'0')+"-"+String(dmonth).padStart(2,'0')+"-"+d.getFullYear()+" "+String(d.getHours()).padStart(2,'0')+":"+String(d.getMinutes()).padStart(2,'0')+":"+String(d.getSeconds()).padStart(2,'0');
 });
 // function lastupdatedTime(data) {
 //     // $.ajax({

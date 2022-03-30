@@ -8,20 +8,19 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>IOCL</title>
-    <link rel="stylesheet" rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="./assets/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" rel="stylesheet" href="./../assets/css/bootstrap.min.css">
+    <link href="./../assets/css/jsdelivr-style.css" rel="stylesheet" />
+    <link href="./../assets/css/styles.css" rel="stylesheet" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-    
-    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="./../assets/js/Chart.min.js"></script>
+
+    <script src="./../assets/js/jquery-1.11.1.min.js"></script>
     <!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
-    <script src="./assets/Canvasjs/canvasjs.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="./../../assets/Canvasjs/canvasjs.min.js"></script>
+    <script src="./../assets/js/jwt-decode.js"></script>
+    <script src="./../assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./../assets/css/font-awesome.min.css" />
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />  -->
     <script src="./assets/js/energy-overview.js"></script>
     <script src="./../../templates/nav/nav.js"></script>
     <link href="./../../templates/nav/nav.css" rel="stylesheet" />
@@ -48,7 +47,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div id="bs-example-navbar-collapse-1"></div>
-                        <!-- <li class="logo">
+                    <!-- <li class="logo">
                             <img src="../../assets/img/indian-oil-logo.PNG" alt="">
                         </li>
                     </ul> -->
@@ -60,20 +59,21 @@
         <!-- loading navbar here dynamically -->
     </div>
 
-    <div class="container-fluid ope1" >
+    <div class="container-fluid ope1">
         <div class="row summary-heading">
             <div class="col-md-6">
                 <ul class="nav nav-tabs energy-overview-purple" role="tablist" id="energy-tab">
-                    <li role="presentation" class="active"><a href="#fuel"  onclick="Truncated()" aria-controls="Fuel" role="tab"
-                            data-toggle="tab">Fuel</a></li>
-                    <li role="presentation"><a href="#electricity"  onclick="Truncated()" aria-controls="Electricity" role="tab"
-                            data-toggle="tab">Electricity</a></li>
-                    <li role="presentation"><a href="#steam"  onclick="Truncated()" aria-controls="Steam" role="tab"
+                    <li role="presentation" class="active"><a href="#fuel" onclick="Truncated()" aria-controls="Fuel"
+                            role="tab" data-toggle="tab">Fuel</a></li>
+                    <li role="presentation"><a href="#electricity" onclick="Truncated()" aria-controls="Electricity"
+                            role="tab" data-toggle="tab">Electricity</a></li>
+                    <li role="presentation"><a href="#steam" onclick="Truncated()" aria-controls="Steam" role="tab"
                             data-toggle="tab">Steam</a></li>
-                    <li role="presentation"><a href="#hydrogen"  onclick="Truncated()" aria-controls="Hydrogen" role="tab"
-                            data-toggle="tab">Hydrogen</a></li>
-                    <li role="presentation"><a href="#air"  onclick="Truncated()" aria-controls="Air" role="tab" data-toggle="tab">Air</a></li>
-                    <li role="presentation"><a href="#water"  onclick="Truncated()" aria-controls="Water" role="tab"
+                    <li role="presentation"><a href="#hydrogen" onclick="Truncated()" aria-controls="Hydrogen"
+                            role="tab" data-toggle="tab">Hydrogen</a></li>
+                    <li role="presentation"><a href="#air" onclick="Truncated()" aria-controls="Air" role="tab"
+                            data-toggle="tab">Air</a></li>
+                    <li role="presentation"><a href="#water" onclick="Truncated()" aria-controls="Water" role="tab"
                             data-toggle="tab">Water</a></li>
                 </ul>
             </div>

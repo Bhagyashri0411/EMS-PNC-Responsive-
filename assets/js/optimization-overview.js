@@ -1,10 +1,22 @@
 $(document).ready(function() {
+    var token = sessionStorage.getItem('accessToken');
+    var decoded = jwt_decode(token);
+    console.log(decoded,'decode');
+
+
+if (sessionStorage.getItem('user') != decoded.sub) {
+    sessionStorage.clear();
+    $(location).prop('href', 'login.html')
+  } else {
    // lastupdatedTime();
-    $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function() {});
+    $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function() {
+        document.getElementById("user").innerHTML = sessionStorage.getItem("user");
+    });
     $("#left-sidebar").load("./../../templates/left-sidebar/left-sidebar.html");
     $("#horizontal-optimization-overview").load("./../../templates/optimization-overview/horizontal-optimization-overview/horizontal-optimization-overview.html");
 
     $("#optimization-overview-unit").load("./../../templates/optimization-overview/optimization-overview-unit/optimization-overview-unit.html", function() {});
+  }
    
     //var abc = sessionStorage.getItem("lastUpdateddate")
 });

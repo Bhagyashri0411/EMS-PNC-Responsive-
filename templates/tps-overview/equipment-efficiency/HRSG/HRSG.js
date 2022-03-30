@@ -28,15 +28,15 @@ $(document).ready(function () {
     });
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(00);
 
     $('#fromHRSGBar').val(d.toJSON().slice(0, 19));
     $('#fromHRSG').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setSeconds(59);
     tod.setSeconds(0);
     $('#toHRSGBar').val(tod.toJSON().slice(0, 19));
     $('#toHRSG').val(tod.toJSON().slice(0, 19));
@@ -101,7 +101,7 @@ function showSpecificHRSGBarChart(data, Difference_In_Days, interval) {
             title: Difference_In_Days == true ? "In hours" : " In Days",
             interval: interval,
             labelFontColor: "#d9d9d9",
-            labelFontSize: 15,
+            //labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
         },
         axisY: {
@@ -199,7 +199,7 @@ function showSpecificHRSGChart(data, Difference_In_Days, interval) {
             title: Difference_In_Days == true ? "In hours" : "In Days",
             interval: interval,
             labelFontColor: "#d9d9d9",
-            labelFontSize: 15,
+            //labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
         },
         axisY: {

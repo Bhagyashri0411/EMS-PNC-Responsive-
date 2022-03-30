@@ -1,8 +1,18 @@
 $(document).ready(function () {
+    var token = sessionStorage.getItem('accessToken');
+    var decoded = jwt_decode(token);
+    console.log(decoded,'decode');
+
+
+if (sessionStorage.getItem('user') != decoded.sub) {
+    sessionStorage.clear();
+    $(location).prop('href', 'login.html')
+  } else {
     totalThroughput();
     // lastupdatedTime();
     $("#bs-example-navbar-collapse-1").load("./../../templates/nav/nav.html", function () {
         // alert('navigation loaded');
+        document.getElementById("user").innerHTML = sessionStorage.getItem("user");
     });
     $("#left-sidebar").load("./../../templates/left-sidebar/left-sidebar.html");
     $("#pp-horizontal-tiles").load("./../../templates/pp-unit-overview/pp-horizontal-tiles/pp-horizontal-tiles.html");
@@ -20,7 +30,7 @@ $(document).ready(function () {
     const dmonth = b.getMonth() + 1;
     const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
     document.getElementById("ppTimeStamp").innerHTML = setdate;
-
+  }
 });
 
 // function lastupdatedTime() {

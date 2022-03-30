@@ -1,21 +1,23 @@
-$(document).ready(function () {
+$(document).ready(function (){
     $("#megoveralldate").on('change', function () {
         // demo1 = $(this).find(":selected").val()
         // console.log('tag1', demo1)
+        document.getElementById("megfromFccu").max = $('#megoveralldate').attr('label');
         megoverview();
     });
     $("input[name=megfromFccu]").on('change', function () {
+        document.getElementById("megoveralldate").min = $('#hommegfromFccueEms1').val();
         megoverview();
     });
   // // setting from date, to date - 24hrs.
   const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-  d.setHours(05);
-  d.setMinutes(30);
+  d.setHours(-05);
+  d.setMinutes(00);
   d.setSeconds(0);
   $('#megfromFccu').val(d.toJSON().slice(0,19));
   const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-  tod.setHours(29);
-  tod.setMinutes(29);
+  tod.setHours(18);
+  tod.setSeconds(59);
   tod.setSeconds(0);
   $('#megoveralldate').val(tod.toJSON().slice(0,19));
   document.getElementById("megoveralldate").min = $('#megfromFccu').val();

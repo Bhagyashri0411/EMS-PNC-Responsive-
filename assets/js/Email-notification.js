@@ -2,6 +2,7 @@ $(document).ready(function() {
     // totalThroughput();
     // lastupdatedTime();
     $("#bs-example-navbar-collapse-1").load("/../templates/nav/nav.html", function() {
+        document.getElementById("user").innerHTML = sessionStorage.getItem("user");
         // alert('navigation loaded');
     });
     $("#left-sidebar").load("/../templates/left-sidebar/left-sidebar.html");

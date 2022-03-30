@@ -23,13 +23,13 @@ $(document).ready(function () {
     });
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#fromsteam').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#steamto').val(tod.toJSON().slice(0, 19));
     document.getElementById("steamto").min = $('#fromsteam').val();
@@ -338,10 +338,10 @@ function steamtable() {
             table_data += '<td class="align-num">' + value.sec + '</td>';
             table_data += '<td>' + value.reference + '</td>';
             if (value.deviation > 0) {
-                table_data += '<td class="r1">' + "+ " + value.deviation + '</td>';
+                table_data += '<td class="r1">'+ value.deviation + '</td>';
             }
             else {
-                table_data += '<td class="r1">' + "- " + value.deviation + '</td>';
+                table_data += '<td class="r1">'+ value.deviation + '</td>';
             }
 
             table_data += '</tr>';

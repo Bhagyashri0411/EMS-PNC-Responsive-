@@ -10,13 +10,13 @@ $(document).ready(function () {
     });    
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#ncufromFccu').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setSeconds(59);
     tod.setSeconds(0);
     $('#ncuoveralldate').val(tod.toJSON().slice(0, 19));
     document.getElementById("ncuoveralldate").min = $('#ncufromFccu').val();

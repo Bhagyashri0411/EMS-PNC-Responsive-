@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("input[name=swingoveralldate]").on('change', function () {
-        document.getElementById("swingfromFccu").max = $('#swingoveralldate').val();
+        document.getElementById("swingfromFccu").max = $('#swingoveralldate').attr('label');
         swingoverview();
     });
     $("input[name=swingfromFccu]").on('change', function () {
@@ -9,13 +9,13 @@ $(document).ready(function () {
     });
     // // setting from date, to date - 24hrs.
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(05);
-    d.setMinutes(30);
+    d.setHours(-05);
+    d.setMinutes(00);
     d.setSeconds(0);
     $('#swingfromFccu').val(d.toJSON().slice(0,19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setSeconds(59);
     tod.setSeconds(0);
     $('#swingoveralldate').val(tod.toJSON().slice(0,19));
     document.getElementById("swingoveralldate").min = $('#swingfromFccu').val();

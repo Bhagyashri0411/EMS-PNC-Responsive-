@@ -1,10 +1,21 @@
 $(document).ready(function () {
-    const role = sessionStorage.getItem("role");
-    if (!role || role !== 'admin') {
-        $(location).attr('href', "login.html");
-    } else {
+    // const role = sessionStorage.getItem("role");
+    // if (!role || role !== 'admin') {
+    //     $(location).attr('href', "login.html");
+    // } else {
+        var token = sessionStorage.getItem('accessToken');
+        var decoded = jwt_decode(token);
+        console.log(decoded,'decode');
 
-        $("#bs-example-navbar-collapse-1").load("./templates/nav/nav.html", function () { });
+
+    if (sessionStorage.getItem('user') != decoded.sub) {
+        sessionStorage.clear();
+        $(location).prop('href', 'login.html')
+      } else {
+
+        $("#bs-example-navbar-collapse-1").load("./templates/nav/nav.html", function () {
+            document.getElementById("user").innerHTML = sessionStorage.getItem("user"); 
+         });
         $("#tps").load("./templates/tps-overview/tps/tps.html", function () { });
         $("#left-sidebar").load("./templates/left-sidebar/left-sidebar.html");
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -18,7 +29,7 @@ $(document).ready(function () {
         const dmonth = b.getMonth() + 1;
         const setdate = String(b.getDate()).padStart(2, '0') + "-" + String(dmonth).padStart(2, '0') + "-" + b.getFullYear() + " " + String(b.getHours()).padStart(2, '0') + ":" + String(b.getMinutes()).padStart(2, '0') + ":" + String(b.getSeconds()).padStart(2, '0');
         document.getElementById("cppTime").innerHTML = setdate;
-    }
+     }
 });
 
 

@@ -48,13 +48,13 @@ function lastupdatedTime() {
     var hoursString = sessionStorage.getItem("lastUpdateddate");
     var timeArray = hoursString.split(":");
     const dateVal = new Date(sessionStorage.getItem("lastUpdateddate"));
-    dateVal.setHours(05);
-    dateVal.setMinutes(30);
+    dateVal.setHours(-05);
+    dateVal.setMinutes(00);
     dateVal.setSeconds(0);
     $("#fromHome1").val(dateVal.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(29);
-    tod.setMinutes(29);
+    tod.setHours(18);
+    tod.setMinutes(59);
     tod.setSeconds(0);
     $('#homeEms1').val(tod.toJSON().slice(0, 19));
     document.getElementById("homeEms1").min = $('#fromHome1').val();
@@ -124,7 +124,7 @@ function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Differe
       valueFormatString: Difference_In_Days == 1 ? "HH" : "DD MMM YYYY",
       title: Difference_In_Days == 1 ? "In hours" : "In Days",
       interval: interval,
-      labelAngle: -20
+        //labelAngle: -20
     },
     dataPointMaxWidth: 15,
     axisY: {
