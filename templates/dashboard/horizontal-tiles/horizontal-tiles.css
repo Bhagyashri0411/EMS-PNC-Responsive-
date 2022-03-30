@@ -16,9 +16,8 @@
     text-align: center;
     font-size: 3.6vw;
     color: #f2f2f2;
-    padding-top: 0.8vw;
     font-weight: 600;
-    padding-bottom: 0.9vw;
+    padding: 4vh 0;
 }
 
 .tiles-row .card .footer .ref {
@@ -49,10 +48,6 @@
     background-color: #00b050;
 } */
 
-.tiles-row .card-col {
-    padding-left: 7px;
-    padding-right: 7px;
-}
 
 .card .title .main-title {
     font-size: 14px;
@@ -71,10 +66,6 @@
     float: left;
     font-size: 1vw;
     color: #d9d9d9;
-}
-
-.card .body .count-line {
-    height: 41vh;
 }
 
 /* #zingChart {
@@ -159,10 +150,24 @@
     font-weight: normal;
 }
 
+#zingChart {
+    height: 15.5vh;
+}
 
-/* #tiles-doughnut{
-    margin: 0px 43px;
-} */
+#tiles-doughnut {
+    height: 23vh;
+}
+
 .col {
     padding: 1px;
+}
+
+@media (max-width: 992px) {
+    #tiles-doughnut {
+        height: 19vh;
+    }
+
+    #zingChart {
+        height: 13vh;
+    }
 }

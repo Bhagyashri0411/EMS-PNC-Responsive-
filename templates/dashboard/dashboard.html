@@ -34,57 +34,56 @@
             <div class="col-md-8 card-col mt-14">
                 <div class="col-md-12 pr-0">
                     <div class="card">
-                        <div class="chart-title title">
+                        <div class="chart-title title mt-14">
                             <div class="row">
-                                <div class="col-md-12 col-first">
-                                    <div class="col-md-6 pr-0">
-                                        <span class="input-title" style="color: #26293c;">Trend</span>
-                                        <div class="row">
-                                            <div class="pull-left">
-                                                <span class="firstbox"> </span>
-                                                <span class="first-box-title" id="first-box-title"
-                                                    style="display: inline-flex;">Specific Energy Consumption TOE/MT
-                                                </span>
-                                            </div>
+                                <div class="col-md-12 col-first ">
+                                    <!-- <div class="col-md-6 pr-0"> -->
+                                    <!-- <span class="input-title" style="color: #26293c;">Trend</span> -->
+                                    <div class=" pull-left" style="display: inline-flex;">
+                                        <span class="firstbox"> </span>
+                                        <span class="first-box-title" id="first-box-title">Specific Energy Consumption
+                                            TOE/MT
+                                        </span>
+                                        <span class="secondbox"></span>
+                                        <span class="second-box-title">&nbsp;Actual Production<span
+                                                class="in-title">(MT/Day)</span>
+                                        </span>
 
-                                            <div class="pull-left" style="display: inline-flex;">
-                                                <span class="secondbox"></span>
-                                                <span class="second-box-title">&nbsp;Actual Production<span
-                                                        class="in-title">(MT/Day)</span>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <!-- <div class="pull-left">
+                                                
+                                            </div> -->
                                     </div>
-                                    <div class="col-md-6 pl-7 mt-14">
-                                        <div style="display: inline-flex;">
-                                            <select name="s1" id="r1">
+                                    <!-- </div> -->
+                                    <!-- <div class="col-md-6 pl-7 "> -->
+                                    <div class="pull-right" style="display: inline-flex;">
+                                        <select name="s1" id="r1">
 
 
-                                                <option value="TOE/MT of Actual Production"
-                                                    label="Specific Energy Consumption"
-                                                    name="Specific Energy Consumption TOE/MT" selected></option>
-                                                <option value="TOE/hr" label="Total Energy Consumed"
-                                                    name="Total Energy Consumed (TOE/hr)"></option>
+                                            <option value="TOE/MT of Actual Production"
+                                                label="Specific Energy Consumption"
+                                                name="Specific Energy Consumption TOE/MT" selected></option>
+                                            <option value="TOE/hr" label="Total Energy Consumed"
+                                                name="Total Energy Consumed (TOE/hr)"></option>
 
-                                                <option value="Ton/hr" label="GHG Emission (tCO2e)" name="GHG Emission(tCO2e)
+                                            <option value="Ton/hr" label="GHG Emission (tCO2e)" name="GHG Emission(tCO2e)
                                                     (Ton/hr)"></option>
 
-                                            </select>
+                                        </select>
 
-                                            <span class="from">
+                                        <span class="from">
 
-                                                <input type="datetime-local" id="fromHome1" name="fromHome">
-                                            </span>
-                                            <span class="to">
-                                                <input type="datetime-local" id="homeEms1" name="homeEms">
-                                            </span>
+                                            <input type="datetime-local" id="fromHome1" name="fromHome">
+                                        </span>
+                                        <span class="to">
+                                            <input type="datetime-local" id="homeEms1" name="homeEms">
+                                        </span>
 
-                                        </div>
                                     </div>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>
-                        <div class="line text-left">
+                        <div class="col-md-12 mt-10">
                             <span class="axis"> Primary Axis Trends :</span>&nbsp;&nbsp;
                             <select id="chartType1data" name="Chart Type1">
                                 <option value="spline">Line</option>
@@ -101,7 +100,7 @@
                         <div class="body">
                             <div class="count-line">
                                 <div class="col-md-12">
-                                    <div id="chartContainer" style="height: 40vh;"></div>
+                                    <div id="chartContainer"></div>
                                 </div>
                             </div>
                         </div>

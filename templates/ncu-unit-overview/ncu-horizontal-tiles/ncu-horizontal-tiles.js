@@ -159,9 +159,9 @@ function loadGaugeChart() {
         ZC.LICENSE = ["b55b025e438fa8a98e32482b5f768ff5"];
         var myConfig12 = {
             "type": "gauge",
-            "height": "19%",
-            "width": "60%",
-            "x": "20%",
+            "height": "20%",
+            "width": "70%",
+            "x": "10%",
             "backgroundColor": "#26293c",
             "scale": {
                 "size-factor": "250%", //Modify your gauge chart size.
