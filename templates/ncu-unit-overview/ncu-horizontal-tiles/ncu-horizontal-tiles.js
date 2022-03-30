@@ -160,8 +160,8 @@ function loadGaugeChart() {
         var myConfig12 = {
             "type": "gauge",
             "height": "19%",
-            "width": "60%",
-            "x": "20%",
+            "width": "40%",
+            "x": "30%",
             "backgroundColor": "#26293c",
             "scale": {
                 "size-factor": "250%", //Modify your gauge chart size.

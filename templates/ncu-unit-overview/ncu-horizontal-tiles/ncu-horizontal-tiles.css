@@ -222,3 +222,13 @@
 #ncu-horizontal-tiles ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
 }
+
+#ncu-horizontal-tiles #zingChart {
+    height: 14vh;
+}
+
+@media (max-width: 992px) {
+    #ncu-horizontal-tiles #zingChart {
+        height: 12vh;
+    }
+}

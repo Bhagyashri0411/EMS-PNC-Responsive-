@@ -6,11 +6,11 @@
             <div class="col-md-4 card-col-5">
                 <div class="card">
                     <div class="row">
-                        <div class="title"> Specific Energy Consumption
+                        <div class="title" style="padding: 0;"> Specific Energy Consumption
                         </div>
                     </div>
                     <div class="body col">
-                        <div id="zingChart" style="height: 6.5vw;"></div>
+                        <div id="zingChart"></div>
                     </div>
                     <div class="footer">
                         <div class="deviation text-center">
@@ -18,12 +18,14 @@
                                 style="font-size: 0.9vw;"> </span>
                         </div>
                         <div class="actual text-center">
-                            <div class="row" style="display: inline-flex;">
-                                <span class="label">Actual | Reference :  &nbsp; </span><span class="count"> <span id="actncu">
-                                    </span>  &nbsp;|&nbsp; <span id="optncu"> </span></span>                                
+                            <div class="row" >
+                                <div class="label">Actual | Reference : &nbsp; </div>
+                                <span class="count"> <span id="actncu">
+                                    </span> &nbsp;|&nbsp; <span id="optncu"> </span></span>
+                                <div class="label">(TOE/MT of Product)</div>
                             </div>
-                            <span class="label">(TOE/MT of Product)</span>
-                          
+
+
                         </div>
                     </div>
                 </div>
@@ -33,15 +35,15 @@
                     <div class="title">Specific Energy Consumption Breakup</div>
                     <div class="body">
                         <!-- <div class="overflow genratorsHeight-1"> -->
-                            <table id="tablebody">
-                                <tr>
-                                    <th>Type</th>
-                                    <th>SEC</th>
-                                    <th>Reference</th>
-                                    <th>Deviation</th>
-                                </tr>
-                                <tbody id="ncutable"></tbody>
-                            </table>
+                        <table id="tablebody">
+                            <tr>
+                                <th>Type</th>
+                                <th>SEC</th>
+                                <th>Reference</th>
+                                <th>Deviation</th>
+                            </tr>
+                            <tbody id="ncutable"></tbody>
+                        </table>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -133,7 +135,7 @@
                                 <tr>
                                     <th>Parameters&nbsp;(UOM)</th>
                                     <th>Actual</th>
-                                    <th>Reference</th>                                  
+                                    <th>Reference</th>
                                     <th>Deviation</th>
                                 </tr>
                                 <tbody id="NCU_card_body"></tbody>

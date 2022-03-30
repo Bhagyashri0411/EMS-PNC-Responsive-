@@ -5,55 +5,60 @@
     color: #d9d9d9;
     text-align: center;
 }
-.label-color{
+.area-background .label-color{
     height: 3vh;
  margin-left: 5px;
 }
-.line-legends{
+.area-background .line-legends{
     padding: 1.48vw;
     color: #26293c;
 }
-.column-2 {
+.area-background .column-2 {
     height: 3.4vw;
     float: left;
     width: 7.5vw;
     padding: 0vw 0.7vw;
 }
 
-.card1 {
+.area-background .card1 {
    
     padding: 0.5vw;   
     border-radius: 0.6vw;
 }
-#text1 {
+.area-background #text1 {
     color: #f5f0f0;
     font-size: 1.3vw;
 }
-.heading{
+.area-background .heading{
     font-size: 2vw;
 }
-.box3{
+.area-background .box3{
     width: 1.2vw;
     height: 1vw;
     display: inline-block;
     margin-top: 0.15vw;
 }
-.green{
+.area-background .green{
     background-color: #00b050;
 }
-.yellow{
+.area-background .yellow{
     background-color: #ffc000;
 }
-.red{
+.area-background .red{
     background-color:#ff0000;
 }
-.grey{
+.area-background .grey{
     background-color: #afabab;
 }
-.colorbox-range{
+.area-background .colorbox-range{
    font-size: 0.9vw; 
 
 }
-.count-line{
+.area-background .count-line{
     height: 36vh;
+}
+@media (max-width: 992px) {
+    .area-background .count-line{
+        height: 38vh;
+    } 
 }

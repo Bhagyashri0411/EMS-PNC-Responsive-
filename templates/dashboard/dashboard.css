@@ -3,13 +3,16 @@
 .card .title .col-md-2 #Ton {
     margin: 18px -5px;
 }
+
 .card .title .in-title {
     font-weight: 200;
+    font-size: 0.8vw;
+}
+
+.second-box-title {
     font-size: 1vw;
 }
-.second-box-title{
-    font-size: 1vw;
-}
+
 .card .title .col-md-2 #Gcal {
     margin: 15px 5px;
 }
@@ -31,7 +34,7 @@
     font-size: 1vw;
 }
 
-#r1,  #chartTypedata, #chartType1data {
+#r1, #chartTypedata, #chartType1data {
     font-size: 0.8vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
@@ -48,7 +51,7 @@
     color: #f2f2f2;
 }
 
-#r1, #homeEms1, #fromHome1 {  
+#r1, #homeEms1, #fromHome1 {
     max-width: 10.3vw;
     cursor: pointer;
     font-size: 0.7vw;
@@ -56,10 +59,7 @@
     color: #f2f2f2;
     margin-left: 0.5vw;
 }
-.card .title .in-title {
-    font-weight: 200;
-    font-size: 1vw;
-}
+
 
 .second-box-title {
     font-size: 1vw;
@@ -103,4 +103,18 @@
 .summary-heading .heading-item .unit {
     font-size: 0.7vw;
     color: #d9d9d9;
+}
+
+.homeDiv .card .body .count-line {
+    height: 48vh;
+}
+.homeDiv .card #chartContainer{
+    height: 44vh;
+}
+@media (max-width: 992px) {
+    #r1, #homeEms1, #fromHome1 {
+        max-width: 9vw;
+        padding: 0.1vw 0;
+        margin-left: 0.2vw;
+    }
 }
