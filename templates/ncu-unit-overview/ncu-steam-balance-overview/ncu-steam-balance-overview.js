@@ -68,7 +68,7 @@ function ncugetsteamoverview(data, Difference_In_Days) {
 
 function showsteambalancencu(data, Difference_In_Days, interval) {
     var chart = new CanvasJS.Chart("chartSteamBalancencu", {
-        height: 225,
+        // height: 225,
         theme: "dark1",
         backgroundColor: "#26293c",
         toolTip: {

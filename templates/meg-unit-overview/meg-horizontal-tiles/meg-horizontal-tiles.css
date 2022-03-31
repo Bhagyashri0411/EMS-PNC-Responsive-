@@ -10,17 +10,19 @@
     color: #d9d9d9;
     text-align: center;
 }
+
 #meg-horizontal-tiles .footer-deviation .deviation .label {
     font-size: 0.9vw;
     padding: 0;
 }
+
 #meg-horizontal-tiles .card .body .count {
     text-align: center;
     font-size: 2.4vw;
     color: #f2f2f2;
     font-weight: 700;
     font-family: Bahnschrift Light;
-    padding:2vw 0vw;
+    padding: 2vw 0vw;
 }
 
 #meg-horizontal-tiles .card .footer .ref {
@@ -30,7 +32,8 @@
     display: inline-block;
     /* padding: 5px 0px; */
 }
-#meg-horizontal-tiles #ref-meg1{
+
+#meg-horizontal-tiles #ref-meg1 {
     color: #f2f2f2;
 }
 
@@ -52,7 +55,7 @@
 }
 
 
-#meg-horizontal-tiles  .main-title {
+#meg-horizontal-tiles .main-title {
     font-size: 0.9vw;
     text-align: center;
     color: #d9d9d9;
@@ -72,15 +75,15 @@
 #meg-horizontal-tiles .footer-deviation .actual .label {
     font-weight: normal;
     color: #d9d9d9;
-     font-size: 0.8vw;
-     padding: 0;
+    font-size: 0.8vw;
+    padding: 0;
 
 }
 
- #meg-horizontal-tiles .footer-deviation .deviation .label {
+#meg-horizontal-tiles .footer-deviation .deviation .label {
     font-size: 1vw;
     padding: 0;
-} 
+}
 
 #meg-horizontal-tiles .footer-deviation .actual .label {
     padding: 0;
@@ -89,7 +92,7 @@
 
 #meg-horizontal-tiles .footer-deviation .deviation .count,
 #meg-horizontal-tiles .footer-deviation .actual .count {
-  display: inline-flex;
+    display: inline-flex;
     color: #f2f2f2;
     font-size: 0.9vw;
 
@@ -136,7 +139,8 @@
     font-family: Yu Gothic UI;
     line-height: 1.12;
 }
-#meg-horizontal-tiles  th {
+
+#meg-horizontal-tiles th {
     padding: 0.5vw;
     background-color: #442266;
     font-size: 1.1vw;
@@ -146,6 +150,7 @@
     position: -webkit-sticky;
     top: 0;
 }
+
 #meg-horizontal-tiles td {
     border-bottom: 0.1vw solid #8d8b96;
     text-align: end;
@@ -153,33 +158,38 @@
     color: #f2f2f2;
     font-size: 1vw;
 }
-#meg-horizontal-tiles td:nth-child(1){
+
+#meg-horizontal-tiles td:nth-child(1) {
     color: #d9d9d9;
     text-align: start;
 }
-#meg-horizontal-tiles tbody#Parameter_table td:nth-child(2){
+
+#meg-horizontal-tiles tbody#Parameter_table td:nth-child(2) {
     color: #d9d9d9;
 }
-#meg-horizontal-tiles table.shptable td:nth-child(2){
+
+#meg-horizontal-tiles table.shptable td:nth-child(2) {
     color: #d9d9d9;
 }
+
 #meg-horizontal-tiles #megtable {
     line-height: 1.30;
 }
 
-#meg-horizontal-tiles table.shptable td:nth-child(2){
-   text-align: center;
+#meg-horizontal-tiles table.shptable td:nth-child(2) {
+    text-align: center;
 }
 
-#meg-horizontal-tiles table.shptable td{
- padding: 0.2vw;
- }
+#meg-horizontal-tiles table.shptable td {
+    padding: 0.2vw;
+}
 
 
- #meg-horizontal-tiles input[type=radio]{
+#meg-horizontal-tiles input[type=radio] {
     height: 0.7vw;
     margin: 0.2vw 0.2vw;
 }
+
 #meg-horizontal-tiles .lebel-style {
     display: inline-block;
     font-size: 0.9vw;
@@ -188,21 +198,24 @@
     font-weight: 100;
 }
 
-#meg-horizontal-tiles .percents{
+#meg-horizontal-tiles .percents {
     text-align: center;
 }
-#meg-horizontal-tiles table th:nth-child(3){
+
+#meg-horizontal-tiles table th:nth-child(3) {
     text-align: end;
 }
 
 #meg-horizontal-tiles table tr:last-child td {
     border-bottom: 0;
-} 
-#meg-horizontal-tiles .col{
+}
+
+/* #meg-horizontal-tiles .col {
     padding: 1px;
     height: 6.3vw;
-}
-#meg-horizontal-tiles .footer{
+} */
+
+#meg-horizontal-tiles .footer {
     padding: 0.1vw;
 }
 
@@ -220,6 +233,7 @@
     height: 12.7vw;
     padding-right: 5px;
 }
+
 #meg-horizontal-tiles .secondtableheight-1 {
     height: 11.3vw;
     padding-right: 5px;
@@ -247,16 +261,19 @@
 }
 
 #meg-horizontal-tiles ::-webkit-scrollbar-thumb:hover {
-    background:#8d8a95;
+    background: #8d8a95;
 }
+
 /* add css */
 #meg-horizontal-tiles .gap1 {
     text-align: center;
 }
+
 #meg-horizontal-tiles .card .body .donut1 {
     height: 7.4vw;
 }
-#meg-horizontal-tiles .footer-deviation{
+
+#meg-horizontal-tiles .footer-deviation {
     padding: 0.3vw;
 }
 
@@ -266,4 +283,39 @@
 
 #meg-horizontal-tiles td.negative {
     color: #ff0000;
+}
+
+#meg-horizontal-tiles #meg-zingChart {
+    height: 14vh;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #meg-horizontal-tiles .secondtableheight-1 {
+        height: 19vh;
+        padding-right: 5px;
+    }
+
+    #meg-horizontal-tiles .gap1 {
+        padding-top: 0.4vw;
+    }
+
+    #meg-horizontal-tiles .card .body .count {
+        padding: 4.4vh 0vw;
+    }
+
+    #meg-horizontal-tiles .secondtableheight {
+        height: 21vh;
+    }
+
+    #meg-horizontal-tiles #meg-zingChart {
+        height: 12vh;
+    }
+
+    #meg-horizontal-tiles .actual {
+        height: 28px;
+    }
+
+    #meg-horizontal-tiles .deviation {
+        height: 12px;
+    }
 }

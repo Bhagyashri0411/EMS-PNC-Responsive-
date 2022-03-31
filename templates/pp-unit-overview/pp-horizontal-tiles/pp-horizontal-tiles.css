@@ -16,7 +16,7 @@
     color: #f2f2f2;
     text-align: center;
     font-weight: 700;
-    
+
     padding: 1.7vw;
 }
 
@@ -276,4 +276,14 @@
 
 #pp-horizontal-tiles ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #pp-horizontal-tiles .card .body .count {
+        padding: 2.8vw 1.7vw;
+    }
+
+    #pp-horizontal-tiles .gap {
+        padding-top: 1.5vw;
+    }
 }

@@ -163,7 +163,8 @@
     color: #f2f2f2;
     font-size: 1vw;
 }
-#hdpe-horizontal-tiles table #Break_table td:nth-child(3){
+
+#hdpe-horizontal-tiles table #Break_table td:nth-child(3) {
     text-align: end
 }
 
@@ -171,6 +172,7 @@
     height: 0.7vw;
     margin: 0.2vw 0.2vw;
 }
+
 #hdpe-horizontal-tiles td:nth-child(1) {
     color: #d9d9d9;
     text-align: start;
@@ -283,10 +285,45 @@
 #hdpe-horizontal-tiles .footer-deviation {
     padding: 0.1vw;
 }
+
 #hdpe-horizontal-tiles td.positive {
     color: #00aa55;
 }
 
 #hdpe-horizontal-tiles td.negative {
     color: #ff0000;
+}
+
+#hdpe-horizontal-tiles #hdpe-zingChart {
+    height: 14vh;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #hdpe-horizontal-tiles #hdpe-zingChart {
+        height: 12vh;
+    }
+
+    #hdpe-horizontal-tiles .actual {
+        height: 28px;
+    }
+
+    #hdpe-horizontal-tiles .deviation {
+        height: 12px;
+    }
+
+    #hdpe-horizontal-tiles td {
+        font-size: 1.1vw;
+    }
+
+    #hdpe-horizontal-tiles .gap1 {
+        padding-top: 0.9vw;
+    }
+
+    #hdpe-horizontal-tiles .card .body .count {
+        padding: 3.5vw 0;
+    }
+
+    #hdpe-horizontal-tiles .secondtableheight {
+        height: 21vh;
+    }
 }

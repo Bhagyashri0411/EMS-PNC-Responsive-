@@ -39,7 +39,7 @@
 }
 
 .steam-balance-overview-hdpe .count-line {
-    height: 39vh;
+    height: 38vh;
 }
 
 .steam-balance-overview-hdpe table tr:last-child td {
@@ -52,17 +52,17 @@
 
 .steam-balance-overview-hdpe input, select {
     font-size: 1vw;
-    background-color: rgb(38, 41, 60);
-    border: 1px solid rgb(242, 242, 242);
+    background-color: #26293c;
+    border: 1px solid #f2f2f2;
     padding: 0px;
     border-radius: 5px;
     margin-left: 1vw;
     max-width: 15vw;
     cursor: pointer;
-    color: rgb(217, 217, 217);
+    color: #d9d9d9;
 }
 
-.steam-balance-overview-hdpe #hdpedrop {
+.steam-balance-overview-hdpe #ncudrop {
     padding: 0.1vw;
     color: #d9d9d9;
 }
@@ -96,7 +96,7 @@
 }
 
 .steam-balance-overview-hdpe .genratorsHeight {
-    height: 48vh;
+    height: 50.5vh;
     padding-right: 5px;
 }
 
