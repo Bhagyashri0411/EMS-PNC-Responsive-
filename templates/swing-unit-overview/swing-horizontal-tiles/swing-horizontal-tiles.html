@@ -6,24 +6,23 @@
             <div class="col-md-4 card-col-5">
                 <div class="card">
                     <div class="row">
-                        <div class="title"> Specific Energy Consumption
+                        <div class="title" style="padding: 0;"> Specific Energy Consumption
                         </div>
                     </div>
                     <div class="body col">
-                        <div id="zingChart" style="height: 6.5vw;"></div>
+                        <div id="zingChart"></div>
                     </div>
                     <div class="footer">
                         <div class="deviation text-center">
                             <span class="label">Deviation :</span><span class="count" id="devswing"> </span>
                         </div>
                         <div class="actual text-center">
-                            <div class="row" style="display: inline-flex;">
-                                <span class="label">Actual | Reference :  &nbsp;</span><span class="count"> <span
-                                        id="actswing">
-                                    </span>  &nbsp;|&nbsp; <span id="optswing"> </span></span>
+                            <div class="row" >
+                                <div class="label">Actual | Reference : &nbsp; </div>
+                                <span class="count"> <span id="actswing">
+                                    </span> &nbsp;|&nbsp; <span id="optswing"> </span></span>
+                                <span class="label">(TOE/MT of Product)</span>
                             </div>
-
-                            <span class="label">(TOE/MT of Product)</span>
                         </div>
                     </div>
                 </div>
@@ -110,7 +109,7 @@
                         </div>
 
                     </div>
-                    <div class="chart-legends gap" style="padding-top: 1.25vw;">
+                    <div class="chart-legends gap1" >
                         <div class="linestyle" style="display: inline-flex;">
                             <div class="legend">
                                 <span class="legend-circle legend-solid"></span><span class="legend-text">HP</span>

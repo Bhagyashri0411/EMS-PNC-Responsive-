@@ -218,3 +218,41 @@
 #swing-horizontal-tiles ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
 }
+
+#swing-horizontal-tiles #zingChart {
+    height: 14vh;
+}
+
+#swing-horizontal-tiles .gap1 {
+    padding-top: 1.25vw;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #swing-horizontal-tiles #zingChart {
+        height: 12vh;
+    }
+
+    #swing-horizontal-tiles .deviation {
+        height: 12px;
+    }
+
+    #swing-horizontal-tiles .actual {
+        height: 28px;
+    }
+
+    #swing-horizontal-tiles .gap {
+        padding-top: 1.4vw;
+        text-align: center;
+    }
+
+    #swing-horizontal-tiles .gap1 {
+        padding-top: 1.9vw;
+        text-align: center;
+    }
+
+    #swing-horizontal-tiles .genratorsHeight {
+        height: 20.5vh
+    }
+}

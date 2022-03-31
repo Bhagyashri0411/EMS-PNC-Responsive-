@@ -39,7 +39,7 @@
 }
 
 .steam-balance-overview-meg .count-line {
-    height: 39vh;
+    height: 38vh;
 }
 
 .steam-balance-overview-meg table tr:last-child td {
@@ -62,7 +62,7 @@
     color: #d9d9d9;
 }
 
-.steam-balance-overview-meg #megdrop {
+.steam-balance-overview-meg #ncudrop {
     padding: 0.1vw;
     color: #d9d9d9;
 }
@@ -96,7 +96,7 @@
 }
 
 .steam-balance-overview-meg .genratorsHeight {
-    height: 48vh;
+    height: 50.5vh;
     padding-right: 5px;
 }
 

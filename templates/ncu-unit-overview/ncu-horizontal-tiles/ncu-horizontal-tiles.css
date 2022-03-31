@@ -165,6 +165,11 @@
     text-align: center;
 }
 
+#ncu-horizontal-tiles .gap1 {
+    padding-top: 1.25vw;
+    text-align: center;
+}
+
 #ncu-horizontal-tiles .col-ti {
     font-size: 0.9vw;
 }
@@ -192,7 +197,7 @@
 }
 
 #ncu-horizontal-tiles .genratorsHeight {
-    height: 12.5vw;
+    height: 25vh
 }
 
 #ncu-horizontal-tiles .genratorsHeight-1 {
@@ -227,8 +232,30 @@
     height: 14vh;
 }
 
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) and (max-width:999px) {
     #ncu-horizontal-tiles #zingChart {
         height: 12vh;
+    }
+
+    #ncu-horizontal-tiles .deviation {
+        height: 12px;
+    }
+
+    #ncu-horizontal-tiles .actual {
+        height: 28px;
+    }
+
+    #ncu-horizontal-tiles .gap {
+        padding-top: 1.4vw;
+        text-align: center;
+    }
+
+    #ncu-horizontal-tiles .gap1 {
+        padding-top: 1.9vw;
+        text-align: center;
+    }
+
+    #ncu-horizontal-tiles .genratorsHeight {
+        height: 20.5vh
     }
 }

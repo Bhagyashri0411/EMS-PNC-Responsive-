@@ -15,7 +15,7 @@
 }
 
 .ncu-equipment-overview .count-line {
-    height: 8vw;
+    height: 18vh;
     margin-left: 0.5vw;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .ncu-equipment-overview .title-1 {
-    height: 1.8vw;
+    height: 4vh;
 }
 
 .ncu-equipment-overview .box1-yellow {
@@ -154,10 +154,12 @@
     background-color: #08cc12;
 
 }
+
 .ncu-equipment-overview .red-spa {
     background-color: #ff0000;
 
 }
+
 .ncu-equipment-overview .col-rt {
     top: -0.5vw;
     position: relative;
@@ -227,4 +229,20 @@
 
 .ncu-equipment-overview ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    .ncu-equipment-overview .title-1 .col-st {
+        font-size: 1.17vw;
+    }
+    .ncu-equipment-overview .title {
+        font-size: 1vw;    
+    }
+    .ncu-equipment-overview input {
+        font-size: 0.7vw;
+        padding: 1px;
+        border-radius: 5px;
+        margin-left: 10px;
+        margin-right: 0PX;
+    }
 }

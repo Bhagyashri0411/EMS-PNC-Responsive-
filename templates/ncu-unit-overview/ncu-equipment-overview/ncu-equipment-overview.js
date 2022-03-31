@@ -261,7 +261,7 @@ function showSpecificEquipmentOverviewChartNCU(data, Difference_In_Days, interva
             title: Difference_In_Days == true ? "In hours" : " In Days",
             interval: interval,
             labelFontColor: "#bfbfbf",
-            labelFontSize: 15,
+            labelFontSize: 10,
             fontFamily: "Bahnschrift Light",
         },
         axisY: {
