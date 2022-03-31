@@ -13,7 +13,7 @@
 }
 
 #fuel-tab .col-rr {
-    font-size: 1.4vw;
+    font-size: 1.1vw;
     color: #d9d9d9;
 }
 
@@ -61,12 +61,11 @@
 
 #fuel-tab .card .body .count {
     text-align: center;
-    font-size: 2.6vw;
+    font-size: 3vw;
     color: #f2f2f2;
-    padding-top: 0.75vw;
-    padding-bottom: 0.73vw;
+    padding-top: 1.75vh;
+    padding-bottom: -0.27vh;
     font-weight: 600;
-
 }
 
 #fuel-tab .card .footer .ref {
@@ -98,7 +97,7 @@
 }
 
 #fuel-tab .card .body .count-line {
-    height: 33.9vw;
+    height: 69.9vh;
 }
 
 #fuel-tab .canvasjs-chart-credit {
