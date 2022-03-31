@@ -24,7 +24,7 @@
  }
 
  #steam-tab .body.chart-body {
-   height: 15vw;
+  height: 32vh;
  }
 
  #steam-tab .card .title .main-title {
@@ -242,8 +242,8 @@
  }
 
  #steam-tab input {
-   font-size: 0.9vw;
-   max-width: 11.16vw;
+   font-size: 0.6vw;
+   max-width: 10.16vw;
  }
 
  #steam-tab #chartsteamdata, #chartsteamdata1 {

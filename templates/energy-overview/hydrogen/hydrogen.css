@@ -60,7 +60,7 @@
 
 
 #hydrogen-tab .card .body .count-line {
-    height: 20vw;
+    height: 44vh
 }
 
 
@@ -147,11 +147,11 @@ table #hydrogen_table1 td {
 /* scroll */
 
 #hydrogen-tab .genratorsHeight {
-    height: 12vw;
+    height: 25vh;
 }
 
 #hydrogen-tab .tableheight {
-    height: 12.24vw;
+    height: 26.9vh;
 }
 
 #hydrogen-tab .scroll {

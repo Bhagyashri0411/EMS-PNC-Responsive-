@@ -9,7 +9,7 @@
 }
 
 #electricity-tab .card .body.chart-body {
-    height: 35vw;
+    height: 72vh;
 }
 
 #electricity-tab .card .title {
@@ -21,7 +21,7 @@
     font-size: 1.67vw;
     font-family: Bahnschrift Light;
     color: #f2f2f2;
-    padding: 0.5vw;
+    padding: 1.3vh;
     font-weight: 600;
 }
 
@@ -59,6 +59,7 @@
     text-align: center;
     font-size: 1.7vw;
     color: #f2f2f2;
+    height: 7vh;
     /* padding-top: 1vw;
     padding-bottom: 1vw; */
 }
@@ -73,7 +74,7 @@
 }
 
 #electricity-tab .col-yr {
-    font-size: 1.4vw;
+    font-size: 1.1vw;
     color: #d9d9d9;
 }
 
@@ -156,7 +157,7 @@
 } */
 #electricity-tab #fromelectricity, #toelectricity {
     display: block;
-    /* font-size: 0.9vw; */
+     font-size: 0.6vw; 
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
     padding: 0.2vw;
@@ -221,7 +222,7 @@
 /* scroll */
 
 #electricity-tab .genratorsHeight {
-    height: 12vw;
+    height: 19.3vh;
 }
 
 #electricity-tab .tableheight {
