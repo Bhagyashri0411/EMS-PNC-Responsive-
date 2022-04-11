@@ -185,3 +185,26 @@ table #airgen_table1 td {
 #air-tab ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
 }
+
+#air-tab .card .body .newcount {
+    padding: 1.3vw 0;
+}
+
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #air-tab .card .body .count {
+        padding: 3.5vw 0;
+    }
+
+    #air-tab td {
+        padding: 0.5vw 0.3vw;
+    }
+
+    #air-tab .card .body .newcount {
+        padding: 3.3vw 0;
+    }
+
+    #air-tab .tableheight {
+        height: 25.2vh;
+    }
+}

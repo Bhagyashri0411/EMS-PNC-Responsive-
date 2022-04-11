@@ -23,13 +23,13 @@ $(document).ready(function () {
     });
 
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
     $('#fromsteam').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#steamto').val(tod.toJSON().slice(0, 19));
     document.getElementById("steamto").min = $('#fromsteam').val();
@@ -54,7 +54,7 @@ function getSpecificSteamline1ConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/steam/steamGraph",
+        url: "http://localhost:8090/EMSPNC/steam/steamGraph",
     }).done(function (data) {
         console.log(data)
         var linediff_In_Days = data[0].showNumberIndex;
@@ -163,7 +163,7 @@ function getSpecificSteamConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/steam/specificsteamconsumption",
+        url: "http://localhost:8090/EMSPNC/steam/specificsteamconsumption",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -173,12 +173,16 @@ function getSpecificSteamConsumptionData() {
 }
 function formatSpecificSteamConsumptionData(data, Difference_In_Days) {
     var chartData = { specificsteamconsumption: [], throughput: [] };
+    var minMaxThroughput = [];
+    var minMaxTEC = []
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const steamDate = new Date(element.date);
         chartData.throughput.push({ y: element.throughput, x: steamDate });
         chartData.specificsteamconsumption.push({ y: element.fuelConsumption, x: steamDate });
+        minMaxThroughput.push(element.throughput);
+        minMaxTEC.push(element.fuelConsumption);
     }
     console.log("steamchartdata", chartData);
     var interval = 1;
@@ -190,9 +194,13 @@ function formatSpecificSteamConsumptionData(data, Difference_In_Days) {
         }
 
     }
-    showSpecificSteamConsumptionChart(chartData, Difference_In_Days, interval);
+    showSpecificSteamConsumptionChart(chartData, Difference_In_Days, interval , minMaxThroughput , minMaxTEC);
 }
-function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
+function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval , minMaxThroughput , minMaxTEC) {
+    var minValueThroughput = Math.min(...minMaxThroughput);
+    var maxValueThroughput = Math.max(...minMaxThroughput);
+    var minValueminMaxTEC = Math.min(...minMaxTEC);
+    var maxValueminMaxTEC = Math.max(...minMaxTEC);
     var chart = new CanvasJS.Chart("steamchartLine", {
         height: 197,
         animationEnabled: true,
@@ -202,12 +210,8 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             shared: true
         },
         axisX: {
-            gridColor: "gray",
-            gridThickness: 2,
-            gridDashType: "dot",
             tickThickness: 0,
-            lineThickness: 1,
-            lineColor: "#d9d9d9",
+            lineColor: "gray",
             intervalType: Difference_In_Days == true ? "hour" : "day",
             valueFormatString: Difference_In_Days == true ? "HH" : "DD MMM YYYY",
             title: Difference_In_Days == true ? "In hours" : " In Days",
@@ -215,6 +219,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
+            
         },
         dataPointMaxWidth: 15,
         axisY: {
@@ -225,6 +230,9 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
+            minimum : minValueminMaxTEC - 0.02,
+            maximum :  maxValueminMaxTEC + 0.02
+
         },
         axisY2: {
             title: "Throughput (MT/Day)",
@@ -235,8 +243,8 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
-            minimum:1400,
-            maximum:2600
+            minimum : minValueThroughput - 100,
+            maximum : maxValueThroughput + 100
         },
         data: [{
             type: $("#chartsteamdata1 option:selected").val(),
@@ -274,7 +282,7 @@ function showSpecificSteamConsumptionChart(data, Difference_In_Days, interval) {
 function steamDoughnut() {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/steam/steamBreakup",
+        url: "http://localhost:8090/EMSPNC/steam/steamBreakup",
     }).done(function (data) {
         loadDoughnutChart(data);
     })
@@ -327,7 +335,7 @@ function loadDoughnutChart(data) {
 
 function steamtable() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/steam/secSteam",
+        url: "http://localhost:8090/EMSPNC/steam/secSteam",
         method: "GET"
     }).done(function (data) {
         console.log(data)
@@ -365,7 +373,7 @@ function steamtable() {
 function steamtable2() {
     $.ajax({
         method: 'GET',
-        url: 'http://localhost:8090/EmsPNC/steam/steamTable'
+        url: 'http://localhost:8090/EMSPNC/steam/steamTable'
     }).done(function (data) {
         var table_data = '';
         $.each(data, function (key, value) {
@@ -386,7 +394,7 @@ function steamDoughnutProgress2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/steam/steamCapacityUtilization",
+        url: "http://localhost:8090/EMSPNC/steam/steamCapacityUtilization",
     }).done(function (data) {
 
         loadDoughnutChartProgress2(data);

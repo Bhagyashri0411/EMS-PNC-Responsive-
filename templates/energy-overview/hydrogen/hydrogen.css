@@ -35,7 +35,11 @@
     font-size: 3vw;
     color: #f2f2f2;
     font-weight: 700;
-    padding: 1.5vw;
+    padding: 1.5vw 0;
+}
+
+#hydrogen-tab .card .body .newcount {
+    padding: 2.3vw 0;
 }
 
 #hydrogen-tab .card .footer .ref {
@@ -180,4 +184,18 @@ table #hydrogen_table1 td {
 
 #hydrogen-tab ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #hydrogen-tab .card .body .count {
+        padding: 3.5vw 0;
+    }
+
+    #hydrogen-tab .card .body .newcount {
+        padding: 4.3vw 0;
+    }
+
+    #hydrogen-tab .tableheight {
+        height: 25.2vh;
+    }
 }

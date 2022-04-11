@@ -21,6 +21,7 @@
     display: inline-block;
     font-size: 0.9vw;
     font-weight: 100;
+    color: #d9d9d9;
 }
 
 #fuel-tab .second-box-title {
@@ -41,7 +42,7 @@
     color: #d9d9d9;
 }
 
-#chartType, #chartType1, #PNCfuelto {
+#fuel-tab #chartType, #chartType1, #PNCfuelto {
     font-size: 0.8vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
@@ -53,10 +54,10 @@
     color: #d9d9d9;
 }
 
-#fuel-tab .card .title .fuel-title {
-    text-align: center;
+#fuel-tab .card .fuel-title {
+    display: inline-flex;
     font-size: 1vw;
-    margin-left: 0.6vw;
+    padding: 0 1vw;
 }
 
 #fuel-tab .card .body .count {
@@ -64,7 +65,7 @@
     font-size: 3vw;
     color: #f2f2f2;
     padding-top: 1.75vh;
-    padding-bottom: -0.27vh;
+    padding-bottom: 1.27vh;
     font-weight: 600;
 }
 
@@ -173,4 +174,22 @@
     padding-left: 0.2vw;
     font-size: 0.8vw;
     padding-right: 0.6vw;
+}
+
+#fuel-tab #doughnutChart {
+    height: 14vh;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #fuel-tab .count-line1 {
+        height: 20vh;
+    }
+
+    #fuel-tab .card .body .count {
+        padding: 3.7vh 0;
+    }
+
+    #fuel-tab .card .fuel-title {
+       padding: 0;
+    }
 }

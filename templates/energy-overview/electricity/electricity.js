@@ -20,14 +20,14 @@ $(document).ready(function () {
 
     // // setting from date, to date - 24hrs.   
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
     $('#fromelectricity').val(d.toJSON().slice(0, 19));
     console.log(d, 'daa');
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setSeconds(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#toelectricity').val(tod.toJSON().slice(0, 19));
     document.getElementById("toelectricity").min = $('#fromelectricity').val();
@@ -50,7 +50,7 @@ function getSpecificElectricityConsumptionData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/auth/electricity/SpecificElectricity",
+        url: "http://localhost:8090/EMSPNC/auth/electricity/SpecificElectricity",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -61,12 +61,16 @@ function getSpecificElectricityConsumptionData() {
 
 function formatSpecificElectricityConsumptionData(data, Difference_In_Days) {
     var chartData = { TotalEnergyConsumption: [], Throughput: [] };
+    var minMaxThroughput = [];
+    var minMaxTEC = []
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const electricityDate = new Date(element.date);
         chartData.Throughput.push({ y: element.throughput, x: electricityDate });
         chartData.TotalEnergyConsumption.push({ y: element.fuelConsumption, x: electricityDate });
+        minMaxThroughput.push(element.throughput);
+        minMaxTEC.push(element.fuelConsumption);
     }
     console.log("electricitychartdata", chartData);
     var interval = 1;
@@ -78,10 +82,14 @@ function formatSpecificElectricityConsumptionData(data, Difference_In_Days) {
         }
 
     }
-    showSpecificEletricityConsumptionChart(chartData, Difference_In_Days, interval);
+    showSpecificEletricityConsumptionChart(chartData, Difference_In_Days, interval, minMaxThroughput, minMaxTEC);
 }
 
-function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interval) {
+function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interval, minMaxThroughput, minMaxTEC) {
+    var minValueThroughput = Math.min(...minMaxThroughput);
+    var maxValueThroughput = Math.max(...minMaxThroughput);
+    var minValueminMaxTEC = Math.min(...minMaxTEC);
+    var maxValueminMaxTEC = Math.max(...minMaxTEC);
     var chart = new CanvasJS.Chart("PNCelectricityLine", {
         // height: 450,
         animationEnabled: true,
@@ -112,7 +120,9 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             gridThickness: 0,
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
-            fontFamily: "Bahnschrift Light"
+            fontFamily: "Bahnschrift Light",
+            minimum: minValueminMaxTEC - 10,
+            maximum: maxValueminMaxTEC + 10
         },
         axisY2: {
             title: "MT/Day",
@@ -123,8 +133,8 @@ function showSpecificEletricityConsumptionChart(data, Difference_In_Days, interv
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
-            minimum: 1400,
-            maximum: 2600
+            minimum: minValueThroughput - 100,
+            maximum: maxValueThroughput + 100
         },
         toolTip: {
             shared: true  //disable here. 
@@ -168,7 +178,7 @@ function electricityprogressbarchartload() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/api/energyConsumption/steamGenerationCapacity",
+        url: "http://localhost:8090/EMSPNC/api/energyConsumption/steamGenerationCapacity",
     }).done(function (electricityprogressvalue) {
         console.log(electricityprogressvalue);
         loadProgressChart(electricityprogressvalue);
@@ -182,7 +192,7 @@ function electricityDoughnutProgress2() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: "http://localhost:8090/EmsPNC/auth/electricity/ElectricityCapacity",
+        url: "http://localhost:8090/EMSPNC/auth/electricity/ElectricityCapacity",
     }).done(function (data) {
 
         loadDoughnutChartelectricityProgress2(data);
@@ -240,7 +250,7 @@ function loadDoughnutChartelectricityProgress2(data) {
 
 function getcardElectricity1() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/secelectricity',
+        url: 'http://localhost:8090/EMSPNC/auth/electricity/secelectricity',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data1");
@@ -271,7 +281,7 @@ function getcardElectricity1() {
 }
 function getcardElectricity2() {
     $.ajax({
-        url: "http://localhost:8090/EmsPNC/auth/electricity/ElectricityTotalGeneration",
+        url: "http://localhost:8090/EMSPNC/auth/electricity/ElectricityTotalGeneration",
         method: "GET"
     }).done(function (data) {
         console.log(data, "data2");
@@ -301,7 +311,7 @@ function getcardElectricity2() {
 }
 function getcardElectricity3() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/ElectricityTotalConsumption',
+        url: 'http://localhost:8090/EMSPNC/auth/electricity/ElectricityTotalConsumption',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data3");
@@ -331,7 +341,7 @@ function getcardElectricity3() {
 }
 function getcardElectricity4() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/ElectricityGenerationCost',
+        url: 'http://localhost:8090/EMSPNC/auth/electricity/ElectricityGenerationCost',
         method: "GET"
     }).done(function (data) {
         document.getElementById("count_ele4").innerHTML = data[0].tagvalue;
@@ -355,7 +365,7 @@ function getcardElectricity4() {
 
 function getcardElectricity5() {
     $.ajax({
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/GridCost',
+        url: 'http://localhost:8090/EMSPNC/auth/electricity/GridCost',
         method: "GET"
     }).done(function (data) {
         console.log(data, "data4");
@@ -370,17 +380,9 @@ function getStackBarvalue() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/auth/electricity/TotalElectricity',
+        url: 'http://localhost:8090/EMSPNC/auth/electricity/TotalElectricity',
         method: "GET"
     }).done(function (data) {
-        // var abc = (data[0].Generation / data[0].total) * 100;
-        // var def = (data[0].Electricity / data[0].total) * 100;
-        // var ghi = (data[0].Grid / data[0].total) * 100;
-        // var jkl = (data[0].prImport / data[0].total) * 100;
-        // var mno = (data[0].prExport / data[0].total) * 100;
-        // var pqr = (data[0].alinExport / data[0].total) * 100;
-        // var stu = (data[0].isrlExport / data[0].total) * 100;
-        // var pad = (data[0].padcExport / data[0].total) * 100;
         document.getElementById("stack1").innerHTML = data[0].Generation;
         document.getElementById("stack2").innerHTML = data[0].Electricity;
         document.getElementById("stack3").innerHTML = data[0].Grid;
@@ -389,13 +391,5 @@ function getStackBarvalue() {
         document.getElementById("stack6").innerHTML = data[0].alinExport;
         document.getElementById("stack7").innerHTML = data[0].isrlExport;
         document.getElementById("stack8").innerHTML = data[0].padcExport;
-        // document.getElementById("prog1").innerHTML = '<progress value =' + abc + ' max=' + max1 + ' data-toggle="tooltip" title=' + abc.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog2").innerHTML = '<progress value =' + def + ' max=' + max1 + ' data-toggle="tooltip" title=' + def.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog3").innerHTML = '<progress value =' + ghi + ' max=' + max1 + ' data-toggle="tooltip" title=' + ghi.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog4").innerHTML = '<progress value =' + jkl + ' max=' + max1 + ' data-toggle="tooltip" title=' + jkl.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog5").innerHTML = '<progress value =' + mno + ' max=' + max1 + ' data-toggle="tooltip" title=' + mno.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog6").innerHTML = '<progress value =' + pqr + ' max=' + max1 + ' data-toggle="tooltip" title=' + pqr.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog7").innerHTML = '<progress value =' + stu + ' max=' + max1 + ' data-toggle="tooltip" title=' + stu.toFixed(2) + '%' + '></progress>'
-        // document.getElementById("prog7").innerHTML = '<progress value =' + pad + ' max=' + max1 + ' data-toggle="tooltip" title=' + pad.toFixed(2) + '%' + '></progress>'
     });
 }
