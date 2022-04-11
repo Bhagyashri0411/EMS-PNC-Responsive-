@@ -59,9 +59,7 @@
     text-align: center;
     font-size: 1.7vw;
     color: #f2f2f2;
-    height: 7vh;
-    /* padding-top: 1vw;
-    padding-bottom: 1vw; */
+    padding: 1vh;
 }
 
 #electricity-tab .card .title:not(.chart-title) {
@@ -157,7 +155,7 @@
 } */
 #electricity-tab #fromelectricity, #toelectricity {
     display: block;
-     font-size: 0.6vw; 
+    font-size: 0.6vw;
     background-color: #26293c;
     border: 0.1vw solid #f2f2f2;
     padding: 0.2vw;
@@ -167,6 +165,7 @@
     cursor: pointer;
     color: #f2f2f2;
 }
+
 #electricity-tab #chartTypedata, #chartType1data {
     font-size: 0.8vw;
     background-color: #26293c;
@@ -255,4 +254,26 @@
 
 #electricity-tab ::-webkit-scrollbar-thumb:hover {
     background: #8d8a95;
+}
+
+#electricity-tab #doughnutChartprogresselectricity {
+    height: 21.5vh;
+}
+
+@media only screen and (max-width: 992px) and (max-width:999px) {
+    #electricity-tab .card .body .count {
+        padding: 2.3vh 0;
+    }
+
+    #electricity-tab .card .body1 .count {
+        padding: 2vh 0;
+    }
+
+    #electricity-tab #doughnutChartprogresselectricity {
+        height: 22.5vh;
+    }
+
+    #electricity-tab .genratorsHeight {
+        height: 20.5vh;
+    }
 }

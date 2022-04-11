@@ -33,7 +33,7 @@ function getDoughnutData(abc) {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/home/totalfuelconsumed",
+        url: "http://localhost:8090/EMSPNC/home/totalfuelconsumed",
     }).done(function (data) {
         loadDoughnutChart(data);
     })
@@ -60,7 +60,7 @@ function loadDoughnutChart(data) {
             dockInsidePlotArea: true,
             fontWeight: 700,
             // fontColor :"white",
-           fontColor :data.colorcode == "none"? "white":data.colorcode,
+           fontColor :data.colorcode == 'none'? "white":data.colorcode,
             fontFamily: "Bahnschrift Light"
         },
         legend: {
@@ -104,7 +104,7 @@ function loadGaugeChartData() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         type: "GET",
-        url: "http://localhost:8090/EmsPNC/home/speedometer",
+        url: "http://localhost:8090/EMSPNC/home/speedometer",
     }).done(function (gaugevalue) {
         console.log(gaugevalue)
         loadGaugeChart(gaugevalue);
@@ -117,7 +117,7 @@ function guagevaluehomeAct() {
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
         method: "GET",
-        url: 'http://localhost:8090/EmsPNC/home/speedometer',
+        url: 'http://localhost:8090/EMSPNC/home/speedometer',
 
     }).done(function (data) {
         document.getElementById("dev").innerHTML = data.deviation + '%';
@@ -203,7 +203,7 @@ function getcardhome1() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/home/totalenergyconsumed',
+        url: 'http://localhost:8090/EMSPNC/home/totalenergyconsumed',
         method: "GET"
     }).done(function (data) {
 
@@ -240,7 +240,7 @@ function getcardhome2() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/home/GHGemmission',
+        url: 'http://localhost:8090/EMSPNC/home/GHGemmission',
         method: "GET"
     }).done(function (data) {
 
@@ -275,7 +275,7 @@ function getcardhome3() {
             "Content-Type": "application/json",
             "Authorization": sessionStorage.getItem("tokenType") + " " + sessionStorage.getItem("accessToken"),
         },
-        url: 'http://localhost:8090/EmsPNC/home/SpecificEnergyConsumption',
+        url: 'http://localhost:8090/EMSPNC/home/SpecificEnergyConsumption',
         method: "GET"
     }).done(function (data) {
 

@@ -24,7 +24,7 @@
  }
 
  #steam-tab .body.chart-body {
-  height: 32vh;
+   height: 32vh;
  }
 
  #steam-tab .card .title .main-title {
@@ -86,13 +86,13 @@
    stroke-width: 1.1vw;
  }
 
- .progress1 {
+ #steam-tab .progress1 {
    /* height: 21.3vh; */
    overflow: hidden;
    background-color: #26293c;
  }
 
- .progress-circle-prog1 {
+ #steam-tab .progress-circle-prog1 {
    fill: none;
    stroke: #00b0f0;
    stroke-width: 1.1vw;
@@ -310,4 +310,30 @@
    color: #d9d9d9;
    margin-left: 0.4vw;
    margin-top: -7px;
+ }
+
+ #steam-tab #steam-doughnutChart {
+   height: 15.6vh;
+ }
+
+ #steam-tab #doughnutChartprogress {
+   height: 16.9vh;
+ }
+
+ @media only screen and (max-width: 992px) and (max-width:999px) {
+   #steam-tab td {
+     padding: 0.7vw 0;
+   }
+
+   #steam-tab .genratorsHeight {
+     height: 20vh;
+   }
+
+   #steam-tab #steam-doughnutChart {
+     height: 17.6vh;
+   }
+
+   #steam-tab #doughnutChartprogress {
+     height: 18.7vh;
+   }
  }

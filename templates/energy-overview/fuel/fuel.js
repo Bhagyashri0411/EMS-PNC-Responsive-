@@ -19,13 +19,13 @@ $(document).ready(function () {
 
     // // setting from date, to date - 24hrs.
     const d = new Date(sessionStorage.getItem("lastUpdateddate"));
-    d.setHours(-05);
-    d.setMinutes(00);
+    d.setHours(05);
+    d.setMinutes(30);
     d.setSeconds(0);
     $('#PNCfuelfrom').val(d.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setSeconds(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#PNCfuelto').val(tod.toJSON().slice(0, 19));
     document.getElementById("PNCfuelto").min = $('#PNCfuelfrom').val();
@@ -57,7 +57,7 @@ function getSpecificFuelPNCData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/fuelgraph",
+        url: "http://localhost:8090/EMSPNC/auth/Fuel/fuelgraph",
     }).done(function (data) {
         console.log(data)
         var Difference_In_Days = data[0].showNumberIndex;
@@ -68,12 +68,16 @@ function getSpecificFuelPNCData() {
 
 function formatSpecificFuelPNCData(data, Difference_In_Days) {
     var chartData = { Throughput: [], FuelConsumption: [] };
+    var minMaxThroughput = [];
+    var minMaxTEC = []
     for (let index = 0; index < data.length; index++) {
         const element = data[index];
         var count = data.length;
         const fuelDate = new Date(element.date);
         chartData.FuelConsumption.push({ y: element.fuelConsumption, x: fuelDate });
         chartData.Throughput.push({ y: element.throughput, x: fuelDate });
+        minMaxThroughput.push(element.throughput);
+        minMaxTEC.push(element.fuelConsumption);
     }
     console.log("chartdata", chartData);
     var interval = 1;
@@ -85,7 +89,7 @@ function formatSpecificFuelPNCData(data, Difference_In_Days) {
         }
 
     }
-    showSpecificFuelPNCChart(chartData, Difference_In_Days, interval);
+    showSpecificFuelPNCChart(chartData, Difference_In_Days, interval ,minMaxThroughput ,minMaxTEC);
 }
 
 
@@ -101,7 +105,7 @@ function getFuelDoughnutData() {
         method: "POST",
         data: postdata,
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/totalfuelconsumed",
+        url: "http://localhost:8090/EMSPNC/auth/Fuel/totalfuelconsumed",
     }).done(function (data) {
         if (myJSON.uom == 'INR/hr') {
 
@@ -164,7 +168,7 @@ function loadDoughnutChartFuelINR(data) {
             fontSize: 15,
             fontWeight: 700,
             // fontColor : "white",
-     fontColor :data[0].colorcode == "none"? "white":data[0].colorcode,
+     fontColor :data[0].colorcode == 'none'? "white":data[0].colorcode,
             fontFamily: "Bahnschrift Light"
 
         },
@@ -214,7 +218,7 @@ function loadDoughnutChartFuel(data) {
             dockInsidePlotArea: true,
             fontWeight: 300,
             // fontColor : "white",
-             fontColor :data[0].colorcode == "none"? "white":data[0].colorcode,
+             fontColor :data[0].colorcode == 'none'? "white":data[0].colorcode,
             fontFamily: "Bahnschrift Light"
 
         },
@@ -241,7 +245,11 @@ function loadDoughnutChartFuel(data) {
 }
 
 
-function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
+function showSpecificFuelPNCChart(data, Difference_In_Days, interval, minMaxThroughput ,minMaxTEC) {
+    var minValueThroughput = Math.min(...minMaxThroughput);
+ var maxValueThroughput = Math.max(...minMaxThroughput);
+ var minValueminMaxTEC = Math.min(...minMaxTEC);
+ var maxValueminMaxTEC = Math.max(...minMaxTEC);
     var chart = new CanvasJS.Chart("fuel-chart-container", {
         animationEnabled: true,
         theme: "dark1",
@@ -272,7 +280,9 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
-            "minimum": 0
+            minimum : minValueminMaxTEC - 0.02,
+            maximum :  maxValueminMaxTEC + 0.02
+
         },
         axisY2: {
             title: "MT/Day",
@@ -283,8 +293,8 @@ function showSpecificFuelPNCChart(data, Difference_In_Days, interval) {
             labelFontColor: "#bfbfbf",
             labelFontSize: 15,
             fontFamily: "Bahnschrift Light",
-            minimum:1400,
-            maximum:2600
+            minimum : minValueThroughput - 100,
+            maximum : maxValueThroughput + 100
         },
         data: [{
             type: $("#chartType1 option:selected").val(),
@@ -329,7 +339,7 @@ function loadCardfuel1() {
     $.ajax({
         method: "GET",
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/secfuelMTMT",
+        url: "http://localhost:8090/EMSPNC/auth/Fuel/secfuelMTMT",
 
 
 
@@ -364,7 +374,7 @@ function loadCardfuel2() {
     $.ajax({
         method: "GET",
 
-        url: "http://localhost:8090/EmsPNC/auth/Fuel/secfuelToeMT",
+        url: "http://localhost:8090/EMSPNC/auth/Fuel/secfuelToeMT",
 
 
 

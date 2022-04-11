@@ -31,7 +31,7 @@ function lastupdatedTime() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/EmsPNC/Air/lastUpdateTimestamp",
+    url: "http://localhost:8090/EMSPNC/Air/lastUpdateTimestamp",
     method: "GET",
   }).done(function (data) {
     const d = new Date(data.lastupdatetimestamp);
@@ -48,13 +48,13 @@ function lastupdatedTime() {
     var hoursString = sessionStorage.getItem("lastUpdateddate");
     var timeArray = hoursString.split(":");
     const dateVal = new Date(sessionStorage.getItem("lastUpdateddate"));
-    dateVal.setHours(-05);
-    dateVal.setMinutes(00);
+    dateVal.setHours(05);
+    dateVal.setMinutes(30);
     dateVal.setSeconds(0);
     $("#fromHome1").val(dateVal.toJSON().slice(0, 19));
     const tod = new Date(sessionStorage.getItem("lastUpdateddate"));
-    tod.setHours(18);
-    tod.setMinutes(59);
+    tod.setHours(29);
+    tod.setMinutes(29);
     tod.setSeconds(0);
     $('#homeEms1').val(tod.toJSON().slice(0, 19));
     document.getElementById("homeEms1").min = $('#fromHome1').val();
@@ -82,7 +82,7 @@ function getSpecificHomeConsumptionData(intervalType, domLebal1) {
     method: "POST",
     data: postdata,
 
-    url: "http://localhost:8090/EmsPNC/home/homepagegraph",
+    url: "http://localhost:8090/EMSPNC/home/homepagegraph",
   }).done(function (data) {
     console.log(data);
     var Difference_In_Days = data[0].showNumberIndex;
@@ -92,12 +92,16 @@ function getSpecificHomeConsumptionData(intervalType, domLebal1) {
 
 function formatSpecificHomeConsumptionData(data, intervalType, domLebal1, Difference_In_Days) {
   var chartData = { Throughput: [], TotalEnergyConsumption: [] };
+  var minMaxThroughput = [];
+  var minMaxTEC = []
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
     var count = data.length;
     const tmpDate = new Date(element.date);
     chartData.TotalEnergyConsumption.push({ y: element.fuelConsumption, x: tmpDate });
     chartData.Throughput.push({ y: element.throughput, x: tmpDate });
+    minMaxThroughput.push(element.throughput);
+    minMaxTEC.push(element.fuelConsumption);
   }
   console.log("Homechartdata", chartData);
   var interval = 1;
@@ -109,9 +113,25 @@ function formatSpecificHomeConsumptionData(data, intervalType, domLebal1, Differ
     }
 
   }
-  showSpecificHomeConsumptionChart(chartData, intervalType, domLebal1, Difference_In_Days, interval);
+  showSpecificHomeConsumptionChart(chartData, intervalType, domLebal1, Difference_In_Days, interval ,minMaxThroughput ,minMaxTEC);
 }
-function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Difference_In_Days, interval) {
+function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Difference_In_Days, interval ,minMaxThroughput ,minMaxTEC) {
+  // const {Throughput} = data;
+  // // console.log(data , 'data');
+ var minValueThroughput = Math.min(...minMaxThroughput);
+ var maxValueThroughput = Math.max(...minMaxThroughput);
+ var minValueminMaxTEC = Math.min(...minMaxTEC);
+ var maxValueminMaxTEC = Math.max(...minMaxTEC);
+ console.log(minMaxThroughput , 'data.Throughput');
+ const closestminTEC = minMaxTEC.reduce((a, b) => {
+  return Math.abs(b - minValueminMaxTEC) < Math.abs(a - minValueminMaxTEC) ? b : a;
+});
+const closestminthroughput = minMaxThroughput.reduce((a, b) => {
+  return Math.abs(b - minValueThroughput) < Math.abs(a - minValueThroughput) ? b : a;
+});
+ console.log(closestminTEC - minValueminMaxTEC ,'difference',minValueminMaxTEC,'min' ,maxValueminMaxTEC ,'max',closestminTEC ,minMaxTEC);
+ console.log(closestminTEC - minValueThroughput ,'difference',minValueThroughput,'min' ,maxValueThroughput ,'max',closestminthroughput ,minMaxThroughput);
+
   var chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     theme: "dark1",
@@ -136,7 +156,10 @@ function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Differe
       labelFontColor: "#d9d9d9",
       labelFontSize: 15,
       fontFamily: "Bahnschrift Light",
-      minimum: 0
+      // minimum: minMaxThroughput.length == 1 ? "" : minValueminMaxTEC,
+      minimum : minValueminMaxTEC - 0.02,
+      maximum :  maxValueminMaxTEC + 0.02
+      // maximum: 60,
     },
     axisY2: {
       title: "MT/Day",
@@ -147,6 +170,8 @@ function showSpecificHomeConsumptionChart(data, intervalType, domLebal1, Differe
       labelFontColor: "#d9d9d9",
       labelFontSize: 15,
       fontFamily: "Bahnschrift Light",
+      minimum : minValueThroughput - 100,
+      maximum : maxValueThroughput +100
       // minimum: 35000
     },
     toolTip: {
@@ -194,7 +219,7 @@ function totalThroughput() {
         " " +
         sessionStorage.getItem("accessToken"),
     },
-    url: "http://localhost:8090/EmsPNC/home/totalbalance",
+    url: "http://localhost:8090/EMSPNC/home/totalbalance",
     method: "GET",
   }).done(function (data) {
     document.getElementById("totalThroughput").innerHTML = data.totalNaphthaProcessed;
@@ -214,7 +239,7 @@ function Truncated() {
         sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/EmsPNC/home/Truncate",
+    url: "http://localhost:8090/EMSPNC/home/Truncate",
   }).done(function (data) {
     console.log(data);
   });
@@ -229,7 +254,7 @@ function csvdownload() {
         sessionStorage.getItem("accessToken"),
     },
     method: "GET",
-    url: "http://localhost:8090/EmsPNC/home/Report",
+    url: "http://localhost:8090/EMSPNC/home/Report",
   }).done(function (data) {
     console.log(data);
 
